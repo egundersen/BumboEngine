@@ -1,0 +1,57 @@
+﻿  EnemyAttack.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\enemyattack.cpp(165): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\erikg\source\repos\bumboengine\bumboengine\enemyattack.cpp(166): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\type_traits(16707566): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\type_traits(16707566): note: see reference to function template instantiation 'void std::_Invoker_pmf_pointer::_Call<_Ty,EnemyAttack*,double,int,int,int,int,int,int,const char*>(_Decayed,_Ty1 &&,double &&,int &&,int &&,int &&,int &&,int &&,int &&,const char *&&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),
+              _Decayed=void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),
+              _Ty1=EnemyAttack *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\thr\xthread(239): note: see reference to function template instantiation 'void std::invoke<void(__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack*,double,int,int,int,int,int,int,const char*>(_Callable &&,EnemyAttack *&&,double &&,int &&,int &&,int &&,int &&,int &&,int &&,const char *&&) noexcept(false)' being compiled
+          with
+          [
+              _Callable=void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string)
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\thr\xthread(248): note: see reference to function template instantiation 'void std::_LaunchPad<_Target>::_Execute<0,1,2,3,4,5,6,7,8,9>(std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *> &,std::integer_sequence<_Ty,0,1,2,3,4,5,6,7,8,9>)' being compiled
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,std::default_delete<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>>>,
+              _Ty=::size_t
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\thr\xthread(247): note: see reference to function template instantiation 'void std::_LaunchPad<_Target>::_Execute<0,1,2,3,4,5,6,7,8,9>(std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *> &,std::integer_sequence<_Ty,0,1,2,3,4,5,6,7,8,9>)' being compiled
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,std::default_delete<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>>>,
+              _Ty=::size_t
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\thr\xthread(244): note: while compiling class template member function 'void std::_LaunchPad<_Target>::_Run(std::_LaunchPad<_Target> *) noexcept'
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,std::default_delete<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\thr\xthread(232): note: see reference to function template instantiation 'void std::_LaunchPad<_Target>::_Run(std::_LaunchPad<_Target> *) noexcept' being compiled
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,std::default_delete<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\thr\xthread(259): note: see reference to class template instantiation 'std::_LaunchPad<_Target>' being compiled
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,std::default_delete<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\thread(45): note: see reference to function template instantiation 'void std::_Launch<std::unique_ptr<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,std::default_delete<_Ty>>>(_Thrd_t *,_Target &&)' being compiled
+          with
+          [
+              _Ty=std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,
+              _Target=std::unique_ptr<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>,std::default_delete<std::tuple<void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack *,double,int,int,int,int,int,int,const char *>>>
+          ]
+  c:\users\erikg\source\repos\bumboengine\bumboengine\enemyattack.cpp(36): note: see reference to function template instantiation 'std::thread::thread<void(__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string),EnemyAttack*,double&,int,int,int,int&,int,int,const char(&)[20],void>(_Fn &&,EnemyAttack *&&,double &,int &&,int &&,int &&,int &,int &&,int &&,const char (&)[20])' being compiled
+          with
+          [
+              _Fn=void (__thiscall EnemyAttack::* )(int,int,int,int,int,int,int,std::string)
+          ]
+  StartScreen.cpp
+  Generating Code...
+  BumboEngine.vcxproj -> C:\Users\erikg\source\repos\BumboEngine\Debug\BumboEngine.exe
