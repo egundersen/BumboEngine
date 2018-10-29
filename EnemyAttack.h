@@ -1,4 +1,5 @@
 #include "MatrixBase.h"
+#include <thread>
 
 #ifndef BATTLE_H
 #define BATTLE_H
@@ -38,6 +39,7 @@ private:
 	int height_ = 0;
 	int player_health_;
 	int number_of_minor_attacks_;
+	int number_of_remaining_attacks;
 	bool should_use_attack;
 	bool is_attack_pattern_in_progress;
 	bool call_once_threads;
@@ -49,6 +51,7 @@ private:
 	std::vector<std::vector<char>> matrix_;
 	std::string **element_is_occupied_;
 	PlayerPosition player_position_;
+	std::vector<std::thread> minor_attacks;
 };
 
 #endif // !BATTLE_H

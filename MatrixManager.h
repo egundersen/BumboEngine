@@ -21,7 +21,8 @@ public:
 	// Getters
 	std::string getCurrentVectorSpace() { return current_vector_space_; };
 private:
-	void OptimizeConsoleWindow();
+	void optimizeConsoleWindow();
+	void hideTypingCursor();
 	void indentLines(int number_of_indents);
 
 	int width_ = 0;

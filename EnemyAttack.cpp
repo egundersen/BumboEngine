@@ -28,27 +28,40 @@ EnemyAttack::EnemyAttack(int width, int height, int player_health, std::string a
 // A cool attack pattern that shoots a line towards the player every 3-7 seconds
 void EnemyAttack::shootHorizontalAttack(int time_in_seconds_between_attacks)
 {
-	while (should_use_attack)
+	double totalTime;
+	while (should_use_attack) // Void Start
 	{
 		should_use_attack = false;
+		totalTime = GetTickCount();
+		number_of_remaining_attacks = number_of_minor_attacks_;
 		attack_start_time = GetTickCount();
 		//shootHorizontalAttack_Minor(GetTickCount(), 50, 60, 0, width_, 25, 1, "");
-		std::thread minor_attack1(&EnemyAttack::shootHorizontalAttack_Minor, this, attack_start_time, 50, 60, 0, width_, 25, 1, "horizontal attack 1");
-		std::thread minor_attack2(&EnemyAttack::shootHorizontalAttack_Minor, this, attack_start_time, 50, 60, 0, width_, 15, 2, "horizontal attack 2");
-		minor_attack1.join();
-		minor_attack2.join();
-
-		// ATTACK COMPLETED
-		is_attack_pattern_in_progress = false;
+		//std::thread minor_attack1(&EnemyAttack::shootHorizontalAttack_Minor, this, GetTickCount(), 50, 60, 0, width_, 25, 1, "horizontal attack 1");
+		//std::thread minor_attack2(&EnemyAttack::shootHorizontalAttack_Minor, this, GetTickCount(), 50, 60, 0, width_, 15, 2, "horizontal attack 2");
+		//minor_attack1.join();
+		//minor_attack2.join();
 	}
 
-	double currentTime = GetTickCount() - attack_start_time;
-	if (currentTime >= 10000) // 1000 = 1 second
+	while (is_attack_pattern_in_progress)
 	{
-		attack_start_time = GetTickCount(); // reset time
-		//shootHorizontalAttack_Minor(attack_start_time);
-		waitForInput();
+		double currentTime = GetTickCount() - attack_start_time;
+
+		if (currentTime >= 2000) // 1000 = 1 second
+		{
+			minor_attacks.push_back(std::thread(&EnemyAttack::shootHorizontalAttack_Minor, this, GetTickCount(), 50, 60, 0, width_, rand() % (height_ - 1 - 0 + 1) + 0, 2, "horizontal attack 3"));
+			number_of_remaining_attacks--;
+			attack_start_time = GetTickCount(); // reset time
+		}
+		if (GetTickCount() - totalTime >= 25000)
+		{
+			for (auto& minor_attack : minor_attacks)
+				minor_attack.join();
+			// ATTACK COMPLETED
+			std::cout << "ATTACK COMPLETED@!\n";
+			is_attack_pattern_in_progress = false;
+		}
 	}
+	std::cout << "ATTACK_OVER: " << totalTime;
 }
 
 void EnemyAttack::shootHorizontalAttack_Minor(int minor_attack_start_time, int speed, int trail_length, int min, int max, int height, int attack_index, std::string minor_attack_name)
@@ -116,8 +129,9 @@ void EnemyAttack::refreshScreen()
 	if (call_once_threads == true)
 	{
 		std::thread evaluate_player_input(&EnemyAttack::evaluatePlayerInput, this);
-		std::thread use_attack(&EnemyAttack::useAttack, this);
-		use_attack.join();
+		useAttack();
+		//std::thread use_attack(&EnemyAttack::useAttack, this);
+		//use_attack.join();
 		evaluate_player_input.join();
 		call_once_threads = false;
 	}
@@ -144,7 +158,7 @@ void EnemyAttack::setPlayerLocation()
 						displayCollision(j, i);
 						hurtPlayer();
 						remaining_attacks_.erase(std::remove(remaining_attacks_.begin(), remaining_attacks_.end(), element_is_occupied_[i][j]), remaining_attacks_.end());
-					}	
+					}
 				}
 				matrix_[i][j] = 'O';
 			}

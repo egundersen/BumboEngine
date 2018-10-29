@@ -8,7 +8,7 @@
 
 MatrixManager::MatrixManager(int width, int height, int player_health) : width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), inventory_(width, height, player_health_), debugAttack_(width_, height_, player_health, "Shoot Horizontal Attack", 6), player_health_{ player_health }
 {
-	OptimizeConsoleWindow();
+	optimizeConsoleWindow();
 	current_vector_space_ = "BATTLE"; //TODO: Change to MAP
 	inventory_.addItem("Health Potion"); //TODO: remove from here and add this to picking up item on map
 	inventory_.addItem("Secret Potion");
@@ -62,10 +62,11 @@ void MatrixManager::onShutdown()
 }
 
 // Runs optimization code to make the console run faster
-void MatrixManager::OptimizeConsoleWindow()
+void MatrixManager::optimizeConsoleWindow()
 {
 	std::ios::sync_with_stdio(false);
-	int number_of_indents = 10000;
+	hideTypingCursor();
+
 	std::thread indent_lines1(&MatrixManager::indentLines, this, 3300);
 	std::thread indent_lines2(&MatrixManager::indentLines, this, 3300);
 	std::thread indent_lines3(&MatrixManager::indentLines, this, 3300);
@@ -74,6 +75,16 @@ void MatrixManager::OptimizeConsoleWindow()
 	indent_lines2.join();
 	indent_lines3.join();
 	indent_lines4.join();
+}
+
+// Hides the typing cursor from being displayed
+void MatrixManager::hideTypingCursor()
+{
+	CONSOLE_CURSOR_INFO cursor_info;
+	cursor_info.bVisible = FALSE;
+	cursor_info.dwSize = 100;
+	HANDLE console_handler = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorInfo(console_handler, &cursor_info);
 }
 
 // Indents an <INSERT> amount of lines
