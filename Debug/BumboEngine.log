@@ -1,4 +1,13 @@
-﻿  EnemyAttack.cpp
-c:\users\erikg\source\repos\bumboengine\bumboengine\enemyattack.cpp(179): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erikg\source\repos\bumboengine\bumboengine\enemyattack.cpp(180): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  AttackBase.cpp
+  AttackPatternBase.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\attackpatternbase.cpp(99): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\erikg\source\repos\bumboengine\bumboengine\attackpatternbase.cpp(100): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Attack_HorizontalLine.cpp
+  AttackPattern_ShootHorizontal.cpp
+  MatrixManager.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Source.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
   BumboEngine.vcxproj -> C:\Users\erikg\source\repos\BumboEngine\Debug\BumboEngine.exe

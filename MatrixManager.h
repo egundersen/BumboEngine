@@ -2,7 +2,7 @@
 #include "Image.h"
 #include "Inventory.h"
 #include "StartScreen.h"
-#include "EnemyAttack.h"
+#include "AttackPatterns.h"
 
 #ifndef MatrixManager_H
 #define MatrixManager_H
@@ -31,7 +31,7 @@ private:
 	std::vector<std::vector<char>> matrix_;
 	std::string current_vector_space_;
 	Inventory inventory_;
-	EnemyAttack debugAttack_;
+	AttackPattern_ShootHorizontal debugAttack_;
 	int player_health_;
 };
 

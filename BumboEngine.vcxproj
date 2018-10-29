@@ -115,7 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EnemyAttack.cpp" />
+    <ClCompile Include="AttackBase.cpp" />
+    <ClCompile Include="AttackPatternBase.cpp" />
+    <ClCompile Include="Attack_HorizontalLine.cpp" />
+    <ClCompile Include="AttackPattern_ShootHorizontal.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="MatrixBase.cpp" />
     <ClCompile Include="MatrixManager.cpp" />
@@ -124,7 +127,12 @@
     <ClCompile Include="StartScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EnemyAttack.h" />
+    <ClInclude Include="AttackPatternBase.h" />
+    <ClInclude Include="AttackPatterns.h" />
+    <ClInclude Include="Attacks.h" />
+    <ClInclude Include="AttackBase.h" />
+    <ClInclude Include="Attack_HorizontalLine.h" />
+    <ClInclude Include="AttackPattern_ShootHorizontal.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MatrixBase.h" />
     <ClInclude Include="MatrixManager.h" />

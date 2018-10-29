@@ -6,7 +6,7 @@
 #include <thread>
 #include <iostream>
 
-MatrixManager::MatrixManager(int width, int height, int player_health) : width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), inventory_(width, height, player_health_), debugAttack_(width_, height_, player_health, "Shoot Horizontal Attack", 6), player_health_{ player_health }
+MatrixManager::MatrixManager(int width, int height, int player_health) : width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), inventory_(width, height, player_health_), debugAttack_(width_, height_, player_health, 15), player_health_{ player_health }
 {
 	optimizeConsoleWindow();
 	current_vector_space_ = "BATTLE"; //TODO: Change to MAP
@@ -26,7 +26,7 @@ void MatrixManager::evaluatePlayerInput()
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
-		debugAttack_.OnBeginAttack();
+		debugAttack_.refreshScreen();
 	}
 	else if (current_vector_space_ == "INVENTORY")
 	{

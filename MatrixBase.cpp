@@ -71,6 +71,33 @@ void MatrixBase::waitForInput()
 		c = _getch();
 }
 
+// Generates random sequence.
+void MatrixBase::generateRandomSequence(std::vector<std::shared_ptr<int>> & random_sequence, int min, int max)
+{
+	for (int i = min; i < max + min; ++i)
+	{
+		int r;
+		do
+		{
+			r = rand() % max + 1;
+		} while (contains(random_sequence, r));
+		std::shared_ptr<int> number = std::make_shared<int>();
+		*number = r;
+		random_sequence.push_back(number);
+	}
+}
+
+// Generates in-order sequence.
+void MatrixBase::generateInOrderSequence(std::vector<std::shared_ptr<int>> &in_order_sequence, int min, int max)
+{
+	for (int i = min; i < max; i++)
+	{
+		std::shared_ptr<int> number = std::make_shared<int>();
+		*number = i;
+		in_order_sequence.push_back(number);
+	}
+}
+
 // Displays image to screen (completely disregards existing formatting)
 void MatrixBase::DEBUG_simpleDisplay(Image & image)
 {

@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Attacks">
+      <UniqueIdentifier>{39cce891-d163-4d52-8bb9-b15ca7d21cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Attacks">
+      <UniqueIdentifier>{97e2a969-d458-4cea-8a57-dbadab96149d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -33,8 +39,17 @@
     <ClCompile Include="StartScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyAttack.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Attack_HorizontalLine.cpp">
+      <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootHorizontal.cpp">
+      <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackBase.cpp">
+      <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPatternBase.cpp">
+      <Filter>Source Files\Attacks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,11 +68,26 @@
     <ClInclude Include="StartScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyAttack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_HorizontalLine.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootHorizontal.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPatterns.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Attacks.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackBase.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPatternBase.h">
+      <Filter>Header Files\Attacks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
