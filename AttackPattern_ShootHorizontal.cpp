@@ -14,7 +14,7 @@ AttackPattern_ShootHorizontal::AttackPattern_ShootHorizontal(int width, int heig
 // Calls once when the entire attack starts
 void AttackPattern_ShootHorizontal::OnBeginAttack()
 {
-	createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
+	createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 3);
 	start_time_new_attack_ = GetTickCount();
 	start_time_update_attacks_ = GetTickCount();
 	has_completed_initialization_ = true;
@@ -31,13 +31,14 @@ void AttackPattern_ShootHorizontal::refreshScreen()
 	else
 	{
 		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
-		if (current_time_new_attack_ >= 1500 && created_attacks_ < attacks_to_create_)
+		if (current_time_new_attack_ >= 1000 && created_attacks_ < attacks_to_create_)
 		{
-			createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], (rand() % 3) + 1);
+			createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 3 + (rand() * 2) % 2);
 			start_time_new_attack_ = GetTickCount();
 		}
 
 		double current_time_update_attacks = GetTickCount() - start_time_update_attacks_;
+
 		for (auto it = attacks_list_.begin(); it != attacks_list_.end(); )
 		{
 			(*it)->move();

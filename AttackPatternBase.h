@@ -37,6 +37,7 @@ protected:
 	std::vector<std::shared_ptr<int>> attack_starting_positions_;
 	double start_time_update_attacks_;
 	double start_time_new_attack_;
+	double start_time_refresh_screen_;
 	bool has_completed_initialization_;
 	bool has_completed_all_attacks;
 	bool **element_is_occupied_;

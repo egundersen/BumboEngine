@@ -30,6 +30,7 @@ void AttackPatternBase::OnBeginAttack()
 {
 	start_time_new_attack_ = GetTickCount();
 	start_time_update_attacks_ = GetTickCount();
+	start_time_refresh_screen_ = GetTickCount();
 	has_completed_initialization_ = true;
 }
 
@@ -120,12 +121,24 @@ void AttackPatternBase::displayScreen()
 		{
 			if (newLineCounter != 0)
 			{
-				std::cout << std::string(newLineCounter, '\n');
+				for (int i = 0; i < newLineCounter; i++)
+					putchar('\n');
 				newLineCounter = 0;
 			}
-			for (auto x : line)
+			std::string test = "";
+			for (int i = 0; i < width_; i++)
+			{
+				test += line[i];
+				//printf("%s - %s - %s", [0].c_str(), data[1].c_str(), data[2].c_str());
+			}
+			std::cout << test;
+			/*for (auto x : line)
 				std::cout << x;
+				//*/
 		}
 	}
-	std::cout << std::string(newLineCounter, '\n');
+	//std::string yes = std::string(newLineCounter, '\n');
+	for (int i = 0; i < newLineCounter; i++)
+		putchar('\n');
+	//std::cout << std::string(newLineCounter, '\n');
 }
