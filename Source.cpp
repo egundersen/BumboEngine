@@ -4,14 +4,14 @@
  * How-To-Use For the most part, stay out of the Image class. You can call the class,
  * Just don't edit it. Everything in the Bumbo Engine is called from the Grid class.
  */
-
+/*
 #include "MatrixManager.h"
 #include <windows.h>
 
 void setConsoleSize(int width, int height);
 char GetKeyPressed(MatrixManager &grid);
 
-int main()
+int main1()
 {
 	setConsoleSize(600, 600);
 	double start_time = GetTickCount();
@@ -57,4 +57,4 @@ char GetKeyPressed(MatrixManager &grid)
 	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
 		input = 'x';
 	return input;
-}
+}*/

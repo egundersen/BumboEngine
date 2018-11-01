@@ -62,7 +62,7 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 	}
 }
 
-// Freezes entire program and waits for input from user. Input is then disregarded
+// Freezes entire program and waits for input from user. -- DEPRECATED --
 void MatrixBase::waitForInput()
 {
 	_getch();

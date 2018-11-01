@@ -8,8 +8,7 @@
 class Inventory : public MatrixBase
 {
 public:
-	Inventory() : width_{ 0 }, height_{ 0 }, matrix_(0, std::vector<char>(0, ' ')) {};
-	Inventory(int width, int height, int player_health);
+	Inventory(int width, int height, int player_health, std::vector<std::vector<std::string>> &matrix_display);
 
 	// Setters
 	void onOpenInventory();
@@ -29,6 +28,7 @@ public:
 	// Output Displays
 	void displayScreen();
 private:
+	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
 	std::vector<char> empty_vector_;
 	std::vector<Item> items_list_;
@@ -36,6 +36,7 @@ private:
 	int width_ = 0;
 	int height_ = 0;
 	int player_health_;
+	int start_time_move_cursor_ = 0;
 };
 
 #endif // !INVENTORY_H

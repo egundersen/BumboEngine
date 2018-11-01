@@ -7,27 +7,24 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Header Files\Attacks">
-      <UniqueIdentifier>{39cce891-d163-4d52-8bb9-b15ca7d21cf3}</UniqueIdentifier>
+      <UniqueIdentifier>{69d0151e-b2b3-4276-b87d-444a50c989bb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Attacks">
-      <UniqueIdentifier>{97e2a969-d458-4cea-8a57-dbadab96149d}</UniqueIdentifier>
+      <UniqueIdentifier>{ad0e7639-3ebb-4f11-a39f-ec511d5b26a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MatrixManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
@@ -36,16 +33,22 @@
     <ClCompile Include="MatrixBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MatrixManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="StartScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Attack_HorizontalLine.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
-    <ClCompile Include="AttackPattern_ShootHorizontal.cpp">
+    <ClCompile Include="AttackBase.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
-    <ClCompile Include="AttackBase.cpp">
+    <ClCompile Include="AttackPattern_ShootHorizontal.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="AttackPatternBase.cpp">
@@ -53,28 +56,40 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="WinMainParameters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MatrixManager.h">
+    <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MatrixBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StartScreen.h">
+    <ClInclude Include="MatrixManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="StartScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Attack_HorizontalLine.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
+    <ClInclude Include="AttackBase.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
     <ClInclude Include="AttackPattern_ShootHorizontal.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPatternBase.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="AttackPatterns.h">
@@ -83,11 +98,21 @@
     <ClInclude Include="Attacks.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
-    <ClInclude Include="AttackBase.h">
+    <ClInclude Include="config.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
-    <ClInclude Include="AttackPatternBase.h">
-      <Filter>Header Files\Attacks</Filter>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="LaunchWin32WindowFromConsole.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

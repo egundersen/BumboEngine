@@ -2,11 +2,11 @@
 #include "Image.h"
 #include <iostream>
 
-StartScreen::StartScreen(int width, int height) : width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' ')
+StartScreen::StartScreen(int width, int height, std::vector<std::vector<std::string>> &matrix_display)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), matrix_display_{ matrix_display }
 {
 	setBackgroundText();
 	displayScreen();
-	waitForInput();
 }
 
 void StartScreen::setBackgroundText()
@@ -35,23 +35,9 @@ void StartScreen::setBackgroundText()
 
 void StartScreen::displayScreen()
 {
-	int newLineCounter = 0;
-	for (auto line : matrix_)
-	{
-		if (line == empty_vector_)
-		{
-			newLineCounter++;
-		}
-		else
-		{
-			if (newLineCounter != 0)
-			{
-				std::cout << std::string(newLineCounter, '\n');
-				newLineCounter = 0;
-			}
-			for (auto x : line)
-				std::cout << x;
+	for (int i = 0; i < height_; i++) {
+		for (int j = 0; j < width_; j++) {
+			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
 		}
 	}
-	std::cout << std::string(newLineCounter, '\n');
 }

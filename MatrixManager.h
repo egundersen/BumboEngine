@@ -10,8 +10,7 @@
 class MatrixManager : public MatrixBase
 {
 public:
-	MatrixManager() : width_{ 0 }, height_{ 0 }, matrix_(0, std::vector<char>(0, ' ')), empty_vector_(0, ' ') {};
-	MatrixManager(int width, int height, int player_health);
+	MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health);
 
 	// Setters
 	void evaluatePlayerInput();
@@ -21,12 +20,12 @@ public:
 	// Getters
 	std::string getCurrentVectorSpace() { return current_vector_space_; };
 private:
-	void optimizeConsoleWindow();
 	void hideTypingCursor();
 	void indentLines(int number_of_indents);
 
 	int width_ = 0;
 	int height_ = 0;
+	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<char> empty_vector_;
 	std::vector<std::vector<char>> matrix_;
 	std::string current_vector_space_;

@@ -6,30 +6,42 @@
 #include <thread>
 #include <iostream>
 
-MatrixManager::MatrixManager(int width, int height, int player_health) : width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), inventory_(width, height, player_health_), debugAttack_(width_, height_, player_health, 15), player_health_{ player_health }
+MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), inventory_(width, height, player_health_, matrix_display),
+	debugAttack_(width_, height_, matrix_display, player_health, 15), player_health_{ player_health }, matrix_display_{ matrix_display }
 {
-	optimizeConsoleWindow();
-	current_vector_space_ = "BATTLE"; //TODO: Change to MAP
+	current_vector_space_ = "START SCREEN"; //TODO: Change to MAP
 	inventory_.addItem("Health Potion"); //TODO: remove from here and add this to picking up item on map
 	inventory_.addItem("Secret Potion");
 	inventory_.addItem("Hat          ");
 	inventory_.addItem("Hat          ");
-	StartScreen startScreen(width_, height_);
+	StartScreen startScreen(width_, height_, matrix_display_);
 }
 
 // Takes input and decides whether to move player, use item, etc...
 void MatrixManager::evaluatePlayerInput()
 {
-	if (current_vector_space_ == "MAP")
+	if (current_vector_space_ == "START SCREEN")  // START GAME
 	{
-		
+		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+			current_vector_space_ = "BATTLE";
+	}
+	else if (current_vector_space_ == "MAP")
+	{
+		if (GetAsyncKeyState(0x49) & 0x8000) // OPEN INVENTORY?
+			loadVectorSpace("INVENTORY");
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
 		debugAttack_.refreshScreen();
+		if (GetAsyncKeyState(0x49) & 0x8000) // TODO: Remove this line of code
+			loadVectorSpace("INVENTORY");
 	}
 	else if (current_vector_space_ == "INVENTORY")
 	{
+		if (GetAsyncKeyState(VK_BACK) & 0x8000) // CLOSE INVENTORY?
+			loadVectorSpace("MAP");
+
 		inventory_.evaluatePlayerInput();
 	}
 }
@@ -59,22 +71,6 @@ void MatrixManager::onShutdown()
 {
 	// TODO: display shutdown popup
 	waitForInput();
-}
-
-// Runs optimization code to make the console run faster
-void MatrixManager::optimizeConsoleWindow()
-{
-	std::ios::sync_with_stdio(false);
-	hideTypingCursor();
-
-	std::thread indent_lines1(&MatrixManager::indentLines, this, 3300);
-	std::thread indent_lines2(&MatrixManager::indentLines, this, 3300);
-	std::thread indent_lines3(&MatrixManager::indentLines, this, 3300);
-	std::thread indent_lines4(&MatrixManager::indentLines, this, 3300);
-	indent_lines1.join();
-	indent_lines2.join();
-	indent_lines3.join();
-	indent_lines4.join();
 }
 
 // Hides the typing cursor from being displayed

@@ -3,8 +3,10 @@
 #include <windows.h>
 #include <iostream>
 
-Inventory::Inventory(int width, int height, int player_health) : width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), cursor_index_(0), player_health_{ player_health }
+Inventory::Inventory(int width, int height, int player_health, std::vector<std::vector<std::string>> &matrix_display)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), cursor_index_(0), player_health_{ player_health }, matrix_display_{ matrix_display }
 {
+	start_time_move_cursor_ = GetTickCount();
 	setInventoryBackgroundText();
 }
 
@@ -77,23 +79,28 @@ void Inventory::setCursorText()
 // Takes input for inventory menu
 void Inventory::evaluatePlayerInput()
 {
-	if (items_list_.size() > 0)
-	{
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
+	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
+
+	if (current_time_move_cursor > 100) {
+		if (items_list_.size() > 0)
 		{
-			moveCursor("UP");
-			refreshScreen();
+			if (GetAsyncKeyState(VK_UP) & 0x8000)
+			{
+				moveCursor("UP");
+				refreshScreen();
+			}
+			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+			{
+				moveCursor("DOWN");
+				refreshScreen();
+			}
+			if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+			{
+				useItem();
+				refreshScreen();
+			}
 		}
-		else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		{
-			moveCursor("DOWN");
-			refreshScreen();
-		}
-		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
-		{
-			useItem();
-			refreshScreen();
-		}
+		start_time_move_cursor_ = GetTickCount();
 	}
 }
 
@@ -145,23 +152,9 @@ void Inventory::moveCursor(std::string move_cursor_direction)
 // displays matrix on screen
 void Inventory::displayScreen()
 {
-	int newLineCounter = 0;
-	for (auto line : matrix_)
-	{
-		if (line == empty_vector_)
-		{
-			newLineCounter++;
-		}
-		else
-		{
-			if (newLineCounter != 0)
-			{
-				std::cout << std::string(newLineCounter, '\n');
-				newLineCounter = 0;
-			}
-			for (auto x : line)
-				std::cout << x;
+	for (int i = 0; i < height_; i++) {
+		for (int j = 0; j < width_; j++) {
+			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
 		}
 	}
-	std::cout << std::string(newLineCounter, '\n');
 }

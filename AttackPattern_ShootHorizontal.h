@@ -8,8 +8,7 @@
 class AttackPattern_ShootHorizontal : public AttackPatternBase
 {
 public:
-	AttackPattern_ShootHorizontal() {}
-	AttackPattern_ShootHorizontal(int width, int height, int player_health, int number_of_attacks);
+	AttackPattern_ShootHorizontal(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, int number_of_attacks);
 
 	// Setters
 	void OnBeginAttack();
