@@ -13,8 +13,9 @@ AttackPattern_ShootHorizontal::AttackPattern_ShootHorizontal(int width, int heig
 }
 
 // Calls once when the entire attack starts
-void AttackPattern_ShootHorizontal::OnBeginAttack()
+void AttackPattern_ShootHorizontal::OnBeginAttack(int player_health)
 {
+	player_health_ = player_health;
 	createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
 	start_time_new_attack_ = GetTickCount();
 	start_time_update_attacks_ = GetTickCount();
@@ -24,11 +25,8 @@ void AttackPattern_ShootHorizontal::OnBeginAttack()
 // Refreshes screen to show player/enemy positions
 void AttackPattern_ShootHorizontal::refreshScreen()
 {
-	if (!has_completed_initialization_)
-		OnBeginAttack();
-
 	if (created_attacks_ == attacks_to_create_ && attacks_list_.size() == 0)
-		has_completed_all_attacks = true;
+		has_completed_all_attacks_ = true;
 	else
 	{
 		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;

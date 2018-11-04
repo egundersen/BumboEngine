@@ -1,37 +1,14 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (BumboEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  AttackBase.cpp
-  AttackPatternBase.cpp
-c:\users\erik\documents\github\bumboengine\bumboengine\attackpatternbase.cpp(112): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\attackpatternbase.cpp(113): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  AttackPattern_ShootHorizontal.cpp
-c:\users\erik\documents\github\bumboengine\bumboengine\attackpattern_shoothorizontal.cpp(41): warning C4189: 'current_time_update_attacks': local variable is initialized but not referenced
-  Attack_HorizontalLine.cpp
-  Image.cpp
-  Inventory.cpp
+  BattleBase.cpp
+  Chr_AllMight.cpp
+  MatrixManager.cpp
 c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\erik\documents\github\bumboengine\bumboengine\inventory.cpp(60): warning C4018: '<': signed/unsigned mismatch
-c:\users\erik\documents\github\bumboengine\bumboengine\inventory.cpp(114): warning C4018: '<=': signed/unsigned mismatch
-c:\users\erik\documents\github\bumboengine\bumboengine\inventory.cpp(145): warning C4389: '==': signed/unsigned mismatch
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   main.cpp
 c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(207): warning C4456: declaration of 'ps' hides previous local declaration
   c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(184): note: see declaration of 'ps'
 c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(185): warning C4101: 'hdc': unreferenced local variable
-  MatrixBase.cpp
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(41): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(43): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(44): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\erik\documents\github\bumboengine\bumboengine\matrixbase.cpp(71): warning C4244: '=': conversion from 'int' to 'char', possible loss of data
-  MatrixManager.cpp
-c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Source.cpp
-  StartScreen.cpp
   Generating Code...
 c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(284): warning C4702: unreachable code
   LaunchWin32WindowFromConsole (VS 2013).vcxproj -> C:\Users\Erik\Documents\GitHub\BumboEngine\Debug\LaunchWin32WindowFromConsole (VS 2013).exe

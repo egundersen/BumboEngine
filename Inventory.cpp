@@ -1,18 +1,19 @@
 #include "Inventory.h"
 #include "MatrixBase.h"
 #include <windows.h>
-#include <iostream>
 
-Inventory::Inventory(int width, int height, int player_health, std::vector<std::vector<std::string>> &matrix_display)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), cursor_index_(0), player_health_{ player_health }, matrix_display_{ matrix_display }
+Inventory::Inventory(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), cursor_index_(0), player_health_{ player_health }, matrix_display_{ matrix_display }, start_time_move_cursor_(0)
 {
 	start_time_move_cursor_ = GetTickCount();
 	setInventoryBackgroundText();
 }
 
 // Runs when inventory is opened
-void Inventory::onOpenInventory()
+void Inventory::onOpenInventory(int player_health)
 {
+	start_time_move_cursor_ = GetTickCount();
+	player_health_ = player_health;
 	cursor_index_ = 0;
 	refreshScreen();
 }

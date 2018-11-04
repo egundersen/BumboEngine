@@ -1,0 +1,1 @@
+#include "Chr_AllMight.h"

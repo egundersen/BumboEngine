@@ -4,7 +4,7 @@
 #include <algorithm>
 
 AttackPatternBase::AttackPatternBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, int number_of_attacks)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, matrix_display_{ matrix_display }
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, matrix_display_{ matrix_display }
 {
 	element_is_occupied_ = new bool*[height_];
 	for (int i = 0; i < height_; ++i)
@@ -27,8 +27,10 @@ AttackPatternBase::~AttackPatternBase()
 }
 
 // Calls once when the entire attack starts
-void AttackPatternBase::OnBeginAttack()
+void AttackPatternBase::OnBeginAttack(int player_health)
 {
+	std::cout << "BAD";
+	player_health_ = player_health;
 	start_time_new_attack_ = GetTickCount();
 	start_time_update_attacks_ = GetTickCount();
 	start_time_slow_player_ = GetTickCount();

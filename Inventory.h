@@ -8,35 +8,32 @@
 class Inventory : public MatrixBase
 {
 public:
-	Inventory(int width, int height, int player_health, std::vector<std::vector<std::string>> &matrix_display);
+	Inventory(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health);
 
 	// Setters
-	void onOpenInventory();
+	void onOpenInventory(int player_health);
+	void evaluatePlayerInput();
+	void addItem(std::string item_name);
+
+	// Getters
+	int getPlayerHealth() { return player_health_; }
+private:
+	// Setters
+	void useItem();
+	void removeItem(int index_of_item);
+	void moveCursor(std::string move_cursor_direction);
 	void refreshScreen();
 	void setInventoryBackgroundText();
 	void setItemsListText();
 	void setCursorText();
-	void evaluatePlayerInput();
-	void useItem();
-	void addItem(std::string item_name);
-	void removeItem(int index_of_item);
-	void moveCursor(std::string move_cursor_direction);
-
-	// Getters
-	int getPlayerHealth() { return player_health_; }
 
 	// Output Displays
 	void displayScreen();
-private:
+
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
-	std::vector<char> empty_vector_;
 	std::vector<Item> items_list_;
-	int cursor_index_;
-	int width_ = 0;
-	int height_ = 0;
-	int player_health_;
-	int start_time_move_cursor_ = 0;
+	int width_, height_, player_health_, cursor_index_, start_time_move_cursor_;
 };
 
 #endif // !INVENTORY_H

@@ -16,7 +16,6 @@ public:
 	// Getters
 	bool hasHitPlayer() { return has_hit_player_; }
 	bool hasAttackFinished() { return has_attack_finished_; }
-	int getInt() { return 5; }
 protected:
 	virtual void detectCollision();
 	int min_position_x_, max_position_x_, trail_speed_, trail_length_, height_y_, speed_;

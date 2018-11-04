@@ -19,7 +19,7 @@ TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
 // Global Variables for width, height and the output display screen 
 int width_G = 79;
-int height_G = 34;
+int height_G = 35;
 std::vector<std::vector<std::string>> matrix_display_G(height_G, std::vector<std::string>(width_G, " "));
 
 // Forward declarations of functions included in this code module:
@@ -152,7 +152,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 	hInst = hInstance; // Store instance handle in our global variable
 
-	RECT wr = { 0, 0, 795, 565 };    // set the window size, but not the position
+	RECT wr = { 0, 0, 795, 545 };    // set the window size, but not the position
 	AdjustWindowRect(&wr, WS_OVERLAPPEDWINDOW, FALSE);    // adjust the window size
 	hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 0, wr.right - wr.left, wr.bottom - wr.top, NULL, NULL, hInstance, NULL);

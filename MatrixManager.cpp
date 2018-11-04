@@ -1,16 +1,17 @@
 #include "MatrixManager.h"
 #include "MatrixBase.h"
 #include "Inventory.h"
+#include "Characters.h"
 #include "Image.h"
 #include <windows.h>
 #include <thread>
 #include <iostream>
 
 MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), inventory_(width, height, player_health_, matrix_display),
-	debugAttack_(width_, height_, matrix_display, player_health, 15), player_health_{ player_health }, matrix_display_{ matrix_display }
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health),
+	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
+	debugBattle_(width, height, matrix_display, player_health, 2, "            ,,@@@@@@,@/*,@(@@@@@@,@.             Z            ,,#,@@@@@,@,*@@@@,*#@@@%             Z           ,,,,,,,@@(&,@@@@@@@@@@@@@%,           Z          @,#,,,,,,,,,,,@,%@@@@@&,,@@@           Z         ,,,@@,,,,,,,,,,,,%@@@@@@,,@@@@          Z         @@,#,,,,,,,,,,,,,%@@@@@@,,,@@@          Z         @@@,,,,,,,,,,,,,,@@@@@@@@,,,@@          Z        ,,@,,,,,,,,,,,,,,,@@@@@@@@,,,@@@         Z        ,@@,,&,&,@,,,.,,,@@@@@,@,@,,,,@@         Z       ,@#,,,,,@@&,@,#(%,,@,&@@@@@@,,,@@@        Z        ,@,,,,,%@@@@@,,/#*@@@@@@@@,,,,@@@        Z       ,@#,,,,,,,(@@@%,@@@@@@@@@@@@,,,*@,,       Z      ,,@,,,,,,,,,,,,,,,,@@@,,*@@@@@,,,,@,       Z      ,@,,,,,,,,,,,,,,,,,@@@,,,,@@@@,,,@,,       Z      @,*,#,,,,,,,,,,,,,,@@@@,,@@@@@@,@@,,       Z      ,@@,,@,@,,,,,,@@@@@@@@@&,@@@@@@,,@,,       Z      ,,@,,,@,,,,&,,,,,@@@@/,@@@@@@@@,@@,.       Z       ,,@,,,,,@,,,,,,,,,,,,,,(@@@@@,,@%,,       Z      ,&,,,,,,@,,,,,,,,,,,,,,,,,,@@@,,,,@@,&     Z     ,,,@@,,,,,@@%@**,,,,,,,,,,,@@@@,,@@@@  .    Z   @@,,@,@#,,/,,@&,,,,,,,,,,,,@,@@@@,,@@@@@      Z    ,(@@,,@,,@,,,&,,,,,,,,,,,,@@@@@@,,@@.@@@@,   Z   ,@@@@,,/,,@@,,,,,,,,,,,,@@@@@@@@@,.@@,@@@@@@  Z &@@@@@@,,,@,,,,,,,,,,,,,@@@@@@@@@@@,@@@&@@(     Z@@@@ @@(,,,,@@,,,,,,,,,,,@@@@@@@@@,@@@@@@*@@@@,  Z    @@@,,,,,,,@@,,,,,,,,,@@@@@@@,@@@@@@@@,       Z      @,,,,,,,,,,@@,,,,,*@@@@%,@@@@@@@@@@@%      Z       @@,,,,,,,,,,@@@@@@@@@@@@@@@@@@@@@@@       Z     @@@@@@@@/,,,,,,@@@@@@@@@@@@@@@@@@@@@@@@     Z    @@@@@@@@@@@@,,,,,%@@@@@@@@@@@@@@@@@@@@@@@    ", "ZX*XXXXX________XXXXXXZ,X*  --        -- *X,Z,,X*   --------  *X,,Z,,,,X**        **X,,,Z,,,,,,,XXXXXXXX,,,,,,ZZ", 40, 20)
 {
-	current_vector_space_ = "START SCREEN"; //TODO: Change to MAP
 	inventory_.addItem("Health Potion"); //TODO: remove from here and add this to picking up item on map
 	inventory_.addItem("Secret Potion");
 	inventory_.addItem("Hat          ");
@@ -23,24 +24,48 @@ void MatrixManager::evaluatePlayerInput()
 {
 	if (current_vector_space_ == "START SCREEN")  // START GAME
 	{
-		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+		if (GetAsyncKeyState(VK_MENU) & 0x8000) //TODO: Change back to VK_RETURN
 			current_vector_space_ = "BATTLE";
 	}
 	else if (current_vector_space_ == "MAP")
 	{
 		if (GetAsyncKeyState(0x49) & 0x8000) // OPEN INVENTORY?
 			loadVectorSpace("INVENTORY");
+		// TODO: Load_Map_Space
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
-		debugAttack_.refreshScreen();
-		if (GetAsyncKeyState(0x49) & 0x8000) // TODO: Remove this line of code
-			loadVectorSpace("INVENTORY");
+		if (debugBattle_.isBattleOver()) {
+			has_initialized_battle_ = false;
+			player_health_ = debugBattle_.getPlayerHealth();
+			std::cout << "BATTLE IS OVER FUCKO!";
+		}
+		else if (debugBattle_.getLocalVectorSpace() != "INVENTORY") {
+			if (!has_initialized_battle_) {
+				debugBattle_.onBeginBattle(player_health_);
+				has_initialized_battle_ = true;
+			}
+			debugBattle_.refreshScreen();
+		}
+		else {
+			if (!has_initialized_inventory_) {
+				inventory_.onOpenInventory(player_health_);
+				has_initialized_inventory_ = true;
+			}
+			if (GetAsyncKeyState(VK_BACK) & 0x8000) {// CLOSE INVENTORY?
+				player_health_ = inventory_.getPlayerHealth();
+				has_initialized_inventory_ = false;
+				debugBattle_.setVectorSpace("MENU");
+			}
+			inventory_.evaluatePlayerInput();
+		}
 	}
 	else if (current_vector_space_ == "INVENTORY")
 	{
-		if (GetAsyncKeyState(VK_BACK) & 0x8000) // CLOSE INVENTORY?
+		if (GetAsyncKeyState(VK_BACK) & 0x8000) {// CLOSE INVENTORY?
+			player_health_ = inventory_.getPlayerHealth();
 			loadVectorSpace("MAP");
+		}
 
 		inventory_.evaluatePlayerInput();
 	}
@@ -51,7 +76,7 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 {
 	if (vector_space_name == "INVENTORY")
 	{
-		inventory_.onOpenInventory();
+		inventory_.onOpenInventory(player_health_);
 		current_vector_space_ = "INVENTORY";
 	}
 	else if (vector_space_name == "MAP")

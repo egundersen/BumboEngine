@@ -62,6 +62,19 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 	}
 }
 
+// draws a rectangle to the provided matrix
+void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>>& matrix)
+{
+	for (int j = 0; j < width - 1; j++) {
+		matrix[top_left_y][j + top_left_x] = character;
+		matrix[top_left_y + height - 1][j + top_left_x] = character;
+	}
+	for (int i = 0; i < height; i++) {
+		matrix[top_left_y + i][top_left_x] = character;
+		matrix[top_left_y + i][top_left_x + width - 1] = character;
+	}
+}
+
 // Freezes entire program and waits for input from user. -- DEPRECATED --
 void MatrixBase::waitForInput()
 {

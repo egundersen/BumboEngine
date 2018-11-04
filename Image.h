@@ -18,21 +18,22 @@ public:
 	Image() : ASCII_{ 0 } {}
 	Image(std::string i_ASCII, char delimiter = 'Z');
 
-	//Setters
-	void setImageDimensions();
-	void populateImageWithASCII();
+	// Setters
+	Position_s position;
+	std::vector<std::vector<char>> image_matrix;
 
 	//Getters
 	int getWidth() { return width_; }
 	int getHeight() { return height_; }
-	std::vector<std::vector<char>> image_matrix;
-	Position_s position;
 
 	// Output Displays
 	void DEBUG_displayImage();
 private:
-	int width_;
-	int height_;
+	//Setters
+	void setImageDimensions();
+	void populateImageWithASCII();
+
+	int width_, height_;
 	char delimiter_;
 	std::string ASCII_;
 };
