@@ -93,6 +93,14 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 	}
 }
 
+// draws a solid rectangle to the provided matrix
+void MatrixBase::drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>>& matrix)
+{
+	for (int j = 0; j < width; j++)
+		for (int i = 0; i < height; i++)
+			matrix[top_left_y + i][top_left_x + j] = character;
+}
+
 // Freezes entire program and waits for input from user. -- DEPRECATED --
 void MatrixBase::waitForInput()
 {

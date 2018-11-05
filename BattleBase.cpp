@@ -25,27 +25,44 @@ void BattleBase::onBeginBattle(int player_health)
 // Refreshes screen to show updated items list
 void BattleBase::refreshScreen()
 {
-	if (boss_health_ == 0) { // BOSS DESTROYED
+	if (boss_health_ == 0)
+	{ // BOSS DESTROYED
 		if (start_time_battle_end_animation_ == 0)
 			start_time_battle_end_animation_ = GetTickCount();
 		bossDestroyed();
 	}
-	else if (local_vector_space_ != "FIGHT") { // MENU OPEN
-		if (attack_patterns_.size() == 0) { // BOSS GIVES UP
+	else if (local_vector_space_ != "FIGHT")
+	{ // MENU OPEN
+		if (attack_patterns_.size() == 0)
+		{ // BOSS GIVES UP
 			bossGivesUp();
 		}
-		if (local_vector_space_ == "DIALOG") { // DIALOG OPENED
-			dialog_.refreshScreen();
+		if (local_vector_space_ == "DIALOG")
+		{ // DIALOG OPENED
+			if (dialog_.hasBossGivenUp() || attack_patterns_.size() == 0)
+			{
+				bossGivesUp();
+				local_vector_space_ = "MENU";
+			}
+			else
+				if (!dialog_.shouldExitDialog())
+					dialog_.refreshScreen();
+				else
+					local_vector_space_ = "FIGHT";
 		}
-		else {
+		else
+		{
 			evaluatePlayerInput();
 			setBossHealthText();
 			displayScreen();
 		}
 	}
-	else { // ATTACK IN PROGRESS
-		if (attack_patterns_.size() != 0) {
-			if (attack_patterns_.back()->areAttacksOver()) {
+	else
+	{ // ATTACK IN PROGRESS
+		if (attack_patterns_.size() != 0)
+		{
+			if (attack_patterns_.back()->areAttacksOver())
+			{
 				player_health_ = attack_patterns_.back()->getPlayerHealth();
 				attack_patterns_.pop_back();
 				local_vector_space_ = "MENU";
@@ -110,7 +127,8 @@ void BattleBase::setCursorText()
 	drawRectangle(61, 30, 9, 3, ' ', matrix_);
 
 	// draw new cursor
-	switch (cursor_index_) {
+	switch (cursor_index_)
+	{
 	case 0:
 		drawCursor(0);
 		break;
@@ -146,7 +164,8 @@ void BattleBase::evaluatePlayerInput()
 {
 	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
 
-	if (current_time_move_cursor > 100) {
+	if (current_time_move_cursor > 100)
+	{
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		{
 			moveCursor("RIGHT");
@@ -157,7 +176,7 @@ void BattleBase::evaluatePlayerInput()
 			moveCursor("LEFT");
 			setCursorText();
 		}
-		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+		if (GetKeyState(VK_RETURN) & 0x8000)
 		{
 			confirmSelection();
 		}
@@ -187,11 +206,16 @@ void BattleBase::moveCursor(std::string move_cursor_direction)
 // The player's turn to attack
 void BattleBase::damageBoss()
 {
-	if (attack_patterns_.size() != 0) {
+	if (attack_patterns_.size() != 0)
+	{
 		attack_patterns_.back()->OnBeginAttack(player_health_);
 		local_vector_space_ = "FIGHT";
+		boss_health_--;
 	}
-	boss_health_--;
+	else // attacking boss when boss is out of attacks is an instant kill
+	{
+		boss_health_ = 0;
+	}
 }
 
 // Boss runs out of attacks
@@ -204,13 +228,15 @@ void BattleBase::bossGivesUp()
 void BattleBase::bossDestroyed()
 {
 	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
-	if (current_time_battle_end_animation > 5000) {
+	if (current_time_battle_end_animation > 5000)
+	{
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 68; j++)
 				matrix_[1 + i][5 + j] = ' ';
 	}
 	displayScreen();
-	if (current_time_battle_end_animation > 10000) {
+	if (current_time_battle_end_animation > 10000)
+	{
 		is_battle_over_ = true;
 	}
 }
@@ -218,7 +244,8 @@ void BattleBase::bossDestroyed()
 // Attempt to spare boss
 void BattleBase::spare()
 {
-	if (allow_spare_) {
+	if (allow_spare_)
+	{
 		//TODO: display dialog
 		std::cout << "Not fighting! ";
 		is_battle_over_ = true;
@@ -228,7 +255,8 @@ void BattleBase::spare()
 // Call function: Fight, Speak, Spare, Open Inventory depending on cursor position
 void BattleBase::confirmSelection()
 {
-	switch (cursor_index_) {
+	switch (cursor_index_)
+	{
 	case 0:
 		damageBoss();
 		break;
@@ -250,8 +278,10 @@ void BattleBase::confirmSelection()
 // displays matrix on screen
 void BattleBase::displayScreen()
 {
-	for (int i = 0; i < height_; i++) {
-		for (int j = 0; j < width_; j++) {
+	for (int i = 0; i < height_; i++)
+	{
+		for (int j = 0; j < width_; j++)
+		{
 			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
 		}
 	}
