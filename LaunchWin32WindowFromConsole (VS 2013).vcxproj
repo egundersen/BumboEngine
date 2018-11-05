@@ -156,6 +156,7 @@
     <ClCompile Include="Attack_HorizontalLine.cpp" />
     <ClCompile Include="BattleBase.cpp" />
     <ClCompile Include="Chr_AllMight.cpp" />
+    <ClCompile Include="DialogBase.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="BattleBase.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="Chr_AllMight.h" />
+    <ClInclude Include="DialogBase.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />

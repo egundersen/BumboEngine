@@ -6,12 +6,14 @@
 
 BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int player_health, int boss_health, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_health_{ boss_health }, boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
-	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(0), is_battle_over_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 }
+	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(0), is_battle_over_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
+	dialog_(width, height, matrix_display, dialog_choices_, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
 {
 	start_time_move_cursor_ = GetTickCount();
 	setBackgroundText();
 }
 
+// Runs when battle starts
 void BattleBase::onBeginBattle(int player_health)
 {
 	player_health_ = player_health;
@@ -20,6 +22,7 @@ void BattleBase::onBeginBattle(int player_health)
 	refreshScreen();
 }
 
+// Refreshes screen to show updated items list
 void BattleBase::refreshScreen()
 {
 	if (boss_health_ == 0) { // BOSS DESTROYED
@@ -31,9 +34,14 @@ void BattleBase::refreshScreen()
 		if (attack_patterns_.size() == 0) { // BOSS GIVES UP
 			bossGivesUp();
 		}
-		evaluatePlayerInput();
-		setBossHealthText();
-		displayScreen();
+		if (local_vector_space_ == "DIALOG") { // DIALOG OPENED
+			dialog_.refreshScreen();
+		}
+		else {
+			evaluatePlayerInput();
+			setBossHealthText();
+			displayScreen();
+		}
 	}
 	else { // ATTACK IN PROGRESS
 		if (attack_patterns_.size() != 0) {
@@ -48,6 +56,7 @@ void BattleBase::refreshScreen()
 	}
 }
 
+// Sets the inventory menu
 void BattleBase::setBackgroundText()
 {
 	for (int i = 1; i < height_ - 1; ++i)
@@ -86,10 +95,12 @@ void BattleBase::setBackgroundText()
 	drawCursor(0);
 }
 
+// Sets the boss health bar
 void BattleBase::setBossHealthText()
 {
 }
 
+// Chooses where to display the cursor
 void BattleBase::setCursorText()
 {
 	// erase old cursor
@@ -117,6 +128,7 @@ void BattleBase::setCursorText()
 	}
 }
 
+// Draws a cursor at the specified location
 void BattleBase::drawCursor(int offset)
 {
 	matrix_[30][12 + offset] = 'v';
@@ -129,6 +141,7 @@ void BattleBase::drawCursor(int offset)
 	matrix_[31][9 + offset] = '>';
 }
 
+// Takes input for battle menu
 void BattleBase::evaluatePlayerInput()
 {
 	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
@@ -152,6 +165,7 @@ void BattleBase::evaluatePlayerInput()
 	}
 }
 
+// Move the cursor up or down
 void BattleBase::moveCursor(std::string move_cursor_direction)
 {
 	if (move_cursor_direction == "LEFT")
@@ -170,6 +184,7 @@ void BattleBase::moveCursor(std::string move_cursor_direction)
 	}
 }
 
+// The player's turn to attack
 void BattleBase::damageBoss()
 {
 	if (attack_patterns_.size() != 0) {
@@ -179,11 +194,13 @@ void BattleBase::damageBoss()
 	boss_health_--;
 }
 
+// Boss runs out of attacks
 void BattleBase::bossGivesUp()
 {
 	allow_spare_ = true;
 }
 
+// Boss is killed
 void BattleBase::bossDestroyed()
 {
 	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
@@ -198,6 +215,7 @@ void BattleBase::bossDestroyed()
 	}
 }
 
+// Attempt to spare boss
 void BattleBase::spare()
 {
 	if (allow_spare_) {
@@ -207,6 +225,7 @@ void BattleBase::spare()
 	}
 }
 
+// Call function: Fight, Speak, Spare, Open Inventory depending on cursor position
 void BattleBase::confirmSelection()
 {
 	switch (cursor_index_) {
@@ -214,8 +233,8 @@ void BattleBase::confirmSelection()
 		damageBoss();
 		break;
 	case 1:
-		//local_vector_space_ = "DIALOG";
-		std::cout << "Opening DIALOG! ";
+		dialog_.onOpenDialog();
+		local_vector_space_ = "DIALOG";
 		break;
 	case 2:
 		local_vector_space_ = "INVENTORY";
@@ -228,6 +247,7 @@ void BattleBase::confirmSelection()
 	}
 }
 
+// displays matrix on screen
 void BattleBase::displayScreen()
 {
 	for (int i = 0; i < height_; i++) {

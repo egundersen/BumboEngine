@@ -21,8 +21,10 @@ void Inventory::onOpenInventory(int player_health)
 // Refreshes screen to show updated items list
 void Inventory::refreshScreen()
 {
+#ifdef _DEBUG
 	if (items_list_.size() > 10)
 		throw std::invalid_argument("Inventory may not have more than 10 items!");
+#endif
 	setItemsListText();
 	setCursorText();
 	displayScreen();

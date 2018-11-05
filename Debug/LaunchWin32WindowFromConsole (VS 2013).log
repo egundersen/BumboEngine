@@ -1,14 +1,17 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (BumboEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   BattleBase.cpp
   Chr_AllMight.cpp
-  MatrixManager.cpp
-c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  DialogBase.cpp
+c:\users\erik\documents\github\bumboengine\bumboengine\dialogbase.cpp(134): warning C4189: 'offset': local variable is initialized but not referenced
   main.cpp
 c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(207): warning C4456: declaration of 'ps' hides previous local declaration
   c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(184): note: see declaration of 'ps'
 c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(185): warning C4101: 'hdc': unreferenced local variable
+  MatrixManager.cpp
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
 c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(284): warning C4702: unreachable code
+c:\users\erik\documents\github\bumboengine\bumboengine\dialogbase.cpp(138): warning C4706: assignment within conditional expression
   LaunchWin32WindowFromConsole (VS 2013).vcxproj -> C:\Users\Erik\Documents\GitHub\BumboEngine\Debug\LaunchWin32WindowFromConsole (VS 2013).exe

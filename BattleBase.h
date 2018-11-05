@@ -2,9 +2,10 @@
 #include "Image.h"
 #include "AttackPatterns.h"
 #include "AttackPatternBase.h"
+#include "DialogBase.h"
 
-#ifndef BATTLEBASE
-#define BATTLEBASE
+#ifndef BATTLEBASE_H
+#define BATTLEBASE_H
 
 class BattleBase : public MatrixBase
 {
@@ -39,6 +40,7 @@ protected:
 	// Output Displays
 	void displayScreen();
 
+	std::vector<std::vector<std::tuple<std::string, std::string, bool>>> dialog_choices_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
 	std::vector<AttackPatternBase*> attack_patterns_;
@@ -46,7 +48,7 @@ protected:
 		start_time_move_cursor_, start_time_battle_end_animation_, overlay_x_, overlay_y_;
 	std::string ascii_overlay_, boss_ascii_art_, boss_name_, local_vector_space_;
 	bool is_battle_over_, allow_spare_;
-
+	DialogBase dialog_;
 };
 
-#endif // !BATTLEBASE
+#endif // !BATTLEBASE_H

@@ -20,11 +20,15 @@ void Image::setImageDimensions()
 		}
 		if (c == delimiter_)
 		{
-			if (temp_width > width_)// Find largest width (b/c ASCII Generate varies width :/
+			if (temp_width > width_)// Find largest width (b/c ASCII can Generate varied widths :/
 				width_ = temp_width;
 			temp_width = 0;
 			++height_;
 		}
+	}
+	if (temp_width > width_) { // for lines that do not end in a delimeter
+		width_ = temp_width;
+		++height_;
 	}
 	image_matrix.resize(height_, std::vector<char>(width_));
 }

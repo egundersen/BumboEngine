@@ -8,10 +8,12 @@ Attack_HorizontalLine::Attack_HorizontalLine(int width, int height, PlayerPositi
 	has_hit_player_ = false;
 	has_attack_finished_ = false;
 
+#ifdef _DEBUG
 	if (max_position_x_ > width_)
 		throw std::invalid_argument("max position must not be greater than the screen width_");
 	if (min_position_x_ < 0)
 		throw std::invalid_argument("min position must not be less than 0");
+#endif
 }
 
 Attack_HorizontalLine::~Attack_HorizontalLine()
