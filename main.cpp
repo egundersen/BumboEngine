@@ -182,6 +182,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
+	HFONT font;
 	HDC hdc;
 
 	switch (message)
@@ -218,6 +219,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			FillRect(hDCMem, &rect, (HBRUSH)(COLOR_BTNFACE + 1));
 			FillRect(hDCMem, &rect, (HBRUSH)(COLOR_BACKGROUND + 1));
 
+			// Font test
+			/*font = CreateFontA(10, 0, 40, 0,
+				FW_NORMAL, FALSE, FALSE, FALSE,
+				ANSI_CHARSET, OUT_DEFAULT_PRECIS,
+				CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+				DEFAULT_PITCH | FF_ROMAN,
+				"Arial");
+			SelectObject(hDCMem, font);//*/
+
 			// START NEW CODE
 			COLORREF whiteTextColor = 0x0000ff00;
 			COLORREF blackTextColor = 0x00000000;
@@ -238,6 +248,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				//int height = DrawText(hdc, helloWorldString[i], ARRAYSIZE(helloWorldStringS), &clientRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
 				//OffsetRect(&rect, 0, height);
 			}
+			//DeleteObject(font);
 
 			// Copy window image/bitmap to screen
 			BitBlt(hDC, 0, 0, rect.right, rect.bottom, hDCMem, 0, 0, SRCCOPY);

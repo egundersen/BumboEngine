@@ -22,9 +22,6 @@
     <Filter Include="Header Files\Characters">
       <UniqueIdentifier>{a24e00ba-1987-4f2f-843e-fe8efa3ef496}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Characters">
-      <UniqueIdentifier>{8562cd66-54b2-48a2-a295-0757a8ca5f7b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -62,9 +59,6 @@
     </ClCompile>
     <ClCompile Include="BattleBase.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Chr_AllMight.cpp">
-      <Filter>Source Files\Characters</Filter>
     </ClCompile>
     <ClCompile Include="DialogBase.cpp">
       <Filter>Source Files</Filter>
