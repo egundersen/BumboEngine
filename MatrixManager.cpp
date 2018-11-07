@@ -10,7 +10,7 @@
 MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health),
 	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	debugBattle_(width, height, matrix_display, player_health, 10)
+	debugBattle_(width, height, matrix_display, player_health)
 {
 	inventory_.addItem("Health Potion"); //TODO: remove from here and add this to picking up item on map
 	inventory_.addItem("Secret Potion");
@@ -49,12 +49,14 @@ void MatrixManager::evaluatePlayerInput()
 		}
 		else {
 			if (!has_initialized_inventory_) {
+				player_health_ = debugBattle_.getPlayerHealth();
 				inventory_.onOpenInventory(player_health_);
 				has_initialized_inventory_ = true;
 			}
 			if (GetAsyncKeyState(VK_BACK) & 0x8000) {// CLOSE INVENTORY?
 				player_health_ = inventory_.getPlayerHealth();
 				has_initialized_inventory_ = false;
+				debugBattle_.setPlayerHealth(player_health_);
 				debugBattle_.setVectorSpace("MENU");
 			}
 			inventory_.evaluatePlayerInput();

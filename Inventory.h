@@ -26,6 +26,7 @@ private:
 	void setInventoryBackgroundText();
 	void setItemsListText();
 	void setCursorText();
+	void setPlayerHealthText(int x_position, int y_position);
 
 	// Output Displays
 	void displayScreen();

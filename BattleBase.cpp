@@ -4,9 +4,9 @@
 #include <windows.h>
 #include <iostream>
 
-BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int player_health, int boss_health, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_health_{ boss_health }, boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
-	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(0), is_battle_over_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
+BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_health_{ boss_health }, boss_name_{ boss_name }, boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
+	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(0), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, matrix_display, dialog_choices_, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
 {
 	start_time_move_cursor_ = GetTickCount();
@@ -29,6 +29,7 @@ void BattleBase::refreshScreen()
 	{ // BOSS DESTROYED
 		if (start_time_battle_end_animation_ == 0)
 			start_time_battle_end_animation_ = GetTickCount();
+		
 		bossDestroyed();
 	}
 	else if (local_vector_space_ != "FIGHT")
@@ -48,12 +49,15 @@ void BattleBase::refreshScreen()
 				if (!dialog_.shouldExitDialog())
 					dialog_.refreshScreen();
 				else
+				{
 					local_vector_space_ = "FIGHT";
+				}
 		}
 		else
 		{
 			evaluatePlayerInput();
 			setBossHealthText();
+			setPlayerHealthText(65, 3);
 			displayScreen();
 		}
 	}
@@ -61,19 +65,23 @@ void BattleBase::refreshScreen()
 	{ // ATTACK IN PROGRESS
 		if (attack_patterns_.size() != 0)
 		{
-			if (attack_patterns_.back()->areAttacksOver())
+			if (attack_patterns_.back()->getPlayerHealth() <= 0)
+			{
+				gameOver();
+			}
+			else if (attack_patterns_.back()->areAttacksOver())
 			{
 				player_health_ = attack_patterns_.back()->getPlayerHealth();
 				attack_patterns_.pop_back();
 				local_vector_space_ = "MENU";
 			}
-			if (attack_patterns_.size() != 0)
+			else if (attack_patterns_.size() != 0)
 				attack_patterns_.back()->refreshScreen();
 		}
 	}
 }
 
-// Sets the inventory menu
+// Sets the menu background
 void BattleBase::setBackgroundText()
 {
 	for (int i = 1; i < height_ - 1; ++i)
@@ -100,21 +108,101 @@ void BattleBase::setBackgroundText()
 	drawRectangle(43, 29, 13, 5, 'X', matrix_);
 	drawRectangle(59, 29, 13, 5, 'X', matrix_);
 
-	Image text1("ZFIGHTZZ");
-	Image text2("ZSPEAKZZ");
-	Image text3("ZITEMSZZ");
-	Image text4("ZSPAREZZ");
+	Image text1("FIGHT");
+	Image text2("SPEAK");
+	Image text3("ITEMS");
+	Image text4("SPARE");
 	addImageToMatrix(13, 31, text1, matrix_);
 	addImageToMatrix(29, 31, text2, matrix_);
 	addImageToMatrix(49, 31, text3, matrix_);
 	addImageToMatrix(65, 31, text4, matrix_);
 
 	drawCursor(0);
+
+	// Boss Health
+	Image bossHealthText("BOSS HEALTH");
+	if (boss_health_ > 11)
+	{
+		addImageToMatrix(8 + 11 / 2, 3, bossHealthText, matrix_);
+		matrix_[4][7] = '[';
+		matrix_[4][9 + 11] = ']';
+		matrix_[5][7] = '[';
+		matrix_[5][9 + 11] = ']';
+
+		for (int j = 0; j < 11; ++j)
+			matrix_[4][j + 8] = 'O';
+	}
+	else
+	{
+		addImageToMatrix(8 + boss_health_ / 2, 3, bossHealthText, matrix_);
+		matrix_[4][7] = '[';
+		matrix_[4][9 + boss_health_] = ']';
+	}
+
+	// Boss name
+	Image boss_name(boss_name_);
+	addImageToMatrix(13, 7, boss_name, matrix_);
 }
 
 // Sets the boss health bar
 void BattleBase::setBossHealthText()
 {
+	if (boss_health_ == 0)
+	{
+		for (int i = 0; i < 2; i++)
+			for (int j = 0; j < 11; j++)
+				matrix_[i + 4][j + 8] = ' ';
+	}
+	else if (boss_health_ > 11)
+	{
+		for (int j = boss_health_ - 11; j < 11; ++j)
+			matrix_[5][j + 8] = ' ';
+		for (int j = 0; j < boss_health_ - 11; ++j)
+			matrix_[5][j + 8] = 'O';
+	}
+	else
+	{
+		if(boss_health_ == 11)
+			matrix_[5][8] = ' ';
+		for (int j = boss_health_; j < 11; ++j)
+			matrix_[4][j + 8] = ' ';
+		for (int j = 0; j < boss_health_; ++j)
+			matrix_[4][j + 8] = 'O';
+	}
+}
+
+// Sets the player health text
+void BattleBase::setPlayerHealthText(int x_position, int y_position)
+{
+	Image player_health_text("{player}'s");
+	Image lives("Lives:  ");
+	addImageToMatrix(x_position, y_position, player_health_text, matrix_);
+	addImageToMatrix(x_position, y_position + 1, lives, matrix_);
+	matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
+}
+
+// Sets the game over screen
+void BattleBase::setGameOverText()
+{
+	drawSolidRectangle(0, 0, width_, height_, ' ', matrix_);
+	for (int i = 1; i < height_ - 1; ++i)
+	{
+		matrix_[i][1] = 'X';
+		matrix_[i][2] = 'X';
+		matrix_[i][3] = 'X';
+		matrix_[i][width_ - 2] = 'X';
+		matrix_[i][width_ - 3] = 'X';
+		matrix_[i][width_ - 4] = 'X';
+	}
+	for (int j = 5; j < width_ - 5; ++j)
+	{
+		matrix_[1][j] = '=';
+		matrix_[2][j] = '=';
+	}
+	Image game_over_letters(" [][][]     []   []      [][]=====      [][][][]      [][]==== [][][]Z[]    []   [][]  [][]  [][][]           []  [] []    [] []     []  []Z[]  ____  []__[] [] [][] [][]=====      []  []  []  []  []==== [][][]Z[]    [] []    [][] [][] [][]           []  []   [][]   []     [] [] Z [][][]  []    [][]  []  [][]=====      [][][]    []    []==== []  []Z");
+	Image funnyText("{player} was killed by {boss name}.ZZZSCORE: Z");
+	addImageToMatrix(39, 16, funnyText, matrix_);
+	addImageToMatrix(39, 6, game_over_letters, matrix_);
 }
 
 // Chooses where to display the cursor
@@ -237,7 +325,7 @@ void BattleBase::bossDestroyed()
 	displayScreen();
 	if (current_time_battle_end_animation > 10000)
 	{
-		is_battle_over_ = true;
+		is_battle_finished_ = true;
 	}
 }
 
@@ -248,11 +336,11 @@ void BattleBase::spare()
 	{
 		//TODO: display dialog
 		std::cout << "Not fighting! ";
-		is_battle_over_ = true;
+		is_battle_finished_ = true;
 	}
 }
 
-// Call function: Fight, Speak, Spare, Open Inventory depending on cursor position
+// Calls a function: Fight, Speak, Spare, Open Inventory depending on cursor position
 void BattleBase::confirmSelection()
 {
 	switch (cursor_index_)
@@ -273,6 +361,13 @@ void BattleBase::confirmSelection()
 	default:
 		break;
 	}
+}
+
+// Runs if player dies
+void BattleBase::gameOver()
+{
+	setGameOverText();
+	displayScreen();
 }
 
 // displays matrix on screen

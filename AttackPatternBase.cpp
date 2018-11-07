@@ -46,7 +46,7 @@ void AttackPatternBase::refreshPlayerLocation()
 		{
 			if (i == player_position_.y && j == player_position_.x) // Player Position
 			{
-				matrix_[i][j] = 'O';
+				matrix_[i][j] = player_health_ + '0';
 			}
 			else if (!element_is_occupied_[i][j] && matrix_[i][j] != ' ')
 			{

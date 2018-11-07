@@ -87,7 +87,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
 	// MAIN SOURCE PORT - Bumbo Engine v0.4 -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, matrix_display_G, 10); //(37 or 79 , 34)
+	MatrixManager grid(width_G, height_G, matrix_display_G, 3); //(37 or 79 , 34)
 
 	bool shouldUseMenu = false;
 	while (GetMessage(&msg, NULL, 0, 0))

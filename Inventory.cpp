@@ -26,6 +26,7 @@ void Inventory::refreshScreen()
 		throw std::invalid_argument("Inventory may not have more than 10 items!");
 #endif
 	setItemsListText();
+	setPlayerHealthText(11, 30);
 	setCursorText();
 	displayScreen();
 }
@@ -49,7 +50,7 @@ void Inventory::setInventoryBackgroundText()
 		matrix_[1][j] = '=';
 		matrix_[2][j] = '=';
 	}
-	Image inventory_letters("Z===[]=== []   [][]      [][]==== []   [] ==[]== [][][] [][][][]    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [][]     []   Z===[]=== []  [[]    []    []==== []  [[]   []   [][][] [] []_   []   Z");
+	Image inventory_letters("Z===[]=== []   [][]      [][]==== []   [] ==[]== [][][] [][][][]    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [] []    []   Z===[]=== []  [[]    []    []==== []  [[]   []   [][][] []  []   []   Z");
 	Image instructions("Z=====================================Z============= CONTROLS ==============Z                                     ZNavigate up and down      Arrow KeysZ                                     ZUse Selected Item         ENTERZ                                     ZExit inventory            BACKSPACEZZ");
 	Image itemsMenu("Z=========================Z========= ITEMS =========ZZ");
 	addImageToMatrix(60, 11, itemsMenu, matrix_);
@@ -77,6 +78,16 @@ void Inventory::setCursorText()
 	for (int i = 0; i < 20; ++i)
 		matrix_[13 + i][48] = ' ';
 	matrix_[13 + (2 * cursor_index_)][48] = '>';
+}
+
+// Sets the player health text
+void Inventory::setPlayerHealthText(int x_position, int y_position)
+{
+	Image player_health_text("{player}'s");
+	Image lives("Lives:  ");
+	addImageToMatrix(x_position, y_position, player_health_text, matrix_);
+	addImageToMatrix(x_position, y_position + 1, lives, matrix_);
+	matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
 }
 
 // Takes input for inventory menu
@@ -111,6 +122,8 @@ void Inventory::evaluatePlayerInput()
 void Inventory::useItem()
 {
 	//TODO: Do something for item name: items_list_.at(cursor_index_);
+	if (items_list_.at(cursor_index_).getName() == "Health Potion")
+		player_health_ += 3;
 
 	// delete selected item
 	removeItem(cursor_index_);
