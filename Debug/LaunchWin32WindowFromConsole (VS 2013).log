@@ -2,12 +2,4 @@
   MatrixManager.cpp
 c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  main.cpp
-c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(208): warning C4456: declaration of 'ps' hides previous local declaration
-  c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(184): note: see declaration of 'ps'
-c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(185): warning C4101: 'font': unreferenced local variable
-c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(186): warning C4101: 'hdc': unreferenced local variable
-  Generating Code...
-c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(295): warning C4702: unreachable code
   LaunchWin32WindowFromConsole (VS 2013).vcxproj -> C:\Users\erikg\source\repos\BumboEngine\BumboEngine\Debug\LaunchWin32WindowFromConsole (VS 2013).exe

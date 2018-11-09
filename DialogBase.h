@@ -36,7 +36,7 @@ private:
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
-	int width_, height_, player_health_, cursor_index_, start_time_move_cursor_, start_time_exit_dialog_, dialog_choices_index_, overlay_x_, overlay_y_;
+	int width_, height_, cursor_index_, start_time_move_cursor_, start_time_exit_dialog_, dialog_choices_index_, overlay_x_, overlay_y_;
 	bool has_boss_given_up_, should_exit_dialog_, displaying_response_, enter_key_pressed_;
 	std::string response_, ascii_overlay_, boss_ascii_art_;
 };

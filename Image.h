@@ -16,7 +16,8 @@ class Image
 {
 public:
 	Image() : ASCII_{ 0 } {}
-	Image(std::string i_ASCII, char delimiter = 'Z');
+	Image(std::string ASCII, char delimiter = 'Z');
+	Image(std::wstring ASCII, int width, int height, char delimiter = 'Z');
 
 	// Setters
 	Position_s position;
@@ -32,10 +33,12 @@ private:
 	//Setters
 	void setImageDimensions();
 	void populateImageWithASCII();
+	void populateImageWithWideASCII();
 
 	int width_, height_;
 	char delimiter_;
 	std::string ASCII_;
+	std::wstring Wide_ASCII_;
 };
 
 #endif // !IMAGE_H

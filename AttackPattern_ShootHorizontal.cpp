@@ -6,16 +6,15 @@
 #include <algorithm>
 #include <iostream>
 
-AttackPattern_ShootHorizontal::AttackPattern_ShootHorizontal(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, int number_of_attacks)
+AttackPattern_ShootHorizontal::AttackPattern_ShootHorizontal(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks)
 	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks)
 {
 	generateRandomSequence(attack_starting_positions_, 0, height_ - 1);
 }
 
 // Calls once when the entire attack starts
-void AttackPattern_ShootHorizontal::OnBeginAttack(int player_health)
+void AttackPattern_ShootHorizontal::OnBeginAttack()
 {
-	player_health_ = player_health;
 	createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
 	start_time_new_attack_ = GetTickCount();
 	start_time_update_attacks_ = GetTickCount();

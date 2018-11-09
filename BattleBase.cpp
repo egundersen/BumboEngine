@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <iostream>
 
-BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
+BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_health_{ boss_health }, boss_name_{ boss_name }, boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
 	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(0), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, matrix_display, dialog_choices_, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
@@ -14,9 +14,8 @@ BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::strin
 }
 
 // Runs when battle starts
-void BattleBase::onBeginBattle(int player_health)
+void BattleBase::onBeginBattle()
 {
-	player_health_ = player_health;
 	start_time_move_cursor_ = GetTickCount();
 	cursor_index_ = 0;
 	refreshScreen();
@@ -65,13 +64,12 @@ void BattleBase::refreshScreen()
 	{ // ATTACK IN PROGRESS
 		if (attack_patterns_.size() != 0)
 		{
-			if (attack_patterns_.back()->getPlayerHealth() <= 0)
+			if (player_health_ <= 0)
 			{
 				gameOver();
 			}
 			else if (attack_patterns_.back()->areAttacksOver())
 			{
-				player_health_ = attack_patterns_.back()->getPlayerHealth();
 				attack_patterns_.pop_back();
 				local_vector_space_ = "MENU";
 			}
@@ -296,7 +294,7 @@ void BattleBase::damageBoss()
 {
 	if (attack_patterns_.size() != 0)
 	{
-		attack_patterns_.back()->OnBeginAttack(player_health_);
+		attack_patterns_.back()->OnBeginAttack();
 		local_vector_space_ = "FIGHT";
 		boss_health_--;
 	}

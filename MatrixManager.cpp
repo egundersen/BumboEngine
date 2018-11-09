@@ -8,9 +8,9 @@
 #include <iostream>
 
 MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health),
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health_),
 	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	debugBattle_(width, height, matrix_display, player_health)
+	DEBUG_battle_(width, height, matrix_display, player_health_), maze_(width, height, 5000, 5000, 2310, 5000 - 60, player_health_, matrix_display)
 {
 	inventory_.addItem("Health Potion"); //TODO: remove from here and add this to picking up item on map
 	inventory_.addItem("Secret Potion");
@@ -25,39 +25,37 @@ void MatrixManager::evaluatePlayerInput()
 	if (current_vector_space_ == "START SCREEN")  // START GAME
 	{
 		if (GetAsyncKeyState(VK_MENU) & 0x8000) //TODO: Change back to VK_RETURN
-			current_vector_space_ = "BATTLE";
+			current_vector_space_ = "BATTLE"; //TODO: Change to MAP
 	}
 	else if (current_vector_space_ == "MAP")
 	{
 		if (GetAsyncKeyState(0x49) & 0x8000) // OPEN INVENTORY?
 			loadVectorSpace("INVENTORY");
 		// TODO: Load_Map_Space
+		maze_.refreshScreen();
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
-		if (debugBattle_.isBattleOver()) {
+		if (DEBUG_battle_.isBattleOver()) {
 			has_initialized_battle_ = false;
-			player_health_ = debugBattle_.getPlayerHealth();
 			std::cout << "BATTLE IS OVER FUCKO!";
+			current_vector_space_ = "MAP";
 		}
-		else if (debugBattle_.getLocalVectorSpace() != "INVENTORY") {
+		else if (DEBUG_battle_.getLocalVectorSpace() != "INVENTORY") {
 			if (!has_initialized_battle_) {
-				debugBattle_.onBeginBattle(player_health_);
+				DEBUG_battle_.onBeginBattle();
 				has_initialized_battle_ = true;
 			}
-			debugBattle_.refreshScreen();
+			DEBUG_battle_.refreshScreen();
 		}
 		else {
 			if (!has_initialized_inventory_) {
-				player_health_ = debugBattle_.getPlayerHealth();
-				inventory_.onOpenInventory(player_health_);
+				inventory_.onOpenInventory();
 				has_initialized_inventory_ = true;
 			}
 			if (GetAsyncKeyState(VK_BACK) & 0x8000) {// CLOSE INVENTORY?
-				player_health_ = inventory_.getPlayerHealth();
 				has_initialized_inventory_ = false;
-				debugBattle_.setPlayerHealth(player_health_);
-				debugBattle_.setVectorSpace("MENU");
+				DEBUG_battle_.setVectorSpace("MENU");
 			}
 			inventory_.evaluatePlayerInput();
 		}
@@ -65,7 +63,6 @@ void MatrixManager::evaluatePlayerInput()
 	else if (current_vector_space_ == "INVENTORY")
 	{
 		if (GetAsyncKeyState(VK_BACK) & 0x8000) {// CLOSE INVENTORY?
-			player_health_ = inventory_.getPlayerHealth();
 			loadVectorSpace("MAP");
 		}
 
@@ -78,17 +75,16 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 {
 	if (vector_space_name == "INVENTORY")
 	{
-		inventory_.onOpenInventory(player_health_);
+		inventory_.onOpenInventory();
 		current_vector_space_ = "INVENTORY";
 	}
 	else if (vector_space_name == "MAP")
 	{
-		player_health_ = inventory_.getPlayerHealth();
+		maze_.onEnterWorld();
 		current_vector_space_ = "MAP";
 	}
 	else if (vector_space_name == "BATTLE")
 	{
-		player_health_ = inventory_.getPlayerHealth();
 		current_vector_space_ = "BATTLE";
 	}
 }

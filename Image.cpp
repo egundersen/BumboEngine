@@ -8,6 +8,13 @@ Image::Image(std::string i_ASCII, char delimiter) : ASCII_{ i_ASCII }, delimiter
 	populateImageWithASCII();
 }
 
+Image::Image(std::wstring i_ASCII, int width, int height, char delimiter) 
+	: Wide_ASCII_{ i_ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height }
+{
+	image_matrix.resize(height, std::vector<char>(width));
+	populateImageWithWideASCII();
+}
+
 // Sets width and height of image matrix
 void Image::setImageDimensions()
 {
@@ -47,6 +54,33 @@ void Image::populateImageWithASCII()
 			width_iterator++;
 		}
 		if (*it == delimiter_)
+		{
+			height_iterator++;
+			width_iterator = 0;
+		}
+	}
+}
+// Fills image matrix with correct ASCII symbols saved as a wstring
+void Image::populateImageWithWideASCII()
+{
+	int width_iterator = 0;
+	int height_iterator = 0;
+
+	/*std::wstring::iterator it = Wide_ASCII_.begin();
+	while (it != Wide_ASCII_.end())
+	{
+		
+		++it;
+	}//*/
+	for (std::wstring::iterator it = Wide_ASCII_.begin(); it != Wide_ASCII_.end() && height_iterator < height_; ++it)
+	{
+		char c = static_cast<char>(*it);
+		if (c != delimiter_)
+		{
+			image_matrix[height_iterator][width_iterator] = c;
+			width_iterator++;
+		}
+		if (c == delimiter_)
 		{
 			height_iterator++;
 			width_iterator = 0;

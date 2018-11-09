@@ -161,8 +161,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatrixBase.cpp" />
     <ClCompile Include="MatrixManager.cpp" />
+    <ClCompile Include="PlayerSprite.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StartScreen.cpp" />
+    <ClCompile Include="WorldBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttackBase.h" />
@@ -180,10 +182,11 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="MatrixBase.h" />
     <ClInclude Include="MatrixManager.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerSprite.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="WinMainParameters.h" />
+    <ClInclude Include="WorldBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc" />
