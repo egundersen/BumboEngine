@@ -53,6 +53,7 @@ private:
 	std::vector<std::vector<char>> world_matrix_;
 	std::vector<std::vector<std::pair<int, int>>> element_has_object_;
 	std::vector<Image> mountain_lines_;
+	std::vector<Image> fence_lines_;
 	std::vector<Signpost*> signposts_;
 	ScreenPosition screen_position_;
 	PlayerSprite player_sprite_;

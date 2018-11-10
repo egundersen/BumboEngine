@@ -51,7 +51,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	// freed in order to release the resources it is using. If you wish to keep the console open and use it
 	// you can remove the call to FreeConsole. If you want to create a new console later you can call
 	// AllocConsole. If you want to use an existing console you can call AttachConsole.
-	//FreeConsole();
+	FreeConsole();
 
 	// ***********************
 	// If you want to avoid creating a console in the first place, you can change the linker /SUBSYSTEM

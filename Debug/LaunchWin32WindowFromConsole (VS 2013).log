@@ -1,3 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (BumboEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  WorldBase.cpp
+  MatrixManager.cpp
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   LaunchWin32WindowFromConsole (VS 2013).vcxproj -> C:\Users\Erik\Documents\GitHub\BumboEngine\Debug\LaunchWin32WindowFromConsole (VS 2013).exe

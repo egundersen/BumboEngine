@@ -24,7 +24,7 @@ void MatrixManager::evaluatePlayerInput()
 {
 	if (current_vector_space_ == "START SCREEN")  // START GAME
 	{
-		if (GetAsyncKeyState(VK_MENU) & 0x8000) //TODO: Change back to VK_RETURN
+		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 			current_vector_space_ = "MAP"; //TODO: Change to MAP
 	}
 	else if (current_vector_space_ == "MAP")
