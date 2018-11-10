@@ -94,8 +94,8 @@ std::pair<int, int> WorldBase::getFacingEntity()
 		break;
 	case 'l':
 		for (int i = -1; i < 3; i++)
-			if (element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 - 5].first != 0)
-				return element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 - 5];
+			if (element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 - 6].first != 0)
+				return element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 - 6];
 		break;
 	default:
 		break;
@@ -191,7 +191,7 @@ void WorldBase::generateWorld()
 {
 	GENERATE_WorldBorder();
 	GENERATE_OutsideArea();
-	GENERATE_BackgroundObjects();
+	GENERATE_AdditionalObjects();
 	GENERATE_Signposts();
 }
 
@@ -217,6 +217,7 @@ void WorldBase::GENERATE_WorldBorder()
 // creates a cliff area outside the maze. This is the player's spawn / start of the game
 void WorldBase::GENERATE_OutsideArea()
 {
+	// Mountainside
 	std::wstring mountain[] = {
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,',,,,,,,,,,,,;;:::codxxkOKNWWWMMMMMWNXK0Oxoc:Z",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;:ccccodxxxkO0KKKXNNNNXK00Okxdolc:;,'...    Z",
@@ -355,7 +356,6 @@ void WorldBase::GENERATE_OutsideArea()
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z"
 	};
-
 	int i = 0;
 	for (const std::wstring &text : mountain)
 	{
@@ -363,14 +363,94 @@ void WorldBase::GENERATE_OutsideArea()
 		addImageToMatrix(world_width_ / 2 + 40, world_height_ - 150 + i, mountain_lines_[i], world_matrix_);
 		i++;
 	}
-}
 
-void WorldBase::GENERATE_BackgroundObjects()
-{
+	// Fence
+	std::wstring fence[] = {
+		L" ,.   (* ,%*                                               Z",
+		L" .@( .%,  #&%/#.                                           Z",
+		L"  @( %. .% *# /&%%*                                        Z",
+		L"  @( #  %. %,%##  */,                                      Z",
+		L"  @# %. #.%.(.%, (&* /%,                                   Z",
+		L"  @%..#%@( .%%, %#/. %%(#(                                 Z",
+		L"  @@@@%,.##%&  ,#/#/(.%/ #&%#.                             Z",
+		L"  @@@(,%@&. *(.(%..( ##,#%*  #,.                           Z",
+		L"  @#.@&. /@@( .,( **/#.%*% .#&.,#                          Z",
+		L"  @%  %@,   *@@#*%&%, (#( .(.%  (/                         Z",
+		L"  @%   ,@%     *@@%/%%&* .#.#,.&&*  *%*,(#                 Z",
+		L"  @%    .&&.      ,@@(,%,*@*   %# .(   .#@&,               Z",
+		L"  @%      &@*        %@@*,%   ,%(,%  .%,,% %,              Z",
+		L"  @%       *@(          #@@&%#.&%%. #/ .( .&.              Z",
+		L"  @&         @@,           #@@/&%#*#*,%,#/(,  %,           Z",
+		L"  @&          /@/          .,(@@@%.%. ,%/%, *%&%%.         Z",
+		L"  @&           ,@%    ,/&@@@%(.&@@@*%#&%. .&%%. .&,        Z",
+		L"  @&           ,#@@@@#*.       %@(/@( %  #&(#.*%%%*#       Z",
+		L"  &&.   ,(&@@&%/. *@#          %@@#,@@,(%&/ ,%./%, #/      Z",
+		L"  @@@@@%*.         .&%         %%(@, /@(#%./#*&%,#%#  %    Z",
+		L"  ##.                @@,       #% (@. (@(/%&%%.,%,%   %*   Z",
+		L"                      (@/      #%  &@,  @@*#/ (%%, (#// ** Z",
+		L"                        @&.    #&   &@   /@( .#  ,% (#  ./ Z",
+		L"                        .&@.   #&   .   .@&.%, &/%@&  #    Z",
+		L"                          *@#  (&     @%    %@, *(##&&%%#. Z",
+		L"                           ,@@ (&     *@/    .&&/#*,&%.  /(Z",
+		L"                             /@&&.     ,@(    (%%#&//#.    Z",
+		L"                              (@@@@(,.%@/   #((&%#&/(,     Z",
+		L"                                     .,/%@@@@&&(&%%& ,#.   Z",
+		L"                                          (@,,%%%#%&%%(%*  Z",
+		L"                                           &@/./(%%%#%.((  Z",
+		L"                                           .#%#,. ,@&&%#.  Z",
+		L"                                           /%%%(%%&%&@(%.  Z",
+		L"                                           (%%//%%&%%,     Z",
+		L"                                           #, /@&%&@&&(    Z",
+		L"                                           #%#&&&&&%       Z",
+		L"                                          #     /@@((&.    Z",
+		L"                                          #&&%..%@@@&&     Z",
+		L"                                        ,#..@@.*&@@&&@.    Z",
+		L"                                        .#/,@@ #@&%%@@.    Z",
+		L"                                           ,@@/&%@#&@&.    Z",
+		L"                                           .@@%@%@@.       Z",
+		L"                                           .@@@@@%         Z",
+		L"                                           .@@@(@/         Z",
+		L"                                           .@@%(@.         Z",
+		L"                                           .@@*&@          Z",
+		L"                                           .@@,@%          Z",
+		L"                                           .@@#@*          Z",
+		L"                                           .@@&&.          Z",
+		L"                                           .@@@#           Z",
+		L"                                           .@@@,           Z",
+		L"                                           .@@&            Z",
+		L"                                           .@@/            Z",
+		L"                                           .@@,            Z",
+		L"                                           .@@             Z",
+		L"                                           .&&             Z"
+	};
+
+	// Trees (If you have a better way to organize these, go RIGHT AHEAD)
 	Image tree_1("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrixIgnoreSpaces(2340, world_height_ - 77, tree_1, world_matrix_);
+	addImageToMatrix(2305, world_height_ - 84, tree_1, world_matrix_, true);
 	Image tree_2("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrixIgnoreSpaces(2380, world_height_ - 76, tree_2, world_matrix_);
+	addImageToMatrix(2340, world_height_ - 77, tree_2, world_matrix_, true);
+	Image tree_3("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2380, world_height_ - 76, tree_3, world_matrix_, true);
+	Image tree_4("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2430, world_height_ - 70, tree_4, world_matrix_, true);
+	Image tree_5("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2470, world_height_ - 78, tree_5, world_matrix_, true);
+	Image tree_6("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2510, world_height_ - 79, tree_6, world_matrix_, true);
+	Image tree_7("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2552, world_height_ - 81, tree_7, world_matrix_, true);
+	Image tree_8("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2590, world_height_ - 84, tree_8, world_matrix_, true);
+	Image tree_9("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2736, world_height_ - 114, tree_9, world_matrix_, true);
+	Image tree_10("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrix(2776, world_height_ - 94, tree_10, world_matrix_, true);
+
+	// Rocks
+	Image rock_1("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
+	addImageToMatrix(2325, world_height_ - 47, rock_1, world_matrix_, true);
+	Image rock_2("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
+	addImageToMatrix(2355, world_height_ - 65, rock_2, world_matrix_, true);
 }
 
 // creates all the sign posts (These show popups)
@@ -384,4 +464,9 @@ void WorldBase::GENERATE_Signposts()
 	// Displays all sign posts
 	for (auto signpost : signposts_)
 		signpost->createSign();
+}
+
+void WorldBase::GENERATE_AdditionalObjects()
+{
+
 }

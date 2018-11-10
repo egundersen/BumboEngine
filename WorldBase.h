@@ -34,13 +34,13 @@ private:
 	// World Generation-related Setters
 	void GENERATE_WorldBorder();
 	void GENERATE_OutsideArea();
-	void GENERATE_BackgroundObjects();
 	//void GENERATE_Maze();
 	//void GENERATE_Enemies();
 	//void GENERATE_NonHostileNPCs();
 	//void GENERATE_Cutscenes();
 	void GENERATE_Signposts();
 	//void GENERATE_Pickups();
+	void GENERATE_AdditionalObjects();
 
 
 	// Output Displays

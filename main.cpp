@@ -229,7 +229,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			SelectObject(hDCMem, font);//*/
 
 			// START NEW CODE
-			COLORREF whiteTextColor = 0x0000ff00;
+			COLORREF whiteTextColor = 0x00ffff00;
 			COLORREF blackTextColor = 0x00000000;
 			SetBkMode(hDCMem, OPAQUE);
 			SetBkColor(hDCMem, blackTextColor);
