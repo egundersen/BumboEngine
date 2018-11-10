@@ -62,7 +62,7 @@ public:
 		dialog_choices_.push_back(dialog_choice_2);
 		dialog_choices_.push_back(dialog_choice_3);
 
-		// Just a check to make sure you typed the above code correctly.
+		// Just a little check to make sure you typed the above code correctly.
 		// This will throw an exception if you did something wrong
 		// Remember! Vector Size cannot be greater than 4! (always 4 dialog options at once)
 #ifdef _DEBUG

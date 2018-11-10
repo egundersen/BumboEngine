@@ -14,9 +14,10 @@ struct PlayerPosition
 // Useful functions that come standard with the Bumbo Engine (Can be used at will)
 class MatrixBase
 {
-public:
+protected:
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix);
+	void addImageToMatrixIgnoreSpaces(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
 	void waitForInput();

@@ -3,7 +3,7 @@
 
 PlayerSprite::PlayerSprite(int sprite_width, int sprite_height, std::vector<std::vector<std::string>> &matrix_display)
 	: sprite_width_{ sprite_width }, sprite_height_{ sprite_height }, matrix_display_{ matrix_display }, animation_position_(0), start_time_player_animation_(0),
-	is_moving_vertically_{ false }, is_moving_horizontally{ false },
+	is_moving_vertically_{ false }, is_moving_horizontally{ false }, player_animation_speed_(240), direction_{'d'},
 	up_1_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
 	up_2_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
 	down_1_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
@@ -22,11 +22,11 @@ PlayerSprite::PlayerSprite(int sprite_width, int sprite_height, std::vector<std:
 }
 
 // Chooses what to display to the screen
-void PlayerSprite::displayPlayer(char direction, int screen_width, int screen_height)
+void PlayerSprite::displayPlayer(int screen_width, int screen_height)
 {
 	if (!is_moving_vertically_ && !is_moving_horizontally)
 	{
-		switch (direction)
+		switch (direction_)
 		{
 		case 'u':
 			displaySpriteAtDirection(up_s_, screen_height, screen_width);
@@ -46,7 +46,7 @@ void PlayerSprite::displayPlayer(char direction, int screen_width, int screen_he
 	}
 	else if (animation_position_ == 0)
 	{
-		switch (direction)
+		switch (direction_)
 		{
 		case 'u':
 			displaySpriteAtDirection(up_1_, screen_height, screen_width);
@@ -66,7 +66,7 @@ void PlayerSprite::displayPlayer(char direction, int screen_width, int screen_he
 	}
 	else
 	{
-		switch (direction)
+		switch (direction_)
 		{
 		case 'u':
 			displaySpriteAtDirection(up_2_, screen_height, screen_width);
@@ -105,7 +105,7 @@ void PlayerSprite::setPlayerMoving(std::string direction)
 void PlayerSprite::animationCounter()
 {
 	double current_time_move_player = GetTickCount() - start_time_player_animation_;
-	if (current_time_move_player >= 240)
+	if (current_time_move_player >= player_animation_speed_)
 	{
 		if (animation_position_ == 0)
 			animation_position_ = 1;
@@ -149,7 +149,7 @@ void PlayerSprite::initializeSprites()
 void PlayerSprite::displaySpriteAtDirection(std::vector<std::vector<char>> &direction, int screen_height, int screen_width)
 {
 	for (int i = 0; i < sprite_height_; i++)
-		for (int j = 0; j < sprite_height_; j++)
+		for (int j = 0; j < sprite_width_; j++)
 			if (direction[i][j] != ' ')
 				matrix_display_[i + screen_height / 2 - 3][j + screen_width / 2 - 5] = std::string(1, direction[i][j]);
 }

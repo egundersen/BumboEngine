@@ -162,6 +162,7 @@
     <ClCompile Include="MatrixBase.cpp" />
     <ClCompile Include="MatrixManager.cpp" />
     <ClCompile Include="PlayerSprite.cpp" />
+    <ClCompile Include="Popup.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="WorldBase.cpp" />
@@ -184,6 +185,8 @@
     <ClInclude Include="MatrixManager.h" />
     <ClInclude Include="PlayerSprite.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Popup.h" />
+    <ClInclude Include="Signpost.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="WinMainParameters.h" />
     <ClInclude Include="WorldBase.h" />

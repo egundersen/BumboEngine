@@ -2,31 +2,43 @@
 #include <Windows.h>
 
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display)
-	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), player_direction_('d'),
-	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }
+	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
+	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30)
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
-	element_is_occupied_ = new bool*[world_height_];
-	for (int i = 0; i < world_height_; ++i)
-		element_is_occupied_[i] = new bool[world_width_];
-	for (int i = 0; i < world_height_; ++i)
-		for (int j = 0; j < world_width_; ++j)
-			element_is_occupied_[i][j] = false;
+
 	generateWorld();
 }
 
+// Runs once whenever the player enters the world (Like when exiting a battle or the inventory)
 void WorldBase::onEnterWorld()
 {
 	start_time_player_speed_ = GetTickCount();
 }
 
+// Calls every frame
 void WorldBase::refreshScreen()
 {
-	displayScreen();
+	if (is_viewing_popup_ && getFacingEntity() != std::make_pair<int, int>(0, 0))
+	{
+		switch (getFacingEntity().first)
+		{
+		case 1: // Signpost
+			for (Signpost *signpost : signposts_)
+				if (signpost->getUniqueObjectID() == getFacingEntity().second)
+					signpost->refreshPopup();
+			break;
+		default:
+			break;
+		}
+	}
+	else
+		displayScreen();
 	evaluatePlayerInput();
 }
 
+// Returns true if player collides with something
 bool WorldBase::hasCollided(char direction, int offset)
 {
 	switch (direction)
@@ -60,6 +72,38 @@ bool WorldBase::hasCollided(char direction, int offset)
 	}
 }
 
+// Returns entity data for the object in front of player, whether it be a signpost, item, enemy, etc...
+std::pair<int, int> WorldBase::getFacingEntity()
+{
+	switch (player_sprite_.getDirection())
+	{
+	case 'u':
+		for (int j = -2; j < 2; j++)
+			if (element_has_object_[screen_position_.y + screen_height_ / 2 - 3][screen_position_.x + screen_width_ / 2 + j].first != 0)
+				return element_has_object_[screen_position_.y + screen_height_ / 2 - 3][screen_position_.x + screen_width_ / 2 + j];
+		break;
+	case 'd':
+		for (int j = -2; j < 2; j++)
+			if (element_has_object_[screen_position_.y + screen_height_ / 2 + 4][screen_position_.x + screen_width_ / 2 + j].first != 0)
+				return element_has_object_[screen_position_.y + screen_height_ / 2 + 4][screen_position_.x + screen_width_ / 2 + j];
+		break;
+	case 'r':
+		for (int i = -1; i < 3; i++)
+			if (element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 + 4].first != 0)
+				return element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 + 4];
+		break;
+	case 'l':
+		for (int i = -1; i < 3; i++)
+			if (element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 - 5].first != 0)
+				return element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 - 5];
+		break;
+	default:
+		break;
+	}
+	return std::pair<int, int>();
+}
+
+// Displays World and Player to screen
 void WorldBase::displayScreen()
 {
 	for (int i = 0; i < screen_height_; i++)
@@ -70,60 +114,95 @@ void WorldBase::displayScreen()
 		}
 	}
 
-	player_sprite_.displayPlayer(player_direction_, screen_width_, screen_height_);
+	player_sprite_.displayPlayer(screen_width_, screen_height_);
 }
 
+// Takes input and decides whether to move player
 void WorldBase::evaluatePlayerInput()
 {
 	double current_time_move_player = GetTickCount() - start_time_player_speed_;
 
-	if (current_time_move_player >= 30)
+	if (GetAsyncKeyState(0x45) & 0x8000) // Press E
 	{
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
+		is_viewing_popup_ = true;
+	}
+	else
+	{
+		if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
 		{
-			if (screen_position_.y > 0 && !hasCollided('u', 2))
-			{
-				--screen_position_.y;
-				player_direction_ = 'u';
-				player_sprite_.setPlayerMoving("verticle");
-			}
-		}
-		else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		{
-			if (screen_position_.y + screen_height_ < world_height_ - 1 && !hasCollided('d', 1))
-			{
-				++screen_position_.y;
-				player_direction_ = 'd';
-				player_sprite_.setPlayerMoving("verticle");
-			}
+			player_speed_modifier_ = 5;
+			player_sprite_.setPlayerAnimationSpeed(180);
 		}
 		else
-			player_sprite_.setPlayerMoving("not verticle");
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		{
-			if (screen_position_.x + screen_width_ < world_width_ - 1 && !hasCollided('r', 1))
-			{
-				++screen_position_.x;
-				player_direction_ = 'r';
-				player_sprite_.setPlayerMoving("horizontal");
-			}
+			player_speed_modifier_ = 30;
+			player_sprite_.setPlayerAnimationSpeed(240);
 		}
-		else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+		if (current_time_move_player >= player_speed_modifier_) // Movement UP, DOWN, LEFT, RIGHT
 		{
-			if (screen_position_.x > 0 && !hasCollided('l', 0))
+			if (GetAsyncKeyState(VK_UP) & 0x8000)
 			{
-				--screen_position_.x;
-				player_direction_ = 'l';
-				player_sprite_.setPlayerMoving("horizontal");
+				if (screen_position_.y > 0 && !hasCollided('u', 2)) // 2
+				{
+					--screen_position_.y;
+					player_sprite_.setPlayerMoving("verticle");
+				}
+				player_sprite_.setDirection('u');
 			}
+			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+			{
+				if (screen_position_.y + screen_height_ < world_height_ - 1 && !hasCollided('d', 1))
+				{
+					++screen_position_.y;
+					player_sprite_.setPlayerMoving("verticle");
+				}
+				player_sprite_.setDirection('d');
+			}
+			else
+				player_sprite_.setPlayerMoving("not verticle");
+			if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+			{
+				if (screen_position_.x + screen_width_ < world_width_ - 1 && !hasCollided('r', 1))
+				{
+					++screen_position_.x;
+					player_sprite_.setPlayerMoving("horizontal");
+				}
+				player_sprite_.setDirection('r');
+			}
+			else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+			{
+				if (screen_position_.x > 0 && !hasCollided('l', 0))
+				{
+					--screen_position_.x;
+					player_sprite_.setPlayerMoving("horizontal");
+				}
+				player_sprite_.setDirection('l');
+			}
+			else
+				player_sprite_.setPlayerMoving("not horizontal");
+			start_time_player_speed_ = GetTickCount();
 		}
-		else
-			player_sprite_.setPlayerMoving("not horizontal");
-		start_time_player_speed_ = GetTickCount();
+		is_viewing_popup_ = false;
 	}
 }
 
+// creates the world
 void WorldBase::generateWorld()
+{
+	GENERATE_WorldBorder();
+	GENERATE_OutsideArea();
+	GENERATE_BackgroundObjects();
+	GENERATE_Signposts();
+}
+
+// adds something to the world that doesn't exist on startup (Like doors that close behind you)
+void WorldBase::modifyWorld()
+{
+
+}
+
+// creates a nice border around the world. Useful for debugging, helps tell if you are building near edge of world
+void WorldBase::GENERATE_WorldBorder()
 {
 	for (int i = 0; i < world_height_; i++)
 		world_matrix_[i][0] = 'X';
@@ -133,12 +212,11 @@ void WorldBase::generateWorld()
 		world_matrix_[0][j] = 'X';
 	for (int j = 0; j < world_width_; j++)
 		world_matrix_[world_height_ - 15][j] = 'X';
+}
 
-	drawSolidRectangle(2, 2, 50, 50, 'X', world_matrix_);
-	drawSolidRectangle(70, 70, 20, 20, 'X', world_matrix_);
-
-	drawSolidRectangle(world_width_ / 2 + 40, world_height_ - 52, 50, 50, 'X', world_matrix_);
-
+// creates a cliff area outside the maze. This is the player's spawn / start of the game
+void WorldBase::GENERATE_OutsideArea()
+{
 	std::wstring mountain[] = {
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,',,,,,,,,,,,,;;:::codxxkOKNWWWMMMMMWNXK0Oxoc:Z",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;:ccccodxxxkO0KKKXNNNNXK00Okxdolc:;,'...    Z",
@@ -285,12 +363,25 @@ void WorldBase::generateWorld()
 		addImageToMatrix(world_width_ / 2 + 40, world_height_ - 150 + i, mountain_lines_[i], world_matrix_);
 		i++;
 	}
-		
-	//Image outside(mountain_size_text_.mountain);
-	//addImageToMatrix(world_width_ / 2, world_height_ / 2, outside, world_matrix_);
 }
 
-void WorldBase::modifyWorld()
+void WorldBase::GENERATE_BackgroundObjects()
 {
+	Image tree_1("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrixIgnoreSpaces(2340, world_height_ - 77, tree_1, world_matrix_);
+	Image tree_2("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	addImageToMatrixIgnoreSpaces(2380, world_height_ - 76, tree_2, world_matrix_);
+}
 
+// creates all the sign posts (These show popups)
+void WorldBase::GENERATE_Signposts()
+{
+	Signpost *signpost_1;
+	signpost_1 = new Signpost(2390, world_height_ - 63, 23, 9, 1, "    Nakinom      ZBorder CheckpointZ   -------->     Z                 Z    0.2 km       Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+
+	signposts_.push_back(signpost_1);
+
+	// Displays all sign posts
+	for (auto signpost : signposts_)
+		signpost->createSign();
 }

@@ -45,7 +45,8 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 		image.position.y_position_max = center_position_y + round(image.getHeight() / 2);//*/
 
 		int temp_width = image.getWidth();
-		if (image.getWidth() % 2 != 0) { // Odd number? Oh boy... KILL ME
+		if (image.getWidth() % 2 != 0)
+		{ // Odd number? Oh boy... KILL ME
 			temp_width--;
 			image.position.x_position_max = center_position_x + temp_width / 2 + 1;
 		}
@@ -54,7 +55,8 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 		image.position.x_position_min = center_position_x - temp_width / 2;
 
 		int temp_height = image.getHeight();
-		if (image.getHeight() % 2 != 0) { // Odd number? Oh boy... KILL ME
+		if (image.getHeight() % 2 != 0)
+		{ // Odd number? Oh boy... KILL ME
 			temp_height--;
 			image.position.y_position_max = center_position_y + temp_height / 2 + 1;
 		}
@@ -80,14 +82,66 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 	}
 }
 
+// Adds an image/text to a matrix at the specified coordinates without including spaces from image
+void MatrixBase::addImageToMatrixIgnoreSpaces(int center_position_x, int center_position_y, Image & image, std::vector<std::vector<char>>& matrix)
+{
+	if (image.position.x_position_min == 0)
+	{
+		// Short version of what the below code does (Without rounding errors)
+		/*image.position.x_position_min = center_position_x - round(image.getWidth() / 2);
+		image.position.x_position_max = center_position_x + round(image.getWidth() / 2);
+		image.position.y_position_min = center_position_y - round(image.getHeight() / 2);
+		image.position.y_position_max = center_position_y + round(image.getHeight() / 2);//*/
+
+		int temp_width = image.getWidth();
+		if (image.getWidth() % 2 != 0)
+		{ // Odd number? Oh boy... KILL ME
+			temp_width--;
+			image.position.x_position_max = center_position_x + temp_width / 2 + 1;
+		}
+		else
+			image.position.x_position_max = center_position_x + temp_width / 2;
+		image.position.x_position_min = center_position_x - temp_width / 2;
+
+		int temp_height = image.getHeight();
+		if (image.getHeight() % 2 != 0)
+		{ // Odd number? Oh boy... KILL ME
+			temp_height--;
+			image.position.y_position_max = center_position_y + temp_height / 2 + 1;
+		}
+		else
+			image.position.y_position_max = center_position_y + temp_height / 2;
+		image.position.y_position_min = center_position_y - temp_height / 2;
+	}
+	int x = 0;
+	int y = 0;
+	int x_position_temp = image.position.x_position_min;
+	while (image.position.y_position_min < image.position.y_position_max)
+	{
+		while (x_position_temp < image.position.x_position_max)
+		{
+			if (image.image_matrix[y][x] != ' ' && image.image_matrix[y][x] != '\0')
+				matrix[image.position.y_position_min][x_position_temp] = image.image_matrix[y][x];
+			++x_position_temp;
+			++x;
+		}
+		x_position_temp = image.position.x_position_min;
+		x = 0;
+		++image.position.y_position_min;
+		++y;
+	}
+}
+
 // draws a hollow rectangle to the provided matrix
 void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>>& matrix)
 {
-	for (int j = 0; j < width - 1; j++) {
+	for (int j = 0; j < width - 1; j++)
+	{
 		matrix[top_left_y][j + top_left_x] = character;
 		matrix[top_left_y + height - 1][j + top_left_x] = character;
 	}
-	for (int i = 0; i < height; i++) {
+	for (int i = 0; i < height; i++)
+	{
 		matrix[top_left_y + i][top_left_x] = character;
 		matrix[top_left_y + i][top_left_x + width - 1] = character;
 	}

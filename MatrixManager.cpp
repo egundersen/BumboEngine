@@ -10,7 +10,7 @@
 MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health_),
 	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	DEBUG_battle_(width, height, matrix_display, player_health_), maze_(width, height, 5000, 5000, 2310, 5000 - 60, player_health_, matrix_display)
+	DEBUG_battle_(width, height, matrix_display, player_health_), maze_(width, height, 5000, 5000, 2370, 5000 - 55, player_health_, matrix_display)
 {
 	inventory_.addItem("Health Potion"); //TODO: remove from here and add this to picking up item on map
 	inventory_.addItem("Secret Potion");
@@ -25,14 +25,14 @@ void MatrixManager::evaluatePlayerInput()
 	if (current_vector_space_ == "START SCREEN")  // START GAME
 	{
 		if (GetAsyncKeyState(VK_MENU) & 0x8000) //TODO: Change back to VK_RETURN
-			current_vector_space_ = "BATTLE"; //TODO: Change to MAP
+			current_vector_space_ = "MAP"; //TODO: Change to MAP
 	}
 	else if (current_vector_space_ == "MAP")
 	{
 		if (GetAsyncKeyState(0x49) & 0x8000) // OPEN INVENTORY?
 			loadVectorSpace("INVENTORY");
-		// TODO: Load_Map_Space
-		maze_.refreshScreen();
+		else
+			maze_.refreshScreen();
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
