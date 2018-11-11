@@ -8,6 +8,7 @@ class Signpost : public Popup
 public:
 	using Popup::Popup;
 
+	// Setters
 	void createSign()
 	{
 		Image sign("  ______ Z [ .... ]Z [_____ ]Z    ||   Z");
@@ -18,7 +19,8 @@ public:
 		setObjectCoordinates();
 	}
 
-protected:
+private:
+	// Setters
 	void setObjectID() { object_type_ID_ = 1; };
 };
 

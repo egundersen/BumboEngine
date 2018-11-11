@@ -48,7 +48,7 @@ private:
 
 	int screen_width_, screen_height_, world_width_, world_height_, &player_health_, start_time_player_speed_,
 		player_speed_modifier_;
-	bool is_viewing_popup_;
+	bool is_viewing_popup_, debug_mode_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> world_matrix_;
 	std::vector<std::vector<std::pair<int, int>>> element_has_object_;

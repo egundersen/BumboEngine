@@ -1,5 +1,6 @@
 #include "WorldBase.h"
 #include <Windows.h>
+#include <iostream>
 
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
@@ -41,6 +42,11 @@ void WorldBase::refreshScreen()
 // Returns true if player collides with something
 bool WorldBase::hasCollided(char direction, int offset)
 {
+#ifdef _DEBUG
+	if (debug_mode_)
+		return false;
+#endif
+
 	switch (direction)
 	{
 	case 'u':
@@ -184,6 +190,14 @@ void WorldBase::evaluatePlayerInput()
 		}
 		is_viewing_popup_ = false;
 	}
+
+#ifdef _DEBUG
+	if (GetAsyncKeyState(0x47) & 0x8000) { // God/DEBUG Mode!		Press G
+		debug_mode_ = true;
+	}
+	if (debug_mode_)
+		std::cout << "Player Position: ( " << screen_position_.x  + screen_width_ / 2 << ", " << screen_position_.y  + screen_height_ / 2 << " )\n";
+#endif
 }
 
 // creates the world
@@ -404,30 +418,30 @@ void WorldBase::GENERATE_OutsideArea()
 		L"                                           #%#&&&&&%       Z",
 		L"                                          #     /@@((&.    Z",
 		L"                                          #&&%..%@@@&&     Z",
-		L"                                        ,#..@@.*&@@&&@.    Z",
-		L"                                        .#/,@@ #@&%%@@.    Z",
-		L"                                           ,@@/&%@#&@&.    Z",
-		L"                                           .@@%@%@@.       Z",
-		L"                                           .@@@@@%         Z",
-		L"                                           .@@@(@/         Z",
-		L"                                           .@@%(@.         Z",
-		L"                                           .@@*&@          Z",
-		L"                                           .@@,@%          Z",
-		L"                                           .@@#@*          Z",
-		L"                                           .@@&&.          Z",
-		L"                                           .@@@#           Z",
-		L"                                           .@@@,           Z",
-		L"                                           .@@&            Z",
-		L"                                           .@@/            Z",
-		L"                                           .@@,            Z",
-		L"                                           .@@             Z",
-		L"                                           .&&             Z"
+		L"                                         #..@@.*&@@&&@.    Z",
+		L"                                         #/,@@ #@&%%@@.    Z",
+		L"                                            @@/&%@#&@&.    Z",
+		L"                                            @@%@%@@.       Z",
+		L"                                            @@@@@%         Z",
+		L"                                            @@@(@/         Z",
+		L"                                            @@%(@.         Z",
+		L"                                            @@*&@          Z",
+		L"                                            @@,@%          Z",
+		L"                                            @@#@*          Z",
+		L"                                            @@&&.          Z",
+		L"                                            @@@#           Z",
+		L"                                            @@@,           Z",
+		L"                                            @@&            Z",
+		L"                                            @@/            Z",
+		L"                                            @@,            Z",
+		L"                                            @@             Z",
+		L"                                            &&             Z"
 	};
 	int fence_iterator = 0;
 	for (const std::wstring &text : fence)
 	{
-		fence_lines_.push_back(Image(text, 60, 1));
-		addImageToMatrix(world_width_ / 2 + 40, world_height_ - 150 + fence_iterator, fence_lines_[fence_iterator], world_matrix_);
+		fence_lines_.push_back(Image(text, 59, 1));
+		addImageToMatrix(world_width_ / 2 + 304, world_height_ - 110 + fence_iterator, fence_lines_[fence_iterator], world_matrix_, true);
 		fence_iterator++;
 	}
 
@@ -450,8 +464,8 @@ void WorldBase::GENERATE_OutsideArea()
 	addImageToMatrix(2590, world_height_ - 84, tree_8, world_matrix_, true);
 	Image tree_9("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
 	addImageToMatrix(2736, world_height_ - 114, tree_9, world_matrix_, true);
-	Image tree_10("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(2776, world_height_ - 94, tree_10, world_matrix_, true);
+	//Image tree_10("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
+	//addImageToMatrix(2776, world_height_ - 94, tree_10, world_matrix_, true);
 
 	// Rocks
 	Image rock_1("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
@@ -465,14 +479,18 @@ void WorldBase::GENERATE_Signposts()
 {
 	Signpost *signpost_1;
 	signpost_1 = new Signpost(2390, world_height_ - 63, 23, 9, 1, "    Nakinom      ZBorder CheckpointZ   -------->     Z                 Z    0.2 km       Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *signpost_2;
+	signpost_2 = new Signpost(2640, 4923, 23, 9, 2, "    Nakinom      ZBorder CheckpointZ                 Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 
 	signposts_.push_back(signpost_1);
+	signposts_.push_back(signpost_2);
 
 	// Displays all sign posts
 	for (auto signpost : signposts_)
 		signpost->createSign();
 }
 
+// creates things that don't fit into any other category
 void WorldBase::GENERATE_AdditionalObjects()
 {
 

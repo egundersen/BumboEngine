@@ -51,7 +51,12 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	// freed in order to release the resources it is using. If you wish to keep the console open and use it
 	// you can remove the call to FreeConsole. If you want to create a new console later you can call
 	// AllocConsole. If you want to use an existing console you can call AttachConsole.
-	FreeConsole();
+	int debug_mode = false;
+#ifdef _DEBUG
+	debug_mode = true;
+#endif
+	if (!debug_mode)
+		FreeConsole();
 
 	// ***********************
 	// If you want to avoid creating a console in the first place, you can change the linker /SUBSYSTEM
@@ -239,7 +244,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			for (int i = 0; i < height_G; i++) {
 				for (int j = 0; j < width_G; j++) {
 
-					ExtTextOutA(hDCMem, j*10, i*15, ETO_CLIPPED, &rect, matrix_display_G[i][j].c_str(), 1, NULL);
+					ExtTextOutA(hDCMem, j * 10, i * 15, ETO_CLIPPED, &rect, matrix_display_G[i][j].c_str(), 1, NULL);
 				}
 				//const wchar_t helloWorldString[] = L"Hello world! !";*/
 				//int height = DrawTextA(hDCMem, matrix_display_G[i], width_G, &rect, DT_CENTER | DT_VCENTER | DT_EDITCONTROL);
@@ -262,7 +267,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_ERASEBKGND:
 		return 1;
-		
+
 		/*RECT clientRect;
 		GetClientRect(hWnd, &clientRect);
 		// HGDIOBJ objects obtained from GetStockObject do not need to be deleted with DeleteObject as per the documentation: https://msdn.microsoft.com/en-us/library/dd144925(v=vs.85).aspx
@@ -292,15 +297,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 		}
 	}//*/
-	EndPaint(hWnd, &ps);
-	break;
+		EndPaint(hWnd, &ps);
+		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
-}
-return 0;
+	}
+	return 0;
 }
 
 // Message handler for about box.

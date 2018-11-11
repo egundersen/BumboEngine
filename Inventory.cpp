@@ -130,10 +130,16 @@ void Inventory::useItem()
 		cursor_index_--;
 }
 
-// Add item to inventory
+// Add item to inventory (from a string)
 void Inventory::addItem(std::string item_name)
 {
 	Item item(item_name);
+	items_list_.push_back(item);
+}
+
+// Add item to inventory
+void Inventory::addItem(Item item)
+{
 	items_list_.push_back(item);
 }
 

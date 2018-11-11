@@ -14,6 +14,7 @@ public:
 	void onOpenInventory();
 	void evaluatePlayerInput();
 	void addItem(std::string item_name);
+	void addItem(Item item);
 
 private:
 	// Setters
