@@ -15,11 +15,13 @@ struct PlayerPosition
 class MatrixBase
 {
 protected:
-	void addImageToMatrix_IncludeCollision(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
+	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool exclude_spaces = false);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
+	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
 	void waitForInput();
+	int generateRandomNumber(int min, int max);
 	void generateRandomSequence(std::vector<std::shared_ptr<int>> &random_sequence, int min, int max);
 	void generateInOrderSequence(std::vector <std::shared_ptr<int>> &in_order_sequence, int min, int max);
 	

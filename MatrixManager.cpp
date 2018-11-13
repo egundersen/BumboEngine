@@ -10,7 +10,7 @@
 MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health_),
 	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	DEBUG_battle_(width, height, matrix_display, player_health_), maze_(width, height, 5000, 5000, 2370, 5000 - 55, player_health_, matrix_display)
+	DEBUG_battle_(width, height, matrix_display, player_health_), maze_(width, height, 5000, 5000, 2370, 5000 - 55, player_health_, matrix_display, inventory_)
 {
 	inventory_.addItem("Health Potion"); //TODO: remove from here and add this to picking up item on map
 	inventory_.addItem("Secret Potion");

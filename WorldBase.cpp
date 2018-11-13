@@ -2,14 +2,16 @@
 #include <Windows.h>
 #include <iostream>
 
-WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display)
+WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
-	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30)
+	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d')
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
 
 	generateWorld();
+	player_sprite_.initializeSprites();
 }
 
 // Runs once whenever the player enters the world (Like when exiting a battle or the inventory)
@@ -30,12 +32,34 @@ void WorldBase::refreshScreen()
 				if (signpost->getUniqueObjectID() == getFacingEntity().second)
 					signpost->refreshPopup();
 			break;
+		case 2: // Pickup
+			for (Pickup *pickup : pickups_)
+				if (pickup->getUniqueObjectID() == getFacingEntity().second)
+				{
+					pickup->refreshPopup();
+					pickup->pickupItem();
+					delete(pickup);
+				}
+			break;
+		case 3: // Character
+			for (CharacterBase *character : characters_)
+				if (character->getUniqueObjectID() == getFacingEntity().second)
+				{
+					displayScreen();
+					character->refreshPopup(opposite_player_direction_);
+				}
+			break;
 		default:
 			break;
 		}
 	}
 	else
+	{
+		//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
+		//if (!characters_[0]->hasReachDestination())
+		//	characters_[0]->move(2382, 'x', 250);
 		displayScreen();
+	}
 	evaluatePlayerInput();
 }
 
@@ -43,7 +67,7 @@ void WorldBase::refreshScreen()
 bool WorldBase::hasCollided(char direction, int offset)
 {
 #ifdef _DEBUG
-	if (debug_mode_)
+	if (DEBUG_mode_enabled_)
 		return false;
 #endif
 
@@ -95,8 +119,8 @@ std::pair<int, int> WorldBase::getFacingEntity()
 		break;
 	case 'r':
 		for (int i = -1; i < 3; i++)
-			if (element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 + 4].first != 0)
-				return element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 + 4];
+			if (element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 + 5].first != 0)
+				return element_has_object_[screen_position_.y + screen_height_ / 2 + i][screen_position_.x + screen_width_ / 2 + 5];
 		break;
 	case 'l':
 		for (int i = -1; i < 3; i++)
@@ -120,7 +144,12 @@ void WorldBase::displayScreen()
 		}
 	}
 
-	player_sprite_.displayPlayer(screen_width_, screen_height_);
+	player_sprite_.displaySprite(screen_width_, screen_height_);
+
+#ifdef _DEBUG
+	if (DEBUG_mode_enabled_)
+		DEBUG_refresh();
+#endif // !_DEBUG
 }
 
 // Takes input and decides whether to move player
@@ -154,6 +183,7 @@ void WorldBase::evaluatePlayerInput()
 					player_sprite_.setPlayerMoving("verticle");
 				}
 				player_sprite_.setDirection('u');
+				opposite_player_direction_ = 'd';
 			}
 			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 			{
@@ -163,6 +193,7 @@ void WorldBase::evaluatePlayerInput()
 					player_sprite_.setPlayerMoving("verticle");
 				}
 				player_sprite_.setDirection('d');
+				opposite_player_direction_ = 'u';
 			}
 			else
 				player_sprite_.setPlayerMoving("not verticle");
@@ -174,6 +205,7 @@ void WorldBase::evaluatePlayerInput()
 					player_sprite_.setPlayerMoving("horizontal");
 				}
 				player_sprite_.setDirection('r');
+				opposite_player_direction_ = 'l';
 			}
 			else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 			{
@@ -183,6 +215,7 @@ void WorldBase::evaluatePlayerInput()
 					player_sprite_.setPlayerMoving("horizontal");
 				}
 				player_sprite_.setDirection('l');
+				opposite_player_direction_ = 'r';
 			}
 			else
 				player_sprite_.setPlayerMoving("not horizontal");
@@ -192,11 +225,23 @@ void WorldBase::evaluatePlayerInput()
 	}
 
 #ifdef _DEBUG
-	if (GetAsyncKeyState(0x47) & 0x8000) { // God/DEBUG Mode!		Press G
-		debug_mode_ = true;
+	if (GetAsyncKeyState(0x47) & 0x8000) // Open DEBUG Mode!		Press G
+		DEBUG_mode_enabled_ = true;
+	if (GetAsyncKeyState(0x48) & 0x8000) // Close DEBUG Mode!		Press G
+	{
+		if (DEBUG_showing_collisions_)
+			DEBUG_stopDisplayingCollisions();
+		DEBUG_showing_collisions_ = false;
+		DEBUG_mode_enabled_ = false;
 	}
-	if (debug_mode_)
-		std::cout << "Player Position: ( " << screen_position_.x  + screen_width_ / 2 << ", " << screen_position_.y  + screen_height_ / 2 << " )\n";
+	if (GetAsyncKeyState(0x43) & 0x8000) // Collisions!				HOLD C
+		DEBUG_showing_collisions_ = true;
+	else
+	{
+		if (DEBUG_showing_collisions_)
+			DEBUG_stopDisplayingCollisions();
+		DEBUG_showing_collisions_ = false;
+	}
 #endif
 }
 
@@ -206,7 +251,13 @@ void WorldBase::generateWorld()
 	GENERATE_WorldBorder();
 	GENERATE_OutsideArea();
 	GENERATE_AdditionalObjects();
+	GENERATE_NonHostileNPCs();
+	GENERATE_Pickups();
 	GENERATE_Signposts();
+
+	// Displays all Characters
+	for (auto character : characters_)
+		character->createWorldSprite();
 }
 
 // adds something to the world that doesn't exist on startup (Like doors that close behind you)
@@ -474,24 +525,112 @@ void WorldBase::GENERATE_OutsideArea()
 	addImageToMatrix(2355, world_height_ - 65, rock_2, world_matrix_, true);
 }
 
+// creates filler NPCs that don't attack. They don't need a Chr file to create them because
+// They only have only simple dialog and NO ATTACKS
+void WorldBase::GENERATE_NonHostileNPCs()
+{
+	CharacterBase *standing_in_line_1;
+	standing_in_line_1 = new CharacterBase(2372, 4939, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, "HEllO PLAYER");
+
+	characters_.push_back(standing_in_line_1);
+}
+
 // creates all the sign posts (These show popups)
 void WorldBase::GENERATE_Signposts()
 {
-	Signpost *signpost_1;
-	signpost_1 = new Signpost(2390, world_height_ - 63, 23, 9, 1, "    Nakinom      ZBorder CheckpointZ   -------->     Z                 Z    0.2 km       Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *signpost_2;
-	signpost_2 = new Signpost(2640, 4923, 23, 9, 2, "    Nakinom      ZBorder CheckpointZ                 Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_1 = new Signpost(2390, world_height_ - 63, 23, 9, 1, "    Nakinom      ZBorder CheckpointZ   -------->     Z                 Z    0.2 km       Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_2 = new Signpost(2640, 4923, 23, 9, 2, "    Nakinom      ZBorder CheckpointZ                 Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 
-	signposts_.push_back(signpost_1);
-	signposts_.push_back(signpost_2);
+	signposts_.push_back(checkpoint_sign_1);
+	signposts_.push_back(checkpoint_sign_2);
 
 	// Displays all sign posts
 	for (auto signpost : signposts_)
-		signpost->createSign();
+		signpost->createWorldSprite();
+}
+
+// creates all the items
+void WorldBase::GENERATE_Pickups()
+{
+	Item cliff_item("Health Potion");
+	Pickup *cliff_pickup = new Pickup(2305, world_height_ - 60, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, cliff_item, inventory_);
+
+	pickups_.push_back(cliff_pickup);
+
+	// Displays all pickups
+	for (auto pickup : pickups_)
+		pickup->createWorldSprite();
 }
 
 // creates things that don't fit into any other category
 void WorldBase::GENERATE_AdditionalObjects()
 {
 
+}
+
+// Refreshes DEBUG tools
+void WorldBase::DEBUG_refresh()
+{
+	// Initialize Debug Mode
+	if (!DEBUG_has_initialized_)
+	{
+		DEBUG_screen_matrix_ = std::vector<std::vector<char>>(screen_height_, std::vector<char>(screen_width_, '/'));
+		DEBUG_has_initialized_ = true;
+	}
+	DEBUG_drawUI();
+	if (DEBUG_showing_collisions_)
+	{
+		DEBUG_displayCollisions();
+	}
+	DEBUG_displayScreen();
+}
+
+// Creates DEBUG_UI
+void WorldBase::DEBUG_drawUI()
+{
+	drawSolidRectangle(51, 2, 27, 11, ' ', DEBUG_screen_matrix_);
+	drawRectangle(51, 2, 27, 11, 'X', DEBUG_screen_matrix_);
+	Image player_position("Player Pos: (" + std::to_string(screen_position_.x + screen_width_ / 2) + std::string(",") + std::to_string(screen_position_.y + screen_height_ / 2) + std::string(")Z"));
+	addImageToMatrix(64, 4, player_position, DEBUG_screen_matrix_);
+
+	Image show_collision_info("Show Collisions: ZPress c          Z");
+	addImageToMatrix(64, 7, show_collision_info, DEBUG_screen_matrix_);
+
+	Image close_debugger("Close Debugger:  ZPress h          Z");
+	addImageToMatrix(64, 10, close_debugger, DEBUG_screen_matrix_);
+}
+
+// Display Collisions
+void WorldBase::DEBUG_displayCollisions()
+{
+	for (auto pickup : pickups_)
+		pickup->DEBUG_viewCollider();
+	for (auto character : characters_)
+		character->DEBUG_viewCollider();
+	for (auto signpost : signposts_)
+		signpost->DEBUG_viewCollider();
+}
+
+// Displays what was there before the collision markers replaced them
+void WorldBase::DEBUG_stopDisplayingCollisions()
+{
+	for (auto pickup : pickups_)
+		pickup->createWorldSprite();
+	for (auto character : characters_)
+		character->createWorldSprite();
+	for (auto signpost : signposts_)
+		signpost->createWorldSprite();
+}
+
+// Display DEBUG UI
+void WorldBase::DEBUG_displayScreen()
+{
+	for (int i = 0; i < screen_height_; i++)
+	{
+		for (int j = 0; j < screen_width_; j++)
+		{
+			if (DEBUG_screen_matrix_[i][j] != '/')
+				matrix_display_[i][j] = std::string(1, DEBUG_screen_matrix_[i][j]);
+		}
+	}
 }

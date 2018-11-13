@@ -21,7 +21,7 @@ public:
 	{
 		// Attacks
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_ShootHorizontal(width, height, matrix_display_, player_health, 10);
+		attack_pattern_1 = new Explode_Fast(width, height, matrix_display_, player_health, 500);
 		AttackPatternBase *attack_pattern_2;
 		attack_pattern_2 = new AttackPattern_ShootHorizontal(width, height, matrix_display_, player_health, 10);
 		AttackPatternBase *attack_pattern_3;

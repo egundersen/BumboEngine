@@ -4,8 +4,9 @@
 #include <algorithm>
 
 AttackPatternBase::AttackPatternBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, matrix_display_{ matrix_display }
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, matrix_display_{ matrix_display }, border_was_destroyed_{ false }
 {
+	border_ = new Attack_Border(width, height, player_position_, matrix_, element_is_occupied_);
 	element_is_occupied_ = new bool*[height_];
 	for (int i = 0; i < height_; ++i)
 		element_is_occupied_[i] = new bool[width_];
@@ -29,11 +30,15 @@ AttackPatternBase::~AttackPatternBase()
 // Calls once when the entire attack starts
 void AttackPatternBase::OnBeginAttack()
 {
-	std::cout << "BAD";
 	start_time_new_attack_ = GetTickCount();
-	start_time_update_attacks_ = GetTickCount();
 	start_time_slow_player_ = GetTickCount();
 	has_completed_initialization_ = true;
+}
+
+// Runs when border should appear (Like on beginning of attack pattern)
+void AttackPatternBase::createBorder()
+{
+	border_->onBeginAttack();
 }
 
 // Sets the players location
@@ -117,6 +122,49 @@ void AttackPatternBase::movePlayerToPosition(int x_position, int y_position, boo
 	{
 		player_position_.x = x_position;
 		player_position_.y = y_position;
+	}
+}
+
+void AttackPatternBase::moveAttack()
+{
+	for (auto it = attacks_list_.begin(); it != attacks_list_.end(); )
+	{
+		(*it)->move();
+		++it;
+	}
+}
+
+void AttackPatternBase::checkBorderCollision()
+{
+	if (!border_was_destroyed_)
+	{
+		border_->detectCollision();
+		if (border_->hasHitPlayer())
+		{
+			hurtPlayer();
+			delete(border_);
+			border_was_destroyed_ = true;
+		}
+	}
+}
+
+void AttackPatternBase::attacksCheckCollision()
+{
+	for (auto it = attacks_list_.begin(); it != attacks_list_.end(); )
+	{
+		if ((*it)->hasHitPlayer())
+		{
+			hurtPlayer();
+			delete(*it);
+			it = attacks_list_.erase(it);
+		}
+		else if ((*it)->hasAttackFinished())
+		{
+			delete(*it);
+			it = attacks_list_.erase(it);
+		}
+		else
+			++it;
 	}
 }
 

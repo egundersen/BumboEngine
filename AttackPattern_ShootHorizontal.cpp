@@ -17,7 +17,6 @@ void AttackPattern_ShootHorizontal::OnBeginAttack()
 {
 	createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
 	start_time_new_attack_ = GetTickCount();
-	start_time_update_attacks_ = GetTickCount();
 	has_completed_initialization_ = true;
 }
 
@@ -29,31 +28,15 @@ void AttackPattern_ShootHorizontal::refreshScreen()
 	else
 	{
 		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
-		if (current_time_new_attack_ >= 1000 && created_attacks_ < attacks_to_create_)
+		if (current_time_new_attack_ >= 1000 && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
 			start_time_new_attack_ = GetTickCount();
 		}
 
-		double current_time_update_attacks = GetTickCount() - start_time_update_attacks_;
-		
-		for (auto it = attacks_list_.begin(); it != attacks_list_.end(); )
-		{
-			(*it)->move();
-			if ((*it)->hasHitPlayer())
-			{
-				hurtPlayer();
-				delete(*it);
-				it = attacks_list_.erase(it);
-			}
-			else if ((*it)->hasAttackFinished())
-			{
-				delete(*it);
-				it = attacks_list_.erase(it);
-			}
-			else
-				++it;
-		}
+		attacksCheckCollision();
+		moveAttack();
+
 		evaluatePlayerInput();
 		refreshPlayerLocation();
 		displayScreen();

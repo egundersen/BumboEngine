@@ -9,14 +9,14 @@ public:
 	using Popup::Popup;
 
 	// Setters
-	void createSign()
+	void createWorldSprite()
 	{
 		Image sign("  ______ Z [ .... ]Z [_____ ]Z    ||   Z");
 		addImageToMatrix(center_position_x_, center_position_y_, sign, world_matrix_);
 		collider_height_ = sign.getHeight();
 		collider_width_ = sign.getWidth();
 		setObjectID();
-		setObjectCoordinates();
+		updateColliderCoordinates();
 	}
 
 private:

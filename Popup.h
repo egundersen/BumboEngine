@@ -9,13 +9,13 @@ class Popup : public MatrixBase
 public:
 	explicit Popup(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
 		std::string text, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
-		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, int collider_width = 9, int collider_height = 4,
-		char border_character = 'X');
+		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, char border_character = 'X', int collider_width = 9, 
+		int collider_height = 4);
 	virtual ~Popup() {}
 
 	// Setters
-	void refreshPopup();
-	virtual void createSign();
+	virtual void refreshPopup();
+	virtual void createWorldSprite();
 	void DEBUG_viewCollider();
 
 	// Getters
@@ -23,7 +23,7 @@ public:
 protected:
 	// Setters
 	void createPopupText();
-	void setObjectCoordinates();
+	void updateColliderCoordinates();
 	virtual void setObjectID() { object_type_ID_ = 1; };
 
 	// Output Displays

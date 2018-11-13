@@ -1,9 +1,27 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (BumboEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  CharacterBase.cpp
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_width': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_height': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'direction': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\characterbase.cpp(116): warning C4552: '*': result of expression not used
+c:\users\erik\documents\github\bumboengine\bumboengine\characterbase.cpp(120): warning C4552: '*': result of expression not used
   MatrixManager.cpp
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_width': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_height': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'direction': unreferenced formal parameter
 c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   WorldBase.cpp
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_width': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_height': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'direction': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   main.cpp
+c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_width': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'screen_height': unreferenced formal parameter
+c:\users\erik\documents\github\bumboengine\bumboengine\sprite.h(30): warning C4100: 'direction': unreferenced formal parameter
 c:\users\erik\documents\github\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(213): warning C4456: declaration of 'ps' hides previous local declaration
   c:\users\erik\documents\github\bumboengine\bumboengine\main.cpp(189): note: see declaration of 'ps'

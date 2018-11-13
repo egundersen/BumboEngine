@@ -2,9 +2,10 @@
 #include "Image.h"
 #include <conio.h>
 #include <iostream>
+#include <random>
 
-// Adds an image/text to a matrix at the specified coordinates and flags the location (DEPRECATED)
-void MatrixBase::addImageToMatrix_IncludeCollision(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>>& matrix, bool **& element_is_occupied)
+// Adds an image/text to a matrix at the specified coordinates and flags the location
+void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>>& matrix, bool **& element_is_occupied)
 {
 	if (image.position.x_position_min == 0)
 	{
@@ -102,6 +103,25 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 	}
 }
 
+// draws a hollow rectangle to the provided matrix and flags the location
+void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>>& matrix, bool **& element_is_occupied)
+{
+	for (int j = 0; j < width - 1; j++)
+	{
+		matrix[top_left_y][j + top_left_x] = character;
+		matrix[top_left_y + height - 1][j + top_left_x] = character;
+		element_is_occupied[top_left_y][j + top_left_x] = true;
+		element_is_occupied[top_left_y + height - 1][j + top_left_x] = true;
+	}
+	for (int i = 0; i < height; i++)
+	{
+		matrix[top_left_y + i][top_left_x] = character;
+		matrix[top_left_y + i][top_left_x + width - 1] = character;
+		element_is_occupied[top_left_y + i][top_left_x] = true;
+		element_is_occupied[top_left_y + i][top_left_x + width - 1] = true;
+	}
+}
+
 // draws a solid rectangle to the provided matrix
 void MatrixBase::drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>>& matrix)
 {
@@ -117,6 +137,15 @@ void MatrixBase::waitForInput()
 	char c = ' ';
 	while (c == ' ')
 		c = _getch();
+}
+
+int MatrixBase::generateRandomNumber(int min, int max)
+{
+	std::mt19937 rng;
+	rng.seed(std::random_device()());
+	std::uniform_int_distribution<std::mt19937::result_type> dist(min, max);
+
+	return dist(rng);
 }
 
 // Generates random sequence.
