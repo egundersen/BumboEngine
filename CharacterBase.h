@@ -1,4 +1,5 @@
 #include "MatrixBase.h"
+#include "WorldDialogBase.h"
 #include "BattleBase.h"
 #include "Popup.h"
 #include "NPCSprite.h"
@@ -6,13 +7,17 @@
 #ifndef CHARACTERBASE_H
 #define CHARACTERBASE_H
 
-class CharacterBase : public Popup
+class CharacterBase : public Popup, public BattleBase
 {
 public:
 	CharacterBase(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
 		std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
 		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height,
-		std::string basic_dialog = "", char border_character = 'X');
+
+		std::string basic_dialog, char border_character, 
+		
+		int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay,
+		int overlay_x, int overlay_y);
 	~CharacterBase();
 
 	// World Map Sprite

@@ -1,8 +1,8 @@
-#include "DialogBase.h"
+#include "BattleDialogBase.h"
 #include <Windows.h>
 #include <iostream>
 
-DialogBase::DialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices,
+BattleBattleDialogBase::BattleBattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices,
 	std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), matrix_display_{ matrix_display }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0),
 	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
@@ -12,7 +12,7 @@ DialogBase::DialogBase(int width, int height, std::vector<std::vector<std::strin
 	setBackgroundText();
 }
 
-void DialogBase::onOpenDialog()
+void BattleBattleDialogBase::onOpenDialog()
 {
 	enter_key_pressed_ = false;
 	start_time_move_cursor_ = GetTickCount();
@@ -21,7 +21,7 @@ void DialogBase::onOpenDialog()
 	setDialogOptions();
 }
 
-void DialogBase::refreshScreen()
+void BattleBattleDialogBase::refreshScreen()
 {
 	// Delay before closing dialog menu
 	if (displaying_response_)
@@ -46,7 +46,7 @@ void DialogBase::refreshScreen()
 	}
 }
 
-void DialogBase::evaluatePlayerInput()
+void BattleBattleDialogBase::evaluatePlayerInput()
 {
 	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
 
@@ -73,12 +73,12 @@ void DialogBase::evaluatePlayerInput()
 	}
 }
 
-void DialogBase::progressDialog()
+void BattleBattleDialogBase::progressDialog()
 {
 	dialog_choices_index_++;
 }
 
-void DialogBase::setBackgroundText()
+void BattleBattleDialogBase::setBackgroundText()
 {
 	for (int i = 1; i < height_ - 1; ++i)
 	{
@@ -96,7 +96,7 @@ void DialogBase::setBackgroundText()
 	addImageToMatrix(overlay_x_ - 11, overlay_y_, overlay_ascii, matrix_);
 }
 
-void DialogBase::setDialogOptions()
+void BattleBattleDialogBase::setDialogOptions()
 {
 	int dialog_choices_index = 0;
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>>::iterator row;
@@ -115,14 +115,14 @@ void DialogBase::setDialogOptions()
 	}
 }
 
-void DialogBase::setCursorText()
+void BattleBattleDialogBase::setCursorText()
 {
 	for (int i = 0; i < 4; ++i)
 		matrix_[29 + i][15] = ' ';
 	matrix_[29 + (cursor_index_)][15] = '>';
 }
 
-void DialogBase::setReponseText(std::string response_text_string)
+void BattleBattleDialogBase::setReponseText(std::string response_text_string)
 {
 	drawSolidRectangle(51, 7, 19, 9, ' ', matrix_);
 	drawRectangle(50, 6, 20, 10, 'X', matrix_);
@@ -134,7 +134,7 @@ void DialogBase::setReponseText(std::string response_text_string)
 	displaying_response_ = true;
 }
 
-void DialogBase::moveCursor(std::string move_cursor_direction)
+void BattleBattleDialogBase::moveCursor(std::string move_cursor_direction)
 {
 	if (move_cursor_direction == "UP")
 	{
@@ -152,7 +152,7 @@ void DialogBase::moveCursor(std::string move_cursor_direction)
 	}
 }
 
-void DialogBase::confirmSelection()
+void BattleBattleDialogBase::confirmSelection()
 {
 	int dialog_choices_index = 0;
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>>::iterator row;
@@ -177,12 +177,12 @@ void DialogBase::confirmSelection()
 	}
 }
 
-bool DialogBase::checkLevel()
+bool BattleBattleDialogBase::checkLevel()
 {
 	return false;
 }
 
-void DialogBase::displayScreen()
+void BattleBattleDialogBase::displayScreen()
 {
 	for (int i = 0; i < height_; i++) {
 		for (int j = 0; j < width_; j++) {

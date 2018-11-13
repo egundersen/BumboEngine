@@ -5,7 +5,7 @@
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d')
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -18,6 +18,7 @@ WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int w
 void WorldBase::onEnterWorld()
 {
 	start_time_player_speed_ = GetTickCount();
+	should_enter_battle_ = false;
 }
 
 // Calls every frame
@@ -47,20 +48,35 @@ void WorldBase::refreshScreen()
 				{
 					displayScreen();
 					character->refreshPopup(opposite_player_direction_);
+					selected_character_ = character; // TODO: Not have this
+					should_enter_battle_ = true;
 				}
 			break;
 		default:
 			break;
 		}
 	}
+	// else if:
+	// Checks if player standing in event.trigger_zone
+		// Exits if events_.isComplete()
+			// Checks event.trigger_zone ID
+				// --> Runs event code
 	else
 	{
-		//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
-		//if (!characters_[0]->hasReachDestination())
-		//	characters_[0]->move(2382, 'x', 250);
+		// teleport [example]
+			//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
+
+		// move [example]
+			//if (!characters_[0]->hasReachDestination())
+			//	characters_[0]->move(2382, 'x', 250);
 		displayScreen();
 	}
 	evaluatePlayerInput();
+}
+
+CharacterBase * WorldBase::getSelectedCharacter()
+{
+	return selected_character_;
 }
 
 // Returns true if player collides with something
@@ -254,6 +270,7 @@ void WorldBase::generateWorld()
 	GENERATE_NonHostileNPCs();
 	GENERATE_Pickups();
 	GENERATE_Signposts();
+	GENERATE_Events();
 
 	// Displays all Characters
 	for (auto character : characters_)
@@ -525,13 +542,12 @@ void WorldBase::GENERATE_OutsideArea()
 	addImageToMatrix(2355, world_height_ - 65, rock_2, world_matrix_, true);
 }
 
-// creates filler NPCs that don't attack. They don't need a Chr file to create them because
-// They only have only simple dialog and NO ATTACKS
+// creates NPCs that shouldn't attack (They are capable of it, but shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	CharacterBase *standing_in_line_1;
-	standing_in_line_1 = new CharacterBase(2372, 4939, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, "HEllO PLAYER");
-
+	standing_in_line_1 = new Chr_AllMight(2372, 4936, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_);
+	
 	characters_.push_back(standing_in_line_1);
 }
 
@@ -552,7 +568,7 @@ void WorldBase::GENERATE_Signposts()
 // creates all the items
 void WorldBase::GENERATE_Pickups()
 {
-	Item cliff_item("Health Potion");
+	Item cliff_item("Health Potion", 2);
 	Pickup *cliff_pickup = new Pickup(2305, world_height_ - 60, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, cliff_item, inventory_);
 
 	pickups_.push_back(cliff_pickup);
@@ -566,6 +582,12 @@ void WorldBase::GENERATE_Pickups()
 void WorldBase::GENERATE_AdditionalObjects()
 {
 
+}
+
+// creates events that trigger cutscenes, battles, enemy_movement, etc...
+void WorldBase::GENERATE_Events()
+{
+	// TODO: creates event (), pass function to event
 }
 
 // Refreshes DEBUG tools

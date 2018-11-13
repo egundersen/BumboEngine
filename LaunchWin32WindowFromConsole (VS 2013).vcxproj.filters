@@ -97,7 +97,10 @@
       <Filter>Source Files\World</Filter>
     </ClCompile>
     <ClCompile Include="NPCSprite.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="EventBase.cpp">
+      <Filter>Source Files\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +155,6 @@
     <ClInclude Include="Characters.h">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="DialogBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WorldBase.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
@@ -186,6 +186,15 @@
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="NPCSprite.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleDialogBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldDialogBase.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="EventBase.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,7 +3,6 @@
 #include "Inventory.h"
 #include "StartScreen.h"
 #include "WorldBase.h"
-#include "Characters.h"
 
 #ifndef MatrixManager_H
 #define MatrixManager_H
@@ -31,7 +30,6 @@ private:
 	std::vector<std::vector<char>> matrix_;
 	std::string current_vector_space_;
 	Inventory inventory_;
-	Chr_AllMight DEBUG_battle_;
 	WorldBase maze_;
 
 };

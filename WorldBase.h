@@ -3,7 +3,8 @@
 #include "Popup.h"
 #include "Signpost.h"
 #include "Pickup.h"
-#include "CharacterBase.h"
+#include "Characters.h"
+#include "EventBase.h"
 #include <utility>
 
 #ifndef WORLDBASE_H
@@ -23,6 +24,10 @@ public:
 	// Setters
 	void onEnterWorld();
 	void refreshScreen();
+
+	// Getters
+	bool shouldEnterBattle() { return should_enter_battle_; }
+	CharacterBase *getSelectedCharacter();
 private:
 	// Setters
 	void evaluatePlayerInput();
@@ -43,6 +48,7 @@ private:
 	void GENERATE_Signposts();
 	void GENERATE_Pickups();
 	void GENERATE_AdditionalObjects();
+	void GENERATE_Events();
 
 	// Output Displays
 	void displayScreen();
@@ -57,7 +63,7 @@ private:
 	int screen_width_, screen_height_, world_width_, world_height_, &player_health_, start_time_player_speed_,
 		player_speed_modifier_;
 	char opposite_player_direction_;
-	bool is_viewing_popup_, DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
+	bool is_viewing_popup_, DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_, should_enter_battle_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> world_matrix_;
 	std::vector<std::vector<char>> DEBUG_screen_matrix_;
@@ -67,6 +73,8 @@ private:
 	std::vector<Signpost*> signposts_;
 	std::vector<Pickup*> pickups_;
 	std::vector<CharacterBase*> characters_;
+	std::vector<EventBase*> events_;
+	CharacterBase *selected_character_;
 	Inventory &inventory_;
 	ScreenPosition screen_position_;
 	PlayerSprite player_sprite_;

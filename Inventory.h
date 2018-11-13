@@ -13,7 +13,7 @@ public:
 	// Setters
 	void onOpenInventory();
 	void evaluatePlayerInput();
-	void addItem(std::string item_name);
+	void addItem(std::string item_name, int modifier);
 	void addItem(Item item);
 
 private:

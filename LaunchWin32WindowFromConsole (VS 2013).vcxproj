@@ -160,6 +160,7 @@
     <ClCompile Include="BattleBase.cpp" />
     <ClCompile Include="CharacterBase.cpp" />
     <ClCompile Include="DialogBase.cpp" />
+    <ClCompile Include="EventBase.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
@@ -187,7 +188,8 @@
     <ClInclude Include="Characters.h" />
     <ClInclude Include="CharacterBase.h" />
     <ClInclude Include="Chr_AllMight.h" />
-    <ClInclude Include="DialogBase.h" />
+    <ClInclude Include="BattleDialogBase.h" />
+    <ClInclude Include="EventBase.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
@@ -203,6 +205,7 @@
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="WinMainParameters.h" />
     <ClInclude Include="WorldBase.h" />
+    <ClInclude Include="WorldDialogBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc" />

@@ -1,15 +1,27 @@
-#include "BattleBase.h"
+#include "CharacterBase.h"
 #include <string>
 
 #ifndef CHR_ALLMIGHT
 #define CHR_ALLMIGHT
 
-class Chr_AllMight : public BattleBase
+class Chr_AllMight : public CharacterBase
 {
 public:
-	Chr_AllMight(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health,
+	Chr_AllMight(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display,
 
-		/* Default ASCII Art for All Might */
+		// Character will attack player immediatly, upon seeing them.
+		bool attack_on_sight = false, //TODO: W.I.P.
+
+		/* Popup Text		(Shows 1 text screen. useful for unimportant characters. Leave BLANK for main characters) */
+		std::string basic_dialog = "HELLO PLAYERZ",
+		char border_character = 'X',
+		int popup_width = 23,
+		int popup_height = 9,
+
+		/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
+		//TODO: W.I.P.
+
+		/* Default ASCII Art for BATTLE SEQUENCE */
 		int boss_health = 22,
 		std::string boss_name = "ALL MIGHT",
 		std::string boss_ascii_art = "            ,,#,@@@@@,@,*@@@@,*#@@@%             Z           ,,,,,,,@@(&,@@@@@@@@@@@@@%,           Z          @,#,,,,,,,,,,,@,%@@@@@&,,@@@           Z         ,,,@@,,,,,,,,,,,,%@@@@@@,,@@@@          Z         @@,#,,,,,,,,,,,,,%@@@@@@,,,@@@          Z         @@@,,,,,,,,,,,,,,@@@@@@@@,,,@@          Z        ,,@,,,,,,,,,,,,,,,@@@@@@@@,,,@@@         Z        ,@@,,&,&,@,,,.,,,@@@@@,@,@,,,,@@         Z       ,@#,,,,,@@&,@,#(%,,@,&@@@@@@,,,@@@        Z        ,@,,,,,%@@@@@,,/#*@@@@@@@@,,,,@@@        Z       ,@#,,,,,,,(@@@%,@@@@@@@@@@@@,,,*@,,       Z      ,,@,,,,,,,,,,,,,,,,@@@,,*@@@@@,,,,@,       Z      ,@,,,,,,,,,,,,,,,,,@@@,,,,@@@@,,,@,,       Z      @,*,#,,,,,,,,,,,,,,@@@@,,@@@@@@,@@,,       Z      ,@@,,@,@,,,,,,@@@@@@@@@&,@@@@@@,,@,,       Z      ,,@,,,@,,,,&,,,,,@@@@/,@@@@@@@@,@@,.       Z       ,,@,,,,,@,,,,,,,,,,,,,,(@@@@@,,@%,,       Z      ,&,,,,,,@,,,,,,,,,,,,,,,,,,@@@,,,,@@,&     Z     ,,,@@,,,,,@@%@**,,,,,,,,,,,@@@@,,@@@@  .    Z   @@,,@,@#,,/,,@&,,,,,,,,,,,,@,@@@@,,@@@@@      Z    ,(@@,,@,,@,,,&,,,,,,,,,,,,@@@@@@,,@@.@@@@,   Z   ,@@@@,,/,,@@,,,,,,,,,,,,@@@@@@@@@,.@@,@@@@@@  Z &@@@@@@,,,@,,,,,,,,,,,,,@@@@@@@@@@@,@@@&@@(     Z@@@@ @@(,,,,@@,,,,,,,,,,,@@@@@@@@@,@@@@@@*@@@@,  Z    @@@,,,,,,,@@,,,,,,,,,@@@@@@@,@@@@@@@@,       Z      @,,,,,,,,,,@@,,,,,*@@@@%,@@@@@@@@@@@%      Z       @@,,,,,,,,,,@@@@@@@@@@@@@@@@@@@@@@@       Z     @@@@@@@@/,,,,,,@@@@@@@@@@@@@@@@@@@@@@@@     ",
@@ -17,29 +29,31 @@ public:
 		int overlay_x = 40,
 		int overlay_y = 20)
 
-		: BattleBase(width, height, matrix_display, player_health, boss_health, boss_name, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
+		: CharacterBase(center_position_x, center_position_y, popup_width, popup_height, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height, basic_dialog, border_character, player_health, boss_health, boss_name, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
 	{
 		// Attacks
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new Explode_Fast(width, height, matrix_display_, player_health, 500);
+		attack_pattern_1 = new Explode_Fast(screen_width, screen_height, matrix_display, player_health, 500);
 		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new AttackPattern_ShootHorizontal(width, height, matrix_display_, player_health, 10);
+		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 250);
 		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new AttackPattern_ShootHorizontal(width, height, matrix_display_, player_health, 10);
+		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, matrix_display, player_health, 100);
 		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(width, height, matrix_display_, player_health, 10);
+		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
 		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootHorizontal(width, height, matrix_display_, player_health, 10);
+		attack_pattern_5 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
 		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new AttackPattern_ShootHorizontal(width, height, matrix_display_, player_health, 10);
-		attack_patterns_.push_back(attack_pattern_1);
-		/*attack_patterns_.push_back(attack_pattern_2);
+		attack_pattern_6 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
+		attack_patterns_.push_back(attack_pattern_4);
 		attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_2);
+		attack_patterns_.push_back(attack_pattern_1);
+		/*attack_patterns_.push_back(attack_pattern_3);
 		attack_patterns_.push_back(attack_pattern_4);
 		attack_patterns_.push_back(attack_pattern_5);
 		attack_patterns_.push_back(attack_pattern_6);//*/
 
-		// (In-Battle) Dialog:		dialog choice, boss's response, should progress dialog (only 1!)
+		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
 		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.1", "1.1 NO", false));
 		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.2", "1.2 NO", false));
@@ -62,9 +76,9 @@ public:
 		dialog_choices_.push_back(dialog_choice_2);
 		dialog_choices_.push_back(dialog_choice_3);
 
-		// Just a little check to make sure you typed the above code correctly.
-		// This will throw an exception if you did something wrong
-		// Remember! Vector Size cannot be greater than 4! (always 4 dialog options at once)
+		/* Just a little check to make sure you typed the above code correctly.
+		 * This will throw an exception if you did something wrong
+		 * Remember! Vector Size cannot be greater than 4! (always 4 dialog options at once) */
 #ifdef _DEBUG
 		for (auto dialog_choice : dialog_choices_)
 			if (dialog_choice.size() > 4)

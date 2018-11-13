@@ -61,12 +61,15 @@ void Inventory::setInventoryBackgroundText()
 void Inventory::setItemsListText()
 {
 	for (int i = 0; i < items_list_.size(); ++i)
+		for (int j = 0; j < 20; ++j)
+			matrix_[13 + (2 * i)][52 + j] = ' ';
+	for (int i = 0; i < items_list_.size(); ++i)
 	{
 		std::string item = "Z" + items_list_.at(i).getName() + "Z";
 		Image items(item);
 		addImageToMatrix(58, 13 + (2 * i), items, matrix_);
 	}
-	for (int i = items_list_.size(); i < 10; ++i)
+	for (int i = items_list_.size(); i < 10; ++i) // items_list_.size()
 		for (int j = 0; j < 20; ++j)
 			matrix_[13 + (2 * i)][52 + j] = ' ';
 }
@@ -121,8 +124,8 @@ void Inventory::evaluatePlayerInput()
 void Inventory::useItem()
 {
 	//TODO: Do something for item name: items_list_.at(cursor_index_);
-	if (items_list_.at(cursor_index_).getName() == "Health Potion")
-		player_health_ += 3;
+	if (items_list_.at(cursor_index_).getType() == "HEAL")
+		player_health_ += items_list_.at(cursor_index_).getModifier();
 
 	// delete selected item
 	removeItem(cursor_index_);
@@ -131,9 +134,9 @@ void Inventory::useItem()
 }
 
 // Add item to inventory (from a string)
-void Inventory::addItem(std::string item_name)
+void Inventory::addItem(std::string item_name, int modifier)
 {
-	Item item(item_name);
+	Item item(item_name, modifier);
 	items_list_.push_back(item);
 }
 
