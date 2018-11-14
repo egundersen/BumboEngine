@@ -41,7 +41,7 @@ private:
 	// World Generation-related Setters
 	void GENERATE_WorldBorder();
 	void GENERATE_OutsideArea();
-	//void GENERATE_Maze();
+	void GENERATE_Maze();
 	//void GENERATE_Enemies();
 	void GENERATE_NonHostileNPCs();
 	//void GENERATE_Cutscenes();

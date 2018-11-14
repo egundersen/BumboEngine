@@ -102,6 +102,9 @@
     <ClCompile Include="EventBase.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
+    <ClCompile Include="AttackPattern_ShootAtPlayer.cpp">
+      <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -196,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="EventBase.h">
       <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootAtPlayer.h">
+      <Filter>Header Files\Attacks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

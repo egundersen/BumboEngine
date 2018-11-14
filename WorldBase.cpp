@@ -67,13 +67,14 @@ void WorldBase::refreshScreen()
 			//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
 
 		// move [example]
-			//if (!characters_[0]->hasReachDestination())
-			//	characters_[0]->move(2382, 'x', 250);
+		//	if (!characters_[0]->hasReachDestination())
+		//		characters_[0]->move(2382, 'x', 250);
 		displayScreen();
 	}
 	evaluatePlayerInput();
 }
 
+// Returns address to selected character (Either the one fighting player, talking, etc...)
 CharacterBase * WorldBase::getSelectedCharacter()
 {
 	return selected_character_;
@@ -540,6 +541,12 @@ void WorldBase::GENERATE_OutsideArea()
 	addImageToMatrix(2325, world_height_ - 47, rock_1, world_matrix_, true);
 	Image rock_2("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
 	addImageToMatrix(2355, world_height_ - 65, rock_2, world_matrix_, true);
+}
+
+// creates the maze
+void WorldBase::GENERATE_Maze()
+{
+	// NOTE: you can copy and paste code from GENERATE_OutsideArea() 
 }
 
 // creates NPCs that shouldn't attack (They are capable of it, but shouldn't)

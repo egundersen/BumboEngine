@@ -153,6 +153,7 @@
     <ClCompile Include="AttackBase.cpp" />
     <ClCompile Include="AttackPatternBase.cpp" />
     <ClCompile Include="AttackPattern_Explode.cpp" />
+    <ClCompile Include="AttackPattern_ShootAtPlayer.cpp" />
     <ClCompile Include="AttackPattern_ShootHorizontal.cpp" />
     <ClCompile Include="Attack_Border.cpp" />
     <ClCompile Include="Attack_Explode.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="AttackPatternBase.h" />
     <ClInclude Include="AttackPatterns.h" />
     <ClInclude Include="AttackPattern_Explode.h" />
+    <ClInclude Include="AttackPattern_ShootAtPlayer.h" />
     <ClInclude Include="AttackPattern_ShootHorizontal.h" />
     <ClInclude Include="Attacks.h" />
     <ClInclude Include="Attack_Border.h" />
