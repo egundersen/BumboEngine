@@ -20,6 +20,7 @@ public:
 
 	// Getters
 	bool isBattleOver() { return is_battle_finished_; }
+	bool isDestroyed() { return is_destroyed_; }
 	std::string getLocalVectorSpace() { return local_vector_space_; }
 protected:
 	// Setters
@@ -49,8 +50,8 @@ protected:
 	int width_, height_, &player_health_, boss_health_, cursor_index_,
 		start_time_move_cursor_, start_time_battle_end_animation_, overlay_x_, overlay_y_;
 	std::string ascii_overlay_, boss_ascii_art_, boss_name_, local_vector_space_;
-	bool is_battle_finished_, allow_spare_;
-	BattleBattleDialogBase dialog_;
+	bool is_battle_finished_, allow_spare_, is_destroyed_;
+	BattleDialogBase dialog_;
 };
 
 #endif // !BATTLEBASE_H

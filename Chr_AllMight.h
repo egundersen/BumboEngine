@@ -13,13 +13,10 @@ public:
 		bool attack_on_sight = false, //TODO: W.I.P.
 
 		/* Popup Text		(Shows 1 text screen. useful for unimportant characters. Leave BLANK for main characters) */
-		std::string basic_dialog = "HELLO PLAYERZ",
+		std::string basic_dialog = "", // Leaving blank allows for advanced dialog
 		char border_character = 'X',
 		int popup_width = 23,
 		int popup_height = 9,
-
-		/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
-		//TODO: W.I.P.
 
 		/* Default ASCII Art for BATTLE SEQUENCE */
 		int boss_health = 22,
@@ -45,7 +42,7 @@ public:
 		AttackPatternBase *attack_pattern_6;
 		attack_pattern_6 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
 		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_3);
+		/*attack_patterns_.push_back(attack_pattern_3);
 		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_1);
 		attack_patterns_.push_back(attack_pattern_5);
@@ -85,6 +82,46 @@ public:
 			if (dialog_choice.size() > 4)
 				throw std::invalid_argument("dialog_choice size must not be greater than 4! There can only be 4 dialog options at a time");
 #endif
+	}
+
+	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
+	void setDialogNodes()
+	{
+		Item health_potion("Bottle o' syrup", 1);
+
+		// CREATE DIALOG NODES
+		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh Zfancy seeing you hereZ");
+		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! ZCan you guess why?Z");
+		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love meZ a good joke!Z");
+		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
+		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me!ZLet's fight!!!!Z", "FIGHT");
+		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here,Zhave my most valubleZpossession!Z", health_potion);
+		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where areZyou going!!!?Z");
+		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "i dont know...ZWhat is it?Z");
+		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!!ZDIE!!! DIEE!!!Z", "FIGHT");
+		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will neverZspeak with youZagainZ");
+		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...Z", "FIGHT");
+		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z");
+		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ");
+
+		// Link Dialog Nodes
+		node_1->setChoice1(node_1_1);
+		node_1->setChoice2(node_1_2);
+		node_1->setChoice3(node_1_3);
+
+		node_1_1->setChoice1(node_1_1_1);
+		node_1_1->setChoice2(node_1_1_2);
+		node_1_1->setChoice3(node_1_1_3);
+
+		node_1_2->setChoice1(node_1_2_1);
+		node_1_2->setChoice2(node_1_2_2);
+		node_1_2->setChoice3(node_1_2_3);
+
+		node_1_2_1->setChoice1(node_1_2_1_1);
+		node_1_1_2->setChoice1(node_1_1_2_1);
+		node_1_1_1->setChoice1(node_1_1_1_1);
+
+		setHeadNode(node_1);
 	}
 };
 

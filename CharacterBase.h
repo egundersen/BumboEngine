@@ -1,5 +1,6 @@
 #include "MatrixBase.h"
-#include "WorldDialogBase.h"
+#include "DialogManager.h"
+#include "DialogNode.h"
 #include "BattleBase.h"
 #include "Popup.h"
 #include "NPCSprite.h"
@@ -7,7 +8,7 @@
 #ifndef CHARACTERBASE_H
 #define CHARACTERBASE_H
 
-class CharacterBase : public Popup, public BattleBase
+class CharacterBase : public Popup, public BattleBase, public DialogManager
 {
 public:
 	CharacterBase(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
@@ -28,13 +29,15 @@ public:
 	void resetMovingPath();
 	void move(int ending_position, char axis, int speed);
 	void teleportNPC(int center_position_x, int center_position_y);
+	void onDespawn();
 
 	bool hasReachDestination() { return has_reached_destination_; }
 	int getCenterPositionX() { return center_position_x_; }
 	int getCenterPositionY() { return center_position_y_; }
 
 	// Basic Popup
-	void refreshPopup(char player_facing_direction);
+	void refreshPopup();
+	void faceDirection(char player_facing_direction);
 	bool useBasicDialog() { return use_basic_dialog_; }
 private:
 	void eraseSpriteAndColliders();

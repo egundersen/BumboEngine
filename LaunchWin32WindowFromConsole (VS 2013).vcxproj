@@ -160,7 +160,8 @@
     <ClCompile Include="Attack_HorizontalLine.cpp" />
     <ClCompile Include="BattleBase.cpp" />
     <ClCompile Include="CharacterBase.cpp" />
-    <ClCompile Include="DialogBase.cpp" />
+    <ClCompile Include="BattleDialogBase.cpp" />
+    <ClCompile Include="DialogManager.cpp" />
     <ClCompile Include="EventBase.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="CharacterBase.h" />
     <ClInclude Include="Chr_AllMight.h" />
     <ClInclude Include="BattleDialogBase.h" />
+    <ClInclude Include="DialogNode.h" />
     <ClInclude Include="EventBase.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
@@ -207,7 +209,7 @@
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="WinMainParameters.h" />
     <ClInclude Include="WorldBase.h" />
-    <ClInclude Include="WorldDialogBase.h" />
+    <ClInclude Include="DialogManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc" />

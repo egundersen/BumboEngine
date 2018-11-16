@@ -17,6 +17,7 @@ class MatrixBase
 protected:
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool exclude_spaces = false);
+	void addTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>> &matrix);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);

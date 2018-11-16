@@ -7,7 +7,7 @@
 BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_health_{ boss_health }, boss_name_{ boss_name }, boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
 	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(0), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
-	dialog_(width, height, matrix_display, dialog_choices_, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
+	dialog_(width, height, matrix_display, dialog_choices_, boss_ascii_art, ascii_overlay, overlay_x, overlay_y), is_destroyed_{ false }
 {
 	start_time_move_cursor_ = GetTickCount();
 	setBackgroundText();
@@ -323,6 +323,7 @@ void BattleBase::bossDestroyed()
 	displayScreen();
 	if (current_time_battle_end_animation > 10000)
 	{
+		is_destroyed_ = true;
 		is_battle_finished_ = true;
 	}
 }

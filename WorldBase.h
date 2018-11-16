@@ -33,6 +33,9 @@ private:
 	void evaluatePlayerInput();
 	void generateWorld();
 	void modifyWorld();
+	void checkForItem();
+	void checkForBattle();
+	void shouldDespawnCharacter();
 
 	// Getters
 	bool hasCollided(char direction, int offset);

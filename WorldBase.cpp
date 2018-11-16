@@ -19,6 +19,7 @@ void WorldBase::onEnterWorld()
 {
 	start_time_player_speed_ = GetTickCount();
 	should_enter_battle_ = false;
+	shouldDespawnCharacter();
 }
 
 // Calls every frame
@@ -46,10 +47,21 @@ void WorldBase::refreshScreen()
 			for (CharacterBase *character : characters_)
 				if (character->getUniqueObjectID() == getFacingEntity().second)
 				{
-					displayScreen();
-					character->refreshPopup(opposite_player_direction_);
-					selected_character_ = character; // TODO: Not have this
-					should_enter_battle_ = true;
+					if (character->useBasicDialog()) // Character uses basic dialog popup
+					{
+						displayScreen();
+						character->refreshPopup();
+					}
+					else // Character uses advanced dialog system
+					{
+						selected_character_ = character;
+						selected_character_->showDialog();
+					}
+					character->faceDirection(opposite_player_direction_);
+					player_sprite_.setPlayerMoving("not verticle");
+					player_sprite_.setPlayerMoving("not horizontal");
+					
+					is_viewing_popup_ = false;
 				}
 			break;
 		default:
@@ -63,13 +75,16 @@ void WorldBase::refreshScreen()
 				// --> Runs event code
 	else
 	{
+		checkForItem();
+		checkForBattle();
+		displayScreen();
+		
 		// teleport [example]
 			//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
 
 		// move [example]
 		//	if (!characters_[0]->hasReachDestination())
 		//		characters_[0]->move(2382, 'x', 250);
-		displayScreen();
 	}
 	evaluatePlayerInput();
 }
@@ -162,6 +177,8 @@ void WorldBase::displayScreen()
 	}
 
 	player_sprite_.displaySprite(screen_width_, screen_height_);
+	if (selected_character_ != nullptr && selected_character_->shouldShowDialog())
+		selected_character_->displayDialogMenu();
 
 #ifdef _DEBUG
 	if (DEBUG_mode_enabled_)
@@ -174,11 +191,32 @@ void WorldBase::evaluatePlayerInput()
 {
 	double current_time_move_player = GetTickCount() - start_time_player_speed_;
 
-	if (GetAsyncKeyState(0x45) & 0x8000) // Press E
+	if (selected_character_ != nullptr && selected_character_->shouldShowDialog()) // Navigating dialog
+	{
+		if (current_time_move_player >= 300) // Movement UP, DOWN, LEFT, RIGHT
+		{
+			if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+			{
+				selected_character_->moveDialogCursor("RETURN");
+				start_time_player_speed_ = GetTickCount();
+			}
+			else if (GetAsyncKeyState(VK_UP) & 0x8000)
+			{
+				selected_character_->moveDialogCursor("UP");
+				start_time_player_speed_ = GetTickCount();
+			}
+			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+			{
+				selected_character_->moveDialogCursor("DOWN");
+				start_time_player_speed_ = GetTickCount();
+			}
+		}
+	}
+	else if (GetAsyncKeyState(0x45) & 0x8000) // Press E
 	{
 		is_viewing_popup_ = true;
 	}
-	else
+	else // Walking on map
 	{
 		if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
 		{
@@ -244,7 +282,7 @@ void WorldBase::evaluatePlayerInput()
 #ifdef _DEBUG
 	if (GetAsyncKeyState(0x47) & 0x8000) // Open DEBUG Mode!		Press G
 		DEBUG_mode_enabled_ = true;
-	if (GetAsyncKeyState(0x48) & 0x8000) // Close DEBUG Mode!		Press G
+	if (GetAsyncKeyState(0x48) & 0x8000) // Close DEBUG Mode!		Press H
 	{
 		if (DEBUG_showing_collisions_)
 			DEBUG_stopDisplayingCollisions();
@@ -282,6 +320,44 @@ void WorldBase::generateWorld()
 void WorldBase::modifyWorld()
 {
 
+}
+
+// Checks whether or not to give the player an item from dialog
+void WorldBase::checkForItem()
+{
+	if (selected_character_ != nullptr && selected_character_->shouldGiveItem())
+	{
+		inventory_.addItem(selected_character_->givenItem());
+		selected_character_->stopGivingItem();
+	}
+}
+
+// Checks whether or not to enter battle from dialog
+void WorldBase::checkForBattle()
+{
+	if (selected_character_ != nullptr && selected_character_->shouldEnterBattle())
+	{
+		should_enter_battle_ = true;
+		selected_character_->stopBattle();
+	}
+}
+
+// Removes character from array (They are dead). Called after battle has ended in player's favor
+void WorldBase::shouldDespawnCharacter()
+{
+	if (selected_character_ != nullptr)
+	{
+		if (selected_character_->isDestroyed())
+		{
+			selected_character_->onDespawn();
+			//characters_.erase(std::remove(characters_.begin(), characters_.end(), selected_character_), characters_.end());
+			{
+				auto it = std::find(characters_.begin(), characters_.end(), selected_character_);
+				if (it != characters_.end()) { characters_.erase(it); }
+			}
+			selected_character_ = nullptr;
+		}
+	}
 }
 
 // creates a nice border around the world. Useful for debugging, helps tell if you are building near edge of world
@@ -555,6 +631,8 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	CharacterBase *standing_in_line_1;
 	standing_in_line_1 = new Chr_AllMight(2372, 4936, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_);
 	
+	standing_in_line_1->setDialogNodes();
+
 	characters_.push_back(standing_in_line_1);
 }
 
@@ -588,7 +666,7 @@ void WorldBase::GENERATE_Pickups()
 // creates things that don't fit into any other category
 void WorldBase::GENERATE_AdditionalObjects()
 {
-
+	
 }
 
 // creates events that trigger cutscenes, battles, enemy_movement, etc...

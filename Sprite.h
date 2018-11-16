@@ -12,6 +12,7 @@ public:
 
 	// Setters
 	virtual void displaySprite(int screen_width, int screen_height);
+	virtual void removeSprite(int center_position_x, int center_position_y) {}
 	void setPlayerAnimationSpeed(int player_animation_speed) { player_animation_speed_ = player_animation_speed; }
 	void setDirection(char direction) { direction_ = direction; }
 	virtual void initializeSprites() {}

@@ -66,9 +66,6 @@
     <ClCompile Include="BattleBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DialogBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WorldBase.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
@@ -104,6 +101,12 @@
     </ClCompile>
     <ClCompile Include="AttackPattern_ShootAtPlayer.cpp">
       <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleDialogBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,14 +197,17 @@
     <ClInclude Include="BattleDialogBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WorldDialogBase.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
     <ClInclude Include="EventBase.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="AttackPattern_ShootAtPlayer.h">
       <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogManager.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogNode.h">
+      <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

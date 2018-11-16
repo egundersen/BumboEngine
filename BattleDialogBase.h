@@ -4,9 +4,9 @@
 #ifndef BATTLEDIALOGBASE_H
 #define BATTLEDIALOGBASE_H
 
-class BattleBattleDialogBase : public MatrixBase {
+class BattleDialogBase : public MatrixBase {
 public:
-	BattleBattleDialogBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices,
+	BattleDialogBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices,
 		std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y);
 
 	// Setters

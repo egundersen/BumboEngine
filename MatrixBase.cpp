@@ -88,6 +88,15 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 	}
 }
 
+// Adds a simple line of text to a matrix at the specified coordinates
+void MatrixBase::addTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>>& matrix)
+{
+	for (int j = 0; j < text.length(); j++)
+	{
+		matrix[top_left_y][top_left_x + j] = text[j];
+	}
+}
+
 // draws a hollow rectangle to the provided matrix
 void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>>& matrix)
 {
