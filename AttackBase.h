@@ -13,8 +13,8 @@ public:
 	virtual void move() {};
 
 	// Getters
-	virtual bool hasHitPlayer() { return has_hit_player_; }
-	virtual bool hasAttackFinished() { return has_attack_finished_; }
+	bool hasHitPlayer() { return has_hit_player_; }
+	bool hasAttackFinished() { return has_attack_finished_; }
 protected:
 	int width_, height_;
 	bool has_hit_player_, has_attack_finished_, **&element_is_occupied_;

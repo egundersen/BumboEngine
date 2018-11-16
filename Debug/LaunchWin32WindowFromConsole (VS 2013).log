@@ -1,10 +1,31 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (BumboEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  NPCSprite.cpp
+  AttackPattern_VerticleGap.cpp
+  BattleBase.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\battlebase.cpp(179): warning C4244: '=': conversion from 'int' to 'char', possible loss of data
+  CharacterBase.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_y': unreferenced formal parameter
 c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_x': unreferenced formal parameter
 c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'screen_width': unreferenced formal parameter
 c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'screen_height': unreferenced formal parameter
 c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'direction': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\characterbase.cpp(121): warning C4552: '*': operator has no effect; expected operator with side-effect
+c:\users\erikg\source\repos\bumboengine\bumboengine\characterbase.cpp(125): warning C4552: '*': operator has no effect; expected operator with side-effect
+  MatrixManager.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_y': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_x': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'screen_width': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'screen_height': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'direction': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\chr_allmight.h(13): warning C4100: 'attack_on_sight': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   WorldBase.cpp
 c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_y': unreferenced formal parameter
 c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_x': unreferenced formal parameter
@@ -15,5 +36,21 @@ c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: un
 c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\erikg\source\repos\bumboengine\bumboengine\chr_allmight.h(13): warning C4100: 'attack_on_sight': unreferenced formal parameter
+  main.cpp
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_y': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(15): warning C4100: 'center_position_x': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'screen_width': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'screen_height': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\sprite.h(31): warning C4100: 'direction': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\item.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\erikg\source\repos\bumboengine\bumboengine\chr_allmight.h(13): warning C4100: 'attack_on_sight': unreferenced formal parameter
+c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(213): warning C4456: declaration of 'ps' hides previous local declaration
+  c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(189): note: see declaration of 'ps'
+c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(190): warning C4101: 'font': unreferenced local variable
+c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(191): warning C4101: 'hdc': unreferenced local variable
   Generating Code...
+c:\users\erikg\source\repos\bumboengine\bumboengine\main.cpp(300): warning C4702: unreachable code
   LaunchWin32WindowFromConsole (VS 2013).vcxproj -> C:\Users\erikg\source\repos\BumboEngine\BumboEngine\Debug\LaunchWin32WindowFromConsole (VS 2013).exe

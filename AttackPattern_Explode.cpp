@@ -4,10 +4,9 @@
 #include "Image.h"
 #include <windows.h>
 #include <algorithm>
-#include <iostream>
 
 AttackPattern_Explode::AttackPattern_Explode(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks), create_attack_delay_{ 200 }, attack_diameter_{ 4 }, delay_till_explode_{ 1500 }, duration_of_explosion_{ 1000 }
+	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks), create_attack_delay_{ 50 }, attack_diameter_{ 4 }, delay_till_explode_{ 1500 }, duration_of_explosion_{ 1000 }
 {
 }
 

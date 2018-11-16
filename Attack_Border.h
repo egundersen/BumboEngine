@@ -14,9 +14,6 @@ public:
 	void onBeginAttack();
 	void detectCollision();
 
-	// Getters
-	bool hasHitPlayer() { return has_hit_player_; }
-	bool hasAttackFinished() { return has_attack_finished_; }
 protected:
 
 	bool has_initialized_;

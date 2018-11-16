@@ -13,9 +13,6 @@ public:
 	// Setters
 	void move();
 
-	// Getters
-	bool hasHitPlayer() { return has_hit_player_; }
-	bool hasAttackFinished() { return has_attack_finished_; }
 private:
 	// Setters
 	void detectCollision();
