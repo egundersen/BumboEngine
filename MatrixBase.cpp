@@ -148,6 +148,7 @@ void MatrixBase::waitForInput()
 		c = _getch();
 }
 
+// Generates a random number
 int MatrixBase::generateRandomNumber(int min, int max)
 {
 	std::mt19937 rng;
