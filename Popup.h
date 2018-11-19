@@ -14,7 +14,7 @@ public:
 	virtual ~Popup() {}
 
 	// Setters
-	virtual void refreshPopup();
+	virtual void refreshPopup(int center_position_x = 0, int center_position_y = 0);
 	virtual void createWorldSprite();
 	void DEBUG_viewCollider();
 
@@ -27,7 +27,7 @@ protected:
 	virtual void setObjectID() { object_type_ID_ = 1; };
 
 	// Output Displays
-	void displayPopup();
+	void displayPopup(int popup_position_x, int popup_position_y);
 
 	int center_position_x_, center_position_y_, popup_width_, popup_height_, screen_width_, screen_height_, 
 		object_type_ID_, unique_object_ID_, collider_width_, collider_height_;

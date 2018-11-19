@@ -7,10 +7,10 @@ Popup::Popup(int center_position_x, int center_position_y, int popup_width, int 
 	createPopupText();
 }
 
-// Calls every frame
-void Popup::refreshPopup()
+// Calls every frame (If coordinates are not provided, will display popup at player's position)
+void Popup::refreshPopup(int center_position_x, int center_position_y)
 {
-	displayPopup();
+	displayPopup(center_position_x, center_position_y);
 }
 
 // Creates interactive "Sign" in world. Whether it's invisible or not...
@@ -46,9 +46,9 @@ void Popup::updateColliderCoordinates()
 }
 
 // Displays the popup on the screen
-void Popup::displayPopup()
+void Popup::displayPopup(int popup_position_x, int popup_position_y)
 {
-	for (int i = 0; i < popup_height_; i++)
-		for (int j = 0; j < popup_width_; j++)
+	for (int i = popup_position_y; i < popup_height_; i++)
+		for (int j = popup_position_x; j < popup_width_; j++)
 			matrix_display_[i + popup_width_ / 2][j + popup_height_ + 1] = std::string(1, popup_matrix_[i][j]);
 }

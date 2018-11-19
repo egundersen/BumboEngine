@@ -9,14 +9,16 @@ public:
 	EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, 
 		std::vector<std::vector<std::pair<int, int>>> &element_has_object);
 
-	
+	// Setters
+	void createEvent();
+	virtual void refreshEvent();
 
 	// Getters
 	bool isComplete() { return is_event_over_; }
 	int getUniqueObjectID() { return unique_object_ID_; }
 private:
 	// Setters
-	void updateColliderCoordinates();
+	virtual void updateColliderCoordinates();
 
 	bool is_event_over_;
 	int object_type_ID_,unique_object_ID_, center_position_x_, center_position_y_, collider_width_, collider_height_;

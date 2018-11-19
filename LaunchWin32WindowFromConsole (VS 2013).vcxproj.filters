@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Characters">
       <UniqueIdentifier>{92218a4d-5fc7-4b92-960b-afd54cc65250}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{d1d0566e-8efa-4992-89e0-cb60eedc37f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Events">
+      <UniqueIdentifier>{ac5d8f7e-9a7b-48ee-9132-dd156a283634}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,9 +102,6 @@
     <ClCompile Include="NPCSprite.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="EventBase.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="AttackPattern_ShootAtPlayer.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
@@ -113,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="AttackPattern_VerticleGap.cpp">
       <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="EventBase.cpp">
+      <Filter>Source Files\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -203,9 +209,6 @@
     <ClInclude Include="BattleDialogBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EventBase.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
     <ClInclude Include="AttackPattern_ShootAtPlayer.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="AttackPattern_VerticleGap.h">
       <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="EventBase.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

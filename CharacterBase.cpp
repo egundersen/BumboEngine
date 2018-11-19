@@ -61,7 +61,7 @@ void CharacterBase::createWorldSprite()
 // Refreshes and shows basic popop
 void CharacterBase::refreshPopup()
 {
-	displayPopup();
+	displayPopup(0, 0);
 }
 
 void CharacterBase::faceDirection(char player_facing_direction)
