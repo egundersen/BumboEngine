@@ -114,12 +114,6 @@
     <ClCompile Include="AttackPattern_VerticleGap.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
-    <ClCompile Include="Attack_Wall.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_Wall.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -225,12 +219,6 @@
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="AttackPattern_VerticleGap.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="Attack_Wall.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_Wall.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
   </ItemGroup>
