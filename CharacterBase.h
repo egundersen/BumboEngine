@@ -2,13 +2,13 @@
 #include "DialogManager.h"
 #include "DialogNode.h"
 #include "BattleBase.h"
-#include "Popup.h"
+#include "PopupWithCollision.h"
 #include "NPCSprite.h"
 
 #ifndef CHARACTERBASE_H
 #define CHARACTERBASE_H
 
-class CharacterBase : public Popup, public BattleBase, public DialogManager
+class CharacterBase : public PopupWithCollision, public BattleBase, public DialogManager
 {
 public:
 	CharacterBase(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,

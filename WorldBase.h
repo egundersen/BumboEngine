@@ -1,6 +1,6 @@
 #include "MatrixBase.h"
 #include "PlayerSprite.h"
-#include "Popup.h"
+#include "PopupWithCollision.h"
 #include "Signpost.h"
 #include "Pickup.h"
 #include "Characters.h"

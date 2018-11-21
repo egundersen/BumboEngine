@@ -75,9 +75,6 @@
     <ClCompile Include="WorldBase.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="Popup.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="Pickup.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
@@ -127,6 +124,12 @@
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="Event_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PopupWithCollision.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Popup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -183,9 +186,6 @@
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="WorldBase.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="Popup.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="Signpost.h">
@@ -247,6 +247,15 @@
     </ClInclude>
     <ClInclude Include="Events.h">
       <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Maze.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PopupWithCollision.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Popup.h">
+      <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

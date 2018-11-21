@@ -7,6 +7,7 @@ class Event_Test : public EventBase
 public:
 	using EventBase::EventBase;
 
+	void createEvent();
 	void refreshEvent();
 };
 

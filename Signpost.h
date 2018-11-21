@@ -1,12 +1,12 @@
-#include "Popup.h"
+#include "PopupWithCollision.h"
 
 #ifndef SIGNPOST_H
 #define SIGNPOST_H
 
-class Signpost : public Popup
+class Signpost : public PopupWithCollision
 {
 public:
-	using Popup::Popup;
+	using PopupWithCollision::PopupWithCollision;
 
 	// Setters
 	void createWorldSprite()

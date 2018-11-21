@@ -78,13 +78,6 @@ void WorldBase::refreshScreen()
 		checkForItem();
 		checkForBattle();
 		displayScreen();
-
-		// teleport [example]
-			//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
-
-		// move [example]
-		//	if (!characters_[0]->hasReachDestination())
-		//		characters_[0]->move(2382, 'x', 250);
 	}
 	evaluatePlayerInput();
 }
@@ -216,7 +209,7 @@ void WorldBase::evaluatePlayerInput()
 	{
 		is_viewing_popup_ = true;
 	}
-	else // Walking on map
+	else if(!is_event_active_)// Walking on map
 	{
 		if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
 		{
@@ -388,6 +381,7 @@ void WorldBase::shouldStartEvent()
 		for (EventBase *event : events_)
 			if (event->getUniqueObjectID() == getFacingEntity().second)
 			{
+				event->onStartEvent();
 				selected_event_ = event;
 				is_event_active_ = true;
 			}
@@ -2943,7 +2937,7 @@ void WorldBase::GENERATE_AdditionalObjects()
 // creates events that trigger cutscenes, battles, enemy_movement, etc...
 void WorldBase::GENERATE_Events()
 {
-	Event_Test *test = new Event_Test(1, 2800, 4900, 10, 10, element_has_object_);
+	Event_Test *test = new Event_Test(1, 2390, world_height_ - 50, 10, 10, element_has_object_, matrix_display_, characters_);
 
 	events_.push_back(test);
 
@@ -2993,6 +2987,8 @@ void WorldBase::DEBUG_displayCollisions()
 		character->DEBUG_viewCollider();
 	for (auto signpost : signposts_)
 		signpost->DEBUG_viewCollider();
+	for (auto event : events_)
+		event->DEBUG_viewCollider(world_matrix_);
 }
 
 // Displays what was there before the collision markers replaced them
@@ -3004,6 +3000,8 @@ void WorldBase::DEBUG_stopDisplayingCollisions()
 		character->createWorldSprite();
 	for (auto signpost : signposts_)
 		signpost->createWorldSprite();
+	for (auto event : events_)
+		event->DEBUG_hideCollider(world_matrix_);
 }
 
 // Display DEBUG UI

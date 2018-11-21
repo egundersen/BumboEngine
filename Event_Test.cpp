@@ -1,22 +1,43 @@
 #include "Event_Test.h"
+#include <iostream>
+#include <Windows.h>
+
+void Event_Test::createEvent()
+{
+	updateColliderCoordinates();
+
+	Popup popup_1(23, 9, "what is yourZ NAME!!!???Z", matrix_display_, 'X');
+	popup_1.createPopupText();
+	Popup popup_2(23, 9, "hello my nameZis MANNY kanEZ", matrix_display_, 'X');
+	popup_2.createPopupText();
+
+	popups_.push_back(popup_1);
+	popups_.push_back(popup_2);
+}
 
 void Event_Test::refreshEvent()
 {
-#ifdef _DEBUG
-	//throw std::invalid_argument("EventBase cannot be called directly. Instead, call a subclass that inherits from EventBase. EX: Event_Tutorial");
-#endif
-	// display popup
-	// wait 5 seconds
-	// display another popup
-	// make someone move somewhere
-	// end event
+	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+	if (current_time_begin_event_ > 7000)
+	{
+		onEventOver();
+	}
+	else if (current_time_begin_event_ > 5000)
+	{
+		popups_[1].displayPopup(-20, 10);
+	}
+	else if (current_time_begin_event_ > 2000)
+	{
+		popups_[0].displayPopup(20, 0);
 
-	// WORLD:_______________________________________
-	// constantly checks if player touches events
-	// CallEvent
-	// EventFinished->DestroyEvent
+		// move [Example]
+		if (!characters_[0]->hasReachDestination())
+			characters_[0]->move(2382, 'x', 250);
+	}
 
-	// add above code to subclass
-	// uncomment THROW and delete these comments
-	// start event from character class (at end of battle)
+	// delete these comments
+	// ability to start event from character class (at end of battle)
+
+	// teleport [example]
+	//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
 }

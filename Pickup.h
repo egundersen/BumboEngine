@@ -1,11 +1,11 @@
-#include "Popup.h"
+#include "PopupWithCollision.h"
 #include "Image.h"
 #include "Inventory.h"
 
 #ifndef PICKUP_H
 #define PICKUP_H
 
-class Pickup : public Popup
+class Pickup : public PopupWithCollision
 {
 public:
 	Pickup(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
