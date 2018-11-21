@@ -167,6 +167,7 @@
     <ClCompile Include="BattleDialogBase.cpp" />
     <ClCompile Include="DialogManager.cpp" />
     <ClCompile Include="EventBase.cpp" />
+    <ClCompile Include="Event_Test.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
@@ -202,6 +203,8 @@
     <ClInclude Include="BattleDialogBase.h" />
     <ClInclude Include="DialogNode.h" />
     <ClInclude Include="EventBase.h" />
+    <ClInclude Include="Events.h" />
+    <ClInclude Include="Event_Test.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />

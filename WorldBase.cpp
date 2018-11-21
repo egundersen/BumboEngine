@@ -5,7 +5,7 @@
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -25,7 +25,12 @@ void WorldBase::onEnterWorld()
 // Calls every frame
 void WorldBase::refreshScreen()
 {
-	if (is_viewing_popup_ && getFacingEntity() != std::make_pair<int, int>(0, 0))
+	if (is_event_active_) // Called on moving to location
+	{ // Event
+		selected_event_->refreshEvent();
+		shouldRemoveEvent();
+	}
+	else if (is_viewing_popup_ && getFacingEntity() != std::make_pair<int, int>(0, 0)) // Called onInteract (Press E)
 	{
 		switch (getFacingEntity().first)
 		{
@@ -60,7 +65,7 @@ void WorldBase::refreshScreen()
 					character->faceDirection(opposite_player_direction_);
 					player_sprite_.setPlayerMoving("not verticle");
 					player_sprite_.setPlayerMoving("not horizontal");
-					
+
 					is_viewing_popup_ = false;
 				}
 			break;
@@ -68,17 +73,12 @@ void WorldBase::refreshScreen()
 			break;
 		}
 	}
-	// else if:
-	// Checks if player standing in event.trigger_zone
-		// Exits if events_.isComplete()
-			// Checks event.trigger_zone ID
-				// --> Runs event code
-	else
+	else // MOVEMENT
 	{
 		checkForItem();
 		checkForBattle();
 		displayScreen();
-		
+
 		// teleport [example]
 			//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
 
@@ -239,6 +239,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('u');
 				opposite_player_direction_ = 'd';
+				shouldStartEvent();
 			}
 			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 			{
@@ -249,6 +250,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('d');
 				opposite_player_direction_ = 'u';
+				shouldStartEvent();
 			}
 			else
 				player_sprite_.setPlayerMoving("not verticle");
@@ -261,6 +263,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('r');
 				opposite_player_direction_ = 'l';
+				shouldStartEvent();
 			}
 			else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 			{
@@ -271,6 +274,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('l');
 				opposite_player_direction_ = 'r';
+				shouldStartEvent();
 			}
 			else
 				player_sprite_.setPlayerMoving("not horizontal");
@@ -358,6 +362,35 @@ void WorldBase::shouldDespawnCharacter()
 			selected_character_ = nullptr;
 		}
 	}
+}
+
+// Removes event from array (Event has ended).
+void WorldBase::shouldRemoveEvent()
+{
+	if (selected_event_ != nullptr)
+	{
+		if (selected_event_->isComplete())
+		{
+			{
+				auto it = std::find(events_.begin(), events_.end(), selected_event_);
+				if (it != events_.end()) { events_.erase(it); }
+			}
+			is_event_active_ = false;
+			selected_event_ = nullptr;
+		}
+	}
+}
+
+// Decides whether to start an event
+void WorldBase::shouldStartEvent()
+{
+	if (getFacingEntity().first == 4)
+		for (EventBase *event : events_)
+			if (event->getUniqueObjectID() == getFacingEntity().second)
+			{
+				selected_event_ = event;
+				is_event_active_ = true;
+			}
 }
 
 // creates a nice border around the world. Useful for debugging, helps tell if you are building near edge of world
@@ -625,12 +658,12 @@ void WorldBase::GENERATE_Maze()
 	// NOTE: you can copy and paste code from GENERATE_OutsideArea() 
 }
 
-// creates NPCs that shouldn't attack (They are capable of it, but shouldn't)
+// creates NPCs that shouldn't attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	CharacterBase *standing_in_line_1;
 	standing_in_line_1 = new Chr_AllMight(2372, 4936, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_);
-	
+
 	standing_in_line_1->setDialogNodes();
 
 	characters_.push_back(standing_in_line_1);
@@ -666,13 +699,19 @@ void WorldBase::GENERATE_Pickups()
 // creates things that don't fit into any other category
 void WorldBase::GENERATE_AdditionalObjects()
 {
-	
+
 }
 
 // creates events that trigger cutscenes, battles, enemy_movement, etc...
 void WorldBase::GENERATE_Events()
 {
-	// TODO: creates event (), pass function to event
+	Event_Test *test = new Event_Test(1, 2800, 4900, 10, 10, element_has_object_);
+
+	events_.push_back(test);
+
+	// Set all event colliders / tiggers
+	for (auto event : events_)
+		event->createEvent();
 }
 
 // Refreshes DEBUG tools

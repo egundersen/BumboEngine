@@ -126,6 +126,9 @@
     <ClCompile Include="AttackPattern_Wall.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
+    <ClCompile Include="Event_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -238,6 +241,12 @@
     </ClInclude>
     <ClInclude Include="Attack_Wall.h">
       <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_Test.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

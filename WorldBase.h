@@ -4,7 +4,7 @@
 #include "Signpost.h"
 #include "Pickup.h"
 #include "Characters.h"
-#include "EventBase.h"
+#include "Events.h"
 #include <utility>
 
 #ifndef WORLDBASE_H
@@ -36,6 +36,8 @@ private:
 	void checkForItem();
 	void checkForBattle();
 	void shouldDespawnCharacter();
+	void shouldRemoveEvent();
+	void shouldStartEvent();
 
 	// Getters
 	bool hasCollided(char direction, int offset);
@@ -66,7 +68,8 @@ private:
 	int screen_width_, screen_height_, world_width_, world_height_, &player_health_, start_time_player_speed_,
 		player_speed_modifier_;
 	char opposite_player_direction_;
-	bool is_viewing_popup_, DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_, should_enter_battle_;
+	bool is_viewing_popup_, DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_, should_enter_battle_,
+		is_event_active_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> world_matrix_;
 	std::vector<std::vector<char>> DEBUG_screen_matrix_;
@@ -77,10 +80,13 @@ private:
 	std::vector<Pickup*> pickups_;
 	std::vector<CharacterBase*> characters_;
 	std::vector<EventBase*> events_;
-	CharacterBase *selected_character_;
+
 	Inventory &inventory_;
 	ScreenPosition screen_position_;
 	PlayerSprite player_sprite_;
+
+	CharacterBase *selected_character_;
+	EventBase *selected_event_;
 };
 
 #endif // !WORLDBASE_H
