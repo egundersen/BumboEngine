@@ -13,7 +13,7 @@ class CharacterBase : public PopupWithCollision, public BattleBase, public Dialo
 public:
 	CharacterBase(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
 		std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
-		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height,
+		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, int event_ID,
 
 		std::string basic_dialog, char border_character, 
 		
@@ -31,6 +31,7 @@ public:
 	void teleportNPC(int center_position_x, int center_position_y);
 	void onDespawn();
 
+	int eventID() { return event_ID_; }
 	bool hasReachDestination() { return has_reached_destination_; }
 	int getCenterPositionX() { return center_position_x_; }
 	int getCenterPositionY() { return center_position_y_; }
@@ -48,7 +49,7 @@ private:
 	std::vector<Image*> sprite_states_;
 	char facing_direction_, moving_direction_;
 	bool use_basic_dialog_, has_begun_moving_, has_reached_destination_;
-	int start_time_move_one_space_, start_time_move_, movement_direction_multiplier_;
+	int start_time_move_one_space_, start_time_move_, movement_direction_multiplier_, event_ID_;
 };
 
 #endif // !CHARACTERBASE_H

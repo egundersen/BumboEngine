@@ -30,14 +30,11 @@ void Event_Test::refreshEvent()
 	{
 		popups_[0].displayPopup(20, 0);
 
-		// move [Example]
-		if (!characters_[0]->hasReachDestination())
-			characters_[0]->move(2382, 'x', 250);
+		// move [Example] | In this case, I already know characters_[0] is All Might
+		//if (!characters_[0]->hasReachDestination())
+		//	characters_[0]->move(2382, 'x', 250);
+
+		// teleport [example]
+		//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
 	}
-
-	// delete these comments
-	// ability to start event from character class (at end of battle)
-
-	// teleport [example]
-	//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
 }

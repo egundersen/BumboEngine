@@ -37,7 +37,8 @@ private:
 	void checkForBattle();
 	void shouldDespawnCharacter();
 	void shouldRemoveEvent();
-	void shouldStartEvent();
+	void shouldStartEventByLocation();
+	void shouldStartEventByID(int event_ID);
 
 	// Getters
 	bool hasCollided(char direction, int offset);

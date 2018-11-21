@@ -24,13 +24,16 @@ public:
 		std::string boss_ascii_art = "            ,,#,@@@@@,@,*@@@@,*#@@@%             Z           ,,,,,,,@@(&,@@@@@@@@@@@@@%,           Z          @,#,,,,,,,,,,,@,%@@@@@&,,@@@           Z         ,,,@@,,,,,,,,,,,,%@@@@@@,,@@@@          Z         @@,#,,,,,,,,,,,,,%@@@@@@,,,@@@          Z         @@@,,,,,,,,,,,,,,@@@@@@@@,,,@@          Z        ,,@,,,,,,,,,,,,,,,@@@@@@@@,,,@@@         Z        ,@@,,&,&,@,,,.,,,@@@@@,@,@,,,,@@         Z       ,@#,,,,,@@&,@,#(%,,@,&@@@@@@,,,@@@        Z        ,@,,,,,%@@@@@,,/#*@@@@@@@@,,,,@@@        Z       ,@#,,,,,,,(@@@%,@@@@@@@@@@@@,,,*@,,       Z      ,,@,,,,,,,,,,,,,,,,@@@,,*@@@@@,,,,@,       Z      ,@,,,,,,,,,,,,,,,,,@@@,,,,@@@@,,,@,,       Z      @,*,#,,,,,,,,,,,,,,@@@@,,@@@@@@,@@,,       Z      ,@@,,@,@,,,,,,@@@@@@@@@&,@@@@@@,,@,,       Z      ,,@,,,@,,,,&,,,,,@@@@/,@@@@@@@@,@@,.       Z       ,,@,,,,,@,,,,,,,,,,,,,,(@@@@@,,@%,,       Z      ,&,,,,,,@,,,,,,,,,,,,,,,,,,@@@,,,,@@,&     Z     ,,,@@,,,,,@@%@**,,,,,,,,,,,@@@@,,@@@@  .    Z   @@,,@,@#,,/,,@&,,,,,,,,,,,,@,@@@@,,@@@@@      Z    ,(@@,,@,,@,,,&,,,,,,,,,,,,@@@@@@,,@@.@@@@,   Z   ,@@@@,,/,,@@,,,,,,,,,,,,@@@@@@@@@,.@@,@@@@@@  Z &@@@@@@,,,@,,,,,,,,,,,,,@@@@@@@@@@@,@@@&@@(     Z@@@@ @@(,,,,@@,,,,,,,,,,,@@@@@@@@@,@@@@@@*@@@@,  Z    @@@,,,,,,,@@,,,,,,,,,@@@@@@@,@@@@@@@@,       Z      @,,,,,,,,,,@@,,,,,*@@@@%,@@@@@@@@@@@%      Z       @@,,,,,,,,,,@@@@@@@@@@@@@@@@@@@@@@@       Z     @@@@@@@@/,,,,,,@@@@@@@@@@@@@@@@@@@@@@@@     ",
 		std::string ascii_overlay = "X*XXXXX________XXXXXXZ,X*  --        -- *X,Z,,X*   --------  *X,,Z,,,,X**        **X,,,Z,,,,,,,XXXXXXXX,,,,,,",
 		int overlay_x = 40,
-		int overlay_y = 20)
+		int overlay_y = 20,
+		
+		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
+		int event_ID = 0) // 0 = no event
 
-		: CharacterBase(center_position_x, center_position_y, popup_width, popup_height, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height, basic_dialog, border_character, player_health, boss_health, boss_name, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
+		: CharacterBase(center_position_x, center_position_y, popup_width, popup_height, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height, event_ID, basic_dialog, border_character, player_health, boss_health, boss_name, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
 	{
 		// Attacks
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 500, 5, 1);
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 2, 5, 1);
 		AttackPatternBase *attack_pattern_2;
 		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 200);
 		AttackPatternBase *attack_pattern_3;

@@ -1,8 +1,8 @@
 #include "CharacterBase.h"
 #include <Windows.h>
 
-CharacterBase::CharacterBase(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID, std::vector<std::vector<char>>& world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>>& matrix_display, int screen_width, int screen_height, std::string basic_dialog, char border_character, int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
-	: PopupWithCollision(center_position_x, center_position_y + 1, popup_width, popup_height, unique_object_ID, basic_dialog, world_matrix, element_has_object, matrix_display, screen_width, screen_height, border_character), use_basic_dialog_{ false },
+CharacterBase::CharacterBase(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID, std::vector<std::vector<char>>& world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>>& matrix_display, int screen_width, int screen_height, int event_ID, std::string basic_dialog, char border_character, int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
+	: PopupWithCollision(center_position_x, center_position_y + 1, popup_width, popup_height, unique_object_ID, basic_dialog, world_matrix, element_has_object, matrix_display, screen_width, screen_height, border_character), use_basic_dialog_{ false }, event_ID_{ event_ID },
 	sprite_{ 12, 10, matrix_display, world_matrix }, has_begun_moving_{ false }, start_time_move_one_space_(0), start_time_move_(0), movement_direction_multiplier_(1), moving_direction_{ 'l' }, facing_direction_{ 'd' }, has_reached_destination_{ false },
 	BattleBase(screen_width, screen_height, matrix_display, player_health, boss_health, boss_name, boss_ascii_art, ascii_overlay, overlay_x, overlay_y), DialogManager(screen_width - 10, 9, screen_width, screen_height, matrix_display)
 {

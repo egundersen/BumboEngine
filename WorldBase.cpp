@@ -25,12 +25,7 @@ void WorldBase::onEnterWorld()
 // Calls every frame
 void WorldBase::refreshScreen()
 {
-	if (is_event_active_) // Called on moving to location
-	{ // Event
-		selected_event_->refreshEvent();
-		shouldRemoveEvent();
-	}
-	else if (is_viewing_popup_ && getFacingEntity() != std::make_pair<int, int>(0, 0)) // Called onInteract (Press E)
+	if (is_viewing_popup_ && getFacingEntity() != std::make_pair<int, int>(0, 0)) // Called onInteract (Press E)
 	{
 		switch (getFacingEntity().first)
 		{
@@ -65,19 +60,25 @@ void WorldBase::refreshScreen()
 					character->faceDirection(opposite_player_direction_);
 					player_sprite_.setPlayerMoving("not verticle");
 					player_sprite_.setPlayerMoving("not horizontal");
-
-					is_viewing_popup_ = false;
 				}
+			is_viewing_popup_ = false;
 			break;
 		default:
+			is_viewing_popup_ = false;
 			break;
 		}
 	}
-	else // MOVEMENT
+	else
 	{
 		checkForItem();
 		checkForBattle();
 		displayScreen();
+
+		if (is_event_active_) // EVENT
+		{
+			selected_event_->refreshEvent();
+			shouldRemoveEvent();
+		}
 	}
 	evaluatePlayerInput();
 }
@@ -209,7 +210,7 @@ void WorldBase::evaluatePlayerInput()
 	{
 		is_viewing_popup_ = true;
 	}
-	else if(!is_event_active_)// Walking on map
+	else if (!is_event_active_)// Walking on map
 	{
 		if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
 		{
@@ -232,7 +233,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('u');
 				opposite_player_direction_ = 'd';
-				shouldStartEvent();
+				shouldStartEventByLocation();
 			}
 			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 			{
@@ -243,7 +244,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('d');
 				opposite_player_direction_ = 'u';
-				shouldStartEvent();
+				shouldStartEventByLocation();
 			}
 			else
 				player_sprite_.setPlayerMoving("not verticle");
@@ -256,7 +257,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('r');
 				opposite_player_direction_ = 'l';
-				shouldStartEvent();
+				shouldStartEventByLocation();
 			}
 			else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 			{
@@ -267,7 +268,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				player_sprite_.setDirection('l');
 				opposite_player_direction_ = 'r';
-				shouldStartEvent();
+				shouldStartEventByLocation();
 			}
 			else
 				player_sprite_.setPlayerMoving("not horizontal");
@@ -339,13 +340,14 @@ void WorldBase::checkForBattle()
 	}
 }
 
-// Removes character from array (They are dead). Called after battle has ended in player's favor
+// Decides whether or not to removes character from array (They are dead). Called after battle has ended in player's favor
 void WorldBase::shouldDespawnCharacter()
 {
 	if (selected_character_ != nullptr)
 	{
 		if (selected_character_->isDestroyed())
 		{
+			shouldStartEventByID(selected_character_->eventID());
 			selected_character_->onDespawn();
 			//characters_.erase(std::remove(characters_.begin(), characters_.end(), selected_character_), characters_.end());
 			{
@@ -357,7 +359,7 @@ void WorldBase::shouldDespawnCharacter()
 	}
 }
 
-// Removes event from array (Event has ended).
+// Decides whether or not to removes event from array (Event has ended).
 void WorldBase::shouldRemoveEvent()
 {
 	if (selected_event_ != nullptr)
@@ -374,13 +376,34 @@ void WorldBase::shouldRemoveEvent()
 	}
 }
 
-// Decides whether to start an event
-void WorldBase::shouldStartEvent()
+// Decides whether or not to start an event (based on the player's location)
+void WorldBase::shouldStartEventByLocation()
 {
 	if (getFacingEntity().first == 4)
 		for (EventBase *event : events_)
 			if (event->getUniqueObjectID() == getFacingEntity().second)
 			{
+				player_sprite_.setPlayerMoving("not verticle");
+				player_sprite_.setPlayerMoving("not horizontal");
+
+				event->onStartEvent();
+				selected_event_ = event;
+				is_event_active_ = true;
+			}
+}
+
+// Decides whether or not to start an event (based on a given ID number)
+void WorldBase::shouldStartEventByID(int event_ID)
+{
+	if (event_ID == 0)
+		return;
+	else
+		for (EventBase *event : events_)
+			if (event_ID == event->getUniqueObjectID())
+			{
+				player_sprite_.setPlayerMoving("not verticle");
+				player_sprite_.setPlayerMoving("not horizontal");
+
 				event->onStartEvent();
 				selected_event_ = event;
 				is_event_active_ = true;
@@ -2937,7 +2960,7 @@ void WorldBase::GENERATE_AdditionalObjects()
 // creates events that trigger cutscenes, battles, enemy_movement, etc...
 void WorldBase::GENERATE_Events()
 {
-	Event_Test *test = new Event_Test(1, 2390, world_height_ - 50, 10, 10, element_has_object_, matrix_display_, characters_);
+	Event_Test *test = new Event_Test(9999, 2390, world_height_ - 50, 10, 10, element_has_object_, matrix_display_, characters_);
 
 	events_.push_back(test);
 
