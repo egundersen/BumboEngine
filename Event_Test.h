@@ -1,4 +1,5 @@
 #include "EventBase.h"
+
 #ifndef EVENT_TEST
 #define EVENT_TEST
 

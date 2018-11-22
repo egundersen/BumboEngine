@@ -10,7 +10,7 @@ public:
 	Chr_AllMight(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display,
 
 		// Character will attack player immediatly, upon seeing them.
-		bool attack_on_sight = false, //TODO: W.I.P.
+		bool attack_on_sight = false,
 
 		/* Popup Text		(Shows 1 text screen. useful for unimportant characters. Leave BLANK for main characters) */
 		std::string basic_dialog = "", // Leaving blank allows for advanced dialog
@@ -29,7 +29,7 @@ public:
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 0) // 0 = no event
 
-		: CharacterBase(center_position_x, center_position_y, popup_width, popup_height, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height, event_ID, basic_dialog, border_character, player_health, boss_health, boss_name, boss_ascii_art, ascii_overlay, overlay_x, overlay_y)
+		: CharacterBase(center_position_x, center_position_y, popup_width, popup_height, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height, event_ID, basic_dialog, border_character, player_health, boss_health, boss_name, boss_ascii_art, ascii_overlay, overlay_x, overlay_y, attack_on_sight)
 	{
 		// Attacks
 		AttackPatternBase *attack_pattern_1;

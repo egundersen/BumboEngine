@@ -36,5 +36,19 @@ void Event_Test::refreshEvent()
 
 		// teleport [example]
 		//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());
+
+		/* battle [example]
+		*  PLEASE READ BEFORE TRYING TO START AN ATTACK WITH AN EVENT!!! 
+		*  This only works if this event is provided a character to start the battle with.
+		*  Do this in the event constructor. If no character is provided, THIS WILL FAIL.
+		*  This class (The test event) WILL FAIL BECAUSE IT IS NOT BEING PASSED A
+		*  CHARACTER IN THE CONSTRUCTOR (In Worldbase.cpp).
+
+		*  As such, an event can only start ONE BATTLE.
+		*  This should be fine for the purposes of Wenlife, but if you find this mechanic
+		*  limiting, feel free to change the code so a vector of characters is passed
+		*  to events. Thank you for reading this far.
+		*/
+		// should_enter_battle_ = true;
 	}
 }

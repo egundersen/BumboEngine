@@ -1,9 +1,9 @@
 #include "EventBase.h"
 #include <Windows.h>
 
-EventBase::EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::vector<CharacterBase*> &characters)
-	: unique_object_ID_{ unique_object_ID }, element_has_object_{ element_has_object }, center_position_x_{ center_position_x }, center_position_y_{ center_position_y }, collider_width_{ collider_width }, collider_height_{ collider_height }, characters_{ characters },
-	object_type_ID_(4), is_event_over_{ false }, matrix_display_{ matrix_display }, start_time_begin_event_(0)
+EventBase::EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::vector<CharacterBase*> &characters, CharacterBase *attached_character)
+	: unique_object_ID_{ unique_object_ID }, element_has_object_{ element_has_object }, center_position_x_{ center_position_x }, center_position_y_{ center_position_y }, collider_width_{ collider_width }, collider_height_{ collider_height }, characters_{ characters }, attached_character_{ attached_character },
+	object_type_ID_(4), is_event_over_{ false }, matrix_display_{ matrix_display }, start_time_begin_event_(0), should_enter_battle_{ false }
 {
 }
 

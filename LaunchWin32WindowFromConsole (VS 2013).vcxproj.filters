@@ -123,14 +123,17 @@
     <ClCompile Include="AttackPattern_Wall.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
-    <ClCompile Include="Event_Test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PopupWithCollision.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
+    <ClCompile Include="Event_AttackOnSight.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_Test.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
     <ClCompile Include="Popup.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="Popup.h">
       <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_AttackOnSight.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

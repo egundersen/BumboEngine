@@ -74,9 +74,19 @@ void WorldBase::refreshScreen()
 		checkForBattle();
 		displayScreen();
 
-		if (is_event_active_) // EVENT
+		if (is_event_active_) // EVENTS
 		{
 			selected_event_->refreshEvent();
+			if (selected_event_->shouldEnterBattle())
+			{
+				// Commented code has the same function as the below code, just a different approach
+				/*for (auto character : characters_)
+					if (character->getUniqueObjectID() == selected_event_->getUniqueObjectID())
+						selected_character_ = character; //*/
+				selected_character_ = selected_event_->getAttachedCharacter();
+				should_enter_battle_ = true;
+				selected_character_->stopBattle();
+			}
 			shouldRemoveEvent();
 		}
 	}
@@ -309,9 +319,19 @@ void WorldBase::generateWorld()
 	GENERATE_Signposts();
 	GENERATE_Events();
 
-	// Displays all Characters
+	// Displays all Characters & Give them an attack on sight event (if necessary)
 	for (auto character : characters_)
+	{
 		character->createWorldSprite();
+		if (character->shouldAttackOnSight())
+		{
+			Event_AttackOnSight *attack_on_sight = new Event_AttackOnSight(character->getUniqueObjectID(), character->getCenterPositionX(), character->getCenterPositionY(), 10, 10, element_has_object_, matrix_display_, characters_, character);
+			attack_on_sight->createEvent();
+
+			events_.push_back(attack_on_sight);
+		}
+	}
+		
 }
 
 // adds something to the world that doesn't exist on startup (Like doors that close behind you)
@@ -330,7 +350,7 @@ void WorldBase::checkForItem()
 	}
 }
 
-// Checks whether or not to enter battle from dialog
+// Checks whether or not to enter battle from dialog or an event
 void WorldBase::checkForBattle()
 {
 	if (selected_character_ != nullptr && selected_character_->shouldEnterBattle())
@@ -2960,7 +2980,8 @@ void WorldBase::GENERATE_AdditionalObjects()
 // creates events that trigger cutscenes, battles, enemy_movement, etc...
 void WorldBase::GENERATE_Events()
 {
-	Event_Test *test = new Event_Test(9999, 2390, world_height_ - 50, 10, 10, element_has_object_, matrix_display_, characters_);
+	Event_Test *test = new Event_Test(9999, 2390, world_height_ - 50, 10, 10, element_has_object_, matrix_display_, characters_, nullptr);
+	// Excluding the test event, Event Unique Object ID's should BEGIN at 10000
 
 	events_.push_back(test);
 
@@ -3019,12 +3040,12 @@ void WorldBase::DEBUG_stopDisplayingCollisions()
 {
 	for (auto pickup : pickups_)
 		pickup->createWorldSprite();
+	for (auto event : events_)
+		event->DEBUG_hideCollider(world_matrix_);
 	for (auto character : characters_)
 		character->createWorldSprite();
 	for (auto signpost : signposts_)
 		signpost->createWorldSprite();
-	for (auto event : events_)
-		event->DEBUG_hideCollider(world_matrix_);
 }
 
 // Display DEBUG UI
