@@ -303,13 +303,66 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			// TODO: Don't call this every frame
 			// Also, Perhaps make another image, then resize it? Perhaps ignore 
 			// importing bitmaps entirely?
-			std::wstring sTemp = std::wstring(image_file_path.begin(), image_file_path.end());
+			/*std::wstring sTemp = std::wstring(image_file_path.begin(), image_file_path.end());
 			LPCWSTR sw = sTemp.c_str();
-			LoadAndBlitBitmap(sw, hDCMem); // __T("resources\\moltar.bmp")
+			LoadAndBlitBitmap(sw, hDCMem); // __T("resources\\moltar.bmp")//*/
 
-			// START NEW CODE
+			HDC hDCArt = CreateCompatibleDC(hDC);
+			HBITMAP hBitmapArt = CreateCompatibleBitmap(hDC, rect.right, rect.bottom);
+			SelectObject(hDCArt, hBitmapArt);
+
+			FillRect(hDCArt, &rect, (HBRUSH)(COLOR_BTNFACE + 1));
+			FillRect(hDCArt, &rect, (HBRUSH)(COLOR_BACKGROUND + 1));
+
 			COLORREF whiteTextColor = 0x00ffff00;
 			COLORREF blackTextColor = 0x00000000;
+			SetBkMode(hDCArt, TRANSPARENT);
+			//SetBkColor(hDCArt, blackTextColor);
+			if (SetTextColor(hDCArt, whiteTextColor) == CLR_INVALID)
+			{
+				PostQuitMessage(1);
+			}
+			for (int i = 0; i < height_G; i++)
+			{
+				for (int j = 0; j < width_G; j++)
+				{
+					ExtTextOutA(hDCArt, j * 7, i * 12, ETO_CLIPPED, &rect, matrix_display_G[i][j].c_str(), 1, NULL);
+				}
+			}// uauauauauau
+
+			// Get the bitmap's parameters and verify the get
+			BITMAP qBitmap;
+			int iReturn = GetObject(reinterpret_cast<HGDIOBJ>(hBitmapArt), sizeof(BITMAP),
+				reinterpret_cast<LPVOID>(&qBitmap));
+			if (!iReturn)
+			{
+				::MessageBox(NULL, __T("GetObject Failed"), __T("Error"), MB_OK);
+				return false;
+			}
+
+			// Select the loaded bitmap into the device context
+			HBITMAP hOldBmp = (HBITMAP)::SelectObject(hDCArt, hBitmapArt);
+			if (hOldBmp == NULL)
+			{
+				::MessageBox(NULL, __T("SelectObject Failed"), __T("Error"), MB_OK);
+				return false;
+			}
+
+			SetStretchBltMode(hDCMem, HALFTONE);
+			SetStretchBltMode(hDCArt, HALFTONE);
+			SetStretchBltMode(hDC, HALFTONE);
+			BOOL qRetBlit = ::StretchBlt(hDCMem, 160, 0, 79*10, 35*10,
+				hDCArt, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, SRCCOPY);
+			if (!qRetBlit)
+			{
+				::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
+				return false;
+			}
+			
+			DeleteObject(hBitmapArt);
+			DeleteDC(hDCArt); //usdjwsdwdwdwd
+
+			// START NEW CODE
 			SetBkMode(hDCMem, OPAQUE);
 			SetBkColor(hDCMem, blackTextColor);
 			if (SetTextColor(hDCMem, whiteTextColor) == CLR_INVALID) {
