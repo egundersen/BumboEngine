@@ -6,7 +6,7 @@
 
 BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_health_{ boss_health }, boss_name_{ boss_name }, boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
-	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(0), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
+	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, matrix_display, dialog_choices_, boss_ascii_art, ascii_overlay, overlay_x, overlay_y), is_destroyed_{ false }
 {
 	start_time_move_cursor_ = GetTickCount();
@@ -17,39 +17,40 @@ BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::strin
 void BattleBase::onBeginBattle()
 {
 	start_time_move_cursor_ = GetTickCount();
-	cursor_index_ = 0;
+	cursor_index_ = 1;
 	refreshScreen();
 }
 
 // Refreshes screen to show updated items list
 void BattleBase::refreshScreen()
 {
-	if (boss_health_ == 0)
-	{ // BOSS DESTROYED
+	if (boss_health_ == 0) // BOSS DESTROYED
+	{
 		if (start_time_battle_end_animation_ == 0)
 			start_time_battle_end_animation_ = GetTickCount();
-		
+
 		bossDestroyed();
 	}
-	else if (local_vector_space_ != "FIGHT")
-	{ // MENU OPEN
-		if (attack_patterns_.size() == 0)
-		{ // BOSS GIVES UP
-			bossGivesUp();
-		}
-		if (local_vector_space_ == "DIALOG")
-		{ // DIALOG OPENED
-			if (dialog_.hasBossGivenUp() || attack_patterns_.size() == 0)
+	else if (local_vector_space_ != "FIGHT") // MENU OPEN
+	{
+		if (local_vector_space_ == "DIALOG") // DIALOG OPENED
+		{
+			if (dialog_.hasBossGivenUp()) // BOSS SPARED THROUGH DIALOG
 			{
-				bossGivesUp();
-				local_vector_space_ = "MENU";
+				if (start_time_battle_end_animation_ == 0)
+					start_time_battle_end_animation_ = GetTickCount();
+
+				bossSpared();
 			}
 			else
 				if (!dialog_.shouldExitDialog())
 					dialog_.refreshScreen();
 				else
 				{
-					local_vector_space_ = "FIGHT";
+					if (attack_patterns_.size() == 0) // BOSS OUT OF ATTACKS
+						local_vector_space_ = "MENU";
+					else
+						local_vector_space_ = "FIGHT";
 				}
 		}
 		else
@@ -97,25 +98,18 @@ void BattleBase::setBackgroundText()
 	addImageToMatrix(40, 14, main_ascii, matrix_);
 	addImageToMatrix(overlay_x_, overlay_y_, overlay_ascii, matrix_);
 
-	Image box1("ZXXXXXXXXXXXXXXXXXZX               XZX               XZX               XZXXXXXXXXXXXXXXXXXZZ");
-	Image box2("ZXXXXXXXXXXXXXXXXXZX               XZX               XZX               XZXXXXXXXXXXXXXXXXXZZ");
-	Image box3("ZXXXXXXXXXXXXXXXXXZX               XZX               XZX               XZXXXXXXXXXXXXXXXXXZZ");
-	Image box4("ZXXXXXXXXXXXXXXXXXZX               XZX               XZX               XZXXXXXXXXXXXXXXXXXZZ");
-	drawRectangle(7, 29, 13, 5, 'X', matrix_);
-	drawRectangle(23, 29, 13, 5, 'X', matrix_);
-	drawRectangle(43, 29, 13, 5, 'X', matrix_);
-	drawRectangle(59, 29, 13, 5, 'X', matrix_);
+	drawRectangle(8, 29, 15, 5, 'X', matrix_);
+	drawRectangle(33, 29, 15, 5, 'X', matrix_);
+	drawRectangle(56, 29, 15, 5, 'X', matrix_);
 
-	Image text1("FIGHT");
-	Image text2("SPEAK");
+	Image text1("SPEAK");
+	Image text2("FIGHT");
 	Image text3("ITEMS");
-	Image text4("SPARE");
-	addImageToMatrix(13, 31, text1, matrix_);
-	addImageToMatrix(29, 31, text2, matrix_);
-	addImageToMatrix(49, 31, text3, matrix_);
-	addImageToMatrix(65, 31, text4, matrix_);
+	addImageToMatrix(15, 31, text1, matrix_);
+	addImageToMatrix(40, 31, text2, matrix_);
+	addImageToMatrix(63, 31, text3, matrix_);
 
-	drawCursor(0);
+	drawCursor(27);
 
 	// Boss Health
 	Image bossHealthText("BOSS HEALTH");
@@ -160,7 +154,7 @@ void BattleBase::setBossHealthText()
 	}
 	else
 	{
-		if(boss_health_ == 11)
+		if (boss_health_ == 11)
 			matrix_[5][8] = ' ';
 		for (int j = boss_health_; j < 11; ++j)
 			matrix_[4][j + 8] = ' ';
@@ -207,25 +201,21 @@ void BattleBase::setGameOverText()
 void BattleBase::setCursorText()
 {
 	// erase old cursor
-	drawRectangle(9, 30, 9, 3, ' ', matrix_);
-	drawRectangle(25, 30, 9, 3, ' ', matrix_);
-	drawRectangle(45, 30, 9, 3, ' ', matrix_);
-	drawRectangle(61, 30, 9, 3, ' ', matrix_);
+	drawRectangle(11, 30, 9, 3, ' ', matrix_);
+	drawRectangle(36, 30, 9, 3, ' ', matrix_);
+	drawRectangle(59, 30, 9, 3, ' ', matrix_);
 
 	// draw new cursor
 	switch (cursor_index_)
 	{
 	case 0:
-		drawCursor(0);
+		drawCursor(2);
 		break;
 	case 1:
-		drawCursor(16);
+		drawCursor(27);
 		break;
 	case 2:
-		drawCursor(36);
-		break;
-	case 3:
-		drawCursor(52);
+		drawCursor(50);
 		break;
 	default:
 		break;
@@ -276,13 +266,13 @@ void BattleBase::moveCursor(std::string move_cursor_direction)
 	if (move_cursor_direction == "LEFT")
 	{
 		if (cursor_index_ == 0)
-			cursor_index_ = 3;
+			cursor_index_ = 2;
 		else
 			cursor_index_--;
 	}
 	else if (move_cursor_direction == "RIGHT")
 	{
-		if (cursor_index_ == 3)
+		if (cursor_index_ == 2)
 			cursor_index_ = 0;
 		else
 			cursor_index_++;
@@ -304,10 +294,10 @@ void BattleBase::damageBoss()
 	}
 }
 
-// Boss runs out of attacks
-void BattleBase::bossGivesUp()
+// Called when boss runs out of attacks
+void BattleBase::bossOutOfAttacks()
 {
-	allow_spare_ = true;
+	// todo something
 }
 
 // Boss is killed
@@ -328,13 +318,19 @@ void BattleBase::bossDestroyed()
 	}
 }
 
-// Attempt to spare boss
-void BattleBase::spare()
+// Boss is spared
+void BattleBase::bossSpared()
 {
-	if (allow_spare_)
+	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
+	if (current_time_battle_end_animation > 5000)
 	{
-		//TODO: display dialog
-		std::cout << "Not fighting! ";
+		for (int i = 0; i < 27; i++)
+			for (int j = 0; j < 68; j++)
+				matrix_[1 + i][5 + j] = ' ';
+	}
+	displayScreen();
+	if (current_time_battle_end_animation > 10000)
+	{
 		is_battle_finished_ = true;
 	}
 }
@@ -345,17 +341,14 @@ void BattleBase::confirmSelection()
 	switch (cursor_index_)
 	{
 	case 0:
-		damageBoss();
-		break;
-	case 1:
 		dialog_.onOpenDialog();
 		local_vector_space_ = "DIALOG";
 		break;
+	case 1:
+		damageBoss();
+		break;
 	case 2:
 		local_vector_space_ = "INVENTORY";
-		break;
-	case 3:
-		spare();
 		break;
 	default:
 		break;

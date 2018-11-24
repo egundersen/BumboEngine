@@ -41,7 +41,7 @@ public:
 		AttackPatternBase *attack_pattern_4;
 		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
 		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 50);
+		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 10); //50
 		AttackPatternBase *attack_pattern_6;
 		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
 		attack_patterns_.push_back(attack_pattern_1);
@@ -49,7 +49,7 @@ public:
 		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_1);
 		attack_patterns_.push_back(attack_pattern_5);
-		/*attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_3);
 		attack_patterns_.push_back(attack_pattern_4);
 		attack_patterns_.push_back(attack_pattern_5);
 		attack_patterns_.push_back(attack_pattern_6);//*/

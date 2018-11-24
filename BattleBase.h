@@ -33,9 +33,9 @@ protected:
 	void drawCursor(int offset);
 	void moveCursor(std::string move_cursor_direction);
 	void damageBoss();
-	void bossGivesUp();
+	void bossOutOfAttacks();
 	void bossDestroyed();
-	void spare();
+	void bossSpared();
 	void confirmSelection();
 	void setBossHealth(int boss_health) { boss_health_ = boss_health; }
 	void gameOver();
@@ -50,7 +50,7 @@ protected:
 	int width_, height_, &player_health_, boss_health_, cursor_index_,
 		start_time_move_cursor_, start_time_battle_end_animation_, overlay_x_, overlay_y_;
 	std::string ascii_overlay_, boss_ascii_art_, boss_name_, local_vector_space_;
-	bool is_battle_finished_, allow_spare_, is_destroyed_;
+	bool is_battle_finished_, is_destroyed_;
 	BattleDialogBase dialog_;
 };
 
