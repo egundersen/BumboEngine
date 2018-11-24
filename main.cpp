@@ -77,7 +77,6 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	MSG msg;
 	HACCEL hAccelTable;
 
-
 	// Initialize global strings
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadString(hInstance, IDC_LAUNCHWIN32WINDOWFROMCONSOLE, szWindowClass, MAX_LOADSTRING);
@@ -92,26 +91,33 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
 	// MAIN SOURCE PORT - Bumbo Engine v0.4 -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, matrix_display_G, 5); //(37 or 79 , 34)
+	MatrixManager grid(width_G, height_G, matrix_display_G, 5);
 
-	bool shouldUseMenu = false;
-	while (GetMessage(&msg, NULL, 0, 0))
+	// Allow quitting of application
+	GetMessage(&msg, NULL, 0, 0);
+	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
+		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
+
+	// Game loop
+	while (true)
 	{
-		grid.evaluatePlayerInput();
-
-		RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
-			RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
-
-		if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
-			shouldUseMenu = true;
-		}
-		else if (shouldUseMenu && !TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+		while (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&msg);
-			DispatchMessage(&msg); // TODO Bug: Breaks async keyboard input
-			//grid.onShutdown();
+			DispatchMessage(&msg);
 		}
+
+		if (msg.message == WM_QUIT)
+		{
+			break;
+		}
+
+		// Update the game (loop)
+		grid.evaluatePlayerInput();
+		RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
+			RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 	}
+
 	return (int)msg.wParam;
 }
 
