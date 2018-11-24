@@ -224,6 +224,7 @@
     <ClInclude Include="PopupWithCollision.h" />
     <ClInclude Include="Signpost.h" />
     <ClInclude Include="StartScreen.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="WinMainParameters.h" />
     <ClInclude Include="WorldBase.h" />
     <ClInclude Include="DialogManager.h" />
