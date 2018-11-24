@@ -3,6 +3,7 @@
 #include "AttackPatterns.h"
 #include "AttackPatternBase.h"
 #include "BattleDialogBase.h"
+#include "BossFightDefinition.h"
 
 #ifndef BATTLEBASE_H
 #define BATTLEBASE_H
@@ -10,7 +11,7 @@
 class BattleBase : public MatrixBase
 {
 public:
-	explicit BattleBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y);
+	explicit BattleBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::string &image_file_path);
 	virtual ~BattleBase() {}
 
 	// Setters
@@ -37,7 +38,7 @@ protected:
 	void bossDestroyed();
 	void bossSpared();
 	void confirmSelection();
-	void setBossHealth(int boss_health) { boss_health_ = boss_health; }
+	void setBossHealth(int boss_health) { boss_.health = boss_health; }
 	void gameOver();
 
 	// Output Displays
@@ -47,11 +48,11 @@ protected:
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
 	std::vector<AttackPatternBase*> attack_patterns_;
-	int width_, height_, &player_health_, boss_health_, cursor_index_,
-		start_time_move_cursor_, start_time_battle_end_animation_, overlay_x_, overlay_y_;
-	std::string ascii_overlay_, boss_ascii_art_, boss_name_, local_vector_space_;
+	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_, start_time_battle_end_animation_;
+	std::string local_vector_space_, &image_file_path_;
 	bool is_battle_finished_, is_destroyed_;
 	BattleDialogBase dialog_;
+	BossFightDefinition boss_;
 };
 
 #endif // !BATTLEBASE_H

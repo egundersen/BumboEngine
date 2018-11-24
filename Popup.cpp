@@ -1,5 +1,11 @@
 #include "Popup.h"
 
+Popup::Popup(PopupDefinition popup_sprite, std::vector<std::vector<std::string>>& matrix_display)
+	: text_{ popup_sprite.text }, popup_width_{ popup_sprite.width }, popup_height_{ popup_sprite.height }, matrix_display_{ matrix_display }, border_character_{ popup_sprite.border_character },
+	popup_matrix_(popup_sprite.height, std::vector<char>(popup_sprite.width, ' '))
+{
+}
+
 Popup::Popup(int popup_width, int popup_height, std::string text, std::vector<std::vector<std::string>>& matrix_display, char border_character)
 	: text_{ text }, popup_width_{ popup_width }, popup_height_{ popup_height }, matrix_display_{ matrix_display }, border_character_{ border_character },
 	popup_matrix_(popup_height, std::vector<char>(popup_width, ' '))

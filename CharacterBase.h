@@ -11,14 +11,11 @@
 class CharacterBase : public PopupWithCollision, public BattleBase, public DialogManager
 {
 public:
-	CharacterBase(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
+	CharacterBase(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID,
 		std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
 		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, int event_ID,
 
-		std::string basic_dialog, char border_character,
-
-		int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay,
-		int overlay_x, int overlay_y, bool attack_on_sight);
+		int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, std::string &image_file_path);
 	~CharacterBase();
 
 	// Attack On Sight Event

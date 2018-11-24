@@ -1,4 +1,5 @@
 #include "MatrixBase.h"
+#include "BossFightDefinition.h"
 #include <tuple>
 
 #ifndef BATTLEDIALOGBASE_H
@@ -6,8 +7,9 @@
 
 class BattleDialogBase : public MatrixBase {
 public:
-	BattleDialogBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices,
-		std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y);
+	BattleDialogBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, 
+		std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, 
+		BossFightDefinition boss_fight_definition);
 
 	// Setters
 	void onOpenDialog();
@@ -35,9 +37,10 @@ private:
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
-	int width_, height_, cursor_index_, start_time_move_cursor_, start_time_exit_dialog_, dialog_choices_index_, overlay_x_, overlay_y_;
+	int width_, height_, cursor_index_, start_time_move_cursor_, start_time_exit_dialog_, dialog_choices_index_;
 	bool has_boss_given_up_, should_exit_dialog_, displaying_response_, enter_key_pressed_;
-	std::string response_, ascii_overlay_, boss_ascii_art_;
+	std::string response_;
+	BossFightDefinition boss_;
 };
 
 #endif // !BATTLEDIALOGBASE_H

@@ -10,7 +10,7 @@
 class MatrixManager : public MatrixBase
 {
 public:
-	MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health);
+	MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, std::string &image_file_path);
 
 	// Setters
 	void evaluatePlayerInput();
@@ -31,7 +31,6 @@ private:
 	std::string current_vector_space_;
 	Inventory inventory_;
 	WorldBase maze_;
-
 };
 
 #endif // !MatrixManager_H

@@ -2,10 +2,9 @@
 #include <Windows.h>
 #include <iostream>
 
-BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices,
-	std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
+BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), matrix_display_{ matrix_display }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0),
-	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
+	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), boss_{ boss_fight_definition },
 	displaying_response_{ false }, enter_key_pressed_{ false }
 {
 	start_time_move_cursor_ = GetTickCount();
@@ -53,7 +52,8 @@ void BattleDialogBase::evaluatePlayerInput()
 {
 	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
 
-	if (current_time_move_cursor > 100) {
+	if (current_time_move_cursor > 100)
+	{
 		if (GetAsyncKeyState(VK_UP) & 0x8000)
 		{
 			moveCursor("UP");
@@ -97,10 +97,10 @@ void BattleDialogBase::setBackgroundText()
 		matrix_[i][width_ - 4] = 'X';
 	}
 
-	Image main_ascii(boss_ascii_art_);
-	Image overlay_ascii(ascii_overlay_);
+	Image main_ascii(boss_.ascii);
+	Image overlay_ascii(boss_.overlay);
 	addImageToMatrix(29, 14, main_ascii, matrix_);
-	addImageToMatrix(overlay_x_ - 11, overlay_y_, overlay_ascii, matrix_);
+	addImageToMatrix(boss_.overlay_x - 11, boss_.overlay_y, overlay_ascii, matrix_);
 }
 
 // Updates player options as text
@@ -109,10 +109,13 @@ void BattleDialogBase::setDialogOptions()
 	int dialog_choices_index = 0;
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>>::iterator row;
 	std::vector<std::tuple<std::string, std::string, bool>>::iterator col;
-	for (row = dialog_choices_.begin(); row != dialog_choices_.end(); row++) {
+	for (row = dialog_choices_.begin(); row != dialog_choices_.end(); row++)
+	{
 		int offset = 0;
-		if (dialog_choices_index_ == dialog_choices_index) {
-			for (col = row->begin(); col != row->end(); col++) {
+		if (dialog_choices_index_ == dialog_choices_index)
+		{
+			for (col = row->begin(); col != row->end(); col++)
+			{
 				Image dialog_choice(std::get<0>(*col));
 				addImageToMatrix(23, 29 + offset, dialog_choice, matrix_);
 				offset++;
@@ -169,13 +172,18 @@ void BattleDialogBase::confirmSelection()
 	int dialog_choices_index = 0;
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>>::iterator row;
 	std::vector<std::tuple<std::string, std::string, bool>>::iterator col;
-	for (row = dialog_choices_.begin(); row != dialog_choices_.end(); row++) {
+	for (row = dialog_choices_.begin(); row != dialog_choices_.end(); row++)
+	{
 		int offset = 0;
-		if (dialog_choices_index_ == dialog_choices_index) {
+		if (dialog_choices_index_ == dialog_choices_index)
+		{
 			int dialog_index = 0;
-			for (col = row->begin(); col != row->end(); col++) {
-				if (dialog_index == cursor_index_) {
-					if (std::get<2>(*col) == true) {// Should progress dialog?
+			for (col = row->begin(); col != row->end(); col++)
+			{
+				if (dialog_index == cursor_index_)
+				{
+					if (std::get<2>(*col) == true)
+					{// Should progress dialog?
 						setReponseText(std::get<1>(*col));
 						progressDialog();
 						return; // Prevents loop from running twice
@@ -198,8 +206,10 @@ bool BattleDialogBase::checkLevel()
 // Draws dialog menu to the screen
 void BattleDialogBase::displayScreen()
 {
-	for (int i = 0; i < height_; i++) {
-		for (int j = 0; j < width_; j++) {
+	for (int i = 0; i < height_; i++)
+	{
+		for (int j = 0; j < width_; j++)
+		{
 			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
 		}
 	}

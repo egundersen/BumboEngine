@@ -200,6 +200,7 @@
     <ClInclude Include="Attack_VerticleGap.h" />
     <ClInclude Include="Attack_Wall.h" />
     <ClInclude Include="BattleBase.h" />
+    <ClInclude Include="BossFightDefinition.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="CharacterBase.h" />
     <ClInclude Include="Chr_AllMight.h" />

@@ -4,10 +4,10 @@
 #include <windows.h>
 #include <iostream>
 
-BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, int boss_health, std::string boss_name, std::string boss_ascii_art, std::string ascii_overlay, int overlay_x, int overlay_y)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_health_{ boss_health }, boss_name_{ boss_name }, boss_ascii_art_{ boss_ascii_art }, ascii_overlay_{ ascii_overlay }, overlay_x_{ overlay_x }, overlay_y_{ overlay_y },
+BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::string &image_file_path)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_{ boss_fight_definition }, image_file_path_{ image_file_path },
 	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
-	dialog_(width, height, matrix_display, dialog_choices_, boss_ascii_art, ascii_overlay, overlay_x, overlay_y), is_destroyed_{ false }
+	dialog_(width, height, matrix_display, dialog_choices_, boss_fight_definition), is_destroyed_{ false }
 {
 	start_time_move_cursor_ = GetTickCount();
 	setBackgroundText();
@@ -24,7 +24,7 @@ void BattleBase::onBeginBattle()
 // Refreshes screen to show updated items list
 void BattleBase::refreshScreen()
 {
-	if (boss_health_ == 0) // BOSS DESTROYED
+	if (boss_.health == 0) // BOSS DESTROYED
 	{
 		if (start_time_battle_end_animation_ == 0)
 			start_time_battle_end_animation_ = GetTickCount();
@@ -93,10 +93,10 @@ void BattleBase::setBackgroundText()
 		matrix_[i][width_ - 4] = 'X';
 	}
 
-	Image main_ascii(boss_ascii_art_);
-	Image overlay_ascii(ascii_overlay_);
+	Image main_ascii(boss_.ascii);
+	Image overlay_ascii(boss_.overlay);
 	addImageToMatrix(40, 14, main_ascii, matrix_);
-	addImageToMatrix(overlay_x_, overlay_y_, overlay_ascii, matrix_);
+	addImageToMatrix(boss_.overlay_x, boss_.overlay_y, overlay_ascii, matrix_);
 
 	drawRectangle(8, 29, 15, 5, 'X', matrix_);
 	drawRectangle(33, 29, 15, 5, 'X', matrix_);
@@ -113,7 +113,7 @@ void BattleBase::setBackgroundText()
 
 	// Boss Health
 	Image bossHealthText("BOSS HEALTH");
-	if (boss_health_ > 11)
+	if (boss_.health > 11)
 	{
 		addImageToMatrix(8 + 11 / 2, 3, bossHealthText, matrix_);
 		matrix_[4][7] = '[';
@@ -126,39 +126,39 @@ void BattleBase::setBackgroundText()
 	}
 	else
 	{
-		addImageToMatrix(8 + boss_health_ / 2, 3, bossHealthText, matrix_);
+		addImageToMatrix(8 + boss_.health / 2, 3, bossHealthText, matrix_);
 		matrix_[4][7] = '[';
-		matrix_[4][9 + boss_health_] = ']';
+		matrix_[4][9 + boss_.health] = ']';
 	}
 
 	// Boss name
-	Image boss_name(boss_name_);
+	Image boss_name(boss_.name);
 	addImageToMatrix(13, 7, boss_name, matrix_);
 }
 
 // Sets the boss health bar
 void BattleBase::setBossHealthText()
 {
-	if (boss_health_ == 0)
+	if (boss_.health == 0)
 	{
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 11; j++)
 				matrix_[i + 4][j + 8] = ' ';
 	}
-	else if (boss_health_ > 11)
+	else if (boss_.health > 11)
 	{
-		for (int j = boss_health_ - 11; j < 11; ++j)
+		for (int j = boss_.health - 11; j < 11; ++j)
 			matrix_[5][j + 8] = ' ';
-		for (int j = 0; j < boss_health_ - 11; ++j)
+		for (int j = 0; j < boss_.health - 11; ++j)
 			matrix_[5][j + 8] = 'O';
 	}
 	else
 	{
-		if (boss_health_ == 11)
+		if (boss_.health == 11)
 			matrix_[5][8] = ' ';
-		for (int j = boss_health_; j < 11; ++j)
+		for (int j = boss_.health; j < 11; ++j)
 			matrix_[4][j + 8] = ' ';
-		for (int j = 0; j < boss_health_; ++j)
+		for (int j = 0; j < boss_.health; ++j)
 			matrix_[4][j + 8] = 'O';
 	}
 }
@@ -286,11 +286,11 @@ void BattleBase::damageBoss()
 	{
 		attack_patterns_.back()->OnBeginAttack();
 		local_vector_space_ = "FIGHT";
-		boss_health_--;
+		boss_.health--;
 	}
 	else // attacking boss when boss is out of attacks is an instant kill
 	{
-		boss_health_ = 0;
+		boss_.health = 0;
 	}
 }
 

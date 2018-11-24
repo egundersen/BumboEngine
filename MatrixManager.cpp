@@ -7,10 +7,10 @@
 #include <thread>
 #include <iostream>
 
-MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health)
+MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, std::string &image_file_path)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health_),
 	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	maze_(width, height, 1200, 700, 130, 644, player_health_, matrix_display, inventory_)
+	maze_(width, height, 1200, 700, 130, 644, player_health_, matrix_display, inventory_, image_file_path)
 {
 	inventory_.addItem("Mug o' Grog", 1); // Starting Items (Not pickups! Just starting items)
 	inventory_.addItem("Fish Mush", 1);
@@ -38,24 +38,30 @@ void MatrixManager::evaluatePlayerInput()
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
-		if (maze_.getSelectedCharacter()->isBattleOver()) {
+		if (maze_.getSelectedCharacter()->isBattleOver())
+		{
 			has_initialized_battle_ = false;
 			maze_.onEnterWorld();
 			current_vector_space_ = "MAP";
 		}
-		else if (maze_.getSelectedCharacter()->getLocalVectorSpace() != "INVENTORY") {
-			if (!has_initialized_battle_) {
+		else if (maze_.getSelectedCharacter()->getLocalVectorSpace() != "INVENTORY")
+		{
+			if (!has_initialized_battle_)
+			{
 				maze_.getSelectedCharacter()->onBeginBattle();
 				has_initialized_battle_ = true;
 			}
 			maze_.getSelectedCharacter()->refreshScreen();
 		}
-		else {
-			if (!has_initialized_inventory_) {
+		else
+		{
+			if (!has_initialized_inventory_)
+			{
 				inventory_.onOpenInventory();
 				has_initialized_inventory_ = true;
 			}
-			if (GetAsyncKeyState(VK_BACK) & 0x8000) {// CLOSE INVENTORY?
+			if (GetAsyncKeyState(VK_BACK) & 0x8000)
+			{// CLOSE INVENTORY?
 				has_initialized_inventory_ = false;
 				maze_.getSelectedCharacter()->setVectorSpace("MENU");
 			}
@@ -64,7 +70,8 @@ void MatrixManager::evaluatePlayerInput()
 	}
 	else if (current_vector_space_ == "INVENTORY")
 	{
-		if (GetAsyncKeyState(VK_BACK) & 0x8000) {// CLOSE INVENTORY?
+		if (GetAsyncKeyState(VK_BACK) & 0x8000)
+		{// CLOSE INVENTORY?
 			loadVectorSpace("MAP");
 		}
 

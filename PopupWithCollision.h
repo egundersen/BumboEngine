@@ -9,6 +9,9 @@
 class PopupWithCollision : public Popup
 {
 public:
+	explicit PopupWithCollision(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID,
+		std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
+		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, int collider_width = 9, int collider_height = 4);
 	explicit PopupWithCollision(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
 		std::string text, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
 		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, char border_character = 'X', int collider_width = 9, 

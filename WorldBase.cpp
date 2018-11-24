@@ -2,10 +2,10 @@
 #include <Windows.h>
 #include <iostream>
 
-WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory)
+WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory, std::string &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -713,7 +713,7 @@ void WorldBase::GENERATE_Enemies()
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	CharacterBase *standing_in_line_1;
-	standing_in_line_1 = new Chr_AllMight(132, 635, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_);
+	standing_in_line_1 = new Chr_AllMight(132, 635, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	standing_in_line_1->setDialogNodes();
 
