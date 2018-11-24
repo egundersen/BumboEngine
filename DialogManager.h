@@ -18,6 +18,7 @@ public:
 	void showDialog();
 	void stopGivingItem();
 	void stopBattle();
+	void closeDialog();
 
 	// Getters
 	bool shouldShowDialog() { return should_show_dialog_; }
@@ -39,10 +40,11 @@ private:
 	void dialogEvent(DialogNode *dialog_node);
 
 	int dialog_width_, dialog_height_, screen_height_, screen_width_, cursor_index_, start_time_move_cursor_, max_choices_;
-	bool has_opened_dialog_, should_show_dialog_, should_give_item_, should_enter_battle_;
+	bool should_show_dialog_, should_give_item_, should_enter_battle_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> dialog_matrix_;
 	DialogNode *head_node_;
+	DialogNode *moving_node_;
 	Item item_;
 	std::string action_;
 };

@@ -5,6 +5,7 @@
 #include "Pickup.h"
 #include "Characters.h"
 #include "Events.h"
+#include "Maze.h"
 #include <utility>
 
 #ifndef WORLDBASE_H
@@ -31,14 +32,15 @@ public:
 private:
 	// Setters
 	void evaluatePlayerInput();
+	void teleportPlayer(int position_x, int position_y);
 	void generateWorld();
-	void modifyWorld();
 	void checkForItem();
 	void checkForBattle();
 	void shouldDespawnCharacter();
 	void shouldRemoveEvent();
 	void shouldStartEventByLocation();
 	void shouldStartEventByID(int event_ID);
+	void setNPCAttributes();
 
 	// Getters
 	bool hasCollided(char direction, int offset);
@@ -48,9 +50,8 @@ private:
 	void GENERATE_WorldBorder();
 	void GENERATE_OutsideArea();
 	void GENERATE_Maze();
-	//void GENERATE_Enemies();
+	void GENERATE_Enemies();
 	void GENERATE_NonHostileNPCs();
-	//void GENERATE_Cutscenes();
 	void GENERATE_Signposts();
 	void GENERATE_Pickups();
 	void GENERATE_AdditionalObjects();
@@ -69,8 +70,8 @@ private:
 	int screen_width_, screen_height_, world_width_, world_height_, &player_health_, start_time_player_speed_,
 		player_speed_modifier_;
 	char opposite_player_direction_;
-	bool is_viewing_popup_, DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_, should_enter_battle_,
-		is_event_active_;
+	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
+		DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> world_matrix_;
 	std::vector<std::vector<char>> DEBUG_screen_matrix_;
@@ -82,6 +83,7 @@ private:
 	std::vector<CharacterBase*> characters_;
 	std::vector<EventBase*> events_;
 
+	Maze maze_;
 	Inventory &inventory_;
 	ScreenPosition screen_position_;
 	PlayerSprite player_sprite_;

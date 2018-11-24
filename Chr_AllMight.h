@@ -78,7 +78,7 @@ public:
 		dialog_choices_.push_back(dialog_choice_3);
 
 		/* Just a little check to make sure you typed the above code correctly.
-		 * This will throw an exception if you did something wrong
+		 * This will throw an exception if you added more than more dialog choices
 		 * Remember! Vector Size cannot be greater than 4! (always 4 dialog options at once) */
 #ifdef _DEBUG
 		for (auto dialog_choice : dialog_choices_)
@@ -92,6 +92,13 @@ public:
 	{
 		Item health_potion("Bottle o' syrup", 1);
 
+		/* ACTIONS (Mini-Tutorial)
+		*	"FIGHT"		Will start a battle with the NPC
+		*	item		Including an Item will have the NPC give the player the provided item
+		*	"SAVE"		Will Save the current position in the dialog. So if the player exits the
+		*				dialog and re-opens it, the conservsation will start at the "SAVE"d dialog choice
+		*/
+
 		// CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh Zfancy seeing you hereZ");
 		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! ZCan you guess why?Z");
@@ -104,8 +111,8 @@ public:
 		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!!ZDIE!!! DIEE!!!Z", "FIGHT");
 		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will neverZspeak with youZagainZ");
 		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...Z", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ");
+		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z", "SAVE");
+		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ", "SAVE");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);

@@ -2,24 +2,27 @@
 #include <iostream>
 
 DialogManager::DialogManager(int dialog_width, int dialog_height, int screen_height, int screen_width, std::vector<std::vector<std::string>> &matrix_display)
-	: has_opened_dialog_{ false }, matrix_display_{ matrix_display }, max_choices_(2), action_{ "" }, should_give_item_{ false },
+	: matrix_display_{ matrix_display }, max_choices_(2), action_{ "" }, should_give_item_{ false },
 	dialog_height_{ dialog_height }, dialog_width_{ dialog_width }, dialog_matrix_(dialog_height, std::vector<char>(dialog_width, ' ')),
 	screen_width_{ screen_width }, screen_height_{ screen_height }, cursor_index_(0), should_show_dialog_{ false }, should_enter_battle_{ false }
 {
+	setBackgroundText();
 }
 
 // Refreshes the dialog text
 void DialogManager::refreshDialog()
 {
-	if (!has_opened_dialog_)
-	{
-		onOpenDialog();
-		has_opened_dialog_ = true;
-	}
-
 	setCursorText();
 	setDialogOptions();
 	setResponseText();
+}
+
+// Calls once when dialog is opened
+void DialogManager::onOpenDialog()
+{
+	moving_node_ = head_node_;
+	setMaxChoices();
+	refreshDialog();
 }
 
 // Draws dialog menu to the screen
@@ -32,12 +35,6 @@ void DialogManager::displayDialogMenu()
 			matrix_display_[i + 24][j + 5] = std::string(1, dialog_matrix_[i][j]);
 		}
 	}
-}
-
-// Calls once when dialog is opened
-void DialogManager::onOpenDialog()
-{
-	setBackgroundText();
 }
 
 // Sets static parts of dialog menu
@@ -59,12 +56,12 @@ void DialogManager::setDialogOptions()
 
 	if (action_ == "")
 	{
-		if (head_node_->choice_1_ != nullptr)
-			addTextToMatrix(4, 2, head_node_->choice_1_->getPlayerDialog(), dialog_matrix_);
-		if (head_node_->choice_2_ != nullptr)
-			addTextToMatrix(4, 4, head_node_->choice_2_->getPlayerDialog(), dialog_matrix_);
-		if (head_node_->choice_3_ != nullptr)
-			addTextToMatrix(4, 6, head_node_->choice_3_->getPlayerDialog(), dialog_matrix_);
+		if (moving_node_->choice_1_ != nullptr)
+			addTextToMatrix(4, 2, moving_node_->choice_1_->getPlayerDialog(), dialog_matrix_);
+		if (moving_node_->choice_2_ != nullptr)
+			addTextToMatrix(4, 4, moving_node_->choice_2_->getPlayerDialog(), dialog_matrix_);
+		if (moving_node_->choice_3_ != nullptr)
+			addTextToMatrix(4, 6, moving_node_->choice_3_->getPlayerDialog(), dialog_matrix_);
 		// Replaces empty text block with goodbye text. FOr it to work, also remove the -1 condition in setDialogText
 		//else if(head_node_->choice_1_ == nullptr && head_node_->choice_2_ == nullptr && head_node_->choice_3_ != nullptr)
 		//	addTextToMatrix(4, 6, "Goodbye", dialog_matrix_);
@@ -86,23 +83,23 @@ void DialogManager::setResponseText()
 		for (int j = 0; j < 25; j++)
 			dialog_matrix_[2 + i][31 + j] = ' ';
 
-	if (head_node_->getAction() != "")
+	if (moving_node_->getAction() != "")
 	{
 #ifdef _DEBUG
-		if (head_node_->choice_1_ == nullptr && head_node_->getAction() == "ITEM")
+		if (moving_node_->choice_1_ == nullptr && moving_node_->getAction() == "ITEM")
 			throw std::invalid_argument(" If an item is given through a dialog node, that node must point to atleast one other node. ");
 #endif
-		if (head_node_->choice_1_ != nullptr)
+		if (moving_node_->choice_1_ != nullptr)
 		{
 			//Image response(head_node_->choice_1_->getResponse());
 			//addImageToMatrix(43, 4, response, dialog_matrix_);
 		}
-		Image response(head_node_->getResponse());
+		Image response(moving_node_->getResponse());
 		addImageToMatrix(43, 4, response, dialog_matrix_);
 	}
 	else
 	{
-		Image response(head_node_->getResponse());
+		Image response(moving_node_->getResponse());
 		addImageToMatrix(43, 4, response, dialog_matrix_);
 	}
 }
@@ -126,11 +123,11 @@ void DialogManager::clearCursorText()
 void DialogManager::setMaxChoices()
 {
 	max_choices_ = -1;
-	if (head_node_->choice_1_ != nullptr)
+	if (moving_node_->choice_1_ != nullptr)
 		max_choices_++;
-	if (head_node_->choice_2_ != nullptr)
+	if (moving_node_->choice_2_ != nullptr)
 		max_choices_++;
-	if (head_node_->choice_3_ != nullptr)
+	if (moving_node_->choice_3_ != nullptr)
 		max_choices_++;
 }
 
@@ -140,13 +137,13 @@ void DialogManager::confirmSelection()
 	switch (cursor_index_)
 	{
 	case 0:
-		dialogEvent(head_node_->choice_1_);
+		dialogEvent(moving_node_->choice_1_);
 		break;
 	case 1:
-		dialogEvent(head_node_->choice_2_);
+		dialogEvent(moving_node_->choice_2_);
 		break;
 	case 2:
-		dialogEvent(head_node_->choice_3_);
+		dialogEvent(moving_node_->choice_3_);
 		break;
 	default:
 		break;
@@ -161,17 +158,19 @@ void DialogManager::dialogEvent(DialogNode * dialog_node)
 	else if (dialog_node->getAction() == "FIGHT")
 	{
 		action_ = "FIGHT";
-		head_node_ = dialog_node;
+		moving_node_ = dialog_node;
 	}
 	else if (dialog_node->getAction() == "ITEM")
 	{
 		action_ = "ITEM";
-		head_node_ = dialog_node;
+		moving_node_ = dialog_node;
 	}
 	else
 	{
+		if (dialog_node->getAction() == "SAVE")
+			head_node_ = dialog_node;
 		action_ = "";
-		head_node_ = dialog_node;
+		moving_node_ = dialog_node;
 	}
 }
 
@@ -183,16 +182,16 @@ void DialogManager::moveDialogCursor(std::string move_cursor_direction)
 		action_ = "";
 		should_enter_battle_ = true;
 		should_show_dialog_ = false;
-		dialogEvent(head_node_->choice_1_);
+		dialogEvent(moving_node_->choice_1_);
 		setMaxChoices();
 	}
 	else if (action_ == "ITEM")
 	{
 		action_ = "";
-		item_ = head_node_->getItem();
+		item_ = moving_node_->getItem();
 		should_give_item_ = true;
 		should_show_dialog_ = false;
-		dialogEvent(head_node_->choice_1_);
+		dialogEvent(moving_node_->choice_1_);
 		setMaxChoices();
 	}
 	else
@@ -225,12 +224,13 @@ void DialogManager::moveDialogCursor(std::string move_cursor_direction)
 void DialogManager::setHeadNode(DialogNode * dialog_node)
 {
 	head_node_ = dialog_node;
+	moving_node_ = dialog_node;
 }
 
 // Forces dialog to appear
 void DialogManager::showDialog()
 {
-	refreshDialog();
+	onOpenDialog();
 	should_show_dialog_ = true;
 }
 
@@ -244,4 +244,13 @@ void DialogManager::stopGivingItem()
 void DialogManager::stopBattle()
 {
 	should_enter_battle_ = false;
+}
+
+// Closes dialog if all conditions are met (Usually only called when player hits BACKSPACE key)
+void DialogManager::closeDialog()
+{
+	if (moving_node_->getAction() != "FIGHT" && moving_node_->getAction() != "ITEM")
+	{
+		should_show_dialog_ = false;
+	}
 }
