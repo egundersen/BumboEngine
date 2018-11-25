@@ -11,7 +11,7 @@
 class BattleBase : public MatrixBase
 {
 public:
-	explicit BattleBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::string &image_file_path);
+	explicit BattleBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::pair<std::string, int> &image_file_path);
 	virtual ~BattleBase() {}
 
 	// Setters
@@ -40,6 +40,8 @@ protected:
 	void confirmSelection();
 	void setBossHealth(int boss_health) { boss_.health = boss_health; }
 	void gameOver();
+	void showFileSprite();
+	void hideFileSprite();
 
 	// Output Displays
 	void displayScreen();
@@ -49,7 +51,8 @@ protected:
 	std::vector<std::vector<char>> matrix_;
 	std::vector<AttackPatternBase*> attack_patterns_;
 	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_, start_time_battle_end_animation_;
-	std::string local_vector_space_, &image_file_path_;
+	std::string local_vector_space_;
+	std::pair<std::string, int> &image_file_path_;
 	bool is_battle_finished_, is_destroyed_;
 	BattleDialogBase dialog_;
 	BossFightDefinition boss_;

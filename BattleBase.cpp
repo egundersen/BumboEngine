@@ -4,10 +4,10 @@
 #include <windows.h>
 #include <iostream>
 
-BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::string &image_file_path)
+BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::pair<std::string, int> &image_file_path)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_{ boss_fight_definition }, image_file_path_{ image_file_path },
 	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
-	dialog_(width, height, matrix_display, dialog_choices_, boss_fight_definition), is_destroyed_{ false }
+	dialog_(width, height, matrix_display, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }
 {
 	start_time_move_cursor_ = GetTickCount();
 	setBackgroundText();
@@ -19,6 +19,7 @@ void BattleBase::onBeginBattle()
 	start_time_move_cursor_ = GetTickCount();
 	cursor_index_ = 1;
 	refreshScreen();
+	showFileSprite();
 }
 
 // Refreshes screen to show updated items list
@@ -47,7 +48,7 @@ void BattleBase::refreshScreen()
 					dialog_.refreshScreen();
 				else
 				{
-					if (attack_patterns_.size() == 0) // BOSS OUT OF ATTACKS
+					if (attack_patterns_.size() == 0 || dialog_.shouldReturnToMenu()) // BOSS OUT OF ATTACKS
 						local_vector_space_ = "MENU";
 					else
 						local_vector_space_ = "FIGHT";
@@ -55,6 +56,7 @@ void BattleBase::refreshScreen()
 		}
 		else
 		{
+			showFileSprite();
 			evaluatePlayerInput();
 			setBossHealthText();
 			setPlayerHealthText(65, 3);
@@ -93,10 +95,13 @@ void BattleBase::setBackgroundText()
 		matrix_[i][width_ - 4] = 'X';
 	}
 
-	Image main_ascii(boss_.ascii);
-	Image overlay_ascii(boss_.overlay);
-	addImageToMatrix(40, 14, main_ascii, matrix_);
-	addImageToMatrix(boss_.overlay_x, boss_.overlay_y, overlay_ascii, matrix_);
+	if (!boss_.use_files)
+	{
+		Image main_ascii(boss_.ascii);
+		Image overlay_ascii(boss_.overlay);
+		addImageToMatrix(40, 14, main_ascii, matrix_);
+		addImageToMatrix(boss_.overlay_x, boss_.overlay_y, overlay_ascii, matrix_);
+	}
 
 	drawRectangle(8, 29, 15, 5, 'X', matrix_);
 	drawRectangle(33, 29, 15, 5, 'X', matrix_);
@@ -246,17 +251,22 @@ void BattleBase::evaluatePlayerInput()
 		{
 			moveCursor("RIGHT");
 			setCursorText();
+			start_time_move_cursor_ = GetTickCount();
 		}
 		else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		{
 			moveCursor("LEFT");
 			setCursorText();
+			start_time_move_cursor_ = GetTickCount();
 		}
 		if (GetKeyState(VK_RETURN) & 0x8000)
 		{
-			confirmSelection();
+			if (current_time_move_cursor > 500)
+			{
+				confirmSelection();
+				start_time_move_cursor_ = GetTickCount();
+			}
 		}
-		start_time_move_cursor_ = GetTickCount();
 	}
 }
 
@@ -287,6 +297,7 @@ void BattleBase::damageBoss()
 		attack_patterns_.back()->OnBeginAttack();
 		local_vector_space_ = "FIGHT";
 		boss_.health--;
+		hideFileSprite();
 	}
 	else // attacking boss when boss is out of attacks is an instant kill
 	{
@@ -309,29 +320,36 @@ void BattleBase::bossDestroyed()
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 68; j++)
 				matrix_[1 + i][5 + j] = ' ';
+
+		// TODO animate
 	}
 	displayScreen();
 	if (current_time_battle_end_animation > 10000)
 	{
 		is_destroyed_ = true;
 		is_battle_finished_ = true;
+		hideFileSprite();
 	}
 }
 
 // Boss is spared
 void BattleBase::bossSpared()
 {
+	showFileSprite();
 	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
 	if (current_time_battle_end_animation > 5000)
 	{
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 68; j++)
 				matrix_[1 + i][5 + j] = ' ';
+
+		// TODO Animate
 	}
 	displayScreen();
 	if (current_time_battle_end_animation > 10000)
 	{
 		is_battle_finished_ = true;
+		hideFileSprite();
 	}
 }
 
@@ -343,12 +361,14 @@ void BattleBase::confirmSelection()
 	case 0:
 		dialog_.onOpenDialog();
 		local_vector_space_ = "DIALOG";
+		hideFileSprite();
 		break;
 	case 1:
 		damageBoss();
 		break;
 	case 2:
 		local_vector_space_ = "INVENTORY";
+		hideFileSprite();
 		break;
 	default:
 		break;
@@ -360,6 +380,24 @@ void BattleBase::gameOver()
 {
 	setGameOverText();
 	displayScreen();
+}
+
+// Decides which file sprite to display
+void BattleBase::showFileSprite()
+{
+	if (boss_.use_files)
+	{
+		// TODO Animate
+		image_file_path_.first = boss_.file_path_neutral;
+		image_file_path_.second = 160;
+	}
+}
+
+// Erases the file sprite
+void BattleBase::hideFileSprite()
+{
+	if (boss_.use_files)
+		image_file_path_.first = "";
 }
 
 // displays matrix on screen

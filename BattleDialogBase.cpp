@@ -2,10 +2,10 @@
 #include <Windows.h>
 #include <iostream>
 
-BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), matrix_display_{ matrix_display }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0),
+BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, std::pair<std::string, int> &image_file_path)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), matrix_display_{ matrix_display }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), image_file_path_{ image_file_path },
 	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), boss_{ boss_fight_definition },
-	displaying_response_{ false }, enter_key_pressed_{ false }
+	displaying_response_{ false }, enter_key_pressed_{ false }, return_to_menu_{ false }
 {
 	start_time_move_cursor_ = GetTickCount();
 	setBackgroundText();
@@ -17,6 +17,7 @@ void BattleDialogBase::onOpenDialog()
 	enter_key_pressed_ = false;
 	start_time_move_cursor_ = GetTickCount();
 	should_exit_dialog_ = false;
+	return_to_menu_ = false;
 	displaying_response_ = false;
 	setDialogOptions();
 }
@@ -35,12 +36,14 @@ void BattleDialogBase::refreshScreen()
 			{
 				has_boss_given_up_ = true;
 			}
+			hideFileSprite();
 			should_exit_dialog_ = true;
 			start_time_exit_dialog_ = GetTickCount();
 		}
 	}
 	else
 	{
+		showFileSprite();
 		evaluatePlayerInput();
 		setCursorText();
 		displayScreen();
@@ -68,11 +71,21 @@ void BattleDialogBase::evaluatePlayerInput()
 		}
 		if (GetKeyState(VK_RETURN) & 0x8000)
 		{
-			if (!enter_key_pressed_)
+			if (current_time_move_cursor > 500)
 			{
-				confirmSelection();
-				enter_key_pressed_ = true;
+				if (!enter_key_pressed_)
+				{
+					confirmSelection();
+					enter_key_pressed_ = true;
+				}
+				start_time_move_cursor_ = GetTickCount();
 			}
+		}
+		else if (GetKeyState(VK_BACK) & 0x8000)
+		{
+			hideFileSprite();
+			should_exit_dialog_ = true;
+			return_to_menu_ = true;
 			start_time_move_cursor_ = GetTickCount();
 		}
 	}
@@ -97,10 +110,13 @@ void BattleDialogBase::setBackgroundText()
 		matrix_[i][width_ - 4] = 'X';
 	}
 
-	Image main_ascii(boss_.ascii);
-	Image overlay_ascii(boss_.overlay);
-	addImageToMatrix(29, 14, main_ascii, matrix_);
-	addImageToMatrix(boss_.overlay_x - 11, boss_.overlay_y, overlay_ascii, matrix_);
+	if (!boss_.use_files)
+	{
+		Image main_ascii(boss_.ascii);
+		Image overlay_ascii(boss_.overlay);
+		addImageToMatrix(29, 14, main_ascii, matrix_);
+		addImageToMatrix(boss_.overlay_x - 11, boss_.overlay_y, overlay_ascii, matrix_);
+	}
 }
 
 // Updates player options as text
@@ -182,12 +198,14 @@ void BattleDialogBase::confirmSelection()
 			{
 				if (dialog_index == cursor_index_)
 				{
-					if (std::get<2>(*col) == true)
-					{// Should progress dialog?
+					if (std::get<2>(*col) == true) // Should progress dialog?
+					{
+						showFileSprite();
 						setReponseText(std::get<1>(*col));
 						progressDialog();
 						return; // Prevents loop from running twice
 					}
+					showFileSprite();
 					setReponseText(std::get<1>(*col));
 				}
 				dialog_index++;
@@ -201,6 +219,24 @@ void BattleDialogBase::confirmSelection()
 bool BattleDialogBase::checkLevel()
 {
 	return false;
+}
+
+// Decides which file sprite to display
+void BattleDialogBase::showFileSprite()
+{
+	if (boss_.use_files)
+	{
+		// TODO Animate
+		image_file_path_.first = boss_.file_path_neutral;
+		image_file_path_.second = 80;
+	}
+}
+
+// Erases the file sprite
+void BattleDialogBase::hideFileSprite()
+{
+	if (boss_.use_files)
+		image_file_path_.first = "";
 }
 
 // Draws dialog menu to the screen

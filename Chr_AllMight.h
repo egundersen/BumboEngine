@@ -7,7 +7,7 @@
 class Chr_AllMight : public CharacterBase
 {
 public:
-	Chr_AllMight(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::string &image_file_path,
+	Chr_AllMight(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -23,7 +23,7 @@ public:
 		/* Default ASCII Art for BATTLE SEQUENCE */
 
 		// Basic ASCII Example (The all Might face)
-		BossFightDefinition boss_fight_definition = BossFightDefinition(
+		/*BossFightDefinition boss_fight_definition = BossFightDefinition(
 			22, // boss health
 			40, // his smile/eyes (overlay) offset X position
 			20, // his smile/eyes (overlay) offset Y position
@@ -35,7 +35,7 @@ public:
 		),//*/
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
-		/*BattleSpriteDefinition boss_fight_definition = BattleSpriteDefinition(
+		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			22, // Boss health
 			"ALL MIGHT", // name
 			"resources\\moltar.bmp", // Neutral Expression (Image Location/Name)

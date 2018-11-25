@@ -20,7 +20,7 @@ struct ScreenPosition
 class WorldBase : MatrixBase
 {
 public:
-	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory, std::string &image_file_path);
+	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory, std::pair<std::string, int> &image_file_path);
 
 	// Setters
 	void onEnterWorld();
@@ -71,7 +71,7 @@ private:
 	char opposite_player_direction_;
 	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
 		DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
-	std::string &image_file_path_;
+	std::pair<std::string, int> &image_file_path_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> world_matrix_;
 	std::vector<std::vector<char>> DEBUG_screen_matrix_;

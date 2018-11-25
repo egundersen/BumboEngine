@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <windows.h>
+#include <utility>
 #include "MatrixManager.h"
 
 using namespace WinMainParameters;
@@ -18,7 +19,7 @@ TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
 // Global Variables for width, height and the output display screen 
-std::string image_file_path = "";
+std::pair<std::string, int> image_file_path = std::pair<std::string, int>("", 160);
 int width_G = 79;
 int height_G = 35;
 std::vector<std::vector<std::string>> matrix_display_G(height_G, std::vector<std::string>(width_G, " "));
@@ -180,7 +181,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 	return TRUE;
 }
 
-bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC)
+bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 {
 	// Load the bitmap image file
 	HBITMAP hBitmap;
@@ -225,7 +226,7 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC)
 	//BOOL qRetBlit = ::BitBlt(hWinDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight,
 	//	hLocalDC, 0, 0, SRCCOPY);
 	SetStretchBltMode(hWinDC, HALFTONE);
-	BOOL qRetBlit = ::StretchBlt(hWinDC, 160, 0, 475, 425,
+	BOOL qRetBlit = ::StretchBlt(hWinDC, position_x, 0, 475, 425,
 		hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, SRCCOPY);
 	if (!qRetBlit)
 	{
@@ -301,11 +302,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			SelectObject(hDCMem, font);//*/
 
 			// Load Complex Ascii-styled Image from provided file path
-			if (image_file_path != "")
+			if (image_file_path.first != "")
 			{
-				std::wstring sTemp = std::wstring(image_file_path.begin(), image_file_path.end());
+				std::wstring sTemp = std::wstring(image_file_path.first.begin(), image_file_path.first.end());
 				LPCWSTR sw = sTemp.c_str();
-				LoadAndBlitBitmap(sw, hDCMem); // __T("resources\\moltar.bmp")
+				LoadAndBlitBitmap(sw, hDCMem, image_file_path.second); // __T("resources\\moltar.bmp")
 			}
 
 			COLORREF whiteTextColor = 0x00ffff00;

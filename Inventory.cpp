@@ -104,19 +104,24 @@ void Inventory::evaluatePlayerInput()
 			{
 				moveCursor("UP");
 				refreshScreen();
+				start_time_move_cursor_ = GetTickCount();
 			}
 			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 			{
 				moveCursor("DOWN");
 				refreshScreen();
+				start_time_move_cursor_ = GetTickCount();
 			}
 			if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 			{
-				useItem();
-				refreshScreen();
+				if (current_time_move_cursor > 500)
+				{
+					useItem();
+					refreshScreen();
+					start_time_move_cursor_ = GetTickCount();
+				}
 			}
 		}
-		start_time_move_cursor_ = GetTickCount();
 	}
 }
 
