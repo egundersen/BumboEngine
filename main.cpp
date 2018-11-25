@@ -2,12 +2,13 @@
 #define NOMINMAX
 #include "stdafx.h"
 #include "WinMainParameters.h"
+#include "MatrixManager.h"
+#include "SplashScreen.h"
 #include "resource.h"
 #include <iostream>
 #include <sstream>
 #include <windows.h>
 #include <utility>
-#include "MatrixManager.h"
 
 using namespace WinMainParameters;
 
@@ -19,7 +20,7 @@ TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
 // Global Variables for width, height and the output display screen 
-std::pair<std::string, int> image_file_path = std::pair<std::string, int>("", 160);
+std::pair<std::string, int> image_file_path_G = std::pair<std::string, int>("", 160);
 int width_G = 79;
 int height_G = 35;
 std::vector<std::vector<std::string>> matrix_display_G(height_G, std::vector<std::string>(width_G, " "));
@@ -92,10 +93,14 @@ int main(int /*argc*/, char* /*argv*/[]) {
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
-	// MAIN SOURCE PORT - Bumbo Engine v0.4 -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, matrix_display_G, 5, image_file_path);
+	// Loading/Splash Screen
+	SplashScreen splash(width_G, height_G, matrix_display_G);
+	GetMessage(&msg, NULL, 0, 0);
+	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
+		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 
-	// Allow quitting of application
+	// MAIN SOURCE PORT - Bumbo Engine v0.4 -----------------------------------------------------
+	MatrixManager grid(width_G, height_G, matrix_display_G, 5, image_file_path_G);
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
@@ -302,11 +307,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			SelectObject(hDCMem, font);//*/
 
 			// Load Complex Ascii-styled Image from provided file path
-			if (image_file_path.first != "")
+			if (image_file_path_G.first != "")
 			{
-				std::wstring sTemp = std::wstring(image_file_path.first.begin(), image_file_path.first.end());
+				std::wstring sTemp = std::wstring(image_file_path_G.first.begin(), image_file_path_G.first.end());
 				LPCWSTR sw = sTemp.c_str();
-				LoadAndBlitBitmap(sw, hDCMem, image_file_path.second); // __T("resources\\moltar.bmp")
+				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second); // __T("resources\\moltar.bmp")
 			}
 
 			COLORREF whiteTextColor = 0x00ffff00;

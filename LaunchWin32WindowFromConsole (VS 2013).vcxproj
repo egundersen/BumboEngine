@@ -220,6 +220,7 @@
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PlayerSprite.h" />
     <ClInclude Include="Popup.h" />
+    <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="PopupWithCollision.h" />
