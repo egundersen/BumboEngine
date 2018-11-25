@@ -228,7 +228,7 @@ void WorldBase::evaluatePlayerInput()
 	{
 		if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
 		{
-			player_speed_modifier_ = 5;
+			player_speed_modifier_ = 1;
 			player_sprite_.setPlayerAnimationSpeed(180);
 		}
 		else
@@ -328,7 +328,7 @@ void WorldBase::teleportPlayer(int position_x, int position_y)
 void WorldBase::generateWorld()
 {
 	GENERATE_OutsideArea();
-	maze_.GENERATE_Maze();
+	GENERATE_Maze();
 	GENERATE_WorldBorder();
 	GENERATE_AdditionalObjects();
 	GENERATE_Enemies();
@@ -701,6 +701,12 @@ void WorldBase::GENERATE_OutsideArea()
 	addImageToMatrix(85, 652, rock_1, world_matrix_, true);
 	Image rock_2("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
 	addImageToMatrix(115, 634, rock_2, world_matrix_, true);
+}
+
+// Creates the walls of the maze as well as objects that should be placed INSIDE the maze
+void WorldBase::GENERATE_Maze()
+{
+	maze_.GENERATE_Maze();
 }
 
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
