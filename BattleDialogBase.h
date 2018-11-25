@@ -14,6 +14,7 @@ public:
 	// Setters
 	void onOpenDialog();
 	void refreshScreen();
+	void reset();
 
 	// Getters
 	bool shouldExitDialog() { return should_exit_dialog_; }

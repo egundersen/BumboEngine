@@ -367,14 +367,22 @@ void WorldBase::shouldDespawnCharacter()
 	{
 		if (selected_character_->isDestroyed())
 		{
-			shouldStartEventByID(selected_character_->eventID());
-			selected_character_->onDespawn();
-			//characters_.erase(std::remove(characters_.begin(), characters_.end(), selected_character_), characters_.end());
+			if (selected_character_->shouldRestart()) // Player died (so they can restart)
 			{
-				auto it = std::find(characters_.begin(), characters_.end(), selected_character_);
-				if (it != characters_.end()) { characters_.erase(it); }
+				should_enter_battle_ = true;
+				inventory_.reset();
+				selected_character_->reset();
 			}
-			selected_character_ = nullptr;
+			else
+			{
+				shouldStartEventByID(selected_character_->eventID());
+				selected_character_->onDespawn();
+				{
+					auto it = std::find(characters_.begin(), characters_.end(), selected_character_);
+					if (it != characters_.end()) { characters_.erase(it); }
+				}
+				selected_character_ = nullptr;
+			}
 		}
 	}
 }
@@ -721,7 +729,8 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	CharacterBase *standing_in_line_1;
 	standing_in_line_1 = new Chr_AllMight(132, 635, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
-	standing_in_line_1->setDialogNodes();
+	standing_in_line_1->setDialogNodes(); // TODO put in reset
+	standing_in_line_1->reset();
 
 	characters_.push_back(standing_in_line_1);
 }

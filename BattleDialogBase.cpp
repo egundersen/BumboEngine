@@ -14,8 +14,8 @@ BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vecto
 // Calls when battle dialog is opened
 void BattleDialogBase::onOpenDialog()
 {
-	enter_key_pressed_ = false;
 	start_time_move_cursor_ = GetTickCount();
+	enter_key_pressed_ = false;
 	should_exit_dialog_ = false;
 	return_to_menu_ = false;
 	displaying_response_ = false;
@@ -48,6 +48,14 @@ void BattleDialogBase::refreshScreen()
 		setCursorText();
 		displayScreen();
 	}
+}
+
+// resets everything related to battle dialog 
+void BattleDialogBase::reset()
+{
+	dialog_choices_index_ = 0;
+	clearMatrix(width_, height_, matrix_);
+	setBackgroundText();
 }
 
 // accepts the player's inputs

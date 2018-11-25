@@ -22,6 +22,7 @@ public:
 	// Getters
 	bool isBattleOver() { return is_battle_finished_; }
 	bool isDestroyed() { return is_destroyed_; }
+	bool shouldRestart() { return should_restart_battle_; }
 	std::string getLocalVectorSpace() { return local_vector_space_; }
 protected:
 	// Setters
@@ -42,6 +43,7 @@ protected:
 	void gameOver();
 	void showFileSprite();
 	void hideFileSprite();
+	void resetBattleSpace();
 
 	// Output Displays
 	void displayScreen();
@@ -50,10 +52,11 @@ protected:
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
 	std::vector<AttackPatternBase*> attack_patterns_;
-	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_, start_time_battle_end_animation_;
+	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_, start_time_battle_end_animation_, 
+		initial_boss_health_, initial_player_health_;
 	std::string local_vector_space_;
 	std::pair<std::string, int> &image_file_path_;
-	bool is_battle_finished_, is_destroyed_;
+	bool is_battle_finished_, is_destroyed_, should_restart_battle_;
 	BattleDialogBase dialog_;
 	BossFightDefinition boss_;
 };

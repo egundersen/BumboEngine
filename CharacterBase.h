@@ -25,7 +25,7 @@ public:
 	void createWorldSprite(); // Sprite in world map
 	void updateWorldSprite(char direction);
 
-	// Movement
+	// World Movement
 	void resetMovingPath();
 	void move(int ending_position, char axis, int speed);
 	void teleportNPC(int center_position_x, int center_position_y);
@@ -40,7 +40,13 @@ public:
 	void refreshPopup();
 	void faceDirection(char player_facing_direction);
 	bool useBasicDialog() { return use_basic_dialog_; }
+
+	// Reset and attack creation-related
+	void reset();
+protected:
+	virtual void initializeAttackPatterns(int screen_width, int screen_height, std::vector<std::vector<std::string>> &matrix_display, int &player_health) {}
 private:
+	void resetAttackPatterns();
 	void eraseSpriteAndColliders();
 	void eraseOldColliders();
 	void setObjectID() { object_type_ID_ = 3; };
@@ -49,7 +55,9 @@ private:
 	std::vector<Image*> sprite_states_;
 	char facing_direction_, moving_direction_;
 	bool use_basic_dialog_, has_begun_moving_, has_reached_destination_, attack_on_sight_;
-	int start_time_move_one_space_, start_time_move_, movement_direction_multiplier_, event_ID_;
+	int start_time_move_one_space_, start_time_move_, movement_direction_multiplier_, event_ID_,
+		screen_width_, screen_height_, &player_health_;
+	std::vector<std::vector<std::string>> &matrix_display_;
 };
 
 #endif // !CHARACTERBASE_H

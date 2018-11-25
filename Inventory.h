@@ -11,10 +11,11 @@ public:
 	Inventory(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health);
 
 	// Setters
-	void onOpenInventory();
+	void onOpenInventory(bool in_battle = false);
 	void evaluatePlayerInput();
 	void addItem(std::string item_name, int modifier);
 	void addItem(Item item);
+	void reset();
 
 private:
 	// Setters
@@ -33,7 +34,9 @@ private:
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<std::vector<char>> matrix_;
 	std::vector<Item> items_list_;
+	std::vector<Item> temporary_items_list_;
 	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_;
+	bool in_battle_;
 };
 
 #endif // !INVENTORY_H

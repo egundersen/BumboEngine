@@ -184,6 +184,14 @@ void MatrixBase::generateInOrderSequence(std::vector<std::shared_ptr<int>> &in_o
 	}
 }
 
+// Replaces every character in given matrix with white space
+void MatrixBase::clearMatrix(int width, int height, std::vector<std::vector<char>>& matrix)
+{
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			matrix[i][j] = ' ';
+}
+
 // Displays image to screen (completely disregards existing formatting)
 void MatrixBase::DEBUG_simpleDisplay(Image & image)
 {

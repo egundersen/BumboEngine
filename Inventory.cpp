@@ -1,6 +1,7 @@
 #include "Inventory.h"
 #include "MatrixBase.h"
 #include <windows.h>
+#include <iostream>
 
 Inventory::Inventory(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), cursor_index_(0), player_health_{ player_health }, matrix_display_{ matrix_display }, start_time_move_cursor_(0)
@@ -10,8 +11,24 @@ Inventory::Inventory(int width, int height, std::vector<std::vector<std::string>
 }
 
 // Runs when inventory is opened
-void Inventory::onOpenInventory()
+void Inventory::onOpenInventory(bool in_battle)
 {
+	if (in_battle_) // Need to clear temporary inventory
+	{
+		// Erase temporary inventory
+		temporary_items_list_.clear();
+		in_battle_ = false;
+	}
+	if (in_battle) // Opened inventory during battle
+	{
+		in_battle_ = true;
+		// Add all items to temporary inventory
+		for (std::vector< Item >::iterator it = items_list_.begin(); it != items_list_.end(); ++it)
+		{
+			std::cout << (*it).getName() << " ";
+			temporary_items_list_.push_back(*it);
+		}
+	}
 	start_time_move_cursor_ = GetTickCount();
 	cursor_index_ = 0;
 	refreshScreen();
@@ -149,6 +166,19 @@ void Inventory::addItem(std::string item_name, int modifier)
 void Inventory::addItem(Item item)
 {
 	items_list_.push_back(item);
+}
+
+// Resets the inventory to the state it was in at the beginning of battle
+void Inventory::reset()
+{
+	// Erase Inventory
+	items_list_.clear();
+	
+	// Add all items (saved at the beginning of battle in temporary_inventory) to the inventory
+	for (std::vector< Item >::iterator it = temporary_items_list_.begin(); it != temporary_items_list_.end(); ++it)
+	{
+		items_list_.push_back(*it);
+	}//*/
 }
 
 // Remove item from inventory (at index)

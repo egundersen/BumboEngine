@@ -7,7 +7,8 @@
 BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::pair<std::string, int> &image_file_path)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_{ boss_fight_definition }, image_file_path_{ image_file_path },
 	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
-	dialog_(width, height, matrix_display, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }
+	dialog_(width, height, matrix_display, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
+	initial_player_health_{ player_health }
 {
 	start_time_move_cursor_ = GetTickCount();
 	setBackgroundText();
@@ -197,7 +198,7 @@ void BattleBase::setGameOverText()
 		matrix_[2][j] = '=';
 	}
 	Image game_over_letters(" [][][]     []   []      [][]=====      [][][][]      [][]==== [][][]Z[]    []   [][]  [][]  [][][]           []  [] []    [] []     []  []Z[]  ____  []__[] [] [][] [][]=====      []  []  []  []  []==== [][][]Z[]    [] []    [][] [][] [][]           []  []   [][]   []     [] [] Z [][][]  []    [][]  []  [][]=====      [][][]    []    []==== []  []Z");
-	Image funnyText("{player} was killed by {boss name}.ZZZSCORE: Z");
+	Image funnyText(std::string("    {player} was killed by ") + boss_.name + std::string(".ZZZZZWhat? Not quite dead? Press r for a rematch!Z"));
 	addImageToMatrix(39, 16, funnyText, matrix_);
 	addImageToMatrix(39, 6, game_over_letters, matrix_);
 }
@@ -380,6 +381,14 @@ void BattleBase::gameOver()
 {
 	setGameOverText();
 	displayScreen();
+
+	if (GetKeyState(0x52) & 0x8000) // Press r to restart battle
+	{ //&& player_health_ <= 0
+		is_destroyed_ = true;
+		is_battle_finished_ = true;
+		hideFileSprite();
+		should_restart_battle_ = true;
+	}
 }
 
 // Decides which file sprite to display
@@ -398,6 +407,25 @@ void BattleBase::hideFileSprite()
 {
 	if (boss_.use_files)
 		image_file_path_.first = "";
+}
+
+// Resets the battle space
+void BattleBase::resetBattleSpace()
+{
+	local_vector_space_ = "MENU";
+
+	clearMatrix(width_, height_, matrix_);
+	setBackgroundText();
+
+	start_time_move_cursor_ = GetTickCount();
+	boss_.health = initial_boss_health_;
+	player_health_ = initial_player_health_;
+
+	is_destroyed_ = false;
+	is_battle_finished_ = false;
+	should_restart_battle_ = false;
+
+	dialog_.reset();
 }
 
 // displays matrix on screen

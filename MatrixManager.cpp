@@ -57,7 +57,7 @@ void MatrixManager::evaluatePlayerInput()
 		{
 			if (!has_initialized_inventory_)
 			{
-				inventory_.onOpenInventory();
+				inventory_.onOpenInventory(true);
 				has_initialized_inventory_ = true;
 			}
 			if (GetAsyncKeyState(VK_BACK) & 0x8000)

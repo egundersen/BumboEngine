@@ -4,7 +4,8 @@
 CharacterBase::CharacterBase(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID, std::vector<std::vector<char>>& world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>>& matrix_display, int screen_width, int screen_height, int event_ID, int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, std::pair<std::string, int> &image_file_path)
 	: PopupWithCollision(center_position_x, center_position_y + 1, popup_sprite, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height), event_ID_{ event_ID }, use_basic_dialog_{ use_basic_dialog },
 	sprite_{ 12, 10, matrix_display, world_matrix }, has_begun_moving_{ false }, start_time_move_one_space_(0), start_time_move_(0), movement_direction_multiplier_(1), moving_direction_{ 'l' }, facing_direction_{ 'd' }, has_reached_destination_{ false }, attack_on_sight_{ attack_on_sight },
-	BattleBase(screen_width, screen_height, matrix_display, player_health, boss_fight_definition, image_file_path), DialogManager(screen_width - 10, 9, screen_width, screen_height, matrix_display)
+	BattleBase(screen_width, screen_height, matrix_display, player_health, boss_fight_definition, image_file_path), DialogManager(screen_width - 10, 9, screen_width, screen_height, matrix_display),
+	screen_width_{ screen_width }, screen_height_{ screen_height }, matrix_display_{ matrix_display }, player_health_{ player_health }
 {
 }
 
@@ -65,6 +66,26 @@ void CharacterBase::faceDirection(char player_facing_direction)
 {
 	facing_direction_ = player_facing_direction;
 	updateWorldSprite(facing_direction_);
+}
+
+// Resets all parts of the character
+void CharacterBase::reset()
+{
+	resetAttackPatterns();
+	resetBattleSpace();
+}
+
+void CharacterBase::resetAttackPatterns()
+{
+	// Erase all attacks (If attacks exist)
+	for (std::vector< AttackPatternBase* >::iterator it = attack_patterns_.begin(); it != attack_patterns_.end(); ++it)
+	{
+		delete (*it);
+	}
+	attack_patterns_.clear();
+
+	// Add all attacks
+	initializeAttackPatterns(screen_width_, screen_height_, matrix_display_, player_health_);
 }
 
 // Change location and/or direction of world sprite

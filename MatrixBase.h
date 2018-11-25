@@ -25,7 +25,8 @@ protected:
 	int generateRandomNumber(int min, int max);
 	void generateRandomSequence(std::vector<std::shared_ptr<int>> &random_sequence, int min, int max);
 	void generateInOrderSequence(std::vector <std::shared_ptr<int>> &in_order_sequence, int min, int max);
-	
+	void clearMatrix(int width, int height, std::vector<std::vector<char>> &matrix);
+
 	template<typename Container, typename T>
 	inline bool contains(Container const & container, T const & value);
 
