@@ -140,8 +140,7 @@ void BattleDialogBase::setDialogOptions()
 		{
 			for (col = row->begin(); col != row->end(); col++)
 			{
-				Image dialog_choice(std::get<0>(*col));
-				addImageToMatrix(23, 29 + offset, dialog_choice, matrix_);
+				addTextToMatrix(17, 29 + offset, std::get<0>(*col), matrix_);
 				offset++;
 			}
 			return;
@@ -236,7 +235,7 @@ void BattleDialogBase::showFileSprite()
 	{
 		// TODO Animate
 		image_file_path_.first = boss_.file_path_neutral;
-		image_file_path_.second = 80;
+		image_file_path_.second = 60;
 	}
 }
 

@@ -1,8 +1,8 @@
 #include "CharacterBase.h"
 #include <string>
 
-#ifndef CHR_ALLMIGHT
-#define CHR_ALLMIGHT
+#ifndef CHR_ALLMIGHT_H
+#define CHR_ALLMIGHT_H
 
 class Chr_AllMight : public CharacterBase
 {
@@ -171,4 +171,4 @@ public:
 	}
 };
 
-#endif // !CHR_ALLMIGHT
+#endif // !CHR_ALLMIGHT_H

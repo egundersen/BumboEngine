@@ -147,9 +147,13 @@ void BattleBase::setBossHealthText()
 {
 	if (boss_.health == 0)
 	{
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 11; j++)
-				matrix_[i + 4][j + 8] = ' ';
+		if (initial_boss_health_ > 11)
+			for (int i = 0; i < 2; i++)
+				for (int j = 0; j < 11; j++)
+					matrix_[i + 4][j + 8] = ' ';
+		else
+			for (int j = 0; j < initial_boss_health_; j++)
+				matrix_[4][j + 8] = ' ';
 	}
 	else if (boss_.health > 11)
 	{
@@ -162,7 +166,7 @@ void BattleBase::setBossHealthText()
 	{
 		if (boss_.health == 11)
 			matrix_[5][8] = ' ';
-		for (int j = boss_.health; j < 11; ++j)
+		for (int j = boss_.health; j < initial_boss_health_; ++j)
 			matrix_[4][j + 8] = ' ';
 		for (int j = 0; j < boss_.health; ++j)
 			matrix_[4][j + 8] = 'O';
@@ -414,12 +418,12 @@ void BattleBase::resetBattleSpace()
 {
 	local_vector_space_ = "MENU";
 
-	clearMatrix(width_, height_, matrix_);
-	setBackgroundText();
-
 	start_time_move_cursor_ = GetTickCount();
 	boss_.health = initial_boss_health_;
 	player_health_ = initial_player_health_;
+
+	clearMatrix(width_, height_, matrix_);
+	setBackgroundText();
 
 	is_destroyed_ = false;
 	is_battle_finished_ = false;

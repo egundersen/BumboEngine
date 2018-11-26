@@ -395,7 +395,6 @@ void WorldBase::shouldRemoveEvent()
 	{
 		if (selected_event_->isComplete())
 		{
-			// new despawn code here 
 			{
 				auto it = std::find(events_.begin(), events_.end(), selected_event_);
 				if (it != events_.end()) { events_.erase(it); }
@@ -737,7 +736,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 {
 #ifdef _DEBUG
 	CharacterBase *standing_in_line_1;
-	standing_in_line_1 = new Chr_AllMight(132, 635, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	standing_in_line_1 = new Chr_TutorialNPC(132, 635, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	standing_in_line_1->initializeCharacter();
 #endif

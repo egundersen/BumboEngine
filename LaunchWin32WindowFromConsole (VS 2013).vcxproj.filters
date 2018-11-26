@@ -290,6 +290,9 @@
     <ClInclude Include="ScreenPosition.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
+    <ClInclude Include="Chr_BackgroundNPC.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">

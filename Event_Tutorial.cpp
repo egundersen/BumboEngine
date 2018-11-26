@@ -368,13 +368,25 @@ void Event_Tutorial::tutorial()
 	else if (current_time_begin_event_ > 17000)
 		popups_[19].displayPopup(10, 0);
 	else if (current_time_begin_event_ > 16000)
+	{
 		popups_[18].displayPopup(10, 0);
+		attached_character_->faceDirection('l');
+	}
 	else if (current_time_begin_event_ > 14000)
+	{
 		popups_[17].displayPopup(10, 0);
+		attached_character_->faceDirection('d');
+	}
 	else if (current_time_begin_event_ > 11500)
+	{
 		popups_[16].displayPopup(10, 0);
+		attached_character_->faceDirection('r');
+	}
 	else if (current_time_begin_event_ > 10000)
+	{
 		popups_[15].displayPopup(10, 0);
+		attached_character_->faceDirection('u');
+	}
 	else if (current_time_begin_event_ > 7000)
 		popups_[14].displayPopup(10, 0);
 	else if (current_time_begin_event_ > 4000)
@@ -384,6 +396,27 @@ void Event_Tutorial::tutorial()
 }
 
 void Event_Tutorial::getPlayerName()
+{
+	if (!has_entered_name_)
+	{
+		// display form popup
+
+		double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+		if (current_time_begin_event_ > 200)
+		{
+			// get key pressed
+		}
+		// display form text
+
+		event_index_++; // REMOVE THIS LINE
+	}
+	else
+	{
+		event_index_++;
+	}
+}
+
+void Event_Tutorial::skipTutorial()
 {
 	if (!should_go_down_)
 	{
@@ -419,17 +452,15 @@ void Event_Tutorial::getPlayerName()
 			if (go_down_iterator_ > 15)
 			{
 				onEventOver();
-				attached_character_->markForDeletion();
-				attached_character_ = nullptr;
 			}
 			else if (go_down_iterator_ > 15)
 			{
-				fall_speed = 5000;
-				// TODO Play Crash sound
+				fall_speed = 5000; // currently does nothing
 			}
 			else if (go_down_iterator_ > 5)
 			{
 				fall_speed = 5;
+				// TODO Play Crash sound
 			}
 			go_down_iterator_++;
 			start_time_begin_event_ = GetTickCount();
@@ -437,12 +468,6 @@ void Event_Tutorial::getPlayerName()
 		if (attached_character_ != nullptr)
 			attached_character_->getSprite()->displayGhostAtPosition(43, go_down_iterator_ + 14);
 	}
-}
-
-void Event_Tutorial::skipTutorial()
-{
-	std::cout << "skip tutorial";
-	//event_index_++;
 }
 
 void Event_Tutorial::displayDialogChoice(int position_x, int position_y)
@@ -471,6 +496,6 @@ void Event_Tutorial::confirmSelection()
 	else // NO
 	{
 		should_go_down_ = true;
-		attached_character_->getSprite()->removeSprite(43, 14);
+		attached_character_->teleportNPC(163, 680);
 	}
 }

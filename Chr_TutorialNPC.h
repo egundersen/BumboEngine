@@ -17,29 +17,14 @@ public:
 		// TRUE -> Basic Popup dialog | FALSE -> Advanced Dialog with player choices
 		bool use_basic_dialog = false,
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
-		PopupDefinition popup_sprite = PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9),
-
-
-		/* Default ASCII Art for BATTLE SEQUENCE */
-
-		// Basic ASCII Example (The all Might face)
-		/*BossFightDefinition boss_fight_definition = BossFightDefinition(
-			22, // boss health
-			40, // his smile/eyes (overlay) offset X position
-			20, // his smile/eyes (overlay) offset Y position
-			"ALL MIGHT", // name
-			// ASCII Art for All Might
-			"            ,,#,@@@@@,@,*@@@@,*#@@@%             Z           ,,,,,,,@@(&,@@@@@@@@@@@@@%,           Z          @,#,,,,,,,,,,,@,%@@@@@&,,@@@           Z         ,,,@@,,,,,,,,,,,,%@@@@@@,,@@@@          Z         @@,#,,,,,,,,,,,,,%@@@@@@,,,@@@          Z         @@@,,,,,,,,,,,,,,@@@@@@@@,,,@@          Z        ,,@,,,,,,,,,,,,,,,@@@@@@@@,,,@@@         Z        ,@@,,&,&,@,,,.,,,@@@@@,@,@,,,,@@         Z       ,@#,,,,,@@&,@,#(%,,@,&@@@@@@,,,@@@        Z        ,@,,,,,%@@@@@,,/#*@@@@@@@@,,,,@@@        Z       ,@#,,,,,,,(@@@%,@@@@@@@@@@@@,,,*@,,       Z      ,,@,,,,,,,,,,,,,,,,@@@,,*@@@@@,,,,@,       Z      ,@,,,,,,,,,,,,,,,,,@@@,,,,@@@@,,,@,,       Z      @,*,#,,,,,,,,,,,,,,@@@@,,@@@@@@,@@,,       Z      ,@@,,@,@,,,,,,@@@@@@@@@&,@@@@@@,,@,,       Z      ,,@,,,@,,,,&,,,,,@@@@/,@@@@@@@@,@@,.       Z       ,,@,,,,,@,,,,,,,,,,,,,,(@@@@@,,@%,,       Z      ,&,,,,,,@,,,,,,,,,,,,,,,,,,@@@,,,,@@,&     Z     ,,,@@,,,,,@@%@**,,,,,,,,,,,@@@@,,@@@@  .    Z   @@,,@,@#,,/,,@&,,,,,,,,,,,,@,@@@@,,@@@@@      Z    ,(@@,,@,,@,,,&,,,,,,,,,,,,@@@@@@,,@@.@@@@,   Z   ,@@@@,,/,,@@,,,,,,,,,,,,@@@@@@@@@,.@@,@@@@@@  Z &@@@@@@,,,@,,,,,,,,,,,,,@@@@@@@@@@@,@@@&@@(     Z@@@@ @@(,,,,@@,,,,,,,,,,,@@@@@@@@@,@@@@@@*@@@@,  Z    @@@,,,,,,,@@,,,,,,,,,@@@@@@@,@@@@@@@@,       Z      @,,,,,,,,,,@@,,,,,*@@@@%,@@@@@@@@@@@%      Z       @@,,,,,,,,,,@@@@@@@@@@@@@@@@@@@@@@@       Z     @@@@@@@@/,,,,,,@@@@@@@@@@@@@@@@@@@@@@@@     ",
-			// ASCI Art for his smile and his eyes (The overlay)
-			"X*XXXXX________XXXXXXZ,X*  --        -- *X,Z,,X*   --------  *X,,Z,,,,X**        **X,,,Z,,,,,,,XXXXXXXX,,,,,,"
-		),//*/
+		PopupDefinition popup_sprite = PopupDefinition("", 'X', 23, 9),
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			22, // Boss health
-			"ALL MIGHT", // name
-			"resources\\moltar.bmp", // Neutral Expression (Image Location/Name)
-			"resources\\moltar1.bmp" // Angry Expression (Image Location/Name)
+			4, // Boss health
+			"TUTORIAL NPC", // name
+			"resources\\tutorial.bmp", // Neutral Expression (Image Location/Name)
+			"" // Angry Expression (Image Location/Name)
 		),//*/
 
 		/* Sets the sprite ascii for the NPC world sprite */
@@ -66,26 +51,12 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.1", "1.1 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.2", "1.2 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.C", "1.C YES", true));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.4", "1.4 NO", false));
-
-		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.1", "2.1 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.2", "2.2 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.3", "2.3 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.C", "2.C YES", true));
-
-		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.C", "3.C YES", true));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.2", "3.2 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.3", "3.3 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.4", "3.4 NO", false));
+		dialog_choice_1.push_back(std::make_tuple("Help! I move too fast!", "Just Hold SHIFT,ZIt's very simpleZ", false));
+		dialog_choice_1.push_back(std::make_tuple("Where's my health?", "You move as aZnumber. ThatZis your health", false));
+		dialog_choice_1.push_back(std::make_tuple("Hello, Yes?", "Look upon", false));
+		dialog_choice_1.push_back(std::make_tuple("I'm finished with the combat tutorial", "Very good", true));
 
 		dialog_choices_.push_back(dialog_choice_1);
-		dialog_choices_.push_back(dialog_choice_2);
-		dialog_choices_.push_back(dialog_choice_3);
 
 		/* Just a little check to make sure you typed the above code correctly.
 		 * This will throw an exception if you added more than more dialog choices
@@ -100,34 +71,24 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, std::vector<std::vector<std::string>> &matrix_display, int &player_health)
 	{
-		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, matrix_display, player_health, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
-		attack_patterns_.push_back(attack_pattern_1);
-		/*attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);//*/
+		for (int i = 0; i < 6; i++)
+		{
+			AttackPatternBase *attack_pattern_1;
+			attack_pattern_1 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
+			AttackPatternBase *attack_pattern_2;
+			attack_pattern_2 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 15);
+			AttackPatternBase *attack_pattern_3;
+			attack_pattern_3 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 3);
+
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
+		}
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
-
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC
 		*	item		Including an Item will have the NPC give the player the provided item
@@ -136,36 +97,21 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh Zfancy seeing you hereZ");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! ZCan you guess why?Z");
-		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love meZ a good joke!Z");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me!ZLet's fight!!!!Z", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here,Zhave my most valubleZpossession!Z", health_potion);
-		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where areZyou going!!!?Z");
-		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "i dont know...ZWhat is it?Z");
-		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!!ZDIE!!! DIEE!!!Z", "FIGHT");
-		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will neverZspeak with youZagainZ");
-		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...Z", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z", "SAVE");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ", "SAVE");
+		DialogNode *node_1 = new DialogNode("", "Your backZYou need moreZhelp, yes?Z");
+		DialogNode *node_1_1 = new DialogNode("Yes, I need more help", "This very goodZWhat you need Z my help with?Z");
+		DialogNode *node_1_2 = new DialogNode("What about my father?", "Sorry, I'm notZallowed to talkZabout that. ItZwould upset theZmy lemonZ");
+		DialogNode *node_1_3 = new DialogNode("No thanks", "Well, I will SeeZYou later thenZ");
+		DialogNode *node_1_2_1 = new DialogNode("Slowing down in combat", "Just hold SHIFTZThen you willZmove slowerZ");
+		DialogNode *node_1_2_2 = new DialogNode("Opening my inventory", "Oh, it very easyZJust press IZ");
+		DialogNode *node_1_2_3 = new DialogNode("Other hotkeys?", "Let's see...ZBACKSPACE is usuallyZexit what you'reZdoing somethingZ");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
 		node_1->setChoice2(node_1_2);
 		node_1->setChoice3(node_1_3);
-
-		node_1_1->setChoice1(node_1_1_1);
-		node_1_1->setChoice2(node_1_1_2);
-		node_1_1->setChoice3(node_1_1_3);
-
-		node_1_2->setChoice1(node_1_2_1);
-		node_1_2->setChoice2(node_1_2_2);
-		node_1_2->setChoice3(node_1_2_3);
-
-		node_1_2_1->setChoice1(node_1_2_1_1);
-		node_1_1_2->setChoice1(node_1_1_2_1);
-		node_1_1_1->setChoice1(node_1_1_1_1);
+		node_1_1->setChoice1(node_1_2_1);
+		node_1_1->setChoice2(node_1_2_2);
+		node_1_1->setChoice3(node_1_2_3);
 
 		setHeadNode(node_1);
 	}

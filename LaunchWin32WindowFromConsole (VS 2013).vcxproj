@@ -204,6 +204,7 @@
     <ClInclude Include="BossFightDefinition.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="CharacterBase.h" />
+    <ClInclude Include="Chr_BackgroundNPC.h" />
     <ClInclude Include="Chr_TutorialNPC.h" />
     <ClInclude Include="Chr_AllMight.h" />
     <ClInclude Include="BattleDialogBase.h" />
