@@ -21,23 +21,23 @@ Sprite::Sprite(int sprite_width, int sprite_height, std::vector<std::vector<std:
 }
 
 // Chooses what to display to the screen
-void Sprite::displaySprite(int screen_width, int screen_height)
+void Sprite::displaySprite(int position_x, int position_y)
 {
 	if (!is_moving_vertically_ && !is_moving_horizontally)
 	{
 		switch (direction_)
 		{
 		case 'u':
-			displaySpriteAtDirection(up_s_, screen_height, screen_width);
+			displaySpriteAtDirection(up_s_, position_y, position_x);
 			break;
 		case 'd':
-			displaySpriteAtDirection(down_s_, screen_height, screen_width);
+			displaySpriteAtDirection(down_s_, position_y, position_x);
 			break;
 		case 'l':
-			displaySpriteAtDirection(left_s_, screen_height, screen_width);
+			displaySpriteAtDirection(left_s_, position_y, position_x);
 			break;
 		case 'r':
-			displaySpriteAtDirection(right_s_, screen_height, screen_width);
+			displaySpriteAtDirection(right_s_, position_y, position_x);
 			break;
 		default:
 			break;
@@ -48,16 +48,16 @@ void Sprite::displaySprite(int screen_width, int screen_height)
 		switch (direction_)
 		{
 		case 'u':
-			displaySpriteAtDirection(up_1_, screen_height, screen_width);
+			displaySpriteAtDirection(up_1_, position_y, position_x);
 			break;
 		case 'd':
-			displaySpriteAtDirection(down_1_, screen_height, screen_width);
+			displaySpriteAtDirection(down_1_, position_y, position_x);
 			break;
 		case 'l':
-			displaySpriteAtDirection(left_1_, screen_height, screen_width);
+			displaySpriteAtDirection(left_1_, position_y, position_x);
 			break;
 		case 'r':
-			displaySpriteAtDirection(right_1_, screen_height, screen_width);
+			displaySpriteAtDirection(right_1_, position_y, position_x);
 			break;
 		default:
 			break;
@@ -68,16 +68,16 @@ void Sprite::displaySprite(int screen_width, int screen_height)
 		switch (direction_)
 		{
 		case 'u':
-			displaySpriteAtDirection(up_2_, screen_height, screen_width);
+			displaySpriteAtDirection(up_2_, position_y, position_x);
 			break;
 		case 'd':
-			displaySpriteAtDirection(down_2_, screen_height, screen_width);
+			displaySpriteAtDirection(down_2_, position_y, position_x);
 			break;
 		case 'l':
-			displaySpriteAtDirection(left_2_, screen_height, screen_width);
+			displaySpriteAtDirection(left_2_, position_y, position_x);
 			break;
 		case 'r':
-			displaySpriteAtDirection(right_2_, screen_height, screen_width);
+			displaySpriteAtDirection(right_2_, position_y, position_x);
 			break;
 		default:
 			break;
@@ -85,6 +85,70 @@ void Sprite::displaySprite(int screen_width, int screen_height)
 	}
 
 	animationCounter();
+}
+
+void Sprite::removeSprite(int position_x, int position_y)
+{
+	if (!is_moving_vertically_ && !is_moving_horizontally)
+	{
+		switch (direction_)
+		{
+		case 'u':
+			eraseSpriteAtDirection(up_s_, position_y, position_x);
+			break;
+		case 'd':
+			eraseSpriteAtDirection(down_s_, position_y, position_x);
+			break;
+		case 'l':
+			eraseSpriteAtDirection(left_s_, position_y, position_x);
+			break;
+		case 'r':
+			eraseSpriteAtDirection(right_s_, position_y, position_x);
+			break;
+		default:
+			break;
+		}
+	}
+	else if (animation_position_ == 0)
+	{
+		switch (direction_)
+		{
+		case 'u':
+			eraseSpriteAtDirection(up_1_, position_y, position_x);
+			break;
+		case 'd':
+			eraseSpriteAtDirection(down_1_, position_y, position_x);
+			break;
+		case 'l':
+			eraseSpriteAtDirection(left_1_, position_y, position_x);
+			break;
+		case 'r':
+			eraseSpriteAtDirection(right_1_, position_y, position_x);
+			break;
+		default:
+			break;
+		}
+	}
+	else
+	{
+		switch (direction_)
+		{
+		case 'u':
+			eraseSpriteAtDirection(up_2_, position_y, position_x);
+			break;
+		case 'd':
+			eraseSpriteAtDirection(down_2_, position_y, position_x);
+			break;
+		case 'l':
+			eraseSpriteAtDirection(left_2_, position_y, position_x);
+			break;
+		case 'r':
+			eraseSpriteAtDirection(right_2_, position_y, position_x);
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 // Changes player animation every 'X' seconds

@@ -293,6 +293,9 @@
     <ClInclude Include="Chr_BackgroundNPC.h">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">

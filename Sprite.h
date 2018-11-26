@@ -11,8 +11,8 @@ public:
 	virtual ~Sprite() {}
 
 	// Setters
-	virtual void displaySprite(int screen_width, int screen_height);
-	virtual void removeSprite(int center_position_x, int center_position_y) {}
+	virtual void displaySprite(int position_x, int position_y);
+	void removeSprite(int position_x, int position_y);
 	void setPlayerAnimationSpeed(int player_animation_speed) { player_animation_speed_ = player_animation_speed; }
 	void setDirection(char direction) { direction_ = direction; }
 	virtual void initializeSprites() {}
@@ -29,6 +29,7 @@ protected:
 
 	// Output Displays
 	virtual void displaySpriteAtDirection(std::vector<std::vector<char>> &direction, int screen_height, int screen_width) {}
+	virtual void eraseSpriteAtDirection(std::vector<std::vector<char>> &direction, int center_position_x, int center_position_y) {}
 
 	bool is_moving_vertically_, is_moving_horizontally;
 	char direction_;

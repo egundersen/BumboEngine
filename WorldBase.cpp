@@ -723,25 +723,36 @@ void WorldBase::GENERATE_Maze()
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
 void WorldBase::GENERATE_Enemies()
 {
-	CharacterBase *tutorial_npc;
-	tutorial_npc = new Chr_TutorialNPC(238, 637, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
 
 	characters_.push_back(tutorial_npc);
+
+#ifdef _DEBUG
+	CharacterBase *test;
+	test = new Chr_TutorialNPC(132, 635, player_health_, 0, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	test->initializeCharacter();
+	characters_.push_back(test);
+#endif
 }
 
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
-#ifdef _DEBUG
-	CharacterBase *standing_in_line_1;
-	standing_in_line_1 = new Chr_TutorialNPC(132, 635, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, player_health_, 2, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.pirate_1);
+	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, player_health_, 2, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.pirate_2);
+
+	standing_in_line_1->faceDirection('u');
+	standing_in_line_2->faceDirection('u');
 
 	standing_in_line_1->initializeCharacter();
-#endif
+	standing_in_line_2->initializeCharacter();
 
 	characters_.push_back(standing_in_line_1);
+	characters_.push_back(standing_in_line_2);
 }
 
 // creates all the sign posts (These show popups)

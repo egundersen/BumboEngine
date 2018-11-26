@@ -7,6 +7,7 @@
 #include "Events.h"
 #include "Maze.h"
 #include "ScreenPosition.h"
+#include "SpriteSheet.h"
 #include <utility>
 
 #ifndef WORLDBASE_H
@@ -83,6 +84,7 @@ private:
 	Inventory &inventory_;
 	ScreenPosition screen_position_;
 	PlayerSprite player_sprite_;
+	SpriteSheet sprite_sheet_;
 
 	CharacterBase *selected_character_;
 	EventBase *selected_event_;

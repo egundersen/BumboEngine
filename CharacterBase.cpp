@@ -125,6 +125,7 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 	double current_time_move = GetTickCount() - start_time_move_one_space_;
 	if (current_time_move > speed)
 	{
+		sprite_.removeSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
 		eraseOldColliders();
 		if (axis == 'x')
 		{
