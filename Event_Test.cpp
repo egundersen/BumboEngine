@@ -1,5 +1,4 @@
 #include "Event_Test.h"
-#include <iostream>
 #include <Windows.h>
 
 void Event_Test::createEvent()
@@ -31,8 +30,8 @@ void Event_Test::refreshEvent()
 		popups_[0].displayPopup(20, 0);
 
 		// move [Example] | In this case, I already know characters_[0] is All Might
-		//if (!characters_[0]->hasReachDestination())
-		//	characters_[0]->move(2382, 'x', 250);
+		//if (!attached_character_->hasReachDestination())
+		//	attached_character_->move(2382, 'x', 250);
 
 		// teleport [example]
 		//characters_[0]->teleportNPC(2382, characters_[0]->getCenterPositionY());

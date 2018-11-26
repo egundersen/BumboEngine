@@ -1,7 +1,7 @@
 #include "EventBase.h"
 
-#ifndef EVENT_TEST
-#define EVENT_TEST
+#ifndef EVENT_TEST_H
+#define EVENT_TEST_H
 
 class Event_Test : public EventBase
 {
@@ -12,4 +12,4 @@ public:
 	void refreshEvent();
 };
 
-#endif // !EVENT_TEST
+#endif // !EVENT_TEST_H

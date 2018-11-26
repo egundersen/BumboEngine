@@ -138,6 +138,9 @@
     <ClCompile Include="Maze.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
+    <ClCompile Include="Event_Tutorial.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -209,9 +212,6 @@
     <ClInclude Include="AttackPattern_Explode.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterBase.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
@@ -274,6 +274,21 @@
     </ClInclude>
     <ClInclude Include="SplashScreen.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_Tutorial.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterBase.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_TutorialNPC.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldSprite.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenPosition.h">
+      <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

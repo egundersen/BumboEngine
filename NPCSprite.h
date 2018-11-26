@@ -13,8 +13,9 @@ public:
 	void initializeSprites(std::vector<Image*> sprite_states);
 	void removeSprite(int center_position_x, int center_position_y);
 
+	// Output Displays
+	void displayGhostAtPosition(int center_position_x, int center_position_y);
 private:
-
 	// Output Displays
 	void displaySpriteAtDirection(std::vector<std::vector<char>> &direction, int center_position_x, int center_position_y);
 	

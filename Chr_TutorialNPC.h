@@ -1,13 +1,13 @@
 #include "CharacterBase.h"
 #include <string>
 
-#ifndef CHR_ALLMIGHT
-#define CHR_ALLMIGHT
+#ifndef CHR_TUTORIALNPC
+#define CHR_TUTORIALNPC
 
-class Chr_AllMight : public CharacterBase
+class Chr_TutorialNPC : public CharacterBase
 {
 public:
-	Chr_AllMight(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
+	Chr_TutorialNPC(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -57,7 +57,7 @@ public:
 			"   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
 			"   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z  %U  U%  Z"
 		),
-		
+
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 0) // 0 = no event
 
@@ -112,7 +112,7 @@ public:
 		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 10); //50
 		AttackPatternBase *attack_pattern_6;
 		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
-		attack_patterns_.push_back(attack_pattern_2);
+		attack_patterns_.push_back(attack_pattern_1);
 		/*attack_patterns_.push_back(attack_pattern_3);
 		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_1);
@@ -171,4 +171,4 @@ public:
 	}
 };
 
-#endif // !CHR_ALLMIGHT
+#endif // !CHR_TUTORIALNPC

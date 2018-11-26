@@ -6,16 +6,11 @@
 #include "Characters.h"
 #include "Events.h"
 #include "Maze.h"
+#include "ScreenPosition.h"
 #include <utility>
 
 #ifndef WORLDBASE_H
 #define WORLDBASE_H
-
-struct ScreenPosition
-{
-	int x;
-	int y;
-};
 
 class WorldBase : MatrixBase
 {

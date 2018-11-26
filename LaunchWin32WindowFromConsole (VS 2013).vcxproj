@@ -169,6 +169,7 @@
     <ClCompile Include="EventBase.cpp" />
     <ClCompile Include="Event_AttackOnSight.cpp" />
     <ClCompile Include="Event_Test.cpp" />
+    <ClCompile Include="Event_Tutorial.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="BossFightDefinition.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="CharacterBase.h" />
+    <ClInclude Include="Chr_TutorialNPC.h" />
     <ClInclude Include="Chr_AllMight.h" />
     <ClInclude Include="BattleDialogBase.h" />
     <ClInclude Include="DialogNode.h" />
@@ -210,6 +212,7 @@
     <ClInclude Include="Events.h" />
     <ClInclude Include="Event_AttackOnSight.h" />
     <ClInclude Include="Event_Test.h" />
+    <ClInclude Include="Event_Tutorial.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
@@ -220,6 +223,7 @@
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PlayerSprite.h" />
     <ClInclude Include="Popup.h" />
+    <ClInclude Include="ScreenPosition.h" />
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="resource.h" />
@@ -230,6 +234,7 @@
     <ClInclude Include="WinMainParameters.h" />
     <ClInclude Include="WorldBase.h" />
     <ClInclude Include="DialogManager.h" />
+    <ClInclude Include="WorldSprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc" />

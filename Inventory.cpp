@@ -1,7 +1,6 @@
 #include "Inventory.h"
 #include "MatrixBase.h"
 #include <windows.h>
-#include <iostream>
 
 Inventory::Inventory(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), cursor_index_(0), player_health_{ player_health }, matrix_display_{ matrix_display }, start_time_move_cursor_(0)
@@ -25,7 +24,6 @@ void Inventory::onOpenInventory(bool in_battle)
 		// Add all items to temporary inventory
 		for (std::vector< Item >::iterator it = items_list_.begin(); it != items_list_.end(); ++it)
 		{
-			std::cout << (*it).getName() << " ";
 			temporary_items_list_.push_back(*it);
 		}
 	}

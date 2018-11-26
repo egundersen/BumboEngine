@@ -32,6 +32,15 @@ void NPCSprite::removeSprite(int center_position_x, int center_position_y)
 			world_matrix_[center_position_y + i][center_position_x + j] = ' ';
 }
 
+// Displays a fake, "GHOST" of the sprite (does not actually move them) on the Matrix Display
+void NPCSprite::displayGhostAtPosition(int center_position_x, int center_position_y)
+{
+	for (int i = 0; i < sprite_height_; i++)
+		for (int j = 0; j < sprite_width_; j++)
+			if (down_2_[i][j] != ' ' && center_position_y < 35 - sprite_height_ / 2 - 1)
+				matrix_display_[center_position_y + i][center_position_x + j] = std::string(1, down_2_[i][j]);
+}
+
 // Displays given sprite to the world matrix
 void NPCSprite::displaySpriteAtDirection(std::vector<std::vector<char>>& direction, int center_position_y, int center_position_x)
 {

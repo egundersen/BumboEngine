@@ -314,7 +314,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second); // __T("resources\\moltar.bmp")
 			}
 
-			COLORREF whiteTextColor = 0x00ffff00;
+			COLORREF whiteTextColor = 0x00ffffff; //ffff00
 			COLORREF blackTextColor = 0x00000000;
 			SetBkMode(hDCMem, OPAQUE);
 			SetBkColor(hDCMem, blackTextColor);

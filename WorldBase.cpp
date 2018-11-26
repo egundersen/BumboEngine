@@ -87,6 +87,7 @@ void WorldBase::refreshScreen()
 				should_enter_battle_ = true;
 				selected_character_->stopBattle();
 			}
+			shouldDespawnCharacter();
 			shouldRemoveEvent();
 		}
 	}
@@ -387,13 +388,14 @@ void WorldBase::shouldDespawnCharacter()
 	}
 }
 
-// Decides whether or not to removes event from array (Event has ended).
+// Decides whether or not to remove event from array (Event has ended).
 void WorldBase::shouldRemoveEvent()
 {
 	if (selected_event_ != nullptr)
 	{
 		if (selected_event_->isComplete())
 		{
+			// new despawn code here 
 			{
 				auto it = std::find(events_.begin(), events_.end(), selected_event_);
 				if (it != events_.end()) { events_.erase(it); }
@@ -446,7 +448,7 @@ void WorldBase::setNPCAttributes()
 		character->createWorldSprite();
 		if (character->shouldAttackOnSight())
 		{
-			Event_AttackOnSight *attack_on_sight = new Event_AttackOnSight(character->getUniqueObjectID(), character->getCenterPositionX(), character->getCenterPositionY(), 10, 10, element_has_object_, matrix_display_, characters_, character);
+			Event_AttackOnSight *attack_on_sight = new Event_AttackOnSight(character->getUniqueObjectID(), character->getCenterPositionX(), character->getCenterPositionY(), 10, 10, character->getUniqueObjectID(), element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 			attack_on_sight->createEvent();
 
 			events_.push_back(attack_on_sight);
@@ -570,7 +572,7 @@ void WorldBase::GENERATE_OutsideArea()
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,dNXdllllll0WNklllloONWK:                                                                                                                                                                  .'...........................................                                                            'l0WWXOxollllllxNWOollllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdllllllllllllllllloKMXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXdllllllllllxXWWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNZ",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,xWXdllllll0WWOllllllxKWNx.                                                                                                                                                              .lKNXXNNNNXXXXXXXXXXXXXKKKKKKKKKKKKKKKKKKKKK000000000000000OOOOOOOOOOOOOOOOOOOOOOOkkkkkkkkkkkkxxxxxxxxxxxxONWN0xolllllllllxNW0ollllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdllllllllllllllllloKMXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXdlllllllld0NNOoccccccccccccccccccccccccccccccccccZ",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,dNW0dlllll0WM0llllllloONW0:                                                                                                                                                           .oKWMMNOkkkkkkkkkkkkkkkkOOOOOOOOOOOOO000000000000KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKNWOolllllllllllxNW0ollllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdlllllllllllllllllo0MXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXdllllllokXW0o;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z",
-		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;oKNXOolll0WM0lllllllllxKWNx.                                                                                                                                                       'dXWNKNMKolllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllloKM0olllllllllllxNMKollllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdlllllllllllllllllo0WXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXdlllllxKWXx:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z",
+		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;oKNXOolll0WM0lllllllllxKWNx.                                                                                                                                                        dXWNKNMKolllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllloKM0olllllllllllxNMKollllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdlllllllllllllllllo0WXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXdlllllxKWXx:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:xKWXkolOWM0lllllllllloONW0:                                                                                                                                                    ,xXWNOdoKMKolllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllloKMKolllllllllllxNMKollllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdllllllllllllllllll0WXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXdllld0NNOl,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,ckXWKxOWM0llllllllllllxKWNd.                                                                                                                                                ,xNWXOdlloKMXdlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllloKMKolllllllllllxNMXdllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdllllllllllllllllllOWXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXdcokXWKo;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z",
 		L",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,lONWNMM0llllllllllllloONW0;                                                                                                                                             ;kNWXkolllloKMXxlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllloKMKolllllllllllxNMXdllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll0MKdllllllllllllllllllOWXxllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllOMXxdKWXx:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Z",
@@ -709,6 +711,8 @@ void WorldBase::GENERATE_OutsideArea()
 	addImageToMatrix(85, 652, rock_1, world_matrix_, true);
 	Image rock_2("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
 	addImageToMatrix(115, 634, rock_2, world_matrix_, true);
+	Image rock_3("   @@&@   Z #@@* #@( Z #*%  (*& Z @(%#*,#@ Z");
+	addImageToMatrix(180, 651, rock_3, world_matrix_, true);
 }
 
 // Creates the walls of the maze as well as objects that should be placed INSIDE the maze
@@ -720,17 +724,23 @@ void WorldBase::GENERATE_Maze()
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
 void WorldBase::GENERATE_Enemies()
 {
+	CharacterBase *tutorial_npc;
+	tutorial_npc = new Chr_TutorialNPC(238, 637, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
+	tutorial_npc->initializeCharacter();
+
+	characters_.push_back(tutorial_npc);
 }
 
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
+#ifdef _DEBUG
 	CharacterBase *standing_in_line_1;
 	standing_in_line_1 = new Chr_AllMight(132, 635, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
-	standing_in_line_1->setDialogNodes(); // TODO put in reset
-	standing_in_line_1->reset();
+	standing_in_line_1->initializeCharacter();
+#endif
 
 	characters_.push_back(standing_in_line_1);
 }
@@ -771,10 +781,13 @@ void WorldBase::GENERATE_AdditionalObjects()
 // creates events that trigger cutscenes, battles, enemy_movement, etc...
 void WorldBase::GENERATE_Events()
 {
-	Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, matrix_display_, characters_, nullptr);
-	// Excluding the test event, Event Unique Object ID's should BEGIN at 10000
+	/* Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, matrix_display_, characters_, nullptr);
+	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10000
+	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
+	Event_Tutorial *tutorial = new Event_Tutorial (10000, 190, 647, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 
-	events_.push_back(test);
+	// events_.push_back(test);
+	events_.push_back(tutorial);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)
