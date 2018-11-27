@@ -2,6 +2,12 @@
 #include <Windows.h>
 #include <iostream>
 
+Event_Tutorial::Event_Tutorial(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>>& matrix_display, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, character_ID, element_has_object, matrix_display, characters, screen_position, screen_width, screen_height),
+	fall_speed(125), go_down_iterator_(0), dialog_choice_index_(0), should_go_down_{ false }, has_entered_name_{ false }
+{
+}
+
 void Event_Tutorial::createEvent()
 {
 	updateColliderCoordinates();
@@ -184,27 +190,30 @@ void Event_Tutorial::refreshEvent()
 	switch (event_index_)
 	{
 	case 0:
-		moveManny(4000);
+		moveTutorialNpc();
 		break;
 	case 1:
-		getPlayerName();
+		askPlayerName(4000);
 		break;
 	case 2:
-		beforeTutorial(4000);
+		getPlayerName();
 		break;
 	case 3:
-		skipTutorial();
+		tellFatherBackstory(4000);
 		break;
 	case 4:
-		tutorial();
+		skipTutorial();
 		break;
 	case 5:
-		attached_character_->teleportNPC(251, 634);
+		tutorial();
+		break;
+	case 6:
+		attached_character_->teleportNPC(251, 633);
 		attached_character_->faceDirection('d');
 		should_enter_battle_ = true;
 		event_index_++;
 		break;
-	case 6:
+	case 7:
 		onEventOver();
 		break;
 	default:
@@ -212,49 +221,53 @@ void Event_Tutorial::refreshEvent()
 	}
 }
 
-void Event_Tutorial::moveManny(int time_interval)
+void Event_Tutorial::moveTutorialNpc()
+{
+	// Will automatically increase movement index
+	switch (attached_character_->getMovementIndex())
+	{
+	case 0:
+		attached_character_->move(216, 'x', 20);
+		break;
+	case 1:
+		attached_character_->move(640, 'y', 35);
+		break;
+	case 2:
+		attached_character_->move(211, 'x', 20);
+		break;
+	case 3:
+		attached_character_->move(642, 'y', 35);
+		break;
+	case 4:
+		attached_character_->move(201, 'x', 20);
+		break;
+	case 5:
+		attached_character_->move(screen_position_.y + screen_height_ / 2 + 1, 'y', 35);
+		break;
+	case 6:
+		attached_character_->move(screen_position_.x + screen_width_ / 2 + 9, 'x', 20);
+		break;
+	case 7:
+		event_index_++;
+		break;
+	default:
+		break;
+	}
+}
+
+void Event_Tutorial::askPlayerName(int time_interval)
 {
 	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
-	if (current_time_begin_event_ > time_interval * 2)
+	if (current_time_begin_event_ > time_interval)
 	{
 		event_index_++;
 		start_time_begin_event_ = GetTickCount();
 	}
-	else if (current_time_begin_event_ > time_interval)
-		popups_[0].displayPopup(10, 0);
 	else if (current_time_begin_event_ <= time_interval)
-	{
-		// Will automatically increase movement index
-		switch (attached_character_->getMovementIndex())
-		{
-		case 0:
-			attached_character_->move(216, 'x', 20);
-			break;
-		case 1:
-			attached_character_->move(640, 'y', 35);
-			break;
-		case 2:
-			attached_character_->move(211, 'x', 20);
-			break;
-		case 3:
-			attached_character_->move(642, 'y', 35);
-			break;
-		case 4:
-			attached_character_->move(201, 'x', 20);
-			break;
-		case 5:
-			attached_character_->move(screen_position_.y + screen_height_ / 2 + 1, 'y', 35);
-			break;
-		case 6:
-			attached_character_->move(screen_position_.x + screen_width_ / 2 + 9, 'x', 20);
-			break;
-		default:
-			break;
-		}
-	}
+		popups_[0].displayPopup(10, 0);
 }
 
-void Event_Tutorial::beforeTutorial(int time_interval)
+void Event_Tutorial::tellFatherBackstory(int time_interval)
 {
 	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
 	if (current_time_begin_event_ > time_interval * 12)
@@ -466,7 +479,7 @@ void Event_Tutorial::skipTutorial()
 			start_time_begin_event_ = GetTickCount();
 		}
 		if (attached_character_ != nullptr)
-			attached_character_->getSprite()->displayGhostAtPosition(43, go_down_iterator_ + 14);
+			attached_character_->displayGhostSprite(43, go_down_iterator_ + 14, 'd');
 	}
 }
 

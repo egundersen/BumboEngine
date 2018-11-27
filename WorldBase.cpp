@@ -112,25 +112,25 @@ bool WorldBase::hasCollided(char direction, int offset)
 	{
 	case 'u':
 		for (int j = 0; j < player_sprite_.getWidth() / 2 + 2; j++)
-			if (matrix_display_[screen_height_ / 2 - player_sprite_.getHeight() / 2 + offset][screen_width_ / 2 - player_sprite_.getWidth() / 2 + 2 + j] != std::string(1, ' '))
+			if(world_matrix_[screen_position_.y + screen_height_ / 2 - player_sprite_.getHeight() / 2 + offset][screen_position_.x + screen_width_ / 2 - player_sprite_.getWidth() / 2 + 2 + j] != ' ')
 				return true;
 		return false;
 		break;
 	case'd':
 		for (int j = 0; j < player_sprite_.getWidth() / 2 + 2; j++)
-			if (matrix_display_[screen_height_ / 2 + player_sprite_.getHeight() / 2 - offset][screen_width_ / 2 - player_sprite_.getWidth() / 2 + 2 + j] != std::string(1, ' '))
+			if (world_matrix_[screen_position_.y + screen_height_ / 2 + player_sprite_.getHeight() / 2 - offset][screen_position_.x + screen_width_ / 2 - player_sprite_.getWidth() / 2 + 2 + j] != ' ')
 				return true;
 		return false;
 		break;
 	case 'l':
-		for (int i = 0; i < player_sprite_.getHeight() / 2 + 1; i++)
-			if (matrix_display_[screen_height_ / 2 - player_sprite_.getHeight() / 2 + 3 + i][screen_width_ / 2 - player_sprite_.getWidth() / 2 + offset] != std::string(1, ' '))
+		for (int i = 3; i < player_sprite_.getHeight() / 2 + 1; i++) // 3: only bottom half of player should collide
+			if (world_matrix_[screen_position_.y + screen_height_ / 2 - player_sprite_.getHeight() / 2 + 3 + i][screen_position_.x + screen_width_ / 2 - player_sprite_.getWidth() / 2 + offset] != ' ')
 				return true;
 		return false;
 		break;
 	case'r':
-		for (int i = 0; i < player_sprite_.getHeight() / 2 + 1; i++)
-			if (matrix_display_[screen_height_ / 2 - player_sprite_.getHeight() / 2 + 3 + i][screen_width_ / 2 + player_sprite_.getWidth() / 2 - offset] != std::string(1, ' '))
+		for (int i = 3; i < player_sprite_.getHeight() / 2 + 1; i++) // 3: only bottom half of player should collide
+			if (world_matrix_[screen_position_.y + screen_height_ / 2 - player_sprite_.getHeight() / 2 + 3 + i][screen_position_.x + screen_width_ / 2 + player_sprite_.getWidth() / 2 - offset] != ' ')
 				return true;
 		return false;
 		break;
@@ -241,7 +241,7 @@ void WorldBase::evaluatePlayerInput()
 		{
 			if (GetAsyncKeyState(VK_UP) & 0x8000)
 			{
-				if (screen_position_.y > 0 && !hasCollided('u', 2)) // 2
+				if (screen_position_.y > 0 && !hasCollided('u', 5)) // 2
 				{
 					--screen_position_.y;
 					player_sprite_.setPlayerMoving("verticle");
@@ -741,18 +741,40 @@ void WorldBase::GENERATE_Enemies()
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, player_health_, 2, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
-		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.pirate_1);
-	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, player_health_, 2, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
-		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.pirate_2);
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.player, 'u');
+	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, player_health_, 3, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.pirate_1, ' u');
+	CharacterBase *standing_in_line_3 = new Chr_BackgroundNPC(441, 612, player_health_, 4, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
+	CharacterBase *standing_in_line_4 = new Chr_BackgroundNPC(448, 614, player_health_, 5, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
+	CharacterBase *standing_in_line_5 = new Chr_BackgroundNPC(456, 613, player_health_, 6, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.player, 'r');
+	CharacterBase *standing_in_line_6 = new Chr_BackgroundNPC(416, 622, player_health_, 7, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.player, 'r');
 
-	standing_in_line_1->faceDirection('u');
-	standing_in_line_2->faceDirection('u');
+	CharacterBase *boarder_guard_1 = new Chr_BackgroundNPC(479, 615, player_health_, 8, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.player, 'l');
+	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(471, 626, player_health_, 9, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.player, 'l');
 
 	standing_in_line_1->initializeCharacter();
 	standing_in_line_2->initializeCharacter();
+	standing_in_line_3->initializeCharacter();
+	standing_in_line_4->initializeCharacter();
+	standing_in_line_5->initializeCharacter();
+	standing_in_line_6->initializeCharacter();
+	boarder_guard_1->initializeCharacter();
+	boarder_guard_1->initializeCharacter();
 
 	characters_.push_back(standing_in_line_1);
 	characters_.push_back(standing_in_line_2);
+	characters_.push_back(standing_in_line_3);
+	characters_.push_back(standing_in_line_4);
+	characters_.push_back(standing_in_line_5);
+	characters_.push_back(standing_in_line_6);
+	characters_.push_back(boarder_guard_1);
+	characters_.push_back(boarder_guard_2);
 }
 
 // creates all the sign posts (These show popups)
@@ -794,10 +816,12 @@ void WorldBase::GENERATE_Events()
 	/* Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, matrix_display_, characters_, nullptr);
 	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10000
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
-	Event_Tutorial *tutorial = new Event_Tutorial (10000, 190, 647, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_Tutorial *tutorial = new Event_Tutorial(10000, 190, 647, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 507, 607, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);
 	events_.push_back(tutorial);
+	events_.push_back(teleport_to_maze);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)
@@ -860,7 +884,7 @@ void WorldBase::DEBUG_stopDisplayingCollisions()
 	for (auto event : events_)
 		event->DEBUG_hideCollider(world_matrix_);
 	for (auto character : characters_)
-		character->createWorldSprite();
+		character->DEBUG_eraseSpriteColliders();
 	for (auto signpost : signposts_)
 		signpost->createWorldSprite();
 }

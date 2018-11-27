@@ -141,6 +141,9 @@
     <ClCompile Include="Event_Tutorial.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Event_TeleportPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -295,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="SpriteSheet.h">
       <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_TeleportPlayer.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -30,10 +30,11 @@ protected:
 	virtual void updateColliderCoordinates();
 	void onEventOver();
 	void setAttachedCharacterIndex();
+	void teleportPlayer(int position_x, int position_y);
 
 	bool is_event_over_, should_enter_battle_;
 	int object_type_ID_, unique_object_ID_, center_position_x_, center_position_y_, collider_width_, collider_height_,
-		start_time_begin_event_, character_ID_, screen_width_, screen_height_;
+		start_time_begin_event_, character_ID_, screen_width_, screen_height_, event_index_;
 	std::vector<std::vector<std::pair<int, int>>> &element_has_object_;
 	std::vector<std::vector<std::string>> &matrix_display_;
 	std::vector<CharacterBase*> &characters_;

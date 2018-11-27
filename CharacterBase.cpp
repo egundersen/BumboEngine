@@ -170,6 +170,18 @@ void CharacterBase::onDespawn()
 	sprite_.removeSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
 }
 
+void CharacterBase::displayGhostSprite(int top_left_position_x, int top_left_position_y, char moving_direction)
+{
+	sprite_.displayGhostSprite(top_left_position_x, top_left_position_y, screen_width_, screen_height_, moving_direction);
+}
+
+// Erases sprite and area around sprite. Then adds the sprite back
+void CharacterBase::DEBUG_eraseSpriteColliders()
+{
+	sprite_.DEBUG_eraseSquareSurroundingSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
+	createWorldSprite();
+}
+
 // Resets movement function, allowing movement function to be called again
 void CharacterBase::resetMovingPath()
 {

@@ -26,16 +26,17 @@ public:
 	// Attack On Sight Event
 	bool shouldAttackOnSight() { return attack_on_sight_; }
 
-	// World Map Sprite
+	// World Sprite
 	void createWorldSprite(); // Sprite in world map
 	void updateWorldSprite(char direction);
-	NPCSprite *getSprite() { return &sprite_; }
 
-	// World Movement
+	// World Sprite Movement
 	void resetMovingPath();
 	void move(int ending_position, char axis, int speed);
 	void teleportNPC(int center_position_x, int center_position_y);
 	void onDespawn();
+	void displayGhostSprite(int top_left_position_y, int top_left_position_x, char moving_direction);
+	void DEBUG_eraseSpriteColliders();
 
 	int eventID() { return event_ID_; }
 	bool hasReachDestination() { return has_reached_destination_; }

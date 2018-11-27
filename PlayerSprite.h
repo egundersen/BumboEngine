@@ -15,7 +15,7 @@ public:
 
 protected:
 	// Output Displays
-	void displaySpriteAtDirection(std::vector<std::vector<char>> &direction, int screen_height, int screen_width);
+	void displaySpriteAtDirection(std::vector<std::vector<char>> &direction, int top_left_position_x, int top_left_position_y);
 };
 
 #endif // !PLAYERSPRITE_H

@@ -13,12 +13,13 @@ public:
 	void initializeSprites(std::vector<Image*> sprite_states);
 
 	// Output Displays
-	void displayGhostAtPosition(int center_position_x, int center_position_y);
+	void DEBUG_eraseSquareSurroundingSprite(int top_left_position_x, int top_left_position_y);
 private:
 	
 	// Output Displays
-	void displaySpriteAtDirection(std::vector<std::vector<char>> &direction, int center_position_x, int center_position_y);
-	void eraseSpriteAtDirection(std::vector<std::vector<char>> &direction, int center_position_x, int center_position_y);
+	void displaySpriteAtDirection(std::vector<std::vector<char>> &direction, int top_left_position_x, int top_left_position_y);
+	void displayGhostSpriteAtDirection(std::vector<std::vector<char>> &direction, int top_left_position_x, int top_left_position_y, int screen_width_, int screen_height_, char moving_direction);
+	void eraseSpriteAtDirection(std::vector<std::vector<char>> &direction, int top_left_position_x, int top_left_position_y);
 
 	std::vector<std::vector<char>>& world_matrix_;
 };

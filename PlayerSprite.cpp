@@ -47,10 +47,10 @@ void PlayerSprite::setPlayerMoving(std::string direction)
 }
 
 // Displays given sprite to the screen
-void PlayerSprite::displaySpriteAtDirection(std::vector<std::vector<char>>& direction, int screen_height, int screen_width)
+void PlayerSprite::displaySpriteAtDirection(std::vector<std::vector<char>>& direction, int top_left_position_x, int top_left_position_y)
 {
 	for (int i = 0; i < sprite_height_; i++)
 		for (int j = 0; j < sprite_width_; j++)
 			if (direction[i][j] != ' ')
-				matrix_display_[i + screen_height / 2 - 3][j + screen_width / 2 - 5] = std::string(1, direction[i][j]);
+				matrix_display_[i + top_left_position_y / 2 - 3][j + top_left_position_x / 2 - 5] = std::string(1, direction[i][j]);
 }

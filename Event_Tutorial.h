@@ -6,25 +6,27 @@
 class Event_Tutorial : public EventBase
 {
 public:
-	using EventBase::EventBase;
+	Event_Tutorial(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID,
+		std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::vector<CharacterBase*> &characters, ScreenPosition &screen_position, int screen_width, int screen_height);
 
 	void createEvent();
 	void refreshEvent();
 
 private:
-	// Parts of the event
-	void moveManny(int time_interval);
-	void beforeTutorial(int time_interval);
-	void tutorial();
+	// Parts of the event (In-Order)
+	void moveTutorialNpc();
+	void askPlayerName(int time_interval);
 	void getPlayerName();
+	void tellFatherBackstory(int time_interval);
 	void skipTutorial();
+	void tutorial();
 
 	// Functions used by the event
 	void displayDialogChoice(int position_x, int position_y);
 	void confirmSelection();
 
-	int event_index_ = 0, dialog_choice_index_ = 0, go_down_iterator_ = 0, fall_speed = 125;
-	bool should_go_down_ = false, has_entered_name_ = false;
+	int dialog_choice_index_, go_down_iterator_, fall_speed;
+	bool should_go_down_, has_entered_name_;
 };
 
 #endif // !EVENT_TUTORIAL_H
