@@ -142,7 +142,10 @@
       <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="Event_TeleportPlayer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_BorderIncident.cpp">
+      <Filter>Source Files\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +303,9 @@
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="Event_TeleportPlayer.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_BorderIncident.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>

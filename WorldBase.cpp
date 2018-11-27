@@ -818,10 +818,12 @@ void WorldBase::GENERATE_Events()
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
 	Event_Tutorial *tutorial = new Event_Tutorial(10000, 190, 647, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 507, 607, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 471, 618, 4, 4, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);
 	events_.push_back(tutorial);
 	events_.push_back(teleport_to_maze);
+	events_.push_back(border_incident);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)

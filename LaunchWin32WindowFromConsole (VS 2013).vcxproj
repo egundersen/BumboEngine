@@ -168,6 +168,7 @@
     <ClCompile Include="DialogManager.cpp" />
     <ClCompile Include="EventBase.cpp" />
     <ClCompile Include="Event_AttackOnSight.cpp" />
+    <ClCompile Include="Event_BorderIncident.cpp" />
     <ClCompile Include="Event_TeleportPlayer.cpp" />
     <ClCompile Include="Event_Test.cpp" />
     <ClCompile Include="Event_Tutorial.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="EventBase.h" />
     <ClInclude Include="Events.h" />
     <ClInclude Include="Event_AttackOnSight.h" />
+    <ClInclude Include="Event_BorderIncident.h" />
     <ClInclude Include="Event_TeleportPlayer.h" />
     <ClInclude Include="Event_Test.h" />
     <ClInclude Include="Event_Tutorial.h" />
