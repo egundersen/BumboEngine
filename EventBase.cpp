@@ -36,6 +36,22 @@ void EventBase::DEBUG_hideCollider(std::vector<std::vector<char>> &world_matrix)
 	drawSolidRectangle(center_position_x_ - collider_width_ / 2, center_position_y_ - collider_height_ / 2, collider_width_, collider_height_, ' ', world_matrix);
 }
 
+// Returns address to character with the provided ID
+CharacterBase * EventBase::getCharacterByID(int character_ID)
+{
+	for (std::vector< CharacterBase* >::iterator it = characters_.begin(); it != characters_.end(); ++it)
+	{
+		if ((*it)->getUniqueObjectID() == character_ID_)
+		{
+			return *it;
+		}
+	}
+#ifdef _DEBUG
+	throw std::invalid_argument("Invalid ID : No character exists with the given ID");
+#endif
+	return nullptr;
+}
+
 void EventBase::updateColliderCoordinates()
 {
 	for (int i = 0; i < collider_height_; ++i)

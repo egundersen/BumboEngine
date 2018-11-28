@@ -731,7 +731,7 @@ void WorldBase::GENERATE_Enemies()
 
 #ifdef _DEBUG
 	CharacterBase *test;
-	test = new Chr_TutorialNPC(132, 635, player_health_, 0, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	test = new Chr_AllMight(132, 635, player_health_, 0, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	test->initializeCharacter();
 	characters_.push_back(test);
 #endif

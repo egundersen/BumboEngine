@@ -113,7 +113,7 @@ public:
 		AttackPatternBase *attack_pattern_6;
 		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
 		attack_patterns_.push_back(attack_pattern_2);
-		/*attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_3);
 		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_1);
 		attack_patterns_.push_back(attack_pattern_5);

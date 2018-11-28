@@ -100,7 +100,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 
 	// MAIN SOURCE PORT - Bumbo Engine v0.4 -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, matrix_display_G, 1, image_file_path_G);
+	MatrixManager grid(width_G, height_G, matrix_display_G, 5, image_file_path_G);
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);

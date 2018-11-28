@@ -24,6 +24,7 @@ public:
 	bool isComplete() { return is_event_over_; }
 	bool shouldEnterBattle() { return should_enter_battle_; }
 	int getUniqueObjectID() { return unique_object_ID_; }
+	CharacterBase *getCharacterByID(int character_ID);
 	CharacterBase *getAttachedCharacter() { return attached_character_; }
 protected:
 	// Setters

@@ -10,6 +10,18 @@ public:
 
 	void createEvent();
 	void refreshEvent();
+private:
+	// Parts of the event
+	void guardTalks();
+	void crowdLooksAround();
+	void guardReplies();
+	void runsThroughCheckpoint();
+	void guardStopThem();
+	void guardExits();
+	void playerDroppedSomething();
+
+	void crowdLook1();
+	void crowdLook2();
 };
 
 #endif // !EVENT_BORDERINCIDENT_H
