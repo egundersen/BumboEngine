@@ -2,3 +2,8 @@
 #include "Chr_AllMight.h"
 #include "Chr_TutorialNPC.h"
 #include "Chr_BackgroundNPC.h"
+#include "Chr_Bonny.h"
+#include "Chr_Sharktooth.h"
+#include "Chr_Ryuuko.h"
+#include "Chr_Aki.h"
+#include "Chr_AkiFinal.h"
