@@ -221,15 +221,40 @@ void Event_BorderIncident::guardReplies(int time_interval)
 
 void Event_BorderIncident::runsThroughCheckpoint()
 {
-	switch (getCharacterByID(8)->getMovementIndex())
+	switch (getCharacterByID(11)->getMovementIndex())
 	{
 	case 0:
-		
+		/*getCharacterByID(11)->teleportNPC(454, 626);
+		getCharacterByID(12)->teleportNPC(433, 633);
+		getCharacterByID(13)->teleportNPC(438, 626);
+		getCharacterByID(14)->teleportNPC(446, 623);
+		getCharacterByID(15)->teleportNPC(425, 628);
+
+		getCharacterByID(11)->faceDirection('r');
+		getCharacterByID(12)->faceDirection('r');
+		getCharacterByID(13)->faceDirection('r');
+		getCharacterByID(14)->faceDirection('r');
+		getCharacterByID(15)->faceDirection('r');//*/
+		getCharacterByID(11)->teleportNPC(392, 630);
+		getCharacterByID(12)->teleportNPC(392, 630);
+		getCharacterByID(13)->teleportNPC(392, 630);
+		getCharacterByID(14)->teleportNPC(392, 630);
+		getCharacterByID(15)->teleportNPC(392, 630);//*/
+		getCharacterByID(11)->incrementMovementIndex();
 		break;
 	case 1:
-		
+		getCharacterByID(11)->move(433, 'x', 30);
 		break;
 	case 2:
+		getCharacterByID(11)->move(626, 'y', 30);
+		break;
+	case 3:
+		getCharacterByID(11)->move(454, 'x', 30);
+		break;
+	case 4:
+		
+		break;
+	case 5:
 		event_index_++;
 		break;
 	default:

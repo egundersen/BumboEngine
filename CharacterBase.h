@@ -43,6 +43,7 @@ public:
 	int getCenterPositionX() { return center_position_x_; }
 	int getCenterPositionY() { return center_position_y_; }
 	int getMovementIndex() { return movement_index_; }
+	void incrementMovementIndex() { movement_index_++; }
 
 	// Basic Popup
 	void refreshPopup();

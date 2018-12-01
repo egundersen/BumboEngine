@@ -724,12 +724,12 @@ void WorldBase::GENERATE_Maze()
 void WorldBase::GENERATE_Enemies()
 {
 	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, player_health_, 10, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	
-	CharacterBase *ryuuko = new Chr_Ryuuko(454, 626, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *aki = new Chr_Aki(433, 633, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *bonny = new Chr_Bonny(438, 626, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *sharktooth = new Chr_Sharktooth(446, 623, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *ryuuko = new Chr_Ryuuko(423, 671, player_health_, 11, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *aki = new Chr_Aki(433, 671, player_health_, 12, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *bonny = new Chr_Bonny(443, 671, player_health_, 13, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *sharktooth = new Chr_Sharktooth(453, 671, player_health_, 14, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();
@@ -775,6 +775,9 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(471, 626, player_health_, 9, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.player, 'l');
 
+	CharacterBase *boarder_incident_random = new Chr_BackgroundNPC(413, 671, player_health_, 15, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.player, 'r');
+
 	standing_in_line_1->initializeCharacter();
 	standing_in_line_2->initializeCharacter();
 	standing_in_line_3->initializeCharacter();
@@ -783,6 +786,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	standing_in_line_6->initializeCharacter();
 	boarder_guard_1->initializeCharacter();
 	boarder_guard_1->initializeCharacter();
+	boarder_incident_random->initializeCharacter();
 
 	characters_.push_back(standing_in_line_1);
 	characters_.push_back(standing_in_line_2);
@@ -792,6 +796,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(standing_in_line_6);
 	characters_.push_back(boarder_guard_1);
 	characters_.push_back(boarder_guard_2);
+	characters_.push_back(boarder_incident_random);
 }
 
 // creates all the sign posts (These show popups)
