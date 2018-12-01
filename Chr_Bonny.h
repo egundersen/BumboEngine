@@ -32,18 +32,18 @@ public:
 
 		  /* Sets the sprite ascii for the NPC world sprite */
 		WorldSprite world_sprite = WorldSprite(
-			"   //\$   Z\=//--\\=/Z  XbXXdX  Z   wwww   ZO#XXXXXX#OZO ###### OZ  %U  U%  Z",
-			"   //\$   Z\=//--\\=/Z  X[][]X  Z   WWWW   ZO#XXXXXX#OZO ###### OZ  %U  U%  Z",
-			"   //\$   Z\=//--\\=/Z  @@X[]X  Z   WWWW   Z  O#XX#O  Z  O%###%O Z   %%  %  Z",
-			"   //\$   Z\=//--\\=/Z  X[]X@@  Z   WWWW   Z  O#XX#O  Z O%###%O  Z  %  %%   Z",
-            "   //\$   Z\=//--\\=/Z  XXX@@X  Z   WWWW   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
-			"   //\$   Z\=//--\\=/Z  X[][]X  Z   WWWW   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
-			"   //\$   Z\=//--\\=/Z  @@X[]X  Z   WWWW O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z",
-			"   //\$   Z\=//--\\=/Z  X[]X@@  Z O WWWW   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z",
-			"   //\$   Z\=//--\\=/Z  XXX@@X  Z   WWWW   Z O#XXXX#O Z O######O Z  %U  U%  Z",
-			"   //\$   Z\=//--\\=/Z  X[][]X  Z   WWWW   Z O#XXXX#O Z O######O Z  %U  U%  Z",
-			"   //\$   Z\=//--\\=/Z  @@X[]X  Z   WWWW   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
-			"   //\$   Z\=//--\\=/Z  X[]X@@  Z   WWWW   Z  O#XX#O  Z O######  Z  %U  U%  Z"
+			"    /\\$   Z\\=//--\\\\=/Z  XbXXdX  Z   wwww   ZO#XXXXXX#OZO ###### OZ  %U  U%  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  X[][]X  Z   WWWW   ZO#XXXXXX#OZO ###### OZ  %U  U%  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  @@X[]X  Z   WWWW   Z  O#XX#O  Z  O%###%O Z   %%  %  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  X[]X@@  Z   WWWW   Z  O#XX#O  Z O%###%O  Z  %  %%   Z",
+            "    /\\$   Z\\=//--\\\\=/Z  XXX@@X  Z   WWWW   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  X[][]X  Z   WWWW   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  @@X[]X  Z   WWWW O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z",
+			"    /\\$   Z\\=//--\\\\=/Z  X[]X@@  Z O WWWW   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z",
+			"    /\\$   Z\\=//--\\\\=/Z  XXX@@X  Z   WWWW   Z O#XXXX#O Z O######O Z  %U  U%  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  X[][]X  Z   WWWW   Z O#XXXX#O Z O######O Z  %U  U%  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  @@X[]X  Z   WWWW   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
+			"    /\\$   Z\\=//--\\\\=/Z  X[]X@@  Z   WWWW   Z  O#XX#O  Z O######  Z  %U  U%  Z"
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
@@ -114,7 +114,7 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
+		Item sword("an ok sword", 1);
 
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC
@@ -124,19 +124,20 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "AHOOOYY THERE ZAre you new here?Z");
+		DialogNode *node_1 = new DialogNode("", "AHOOOYY THERE ZNever seen you 'round the sea before?Z");
 		DialogNode *node_1_1 = new DialogNode("Whats your name?", "Bonny good ol'mate");
-		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love meZ a good joke!Z");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me!ZLet's fight!!!!Z", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here,Zhave my most valubleZpossession!Z", health_potion);
-		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where areZyou going!!!?Z");
-		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "i dont know...ZWhat is it?Z");
-		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!!ZDIE!!! DIEE!!!Z", "FIGHT");
-		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will neverZspeak with youZagainZ");
-		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...Z", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z", "SAVE");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ", "SAVE");
+		DialogNode *node_1_2 = new DialogNode("Where am I?Z", "Tis the pirate faction,Z ya with ya kindZ");
+		DialogNode *node_1_3 = new DialogNode("Goodbye", "Sea ya around matey!");
+		DialogNode *node_1_1_1 = new DialogNode("Bonny. You mean theZ cowardly pirate Bonny?", "COWARDLY?! I'll show yaZ who is cowardly!", "FIGHT");
+		DialogNode *node_1_1_2 = new DialogNode("Were you just at border control?", "I was jus' thar!Z");
+		DialogNode *node_1_1_3 = new DialogNode("Is this you feather?", "Maybe, looks likeZ me dead birdie's.Z");
+		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing at there?Z", "Are ye stupid?Z Tryin' 't get me new home.Z"); //add add add ad  ad d
+		DialogNode *node_1_1_3_1 = new DialogNode("I found this near the entrance.Z", "'Twas hectic thar, dropped few thin'sZ loot few thin'sZ");
+		DialogNode *node_1_1_3_1_1 = new DialogNode("\"Loot?\" It was you wasn't it?", "YARR! I'm nah lookin' fer a fight!", "FIGHT");
+		DialogNode *node_1_1_3_1_2 = new DialogNode("Did you take anythingZ that wasn't yours?Z", "Nah matey, only me things.Z What's troublin' ya?Z");
+		DialogNode *node_1_1_3_1_2_1 = new DialogNode("Something important was stolenZ at the border.Z", "yarr..how sad. Do yaZ know who done it?Z");
+		DialogNode *node_1_1_3_1_2_1_1 = new DialogNode("....it was YOU!Z", "YAAAAAARRGGG Z");
+		DialogNode *node_1_1_3_1_2_1_2 = new DialogNode("No I don't, but Z I have to find them.Z", "Here, let me help ye.Z", sword);
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -147,13 +148,20 @@ public:
 		node_1_1->setChoice2(node_1_1_2);
 		node_1_1->setChoice3(node_1_1_3);
 
-		node_1_2->setChoice1(node_1_2_1);
-		node_1_2->setChoice2(node_1_2_2);
-		node_1_2->setChoice3(node_1_2_3);
+		node_1_2->setChoice1(node_1_1_2);
+		node_1_2->setChoice2(node_1_1_3);
 
-		node_1_2_1->setChoice1(node_1_2_1_1);
 		node_1_1_2->setChoice1(node_1_1_2_1);
-		node_1_1_1->setChoice1(node_1_1_1_1);
+
+		node_1_1_3->setChoice1(node_1_1_3_1);
+		
+		node_1_1_3_1->setChoice1(node_1_1_3_1_1);
+		node_1_1_3_1->setChoice1(node_1_1_3_1_2);
+
+		node_1_1_3_1_2->setChoice1(node_1_1_3_1_2_1);
+	
+		node_1_1_3_1_2_1->setChoice1(node_1_1_3_1_2_1_1);
+		node_1_1_3_1_2_1->setChoice1(node_1_1_3_1_2_1_2);
 
 		setHeadNode(node_1);
 	}

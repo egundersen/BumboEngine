@@ -41,7 +41,7 @@ CharacterBase * EventBase::getCharacterByID(int character_ID)
 {
 	for (std::vector< CharacterBase* >::iterator it = characters_.begin(); it != characters_.end(); ++it)
 	{
-		if ((*it)->getUniqueObjectID() == character_ID_)
+		if ((*it)->getUniqueObjectID() == character_ID)
 		{
 			return *it;
 		}
