@@ -124,36 +124,39 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh Zfancy seeing you hereZ");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! ZCan you guess why?Z");
-		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love meZ a good joke!Z");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me!ZLet's fight!!!!Z", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here,Zhave my most valubleZpossession!Z", health_potion);
-		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where areZyou going!!!?Z");
-		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "i dont know...ZWhat is it?Z");
-		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!!ZDIE!!! DIEE!!!Z", "FIGHT");
-		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will neverZspeak with youZagainZ");
-		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...Z", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z", "SAVE");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ", "SAVE");
+		DialogNode *node_1 = new DialogNode("", "Woah there! I've never seen a pirate here before!Z");
+		DialogNode *node_1_1 = new DialogNode("Whats your name?", "The one and only Ryuuko!Z");
+		DialogNode *node_1_2 = new DialogNode("Is this your Sword?", "Wow! How did you find it?!");
+		DialogNode *node_1_3 = new DialogNode("Goodbye...", "Oh? leaving already?");
+		DialogNode *node_1_1_1 = new DialogNode("What a weird name.", "Of course it is, I am THE Ryuuko!Z");
+		DialogNode *node_1_2_1 = new DialogNode("There was a \"return to\" label on it", "You have to say that I'm pretty smart.Z");
+		DialogNode *node_1_2_2 = new DialogNode("So at the border...Z Did you pick up anything?", "Pick up something? Z...Why?");
+		DialogNode *node_1_2_2_1 = new DialogNode("It was you wasn't it?!Z", "Are you challenging me?Z", "FIGHT");
+		DialogNode *node_1_2_2_2 = new DialogNode("Well.. someone stole somethingZ important to me.", "What did they steal?Z");
+		DialogNode *node_1_2_2_2_1 = new DialogNode("...Why do you want to know?Z", "I'm just curious senpai?Z");
+		DialogNode *node_1_2_2_2_2 = new DialogNode("Can I trust you?Z", "If you trust me, I'll trust you.Z We're in this together!Z");
+		DialogNode *node_1_2_2_2_1_1 = new DialogNode("You were one who took it,Z weren't you?!Z", "Hold up! Are you here Z just to fight?!", "FIGHT");
+		DialogNode *node_1_2_2_2_2_1 = new DialogNode("I was an important flashdrive...", "No fear! If you need meZ I'll be there!");
 
 		// Link Dialog Nodes
-		node_1->setChoice1(node_1_1);
+		node_1->setChoice1(node_1_1); //amber - go back a relink
 		node_1->setChoice2(node_1_2);
 		node_1->setChoice3(node_1_3);
 
 		node_1_1->setChoice1(node_1_1_1);
-		node_1_1->setChoice2(node_1_1_2);
-		node_1_1->setChoice3(node_1_1_3);
 
 		node_1_2->setChoice1(node_1_2_1);
 		node_1_2->setChoice2(node_1_2_2);
-		node_1_2->setChoice3(node_1_2_3);
+		
+		node_1_2_2->setChoice1(node_1_2_2_1);
+		node_1_2_2->setChoice2(node_1_2_2_2);
 
-		node_1_2_1->setChoice1(node_1_2_1_1);
-		node_1_1_2->setChoice1(node_1_1_2_1);
-		node_1_1_1->setChoice1(node_1_1_1_1);
+		node_1_2_2_2->setChoice1(node_1_2_2_2_1);
+		node_1_2_2_2->setChoice2(node_1_2_2_2_2);
+
+		node_1_2_2_2_1->setChoice1(node_1_2_2_2_1_1);
+
+		node_1_2_2_2->setChoice2(node_1_2_2_2_2_1);
 
 		setHeadNode(node_1);
 	}
