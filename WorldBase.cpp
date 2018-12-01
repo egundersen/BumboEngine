@@ -313,7 +313,7 @@ void WorldBase::evaluatePlayerInput()
 			DEBUG_showing_collisions_ = false;
 		}
 		if (GetAsyncKeyState(0x54) & 0x8000) // Teleport Player			Press T
-			teleportPlayer(212, 61);
+			teleportPlayer(450, 620);
 	}
 #endif
 }
@@ -724,10 +724,26 @@ void WorldBase::GENERATE_Maze()
 void WorldBase::GENERATE_Enemies()
 {
 	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	
+	CharacterBase *ryuuko = new Chr_Ryuuko(454, 626, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *aki = new Chr_Aki(433, 633, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *bonny = new Chr_Bonny(438, 626, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *sharktooth = new Chr_Sharktooth(446, 623, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
+	aki_final->initializeCharacter();
+	aki->initializeCharacter();
+	ryuuko->initializeCharacter();
+	bonny->initializeCharacter();
+	sharktooth->initializeCharacter();
 
 	characters_.push_back(tutorial_npc);
+	characters_.push_back(aki_final);
+	characters_.push_back(aki);
+	characters_.push_back(ryuuko);
+	characters_.push_back(bonny);
+	characters_.push_back(sharktooth);
 
 #ifdef _DEBUG
 	CharacterBase *test;
