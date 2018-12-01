@@ -39,7 +39,9 @@ public:
 			22, // Boss health
 			"ALL MIGHT", // name
 			"resources\\moltar.bmp", // Neutral Expression (Image Location/Name)
-			"resources\\moltar1.bmp" // Angry Expression (Image Location/Name)
+			"resources\\moltar1.bmp", // Angry Expression (Image Location/Name)
+			"resources\\moltar1.bmp", // Happy Expression (Image Location/Name)
+			"resources\\moltar1.bmp" // Nervous / Dead Expression (Image Location/Name)
 		),//*/
 
 		/* Sets the sprite ascii for the NPC world sprite */

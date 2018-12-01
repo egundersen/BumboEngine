@@ -24,7 +24,9 @@ public:
 			4, // Boss health
 			"TUTORIAL NPC", // name
 			"resources\\tutorial.bmp", // Neutral Expression (Image Location/Name)
-			"" // Angry Expression (Image Location/Name)
+			"", // Angry Expression (Image Location/Name)
+			"",
+			""
 		),//*/
 
 		/* Sets the sprite ascii for the NPC world sprite */
