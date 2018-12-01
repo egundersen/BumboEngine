@@ -740,6 +740,7 @@ void WorldBase::GENERATE_Enemies()
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
+	
 	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, player_health_, 2, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9), sprite_sheet_.player, 'u');
 	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, player_health_, 3, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
