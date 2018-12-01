@@ -308,6 +308,21 @@
     <ClInclude Include="Event_BorderIncident.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
+    <ClInclude Include="Chr_Ryuuko.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_Aki.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_AkiFinal.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_Bonny.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_Sharktooth.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">
