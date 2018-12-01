@@ -114,6 +114,8 @@ public:
 		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 10); //50
 		AttackPatternBase *attack_pattern_6;
 		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
+		AttackPatternBase *attack_pattern_7;
+		attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, matrix_display, player_health, 1);
 		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_3);
 		attack_patterns_.push_back(attack_pattern_2);
@@ -123,6 +125,7 @@ public:
 		attack_patterns_.push_back(attack_pattern_4);
 		attack_patterns_.push_back(attack_pattern_5);
 		attack_patterns_.push_back(attack_pattern_6);//*/
+		attack_patterns_.push_back(attack_pattern_7);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
