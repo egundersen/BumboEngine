@@ -71,16 +71,17 @@ void Attack_Snake::move()
 	else
 	{
 		matrix_[head_position_y_][head_position_x_] = 'o';
+		element_is_occupied_[head_position_y_][head_position_x_] = true;
 		if (head_position_x_ < player_position_.x && head_position_x_ + 2 < width_)
 		{
 			matrix_[head_position_y_][head_position_x_ + 2] = 'o';
 			element_is_occupied_[head_position_y_][head_position_x_] = true;
 			head_position_x_++;
 		}
-		else if (head_position_x_ > player_position_.x && head_position_x_ - 2 > 0)
+		if (head_position_x_ > player_position_.x && head_position_x_ - 2 > 0)
 		{
 			matrix_[head_position_y_][head_position_x_ - 2] = 'o';
-			element_is_occupied_[head_position_y_][head_position_x_] = true;
+			element_is_occupied_[head_position_y_][head_position_x_ - 2] = true;
 			head_position_x_--;
 		}
 		if (head_position_y_ < player_position_.y && head_position_y_ + 2 < height_)
@@ -89,7 +90,7 @@ void Attack_Snake::move()
 			element_is_occupied_[head_position_y_ + 2][head_position_x_] = true;
 			head_position_y_++;
 		}
-		else if (head_position_y_ < player_position_.y && head_position_y_ - 2 < 0)
+		if (head_position_y_ < player_position_.y && head_position_y_ - 2 < 0)
 		{
 			matrix_[head_position_y_ - 2][head_position_x_] = 'o';
 			element_is_occupied_[head_position_y_ - 2][head_position_x_] = true;
