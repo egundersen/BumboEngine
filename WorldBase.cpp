@@ -221,75 +221,78 @@ void WorldBase::evaluatePlayerInput()
 			}
 		}
 	}
-	else if (GetAsyncKeyState(0x45) & 0x8000) // Press E
-	{
-		is_viewing_popup_ = true;
-	}
 	else if (!is_event_active_)// Walking on map
 	{
-		if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
+		if (GetAsyncKeyState(0x45) & 0x8000) // Press E
 		{
-			player_speed_modifier_ = 1;
-			player_sprite_.setPlayerAnimationSpeed(180);
+			is_viewing_popup_ = true;
 		}
 		else
 		{
-			player_speed_modifier_ = 30;
-			player_sprite_.setPlayerAnimationSpeed(240);
-		}
-		if (current_time_move_player >= player_speed_modifier_) // Movement UP, DOWN, LEFT, RIGHT
-		{
-			if (GetAsyncKeyState(VK_UP) & 0x8000)
+			if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
 			{
-				if (screen_position_.y > 0 && !hasCollided('u', 5)) // 2
-				{
-					--screen_position_.y;
-					player_sprite_.setPlayerMoving("verticle");
-				}
-				player_sprite_.setDirection('u');
-				opposite_player_direction_ = 'd';
-				shouldStartEventByLocation();
-			}
-			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-			{
-				if (screen_position_.y + screen_height_ < world_height_ - 1 && !hasCollided('d', 1))
-				{
-					++screen_position_.y;
-					player_sprite_.setPlayerMoving("verticle");
-				}
-				player_sprite_.setDirection('d');
-				opposite_player_direction_ = 'u';
-				shouldStartEventByLocation();
+				player_speed_modifier_ = 1;
+				player_sprite_.setPlayerAnimationSpeed(180);
 			}
 			else
-				player_sprite_.setPlayerMoving("not verticle");
-			if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 			{
-				if (screen_position_.x + screen_width_ < world_width_ - 1 && !hasCollided('r', 1))
-				{
-					++screen_position_.x;
-					player_sprite_.setPlayerMoving("horizontal");
-				}
-				player_sprite_.setDirection('r');
-				opposite_player_direction_ = 'l';
-				shouldStartEventByLocation();
+				player_speed_modifier_ = 30;
+				player_sprite_.setPlayerAnimationSpeed(240);
 			}
-			else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+			if (current_time_move_player >= player_speed_modifier_) // Movement UP, DOWN, LEFT, RIGHT
 			{
-				if (screen_position_.x > 0 && !hasCollided('l', 0))
+				if (GetAsyncKeyState(VK_UP) & 0x8000)
 				{
-					--screen_position_.x;
-					player_sprite_.setPlayerMoving("horizontal");
+					if (screen_position_.y > 0 && !hasCollided('u', 5)) // 2
+					{
+						--screen_position_.y;
+						player_sprite_.setPlayerMoving("verticle");
+					}
+					player_sprite_.setDirection('u');
+					opposite_player_direction_ = 'd';
+					shouldStartEventByLocation();
 				}
-				player_sprite_.setDirection('l');
-				opposite_player_direction_ = 'r';
-				shouldStartEventByLocation();
+				else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+				{
+					if (screen_position_.y + screen_height_ < world_height_ - 1 && !hasCollided('d', 1))
+					{
+						++screen_position_.y;
+						player_sprite_.setPlayerMoving("verticle");
+					}
+					player_sprite_.setDirection('d');
+					opposite_player_direction_ = 'u';
+					shouldStartEventByLocation();
+				}
+				else
+					player_sprite_.setPlayerMoving("not verticle");
+				if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+				{
+					if (screen_position_.x + screen_width_ < world_width_ - 1 && !hasCollided('r', 1))
+					{
+						++screen_position_.x;
+						player_sprite_.setPlayerMoving("horizontal");
+					}
+					player_sprite_.setDirection('r');
+					opposite_player_direction_ = 'l';
+					shouldStartEventByLocation();
+				}
+				else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+				{
+					if (screen_position_.x > 0 && !hasCollided('l', 0))
+					{
+						--screen_position_.x;
+						player_sprite_.setPlayerMoving("horizontal");
+					}
+					player_sprite_.setDirection('l');
+					opposite_player_direction_ = 'r';
+					shouldStartEventByLocation();
+				}
+				else
+					player_sprite_.setPlayerMoving("not horizontal");
+				start_time_player_speed_ = GetTickCount();
 			}
-			else
-				player_sprite_.setPlayerMoving("not horizontal");
-			start_time_player_speed_ = GetTickCount();
+			is_viewing_popup_ = false;
 		}
-		is_viewing_popup_ = false;
 	}
 
 #ifdef _DEBUG

@@ -38,7 +38,13 @@ void MatrixManager::evaluatePlayerInput()
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
-		if (maze_.getSelectedCharacter()->isBattleOver())
+		if (maze_.getSelectedCharacter() == nullptr) // Called if enemy is destroyed during dialog
+		{
+			has_initialized_battle_ = false;
+			maze_.onEnterWorld();
+			current_vector_space_ = "MAP";
+		}
+		else if (maze_.getSelectedCharacter()->isBattleOver())
 		{
 			has_initialized_battle_ = false;
 			maze_.onEnterWorld();

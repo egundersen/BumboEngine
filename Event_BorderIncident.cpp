@@ -86,7 +86,7 @@ void Event_BorderIncident::refreshEvent()
 	{
 	case 0:
 		// guards talk
-		guardTalks(3500);
+		guardTalks(4000);
 		//approachCheckpoint();
 		break;
 	case 1:
@@ -97,7 +97,7 @@ void Event_BorderIncident::refreshEvent()
 		break;
 	case 2:
 		// audience replies and guard responds
-		guardReplies(3500);
+		guardReplies(4000);
 		//runsThroughCheckpoint();
 		break;
 	case 3:
@@ -118,7 +118,7 @@ void Event_BorderIncident::refreshEvent()
 		break;
 	case 7:
 		// guards yells after them
-		guardStopThem(3500);
+		guardStopThem(5000);
 		break;
 	case 8:
 		// guards follow them & person in line walks next to you
@@ -154,9 +154,9 @@ void Event_BorderIncident::guardTalks(int time_interval)
 		popups_[7].displayPopup(20, -3);
 	else if (current_time_begin_event_ > time_interval * 7)
 		popups_[6].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 6)
+	else if (current_time_begin_event_ > time_interval * 6) // skip 1 so dialogue lasts longer
 		popups_[5].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 5) // skip 1
+	else if (current_time_begin_event_ > time_interval * 4)
 		popups_[4].displayPopup(20, -3);
 	else if (current_time_begin_event_ > time_interval * 3)
 		popups_[3].displayPopup(20, -3);
@@ -356,7 +356,8 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(11)->move(518, 'x', 10);
 		break;
 	case 7:
-		getCharacterByID(11)->teleportNPC(423, 671); // Actual World Position
+		getCharacterByID(11)->teleportNPC(307, 382); // Actual World Position
+		getCharacterByID(11)->faceDirection('d');
 		break;
 	default:
 		break;
@@ -378,7 +379,8 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(14)->move(518, 'x', 10);
 		break;
 	case 4:
-		getCharacterByID(14)->teleportNPC(453, 671);
+		getCharacterByID(14)->teleportNPC(765, 254);
+		getCharacterByID(14)->faceDirection('u');
 		break;
 	default:
 		break;
@@ -400,7 +402,7 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(13)->move(518, 'x', 10);
 		break;
 	case 4:
-		getCharacterByID(13)->teleportNPC(453, 671);
+		getCharacterByID(13)->teleportNPC(633, 135);
 		break;
 	default:
 		break;
@@ -425,7 +427,7 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(12)->move(518, 'x', 10);
 		break;
 	case 5:
-		getCharacterByID(12)->teleportNPC(453, 671);
+		getCharacterByID(12)->teleportNPC(204, 516);
 		break;
 	default:
 		break;

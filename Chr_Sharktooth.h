@@ -139,13 +139,13 @@ public:
 		node_1->setChoice1(node_1_1);
 		node_1->setChoice2(node_1_2);
 		node_1->setChoice3(node_1_3);
-		
+
 		node_1_1->setChoice1(node_1_1_1);
-        	node_1_1->setChoice2(node_1_1_2);
-        	node_1_1->setChoice3(node_1_1_3);
-        
-        	node_1_1_2->setsetChoice1(node_1_1_2_1);
-        	node_1_1_2->setsetChoice2(node_1_1_2_2);
+		node_1_1->setChoice2(node_1_1_2);
+		node_1_1->setChoice3(node_1_1_3);
+
+		node_1_1_2->setChoice1(node_1_1_2_1);
+		node_1_1_2->setChoice2(node_1_1_2_2);
 
 		setHeadNode(node_1);
 	}
