@@ -32,18 +32,18 @@ public:
 
 		  /* Sets the sprite ascii for the NPC world sprite */
 		WorldSprite world_sprite = WorldSprite(
-			"   ^^^^   Z  XXXXXX  Z   XXXX   Z O#XXXX#O ZO ######O Z   U  U   Z",
-			"   ^^^^   Z  X[][]X  Z   X--X   Z O#XXXX#O ZO ######O Z   U  U   Z",
-			"   ^^^^   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z",
-			"   ^^^^   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z",
-			"   ^^^^   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O###### OZ   U  U   Z",
-			"   ^^^^   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O###### OZ   U  U   Z",
-			"   ^^^^   Z  @@X[]X  Z   @XXX O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z",
-			"   ^^^^   Z  X[]X@@  Z O XXX@   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z",
-			"   ^^^^   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O######O Z   U  U   Z",
-			"   ^^^^   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z   U  U   Z",
-			"   ^^^^   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z   U  U   Z",
-			"   ^^^^   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z   U  U   Z"
+			"   ^^^^   Z  XXXXXX  Z   XXXX   Z O#XXXX#O ZO ######O Z   U  U   Z", // Up Moving 1
+			"   ^^^^   Z  X[][]X  Z   X--X   Z O#XXXX#O ZO ######O Z   U  U   Z", // Down Moving 1
+			"   ^^^^   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z", // Right Moving 1
+			"   ^^^^   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z", // Left Moving 1
+			"   ^^^^   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O###### OZ   U  U   Z", // Up Moving 2
+			"   ^^^^   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O###### OZ   U  U   Z", // Down Moving 2
+			"   ^^^^   Z  @@X[]X  Z   @XXX O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z", // Right Moving 2
+			"   ^^^^   Z  X[]X@@  Z O XXX@   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z", // Left Moving 2
+			"   ^^^^   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O######O Z   U  U   Z", // Up Not Moving
+			"   ^^^^   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z   U  U   Z", // Down Not Moving
+			"   ^^^^   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z   U  U   Z", // Right Not Moving
+			"   ^^^^   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z   U  U   Z"  // Left Not Moving
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

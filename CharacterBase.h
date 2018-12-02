@@ -33,6 +33,7 @@ public:
 	// World Sprite Movement
 	void resetMovingPath();
 	void move(int ending_position, char axis, int speed);
+	void waitForTime(int time);
 	void teleportNPC(int center_position_x, int center_position_y);
 	void onDespawn();
 	void displayGhostSprite(int top_left_position_y, int top_left_position_x, char moving_direction);
@@ -44,6 +45,7 @@ public:
 	int getCenterPositionY() { return center_position_y_; }
 	int getMovementIndex() { return movement_index_; }
 	void incrementMovementIndex() { movement_index_++; }
+	void resetMovementIndex() { movement_index_ = 0; }
 
 	// Basic Popup
 	void refreshPopup();

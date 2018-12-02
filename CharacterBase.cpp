@@ -154,6 +154,25 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 	}
 }
 
+// Waits for a specified amount of time, then increases the movement index
+void CharacterBase::waitForTime(int time)
+{
+	if (!has_begun_moving_) // In this case waiting, but we still use the same variable
+	{
+		start_time_move_one_space_ = GetTickCount();
+		has_begun_moving_ = true;
+	}
+
+	double current_time_move = GetTickCount() - start_time_move_one_space_;
+	if (current_time_move > time)
+	{
+		has_begun_moving_ = false;
+		movement_index_++;
+		has_reached_destination_ = true;
+		start_time_move_one_space_ = GetTickCount();
+	}
+}
+
 // Teleports NPC to given coordinates
 void CharacterBase::teleportNPC(int center_position_x, int center_position_y)
 {
