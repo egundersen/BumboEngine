@@ -11,26 +11,33 @@ StartScreen::StartScreen(int width, int height, std::vector<std::vector<std::str
 
 void StartScreen::setBackgroundText()
 {
-	for (int i = 1; i < height_ - 1; ++i)
-	{
-		matrix_[i][1] = 'X';
-		matrix_[i][2] = 'X';
-		matrix_[i][3] = 'X';
-		matrix_[i][width_ - 2] = 'X';
-		matrix_[i][width_ - 3] = 'X';
-		matrix_[i][width_ - 4] = 'X';
-	}
-	for (int i = 10; i < height_ - 1; ++i)
-		matrix_[i][45] = 'X';
-	for (int j = 5; j < width_ - 5; ++j)
-	{
-		matrix_[1][j] = '=';
-		matrix_[2][j] = '=';
-	}
-	//Image inventory_letters("Z===[]=== []   [][]      [][]==== []   [] ==[]== [][][] [][][][]    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [][]     []   Z===[]=== []  [[]    []    []==== []  [[]   []   [][][] [] []_   []   Z");
-	Image instructions("Z=====================================Z======== START SCREEN temp ==========Z                                     ZNavigate up and down      Arrow KeysZ                                     ZUse Selected Item         ENTERZ                                     ZExit inventory            BACKSPACEZZ");
-	addImageToMatrix(24, 14, instructions, matrix_);
-	//addImageToMatrix(39, 6, inventory_letters, matrix_);
+	drawSolidRectangle(1, 1, 3, height_ - 2, 'X', matrix_);
+	drawSolidRectangle(width_ - 4, 1, 3, height_ - 2, 'X', matrix_);
+
+	drawRectangle(5, 1, 12, 1, '=', matrix_);
+	drawRectangle(5, 2, 8, 1, '=', matrix_);
+	drawRectangle(5, 3, 4, 1, '=', matrix_);
+
+	drawRectangle(width_ - 17, 1, 12, 1, '=', matrix_);
+	drawRectangle(width_ - 13, 2, 8, 1, '=', matrix_);
+	drawRectangle(width_ - 9, 3, 4, 1, '=', matrix_);
+
+	drawRectangle(5, height_ - 4, 4, 1, '=', matrix_);
+	drawRectangle(5, height_ - 3, 4, 1, '=', matrix_);
+	drawRectangle(5, height_ - 2, 12, 1, '=', matrix_);
+
+	drawRectangle(width_ - 9, height_ - 4, 4, 1, '=', matrix_);
+	drawRectangle(width_ - 13, height_ - 3, 8, 1, '=', matrix_);
+	drawRectangle(width_ - 17, height_ - 2, 12, 1, '=', matrix_);
+
+	Image title_letters("[]        [] []====| []   []        []     [][][] []====| []====|Z[]   []   [] []      []]  []        []       []   []    | []     Z[]  [][]  [] []====  [][] []        []       []   []==|   []==== Z [][]  [][]  []      [] [][]        []       []   []      []     Z  []    []   []====| []  [[]        [][][] [][][] []      []====|Z");
+	Image press_enter("Press ENTER to begin");
+	Image symbol("     X     Z     X     Z     X     ZXXXX=O=XXXXZ     X     Z     X     Z     X     Z");
+	
+	addImageToMatrix(39, 18, symbol, matrix_);
+	addImageToMatrix(39, 7, title_letters, matrix_);
+	addImageToMatrix(39, 30, press_enter, matrix_);
+	addTextToMatrix(58, height_ - 1, "BumboEngine v0.8", matrix_);
 }
 
 void StartScreen::displayScreen()
