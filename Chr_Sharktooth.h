@@ -124,30 +124,50 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "AAAARRRGGGHGH,Z WHOOOO STEPS ON ME TERRITORY Z");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "MEEEEE IS SHARKTOOTHZ");
-		DialogNode *node_1_2 = new DialogNode("You can't claim territories!", "DOOOOOOOOON'T TELL ME WHAT TO DO", "FIGHT");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "LEAVE ME TERRITORY z");
-		DialogNode *node_1_1_1 = new DialogNode("Sharktooth of the Blood Sea??", "ARRRGGGG IT IS I");
-		DialogNode *node_1_1_2 = new DialogNode("Were you just at the border?", "AND SO WHAT IF I WAS THAR??");
-		DialogNode *node_1_1_3 = new DialogNode("Sharktooth?Z Are you a new pirate?", "ARRRGGHH YOU DO NOT KNOW WHO I ARE?? Z"); //amber - add "smelling " cigar which leads to box of cigar
-		DialogNode *node_1_1_2_1 = new DialogNode("Did you lose anything there?", "YEEE, I'M MISSING MY PRECIOUS CIGAR Z");
-		DialogNode *node_1_1_2_2 = new DialogNode("Is this your cigar box?", "IT IS YEEE WHO STOLE IT ISN'T IT?");
+	DialogNode *node_1 = new DialogNode("", "AAAARRRGGGHGH,Z WHOOOO STEPS ON ME TERRITORY Z");
+	DialogNode *node_1_1 = new DialogNode("Whats your name?", "MEEEEE IS SHARKTOOTHZ");
+	DialogNode *node_1_2 = new DialogNode("You can't claim territories!", "DOOOOOOOOON'T TELL ME WHAT TO DO", "FIGHT");
+	DialogNode *node_1_3 = new DialogNode("Goodbye...", "LEAVE ME TERRITORY z");
+	DialogNode *node_1_1_1 = new DialogNode("Sharktooth of the Blood Sea??", "ARRRGGGG IT IS I");
+	DialogNode *node_1_1_2 = new DialogNode("Were you just at the border?", "AND SO WHAT IF I WAS THAR??");
+	DialogNode *node_1_1_3 = new DialogNode("Sharktooth?Z Are you a new pirate?", "ARRRGGHH YOU DO NOT KNOW WHO I ARE?? Z"); //amber - add "smelling " cigar which leads to box of cigar
+	DialogNode *node_1_1_2_1 = new DialogNode("Did you lose anything there?", "I BE MISSIN' ME PRECIOUS CIGAR BOX Z");
+	DialogNode *node_1_1_2_2 = new DialogNode("Is this your cigar box?", "IT IS YEEE WHO STOLE IT ISN'T IT?", "FIGHT");
+        DialogNode *node_1_1_2_2_1 = new DialogNode("This was at the exit of the border","THATS ME BOX! THANK YE. Z");
+        DialogNode *node_1_1_2_2_1_1 = new DialogNode("I was wondering if you could help me?", "ONLY THIS ONE TIME FOR YA");
+        DialogNode *node_1_1_2_2_1_2 = new DialogNode("Did you take anything from the border","ARE YE ACCUSING ME OF SOMETHING?!", "FIGHT");
+        DialogNode *node_1_1_2_2_1_1_1 = new DialogNode("Was there anyone suspicious at the border?","ERYONE IS SUSPICIOUS IN MY EYES Z ...EVEN YA", "FIGHT");
+        DialogNode *node_1_1_2_2_1_1_2 = new DialogNode("Someone stole my precious thing","AND YE THINK IT WAS ME?");
+        DialogNode *node_1_1_2_2_1_1_2_1 = new DialogNode("Yes I do!", "ARRRGGG YE IS WRONG", "FIGHT");
+        DialogNode *node_1_1_2_2_1_1_2_2 = new DialogNode("I have a suspicion...", "TO EVEN SUSPECT ME?!", "FIGHT");
+        DialogNode *node_1_1_2_2_1_1_2_3 = new DialogNode("No, not at all!", "YA CALLING ME A SEA BARNACLE?", "FIGHT");
 
 
 		// Link Dialog Nodes
-		node_1->setChoice1(node_1_1);
-		node_1->setChoice2(node_1_2);
-		node_1->setChoice3(node_1_3);
+	node_1->setChoice1(node_1_1);
+	node_1->setChoice2(node_1_2);
+	node_1->setChoice3(node_1_3);
 
-		node_1_1->setChoice1(node_1_1_1);
-		node_1_1->setChoice2(node_1_1_2);
-		node_1_1->setChoice3(node_1_1_3);
+        node_1_1->setChoice1(node_1_1_1);
+        node_1_1->setChoice2(node_1_1_2);
+        node_1_1->setChoice3(node_1_1_3);
+        
+        node_1_1_2->setsetChoice1(node_1_1_2_1);
+        node_1_1_2->setsetChoice2(node_1_1_2_2);
+        
+        node_1_1_2_2->setChoice1(node_1_1_2_2_1);
+        
+        node_1_1_2_2_1->setChoice1(node_1_1_2_2_1_1);
+        node_1_1_2_2_1->setChoice2(node_1_1_2_2_1_2);
+        
+        node_1_1_2_2_1_1->setChoice1(node_1_1_2_2_1_1_1);
+        node_1_1_2_2_1_1->setChoice2(node_1_1_2_2_1_1_2);
+        
+        node_1_1_2_2_1_1_2->setChoice1(node_1_1_2_2_1_1_2_1);
+        node_1_1_2_2_1_1_2->setChoice2(node_1_1_2_2_1_1_2_2);
+        node_1_1_2_2_1_1_2->setChoice3(node_1_1_2_2_1_1_2_3);
 
-		node_1_1_2->setChoice1(node_1_1_2_1);
-		node_1_1_2->setChoice2(node_1_1_2_2);
-
-		setHeadNode(node_1);
+	setHeadNode(node_1);
 	}
 };
 
