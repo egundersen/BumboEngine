@@ -24,10 +24,10 @@ public:
                   BossFightDefinition boss_fight_definition = BossFightDefinition(
                    22, // Boss health
                    "Mini Boss 2", // name
-                   "resources\\mini boss 2_neuHappy.png", // Neutral Expression (Image Location/Name)
-                   "resources\\mini boss 2_angry.png", // Angry Expression (Image Location/Name)
-                   "resources\\mini boss 2_neuHappy.png",
-                   "resources\\mini boss 2_nervousDead.png"
+                   "resources\\mini boss 2_neuHappy.bmp", // Neutral Expression (Image Location/Name)
+                   "resources\\mini boss 2_angry.bmp", // Angry Expression (Image Location/Name)
+                   "resources\\mini boss 2_neuHappy.bmp",
+                   "resources\\mini boss 2_nervousDead.bmp"
                                                                                   ),//*/
                   
                   /* Sets the sprite ascii for the NPC world sprite */
