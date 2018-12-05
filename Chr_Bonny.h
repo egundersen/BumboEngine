@@ -166,7 +166,7 @@ public:
 		node_1_1_3_1_2_1->setChoice1(node_1_1_3_1_2_1_1);
 		node_1_1_3_1_2_1->setChoice2(node_1_1_3_1_2_1_2);
 
-		node_1_1_3_1_2_1_2->setChoice1(node_1_1_3_1_2_2_1);
+		node_1_1_3_1_2_1_2->setChoice1(node_1_1_3_1_2_1_2_1);
 
 		setHeadNode(node_1);
 	}
