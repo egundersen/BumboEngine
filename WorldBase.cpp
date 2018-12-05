@@ -5,7 +5,7 @@
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory, std::pair<std::string, int> &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }, is_picking_up_item_{ true }
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -318,7 +318,7 @@ void WorldBase::evaluatePlayerInput()
 		}
 		if (GetAsyncKeyState(0x54) & 0x8000) // Teleport Player			Press T
 			teleportPlayer(450, 620);
-}
+	}
 #endif
 }
 
@@ -898,7 +898,7 @@ void WorldBase::GENERATE_Pickups()
 	Pickup *pickup_clue_2 = new Pickup(527, 616, 23, 9, 11, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_2, inventory_);
 	Item item_clue_3("Feather", 1);
 	Pickup *pickup_clue_3 = new Pickup(241, 46, 23, 9, 12, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_3, inventory_);
-	Item item_clue_4("UNKNOWN", 1);
+	Item item_clue_4("Glove", 1);
 	Pickup *pickup_clue_4 = new Pickup(546, 617, 23, 9, 13, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_4, inventory_);
 
 	pickups_.push_back(cliff_pickup);

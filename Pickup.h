@@ -21,6 +21,7 @@ private:
 	// Setters
 	void setObjectID() { object_type_ID_ = 2; };
 
+	bool has_picked_up_item_;
 	Inventory &inventory_;
 	Item item_;
 };
