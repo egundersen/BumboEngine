@@ -31,18 +31,18 @@ public:
 
 		/* Sets the sprite ascii for the NPC world sprite */
 		WorldSprite world_sprite = WorldSprite(
-			"   @@@@   Z  XXX@@X  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
-			"   @@@@   Z  X[][]X  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
-			"   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z",
-			"   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z",
-			"   @@@@   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
-			"   @@@@   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
-			"   @@@@   Z  @@X[]X  Z   @XXX O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z",
-			"   @@@@   Z  X[]X@@  Z O XXX@   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z",
-			"   @@@@   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z",
-			"   @@@@   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z",
-			"   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
-			"   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z  %U  U%  Z"
+			"   &%%&   Z  /&&&&\\  Z   \\%%/   Z OHH  HHO ZO HHHHHHO Z  %U  U%  Z",
+			"   &%%&   Z  /[][]\\  Z   \\<>/   Z OHH  HHO ZO HHHHHHO Z  %U  U%  Z",
+			"   &%%&   Z  /&&[]\\  Z   \\%</   Z  O#HH#O  Z  O%HHH%O Z   %%  %  Z",
+			"   &%%&   Z  /[]X&\\  Z   \\>%/   Z  O#HH#O  Z O%HHH%O  Z  %  %%   Z",
+			"   &%%&   Z  /&&&&\\  Z   \\%%/   Z O#HHHH#O Z OHHHHHH OZ  %U  U%  Z",
+			"   &%%&   Z  /[][]\\  Z   \\<>/   Z O#HHHH#O Z OHHHHHH OZ  %U  U%  Z",
+			"   &%%&   Z  /&&[]\\  Z   \\%</ O Z  O#HH#O  Z %%O#%#   Z %=  %%   Z",
+			"   &%%&   Z  /[]&&\\  Z O \\>%/   Z  O#HH#O  Z   #%#O%% Z   %%  =% Z",
+			"   &%%&   Z  /&&&&\\  Z   \\%%/   Z O#XXXX#O Z OHHHHHHO Z  %U  U%  Z",
+			"   &%%&   Z  /[][]\\  Z   \\<>/   Z OHH\\/HHO Z OHHHHHHO Z  %U  U%  Z",
+			"   &%%&   Z  /&&[]\\  Z   \\%</   Z  O#HH#O  Z  HHHHHHO Z  %U  U%  Z",
+			"   &%%&   Z  /[]&&\\  Z   \\>%/   Z  O#HH#O  Z O######  Z  %U  U%  Z"
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

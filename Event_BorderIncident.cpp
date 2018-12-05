@@ -402,7 +402,7 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(13)->move(518, 'x', 10);
 		break;
 	case 4:
-		getCharacterByID(13)->teleportNPC(633, 135);
+		getCharacterByID(13)->teleportNPC(648, 124);
 		break;
 	default:
 		break;
