@@ -24,10 +24,10 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			22, // Boss health
 			"BONNY", // name
-			"resources\\bonny_neutral.png", // Neutral Expression (Image Location/Name)
-			"resources\\bonny_angry.png", // Angry Expression (Image Location/Name)
-			"resources\\bonny_happy.png",
-			"resources\\bonny_nervous_dead.png"
+			"resources\\bonny_neutral.bmp", // Neutral Expression (Image Location/Name)
+			"resources\\bonny_angry.bmp", // Angry Expression (Image Location/Name)
+			"resources\\bonny_happy.bmp",
+			"resources\\bonny_nervous_dead.bmp"
 		),//*/
 
 		  /* Sets the sprite ascii for the NPC world sprite */
