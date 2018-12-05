@@ -13,7 +13,7 @@ AttackPattern_Snake::AttackPattern_Snake(int width, int height, std::vector<std:
 // Calls once when the entire attack starts
 void AttackPattern_Snake::OnBeginAttack()
 {
-	createAttack(0, generateRandomNumber(0, height_ - 1), 10000);
+	createAttack(0, generateRandomNumber(0, height_ - 1), 15000, 50);
 	start_time_new_attack_ = GetTickCount();
 	has_completed_initialization_ = true;
 }
@@ -28,7 +28,7 @@ void AttackPattern_Snake::refreshScreen()
 		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
 		if (current_time_new_attack_ >= 1000 && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
-			createAttack(0, generateRandomNumber(0, height_ - 1), 10000);
+			createAttack(0, generateRandomNumber(0, height_ - 1), 15000, 50);
 			start_time_new_attack_ = GetTickCount();
 		}
 
@@ -43,10 +43,10 @@ void AttackPattern_Snake::refreshScreen()
 }
 
 // Add attack to list of attacks
-void AttackPattern_Snake::createAttack(int head_position_x, int head_position_y, int duration_of_attack)
+void AttackPattern_Snake::createAttack(int head_position_x, int head_position_y, int duration_of_attack, int speed)
 {
 	Attack_Snake *attack;
-	attack = new Attack_Snake(width_, height_, player_position_, matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack);
+	attack = new Attack_Snake(width_, height_, player_position_, matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack, speed);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;

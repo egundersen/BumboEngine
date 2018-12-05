@@ -1,8 +1,8 @@
 #include "Attack_Snake.h"
 #include <windows.h>
 
-Attack_Snake::Attack_Snake(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>>& matrix, bool **&element_is_occupied, int head_position_x, int head_position_y, int duration_of_attack)
-	: AttackBase(width, height, player_position, matrix, element_is_occupied), duration_of_attack_{ duration_of_attack },
+Attack_Snake::Attack_Snake(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>>& matrix, bool **&element_is_occupied, int head_position_x, int head_position_y, int duration_of_attack, int speed)
+	: AttackBase(width, height, player_position, matrix, element_is_occupied), duration_of_attack_{ duration_of_attack }, speed_{ speed },
 	head_position_x_{ head_position_x }, head_position_y_{ head_position_y }
 {
 	has_hit_player_ = false;
@@ -28,7 +28,7 @@ void Attack_Snake::detectCollision()
 			//if (element_is_occupied_[center_position_y_ + i][center_position_x_ + j] == true)
 				//if (player_position_.y == center_position_y_ + i && player_position_.x == center_position_x_ + j)
 					//has_hit_player_ = true;
-	if (player_position_.x == head_position_x_ && player_position_.y == head_position_y_)
+	if (element_is_occupied_[player_position_.y][player_position_.x] == true)
 		has_hit_player_ = true;
 }
 
@@ -40,7 +40,7 @@ void Attack_Snake::move()
 
 	if (current_time_end_attack > duration_of_attack_)
 		has_attack_finished_ = true;
-	else if (current_time_update_attack > 500)
+	else if (current_time_update_attack > speed_)
 	{
 		matrix_[head_position_y_][head_position_x_] = 'o';
 		element_is_occupied_[head_position_y_][head_position_x_] = true;

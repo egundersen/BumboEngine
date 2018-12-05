@@ -126,7 +126,7 @@ public:
 		// CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "AHOOOYY THERE ZNever seen you Z'round the sea before?Z");
 		DialogNode *node_1_1 = new DialogNode("Whats your name?", "Bonny good ol'mate");
-		DialogNode *node_1_2 = new DialogNode("Where am I?Z", "Tis the pirate faction,Z ya with ya kindZ");
+		DialogNode *node_1_2 = new DialogNode("Where am I?", "Tis the pirate faction,Z ya with ya kindZ");
 		DialogNode *node_1_3 = new DialogNode("Goodbye", "Sea ya around matey!");
 		DialogNode *node_1_1_1 = new DialogNode("You mean cowardly Bonny?", "COWARDLY?!Z I'll show ya whoZ is cowardly!", "FIGHT");
 		DialogNode *node_1_1_2 = new DialogNode("Were you just at border?", "I was jus' thar!");
@@ -134,10 +134,11 @@ public:
 		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing?", "Are ye stupid?Z Tryin' Z't get me new home.Z"); //add add add ad  ad d
 		DialogNode *node_1_1_3_1 = new DialogNode("It was at the entrance.", "'Twas hectic thar,Z dropped few thin'sZ loot few thin's");
 		DialogNode *node_1_1_3_1_1 = new DialogNode("\"Loot?\" It was you!", "YARR! I'm nah lookin'Z fer a fight!", "FIGHT");
-		DialogNode *node_1_1_3_1_2 = new DialogNode("Did you pick up anytihng?Z", "Nah matey,Z only me things.Z What's troublin' ya?");
-		DialogNode *node_1_1_3_1_2_1 = new DialogNode("My thing was stolen at the border.Z", "yarr..how sad.Z Do ya know who doneZ it?");
+		DialogNode *node_1_1_3_1_2 = new DialogNode("Did you pick up anytihng?", "Nah matey,Z only me things.Z What's troublin' ya?");
+		DialogNode *node_1_1_3_1_2_1 = new DialogNode("I got my thing stolen!", "yarr..how sad.Z Do ya know who doneZ it?");
 		DialogNode *node_1_1_3_1_2_1_1 = new DialogNode("....it was YOU!", "YAAAAAARRGGG");
-		DialogNode *node_1_1_3_1_2_1_2 = new DialogNode("I have to find who.Z", "Here,Z let me help ye.", sword);
+		DialogNode *node_1_1_3_1_2_1_2 = new DialogNode("I have to find who.", "Here,Z let me help ye.", sword);
+		DialogNode *node_1_1_3_1_2_1_2_1 = new DialogNode("Woah! Thank you", "Good luck to ya.ZGoodbye matey!", "SAVE");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -155,13 +156,17 @@ public:
 
 		node_1_1_3->setChoice1(node_1_1_3_1);
 		
+		node_1_1_2_1->setChoice1(node_1_1_3);
+
 		node_1_1_3_1->setChoice1(node_1_1_3_1_1);
-		node_1_1_3_1->setChoice1(node_1_1_3_1_2);
+		node_1_1_3_1->setChoice2(node_1_1_3_1_2);
 
 		node_1_1_3_1_2->setChoice1(node_1_1_3_1_2_1);
 	
 		node_1_1_3_1_2_1->setChoice1(node_1_1_3_1_2_1_1);
-		node_1_1_3_1_2_1->setChoice1(node_1_1_3_1_2_1_2);
+		node_1_1_3_1_2_1->setChoice2(node_1_1_3_1_2_1_2);
+
+		node_1_1_3_1_2_1_2->setChoice1(node_1_1_3_1_2_2_1);
 
 		setHeadNode(node_1);
 	}

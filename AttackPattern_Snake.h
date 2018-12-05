@@ -14,7 +14,7 @@ public:
 	// Setters
 	void OnBeginAttack();
 	void refreshScreen();
-	void createAttack(int head_position_x, int head_position_y, int duration_of_attack);
+	void createAttack(int head_position_x, int head_position_y, int duration_of_attack, int speed);
 };
 
 #endif // !ATTACKPATTERN_SNAKE_H
