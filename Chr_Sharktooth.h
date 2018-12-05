@@ -24,10 +24,10 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			22, // Boss health
 			"SHARKTOOTH", // name
-			"resources\\sharktooth_neutral.png", // Neutral Expression (Image Location/Name)
-			"resources\\sharktooth_angry.png",
-			"resources\\sharktooth_happy.png",
-			"resources\\sharktooth_nervous_dead.png"
+			"resources\\sharktooth_neutral.bmp", // Neutral Expression (Image Location/Name)
+			"resources\\sharktooth_angry.bmp",
+			"resources\\sharktooth_happy.bmp",
+			"resources\\sharktooth_nervous_dead.bmp"
 		),//*/
 
 		  /* Sets the sprite ascii for the NPC world sprite */
