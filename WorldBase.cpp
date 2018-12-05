@@ -827,7 +827,7 @@ void WorldBase::GENERATE_Signposts()
 	Signpost *sign_18 = new Signpost(99, 447, 31, 9, 20, "DANGER!ZLong hallwayZahead!ZExcessiveZBordumZdetectedZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_19 = new Signpost(282, 447, 31, 9, 21, "So how wasZyour day?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_20 = new Signpost(510, 447, 31, 9, 22, "Mine was greatZthanks forZaskingZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_21 = new Signpost(267, 31, 31, 9, 22, "TIP:ZZHold SHIFT to runZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_21 = new Signpost(267, 31, 31, 9, 23, "TIP:ZZHold SHIFT to runZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 
 	signposts_.push_back(checkpoint_sign_1);
 	signposts_.push_back(checkpoint_sign_2);
@@ -866,30 +866,30 @@ void WorldBase::GENERATE_Pickups()
 	Pickup *cliff_pickup = new Pickup(65, 639, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, cliff_item, inventory_);
 
 	Item item_1("Pirate ALE", 1);
-	Pickup *pickup_1 = new Pickup(859, 27, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_1, inventory_);
+	Pickup *pickup_1 = new Pickup(859, 27, 23, 9, 2, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_1, inventory_);
 	Item item_2("Pile of Pigeon", 1);
-	Pickup *pickup_2 = new Pickup(607, 266, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_2, inventory_);
+	Pickup *pickup_2 = new Pickup(607, 266, 23, 9, 3, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_2, inventory_);
 	Item item_3("Ground meat paste", 2);
-	Pickup *pickup_3 = new Pickup(589, 266, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_3, inventory_);
+	Pickup *pickup_3 = new Pickup(589, 266, 23, 9, 4, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_3, inventory_);
 	Item item_4("Whiskey", 1);
-	Pickup *pickup_4 = new Pickup(463, 381, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_4, inventory_);
+	Pickup *pickup_4 = new Pickup(463, 381, 23, 9, 5, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_4, inventory_);
 	Item item_5("Bottle o' Rum", 1);
-	Pickup *pickup_5 = new Pickup(450, 369, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_5, inventory_);
+	Pickup *pickup_5 = new Pickup(450, 369, 23, 9, 6, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_5, inventory_);
 	Item item_6("Healing Potion", 2);
-	Pickup *pickup_6 = new Pickup(151, 534, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_6, inventory_);
+	Pickup *pickup_6 = new Pickup(151, 534, 23, 9, 7, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_6, inventory_);
 	Item item_7("Pizza", 2);
-	Pickup *pickup_7 = new Pickup(177, 530, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_7, inventory_);
+	Pickup *pickup_7 = new Pickup(177, 530, 23, 9, 8, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_7, inventory_);
 	Item item_8("Lemon", 1);
-	Pickup *pickup_8 = new Pickup(192, 496, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_8, inventory_);
+	Pickup *pickup_8 = new Pickup(192, 496, 23, 9, 9, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_8, inventory_);
 
 	Item item_clue_1("Cigar Box", 1);
-	Pickup *pickup_clue_1 = new Pickup(530, 624, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_, inventory_);
+	Pickup *pickup_clue_1 = new Pickup(530, 624, 23, 9, 10, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_1, inventory_);
 	Item item_clue_2("Long Sword", 1);
-	Pickup *pickup_clue_2 = new Pickup(527, 616, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_, inventory_);
+	Pickup *pickup_clue_2 = new Pickup(527, 616, 23, 9, 11, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_2, inventory_);
 	Item item_clue_3("Feather", 1);
-	Pickup *pickup_clue_3 = new Pickup(241, 46, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_, inventory_);
+	Pickup *pickup_clue_3 = new Pickup(241, 46, 23, 9, 12, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_3, inventory_);
 	Item item_clue_4("UNKNOWN", 1);
-	Pickup *pickup_clue_4 = new Pickup(546, 617, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_, inventory_);
+	Pickup *pickup_clue_4 = new Pickup(546, 617, 23, 9, 13, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_4, inventory_);
 
 	pickups_.push_back(cliff_pickup);
 	pickups_.push_back(pickup_1);
