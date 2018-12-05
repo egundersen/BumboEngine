@@ -93,11 +93,11 @@ public:
 			AttackPatternBase *attack_pattern_1;
 			attack_pattern_1 = new Explode_Fast(screen_width, screen_height, matrix_display, player_health, 200);
 			AttackPatternBase *attack_pattern_2;
-			attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 1, 50);
+			attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 7, 1);
 			AttackPatternBase *attack_pattern_3;
 			attack_pattern_3 = new VerticleGap_Slow(screen_width, screen_height, matrix_display, player_health);
 			AttackPatternBase *attack_pattern_4;
-			attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 30);
+			attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 20);
 			AttackPatternBase *attack_pattern_5;
 			attack_pattern_5 = new VerticleGap_Wavy(screen_width, screen_height, matrix_display, player_health);
 			attack_patterns_.push_back(attack_pattern_1);

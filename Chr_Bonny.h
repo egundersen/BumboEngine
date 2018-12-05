@@ -91,13 +91,13 @@ public:
 		//for (int i = 0; i < 6; i++)
 		//{
 			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
+			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 9, 1);
 			AttackPatternBase *attack_pattern_2;
 			attack_pattern_2 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 50);
 			AttackPatternBase *attack_pattern_3;
 			attack_pattern_3 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
 			AttackPatternBase *attack_pattern_4;
-			attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 4, 2);
+			attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 4, 1);
 			attack_patterns_.push_back(attack_pattern_1);
 			attack_patterns_.push_back(attack_pattern_2);
 			attack_patterns_.push_back(attack_pattern_3);
