@@ -41,7 +41,7 @@ protected:
 	void confirmSelection();
 	void setBossHealth(int boss_health) { boss_.health = boss_health; }
 	void gameOver();
-	void showFileSprite();
+	void showFileSprite(std::string emotion = "");
 	void hideFileSprite();
 	void resetBattleSpace();
 

@@ -88,27 +88,52 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, std::vector<std::vector<std::string>> &matrix_display, int &player_health)
 	{
-		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, matrix_display, player_health, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);//*/
+		for (int i = 0; i < 6; i++)
+		{
+			AttackPatternBase *attack_pattern_1;
+			attack_pattern_1 = new VerticleGap_Wavy(screen_width, screen_height, matrix_display, player_health);
+			AttackPatternBase *attack_pattern_2;
+			attack_pattern_2 = new Explode_Fast(screen_width, screen_height, matrix_display, player_health, 600);
+			AttackPatternBase *attack_pattern_3;
+			attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
+
+			AttackPatternBase *attack_pattern_4;
+			attack_pattern_4 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 200);
+			AttackPatternBase *attack_pattern_13;
+			attack_pattern_13 = new VerticleGap_Slow(screen_width, screen_height, matrix_display, player_health);
+			AttackPatternBase *attack_pattern_5;
+			attack_pattern_5 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 30);
+			AttackPatternBase *attack_pattern_6;
+			attack_pattern_6 = new AttackPattern_Snake(screen_width, screen_height, matrix_display, player_health, 1);
+			AttackPatternBase *attack_pattern_7;
+			attack_pattern_7 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 3, 25);
+
+			AttackPatternBase *attack_pattern_8;
+			attack_pattern_8 = new Explode_Slowest(screen_width, screen_height, matrix_display, player_health, 50);
+			AttackPatternBase *attack_pattern_9;
+			attack_pattern_9 = new AttackPattern_Snake(screen_width, screen_height, matrix_display, player_health, 4);
+			AttackPatternBase *attack_pattern_10;
+			attack_pattern_10 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 1, 10);
+			AttackPatternBase *attack_pattern_11;
+			attack_pattern_11 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 30);
+
+			AttackPatternBase *attack_pattern_12;
+			attack_pattern_12 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
+
+			attack_patterns_.push_back(attack_pattern_13);
+			attack_patterns_.push_back(attack_pattern_12);
+			attack_patterns_.push_back(attack_pattern_11);
+			attack_patterns_.push_back(attack_pattern_10);
+			attack_patterns_.push_back(attack_pattern_9);
+			attack_patterns_.push_back(attack_pattern_8);
+			attack_patterns_.push_back(attack_pattern_7);
+			attack_patterns_.push_back(attack_pattern_6);
+			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
+		}
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

@@ -3,3 +3,4 @@
 #include "Event_Tutorial.h"
 #include "Event_TeleportPlayer.h"
 #include "Event_BorderIncident.h"
+#include "Event_LostDevice.h"

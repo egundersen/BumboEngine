@@ -824,9 +824,10 @@ void WorldBase::GENERATE_Signposts()
 	Signpost *sign_15 = new Signpost(481, 379, 31, 9, 17, "NOW ENTERINGZANIME TERRITORYZZYeah have funZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_16 = new Signpost(116, 411, 31, 9, 18, "Welcome toZSensei senpaiZsanseba chanZkun uh...ZIts 2:00AM I'mZrunning out ofZideasZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_17 = new Signpost(77, 409, 31, 9, 19, "I know! Let's play aZgame! It's calledZhow many roomsZare left emptyZwithout anythingZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_18 = new Signpost(99, 449, 31, 9, 20, "DANGER!ZLong hallwayZahead!ZExcessiveZBordumZdetectedZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_19 = new Signpost(282, 449, 31, 9, 21, "So how wasZyour day?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_20 = new Signpost(510, 449, 31, 9, 22, "Mine was greatZthanks forZaskingZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_18 = new Signpost(99, 447, 31, 9, 20, "DANGER!ZLong hallwayZahead!ZExcessiveZBordumZdetectedZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_19 = new Signpost(282, 447, 31, 9, 21, "So how wasZyour day?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_20 = new Signpost(510, 447, 31, 9, 22, "Mine was greatZthanks forZaskingZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_21 = new Signpost(267, 31, 31, 9, 22, "TIP:ZZHold SHIFT to runZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 
 	signposts_.push_back(checkpoint_sign_1);
 	signposts_.push_back(checkpoint_sign_2);
@@ -851,6 +852,7 @@ void WorldBase::GENERATE_Signposts()
 	signposts_.push_back(sign_18);
 	signposts_.push_back(sign_19);
 	signposts_.push_back(sign_20);
+	signposts_.push_back(sign_21);
 
 	// Displays all sign posts
 	for (auto signpost : signposts_)
@@ -885,11 +887,13 @@ void WorldBase::GENERATE_Events()
 	Event_Tutorial *tutorial = new Event_Tutorial(10000, 190, 647, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 507, 607, 10, 8, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 471, 618, 4, 4, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_LostDevice *lost_device = new Event_LostDevice(10003, 433, 34, 4, 4, 1, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);
 	events_.push_back(tutorial);
 	events_.push_back(teleport_to_maze);
 	events_.push_back(border_incident);
+	events_.push_back(lost_device);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)

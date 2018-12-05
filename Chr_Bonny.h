@@ -22,7 +22,7 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			22, // Boss health
+			6, // Boss health
 			"BONNY", // name
 			"resources\\bonny_neutral.bmp", // Neutral Expression (Image Location/Name)
 			"resources\\bonny_angry.bmp", // Angry Expression (Image Location/Name)
@@ -88,27 +88,21 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, std::vector<std::vector<std::string>> &matrix_display, int &player_health)
 	{
-		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, matrix_display, player_health, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, matrix_display, player_health, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);//*/
+		//for (int i = 0; i < 6; i++)
+		//{
+			AttackPatternBase *attack_pattern_1;
+			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
+			AttackPatternBase *attack_pattern_2;
+			attack_pattern_2 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 50);
+			AttackPatternBase *attack_pattern_3;
+			attack_pattern_3 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
+			AttackPatternBase *attack_pattern_4;
+			attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 4, 2);
+			attack_patterns_.push_back(attack_pattern_1);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_4);
+		//}
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

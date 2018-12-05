@@ -153,6 +153,9 @@
     <ClCompile Include="AttackPattern_Snake.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
+    <ClCompile Include="Event_LostDevice.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -334,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="AttackPattern_Snake.h">
       <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_LostDevice.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

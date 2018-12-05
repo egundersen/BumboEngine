@@ -320,14 +320,17 @@ void BattleBase::bossOutOfAttacks()
 void BattleBase::bossDestroyed()
 {
 	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
-	if (current_time_battle_end_animation > 5000)
+	if (current_time_battle_end_animation <= 5000)
+		showFileSprite("ANGRY");
+	else if (current_time_battle_end_animation > 5000)
 	{
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 68; j++)
 				matrix_[1 + i][5 + j] = ' ';
 
-		// TODO animate
+		showFileSprite("NERVOUSDEAD");
 	}
+
 	displayScreen();
 	if (current_time_battle_end_animation > 10000)
 	{
@@ -340,16 +343,18 @@ void BattleBase::bossDestroyed()
 // Boss is spared
 void BattleBase::bossSpared()
 {
-	showFileSprite();
 	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
-	if (current_time_battle_end_animation > 5000)
+	if (current_time_battle_end_animation <= 5000)
+		showFileSprite("NEUTRAL");
+	else if (current_time_battle_end_animation > 5000)
 	{
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 68; j++)
 				matrix_[1 + i][5 + j] = ' ';
 
-		// TODO Animate
+		showFileSprite("HAPPY");
 	}
+
 	displayScreen();
 	if (current_time_battle_end_animation > 10000)
 	{
@@ -396,12 +401,25 @@ void BattleBase::gameOver()
 }
 
 // Decides which file sprite to display
-void BattleBase::showFileSprite()
+void BattleBase::showFileSprite(std::string emotion)
 {
 	if (boss_.use_files)
 	{
-		// TODO Animate
-		image_file_path_.first = boss_.file_path_neutral;
+		if (emotion == "") // Decide whether to use emotion based on health left
+		{
+			if(boss_.health < initial_boss_health_ / 2) // Half Health
+				image_file_path_.first = boss_.file_path_angry;
+			else
+				image_file_path_.first = boss_.file_path_neutral;
+		}
+		else if (emotion == "NEUTRAL")
+			image_file_path_.first = boss_.file_path_neutral;
+		else if(emotion == "ANGRY")
+			image_file_path_.first = boss_.file_path_angry;
+		else if (emotion == "NERVOUSDEAD")
+			image_file_path_.first = boss_.file_path_nervousdead;
+		else if (emotion == "HAPPY")
+			image_file_path_.first = boss_.file_path_happy;
 		image_file_path_.second = 160;
 	}
 }
