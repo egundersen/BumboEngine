@@ -7,3 +7,7 @@
 #include "Chr_Ryuuko.h"
 #include "Chr_Aki.h"
 #include "Chr_AkiFinal.h"
+#include "Chr_MiniBoss1.h"
+#include "Chr_MiniBoss2.h"
+#include "Chr_MiniBoss3.h"
+#include "Chr_MiniBoss4.h"
