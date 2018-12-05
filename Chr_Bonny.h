@@ -124,20 +124,20 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "AHOOOYY THERE ZNever seen you 'round the sea before?Z");
+		DialogNode *node_1 = new DialogNode("", "AHOOOYY THERE ZNever seen you Z'round the sea before?Z");
 		DialogNode *node_1_1 = new DialogNode("Whats your name?", "Bonny good ol'mate");
 		DialogNode *node_1_2 = new DialogNode("Where am I?Z", "Tis the pirate faction,Z ya with ya kindZ");
 		DialogNode *node_1_3 = new DialogNode("Goodbye", "Sea ya around matey!");
-		DialogNode *node_1_1_1 = new DialogNode("Bonny. You mean theZ cowardly pirate Bonny?", "COWARDLY?! I'll show yaZ who is cowardly!", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Were you just at border control?", "I was jus' thar!Z");
-		DialogNode *node_1_1_3 = new DialogNode("Is this you feather?", "Maybe, looks likeZ me dead birdie's.Z");
-		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing at there?Z", "Are ye stupid?Z Tryin' 't get me new home.Z"); //add add add ad  ad d
-		DialogNode *node_1_1_3_1 = new DialogNode("I found this near the entrance.Z", "'Twas hectic thar, dropped few thin'sZ loot few thin'sZ");
-		DialogNode *node_1_1_3_1_1 = new DialogNode("\"Loot?\" It was you wasn't it?", "YARR! I'm nah lookin' fer a fight!", "FIGHT");
-		DialogNode *node_1_1_3_1_2 = new DialogNode("Did you take anythingZ that wasn't yours?Z", "Nah matey, only me things.Z What's troublin' ya?Z");
-		DialogNode *node_1_1_3_1_2_1 = new DialogNode("Something important was stolenZ at the border.Z", "yarr..how sad. Do yaZ know who done it?Z");
-		DialogNode *node_1_1_3_1_2_1_1 = new DialogNode("....it was YOU!Z", "YAAAAAARRGGG Z");
-		DialogNode *node_1_1_3_1_2_1_2 = new DialogNode("No I don't, but Z I have to find them.Z", "Here, let me help ye.Z", sword);
+		DialogNode *node_1_1_1 = new DialogNode("You mean cowardly Bonny?", "COWARDLY?!Z I'll show ya whoZ is cowardly!", "FIGHT");
+		DialogNode *node_1_1_2 = new DialogNode("Were you just at border?", "I was jus' thar!");
+		DialogNode *node_1_1_3 = new DialogNode("Is this you feather?", "Maybe, looks likeZ me dead birdie's.");
+		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing?", "Are ye stupid?Z Tryin' Z't get me new home.Z"); //add add add ad  ad d
+		DialogNode *node_1_1_3_1 = new DialogNode("It was at the entrance.", "'Twas hectic thar,Z dropped few thin'sZ loot few thin's");
+		DialogNode *node_1_1_3_1_1 = new DialogNode("\"Loot?\" It was you!", "YARR! I'm nah lookin'Z fer a fight!", "FIGHT");
+		DialogNode *node_1_1_3_1_2 = new DialogNode("Did you pick up anytihng?Z", "Nah matey,Z only me things.Z What's troublin' ya?");
+		DialogNode *node_1_1_3_1_2_1 = new DialogNode("My thing was stolen at the border.Z", "yarr..how sad.Z Do ya know who doneZ it?");
+		DialogNode *node_1_1_3_1_2_1_1 = new DialogNode("....it was YOU!", "YAAAAAARRGGG");
+		DialogNode *node_1_1_3_1_2_1_2 = new DialogNode("I have to find who.Z", "Here,Z let me help ye.", sword);
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
