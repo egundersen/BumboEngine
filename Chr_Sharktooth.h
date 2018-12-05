@@ -124,24 +124,26 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "AAAARRRGGGHGH,Z WHOOOO STEPS ON ME TERRITORY Z");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "MEEEEE IS SHARKTOOTHZ");
-		DialogNode *node_1_2 = new DialogNode("You can't claim territories!", "DOOOOOOOOON'T TELL ME WHAT TO DO", "FIGHT");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "LEAVE ME TERRITORY z");
-		DialogNode *node_1_1_1 = new DialogNode("Sharktooth of the Blood Sea??", "ARRRGGGG IT IS I");
-		DialogNode *node_1_1_2 = new DialogNode("Were you just at the border?", "AND SO WHAT IF I WAS THAR??");
-		DialogNode *node_1_1_3 = new DialogNode("Sharktooth?Z Are you a new pirate?", "ARRRGGHH YOU DO NOT KNOW WHO I ARE?? Z"); //amber - add "smelling " cigar which leads to box of cigar
-		DialogNode *node_1_1_2_1 = new DialogNode("Did you lose anything there?", "I BE MISSIN' ME PRECIOUS CIGAR BOX Z");
-		DialogNode *node_1_1_2_2 = new DialogNode("Is this your cigar box?", "IT IS YEEE WHO STOLE IT ISN'T IT?", "FIGHT");
-		DialogNode *node_1_1_2_2_1 = new DialogNode("This was at the exit of the border", "THATS ME BOX! THANK YE. Z");
-		DialogNode *node_1_1_2_2_1_1 = new DialogNode("I was wondering if you could help me?", "ONLY THIS ONE TIME FOR YA");
-		DialogNode *node_1_1_2_2_1_2 = new DialogNode("Did you take anything from the border", "ARE YE ACCUSING ME OF SOMETHING?!", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_1 = new DialogNode("Was there anyone suspicious at the border?", "ERYONE IS SUSPICIOUS IN MY EYES Z ...EVEN YA", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_2 = new DialogNode("Someone stole my precious thing", "AND YE THINK IT WAS ME?");
-		DialogNode *node_1_1_2_2_1_1_2_1 = new DialogNode("Yes I do!", "ARRRGGG YE IS WRONG", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_2_2 = new DialogNode("I have a suspicion...", "TO EVEN SUSPECT ME?!", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_2_3 = new DialogNode("No, not at all!", "YA CALLING ME A SEA BARNACLE?", "FIGHT");
-
+		DialogNode *node_1 = new DialogNode("", "AAAARRRGGGHGH!ZZWHOOOO STEPSZON ME TERRITORY?Z");
+		DialogNode *node_1_1 = new DialogNode("Whats your name?", "MEEEEE NAME BEZS-H-A-R-K T-O-O-T-HZ");
+		DialogNode *node_1_2 = new DialogNode("You cant take territories", "DOOOOOOOOON'T TELL MEZWHAT TO DO !!!!!Z", "FIGHT");
+		DialogNode *node_1_3 = new DialogNode("Goodbye...", "LEAVE ME TERRITORY!Z");
+		DialogNode *node_1_1_1 = new DialogNode("Of the Blood Sea??", "ARRRGGGG!ZIT IS I, SHARKTOOTH!ZTHE NAME WHICHZCASTS FEAR INZTHE MANY A MANZ");
+		DialogNode *node_1_1_2 = new DialogNode("Were you at the border?", "AND SO WHAT IFZI WAS THAR??Z");
+		DialogNode *node_1_1_3 = new DialogNode("Never heard of you...", "ARRRGGHH YOU DOZNOT KNOWZWHO I ARE?? Z"); //TODO amber - add "smelling " cigar which leads to box of cigar
+		DialogNode *node_1_1_2_1 = new DialogNode("Did you lose anything?", "I BE MISSIN'ZME PRECIOUSZCIGAR BOX Z");
+		DialogNode *node_1_1_2_2 = new DialogNode("Is THIS your cigar box?", "DIS MINE ITS TRUEZZ...ZAND HOW... PRAYTELL...ZDID. YOU. GET. THIS.?Z");
+		DialogNode *node_1_1_2_2_1 = new DialogNode("I found it", "THATS ME BOX!ZTHANK YE. Z");
+		DialogNode *node_1_1_2_2_2 = new DialogNode("I stole it", "THEN BY BALGRUF'S BEARDZI WILL END YOU!Z", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1 = new DialogNode("Regarding the border...", "WHAT ABOUT IT?ZSPIT IT OUT LAD!ZI HAVEN'T ALL DAY!Z");
+		DialogNode *node_1_1_2_2_1_2 = new DialogNode("Take anything recently?", "ARE YE ACCUSINGZME OF SOMETHING?!ZIF THAT BE THE CASEZI'LL SEE YOU IN HELLZ", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_1 = new DialogNode("See anyone suspicious?", "E'RYONE IS SUSPICIOUSZIN MY EYES Z ...EVEN YAZ", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2 = new DialogNode("Theres this hard drive", "CUT YE OFF RIGHT 'EREZYE THINK IT WAS MEZWHO STOLE ITZDON'T KNOW NOTHINGZABOUT THAT ... HEHZ");
+		DialogNode *node_1_1_2_2_1_1_2_1 = new DialogNode("You did steal it!", "ARRRGGG YE IS WRONGZ", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2_2 = new DialogNode("I have a suspicion...", "JUST A SUSPICION?!ZYE HAVEN'T THE COURAGEZNOR THE BRAVERYZTO FACE ME!ZTIME TO DIE, COWARDZ");
+		DialogNode *node_1_1_2_2_1_1_2_3 = new DialogNode("No, not at all!", "YA CALLING MEZA SEA BARNACLE?Z", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2_2_1 = new DialogNode("I'm no coward!", "FINALLY SOME APTITUDEZDIE WIT' A SWORDZIN YE HAND!Z", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2_2_2 = new DialogNode("No, I dont want to fight", "WHEN WILL YE LEARN!?ZNO MATTER THE CHOICEZYOU MAKE, THISZWILL ALWAYSZEND THE SAME WAY!Z", "FIGHT");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -152,10 +154,15 @@ public:
 		node_1_1->setChoice2(node_1_1_2);
 		node_1_1->setChoice3(node_1_1_3);
 
+		node_1_1_1->setChoice1(node_1_1_2);
+
 		node_1_1_2->setChoice1(node_1_1_2_1);
 		node_1_1_2->setChoice2(node_1_1_2_2);
 
+		node_1_1_2_1->setChoice1(node_1_1_2_2);
+
 		node_1_1_2_2->setChoice1(node_1_1_2_2_1);
+		node_1_1_2_2->setChoice2(node_1_1_2_2_2);
 
 		node_1_1_2_2_1->setChoice1(node_1_1_2_2_1_1);
 		node_1_1_2_2_1->setChoice2(node_1_1_2_2_1_2);
@@ -166,6 +173,9 @@ public:
 		node_1_1_2_2_1_1_2->setChoice1(node_1_1_2_2_1_1_2_1);
 		node_1_1_2_2_1_1_2->setChoice2(node_1_1_2_2_1_1_2_2);
 		node_1_1_2_2_1_1_2->setChoice3(node_1_1_2_2_1_1_2_3);
+
+		node_1_1_2_2_1_1_2_2->setChoice1(node_1_1_2_2_1_1_2_2_1);
+		node_1_1_2_2_1_1_2_2->setChoice2(node_1_1_2_2_1_1_2_2_2);
 
 		setHeadNode(node_1);
 	}

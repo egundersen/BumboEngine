@@ -130,7 +130,7 @@ public:
 		DialogNode *node_1_3 = new DialogNode("Goodbye", "Sea ya around matey!");
 		DialogNode *node_1_1_1 = new DialogNode("You mean cowardly Bonny?", "COWARDLY?!Z I'll show ya whoZ is cowardly!", "FIGHT");
 		DialogNode *node_1_1_2 = new DialogNode("Were you just at border?", "I was jus' thar!");
-		DialogNode *node_1_1_3 = new DialogNode("Is this you feather?", "Maybe, looks likeZ me dead birdie's.");
+		DialogNode *node_1_1_3 = new DialogNode("Is this your feather?", "Maybe, looks likeZ me dead birdie's.");
 		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing?", "Are ye stupid?Z Tryin' Z't get me new home.Z"); //add add add ad  ad d
 		DialogNode *node_1_1_3_1 = new DialogNode("It was at the entrance.", "'Twas hectic thar,Z dropped few thin'sZ loot few thin's");
 		DialogNode *node_1_1_3_1_1 = new DialogNode("\"Loot?\" It was you!", "YARR! I'm nah lookin'Z fer a fight!", "FIGHT");
@@ -166,7 +166,7 @@ public:
 		node_1_1_3_1_2_1->setChoice1(node_1_1_3_1_2_1_1);
 		node_1_1_3_1_2_1->setChoice2(node_1_1_3_1_2_1_2);
 
-		node_1_1_3_1_2_1_2->setChoice1(node_1_1_3_1_2_2_1);
+		node_1_1_3_1_2_1_2->setChoice1(node_1_1_3_1_2_1_2_1);
 
 		setHeadNode(node_1);
 	}
