@@ -7,6 +7,7 @@ Attack_Wall::Attack_Wall(int width, int height, PlayerPosition &player_position,
 {
 	has_hit_player_ = false;
 	has_attack_finished_ = false;
+	start_time_update_attack_ = GetTickCount();
 #ifdef _DEBUG
 	if (max_position_x_ > width_)
 		throw std::invalid_argument("max position must not be greater than the screen width_");
@@ -43,45 +44,52 @@ void Attack_Wall::detectCollision()
 // Moves attack 1-frame ( -----> Move left to right)
 void  Attack_Wall::move()
 {
-	if (min_position_x_ * speed_ >= max_position_x_)
-	{
-		has_attack_finished_ = true;
-		for (int i = 0; i < height_; i++)
-		{
-			matrix_[i][min_position_x_ * speed_ - 1] = ' ';
-			element_is_occupied_[i][min_position_x_ * speed_ - 1] = false;
-		}
-	}
-	else
-	{
-		if (min_position_x_ * speed_ < max_position_x_)
-		{
-			for (int i = 0; i < gap_height_; i++)
-			{
-				matrix_[i][min_position_x_ * speed_] = 'X';
-				element_is_occupied_[i][min_position_x_ * speed_] = true;
-			}
-			for (int i = gap_height_ + gap_width_; i < height_; i++) //Form a second wall, creating a gap
-			{
-				matrix_[i][min_position_x_ * speed_] = 'X';
-				element_is_occupied_[i][min_position_x_ * speed_] = true;
-			}
-		}
-		if (min_position_x_ * speed_ - 1 >= 0)
-		{
-			for (int i = 0; i < gap_height_; i++)
-			{
-				matrix_[i][min_position_x_ * speed_ - 1] = ' ';
-				element_is_occupied_[i][min_position_x_ * speed_ - 1] = false;
-			}
-			for (int i = gap_height_ + gap_width_; i < height_; i++)
-			{
-				matrix_[i][min_position_x_ * speed_ - 1] = ' ';
-				element_is_occupied_[i][min_position_x_ * speed_ - 1] = false;
-			}
-		}
+	if (has_attack_finished_)
+		return;
 
-		detectCollision();
-		min_position_x_++;
+	double current_time_update_attack = GetTickCount() - start_time_update_attack_;
+	if (current_time_update_attack > speed_)
+	{
+		if (min_position_x_ >= max_position_x_)
+		{
+			has_attack_finished_ = true;
+			for (int i = 0; i < height_; i++)
+			{
+				matrix_[i][min_position_x_ - 1] = ' ';
+				element_is_occupied_[i][min_position_x_ - 1] = false;
+			}
+		}
+		else
+		{
+			if (min_position_x_ < max_position_x_)
+			{
+				for (int i = 0; i < gap_height_; i++)
+				{
+					matrix_[i][min_position_x_] = 'X';
+					element_is_occupied_[i][min_position_x_] = true;
+				}
+				for (int i = gap_height_ + gap_width_; i < height_; i++) //Form a second wall, creating a gap
+				{
+					matrix_[i][min_position_x_] = 'X';
+					element_is_occupied_[i][min_position_x_] = true;
+				}
+			}
+			if (min_position_x_ - 1 >= 0)
+			{
+				for (int i = 0; i < gap_height_; i++)
+				{
+					matrix_[i][min_position_x_ - 1] = ' ';
+					element_is_occupied_[i][min_position_x_ - 1] = false;
+				}
+				for (int i = gap_height_ + gap_width_; i < height_; i++)
+				{
+					matrix_[i][min_position_x_ - 1] = ' ';
+					element_is_occupied_[i][min_position_x_  - 1] = false;
+				}
+			}
+			min_position_x_++;
+		}
+		start_time_update_attack_ = GetTickCount();
 	}
+	detectCollision();
 }

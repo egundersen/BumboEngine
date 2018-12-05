@@ -30,6 +30,7 @@ private:
 	void evaluatePlayerInput();
 	void teleportPlayer(int position_x, int position_y);
 	void generateWorld();
+	void checkRemovePickup();
 	void checkForItem();
 	void checkForBattle();
 	void shouldDespawnCharacter();
@@ -66,7 +67,7 @@ private:
 	int screen_width_, screen_height_, world_width_, world_height_, &player_health_, start_time_player_speed_,
 		player_speed_modifier_;
 	char opposite_player_direction_;
-	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
+	bool is_viewing_popup_, should_enter_battle_, is_event_active_, is_picking_up_item_,
 		DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
 	std::pair<std::string, int> &image_file_path_;
 	std::vector<std::vector<std::string>> &matrix_display_;

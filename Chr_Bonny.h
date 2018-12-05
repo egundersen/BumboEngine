@@ -91,7 +91,7 @@ public:
 		//for (int i = 0; i < 6; i++)
 		//{
 			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 17, 1);
+			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 35);
 			AttackPatternBase *attack_pattern_2;
 			attack_pattern_2 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 50);
 			AttackPatternBase *attack_pattern_3;

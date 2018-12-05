@@ -16,7 +16,7 @@ public:
 	bool hasHitPlayer() { return has_hit_player_; }
 	bool hasAttackFinished() { return has_attack_finished_; }
 protected:
-	int width_, height_;
+	int width_, height_, start_time_update_attack_;
 	bool has_hit_player_, has_attack_finished_, **&element_is_occupied_;
 	PlayerPosition &player_position_;
 	std::vector<std::vector<char>> &matrix_;

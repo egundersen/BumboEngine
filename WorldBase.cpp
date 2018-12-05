@@ -5,7 +5,7 @@
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory, std::pair<std::string, int> &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }, is_picking_up_item_{ true }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -40,7 +40,6 @@ void WorldBase::refreshScreen()
 				{
 					pickup->refreshPopup();
 					pickup->pickupItem();
-					delete(pickup);
 				}
 			break;
 		case 3: // Character
@@ -112,7 +111,7 @@ bool WorldBase::hasCollided(char direction, int offset)
 	{
 	case 'u':
 		for (int j = 0; j < player_sprite_.getWidth() / 2 + 2; j++)
-			if(world_matrix_[screen_position_.y + screen_height_ / 2 - player_sprite_.getHeight() / 2 + offset][screen_position_.x + screen_width_ / 2 - player_sprite_.getWidth() / 2 + 2 + j] != ' ')
+			if (world_matrix_[screen_position_.y + screen_height_ / 2 - player_sprite_.getHeight() / 2 + offset][screen_position_.x + screen_width_ / 2 - player_sprite_.getWidth() / 2 + 2 + j] != ' ')
 				return true;
 		return false;
 		break;
@@ -146,8 +145,9 @@ std::pair<int, int> WorldBase::getFacingEntity()
 	{
 	case 'u':
 		for (int j = -2; j < 2; j++)
-			if (element_has_object_[screen_position_.y + screen_height_ / 2 - 3][screen_position_.x + screen_width_ / 2 + j].first != 0)
-				return element_has_object_[screen_position_.y + screen_height_ / 2 - 3][screen_position_.x + screen_width_ / 2 + j];
+			for (int i = -1; i < 1; i++) // Collision on Two Lines
+				if (element_has_object_[screen_position_.y + screen_height_ / 2 - 3 + i][screen_position_.x + screen_width_ / 2 + j].first != 0)
+					return element_has_object_[screen_position_.y + screen_height_ / 2 - 3 + i][screen_position_.x + screen_width_ / 2 + j];
 		break;
 	case 'd':
 		for (int j = -2; j < 2; j++)
@@ -229,6 +229,7 @@ void WorldBase::evaluatePlayerInput()
 		}
 		else
 		{
+			checkRemovePickup();
 			if (GetAsyncKeyState(VK_SHIFT) & 0x8000) // Running
 			{
 				player_speed_modifier_ = 1;
@@ -317,7 +318,7 @@ void WorldBase::evaluatePlayerInput()
 		}
 		if (GetAsyncKeyState(0x54) & 0x8000) // Teleport Player			Press T
 			teleportPlayer(450, 620);
-	}
+}
 #endif
 }
 
@@ -342,6 +343,15 @@ void WorldBase::generateWorld()
 	GENERATE_Events();
 
 	setNPCAttributes();
+}
+
+// Checks for a pickup to remove from map (That was already picked up)
+void WorldBase::checkRemovePickup()
+{
+	if (is_viewing_popup_ && getFacingEntity().first == 2)
+		for (Pickup *pickup : pickups_)
+			if (pickup->getUniqueObjectID() == getFacingEntity().second)
+				delete(pickup);
 }
 
 // Checks whether or not to give the player an item from dialog
@@ -728,7 +738,7 @@ void WorldBase::GENERATE_Enemies()
 {
 	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, player_health_, 10, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	
+
 	CharacterBase *ryuuko = new Chr_Ryuuko(423, 671, player_health_, 11, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	CharacterBase *aki = new Chr_Aki(433, 671, player_health_, 12, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	CharacterBase *bonny = new Chr_Bonny(443, 671, player_health_, 13, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);

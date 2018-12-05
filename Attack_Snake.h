@@ -17,7 +17,7 @@ private:
 	// Setters
 	void detectCollision();
 
-	int head_position_x_, head_position_y_, start_time_update_attack_, start_time_end_attack_, duration_of_attack_, speed_;
+	int head_position_x_, head_position_y_, start_time_end_attack_, duration_of_attack_, speed_;
 };
 
 #endif // !ATTACK_SNAKE_H
