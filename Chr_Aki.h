@@ -95,7 +95,7 @@ public:
 			AttackPatternBase *attack_pattern_2;
 			attack_pattern_2 = new Explode_Fast(screen_width, screen_height, matrix_display, player_health, 600);
 			AttackPatternBase *attack_pattern_3;
-			attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
+			attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 9, 1);
 			
 			AttackPatternBase *attack_pattern_4;
 			attack_pattern_4 = new Explode_Slow(screen_width, screen_height, matrix_display, player_health, 200);
@@ -106,14 +106,14 @@ public:
 			AttackPatternBase *attack_pattern_6;
 			attack_pattern_6 = new AttackPattern_Snake(screen_width, screen_height, matrix_display, player_health, 1);
 			AttackPatternBase *attack_pattern_7;
-			attack_pattern_7 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 3, 1);
+			attack_pattern_7 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 1);
 
 			AttackPatternBase *attack_pattern_8;
 			attack_pattern_8 = new Explode_Slowest(screen_width, screen_height, matrix_display, player_health, 50);
 			AttackPatternBase *attack_pattern_9;
 			attack_pattern_9 = new AttackPattern_Snake(screen_width, screen_height, matrix_display, player_health, 4);
 			AttackPatternBase *attack_pattern_10;
-			attack_pattern_10 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 1, 1);
+			attack_pattern_10 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 3, 1);
 			AttackPatternBase *attack_pattern_11;
 			attack_pattern_11 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 30);
 			
