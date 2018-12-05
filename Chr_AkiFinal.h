@@ -24,8 +24,8 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			22, // Boss health
 			"AKI INSANE", // name
-			"resources\\aki_angry_neutral.png", // Neutral Expression (Image Location/Name)
-			"resources\\aki_mad.png", // Angry Expression (Image Location/Name)
+			"resources\\aki_angry_neutral.bmp", // Neutral Expression (Image Location/Name)
+			"resources\\aki_mad.bmp", // Angry Expression (Image Location/Name)
 			"",
 			""
 		),//*/
