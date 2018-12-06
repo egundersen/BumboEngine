@@ -54,22 +54,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("You STOLE IT!", "Where's proof?!", false));
-		dialog_choice_1.push_back(std::make_tuple("You thief!", "NEVER", false));
-		dialog_choice_1.push_back(std::make_tuple("Was it you??", "Never!", true));
-		dialog_choice_1.push_back(std::make_tuple("Are you ready to die??", "Magic lives!", false));
+		dialog_choice_1.push_back(std::make_tuple("You STOLE IT!              ", "Where's proof?!", false));
+		dialog_choice_1.push_back(std::make_tuple("You thief!               ", "NEVER", false));
+		dialog_choice_1.push_back(std::make_tuple("Was it you??               ", "Never!", true));
+		dialog_choice_1.push_back(std::make_tuple("Are you ready to die??      ", "Magic lives!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("LIE!", "NO!", false));
-		dialog_choice_2.push_back(std::make_tuple("Untrustworthy", "You are!", false));
-		dialog_choice_2.push_back(std::make_tuple("You're a thief!", "I'm not!", false));
-		dialog_choice_2.push_back(std::make_tuple("You're not lying?", "Of course not!", true));
+		dialog_choice_2.push_back(std::make_tuple("LIE!                       ", "NO!", false));
+		dialog_choice_2.push_back(std::make_tuple("Untrustworthy               ", "You are!", false));
+		dialog_choice_2.push_back(std::make_tuple("You're a thief!             ", "I'm not!", false));
+		dialog_choice_2.push_back(std::make_tuple("You're not lying?          ", "Of course not!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("Is it true", "Yes! Please no more!", true));
-		dialog_choice_3.push_back(std::make_tuple("Sus from the beginning", "You were!", false));
-		dialog_choice_3.push_back(std::make_tuple("Can't take the chances", "You dummy!", false));
-		dialog_choice_3.push_back(std::make_tuple("Anime should die", "NOOOOOOOOO", false));
+		dialog_choice_3.push_back(std::make_tuple("Is it true                 ", "Yes! Please no more!", true));
+		dialog_choice_3.push_back(std::make_tuple("Sus from the beginning         ", "You were!", false));
+		dialog_choice_3.push_back(std::make_tuple("Can't take the chances         ", "You dummy!", false));
+		dialog_choice_3.push_back(std::make_tuple("Anime should die               ", "NOOOOOOOOO", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

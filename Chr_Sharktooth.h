@@ -54,22 +54,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.1", "1.1 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.2", "1.2 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.C", "1.C YES", true));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.4", "1.4 NO", false));
+		dialog_choice_1.push_back(std::make_tuple("Are you prepared to fight?!                ", "I'LL BREAK YE", false));
+		dialog_choice_1.push_back(std::make_tuple("I'm gonna beat you up                      ", "YOU ARE A FRY", false));
+		dialog_choice_1.push_back(std::make_tuple("IS IT YOU??                               ", " DON'T DOUBT ME", true));
+		dialog_choice_1.push_back(std::make_tuple("I will prove that you are weak!            ", "YOU ARE WEAK", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.1", "2.1 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.2", "2.2 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.3", "2.3 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.C", "2.C YES", true));
+		dialog_choice_2.push_back(std::make_tuple("This will be your first lost!              ", "I WILL NOT BE BEATEN", false));
+		dialog_choice_2.push_back(std::make_tuple("You will break!                               ", "YAR A TWIG", false));
+		dialog_choice_2.push_back(std::make_tuple("AHAHHAHAHA                                ", "NOTHIN BUT A PIP", false));
+		dialog_choice_2.push_back(std::make_tuple("Are you great like how I imagined you?     ", "SONNY, YAR AN IDIOT", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.C", "3.C YES", true));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.2", "3.2 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.3", "3.3 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.4", "3.4 NO", false));
+		dialog_choice_3.push_back(std::make_tuple("It might not be you                        ", "I'M NOT WEAK", true));
+		dialog_choice_3.push_back(std::make_tuple("This is your end!                       ", "I WILL FIGHT TIL YE DIE", false));
+		dialog_choice_3.push_back(std::make_tuple("I will kill!                           ", "DIE DIE DIE", false));
+		dialog_choice_3.push_back(std::make_tuple("I might not win....                    ", "DON'T RUN AWAY", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

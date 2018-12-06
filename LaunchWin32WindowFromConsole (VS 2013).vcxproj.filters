@@ -359,6 +359,18 @@
     <ClInclude Include="AttackPattern_ShootandSnake.h">
       <Filter>Header Files\Attacks</Filter>
     </ClInclude>
+    <ClInclude Include="Chr_MiniBoss1.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MiniBoss2.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MiniBoss3.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MiniBoss4.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">

@@ -54,22 +54,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.1", "1.1 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.2", "1.2 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.C", "1.C YES", true));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.4", "1.4 NO", false));
+		dialog_choice_1.push_back(std::make_tuple("Are you ready to fight?                ", "Never matey!", false));
+		dialog_choice_1.push_back(std::make_tuple("Prepared to die?                         ", "Rather live!", false));
+		dialog_choice_1.push_back(std::make_tuple("Now were you the one who took it?       ", "'Course not!", true));
+		dialog_choice_1.push_back(std::make_tuple("This is your end                       ", "Matey, no!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.1", "2.1 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.2", "2.2 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.3", "2.3 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.C", "2.C YES", true));
+		dialog_choice_2.push_back(std::make_tuple("There are holes in your testimony!        ", "YAAARRRRR", false));
+		dialog_choice_2.push_back(std::make_tuple("Why would you steal?                      ", "I didn' do it!", false));
+		dialog_choice_2.push_back(std::make_tuple("Let's fight fair and square!              ", "No fighin'!", false));
+		dialog_choice_2.push_back(std::make_tuple("Would you like to fight?                  ", "Noo matey!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.C", "3.C YES", true));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.2", "3.2 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.3", "3.3 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.4", "3.4 NO", false));
+		dialog_choice_3.push_back(std::make_tuple("I guess it's not you...                 ", "No more!", true));
+		dialog_choice_3.push_back(std::make_tuple("Final words!                           ", "Wasn' mee!!!", false));
+		dialog_choice_3.push_back(std::make_tuple("You are so bad at lying.                ", "I' a not lyin'!", false));
+		dialog_choice_3.push_back(std::make_tuple("Coward!                                   ", "Yes I know!", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -123,7 +123,7 @@ public:
 		DialogNode *node_1_2 = new DialogNode("Where am I?", "Tis the pirate faction,Z ya with ya kindZ");
 		DialogNode *node_1_3 = new DialogNode("Goodbye", "Sea ya around matey!");
 		DialogNode *node_1_1_1 = new DialogNode("You mean cowardly Bonny?", "COWARDLY?!Z I'll show ya whoZ is cowardly!", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Were you just at border?", "I was jus' thar!");
+		DialogNode *node_1_1_2 = new DialogNode("Were you at the border?", "I was jus' thar!");
 		DialogNode *node_1_1_3 = new DialogNode("Is this your feather?", "Maybe, looks likeZ me dead birdie's.");
 		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing?", "Are ye stupid?Z Tryin' Z't get me new home.Z"); //add add add ad  ad d
 		DialogNode *node_1_1_3_1 = new DialogNode("It was at the entrance.", "'Twas hectic thar,Z dropped few thin'sZ loot few thin's");
