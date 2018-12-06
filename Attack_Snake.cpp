@@ -23,11 +23,6 @@ Attack_Snake::~Attack_Snake()
 // checks if player has collided with attack
 void Attack_Snake::detectCollision()
 {
-	//for (int i = -(diameter_ / 2); i < (diameter_ / 2); ++i)
-		//for (int j = -(diameter_ / 2); j < (diameter_ / 2); ++j)
-			//if (element_is_occupied_[center_position_y_ + i][center_position_x_ + j] == true)
-				//if (player_position_.y == center_position_y_ + i && player_position_.x == center_position_x_ + j)
-					//has_hit_player_ = true;
 	if (element_is_occupied_[player_position_.y][player_position_.x] == true)
 		has_hit_player_ = true;
 }

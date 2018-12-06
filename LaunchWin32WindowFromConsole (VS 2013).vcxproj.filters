@@ -156,6 +156,15 @@
     <ClCompile Include="Event_LostDevice.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="AttackPattern_ShootandExplode.cpp">
+      <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_SnakeandExplode.cpp">
+      <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootandSnake.cpp">
+      <Filter>Source Files\Attacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -340,6 +349,15 @@
     </ClInclude>
     <ClInclude Include="Event_LostDevice.h">
       <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootandExplode.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_SnakeandExplode.h">
+      <Filter>Header Files\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootandSnake.h">
+      <Filter>Header Files\Attacks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

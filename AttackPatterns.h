@@ -5,3 +5,6 @@
 #include "AttackPattern_VerticleGap.h"
 #include "AttackPattern_Wall.h"
 #include "AttackPattern_Snake.h"
+#include "AttackPattern_ShootandExplode.h"
+#include "AttackPattern_SnakeandExplode.h"
+#include "AttackPattern_ShootandSnake.h"

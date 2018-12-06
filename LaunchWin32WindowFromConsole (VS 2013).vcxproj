@@ -154,9 +154,12 @@
     <ClCompile Include="AttackBase.cpp" />
     <ClCompile Include="AttackPatternBase.cpp" />
     <ClCompile Include="AttackPattern_Explode.cpp" />
+    <ClCompile Include="AttackPattern_ShootandExplode.cpp" />
+    <ClCompile Include="AttackPattern_ShootandSnake.cpp" />
     <ClCompile Include="AttackPattern_ShootAtPlayer.cpp" />
     <ClCompile Include="AttackPattern_ShootHorizontal.cpp" />
     <ClCompile Include="AttackPattern_Snake.cpp" />
+    <ClCompile Include="AttackPattern_SnakeandExplode.cpp" />
     <ClCompile Include="AttackPattern_VerticleGap.cpp" />
     <ClCompile Include="AttackPattern_Wall.cpp" />
     <ClCompile Include="Attack_Border.cpp" />
@@ -196,9 +199,12 @@
     <ClInclude Include="AttackPatternBase.h" />
     <ClInclude Include="AttackPatterns.h" />
     <ClInclude Include="AttackPattern_Explode.h" />
+    <ClInclude Include="AttackPattern_ShootandExplode.h" />
+    <ClInclude Include="AttackPattern_ShootandSnake.h" />
     <ClInclude Include="AttackPattern_ShootAtPlayer.h" />
     <ClInclude Include="AttackPattern_ShootHorizontal.h" />
     <ClInclude Include="AttackPattern_Snake.h" />
+    <ClInclude Include="AttackPattern_SnakeandExplode.h" />
     <ClInclude Include="AttackPattern_VerticleGap.h" />
     <ClInclude Include="AttackPattern_Wall.h" />
     <ClInclude Include="Attacks.h" />

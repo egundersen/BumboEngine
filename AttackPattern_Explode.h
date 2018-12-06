@@ -66,5 +66,4 @@ private:
 		duration_of_explosion_ = 2000;
 	}
 };
-
 #endif // !ATTACKPATTERN_EXPLODE_H

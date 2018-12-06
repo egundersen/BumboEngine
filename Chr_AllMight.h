@@ -116,7 +116,17 @@ public:
 		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
 		AttackPatternBase *attack_pattern_7;
 		attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, matrix_display, player_health, 1);
+		AttackPatternBase *attack_pattern_8;
+		attack_pattern_8 = new ShootandExplode_Fast(screen_width, screen_height, matrix_display, player_health, 10);
+		AttackPatternBase *attack_pattern_9;
+		attack_pattern_9 = new ShootandExplode_Slow(screen_width, screen_height, matrix_display, player_health, 10);
+		AttackPatternBase *attack_pattern_10;
+		attack_pattern_10 = new AttackPattern_ShootandSnake(screen_width, screen_height, matrix_display, player_health, 10);
 		attack_patterns_.push_back(attack_pattern_1);
+		attack_patterns_.push_back(attack_pattern_8);
+		attack_patterns_.push_back(attack_pattern_9);
+		attack_patterns_.push_back(attack_pattern_10);
+		//attack_patterns_.push_back(attack_pattern_3);
 		/*attack_patterns_.push_back(attack_pattern_3);
 		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_1);
