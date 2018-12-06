@@ -149,38 +149,94 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh Zfancy seeing you hereZ");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! ZCan you guess why?Z");
-		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love meZ a good joke!Z");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me!ZLet's fight!!!!Z", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here,Zhave my most valubleZpossession!Z", health_potion);
-		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where areZyou going!!!?Z");
-		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "i dont know...ZWhat is it?Z");
-		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!!ZDIE!!! DIEE!!!Z", "FIGHT");
-		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will neverZspeak with youZagainZ");
-		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...Z", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z", "SAVE");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ", "SAVE");
+	DialogNode *node_1 = new DialogNode("", "Woah! A pirate?");
+	DialogNode *node_1_1 = new DialogNode("Whats your name?", "Magical Aki!");
+	DialogNode *node_1_2 = new DialogNode("Could you help?", "Of course! Z I'm here to save you!Z");
+	DialogNode *node_1_3 = new DialogNode("Goodbye...", "See ya!"); //-
+        DialogNode *node_1_1_1 = new DialogNode("Magical?", "I'm a magical girl Z can't you tell?");
+        DialogNode *node_1_1_1_1 = new DialogNode("Are you able to help?","That's my duty!ZTo help!");
+        DialogNode *node_1_2_1 = new DialogNode("My flahsdive was stolen.","Stolen? What's soZimportant about that?");
+        DialogNode *node_1_2_2 = new DialogNode("Is this your glove?","Mmm, maybe. Wher didZyou find it?");
+        
+        DialogNode *node_1_2_1_1 = new DialogNode("It has something important", "How boring!");
+        DialogNode *node_1_2_1_2 = new DialogNode("It just is!", "touchy...");
+        DialogNode *node_1_2_1_3 = new DialogNode("Just help me!", "Well, an old rusty thingZis meaningless to me.ZI might help");
+
+        DialogNode *node_1_2_1_2_1 = new DialogNode("please, it's important...", "hm, maybe.");
+        
+        DialogNode *node_1_2_2_1 = new DialogNode("At the border", "I thought I left Zthis at my old home");
+        DialogNode *node_1_2_2_1_1 = new DialogNode("Did you take my flashdrive?", "Are you accusing me?!", "FIGHT"); //-
+        DialogNode *node_1_2_2_1_2 = new DialogNode("Who took my flash drive?", "I don't know...ZIt was chaos at theZborder.");
+        DialogNode *node_1_2_2_1_3 = new DialogNode("Will you help me now?", "Now I will!");
+        
+        DialogNode *node_1_2_2_1_3_1 = new DialogNode("What happened at the border?", "Everyone wanted to getZin. It's dangerous upZ there");
+        DialogNode *node_1_2_2_1_3_2 = new DialogNode("What were doing at the border?", "Moving, what else?ZWe can't live aboveZ anymore");
+        
+        DialogNode *node_1_2_2_1_3_2_1 = new DialogNode("So you didn't see?", "I saw nothingZhappen");
+        DialogNode *node_1_2_2_1_3_2_2 = new DialogNode("Was anyone suspicious?", "Ryuuko, he's dumbZso he might've Zaccidentally dont it");
+        
+        DialogNode *node_1_2_2_1_3_2_2_1 = new DialogNode("Who else?", "*mumble*Zthose disgucting pirates");
+        DialogNode *node_1_2_2_1_3_2_2_1_1 = new DialogNode("huh?", "oh no!ZIgnore that!");
+        DialogNode *node_1_2_2_1_3_2_2_1_2 = new DialogNode("Disgusting?", "I didn't mean that!ZThere's just tensionZamoung factions");
+        DialogNode *node_1_2_2_1_3_2_2_1_3 = new DialogNode("..I'm a pirate.", "I'm sorry,ZI didn't mean that");
+	
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1 = new DialogNode("Well, who's sus?", "...Ryuuko, Bonny,Zand Sharktooth");
+	
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1_1 = new DialogNode("Thank you!", "Magical AkiZ will always help!", "SAVE");
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1_2 = new DialogNode("It was you!", "How could you accuseZ Magical Aki!", "FIGHT");
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1_3 = new DialogNode("You're suspicious...", "hmph,Z no help from me then.Z Goodbye", "SAVE");
 
 		// Link Dialog Nodes
-		node_1->setChoice1(node_1_1);
-		node_1->setChoice2(node_1_2);
-		node_1->setChoice3(node_1_3);
+	node_1->setChoice1(node_1_1);
+	node_1->setChoice2(node_1_2);
+	node_1->setChoice3(node_1_3);
+        
+        node_1_1->setChoice1(node_1_1_1);
 
-		node_1_1->setChoice1(node_1_1_1);
-		node_1_1->setChoice2(node_1_1_2);
-		node_1_1->setChoice3(node_1_1_3);
-
-		node_1_2->setChoice1(node_1_2_1);
-		node_1_2->setChoice2(node_1_2_2);
-		node_1_2->setChoice3(node_1_2_3);
-
-		node_1_2_1->setChoice1(node_1_2_1_1);
-		node_1_1_2->setChoice1(node_1_1_2_1);
-		node_1_1_1->setChoice1(node_1_1_1_1);
+        node_1_1_1->setChoice1(node_1_1_1_1);
+        
+        node_1_1_1_1->setChoice1(node_1_2_1);
+        node_1_1_1_1->setChoice2(node_1_2_2);
+        
+        node_1_2->setChoice1(node_1_2_1);
+        node_1_2->setChoice2(node_1_2_2);
+        
+        node_1_2_1_3->setChoice1(node_1_2_2);
+        node_1_2_1_2_1->setChoice2(node_1_2_2);
+        
+        node_1_2_2->setChoice1(node_1_2_2_1);
+        
+        node_1_2_2_1->setChoice1(node_1_2_2_1_1);
+        node_1_2_2_1->setChoice2(node_1_2_2_1_2);
+        node_1_2_2_1->setChoice3(node_1_2_2_1_3);
+        
+        node_1_2_2_1_2->setChoice1(node_1_2_2_1_3_1);
+        node_1_2_2_1_2->setChoice2(node_1_2_2_1_3_2);
+        
+        node_1_2_2_1_3->setChoice1(node_1_2_2_1_3_1);
+        node_1_2_2_1_3->setChoice2(node_1_2_2_1_3_2);
+        
+        node_1_2_2_1_3_2->setChoice1(node_1_2_2_1_3_2_1);
+        node_1_2_2_1_3_2->setChoice2(node_1_2_2_1_3_2_2);
+        
+        node_1_2_2_1_3_2_1->setChoice1(node_1_2_2_1_3_2_2);
+        
+        node_1_2_2_1_3_2_2->setChoice1(node_1_2_2_1_3_2_2_1);
+        
+        node_1_2_2_1_3_2_2_1->setChoice1(node_1_2_2_1_3_2_2_1_1);
+	node_1_2_2_1_3_2_2_1->setChoice2(node_1_2_2_1_3_2_2_1_2);
+	node_1_2_2_1_3_2_2_1->setChoice3(node_1_2_2_1_3_2_2_1_3);
+	
+	node_1_2_2_1_3_2_2_1_1->setChoice1(node_1_2_2_1_3_2_2_1_3_1);
+	node_1_2_2_1_3_2_2_1_2->setChoice1(node_1_2_2_1_3_2_2_1_3_1);
+	node_1_2_2_1_3_2_2_1_3->setChoice1(node_1_2_2_1_3_2_2_1_3_1);
+	
+	node_1_2_2_1_3_2_2_1_3_1->setChoice1(node_1_2_2_1_3_2_2_1_3_1_1);
+	node_1_2_2_1_3_2_2_1_3_1->setChoice2(node_1_2_2_1_3_2_2_1_3_1_2);
+	node_1_2_2_1_3_2_2_1_3_1->setChoice3(node_1_2_2_1_3_2_2_1_3_1_3);
 
 		setHeadNode(node_1);
+	}
 	}
 };
 
