@@ -54,22 +54,22 @@ public:
         
         // (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
         std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-        dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.1", "1.1 NO", false));
-        dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.2", "1.2 NO", false));
-        dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.C", "1.C YES", true));
-        dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.4", "1.4 NO", false));
+        dialog_choice_1.push_back(std::make_tuple("Who are you?                       ", "A lost pirate", false));
+        dialog_choice_1.push_back(std::make_tuple("Do you know where I should go?      ", "yes", false));
+        dialog_choice_1.push_back(std::make_tuple("Where am I?                       ", "In between factions", true));
+        dialog_choice_1.push_back(std::make_tuple("I'm tired                          ", "ok?", false));
         
         std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-        dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.1", "2.1 NO", false));
-        dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.2", "2.2 NO", false));
-        dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.3", "2.3 NO", false));
-        dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.C", "2.C YES", true));
+        dialog_choice_2.push_back(std::make_tuple("Where do I go?                     ", "Past tis; door", false));
+        dialog_choice_2.push_back(std::make_tuple("Can you stop?                      ", "no mate", false));
+        dialog_choice_2.push_back(std::make_tuple("Please stop                       ", "Can't do such thing", false));
+        dialog_choice_2.push_back(std::make_tuple("Why are you here?                 ", "To kill you", true));
         
         std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-        dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.C", "3.C YES", true));
-        dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.2", "3.2 NO", false));
-        dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.3", "3.3 NO", false));
-        dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.4", "3.4 NO", false));
+        dialog_choice_3.push_back(std::make_tuple("Could you stop?                       ", "Perhaps", true));
+        dialog_choice_3.push_back(std::make_tuple("Why are you helping but killing?        ", "Feel like it", false));
+        dialog_choice_3.push_back(std::make_tuple("I don't understand why I'm targeted      ", "it's ye flashdrive", false));
+        dialog_choice_3.push_back(std::make_tuple("Will you kill me?                         ", "Maybe", false));
         
         dialog_choices_.push_back(dialog_choice_1);
         dialog_choices_.push_back(dialog_choice_2);
@@ -124,36 +124,14 @@ public:
          */
         
         // CREATE DIALOG NODES
-        DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh Zfancy seeing you hereZ");
-        DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! ZCan you guess why?Z");
-        DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love meZ a good joke!Z");
-        DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-        DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me!ZLet's fight!!!!Z", "FIGHT");
-        DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here,Zhave my most valubleZpossession!Z", health_potion);
-        DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where areZyou going!!!?Z");
-        DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "i dont know...ZWhat is it?Z");
-        DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!!ZDIE!!! DIEE!!!Z", "FIGHT");
-        DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will neverZspeak with youZagainZ");
-        DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...Z", "FIGHT");
-        DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see.ZSorry, I only had theZone item...Z", "SAVE");
-        DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lostZ", "SAVE");
-        
+        DialogNode *node_1 = new DialogNode("", "Ye shall not pass");
+        DialogNode *node_1_1 = new DialogNode("Oh no...", "Argh, I will Z defeat ye!");
+        DialogNode *node_1_2 = new DialogNode("wait, please - ", "Get ready", "FIGHT");
+
         // Link Dialog Nodes
         node_1->setChoice1(node_1_1);
-        node_1->setChoice2(node_1_2);
-        node_1->setChoice3(node_1_3);
-        
-        node_1_1->setChoice1(node_1_1_1);
-        node_1_1->setChoice2(node_1_1_2);
-        node_1_1->setChoice3(node_1_1_3);
-        
-        node_1_2->setChoice1(node_1_2_1);
-        node_1_2->setChoice2(node_1_2_2);
-        node_1_2->setChoice3(node_1_2_3);
-        
-        node_1_2_1->setChoice1(node_1_2_1_1);
-        node_1_1_2->setChoice1(node_1_1_2_1);
-        node_1_1_1->setChoice1(node_1_1_1_1);
+        node_1_1->setChoice2(node_1_2);
+
         
         setHeadNode(node_1);
     }
