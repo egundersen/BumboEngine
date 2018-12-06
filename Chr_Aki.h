@@ -54,22 +54,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.1", "1.1 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.2", "1.2 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.C", "1.C YES", true));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.4", "1.4 NO", false));
+		dialog_choice_1.push_back(std::make_tuple("You STOLE IT!", "Where's proof?!", false));
+		dialog_choice_1.push_back(std::make_tuple("You thief!", "NEVER", false));
+		dialog_choice_1.push_back(std::make_tuple("Was it you??", "Never!", true));
+		dialog_choice_1.push_back(std::make_tuple("Are you ready to die??", "Magic lives!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.1", "2.1 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.2", "2.2 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.3", "2.3 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.C", "2.C YES", true));
+		dialog_choice_2.push_back(std::make_tuple("LIE!", "NO!", false));
+		dialog_choice_2.push_back(std::make_tuple("Untrustworthy", "You are!", false));
+		dialog_choice_2.push_back(std::make_tuple("You're a thief!", "I'm not!", false));
+		dialog_choice_2.push_back(std::make_tuple("You're not lying?", "Of course not!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.C", "3.C YES", true));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.2", "3.2 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.3", "3.3 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.4", "3.4 NO", false));
+		dialog_choice_3.push_back(std::make_tuple("Is it true", "Yes! Please no more!", true));
+		dialog_choice_3.push_back(std::make_tuple("Sus from the beginning", "You were!", false));
+		dialog_choice_3.push_back(std::make_tuple("Can't take the chances", "You dummy!", false));
+		dialog_choice_3.push_back(std::make_tuple("Anime should die", "NOOOOOOOOO", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -154,37 +154,37 @@ public:
 	DialogNode *node_1_2 = new DialogNode("Could you help?", "Of course! Z I'm here to save you!Z");
 	DialogNode *node_1_3 = new DialogNode("Goodbye...", "See ya!"); //-
         DialogNode *node_1_1_1 = new DialogNode("Magical?", "I'm a magical girl Z can't you tell?");
-        DialogNode *node_1_1_1_1 = new DialogNode("Are you able to help?","That's my duty!ZTo help!");
-        DialogNode *node_1_2_1 = new DialogNode("My flahsdive was stolen.","Stolen? What's soZimportant about that?");
-        DialogNode *node_1_2_2 = new DialogNode("Is this your glove?","Mmm, maybe. Wher didZyou find it?");
+        DialogNode *node_1_1_1_1 = new DialogNode("Are you able to help?","That's my duty! Z To help!");
+        DialogNode *node_1_2_1 = new DialogNode("My flahsdive was stolen.","Stolen? What's so Z important about that?");
+        DialogNode *node_1_2_2 = new DialogNode("Is this your glove?","Mmm, maybe. Z Where did you find it?");
         
-        DialogNode *node_1_2_1_1 = new DialogNode("It has something important", "How boring!");
+        DialogNode *node_1_2_1_1 = new DialogNode("It was important", "How boring!");
         DialogNode *node_1_2_1_2 = new DialogNode("It just is!", "touchy...");
-        DialogNode *node_1_2_1_3 = new DialogNode("Just help me!", "Well, an old rusty thingZis meaningless to me.ZI might help");
+        DialogNode *node_1_2_1_3 = new DialogNode("Just help me!", "Well, an old rusty thing Z is meaningless to me. Z I might help");
 
         DialogNode *node_1_2_1_2_1 = new DialogNode("please, it's important...", "hm, maybe.");
         
-        DialogNode *node_1_2_2_1 = new DialogNode("At the border", "I thought I left Zthis at my old home");
-        DialogNode *node_1_2_2_1_1 = new DialogNode("Did you take my flashdrive?", "Are you accusing me?!", "FIGHT"); //-
-        DialogNode *node_1_2_2_1_2 = new DialogNode("Who took my flash drive?", "I don't know...ZIt was chaos at theZborder.");
+        DialogNode *node_1_2_2_1 = new DialogNode("At the border", "I thought I left  Z this at my old home");
+        DialogNode *node_1_2_2_1_1 = new DialogNode("Did you take my drive?", "Are you accusing me?!", "FIGHT"); //-
+        DialogNode *node_1_2_2_1_2 = new DialogNode("Who took my drive?", " I don't know. Z It was chaos Z at the border.");
         DialogNode *node_1_2_2_1_3 = new DialogNode("Will you help me now?", "Now I will!");
         
-        DialogNode *node_1_2_2_1_3_1 = new DialogNode("What happened at the border?", "Everyone wanted to getZin. It's dangerous upZ there");
-        DialogNode *node_1_2_2_1_3_2 = new DialogNode("What were doing at the border?", "Moving, what else?ZWe can't live aboveZ anymore");
+        DialogNode *node_1_2_2_1_3_1 = new DialogNode("What happened there?", "Everyone Z wanted to get in. Z It's dangerous up there");
+        DialogNode *node_1_2_2_1_3_2 = new DialogNode("Why were you there?", "Moving, what else? Z We can't live above Z anymore");
         
-        DialogNode *node_1_2_2_1_3_2_1 = new DialogNode("So you didn't see?", "I saw nothingZhappen");
-        DialogNode *node_1_2_2_1_3_2_2 = new DialogNode("Was anyone suspicious?", "Ryuuko, he's dumbZso he might've Zaccidentally dont it");
+        DialogNode *node_1_2_2_1_3_2_1 = new DialogNode("So you didn't see?", "I saw nothing Z happen");
+        DialogNode *node_1_2_2_1_3_2_2 = new DialogNode("Was anyone suspicious?", "Ryuuko, he's dumb Z so he might've Z accidentally dont it");
         
-        DialogNode *node_1_2_2_1_3_2_2_1 = new DialogNode("Who else?", "*mumble*Zthose disgucting pirates");
-        DialogNode *node_1_2_2_1_3_2_2_1_1 = new DialogNode("huh?", "oh no!ZIgnore that!");
-        DialogNode *node_1_2_2_1_3_2_2_1_2 = new DialogNode("Disgusting?", "I didn't mean that!ZThere's just tensionZamoung factions");
-        DialogNode *node_1_2_2_1_3_2_2_1_3 = new DialogNode("..I'm a pirate.", "I'm sorry,ZI didn't mean that");
+        DialogNode *node_1_2_2_1_3_2_2_1 = new DialogNode("Who else?", "*mumble* Z those disgucting pirates");
+        DialogNode *node_1_2_2_1_3_2_2_1_1 = new DialogNode("huh?", "oh no! Z Ignore that!");
+        DialogNode *node_1_2_2_1_3_2_2_1_2 = new DialogNode("Disgusting?", "I didn't mean that! Z here's just tension Z amoung factions");
+        DialogNode *node_1_2_2_1_3_2_2_1_3 = new DialogNode("..I'm a pirate.", "I'm sorry, Z I didn't mean that");
 	
-	DialogNode *node_1_2_2_1_3_2_2_1_3_1 = new DialogNode("Well, who's sus?", "...Ryuuko, Bonny,Zand Sharktooth");
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1 = new DialogNode("Well, who's sus?", "...Ryuuko, Z Bonny, and Sharktooth");
 	
-	DialogNode *node_1_2_2_1_3_2_2_1_3_1_1 = new DialogNode("Thank you!", "Magical AkiZ will always help!", "SAVE");
-	DialogNode *node_1_2_2_1_3_2_2_1_3_1_2 = new DialogNode("It was you!", "How could you accuseZ Magical Aki!", "FIGHT");
-	DialogNode *node_1_2_2_1_3_2_2_1_3_1_3 = new DialogNode("You're suspicious...", "hmph,Z no help from me then.Z Goodbye", "SAVE");
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1_1 = new DialogNode("Thank you!", "Magical Aki Z will always help!", "SAVE");
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1_2 = new DialogNode("It was you!", "How could you Z accuse Magical Aki!", "FIGHT");
+	DialogNode *node_1_2_2_1_3_2_2_1_3_1_3 = new DialogNode("You're suspicious...", "hmph, Z no help from me then. Z Goodbye", "SAVE");
 
 		// Link Dialog Nodes
 	node_1->setChoice1(node_1_1);
@@ -200,9 +200,16 @@ public:
         
         node_1_2->setChoice1(node_1_2_1);
         node_1_2->setChoice2(node_1_2_2);
+
+		node_1_2_1->setChoice1(node_1_2_1_1);
+		node_1_2_1->setChoice2(node_1_2_1_2);
+		node_1_2_1->setChoice3(node_1_2_1_3);
+
+		node_1_2_1_1->setChoice1(node_1_2_1_2_1);
+		node_1_2_1_2->setChoice1(node_1_2_1_2_1);
         
         node_1_2_1_3->setChoice1(node_1_2_2);
-        node_1_2_1_2_1->setChoice2(node_1_2_2);
+        node_1_2_1_2_1->setChoice1(node_1_2_2);
         
         node_1_2_2->setChoice1(node_1_2_2_1);
         
@@ -215,6 +222,9 @@ public:
         
         node_1_2_2_1_3->setChoice1(node_1_2_2_1_3_1);
         node_1_2_2_1_3->setChoice2(node_1_2_2_1_3_2);
+
+		node_1_2_2_1_3_1->setChoice1(node_1_2_2_1_3_2_1);
+		node_1_2_2_1_3_1->setChoice2(node_1_2_2_1_3_2_2);
         
         node_1_2_2_1_3_2->setChoice1(node_1_2_2_1_3_2_1);
         node_1_2_2_1_3_2->setChoice2(node_1_2_2_1_3_2_2);
@@ -236,7 +246,6 @@ public:
 	node_1_2_2_1_3_2_2_1_3_1->setChoice3(node_1_2_2_1_3_2_2_1_3_1_3);
 
 		setHeadNode(node_1);
-	}
 	}
 };
 
