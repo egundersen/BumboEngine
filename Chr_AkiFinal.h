@@ -26,8 +26,8 @@ public:
 			"AKI INSANE", // name
 			"resources\\aki_angry_neutral.bmp", // Neutral Expression (Image Location/Name)
 			"resources\\aki_mad.bmp", // Angry Expression (Image Location/Name)
-			"",
-			""
+			"resources\\aki_angry_neutral.bmp",
+			"resources\\aki_angry_neutral.bmp"
 		),//*/
 
 		  /* Sets the sprite ascii for the NPC world sprite */

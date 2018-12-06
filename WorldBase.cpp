@@ -838,6 +838,24 @@ void WorldBase::GENERATE_Signposts()
 	Signpost *sign_19 = new Signpost(282, 447, 31, 9, 21, "So how wasZyour day?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_20 = new Signpost(510, 447, 31, 9, 22, "Mine was greatZthanks forZaskingZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_21 = new Signpost(267, 31, 31, 9, 23, "TIP:ZZHold SHIFT to runZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_22 = new Signpost(384, 31, 31, 9, 24, "'M'ZZBridgeZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_23 = new Signpost(871, 26, 31, 9, 25, "ATTENTIONZOnce you enter,Zyou need aZVISA to vist the outsideZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_24 = new Signpost(549, 105, 31, 9, 26, "Are you scaredZof ghosts?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_25 = new Signpost(480, 105, 31, 9, 27, "Be careful.ZLong halls attactZghostsZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_26 = new Signpost(416, 105, 31, 9, 28, "This game mightZhave jumpscaresZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_27 = new Signpost(632, 161, 31, 9, 29, "House near CrabZCave for sale!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_28 = new Signpost(683, 161, 31, 9, 30, "House near deathZfor sale!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_29 = new Signpost(779, 252, 31, 9, 31, "Lots forZbusiness forZsale!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_30 = new Signpost(660, 265, 31, 9, 32, "this is ZVer.3 of the maze,Zit wasZapproved so...Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_31 = new Signpost(465, 310, 31, 9, 33, "This worldZhas factionsZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_32 = new Signpost(538, 310, 31, 9, 34, "Each factionZis uniqueZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_33 = new Signpost(627, 310, 31, 9, 35, "I'm sorry...Z-AmZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_34 = new Signpost(972, 310, 31, 9, 36, "Turn backZnow if youZwantZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_35 = new Signpost(702, 386, 31, 9, 37, "Are youZgettingZlonely?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_36 = new Signpost(323, 389, 31, 9, 38, "Weebs upZaheadZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_37 = new Signpost(115, 447, 31, 9, 39, "I feelZattacked...Z-AmZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_38 = new Signpost(530, 485, 31, 9, 40, "Note:ZHalls are tooZ too longZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+
 
 	signposts_.push_back(checkpoint_sign_1);
 	signposts_.push_back(checkpoint_sign_2);
@@ -863,6 +881,24 @@ void WorldBase::GENERATE_Signposts()
 	signposts_.push_back(sign_19);
 	signposts_.push_back(sign_20);
 	signposts_.push_back(sign_21);
+	signposts_.push_back(sign_22);
+	signposts_.push_back(sign_23);
+	signposts_.push_back(sign_24);
+	signposts_.push_back(sign_25);
+	signposts_.push_back(sign_26);
+	signposts_.push_back(sign_27);
+	signposts_.push_back(sign_28);
+	signposts_.push_back(sign_29);
+	signposts_.push_back(sign_30);
+	signposts_.push_back(sign_31);
+	signposts_.push_back(sign_32);
+	signposts_.push_back(sign_33);
+	signposts_.push_back(sign_34);
+	signposts_.push_back(sign_35);
+	signposts_.push_back(sign_36);
+	signposts_.push_back(sign_37);
+	signposts_.push_back(sign_38);
+
 
 	// Displays all sign posts
 	for (auto signpost : signposts_)
