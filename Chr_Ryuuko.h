@@ -24,10 +24,10 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			11, // Boss health
 			"RYUUKO", // name
-			"resources\\ryuuko_neutral.png", // Neutral Expression (Image Location/Name)
-			"resources\\ryuuko_mad.png", // Angry Expression (Image Location/Name)
-			"resources\\ryuuko_happy.png",
-			"resources\\ryuuko_nervous.png"
+			"resources\\ryuuko_neutral.bmp", // Neutral Expression (Image Location/Name)
+			"resources\\ryuuko_mad.bmp", // Angry Expression (Image Location/Name)
+			"resources\\ryuuko_happy.bmp",
+			"resources\\ryuuko_nervous.bmp"
 		),//*/
 
 		  /* Sets the sprite ascii for the NPC world sprite */

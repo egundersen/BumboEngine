@@ -24,10 +24,10 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			13, // Boss health
 			"AKI", // name
-			"aki insane_happyneu.bmp", // Neutral Expression (Image Location/Name)
+			"resources\\aki__happy_neutral.bmp", // Neutral Expression (Image Location/Name)
 			"resources\\aki_angry_neutral.bmp", // Angry Expression (Image Location/Name)
-			"aki insane_happyneu.bmp",
-			"aki insane_nervousdead.bmp"
+			"resources\\aki__happy_neutral.bmp",
+			"resources\\aki_nervous.bmp"
 		),//*/
 
 		  /* Sets the sprite ascii for the NPC world sprite */
