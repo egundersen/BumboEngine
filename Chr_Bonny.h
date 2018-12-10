@@ -7,7 +7,7 @@
 class Chr_Bonny : public CharacterBase
 {
 public:
-	Chr_Bonny(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
+	Chr_Bonny(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, int &player_health, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -22,28 +22,12 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			6, // Boss health
-			"BONNY", // name
-			"bonny_neutral.bmp", // Neutral Expression (Image Location/Name)
-			"bonny_angry.bmp", // Angry Expression (Image Location/Name)
+			6,
+			"BONNY", 
+			"bonny_neutral.bmp", 
+			"bonny_angry.bmp", 
 			"bonny_happy.bmp",
 			"bonny_nervous_dead.bmp"
-		),//*/
-
-		  /* Sets the sprite ascii for the NPC world sprite */
-		WorldSprite world_sprite = WorldSprite(
-			"    /\\$   Z\\=//--\\\\=/Z  XbXXdX  Z   wwww   ZO#XXXXXX#OZO ###### OZ  %U  U%  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  X[][]X  Z   WWWW   ZO#XXXXXX#OZO ###### OZ  %U  U%  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  @@X[]X  Z   WWWW   Z  O#XX#O  Z  O%###%O Z   %%  %  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  X[]X@@  Z   WWWW   Z  O#XX#O  Z O%###%O  Z  %  %%   Z",
-            "    /\\$   Z\\=//--\\\\=/Z  XXX@@X  Z   WWWW   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  X[][]X  Z   WWWW   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  @@X[]X  Z   WWWW O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z",
-			"    /\\$   Z\\=//--\\\\=/Z  X[]X@@  Z O WWWW   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z",
-			"    /\\$   Z\\=//--\\\\=/Z  XXX@@X  Z   WWWW   Z O#XXXX#O Z O######O Z  %U  U%  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  X[][]X  Z   WWWW   Z O#XXXX#O Z O######O Z  %U  U%  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  @@X[]X  Z   WWWW   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
-			"    /\\$   Z\\=//--\\\\=/Z  X[]X@@  Z   WWWW   Z  O#XX#O  Z O######  Z  %U  U%  Z"
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

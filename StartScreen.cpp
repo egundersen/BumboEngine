@@ -32,9 +32,13 @@ void StartScreen::setBackgroundText()
 
 	Image title_letters("[]        [] []====| []   []        []     [][][] []====| []====|Z[]   []   [] []      []]  []        []       []   []    | []     Z[]  [][]  [] []====  [][] []        []       []   []==|   []==== Z [][]  [][]  []      [] [][]        []       []   []      []     Z  []    []   []====| []  [[]        [][][] [][][] []      []====|Z");
 	Image press_enter("Press ENTER to begin");
-	Image symbol("     X     Z     X     Z     X     ZXXXX=O=XXXXZ     X     Z     X     Z     X     Z");
+	Image sprite_1("   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z");
+	Image sprite_2("   -/\\-   Z \\=/--\\=/ Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z");
+	Image sprite_3("   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z");
 	
-	addImageToMatrix(39, 18, symbol, matrix_);
+	addImageToMatrix(28, 18, sprite_1, matrix_);
+	addImageToMatrix(39, 18, sprite_2, matrix_);
+	addImageToMatrix(50, 18, sprite_3, matrix_);
 	addImageToMatrix(39, 7, title_letters, matrix_);
 	addImageToMatrix(39, 30, press_enter, matrix_);
 	addTextToMatrix(58, height_ - 1, "BumboEngine v0.8", matrix_);

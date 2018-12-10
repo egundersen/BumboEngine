@@ -736,13 +736,13 @@ void WorldBase::GENERATE_Maze()
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
 void WorldBase::GENERATE_Enemies()
 {
-	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, player_health_, 1, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, player_health_, 10, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, 10, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
-	CharacterBase *ryuuko = new Chr_Ryuuko(423, 671, player_health_, 11, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *aki = new Chr_Aki(433, 671, player_health_, 12, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *bonny = new Chr_Bonny(443, 671, player_health_, 13, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *sharktooth = new Chr_Sharktooth(453, 671, player_health_, 14, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *ryuuko = new Chr_Ryuuko(423, 671, 11, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *aki = new Chr_Aki(433, 671, 12, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *bonny = new Chr_Bonny(443, 671, 13, sprite_sheet_.bonny, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *sharktooth = new Chr_Sharktooth(453, 671, 14, sprite_sheet_.sharktooth, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();
@@ -760,7 +760,7 @@ void WorldBase::GENERATE_Enemies()
 
 #ifdef _DEBUG
 	CharacterBase *test;
-	test = new Chr_AllMight(132, 635, player_health_, 0, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	test = new Chr_AllMight(132, 635, 0, sprite_sheet_.player, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	test->initializeCharacter();
 	characters_.push_back(test);
 #endif
@@ -769,25 +769,25 @@ void WorldBase::GENERATE_Enemies()
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
-	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, player_health_, 2, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Four whole days.ZI've been waitingZin line so long...ZI regret to say IZchose the pirateZfactionZ", 'X', 23, 9), sprite_sheet_.player, 'u');
-	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, player_health_, 3, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Yar har harZand a bottleZof rum!Z", 'X', 23, 9), sprite_sheet_.pirate_1, ' u');
-	CharacterBase *standing_in_line_3 = new Chr_BackgroundNPC(441, 612, player_health_, 4, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_3 = new Chr_BackgroundNPC(441, 612, 4, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("I'm so hungry...ZBut I don't wantZto leave theZlineZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
-	CharacterBase *standing_in_line_4 = new Chr_BackgroundNPC(448, 614, player_health_, 5, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_4 = new Chr_BackgroundNPC(448, 614, 5, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("STOP SHOVING!ZZOh... um, helloZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
-	CharacterBase *standing_in_line_5 = new Chr_BackgroundNPC(456, 613, player_health_, 6, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_5 = new Chr_BackgroundNPC(456, 613, 6, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Back of the line!ZCan't you tell IZwas here first?Z", 'X', 23, 9), sprite_sheet_.player, 'r');
-	CharacterBase *standing_in_line_6 = new Chr_BackgroundNPC(416, 622, player_health_, 7, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_6 = new Chr_BackgroundNPC(416, 622, 7, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("You're a pirateZtoo? Better getZin line!Z", 'X', 23, 9), sprite_sheet_.player, 'r');
 
-	CharacterBase *boarder_guard_1 = new Chr_BackgroundNPC(479, 615, player_health_, 8, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *boarder_guard_1 = new Chr_BackgroundNPC(479, 615, 8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Another pirate...ZGet in line withZthe rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
-	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(471, 626, player_health_, 9, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(471, 626, 9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Another pirate...ZGet in line withZthe rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
 
-	CharacterBase *boarder_incident_random = new Chr_BackgroundNPC(413, 671, player_health_, 15, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *boarder_incident_random = new Chr_BackgroundNPC(413, 671, 15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.player, 'r');
 
 	standing_in_line_1->initializeCharacter();

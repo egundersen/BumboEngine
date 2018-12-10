@@ -7,7 +7,7 @@
 class Chr_Aki : public CharacterBase
 {
 public:
-	Chr_Aki(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
+	Chr_Aki(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, int &player_health, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -22,28 +22,12 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			13, // Boss health
-			"AKI", // name
-			"aki_happy_neutral.bmp", // Neutral
-			"aki_angry_neutral.bmp", // Angry
-			"aki_happy_neutral.bmp", // Happy
-			"aki_nervous.bmp" // Defeated
-		),//*/
-
-		  /* Sets the sprite ascii for the NPC world sprite */
-		WorldSprite world_sprite = WorldSprite(
-			"  @@@@@@  Z  @XXXX@  Z @ XXXX @ Z O#XXXX#O ZO ######O Z   U  U   Z",
-			"  @@@@@@  Z @X[][]X@ Z @ XUUX @ Z O#XXXX#O ZO ######O Z   U  U   Z",
-			"   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z",
-			"   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z",
-			"  @@@@@@  Z @XXXXXX@ Z @ XXXX @ Z O#XXXX#O Z O###### OZ   U  U   Z",
-			"  @@@@@@  Z @X[][]X@ Z @ XXXX @ Z O#XXXX#O Z O###### OZ   U  U   Z",
-			"   @@@@   Z  @@X[]X  Z   @XXX O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z",
-			"   @@@@   Z  X[]X@@  Z O XXX@   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z",
-			"  @@@@@@  Z @XXX@@X@ Z @ XXXX @ Z O#XXXX#O Z O######O Z   U  U   Z",
-			"  @@@@@@  Z @X[][]X@ Z @ XXXX @ Z O#XXXX#O Z O######O Z   U  U   Z",
-			"   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
-			"   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z  %U  U%  Z"
+			13,
+			"AKI", 
+			"aki_happy_neutral.bmp",
+			"aki_angry_neutral.bmp",
+			"aki_happy_neutral.bmp",
+			"aki_nervous.bmp"
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

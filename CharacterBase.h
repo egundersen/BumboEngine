@@ -64,6 +64,7 @@ private:
 
 	WorldSprite world_sprite_;
 	NPCSprite sprite_;
+	
 	std::vector<Image*> sprite_states_;
 	char facing_direction_, moving_direction_;
 	bool use_basic_dialog_, has_begun_moving_, has_reached_destination_, attack_on_sight_;

@@ -7,7 +7,7 @@
 class Chr_Ryuuko : public CharacterBase
 {
 public:
-	Chr_Ryuuko(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
+	Chr_Ryuuko(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, int &player_health, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -22,29 +22,13 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			11, // Boss health
-			"RYUUKO", // name
-			"ryuuko_neutral.bmp", // Neutral Expression (Image Location/Name)
-			"ryuuko_mad.bmp", // Angry Expression (Image Location/Name)
+			11,
+			"RYUUKO", 
+			"ryuuko_neutral.bmp", 
+			"ryuuko_mad.bmp", 
 			"ryuuko_happy.bmp",
 			"ryuuko_nervous.bmp"
 		),//*/
-
-		  /* Sets the sprite ascii for the NPC world sprite */
-		WorldSprite world_sprite = WorldSprite(
-			"   ^^^^   Z  XXXXXX  Z   XXXX   Z O#XXXX#O ZO ######O Z   U  U   Z", // Up Moving 1
-			"   ^^^^   Z  X[][]X  Z   X--X   Z O#XXXX#O ZO ######O Z   U  U   Z", // Down Moving 1
-			"   ^^^^   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z", // Right Moving 1
-			"   ^^^^   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z", // Left Moving 1
-			"   ^^^^   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O###### OZ   U  U   Z", // Up Moving 2
-			"   ^^^^   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O###### OZ   U  U   Z", // Down Moving 2
-			"   ^^^^   Z  @@X[]X  Z   @XXX O Z  O#XX#O  Z %%O#%#   Z %=  %%   Z", // Right Moving 2
-			"   ^^^^   Z  X[]X@@  Z O XXX@   Z  O#XX#O  Z   #%#O%% Z   %%  =% Z", // Left Moving 2
-			"   ^^^^   Z  XXX@@X  Z   XXXX   Z O#XXXX#O Z O######O Z   U  U   Z", // Up Not Moving
-			"   ^^^^   Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z   U  U   Z", // Down Not Moving
-			"   ^^^^   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z   U  U   Z", // Right Not Moving
-			"   ^^^^   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z   U  U   Z"  // Left Not Moving
-		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 3) // 0 = no event

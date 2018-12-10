@@ -7,13 +7,13 @@
 class Chr_BackgroundNPC : public CharacterBase
 {
 public:
-	Chr_BackgroundNPC(int center_position_x, int center_position_y, int &player_health, int unique_object_ID, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
+	Chr_BackgroundNPC(int center_position_x, int center_position_y, int unique_object_ID, int &player_health, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::pair<std::string, int> &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
 		PopupDefinition popup_sprite,
 
-		  /* Sets the sprite ascii for the NPC world sprite */
+		/* Sets the sprite ascii for the NPC world sprite */
 		WorldSprite world_sprite,
 
 		char direction,
