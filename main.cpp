@@ -311,7 +311,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			{
 				std::wstring sTemp = std::wstring(image_file_path_G.first.begin(), image_file_path_G.first.end());
 				LPCWSTR sw = sTemp.c_str();
-				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second); // __T("resources\\moltar.bmp")
+				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second);
 			}
 
 			COLORREF whiteTextColor = 0x00ffffff; //ffff00

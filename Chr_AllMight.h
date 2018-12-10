@@ -38,10 +38,10 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			22, // Boss health
 			"ALL MIGHT", // name
-			"resources\\moltar.bmp", // Neutral Expression (Image Location/Name)
-			"resources\\moltar1.bmp", // Angry Expression (Image Location/Name)
-			"resources\\moltar1.bmp", // Happy Expression (Image Location/Name)
-			"resources\\moltar1.bmp" // Nervous / Dead Expression (Image Location/Name)
+			"moltar.bmp", // Neutral Expression (Image Location/Name)
+			"moltar1.bmp", // Angry Expression (Image Location/Name)
+			"moltar1.bmp", // Happy Expression (Image Location/Name)
+			"moltar1.bmp" // Nervous / Dead Expression (Image Location/Name)
 		),//*/
 
 		/* Sets the sprite ascii for the NPC world sprite */
@@ -59,7 +59,7 @@ public:
 			"   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
 			"   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z  %U  U%  Z"
 		),
-		
+
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 0) // 0 = no event
 

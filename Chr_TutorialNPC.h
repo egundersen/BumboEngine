@@ -23,7 +23,7 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			4, // Boss health
 			"TUTORIAL NPC", // name
-			"resources\\tutorial.bmp", // Neutral Expression (Image Location/Name)
+			"tutorial.bmp", // Neutral Expression (Image Location/Name)
 			"", // Angry Expression (Image Location/Name)
 			"",
 			""

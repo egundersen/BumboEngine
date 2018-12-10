@@ -328,7 +328,7 @@ void BattleBase::bossDestroyed()
 			for (int j = 0; j < 68; j++)
 				matrix_[1 + i][5 + j] = ' ';
 
-		showFileSprite("NERVOUSDEAD");
+		showFileSprite("nervous_dead");
 	}
 
 	displayScreen();
@@ -416,8 +416,8 @@ void BattleBase::showFileSprite(std::string emotion)
 			image_file_path_.first = boss_.file_path_neutral;
 		else if(emotion == "ANGRY")
 			image_file_path_.first = boss_.file_path_angry;
-		else if (emotion == "NERVOUSDEAD")
-			image_file_path_.first = boss_.file_path_nervousdead;
+		else if (emotion == "nervous_dead")
+			image_file_path_.first = boss_.file_path_nervous_dead;
 		else if (emotion == "HAPPY")
 			image_file_path_.first = boss_.file_path_happy;
 		image_file_path_.second = 160;
