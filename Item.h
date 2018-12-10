@@ -11,7 +11,8 @@ public:
 	Item(std::string item_name, int modifier, Image image, std::string description = "") : item_name_{ item_name }, description_{ description }, image_{ image }, modifier_{ modifier }, item_type_{ "HEAL" } {}
 	
 	// This constructor is for any item that DOESN'T increase health
-	Item(std::string item_name, int modifier, Image image, std::string item_type, std::string description = "") : item_name_{ item_name }, image_{ image }, modifier_{ modifier }, item_type_{ item_type } {}
+	Item(std::string item_name, std::string item_type, int modifier, Image image, std::string description = "") : item_name_{ item_name }, description_{ description }, image_ { image }, modifier_{ modifier }, item_type_{ item_type } {}
+	Item(std::string item_name, std::string item_type, int modifier, std::string description = "") : item_name_{ item_name }, description_{ description }, image_{ "/  \\Z|O |Z\\_ /Z" }, modifier_{ modifier }, item_type_{ item_type } {}
 
 	// Setters
 	void useItem() { use_item_ = true; }

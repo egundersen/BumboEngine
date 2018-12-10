@@ -151,6 +151,10 @@ void Inventory::useItem()
 	removeItem(cursor_index_);
 	if (items_list_.size() <= cursor_index_ && items_list_.size() != 0)
 		cursor_index_--;
+
+	// Set player health maximum
+	if (player_health_ > 9)
+		player_health_ = 9;
 }
 
 // Add item to inventory (from a string)

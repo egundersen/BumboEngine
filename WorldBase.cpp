@@ -908,33 +908,33 @@ void WorldBase::GENERATE_Signposts()
 // creates all the items
 void WorldBase::GENERATE_Pickups()
 {
-	Item cliff_item("Health Potion", 2);
+	Item cliff_item("Health Potion", 2, "Restores 2 HP");
 	Pickup *cliff_pickup = new Pickup(65, 639, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, cliff_item, inventory_);
 
-	Item item_1("Pirate ALE", 1);
+	Item item_1("Pirate ALE", 1, "It looks completely black. There is a 50/50 chance this will kill you if you drink it");
 	Pickup *pickup_1 = new Pickup(859, 27, 23, 9, 2, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_1, inventory_);
-	Item item_2("Pile of Pigeon", 1);
+	Item item_2("Pile of Pigeon", 1, "A local delicacy, wrapped in newspaper: try not to think of whats inside");
 	Pickup *pickup_2 = new Pickup(607, 266, 23, 9, 3, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_2, inventory_);
-	Item item_3("Ground meat paste", 2);
+	Item item_3("Ground meat paste", 2, "From the cafeteria, but at least it's still warm");
 	Pickup *pickup_3 = new Pickup(589, 266, 23, 9, 4, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_3, inventory_);
-	Item item_4("Whiskey", 1);
+	Item item_4("Whiskey", 1, "This is the non-alcoholic version");
 	Pickup *pickup_4 = new Pickup(463, 381, 23, 9, 5, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_4, inventory_);
-	Item item_5("Bottle o' Rum", 1);
+	Item item_5("Bottle o' Rum", 1, "This is the non-alcoholic version");
 	Pickup *pickup_5 = new Pickup(450, 369, 23, 9, 6, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_5, inventory_);
-	Item item_6("Healing Potion", 2);
+	Item item_6("Health Potion", 2, "Restores 2 HP");
 	Pickup *pickup_6 = new Pickup(151, 534, 23, 9, 7, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_6, inventory_);
-	Item item_7("Pizza", 2);
+	Item item_7("Pizza", 2, "Dominos Pizzia: Great if you're short on cash and don't mind the delivery guy missing your house entirely");
 	Pickup *pickup_7 = new Pickup(177, 530, 23, 9, 8, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_7, inventory_);
-	Item item_8("Lemon", 1);
+	Item item_8("Lemon", 1, "An ordinary lemon. It's too sour to eat");
 	Pickup *pickup_8 = new Pickup(192, 496, 23, 9, 9, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_8, inventory_);
 
-	Item item_clue_1("Cigar Box", 1);
+	Item item_clue_1("Cigar Box", 1, "Assembled in Cuba : Made in China");
 	Pickup *pickup_clue_1 = new Pickup(530, 624, 23, 9, 10, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_1, inventory_);
-	Item item_clue_2("Long Sword", 1);
+	Item item_clue_2("Long Sword", 1, "There's a tag on the side: If lost return to Ryuuko");
 	Pickup *pickup_clue_2 = new Pickup(527, 616, 23, 9, 11, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_2, inventory_);
-	Item item_clue_3("Feather", 1);
+	Item item_clue_3("Feather", 1, "It's a turkey feather cut to mimic a hawk feather: someone was short-changed");
 	Pickup *pickup_clue_3 = new Pickup(241, 46, 23, 9, 12, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_3, inventory_);
-	Item item_clue_4("Glove", 1);
+	Item item_clue_4("Glove", 1, "A single black glove, missing from a pair");
 	Pickup *pickup_clue_4 = new Pickup(546, 617, 23, 9, 13, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_4, inventory_);
 
 	pickups_.push_back(cliff_pickup);
