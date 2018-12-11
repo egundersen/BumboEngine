@@ -17,7 +17,7 @@ public:
 		// TRUE -> Basic Popup dialog | FALSE -> Advanced Dialog with player choices
 		bool use_basic_dialog = true,
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
-		PopupDefinition popup_sprite = PopupDefinition("This is my only dialog! hello ", 'X', 23, 9),
+		PopupDefinition popup_sprite = PopupDefinition("This is my only dialog! Hello ", 'X', 23, 9),
 
 
 		// Basic ASCII Example (The all Might face)

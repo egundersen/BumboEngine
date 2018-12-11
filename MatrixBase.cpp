@@ -64,6 +64,10 @@ void MatrixBase::addTextToMatrix(int position_x, int position_y, char alignment,
 {
 	int top_left_x = 0;
 	int top_left_y = 0;
+	int y_offset = 0;
+
+	// Exists for readability sake alone
+	int top_right_x = 0;
 
 	switch (alignment)
 	{
@@ -71,51 +75,88 @@ void MatrixBase::addTextToMatrix(int position_x, int position_y, char alignment,
 		top_left_x = position_x;
 		top_left_y = position_y;
 
-		if (paragraph_width == 0)
-			for (int j = 0; j < text.length(); j++)
-				matrix[top_left_y][top_left_x + j] = text[j];
-		else
+		addLeftAlignedTextToMatrix(top_left_x, top_left_y, text, matrix, paragraph_width, paragraph_height);
+
+		break;
+	case 'r':
+		top_right_x = paragraph_width - 1;
+		top_left_x = position_x - paragraph_width;
+		top_left_y = position_y;
+
+		y_offset = addLeftAlignedTextToMatrix(top_left_x, top_left_y, text, matrix, paragraph_width, paragraph_height) + 1;
+
+		for (int i = 0; i < y_offset; i++) // For each row
 		{
-			int y_offset = 0;
-			int max_line_index = paragraph_width;
-			for (int j = 0; j < text.length(); j++)
+			int white_space_counter = 0; // Calculate number of spaces after last letter
+			bool found_letter = false;
+			for (int j = 0; j < paragraph_width - 1; j++)
 			{
-				matrix[top_left_y + y_offset][top_left_x + j] = text[j];
-				return;
-				if (j == max_line_index)
+				if (matrix[top_left_y + i][top_left_x + j] == ' ')
+					white_space_counter++;
+				else
 				{
-					y_offset++;
-					max_line_index += paragraph_width;
+					found_letter = true;
+					white_space_counter = 0;
 				}
-				matrix[top_left_y + y_offset][top_left_x + j] = text[j];
+			}
+
+			if (!found_letter) // Entire line of white space? Ignore it!
+				break;
+
+			std::vector<char> temp = std::vector<char>(paragraph_width - 1, ' '); // Populate temporary Matrix
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++)
+			{
+				temp[j] = matrix[top_left_y + i][top_left_x + j];
+			}
+
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++) // Clear original Matrix
+			{
+				matrix[top_left_y + i][top_left_x + j] = ' ';
+			}
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++) // Swap elements in original matrix
+			{
+				if (temp[(paragraph_width - 1 - white_space_counter) - j - 1] != ' ')
+					matrix[top_left_y + i][top_right_x - j] = temp[(paragraph_width - 1 - white_space_counter) - j - 1];
 			}
 		}
 		break;
-	case 'r':
-		break;
 	case 'm':
-		std::cout << "\n\n";
 		top_left_x = position_x + 1 - (paragraph_width / 2);
 		top_left_y = position_y + 1 - (paragraph_height / 2);
 
-		if (paragraph_width == 0)
-			for (int j = 0; j < text.length(); j++)
-				matrix[top_left_y][top_left_x + j] = text[j];
-		else
+		y_offset = addLeftAlignedTextToMatrix(top_left_x, top_left_y, text, matrix, paragraph_width, paragraph_height) + 1;
+
+		for (int i = 0; i < y_offset; i++) // For each row
 		{
-			int y_offset = 0;
-			int max_line_index = (paragraph_width - 1);
-			int matrix_iterator = 0;
-			for (int j = 0; j < text.length(); j++)
+			int white_space_counter = 0; // Calculate number of spaces after last letter
+			bool found_letter = false;
+			for (int j = 0; j < paragraph_width - 1; j++)
 			{
-				if (shouldIndent(text, j, max_line_index))
+				if (matrix[top_left_y + i][top_left_x + j] == ' ')
+					white_space_counter++;
+				else
 				{
-					y_offset++;
-					matrix_iterator = 0;
-					max_line_index += (paragraph_width - 1);
+					found_letter = true;
+					white_space_counter = 0;
 				}
-				matrix[top_left_y + y_offset][top_left_x + matrix_iterator] = text[j];
-				matrix_iterator++;
+			}
+
+			if (!found_letter) // Entire line of white space? Ignore it!
+				break;
+
+			std::vector<char> temp = std::vector<char>(paragraph_width - 1, ' '); // Populate temporary Matrix
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++)
+			{
+				temp[j] = matrix[top_left_y + i][top_left_x + j];
+			}
+
+			for (int j = 0; j < white_space_counter / 2; j++) // Populate original matrix with new spacing alignment
+			{
+				matrix[top_left_y + i][top_left_x + j] = ' ';
+			}
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++)
+			{
+				matrix[top_left_y + i][top_left_x + j + white_space_counter / 2] = temp[j];
 			}
 		}
 		break;
@@ -232,31 +273,55 @@ void MatrixBase::DEBUG_simpleDisplay(Image & image)
 	}//*/
 }
 
-bool MatrixBase::shouldIndent(std::string text, int index, int max_line_length)
+// Decides whether to indent or not (At the end of a word AND at the end of the line)
+bool MatrixBase::shouldIndent(std::string text, int letter_index, int matrix_iterator, int paragraph_width)
 {
-	if (index != 0 && text[index - 1] == ' ' || index == 0 && text[index] != ' ')
+	int letter_counter = 0;
+
+	if (letter_index != 0 && text[letter_index - 1] == ' ' || letter_index == 0 && text[letter_index] != ' ')
 	{
-		for (int k = index; k < text.length(); k++) // Iterate over word to find best place for indent
+		for (int k = letter_index; k < text.length(); k++) // Iterate over word to find best place for indent
 		{
-			std::cout << text[k];
-			if (text[k] == ' ' || text[k] == '\0')
+			//std::cout << text[k];
+			if (text[k] == ' ' || text[k] == '\0' || k >= text.length() - 1)
 			{
-				if (k >= max_line_length)
+				if (matrix_iterator + letter_counter > paragraph_width - 1)
 				{
-					std::cout << "\n";
+					//std::cout << "^\n";
 					return true;
 				}
 				break;
 			}
-		}//*/
-	}
-
-	for (int k = index; k < text.length(); k++) // Iterate over word to find best place for indent
-	{
-		if (index == max_line_length)
-		{
-			return true;
+			letter_counter++;
 		}
-	}//*/
+	}
 	return false;
+}
+
+// Adds text to matrix (Left-aligned) Returns the number of rows in the matrix
+int MatrixBase::addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>>& matrix, int paragraph_width, int paragraph_height)
+{
+	int y_offset = 0;
+
+	if (paragraph_width == 0) // Single Line Mode
+		for (int j = 0; j < text.length(); j++)
+			matrix[top_left_y][top_left_x + j] = text[j];
+	else // Multiple Line Mode
+	{
+		int max_line_index = (paragraph_width - 1);
+		int matrix_iterator = 0;
+
+		for (int j = 0; j < text.length(); j++)
+		{
+			if (shouldIndent(text, j, matrix_iterator, paragraph_width - 1))
+			{
+				y_offset++;
+				matrix_iterator = 0;
+				max_line_index += (paragraph_width - 1);
+			}
+			matrix[top_left_y + y_offset][top_left_x + matrix_iterator] = text[j];
+			matrix_iterator++;
+		}
+	}
+	return y_offset;
 }

@@ -35,7 +35,7 @@ void Event_BorderIncident::createEvent()
 	Popup popup_19(25, 9, "DO YOU EVEN KNOW WHO I AM? ", matrix_display_, 'X');
 
 	// Player thoughts
-	Popup popup_20(25, 9, "You think to yourself: *The guards aren't blocking the checkpoint anymore, perhaps I could slip through ...* ", matrix_display_, 'X');
+	Popup popup_20(31, 9, "You think to yourself: *The guards aren't blocking the checkpoint anymore, perhaps I could slip through ...* ", matrix_display_, 'X');
 
 	popup_1.createPopupText();
 	popup_2.createPopupText();

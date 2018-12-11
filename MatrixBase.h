@@ -31,7 +31,8 @@ protected:
 
 	void DEBUG_simpleDisplay(Image &image);
 private:
-	bool shouldIndent(std::string text, int index, int max_line_length);
+	bool shouldIndent(std::string text, int letter_index, int matrix_iterator, int paragraph_width);
+	int addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>> &matrix, int paragraph_width, int paragraph_height);
 };
 
 template<typename Container, typename T>

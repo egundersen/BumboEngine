@@ -736,7 +736,7 @@ void WorldBase::GENERATE_Maze()
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
 void WorldBase::GENERATE_Enemies()
 {
-	/*CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, 10, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	CharacterBase *ryuuko = new Chr_Ryuuko(423, 671, 11, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
@@ -756,7 +756,7 @@ void WorldBase::GENERATE_Enemies()
 	characters_.push_back(aki);
 	characters_.push_back(ryuuko);
 	characters_.push_back(bonny);
-	characters_.push_back(sharktooth);*/
+	characters_.push_back(sharktooth);
 
 #ifdef _DEBUG
 	CharacterBase *test;
@@ -769,7 +769,7 @@ void WorldBase::GENERATE_Enemies()
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
-	/*CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Four whole days.ZI've been waitingZin line so long...ZI regret to say IZchose the pirateZfactionZ", 'X', 23, 9), sprite_sheet_.player, 'u');
 	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Yar har harZand a bottleZof rum!Z", 'X', 23, 9), sprite_sheet_.pirate_1, ' u');
@@ -808,14 +808,14 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(standing_in_line_6);
 	characters_.push_back(boarder_guard_1);
 	characters_.push_back(boarder_guard_2);
-	characters_.push_back(boarder_incident_random);*/
+	characters_.push_back(boarder_incident_random);
 }
 
 // creates all the sign posts (These show popups)
 void WorldBase::GENERATE_Signposts()
 {
-	Signpost *checkpoint_sign_1 = new Signpost(150, 636, 23, 9, 1, "    Nakinom      Border Checkpoint   -------->                          0.2 km        ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *checkpoint_sign_2 = new Signpost(400, 622, 23, 9, 2, "    Nakinom       Border Checkpoint                   ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_1 = new Signpost(150, 636, 23, 9, 1, "Nakinom Border Checkpoint --------> 0.2 km", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_2 = new Signpost(400, 622, 23, 9, 2, "Nakinom Border Checkpoint", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 
 	Signpost *sign_1 = new Signpost(146, 33, 31, 9, 3, "THE maze Welcome home ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_2 = new Signpost(648, 24, 31, 9, 4, "PIRATE SIDE This section of the maze is designated to software pirates ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
