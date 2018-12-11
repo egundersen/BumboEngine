@@ -4,36 +4,6 @@
 #include <iostream>
 #include <random>
 
-// Adds an image/text to a matrix at the specified coordinates and flags the location
-void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>>& matrix, bool **& element_is_occupied)
-{
-	if (image.position.x_position_min == 0)
-	{
-		image.position.x_position_min = center_position_x - round(image.getWidth() / 2);
-		image.position.x_position_max = center_position_x + round(image.getWidth() / 2);
-		image.position.y_position_min = center_position_y - round(image.getHeight() / 2);
-		image.position.y_position_max = center_position_y + round(image.getHeight() / 2);
-	}
-	int x = 0;
-	int y = 0;
-	int x_position_temp = image.position.x_position_max;
-
-	while (image.position.y_position_min < image.position.y_position_max - 1)
-	{
-		while (x_position_temp < image.position.x_position_max - 1)
-		{
-			element_is_occupied[image.position.y_position_min][x_position_temp] = true;
-			matrix[image.position.y_position_min][x_position_temp] = image.image_matrix[y][x];
-			++x_position_temp;
-			++x;
-		}
-		x_position_temp = image.position.x_position_min;
-		x = 0;
-		++image.position.y_position_min;
-		++y;
-	}
-}
-
 // Adds an image/text to a matrix at the specified coordinates
 void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, Image & image, std::vector<std::vector<char>>& matrix, bool exclude_spaces)
 {
@@ -72,7 +42,8 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 	{
 		while (x_position_temp < image.position.x_position_max)
 		{
-			if (exclude_spaces) { // Ixcludes spaces and new lines
+			if (exclude_spaces)
+			{ // Excludes spaces and new lines
 				if (image.image_matrix[y][x] != ' ' && image.image_matrix[y][x] != '\0')
 					matrix[image.position.y_position_min][x_position_temp] = image.image_matrix[y][x];
 			}
@@ -89,11 +60,67 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 }
 
 // Adds a simple line of text to a matrix at the specified coordinates
-void MatrixBase::addTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>>& matrix)
+void MatrixBase::addTextToMatrix(int position_x, int position_y, char alignment, std::string text, std::vector<std::vector<char>>& matrix, int paragraph_width, int paragraph_height)
 {
-	for (int j = 0; j < text.length(); j++)
+	int top_left_x = 0;
+	int top_left_y = 0;
+
+	switch (alignment)
 	{
-		matrix[top_left_y][top_left_x + j] = text[j];
+	case 'l':
+		top_left_x = position_x;
+		top_left_y = position_y;
+
+		if (paragraph_width == 0)
+			for (int j = 0; j < text.length(); j++)
+				matrix[top_left_y][top_left_x + j] = text[j];
+		else
+		{
+			int y_offset = 0;
+			int max_line_index = paragraph_width;
+			for (int j = 0; j < text.length(); j++)
+			{
+				matrix[top_left_y + y_offset][top_left_x + j] = text[j];
+				return;
+				if (j == max_line_index)
+				{
+					y_offset++;
+					max_line_index += paragraph_width;
+				}
+				matrix[top_left_y + y_offset][top_left_x + j] = text[j];
+			}
+		}
+		break;
+	case 'r':
+		break;
+	case 'm':
+		std::cout << "\n\n";
+		top_left_x = position_x + 1 - (paragraph_width / 2);
+		top_left_y = position_y + 1 - (paragraph_height / 2);
+
+		if (paragraph_width == 0)
+			for (int j = 0; j < text.length(); j++)
+				matrix[top_left_y][top_left_x + j] = text[j];
+		else
+		{
+			int y_offset = 0;
+			int max_line_index = (paragraph_width - 1);
+			int matrix_iterator = 0;
+			for (int j = 0; j < text.length(); j++)
+			{
+				if (shouldIndent(text, j, max_line_index))
+				{
+					y_offset++;
+					matrix_iterator = 0;
+					max_line_index += (paragraph_width - 1);
+				}
+				matrix[top_left_y + y_offset][top_left_x + matrix_iterator] = text[j];
+				matrix_iterator++;
+			}
+		}
+		break;
+	default:
+		break;
 	}
 }
 
@@ -203,4 +230,33 @@ void MatrixBase::DEBUG_simpleDisplay(Image & image)
 		}
 		std::cout << "\n";
 	}//*/
+}
+
+bool MatrixBase::shouldIndent(std::string text, int index, int max_line_length)
+{
+	if (index != 0 && text[index - 1] == ' ' || index == 0 && text[index] != ' ')
+	{
+		for (int k = index; k < text.length(); k++) // Iterate over word to find best place for indent
+		{
+			std::cout << text[k];
+			if (text[k] == ' ' || text[k] == '\0')
+			{
+				if (k >= max_line_length)
+				{
+					std::cout << "\n";
+					return true;
+				}
+				break;
+			}
+		}//*/
+	}
+
+	for (int k = index; k < text.length(); k++) // Iterate over word to find best place for indent
+	{
+		if (index == max_line_length)
+		{
+			return true;
+		}
+	}//*/
+	return false;
 }

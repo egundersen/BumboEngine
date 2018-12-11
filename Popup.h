@@ -29,7 +29,7 @@ protected:
 	char border_character_;
 	std::vector<std::vector<char>> popup_matrix_;
 	std::vector<std::vector<std::string>> &matrix_display_;
-	Image text_;
+	std::string text_;
 };
 
 #endif // !POPUP_H

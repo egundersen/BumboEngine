@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Who are you?                               ", "Student Council Prez", false));
-		dialog_choice_1.push_back(std::make_tuple("Why are you here                         ", "It's my day to patrol", false));
-		dialog_choice_1.push_back(std::make_tuple("Will you tell me what's going on            ", "Trying to kill you", true));
-		dialog_choice_1.push_back(std::make_tuple("I'm gonna win this fight                   ", "huh, doubt it", false));
+		dialog_choice_1.push_back(std::make_tuple("Who are you? ", "Student Council Prez", false));
+		dialog_choice_1.push_back(std::make_tuple("Why are you here ", "It's my day to patrol", false));
+		dialog_choice_1.push_back(std::make_tuple("Will you tell me what's going on ", "Trying to kill you", true));
+		dialog_choice_1.push_back(std::make_tuple("I'm gonna win this fight ", "huh, doubt it", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("Can you stop?                                ", "Cowardly fool", false));
-		dialog_choice_2.push_back(std::make_tuple("I'm gonna beat you                             ", "ha, as if", false));
-		dialog_choice_2.push_back(std::make_tuple("You're so weak                                  ", "You're the weak one", false));
-		dialog_choice_2.push_back(std::make_tuple("Why are people trying to kill me?             ", "you know too much?", true));
+		dialog_choice_2.push_back(std::make_tuple("Can you stop? ", "Cowardly fool", false));
+		dialog_choice_2.push_back(std::make_tuple("I'm gonna beat you ", "ha, as if", false));
+		dialog_choice_2.push_back(std::make_tuple("You're so weak ", "You're the weak one", false));
+		dialog_choice_2.push_back(std::make_tuple("Why are people trying to kill me? ", "you know too much?", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("I won't hold back anymore                   ", "tch, try me", true));
-		dialog_choice_3.push_back(std::make_tuple("I'm getting tired                          ", "Your end is nearing", false));
-		dialog_choice_3.push_back(std::make_tuple("You will die here                        ", "Anime can't die", false));
-		dialog_choice_3.push_back(std::make_tuple("Kid, stop this childish act                  ", "I am you're superior", false));
+		dialog_choice_3.push_back(std::make_tuple("I won't hold back anymore ", "tch, try me", true));
+		dialog_choice_3.push_back(std::make_tuple("I'm getting tired ", "Your end is nearing", false));
+		dialog_choice_3.push_back(std::make_tuple("You will die here ", "Anime can't die", false));
+		dialog_choice_3.push_back(std::make_tuple("Kid, stop this childish act ", "I am you're superior", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

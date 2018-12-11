@@ -17,7 +17,7 @@ public:
 		// TRUE -> Basic Popup dialog | FALSE -> Advanced Dialog with player choices
 		bool use_basic_dialog = false,
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
-		PopupDefinition popup_sprite = PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9),
+		PopupDefinition popup_sprite = PopupDefinition("This is my only dialog! hello ", 'X', 23, 9),
 
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Are you ready to fight?                ", "Never matey!", false));
-		dialog_choice_1.push_back(std::make_tuple("Prepared to die?                         ", "Rather live!", false));
-		dialog_choice_1.push_back(std::make_tuple("Now were you the one who took it?       ", "'Course not!", true));
-		dialog_choice_1.push_back(std::make_tuple("This is your end                       ", "Matey, no!", false));
+		dialog_choice_1.push_back(std::make_tuple("Are you ready to fight? ", "Never matey!", false));
+		dialog_choice_1.push_back(std::make_tuple("Prepared to die? ", "Rather live!", false));
+		dialog_choice_1.push_back(std::make_tuple("Now were you the one who took it? ", "'Course not!", true));
+		dialog_choice_1.push_back(std::make_tuple("This is your end ", "Matey, no!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("There are holes in your testimony!        ", "YAAARRRRR", false));
-		dialog_choice_2.push_back(std::make_tuple("Why would you steal?                      ", "I didn' do it!", false));
-		dialog_choice_2.push_back(std::make_tuple("Let's fight fair and square!              ", "No fighin'!", false));
-		dialog_choice_2.push_back(std::make_tuple("Would you like to fight?                  ", "Noo matey!", true));
+		dialog_choice_2.push_back(std::make_tuple("There are holes in your testimony! ", "YAAARRRRR", false));
+		dialog_choice_2.push_back(std::make_tuple("Why would you steal? ", "I didn' do it!", false));
+		dialog_choice_2.push_back(std::make_tuple("Let's fight fair and square! ", "No fighin'!", false));
+		dialog_choice_2.push_back(std::make_tuple("Would you like to fight? ", "Noo matey!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("I guess it's not you...                 ", "No more!", true));
-		dialog_choice_3.push_back(std::make_tuple("Final words!                           ", "Wasn' mee!!!", false));
-		dialog_choice_3.push_back(std::make_tuple("You are so bad at lying.                ", "I' a not lyin'!", false));
-		dialog_choice_3.push_back(std::make_tuple("Coward!                                   ", "Yes I know!", false));
+		dialog_choice_3.push_back(std::make_tuple("I guess it's not you... ", "No more!", true));
+		dialog_choice_3.push_back(std::make_tuple("Final words! ", "Wasn' mee!!!", false));
+		dialog_choice_3.push_back(std::make_tuple("You are so bad at lying. ", "I' a not lyin'!", false));
+		dialog_choice_3.push_back(std::make_tuple("Coward! ", "Yes I know!", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -109,7 +109,7 @@ public:
 		DialogNode *node_1_1_1 = new DialogNode("You mean cowardly Bonny?", "COWARDLY?!Z I'll show ya whoZ is cowardly!", "FIGHT");
 		DialogNode *node_1_1_2 = new DialogNode("Were you at the border?", "I was jus' thar!");
 		DialogNode *node_1_1_3 = new DialogNode("Is this your feather?", "Maybe, looks likeZ me dead birdie's.");
-		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing?", "Are ye stupid?Z Tryin' Z't get me new home.Z"); //add add add ad  ad d
+		DialogNode *node_1_1_2_1 = new DialogNode("What were you doing?", "Are ye stupid?Z Tryin' Z't get me new home.Z"); //add add add ad ad d
 		DialogNode *node_1_1_3_1 = new DialogNode("It was at the entrance.", "'Twas hectic thar,Z dropped few thin'sZ loot few thin's");
 		DialogNode *node_1_1_3_1_1 = new DialogNode("\"Loot?\" It was you!", "YARR! I'm nah lookin'Z fer a fight!", "FIGHT");
 		DialogNode *node_1_1_3_1_2 = new DialogNode("Did you pick up anytihng?", "Nah matey,Z only me things.Z What's troublin' ya?");

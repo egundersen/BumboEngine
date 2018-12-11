@@ -17,7 +17,7 @@ public:
 		// TRUE -> Basic Popup dialog | FALSE -> Advanced Dialog with player choices
 		bool use_basic_dialog = false,
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
-		PopupDefinition popup_sprite = PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9),
+		PopupDefinition popup_sprite = PopupDefinition("This is my only dialog! hello ", 'X', 23, 9),
 
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Why did you do this?!          ", "HOW STUPID OF YOU", false));
-		dialog_choice_1.push_back(std::make_tuple("You will pay for this!          ", "WHO DO YOU THINK I AM", false));
-		dialog_choice_1.push_back(std::make_tuple("Stop this!                       ", "AHHHHHAHAHAHHA", true));
-		dialog_choice_1.push_back(std::make_tuple("You're no magical girl!           ", "IT WAS ALL AND ACT", false));
+		dialog_choice_1.push_back(std::make_tuple("Why did you do this?! ", "HOW STUPID OF YOU", false));
+		dialog_choice_1.push_back(std::make_tuple("You will pay for this! ", "WHO DO YOU THINK I AM", false));
+		dialog_choice_1.push_back(std::make_tuple("Stop this! ", "AHHHHHAHAHAHHA", true));
+		dialog_choice_1.push_back(std::make_tuple("You're no magical girl! ", "IT WAS ALL AND ACT", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("What's your motive?!              ", "TO GET RID YOU", false));
-		dialog_choice_2.push_back(std::make_tuple("Who are you really??              ", "AKI, STUUPID", false));
-		dialog_choice_2.push_back(std::make_tuple("Did you plan this from the start!   ", "THAT'S A SEECRET", false));
-		dialog_choice_2.push_back(std::make_tuple("I will defeat you!                 ", "TRY ME!", true));
+		dialog_choice_2.push_back(std::make_tuple("What's your motive?! ", "TO GET RID YOU", false));
+		dialog_choice_2.push_back(std::make_tuple("Who are you really?? ", "AKI, STUUPID", false));
+		dialog_choice_2.push_back(std::make_tuple("Did you plan this from the start! ", "THAT'S A SEECRET", false));
+		dialog_choice_2.push_back(std::make_tuple("I will defeat you! ", "TRY ME!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("THIS IS YOUR END                   ", "I WILL HAUNT YOU", true));
-		dialog_choice_3.push_back(std::make_tuple("You will be defeated!              ", "HAHAHAHA IDIOT", false));
-		dialog_choice_3.push_back(std::make_tuple("You won't get away with this!       ", "I WILL", false));
-		dialog_choice_3.push_back(std::make_tuple("You're a fraud!!!                   ", "AND YOU FELL FOR IT", false));
+		dialog_choice_3.push_back(std::make_tuple("THIS IS YOUR END ", "I WILL HAUNT YOU", true));
+		dialog_choice_3.push_back(std::make_tuple("You will be defeated! ", "HAHAHAHA IDIOT", false));
+		dialog_choice_3.push_back(std::make_tuple("You won't get away with this! ", "I WILL", false));
+		dialog_choice_3.push_back(std::make_tuple("You're a fraud!!! ", "AND YOU FELL FOR IT", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

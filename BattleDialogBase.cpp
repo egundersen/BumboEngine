@@ -140,7 +140,7 @@ void BattleDialogBase::setDialogOptions()
 		{
 			for (col = row->begin(); col != row->end(); col++)
 			{
-				addTextToMatrix(17, 29 + offset, std::get<0>(*col), matrix_);
+				addTextToMatrix(17, 29 + offset, 'l', std::get<0>(*col), matrix_);
 				offset++;
 			}
 			return;

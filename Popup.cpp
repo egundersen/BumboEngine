@@ -25,5 +25,5 @@ void Popup::createPopupText()
 {
 	drawSolidRectangle(0, 0, popup_width_, popup_height_, ' ', popup_matrix_);
 	drawRectangle(0, 0, popup_width_, popup_height_, border_character_, popup_matrix_);
-	addImageToMatrix(popup_width_ / 2, popup_height_ / 2, text_, popup_matrix_);
+	addTextToMatrix(popup_width_ / 2, popup_height_ / 2, 'm', text_, popup_matrix_, popup_width_ - 6, popup_height_ - 2);
 }

@@ -5,9 +5,9 @@ void Event_Test::createEvent()
 {
 	updateColliderCoordinates();
 
-	Popup popup_1(23, 9, "what is yourZ NAME!!!???Z", matrix_display_, 'X');
+	Popup popup_1(23, 9, "what is your  NAME!!!??? ", matrix_display_, 'X');
 	popup_1.createPopupText();
-	Popup popup_2(23, 9, "hello my nameZis MANNY kanEZ", matrix_display_, 'X');
+	Popup popup_2(23, 9, "hello my name is MANNY kanE ", matrix_display_, 'X');
 	popup_2.createPopupText();
 
 	popups_.push_back(popup_1);

@@ -20,7 +20,7 @@ MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std:
 // Takes input and decides whether to move player, use item, etc...
 void MatrixManager::evaluatePlayerInput()
 {
-	if (current_vector_space_ == "START SCREEN")  // START GAME
+	if (current_vector_space_ == "START SCREEN") // START GAME
 	{
 		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 			current_vector_space_ = "MAP";

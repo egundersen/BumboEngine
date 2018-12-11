@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Who are you?                       ", "A lost pirate", false));
-		dialog_choice_1.push_back(std::make_tuple("Do you know where I should go?      ", "yes", false));
-		dialog_choice_1.push_back(std::make_tuple("Where am I?                       ", "In between factions", true));
-		dialog_choice_1.push_back(std::make_tuple("I'm tired                          ", "ok?", false));
+		dialog_choice_1.push_back(std::make_tuple("Who are you? ", "A lost pirate", false));
+		dialog_choice_1.push_back(std::make_tuple("Do you know where I should go? ", "yes", false));
+		dialog_choice_1.push_back(std::make_tuple("Where am I? ", "In between factions", true));
+		dialog_choice_1.push_back(std::make_tuple("I'm tired ", "ok?", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("Where do I go?                     ", "Past tis; door", false));
-		dialog_choice_2.push_back(std::make_tuple("Can you stop?                      ", "no mate", false));
-		dialog_choice_2.push_back(std::make_tuple("Please stop                       ", "Can't do such thing", false));
-		dialog_choice_2.push_back(std::make_tuple("Why are you here?                 ", "To kill you", true));
+		dialog_choice_2.push_back(std::make_tuple("Where do I go? ", "Past tis; door", false));
+		dialog_choice_2.push_back(std::make_tuple("Can you stop? ", "no mate", false));
+		dialog_choice_2.push_back(std::make_tuple("Please stop ", "Can't do such thing", false));
+		dialog_choice_2.push_back(std::make_tuple("Why are you here? ", "To kill you", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("Could you stop?                       ", "Perhaps", true));
-		dialog_choice_3.push_back(std::make_tuple("Why are you helping but killing?        ", "Feel like it", false));
-		dialog_choice_3.push_back(std::make_tuple("I don't understand why I'm targeted      ", "it's ye flashdrive", false));
-		dialog_choice_3.push_back(std::make_tuple("Will you kill me?                         ", "Maybe", false));
+		dialog_choice_3.push_back(std::make_tuple("Could you stop? ", "Perhaps", true));
+		dialog_choice_3.push_back(std::make_tuple("Why are you helping but killing? ", "Feel like it", false));
+		dialog_choice_3.push_back(std::make_tuple("I don't understand why I'm targeted ", "it's ye flashdrive", false));
+		dialog_choice_3.push_back(std::make_tuple("Will you kill me? ", "Maybe", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

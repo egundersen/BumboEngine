@@ -47,7 +47,7 @@ void HorizontalLine_Right::move()
 		}
 		if (min_position_x_ * speed_ - trail_length_ >= 0)
 		{
-			matrix_[height_y_][min_position_x_  * speed_ - trail_length_] = ' ';
+			matrix_[height_y_][min_position_x_ * speed_ - trail_length_] = ' ';
 			element_is_occupied_[height_y_][min_position_x_ * speed_ - trail_length_] = false;
 		}
 		if (min_position_x_ * speed_ - trail_length_ * 3 / 4 >= 0 && min_position_x_ * speed_ - trail_length_ * 3 / 4 < max_position_x_)

@@ -17,7 +17,7 @@ public:
 		// TRUE -> Basic Popup dialog | FALSE -> Advanced Dialog with player choices
 		bool use_basic_dialog = false,
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
-		PopupDefinition popup_sprite = PopupDefinition("This is my onlyZdialog! helloZ", 'X', 23, 9),
+		PopupDefinition popup_sprite = PopupDefinition("This is my only dialog! hello ", 'X', 23, 9),
 
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("You STOLE IT!              ", "Where's proof?!", false));
-		dialog_choice_1.push_back(std::make_tuple("You thief!               ", "NEVER", false));
-		dialog_choice_1.push_back(std::make_tuple("Was it you??               ", "Never!", true));
-		dialog_choice_1.push_back(std::make_tuple("Are you ready to die??      ", "Magic lives!", false));
+		dialog_choice_1.push_back(std::make_tuple("You STOLE IT! ", "Where's proof?!", false));
+		dialog_choice_1.push_back(std::make_tuple("You thief! ", "NEVER", false));
+		dialog_choice_1.push_back(std::make_tuple("Was it you?? ", "Never!", true));
+		dialog_choice_1.push_back(std::make_tuple("Are you ready to die?? ", "Magic lives!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("LIE!                       ", "NO!", false));
-		dialog_choice_2.push_back(std::make_tuple("Untrustworthy               ", "You are!", false));
-		dialog_choice_2.push_back(std::make_tuple("You're a thief!             ", "I'm not!", false));
-		dialog_choice_2.push_back(std::make_tuple("You're not lying?          ", "Of course not!", true));
+		dialog_choice_2.push_back(std::make_tuple("LIE! ", "NO!", false));
+		dialog_choice_2.push_back(std::make_tuple("Untrustworthy ", "You are!", false));
+		dialog_choice_2.push_back(std::make_tuple("You're a thief! ", "I'm not!", false));
+		dialog_choice_2.push_back(std::make_tuple("You're not lying? ", "Of course not!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("Is it true                 ", "Yes! Please no more!", true));
-		dialog_choice_3.push_back(std::make_tuple("Sus from the beginning         ", "You were!", false));
-		dialog_choice_3.push_back(std::make_tuple("Can't take the chances         ", "You dummy!", false));
-		dialog_choice_3.push_back(std::make_tuple("Anime should die               ", "NOOOOOOOOO", false));
+		dialog_choice_3.push_back(std::make_tuple("Is it true ", "Yes! Please no more!", true));
+		dialog_choice_3.push_back(std::make_tuple("Sus from the beginning ", "You were!", false));
+		dialog_choice_3.push_back(std::make_tuple("Can't take the chances ", "You dummy!", false));
+		dialog_choice_3.push_back(std::make_tuple("Anime should die ", "NOOOOOOOOO", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -148,7 +148,7 @@ public:
 
 		DialogNode *node_1_2_1_2_1 = new DialogNode("please, it's important...", "hm, maybe.");
 
-		DialogNode *node_1_2_2_1 = new DialogNode("At the border", "I thought I left  Z this at my old home");
+		DialogNode *node_1_2_2_1 = new DialogNode("At the border", "I thought I left Z this at my old home");
 		DialogNode *node_1_2_2_1_1 = new DialogNode("Did you take my drive?", "Are you accusing me?!", "FIGHT"); //-
 		DialogNode *node_1_2_2_1_2 = new DialogNode("Who took my drive?", " I don't know. Z It was chaos Z at the border.");
 		DialogNode *node_1_2_2_1_3 = new DialogNode("Will you help me now?", "Now I will!");

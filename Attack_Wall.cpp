@@ -42,7 +42,7 @@ void Attack_Wall::detectCollision()
 }
 
 // Moves attack 1-frame ( -----> Move left to right)
-void  Attack_Wall::move()
+void Attack_Wall::move()
 {
 	if (has_attack_finished_)
 		return;
@@ -84,7 +84,7 @@ void  Attack_Wall::move()
 				for (int i = gap_height_ + gap_width_; i < height_; i++)
 				{
 					matrix_[i][min_position_x_ - 1] = ' ';
-					element_is_occupied_[i][min_position_x_  - 1] = false;
+					element_is_occupied_[i][min_position_x_ - 1] = false;
 				}
 			}
 			min_position_x_++;

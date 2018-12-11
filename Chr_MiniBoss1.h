@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Who are you?           ", "Not important!", false));
-		dialog_choice_1.push_back(std::make_tuple("Why are you fighting me?   ", "Not sure honestly!", true));
-		dialog_choice_1.push_back(std::make_tuple("Did someone send you?     ", "Secret!", false));
-		dialog_choice_1.push_back(std::make_tuple("Where am I?             ", "About to die!!", false));
+		dialog_choice_1.push_back(std::make_tuple("Who are you? ", "Not important!", false));
+		dialog_choice_1.push_back(std::make_tuple("Why are you fighting me? ", "Not sure honestly!", true));
+		dialog_choice_1.push_back(std::make_tuple("Did someone send you? ", "Secret!", false));
+		dialog_choice_1.push_back(std::make_tuple("Where am I? ", "About to die!!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("What's your motive?       ", "Money money!", false));
-		dialog_choice_2.push_back(std::make_tuple("Can we talk?             ", "There's no time!", false));
-		dialog_choice_2.push_back(std::make_tuple("Let me breathe first!     ", "No!", false));
-		dialog_choice_2.push_back(std::make_tuple("Can you stop?           ", "Not really!", true));
+		dialog_choice_2.push_back(std::make_tuple("What's your motive? ", "Money money!", false));
+		dialog_choice_2.push_back(std::make_tuple("Can we talk? ", "There's no time!", false));
+		dialog_choice_2.push_back(std::make_tuple("Let me breathe first! ", "No!", false));
+		dialog_choice_2.push_back(std::make_tuple("Can you stop? ", "Not really!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("I'm gonna finish this.    ", "Awww, booo!", true));
-		dialog_choice_3.push_back(std::make_tuple("This is going too fast!    ", "Time is money!", false));
-		dialog_choice_3.push_back(std::make_tuple("Why are you in a hurry?     ", "Boss wants me done!", false));
-		dialog_choice_3.push_back(std::make_tuple("You're so mean!              ", "It's part of the job.", false));
+		dialog_choice_3.push_back(std::make_tuple("I'm gonna finish this. ", "Awww, booo!", true));
+		dialog_choice_3.push_back(std::make_tuple("This is going too fast! ", "Time is money!", false));
+		dialog_choice_3.push_back(std::make_tuple("Why are you in a hurry? ", "Boss wants me done!", false));
+		dialog_choice_3.push_back(std::make_tuple("You're so mean! ", "It's part of the job.", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

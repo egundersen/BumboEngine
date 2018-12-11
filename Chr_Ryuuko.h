@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("You are no hero                    ", "You scum!", false));
-		dialog_choice_1.push_back(std::make_tuple("Ryuuko the villain!                ", "You are!", false));
-		dialog_choice_1.push_back(std::make_tuple("Give it back to me!                ", "I have nothing!", false));
-		dialog_choice_1.push_back(std::make_tuple("How can I trust you!               ", "Believe me!", true));
+		dialog_choice_1.push_back(std::make_tuple("You are no hero ", "You scum!", false));
+		dialog_choice_1.push_back(std::make_tuple("Ryuuko the villain! ", "You are!", false));
+		dialog_choice_1.push_back(std::make_tuple("Give it back to me! ", "I have nothing!", false));
+		dialog_choice_1.push_back(std::make_tuple("How can I trust you! ", "Believe me!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("I am your \"senpai\"!              ", "YOU ARE UNWORTHY", false));
-		dialog_choice_2.push_back(std::make_tuple("Die!                              ", "A hero never dies!", false));
-		dialog_choice_2.push_back(std::make_tuple("Coward!                           ", "You're the coward.", false));
-		dialog_choice_2.push_back(std::make_tuple("Prove your trust!                 ", "Search me!!!!", true));
+		dialog_choice_2.push_back(std::make_tuple("I am your \"senpai\"! ", "YOU ARE UNWORTHY", false));
+		dialog_choice_2.push_back(std::make_tuple("Die! ", "A hero never dies!", false));
+		dialog_choice_2.push_back(std::make_tuple("Coward! ", "You're the coward.", false));
+		dialog_choice_2.push_back(std::make_tuple("Prove your trust! ", "Search me!!!!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("I might be in the wrong here         ", "I never steal.", true));
-		dialog_choice_3.push_back(std::make_tuple("OBJECTION                         ", "GYAAA", false));
-		dialog_choice_3.push_back(std::make_tuple("Today is the fall of Ryuuko!       ", "NOOOOOOO", false));
-		dialog_choice_3.push_back(std::make_tuple("I see why pirates hates anime now   ", "We hate pirates!", false));
+		dialog_choice_3.push_back(std::make_tuple("I might be in the wrong here ", "I never steal.", true));
+		dialog_choice_3.push_back(std::make_tuple("OBJECTION ", "GYAAA", false));
+		dialog_choice_3.push_back(std::make_tuple("Today is the fall of Ryuuko! ", "NOOOOOOO", false));
+		dialog_choice_3.push_back(std::make_tuple("I see why pirates hates anime now ", "We hate pirates!", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("I'm sick of this               ", "Stop complainin'", false));
-		dialog_choice_1.push_back(std::make_tuple("I will kick you dead               ", "you are too weak", false));
-		dialog_choice_1.push_back(std::make_tuple("GO HOME                           ", "I got business to do", true));
-		dialog_choice_1.push_back(std::make_tuple("This feels pointless                ", "Yar stupid", false));
+		dialog_choice_1.push_back(std::make_tuple("I'm sick of this ", "Stop complainin'", false));
+		dialog_choice_1.push_back(std::make_tuple("I will kick you dead ", "you are too weak", false));
+		dialog_choice_1.push_back(std::make_tuple("GO HOME ", "I got business to do", true));
+		dialog_choice_1.push_back(std::make_tuple("This feels pointless ", "Yar stupid", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("Why are you after me                ", "For ye tresure", false));
-		dialog_choice_2.push_back(std::make_tuple("Want do you want                  ", "Ye valuables", false));
-		dialog_choice_2.push_back(std::make_tuple("You will regret fighting me          ", "I will not", false));
-		dialog_choice_2.push_back(std::make_tuple("just go home                         ", "I cannot", true));
+		dialog_choice_2.push_back(std::make_tuple("Why are you after me ", "For ye tresure", false));
+		dialog_choice_2.push_back(std::make_tuple("Want do you want ", "Ye valuables", false));
+		dialog_choice_2.push_back(std::make_tuple("You will regret fighting me ", "I will not", false));
+		dialog_choice_2.push_back(std::make_tuple("just go home ", "I cannot", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("JUST GO HOME                        ", "BEAT ME MATEY", true));
-		dialog_choice_3.push_back(std::make_tuple("Who's your boss?                    ", "That's confidential", false));
-		dialog_choice_3.push_back(std::make_tuple("Can you stop?                        ", "NO", false));
-		dialog_choice_3.push_back(std::make_tuple("I WILL KILL YOU                      ", "*gulp*", false));
+		dialog_choice_3.push_back(std::make_tuple("JUST GO HOME ", "BEAT ME MATEY", true));
+		dialog_choice_3.push_back(std::make_tuple("Who's your boss? ", "That's confidential", false));
+		dialog_choice_3.push_back(std::make_tuple("Can you stop? ", "NO", false));
+		dialog_choice_3.push_back(std::make_tuple("I WILL KILL YOU ", "*gulp*", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);

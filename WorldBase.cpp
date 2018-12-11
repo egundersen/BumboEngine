@@ -736,7 +736,7 @@ void WorldBase::GENERATE_Maze()
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
 void WorldBase::GENERATE_Enemies()
 {
-	CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	/*CharacterBase *tutorial_npc = new Chr_TutorialNPC(238, 637, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 	CharacterBase *aki_final = new Chr_AkiFinal(463, 671, 10, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
 
 	CharacterBase *ryuuko = new Chr_Ryuuko(423, 671, 11, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
@@ -756,7 +756,7 @@ void WorldBase::GENERATE_Enemies()
 	characters_.push_back(aki);
 	characters_.push_back(ryuuko);
 	characters_.push_back(bonny);
-	characters_.push_back(sharktooth);
+	characters_.push_back(sharktooth);*/
 
 #ifdef _DEBUG
 	CharacterBase *test;
@@ -769,7 +769,7 @@ void WorldBase::GENERATE_Enemies()
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
-	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	/*CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(427, 617, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Four whole days.ZI've been waitingZin line so long...ZI regret to say IZchose the pirateZfactionZ", 'X', 23, 9), sprite_sheet_.player, 'u');
 	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(434, 614, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
 		PopupDefinition("Yar har harZand a bottleZof rum!Z", 'X', 23, 9), sprite_sheet_.pirate_1, ' u');
@@ -808,53 +808,53 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(standing_in_line_6);
 	characters_.push_back(boarder_guard_1);
 	characters_.push_back(boarder_guard_2);
-	characters_.push_back(boarder_incident_random);
+	characters_.push_back(boarder_incident_random);*/
 }
 
 // creates all the sign posts (These show popups)
 void WorldBase::GENERATE_Signposts()
 {
-	Signpost *checkpoint_sign_1 = new Signpost(150, 636, 23, 9, 1, "    Nakinom      ZBorder CheckpointZ   -------->     Z                 Z    0.2 km       Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *checkpoint_sign_2 = new Signpost(400, 622, 23, 9, 2, "    Nakinom      ZBorder CheckpointZ                 Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_1 = new Signpost(150, 636, 23, 9, 1, "    Nakinom      Border Checkpoint   -------->                          0.2 km        ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_2 = new Signpost(400, 622, 23, 9, 2, "    Nakinom       Border Checkpoint                   ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 
-	Signpost *sign_1 = new Signpost(146, 33, 31, 9, 3, "THE MAZE@@Welcome home@", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_2 = new Signpost(648, 24, 31, 9, 4, "PIRATE SIDEZThis section ofZthe maze isZdesignated toZsoftware piratesZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_1 = new Signpost(146, 33, 31, 9, 3, "THE maze Welcome home ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_2 = new Signpost(648, 24, 31, 9, 4, "PIRATE SIDE This section of the maze is designated to software pirates ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_3 = new Signpost(887, 27, 31, 9, 5, "Yarr!", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_4 = new Signpost(680, 108, 31, 9, 6, "Are YOU threeZsheets to theZwind? Find outZToday!ZSpeak toZDoctor DZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_5 = new Signpost(416, 83, 31, 9, 7, "Powder MonkeysZ44 gold coinsZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_6 = new Signpost(227, 122, 31, 9, 8, "Balgruuf'sZBar and TavernZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_4 = new Signpost(680, 108, 31, 9, 6, "Are YOU three sheets to the wind? Find out Today! Speak to Doctor D ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_5 = new Signpost(416, 83, 31, 9, 7, "Powder Monkeys 44 gold coins ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_6 = new Signpost(227, 122, 31, 9, 8, "Balgruuf's Bar and Tavern ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 	Signpost *sign_7 = new Signpost(453, 194, 31, 9, 9, "Scurvy Garden", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_8 = new Signpost(748, 230, 31, 9, 10, "DO NOT ENTERZZSeriously, noZone is allowedZin my house!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_9 = new Signpost(675, 266, 31, 9, 11, "Another reallyZlong hallwayZahead! ManZthis was poorlyZexecuted...Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_10 = new Signpost(429, 281, 31, 9, 12, "DANGER!ZLeaving pirateZTerritory!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_11 = new Signpost(695, 312, 31, 9, 13, "Seriously!ZDont go anyZfurther orZyou'll leaveZpirate territoryZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_12 = new Signpost(876, 312, 31, 9, 14, "**** theseZhallwaysZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_13 = new Signpost(1089, 330, 31, 9, 15, "OFFICIAL BORDERZFOR PIRATEZTERRITORYZLIMITZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_14 = new Signpost(476, 355, 31, 9, 16, "Advanture CentralZZWith all theZ0 ridesZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_15 = new Signpost(481, 379, 31, 9, 17, "NOW ENTERINGZANIME TERRITORYZZYeah have funZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_16 = new Signpost(116, 411, 31, 9, 18, "Welcome toZSensei senpaiZsanseba chanZkun uh...ZIts 2:00AM I'mZrunning out ofZideasZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_17 = new Signpost(77, 409, 31, 9, 19, "I know! Let's play aZgame! It's calledZhow many roomsZare left emptyZwithout anythingZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_18 = new Signpost(99, 447, 31, 9, 20, "DANGER!ZLong hallwayZahead!ZExcessiveZBordumZdetectedZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_19 = new Signpost(282, 447, 31, 9, 21, "So how wasZyour day?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_20 = new Signpost(510, 447, 31, 9, 22, "Mine was greatZthanks forZaskingZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_21 = new Signpost(267, 31, 31, 9, 23, "TIP:ZZHold SHIFT to runZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_22 = new Signpost(384, 31, 31, 9, 24, "'M'ZZBridgeZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_23 = new Signpost(871, 26, 31, 9, 25, "ATTENTIONZOnce you enter,Zyou need aZVISA to vist the outsideZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_24 = new Signpost(549, 105, 31, 9, 26, "Are you scaredZof ghosts?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_25 = new Signpost(480, 105, 31, 9, 27, "Be careful.ZLong halls attactZghostsZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_26 = new Signpost(416, 105, 31, 9, 28, "This game mightZhave jumpscaresZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_27 = new Signpost(632, 161, 31, 9, 29, "House near CrabZCave for sale!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_28 = new Signpost(683, 161, 31, 9, 30, "House near deathZfor sale!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_29 = new Signpost(779, 252, 31, 9, 31, "Lots forZbusiness forZsale!Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_30 = new Signpost(660, 265, 31, 9, 32, "this is ZVer.3 of the maze,Zit wasZapproved so...Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_31 = new Signpost(465, 310, 31, 9, 33, "This worldZhas factionsZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_32 = new Signpost(538, 310, 31, 9, 34, "Each factionZis uniqueZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_33 = new Signpost(627, 310, 31, 9, 35, "I'm sorry...Z-AmZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_34 = new Signpost(972, 310, 31, 9, 36, "Turn backZnow if youZwantZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_35 = new Signpost(702, 386, 31, 9, 37, "Are youZgettingZlonely?Z", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_36 = new Signpost(323, 389, 31, 9, 38, "Weebs upZaheadZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_37 = new Signpost(115, 447, 31, 9, 39, "I feelZattacked...Z-AmZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *sign_38 = new Signpost(530, 485, 31, 9, 40, "Note:ZHalls are tooZ too longZ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_8 = new Signpost(748, 230, 31, 9, 10, "DO NOT ENTER  Seriously, no one is allowed in my house! ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_9 = new Signpost(675, 266, 31, 9, 11, "Another really long hallway ahead! Man this was poorly executed... ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_10 = new Signpost(429, 281, 31, 9, 12, "DANGER! Leaving pirate Territory! ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_11 = new Signpost(695, 312, 31, 9, 13, "Seriously! Dont go any further or you'll leave pirate territory ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_12 = new Signpost(876, 312, 31, 9, 14, "**** these hallways ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_13 = new Signpost(1089, 330, 31, 9, 15, "OFFICIAL BORDER FOR PIRATE TERRITORY LIMIT ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_14 = new Signpost(476, 355, 31, 9, 16, "Advanture Central  With all the 0 rides ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_15 = new Signpost(481, 379, 31, 9, 17, "NOW ENTERING ANIME TERRITORY  Yeah have fun ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_16 = new Signpost(116, 411, 31, 9, 18, "Welcome to Sensei senpai sanseba chan kun uh... Its 2:00AM I'm running out of ideas ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_17 = new Signpost(77, 409, 31, 9, 19, "I know! Let's play a game! It's called how many rooms are left empty without anything ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_18 = new Signpost(99, 447, 31, 9, 20, "DANGER! Long hallway ahead! Excessive Bordum detected ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_19 = new Signpost(282, 447, 31, 9, 21, "So how was your day? ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_20 = new Signpost(510, 447, 31, 9, 22, "Mine was great thanks for asking ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_21 = new Signpost(267, 31, 31, 9, 23, "TIP:  Hold SHIFT to run ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_22 = new Signpost(384, 31, 31, 9, 24, "'M'  Bridge ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_23 = new Signpost(871, 26, 31, 9, 25, "ATTENTION Once you enter, you need a VISA to vist the outside ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_24 = new Signpost(549, 105, 31, 9, 26, "Are you scared of ghosts? ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_25 = new Signpost(480, 105, 31, 9, 27, "Be careful. Long halls attact ghosts ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_26 = new Signpost(416, 105, 31, 9, 28, "This game might have jumpscares ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_27 = new Signpost(632, 161, 31, 9, 29, "House near Crab Cave for sale! ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_28 = new Signpost(683, 161, 31, 9, 30, "House near death for sale! ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_29 = new Signpost(779, 252, 31, 9, 31, "Lots for business for sale! ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_30 = new Signpost(660, 265, 31, 9, 32, "this is  Ver.3 of the maze, it was approved so... ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_31 = new Signpost(465, 310, 31, 9, 33, "This world has factions ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_32 = new Signpost(538, 310, 31, 9, 34, "Each faction is unique ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_33 = new Signpost(627, 310, 31, 9, 35, "I'm sorry... -Am ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_34 = new Signpost(972, 310, 31, 9, 36, "Turn back now if you want ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_35 = new Signpost(702, 386, 31, 9, 37, "Are you getting lonely? ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_36 = new Signpost(323, 389, 31, 9, 38, "Weebs up ahead ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_37 = new Signpost(115, 447, 31, 9, 39, "I feel attacked... -Am ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *sign_38 = new Signpost(530, 485, 31, 9, 40, "Note: Halls are too  too long ", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
 
 
 	signposts_.push_back(checkpoint_sign_1);

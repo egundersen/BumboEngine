@@ -15,9 +15,8 @@ struct PlayerPosition
 class MatrixBase
 {
 protected:
-	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, std::vector<std::vector<char>> &matrix, bool exclude_spaces = false);
-	void addTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>> &matrix);
+	void addTextToMatrix(int top_left_x, int top_left_y, char alignment, std::string text, std::vector<std::vector<char>> &matrix, int paragraph_width = 0, int paragraph_height = 0);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
@@ -31,6 +30,8 @@ protected:
 	inline bool contains(Container const & container, T const & value);
 
 	void DEBUG_simpleDisplay(Image &image);
+private:
+	bool shouldIndent(std::string text, int index, int max_line_length);
 };
 
 template<typename Container, typename T>

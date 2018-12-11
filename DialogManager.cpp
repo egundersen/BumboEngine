@@ -57,22 +57,22 @@ void DialogManager::setDialogOptions()
 	if (action_ == "")
 	{
 		if (moving_node_->choice_1_ != nullptr)
-			addTextToMatrix(4, 2, moving_node_->choice_1_->getPlayerDialog(), dialog_matrix_);
+			addTextToMatrix(4, 2, 'l', moving_node_->choice_1_->getPlayerDialog(), dialog_matrix_);
 		if (moving_node_->choice_2_ != nullptr)
-			addTextToMatrix(4, 4, moving_node_->choice_2_->getPlayerDialog(), dialog_matrix_);
+			addTextToMatrix(4, 4, 'l', moving_node_->choice_2_->getPlayerDialog(), dialog_matrix_);
 		if (moving_node_->choice_3_ != nullptr)
-			addTextToMatrix(4, 6, moving_node_->choice_3_->getPlayerDialog(), dialog_matrix_);
+			addTextToMatrix(4, 6, 'l', moving_node_->choice_3_->getPlayerDialog(), dialog_matrix_);
 		// Replaces empty text block with goodbye text. FOr it to work, also remove the -1 condition in setDialogText
 		//else if(head_node_->choice_1_ == nullptr && head_node_->choice_2_ == nullptr && head_node_->choice_3_ != nullptr)
 		//	addTextToMatrix(4, 6, "Goodbye", dialog_matrix_);
 	}
 	else if (action_ == "FIGHT")
 	{
-		addTextToMatrix(4, 4, "COMBAT INITIATED !", dialog_matrix_);
+		addTextToMatrix(4, 4, 'l', "COMBAT INITIATED !", dialog_matrix_);
 	}
 	else if (action_ == "ITEM")
 	{
-		addTextToMatrix(4, 4, "Item added to inventory", dialog_matrix_);
+		addTextToMatrix(4, 4, 'l', "Item added to inventory", dialog_matrix_);
 	}
 }
 
