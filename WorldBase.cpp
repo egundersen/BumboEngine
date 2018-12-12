@@ -747,15 +747,28 @@ void WorldBase::GENERATE_Events()
 	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10000
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
 	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 235, 10, 8, 1, false, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 10, 8, 296, 231, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1071, 206, 4, 4, 1, false, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	
+	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 10, 8, 296, 231, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 10, 8, 1107, 202, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_sharktooth = new Event_TeleportPlayer(10005, 297, 174, 10, 4, 104, 241, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_from_sharktooth = new Event_TeleportPlayer(10006, 104, 253, 10, 8, 297, 179, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_aki = new Event_TeleportPlayer(10007, 393, 21, 10, 8, 679, 87, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);
 	events_.push_back(tutorial);
 	events_.push_back(teleport_to_maze);
 	events_.push_back(border_incident);
 	events_.push_back(lost_device);
+	events_.push_back(teleport_to_mountain);
+	events_.push_back(teleport_to_sharktooth);
+	events_.push_back(teleport_from_sharktooth);
+	events_.push_back(teleport_to_aki);
+	events_.push_back(teleport_from_aki);
+	events_.push_back(teleport_to_mini_bosses);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)

@@ -356,8 +356,8 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(11)->move(518, 'x', 10);
 		break;
 	case 7:
-		getCharacterByID(11)->teleportNPC(307, 382); // Actual World Position
-		getCharacterByID(11)->faceDirection('d');
+		getCharacterByID(11)->teleportNPC(192, 84); // Actual World Position
+		getCharacterByID(11)->faceDirection('r');
 		break;
 	default:
 		break;
@@ -379,7 +379,7 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(14)->move(518, 'x', 10);
 		break;
 	case 4:
-		getCharacterByID(14)->teleportNPC(765, 254);
+		getCharacterByID(14)->teleportNPC(104, 203);
 		getCharacterByID(14)->faceDirection('u');
 		break;
 	default:
@@ -402,7 +402,8 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(13)->move(518, 'x', 10);
 		break;
 	case 4:
-		getCharacterByID(13)->teleportNPC(648, 124);
+		getCharacterByID(13)->teleportNPC(564, 163);
+		getCharacterByID(13)->faceDirection('r');
 		break;
 	default:
 		break;
@@ -427,7 +428,8 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(12)->move(518, 'x', 10);
 		break;
 	case 5:
-		getCharacterByID(12)->teleportNPC(204, 516);
+		getCharacterByID(12)->teleportNPC(664, 67);
+		getCharacterByID(12)->faceDirection('d');
 		break;
 	default:
 		break;
