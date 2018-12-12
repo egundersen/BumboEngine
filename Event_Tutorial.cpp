@@ -2,8 +2,8 @@
 #include <Windows.h>
 #include <iostream>
 
-Event_Tutorial::Event_Tutorial(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>>& matrix_display, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
-	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, character_ID, element_has_object, matrix_display, characters, screen_position, screen_width, screen_height),
+Event_Tutorial::Event_Tutorial(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>>& matrix_display, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, character_ID, repeatable, element_has_object, matrix_display, characters, screen_position, screen_width, screen_height),
 	fall_speed(125), go_down_iterator_(0), dialog_choice_index_(0), should_go_down_{ false }, has_entered_name_{ false }
 {
 }

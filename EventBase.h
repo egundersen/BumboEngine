@@ -9,12 +9,13 @@
 class EventBase: public MatrixBase
 {
 public:
-	explicit EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID,
+	explicit EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable,
 		std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::vector<CharacterBase*> &characters, ScreenPosition &screen_position, int screen_width, int screen_height);
 	~EventBase() {}
 
 	// Setters
 	void onStartEvent();
+	void reset();
 	virtual void createEvent();
 	virtual void refreshEvent() {}
 	void DEBUG_viewCollider(std::vector<std::vector<char>> &world_matrix);
@@ -22,6 +23,7 @@ public:
 
 	// Getters
 	bool isComplete() { return is_event_over_; }
+	bool isRepeatable() { return repeatable_; }
 	bool shouldEnterBattle() { return should_enter_battle_; }
 	int getUniqueObjectID() { return unique_object_ID_; }
 	CharacterBase *getCharacterByID(int character_ID);
@@ -33,7 +35,7 @@ protected:
 	void setAttachedCharacterIndex();
 	void teleportPlayer(int position_x, int position_y);
 
-	bool is_event_over_, should_enter_battle_;
+	bool is_event_over_, should_enter_battle_, repeatable_;
 	int object_type_ID_, unique_object_ID_, center_position_x_, center_position_y_, collider_width_, collider_height_,
 		start_time_begin_event_, character_ID_, screen_width_, screen_height_, event_index_;
 	std::vector<std::vector<std::pair<int, int>>> &element_has_object_;
