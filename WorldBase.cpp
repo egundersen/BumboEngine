@@ -145,7 +145,7 @@ std::pair<int, int> WorldBase::getFacingEntity()
 	{
 	case 'u':
 		for (int j = -2; j < 2; j++)
-			for (int i = -1; i < 1; i++) // Collision on Two Lines
+			for (int i = 0; i < 2; i++) // Collision on Two Lines
 				if (element_has_object_[screen_position_.y + screen_height_ / 2 - 3 + i][screen_position_.x + screen_width_ / 2 + j].first != 0)
 					return element_has_object_[screen_position_.y + screen_height_ / 2 - 3 + i][screen_position_.x + screen_width_ / 2 + j];
 		break;
@@ -552,7 +552,7 @@ void WorldBase::GENERATE_OutsideArea()
 	for (const std::wstring &text : fence)
 	{
 		fence_lines_.push_back(Image(text, 59, 1));
-		addImageToMatrix(1164, 117 + fence_iterator, fence_lines_[fence_iterator], world_matrix_, true);
+		addImageToMatrix(1161, 181 + fence_iterator, fence_lines_[fence_iterator], world_matrix_, true);
 		fence_iterator++;
 	}
 

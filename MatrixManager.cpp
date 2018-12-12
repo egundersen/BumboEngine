@@ -10,7 +10,7 @@
 MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, std::pair<std::string, int> &image_file_path)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health_),
 	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	maze_(width, height, 1200, 700, 730, 232, player_health_, matrix_display, inventory_, image_file_path)
+	maze_(width, height, 1200, 273, 730, 232, player_health_, matrix_display, inventory_, image_file_path)
 {
 	inventory_.addItem("Mug o' Grog", 1); // Starting Items (Not pickups! Just starting items)
 	inventory_.addItem("Fish Mush", 1);
