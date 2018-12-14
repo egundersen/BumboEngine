@@ -461,6 +461,7 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 	::SelectObject(hLocalDC, hOldBmp);
 	::DeleteDC(hLocalDC);
 	::DeleteObject(hBitmap);
+	::DeleteObject(hBitmapColored);
 	return true;
 }
 
@@ -523,17 +524,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				LoadAndBlitBitmap(sw, hDCMem, std::get<1>(image_file_path_G));
 			}
 
-			COLORREF whiteTextColor = 0x00ffffff; //ffff00
 			COLORREF blackTextColor = 0x00000000;
 			SetBkMode(hDCMem, OPAQUE);
 			SetBkColor(hDCMem, blackTextColor);
-			if (SetTextColor(hDCMem, whiteTextColor) == CLR_INVALID) {
-				PostQuitMessage(1);
-			}
 			for (int i = 0; i < height_G; i++)
 				for (int j = 0; j < width_G; j++)
-					if(matrix_display_G[i][j].c_str() != std::string(1, ' '))
+					if (matrix_display_G[i][j].c_str() != std::string(1, ' '))
+					{
+						RGBA rgba(0, 255, 255);
+						COLORREF whiteTextColor = rgba.getHex();
+						if (SetTextColor(hDCMem, whiteTextColor) == CLR_INVALID)
+						{
+							PostQuitMessage(1);
+						}
 						ExtTextOutA(hDCMem, j * 10, i * 15, ETO_CLIPPED, &rect, matrix_display_G[i][j].c_str(), 1, NULL);
+					}
 
 			// Copy window image/bitmap to screen
 			BitBlt(hDC, 0, 0, rect.right, rect.bottom, hDCMem, 0, 0, SRCCOPY);
