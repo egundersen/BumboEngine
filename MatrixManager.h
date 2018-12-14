@@ -10,7 +10,7 @@
 class MatrixManager : public MatrixBase
 {
 public:
-	MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, std::pair<std::string, int> &image_file_path);
+	MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, std::tuple<std::string, int, int> &image_file_path);
 
 	// Setters
 	void evaluatePlayerInput();

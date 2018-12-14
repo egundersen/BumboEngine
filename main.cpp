@@ -8,7 +8,7 @@
 #include <iostream>
 #include <sstream>
 #include <Windows.h>
-#include <utility>
+#include <tuple>
 
 using namespace WinMainParameters;
 
@@ -20,7 +20,9 @@ TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
 // Global (To main.cpp only) Variables for width, height and the output display screen 
-std::pair<std::string, int> image_file_path_G = std::pair<std::string, int>("", 160);
+//RGBA rgba(255, 255, 255);
+//std::tuple<std::string, int, RGBA> image_file_path_G("", 160, rgba);
+std::tuple<std::string, int, int> image_file_path_G = std::make_tuple<std::string, int, int>("", 160, 255255255255);
 bool should_exit_G = false;
 int width_G = 79;
 int height_G = 35;
@@ -187,6 +189,200 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 	return TRUE;
 }
 
+#define COLORREF2RGB(Color) (Color & 0xff00) | ((Color >> 16) & 0xff) \
+                                 | ((Color << 16) & 0xff0000)
+
+//-------------------------------------------------------------------------------
+// ReplaceColor
+//
+// Author    : Dimitri Rochette drochette@coldcat.fr
+// Specials Thanks to Joe Woodbury for his comments and code corrections
+//
+// Includes  : Only <windows.h>
+
+//
+// hBmp         : Source Bitmap
+// cOldColor : Color to replace in hBmp
+// cNewColor : Color used for replacement
+// hBmpDC    : DC of hBmp ( default NULL ) could be NULL if hBmp is not selected
+//
+// Retcode   : HBITMAP of the modified bitmap or NULL for errors
+//
+//-------------------------------------------------------------------------------
+HBITMAP ReplaceColor(HBITMAP hBmp, COLORREF cOldColor, COLORREF cNewColor, HDC hBmpDC)
+{
+	HBITMAP RetBmp = NULL;
+	if (hBmp)
+	{
+		HDC BufferDC = CreateCompatibleDC(NULL);    // DC for Source Bitmap
+		if (BufferDC)
+		{
+			HBITMAP hTmpBitmap = (HBITMAP)NULL;
+			if (hBmpDC)
+				if (hBmp == (HBITMAP)GetCurrentObject(hBmpDC, OBJ_BITMAP))
+				{
+					hTmpBitmap = CreateBitmap(1, 1, 1, 1, NULL);
+					SelectObject(hBmpDC, hTmpBitmap);
+				}
+
+			HGDIOBJ PreviousBufferObject = SelectObject(BufferDC, hBmp);
+			// here BufferDC contains the bitmap
+
+			HDC DirectDC = CreateCompatibleDC(NULL); // DC for working
+			if (DirectDC)
+			{
+				// Get bitmap size
+				BITMAP bm;
+				GetObject(hBmp, sizeof(bm), &bm);
+
+				// create a BITMAPINFO with minimal initilisation 
+				// for the CreateDIBSection
+				BITMAPINFO RGB32BitsBITMAPINFO;
+				ZeroMemory(&RGB32BitsBITMAPINFO, sizeof(BITMAPINFO));
+				RGB32BitsBITMAPINFO.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+				RGB32BitsBITMAPINFO.bmiHeader.biWidth = bm.bmWidth;
+				RGB32BitsBITMAPINFO.bmiHeader.biHeight = bm.bmHeight;
+				RGB32BitsBITMAPINFO.bmiHeader.biPlanes = 1;
+				RGB32BitsBITMAPINFO.bmiHeader.biBitCount = 32;
+
+				// pointer used for direct Bitmap pixels access
+				UINT * ptPixels;
+
+				HBITMAP DirectBitmap = CreateDIBSection(DirectDC,
+					(BITMAPINFO *)&RGB32BitsBITMAPINFO,
+					DIB_RGB_COLORS,
+					(void **)&ptPixels,
+					NULL, 0);
+				if (DirectBitmap)
+				{
+					// here DirectBitmap!=NULL so ptPixels!=NULL no need to test
+					HGDIOBJ PreviousObject = SelectObject(DirectDC, DirectBitmap);
+					BitBlt(DirectDC, 0, 0,
+						bm.bmWidth, bm.bmHeight,
+						BufferDC, 0, 0, SRCCOPY);
+
+					// here the DirectDC contains the bitmap
+
+					// Convert COLORREF to RGB (Invert RED and BLUE)
+					cOldColor = COLORREF2RGB(cOldColor);
+					cNewColor = COLORREF2RGB(cNewColor);
+
+					// After all the inits we can do the job : Replace Color
+					for (int i = ((bm.bmWidth*bm.bmHeight) - 1); i >= 0; i--)
+					{
+						if (ptPixels[i] == cOldColor) ptPixels[i] = cNewColor;
+					}
+					// little clean up
+					// Don't delete the result of SelectObject because it's 
+					// our modified bitmap (DirectBitmap)
+					SelectObject(DirectDC, PreviousObject);
+
+					// finish
+					RetBmp = DirectBitmap;
+				}
+				// clean up
+				DeleteDC(DirectDC);
+			}
+			if (hTmpBitmap)
+			{
+				SelectObject(hBmpDC, hBmp);
+				DeleteObject(hTmpBitmap);
+			}
+			SelectObject(BufferDC, PreviousBufferObject);
+			// BufferDC is now useless
+			DeleteDC(BufferDC);
+		}
+	}
+	return RetBmp;
+}
+
+HBITMAP ReplaceAllColorsExcept(HBITMAP hBmp, COLORREF cExcludedColor, COLORREF cNewColor, HDC hBmpDC)
+{
+	HBITMAP RetBmp = NULL;
+	if (hBmp)
+	{
+		HDC BufferDC = CreateCompatibleDC(NULL);    // DC for Source Bitmap
+		if (BufferDC)
+		{
+			HBITMAP hTmpBitmap = (HBITMAP)NULL;
+			if (hBmpDC)
+				if (hBmp == (HBITMAP)GetCurrentObject(hBmpDC, OBJ_BITMAP))
+				{
+					hTmpBitmap = CreateBitmap(1, 1, 1, 1, NULL);
+					SelectObject(hBmpDC, hTmpBitmap);
+				}
+
+			HGDIOBJ PreviousBufferObject = SelectObject(BufferDC, hBmp);
+			// here BufferDC contains the bitmap
+
+			HDC DirectDC = CreateCompatibleDC(NULL); // DC for working
+			if (DirectDC)
+			{
+				// Get bitmap size
+				BITMAP bm;
+				GetObject(hBmp, sizeof(bm), &bm);
+
+				// create a BITMAPINFO with minimal initilisation 
+				// for the CreateDIBSection
+				BITMAPINFO RGB32BitsBITMAPINFO;
+				ZeroMemory(&RGB32BitsBITMAPINFO, sizeof(BITMAPINFO));
+				RGB32BitsBITMAPINFO.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+				RGB32BitsBITMAPINFO.bmiHeader.biWidth = bm.bmWidth;
+				RGB32BitsBITMAPINFO.bmiHeader.biHeight = bm.bmHeight;
+				RGB32BitsBITMAPINFO.bmiHeader.biPlanes = 1;
+				RGB32BitsBITMAPINFO.bmiHeader.biBitCount = 32;
+
+				// pointer used for direct Bitmap pixels access
+				UINT * ptPixels;
+
+				HBITMAP DirectBitmap = CreateDIBSection(DirectDC,
+					(BITMAPINFO *)&RGB32BitsBITMAPINFO,
+					DIB_RGB_COLORS,
+					(void **)&ptPixels,
+					NULL, 0);
+				if (DirectBitmap)
+				{
+					// here DirectBitmap!=NULL so ptPixels!=NULL no need to test
+					HGDIOBJ PreviousObject = SelectObject(DirectDC, DirectBitmap);
+					BitBlt(DirectDC, 0, 0,
+						bm.bmWidth, bm.bmHeight,
+						BufferDC, 0, 0, SRCCOPY);
+
+					// here the DirectDC contains the bitmap
+
+					// Convert COLORREF to RGB (Invert RED and BLUE)
+					cExcludedColor = COLORREF2RGB(cExcludedColor);
+					cNewColor = COLORREF2RGB(cNewColor);
+
+					// After all the inits we can do the job : Replace Color
+					for (int i = ((bm.bmWidth*bm.bmHeight) - 1); i >= 0; i--)
+					{
+						if (ptPixels[i] != cExcludedColor) ptPixels[i] = cNewColor;
+					}
+					// little clean up
+					// Don't delete the result of SelectObject because it's 
+					// our modified bitmap (DirectBitmap)
+					SelectObject(DirectDC, PreviousObject);
+
+					// finish
+					RetBmp = DirectBitmap;
+				}
+				// clean up
+				DeleteDC(DirectDC);
+			}
+			if (hTmpBitmap)
+			{
+				SelectObject(hBmpDC, hBmp);
+				DeleteObject(hTmpBitmap);
+			}
+			SelectObject(BufferDC, PreviousBufferObject);
+			// BufferDC is now useless
+			DeleteDC(BufferDC);
+		}
+	}
+	return RetBmp;
+}
+
 bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 {
 	// Load the bitmap image file
@@ -210,9 +406,12 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 		return false;
 	}
 
+	// Changes color (But since Bitmap is so pixelated, this is the only way we can include all colors
+	HBITMAP hBitmapColored = ReplaceAllColorsExcept(hBitmap, 0x000000, 0x00ff00, hLocalDC);
+
 	// Get the bitmap's parameters and verify the get
 	BITMAP qBitmap;
-	int iReturn = GetObject(reinterpret_cast<HGDIOBJ>(hBitmap), sizeof(BITMAP),
+	int iReturn = GetObject(reinterpret_cast<HGDIOBJ>(hBitmapColored), sizeof(BITMAP),
 		reinterpret_cast<LPVOID>(&qBitmap));
 	if (!iReturn)
 	{
@@ -221,33 +420,42 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 	}
 
 	// Select the loaded bitmap into the device context
-	HBITMAP hOldBmp = (HBITMAP)::SelectObject(hLocalDC, hBitmap);
+	HBITMAP hOldBmp = (HBITMAP)::SelectObject(hLocalDC, hBitmapColored);
 	if (hOldBmp == NULL)
 	{
 		::MessageBox(NULL, __T("SelectObject Failed"), __T("Error"), MB_OK);
 		return false;
 	}
 
-	// Make image transparent
-	/*BOOL qRetTransBlit = ::TransparentBlt(hWinDC, position_x, 0, 475, 425,
-		hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, RGB(0, 0, 0));
-	if (!qRetTransBlit)
+	if (std::get<2>(image_file_path_G) < 255)
 	{
-		::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
-		return false;
-	}//*/
+		// setting up the blend function
+		BLENDFUNCTION bStruct;
+		bStruct.BlendOp = AC_SRC_OVER;
+		bStruct.BlendFlags = 0;
+		bStruct.SourceConstantAlpha = std::get<2>(image_file_path_G);
+		bStruct.AlphaFormat = 0;
 
-	// Blit the dc which holds the bitmap onto the window's dc
-	//BOOL qRetBlit = ::BitBlt(hWinDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight,
-	//	hLocalDC, 0, 0, SRCCOPY);
-	SetStretchBltMode(hWinDC, HALFTONE);
-	BOOL qRetBlit = ::StretchBlt(hWinDC, position_x, 0, 475, 425,
-		hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, SRCCOPY);
-	if (!qRetBlit)
+		// Blit a transparent version of the dc onto the window's dc
+		BOOL qTransBlit = ::AlphaBlend(hWinDC, position_x, 0, 475, 425, hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, bStruct);
+		if (!qTransBlit)
+		{
+			::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
+			return false;
+		}
+	}
+	else
 	{
-		::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
-		return false;
-	}//*/
+		// Blit the dc which holds the bitmap onto the window's dc
+		SetStretchBltMode(hWinDC, HALFTONE);
+		BOOL qRetBlit = ::StretchBlt(hWinDC, position_x, 0, 475, 425,
+			hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, SRCCOPY);
+		if (!qRetBlit)
+		{
+			::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
+			return false;
+		}
+	}
 
 	// Unitialize and deallocate resources
 	::SelectObject(hLocalDC, hOldBmp);
@@ -308,11 +516,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			FillRect(hDCMem, &rect, (HBRUSH)(COLOR_BACKGROUND + 1));
 
 			// Load Complex Ascii-styled Image from provided file path
-			if (image_file_path_G.first != "")
+			if (std::get<0>(image_file_path_G) != "")
 			{
-				std::wstring sTemp = std::wstring(image_file_path_G.first.begin(), image_file_path_G.first.end());
+				std::wstring sTemp = std::wstring(std::get<0>(image_file_path_G).begin(), std::get<0>(image_file_path_G).end());
 				LPCWSTR sw = sTemp.c_str();
-				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second);
+				LoadAndBlitBitmap(sw, hDCMem, std::get<1>(image_file_path_G));
 			}
 
 			COLORREF whiteTextColor = 0x00ffffff; //ffff00

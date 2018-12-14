@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <iostream>
 
-BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::pair<std::string, int> &image_file_path)
+BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::tuple<std::string, int, int> &image_file_path)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_{ boss_fight_definition }, image_file_path_{ image_file_path },
 	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, matrix_display, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
@@ -408,19 +408,19 @@ void BattleBase::showFileSprite(std::string emotion)
 		if (emotion == "") // Decide whether to use emotion based on health left
 		{
 			if(boss_.health < initial_boss_health_ / 2) // Half Health
-				image_file_path_.first = boss_.file_path_angry;
+				std::get<0>(image_file_path_) = boss_.file_path_angry;
 			else
-				image_file_path_.first = boss_.file_path_neutral;
+				std::get<0>(image_file_path_) = boss_.file_path_neutral;
 		}
 		else if (emotion == "NEUTRAL")
-			image_file_path_.first = boss_.file_path_neutral;
+			std::get<0>(image_file_path_) = boss_.file_path_neutral;
 		else if(emotion == "ANGRY")
-			image_file_path_.first = boss_.file_path_angry;
+			std::get<0>(image_file_path_) = boss_.file_path_angry;
 		else if (emotion == "nervous_dead")
-			image_file_path_.first = boss_.file_path_nervous_dead;
+			std::get<0>(image_file_path_) = boss_.file_path_nervous_dead;
 		else if (emotion == "HAPPY")
-			image_file_path_.first = boss_.file_path_happy;
-		image_file_path_.second = 160;
+			std::get<0>(image_file_path_) = boss_.file_path_happy;
+		std::get<1>(image_file_path_) = 160;
 	}
 }
 
@@ -428,7 +428,7 @@ void BattleBase::showFileSprite(std::string emotion)
 void BattleBase::hideFileSprite()
 {
 	if (boss_.use_files)
-		image_file_path_.first = "";
+		std::get<0>(image_file_path_) = "";
 }
 
 // Resets the battle space

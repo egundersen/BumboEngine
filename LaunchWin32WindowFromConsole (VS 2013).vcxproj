@@ -253,6 +253,7 @@
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PlayerSprite.h" />
     <ClInclude Include="Popup.h" />
+    <ClInclude Include="RGBA.h" />
     <ClInclude Include="ScreenPosition.h" />
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="Sprite.h" />

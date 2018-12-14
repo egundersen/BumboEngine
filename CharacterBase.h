@@ -16,7 +16,7 @@ public:
 		std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
 		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, int event_ID,
 
-		int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, std::pair<std::string, int> &image_file_path,
+		int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, std::tuple<std::string, int, int> &image_file_path,
 		WorldSprite world_sprite);
 	~CharacterBase();
 

@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <iostream>
 
-BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, std::pair<std::string, int> &image_file_path)
+BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, std::tuple<std::string, int, int> &image_file_path)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), matrix_display_{ matrix_display }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), image_file_path_{ image_file_path },
 	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), max_choices_(0), boss_{ boss_fight_definition },
 	displaying_response_{ false }, enter_key_pressed_{ false }, return_to_menu_{ false }
@@ -238,8 +238,8 @@ void BattleDialogBase::showFileSprite()
 	if (boss_.use_files)
 	{
 		// TODO Animate
-		image_file_path_.first = boss_.file_path_neutral;
-		image_file_path_.second = 60;
+		std::get<0>(image_file_path_) = boss_.file_path_neutral;
+		std::get<1>(image_file_path_) = 60;
 	}
 }
 
@@ -247,7 +247,7 @@ void BattleDialogBase::showFileSprite()
 void BattleDialogBase::hideFileSprite()
 {
 	if (boss_.use_files)
-		image_file_path_.first = "";
+		std::get<0>(image_file_path_) = "";
 }
 
 // Draws dialog menu to the screen
