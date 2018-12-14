@@ -306,35 +306,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			FillRect(hDCMem, &rect, (HBRUSH)(COLOR_BTNFACE + 1));
 			FillRect(hDCMem, &rect, (HBRUSH)(COLOR_BACKGROUND + 1));
 
-			// Font test
-			/*font = CreateFontA(10, 0, 40, 0,
-				FW_NORMAL, FALSE, FALSE, FALSE,
-				ANSI_CHARSET, OUT_DEFAULT_PRECIS,
-				CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-				DEFAULT_PITCH | FF_ROMAN,
-				"Arial");
-			SelectObject(hDCMem, font);//*/
-
-			COLORREF whiteTextColor = 0x00ffffff; //ffff00
-			COLORREF blackTextColor = 0x00000000;
-			SetBkMode(hDCMem, OPAQUE);
-			SetBkColor(hDCMem, blackTextColor);
-			if (SetTextColor(hDCMem, whiteTextColor) == CLR_INVALID) {
-				PostQuitMessage(1);
-			}
-			for (int i = 0; i < height_G; i++) {
-				for (int j = 0; j < width_G; j++) {
-
-					ExtTextOutA(hDCMem, j * 10, i * 15, ETO_CLIPPED, &rect, matrix_display_G[i][j].c_str(), 1, NULL);
-				}
-				//const wchar_t helloWorldString[] = L"Hello world! !";*/
-				//int height = DrawTextA(hDCMem, matrix_display_G[i], width_G, &rect, DT_CENTER | DT_VCENTER | DT_EDITCONTROL);
-				//int height = DrawTextA(hDCMem, matrix_display_G[i], width_G, &rect, DT_CENTER | DT_VCENTER | DT_NOCLIP);
-				//int height = DrawTextW(hDCMem, matrix_display_G[i], width_G, &rect, DT_CENTER | DT_VCENTER | DT_NOCLIP);
-				//int height = DrawText(hdc, helloWorldString[i], ARRAYSIZE(helloWorldStringS), &clientRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
-				//OffsetRect(&rect, 0, height);
-			}
-
 			// Load Complex Ascii-styled Image from provided file path
 			if (image_file_path_G.first != "")
 			{
@@ -343,7 +314,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second);
 			}
 
-			//DeleteObject(font);
+			COLORREF whiteTextColor = 0x00ffffff; //ffff00
+			COLORREF blackTextColor = 0x00000000;
+			SetBkMode(hDCMem, OPAQUE);
+			SetBkColor(hDCMem, blackTextColor);
+			if (SetTextColor(hDCMem, whiteTextColor) == CLR_INVALID) {
+				PostQuitMessage(1);
+			}
+			for (int i = 0; i < height_G; i++)
+				for (int j = 0; j < width_G; j++)
+					if(matrix_display_G[i][j].c_str() != std::string(1, ' '))
+						ExtTextOutA(hDCMem, j * 10, i * 15, ETO_CLIPPED, &rect, matrix_display_G[i][j].c_str(), 1, NULL);
 
 			// Copy window image/bitmap to screen
 			BitBlt(hDC, 0, 0, rect.right, rect.bottom, hDCMem, 0, 0, SRCCOPY);
