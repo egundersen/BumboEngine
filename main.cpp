@@ -19,8 +19,9 @@ HINSTANCE hInst;								// current instance
 TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
-// Global Variables for width, height and the output display screen 
+// Global (To main.cpp only) Variables for width, height and the output display screen 
 std::pair<std::string, int> image_file_path_G = std::pair<std::string, int>("", 160);
+bool should_exit_G = false;
 int width_G = 79;
 int height_G = 35;
 std::vector<std::vector<std::string>> matrix_display_G(height_G, std::vector<std::string>(width_G, " "));
@@ -99,7 +100,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 
-	// MAIN SOURCE PORT - Bumbo Engine v0.4 -----------------------------------------------------
+	// MAIN SOURCE PORT - Bumbo Engine -----------------------------------------------------
 	MatrixManager grid(width_G, height_G, matrix_display_G, 5, image_file_path_G);
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
@@ -114,7 +115,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 			DispatchMessage(&msg);
 		}
 
-		if (msg.message == WM_QUIT)
+		if (should_exit_G || msg.message == WM_QUIT)
 		{
 			break;
 		}
@@ -338,40 +339,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_ERASEBKGND:
 		return 1;
-
-		/*RECT clientRect;
-		GetClientRect(hWnd, &clientRect);
-		// HGDIOBJ objects obtained from GetStockObject do not need to be deleted with DeleteObject as per the documentation: https://msdn.microsoft.com/en-us/library/dd144925(v=vs.85).aspx
-		HGDIOBJ blackBrushGDIObj = GetStockObject(BLACK_BRUSH);
-		if (blackBrushGDIObj == nullptr || GetObjectType(blackBrushGDIObj) != OBJ_BRUSH) {
-			PostQuitMessage(1);
-		}
-		else {
-			// CONSOLE WINDOW START ---------------------------------------------
-			HBRUSH blackBrush = static_cast<HBRUSH>(blackBrushGDIObj);
-			FillRect(hdc, &clientRect, blackBrush);
-			COLORREF whiteTextColor = 0x00ffffff;
-			COLORREF blackTextColor = 0x00000000;
-			SetBkMode(hdc, OPAQUE);
-			SetBkColor(hdc, blackTextColor);
-			if (SetTextColor(hdc, whiteTextColor) == CLR_INVALID) {
-				PostQuitMessage(1);
-			}
-			else {
-				//const wchar_t helloWorldString[] = L"Hello world! !";
-				for (int i = 0; i < height___; i++) {
-					int height = DrawTextW(hdc, helloWorldString[i], ARRAYSIZE(helloWorldStringS), &clientRect, DT_CENTER | DT_VCENTER | DT_NOCLIP);
-					//int height = DrawText(hdc, helloWorldString[i], ARRAYSIZE(helloWorldStringS), &clientRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
-					OffsetRect(&clientRect, 0, height);
-					std::cout << i << " ";
-				}
-			}
-		}
-	}//*/
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
+		should_exit_G = true;
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
