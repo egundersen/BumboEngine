@@ -38,22 +38,22 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("You STOLE IT! ", "Where's proof?!", false));
-		dialog_choice_1.push_back(std::make_tuple("You thief! ", "NEVER", false));
-		dialog_choice_1.push_back(std::make_tuple("Was it you?? ", "Never!", true));
-		dialog_choice_1.push_back(std::make_tuple("Are you ready to die?? ", "Magic lives!", false));
+		dialog_choice_1.push_back(std::make_tuple("You STOLE my package!", "Where's your proof?!", true));
+		dialog_choice_1.push_back(std::make_tuple("You wanted me to eliminate the entire pirate faction!", "Well, maybe THAT part some some truth to it...", false));
+		dialog_choice_1.push_back(std::make_tuple("Admit it! You stole my father's package!", "Never!", true));
+		dialog_choice_1.push_back(std::make_tuple("Whats in the package, EXACTLY?", "Aww... If I told you that, then it wouldn't be a surprise.", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("LIE! ", "NO!", false));
-		dialog_choice_2.push_back(std::make_tuple("Untrustworthy ", "You are!", false));
-		dialog_choice_2.push_back(std::make_tuple("You're a thief! ", "I'm not!", false));
-		dialog_choice_2.push_back(std::make_tuple("You're not lying? ", "Of course not!", true));
+		dialog_choice_2.push_back(std::make_tuple("You condemn my father's name", "I never knew your father.", false));
+		dialog_choice_2.push_back(std::make_tuple("Untrustworthy", "Thats a matter of perspective", false));
+		dialog_choice_2.push_back(std::make_tuple("You're a thief! ", "Don't get ahead of yourself, you still need definitive proof", false));
+		dialog_choice_2.push_back(std::make_tuple("You're not lying?", "Of course not! Who do you take me for?", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("Is it true ", "Yes! Please no more!", true));
-		dialog_choice_3.push_back(std::make_tuple("Sus from the beginning ", "You were!", false));
-		dialog_choice_3.push_back(std::make_tuple("Can't take the chances ", "You dummy!", false));
-		dialog_choice_3.push_back(std::make_tuple("Anime should die ", "NOOOOOOOOO", false));
+		dialog_choice_3.push_back(std::make_tuple("Fine, I take your word for it", "Yes! Please no more!", true)); // 5=
+		dialog_choice_3.push_back(std::make_tuple("I still don't believe you!", "That's alright, I can promise a quick and painless death.", false));
+		dialog_choice_3.push_back(std::make_tuple("Can't take any chances", "I guess I did tell you to accuse everyone... that one's on me.", false));
+		dialog_choice_3.push_back(std::make_tuple("Anime should die", "I don't agree.", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -133,101 +133,83 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Woah! A pirate?");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "Magical Aki!");
-		DialogNode *node_1_2 = new DialogNode("Could you help?", "Of course! Z I'm here to save you!Z");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "See ya!"); //-
-		DialogNode *node_1_1_1 = new DialogNode("Magical?", "I'm a magical girl Z can't you tell?");
-		DialogNode *node_1_1_1_1 = new DialogNode("Are you able to help?", "That's my duty! Z To help!");
-		DialogNode *node_1_2_1 = new DialogNode("My flahsdive was stolen.", "Stolen? What's so Z important about that?");
-		DialogNode *node_1_2_2 = new DialogNode("Is this your glove?", "Mmm, maybe. Z Where did you find it?");
-
-		DialogNode *node_1_2_1_1 = new DialogNode("It was important", "How boring!");
-		DialogNode *node_1_2_1_2 = new DialogNode("It just is!", "touchy...");
-		DialogNode *node_1_2_1_3 = new DialogNode("Just help me!", "Well, an old rusty thing Z is meaningless to me. Z I might help");
-
-		DialogNode *node_1_2_1_2_1 = new DialogNode("please, it's important...", "hm, maybe.");
-
-		DialogNode *node_1_2_2_1 = new DialogNode("At the border", "I thought I left Z this at my old home");
-		DialogNode *node_1_2_2_1_1 = new DialogNode("Did you take my drive?", "Are you accusing me?!", "FIGHT"); //-
-		DialogNode *node_1_2_2_1_2 = new DialogNode("Who took my drive?", " I don't know. Z It was chaos Z at the border.");
-		DialogNode *node_1_2_2_1_3 = new DialogNode("Will you help me now?", "Now I will!");
-
-		DialogNode *node_1_2_2_1_3_1 = new DialogNode("What happened there?", "Everyone Z wanted to get in. Z It's dangerous up there");
-		DialogNode *node_1_2_2_1_3_2 = new DialogNode("Why were you there?", "Moving, what else? Z We can't live above Z anymore");
-
-		DialogNode *node_1_2_2_1_3_2_1 = new DialogNode("So you didn't see?", "I saw nothing Z happen");
-		DialogNode *node_1_2_2_1_3_2_2 = new DialogNode("Was anyone suspicious?", "Ryuuko, he's dumb Z so he might've Z accidentally dont it");
-
-		DialogNode *node_1_2_2_1_3_2_2_1 = new DialogNode("Who else?", "*mumble* Z those disgucting pirates");
-		DialogNode *node_1_2_2_1_3_2_2_1_1 = new DialogNode("huh?", "oh no! Z Ignore that!");
-		DialogNode *node_1_2_2_1_3_2_2_1_2 = new DialogNode("Disgusting?", "I didn't mean that! Z here's just tension Z amoung factions");
-		DialogNode *node_1_2_2_1_3_2_2_1_3 = new DialogNode("..I'm a pirate.", "I'm sorry, Z I didn't mean that");
-
-		DialogNode *node_1_2_2_1_3_2_2_1_3_1 = new DialogNode("Well, who's sus?", "...Ryuuko, Z Bonny, and Sharktooth");
-
-		DialogNode *node_1_2_2_1_3_2_2_1_3_1_1 = new DialogNode("Thank you!", "Magical Aki Z will always help!", "SAVE");
-		DialogNode *node_1_2_2_1_3_2_2_1_3_1_2 = new DialogNode("It was you!", "How could you Z accuse Magical Aki!", "FIGHT");
-		DialogNode *node_1_2_2_1_3_2_2_1_3_1_3 = new DialogNode("You're suspicious...", "hmph, Z no help from me then. Z Goodbye", "SAVE");
+		DialogNode *node_1 = new DialogNode("", "Hey {player}, any progress in finding the package?");
+		DialogNode *node_1_1 = new DialogNode("No", "Really? *sigh*... I could of sworn Ryuuko would of had it.");
+		DialogNode *node_1_1_1 = new DialogNode("Him? Impossible.", "Not that he would try and steal something, he's just such an idiot that there's a possibility..."); // 1=
+		DialogNode *node_1_1_2 = new DialogNode("I checked already", "And how hard was that? I swear they never should have let him past the checkpoint..."); // =1
+		DialogNode *node_1_1_2_1 = new DialogNode("So... wha' now?", "While you were searching, I conducted my own investigation.");
+		DialogNode *node_1_1_2_1_1 = new DialogNode("And?", "I think the pirates were all working together as a whole...");
+		DialogNode *node_1_1_2_1_1_1 = new DialogNode("Are you sure?", "They staged the siege on the CLEAR cave, who KNOWS what they could do? They're all disgusting animals...");
+		DialogNode *node_1_1_2_1_1_1_1 = new DialogNode("Huh?", "Oh no! Ignore that!"); // 2=
+		DialogNode *node_1_1_2_1_1_1_2 = new DialogNode("Disgustin'?", "I didn't mean that! There's just tension among the two factions, thats all."); // 2=
+		DialogNode *node_1_1_2_1_1_1_3 = new DialogNode("... I'm a pirate.", "I'm sorry, I didn't mean that..."); // =2
+		DialogNode *node_1_1_2_1_1_1_3_1 = new DialogNode("Back to the package", "Oh course. How could I of been distracted? There's still one place left to check.");
+		DialogNode *node_1_1_2_1_1_1_3_1_1 = new DialogNode("Where?", "Just to the right of this room, I'll remove the rock blocking the entrance.");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1 = new DialogNode("Thank ye", "Oh hey, I have a glove that looks just like yours, I used to have a pair but I...");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1 = new DialogNode("Welp, see ya", "Of course. Here, let me remove the rock for you."); // =3
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1_1 = new DialogNode("Goodbye", "'Good luck' finding your father's package.", "SAVE"); // ROCK EVENT
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2 = new DialogNode("'But you...' what?", "Nothing, I merely misplaced it. Thats all, why does it even matter?");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_1 = new DialogNode("'twas at th' checkpoint", "I don't see what you're getting at here... we're wasting valubale time!");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_1_1 = new DialogNode("Does it belong t' ye?", "Maybe... it does bare some resemblence to mine, but why does that matter?"); // 6=
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2 = new DialogNode("It's yers!", "I suppose it does bare some resemblence to mine, but why does that matter?"); // =6
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_1 = new DialogNode("I dunno", "That's right. Now about that boulder... how about I clear it so you can progress?");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_1_1 = new DialogNode("Sure", "It'll only take a second..."); // 3=
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_1_2 = new DialogNode("No", "Why? Do you have an idea of who might have stolen your package?");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_1_2_1 = new DialogNode("Yeah! 'twas ye!", "Are you accusing me of stealing from you?"); // 4=
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2 = new DialogNode("'cause 'twas ye!", "Are you accusing me of something? Remember, I've been helping you this whole time."); // =4
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_1 = new DialogNode("Give me my package!", "Touchy...", "FIGHT");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2 = new DialogNode("Fer yer owns gain", "Uhh-what? If I had taken it, I wouldn't have tasked you with finding it!");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1 = new DialogNode("Why? Whats in it?", "I already explained myself, something very dangerous! Now, do you believe me or not?");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_1 = new DialogNode("I don't believe ye", "Then you're even more of a fool than I took you for!", "FIGHT");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_2 = new DialogNode("I believe ye", "What a relief... Now for that boulder: I'll clear it so you can progress."); // 3=
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2 = new DialogNode("'cause ye hate pirates", "Where are you going with this? It's not like I wanted you to-");
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2_1 = new DialogNode("eliminate th' pirates", "Are you DONE? Let's just get this over with...", "FIGHT");
+		DialogNode *node_2 = new DialogNode("", "Thank you for believeing me. I PROMISE you won't regret this later.", "SAVE"); // =5 ROCK EVENT
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
-		node_1->setChoice2(node_1_2);
-		node_1->setChoice3(node_1_3);
-
 		node_1_1->setChoice1(node_1_1_1);
+		node_1_1->setChoice2(node_1_1_2);
+		node_1_1_2->setChoice1(node_1_1_2_1);
+		node_1_1_2_1->setChoice1(node_1_1_2_1_1);
+		node_1_1_2_1_1->setChoice1(node_1_1_2_1_1_1);
+		node_1_1_2_1_1_1->setChoice1(node_1_1_2_1_1_1_1);
+		node_1_1_2_1_1_1->setChoice2(node_1_1_2_1_1_1_2);
+		node_1_1_2_1_1_1->setChoice3(node_1_1_2_1_1_1_3);
+		node_1_1_2_1_1_1_3->setChoice1(node_1_1_2_1_1_1_3_1);
+		node_1_1_2_1_1_1_3_1->setChoice1(node_1_1_2_1_1_1_3_1_1);
+		node_1_1_2_1_1_1_3_1_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1);
+		node_1_1_2_1_1_1_3_1_1_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_1);
+		node_1_1_2_1_1_1_3_1_1_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2);
+		node_1_1_2_1_1_1_3_1_1_1_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_1_1);
 
-		node_1_1_1->setChoice1(node_1_1_1_1);
+		node_1_1_2_1_1_1_3_1_1_1_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_1);
+		node_1_1_2_1_1_1_3_1_1_1_2->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_1_1);
+		node_1_1_2_1_1_1_3_1_1_1_2_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_1);
+		node_1_1_2_1_1_1_3_1_1_1_2_2->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_1_1);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_1_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_1_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_1_2_1);
 
-		node_1_1_1_1->setChoice1(node_1_2_1);
-		node_1_1_1_1->setChoice2(node_1_2_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_2_1);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_1);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2_1);
 
-		node_1_2->setChoice1(node_1_2_1);
-		node_1_2->setChoice2(node_1_2_2);
-
-		node_1_2_1->setChoice1(node_1_2_1_1);
-		node_1_2_1->setChoice2(node_1_2_1_2);
-		node_1_2_1->setChoice3(node_1_2_1_3);
-
-		node_1_2_1_1->setChoice1(node_1_2_1_2_1);
-		node_1_2_1_2->setChoice1(node_1_2_1_2_1);
-
-		node_1_2_1_3->setChoice1(node_1_2_2);
-		node_1_2_1_2_1->setChoice1(node_1_2_2);
-
-		node_1_2_2->setChoice1(node_1_2_2_1);
-
-		node_1_2_2_1->setChoice1(node_1_2_2_1_1);
-		node_1_2_2_1->setChoice2(node_1_2_2_1_2);
-		node_1_2_2_1->setChoice3(node_1_2_2_1_3);
-
-		node_1_2_2_1_2->setChoice1(node_1_2_2_1_3_1);
-		node_1_2_2_1_2->setChoice2(node_1_2_2_1_3_2);
-
-		node_1_2_2_1_3->setChoice1(node_1_2_2_1_3_1);
-		node_1_2_2_1_3->setChoice2(node_1_2_2_1_3_2);
-
-		node_1_2_2_1_3_1->setChoice1(node_1_2_2_1_3_2_1);
-		node_1_2_2_1_3_1->setChoice2(node_1_2_2_1_3_2_2);
-
-		node_1_2_2_1_3_2->setChoice1(node_1_2_2_1_3_2_1);
-		node_1_2_2_1_3_2->setChoice2(node_1_2_2_1_3_2_2);
-
-		node_1_2_2_1_3_2_1->setChoice1(node_1_2_2_1_3_2_2);
-
-		node_1_2_2_1_3_2_2->setChoice1(node_1_2_2_1_3_2_2_1);
-
-		node_1_2_2_1_3_2_2_1->setChoice1(node_1_2_2_1_3_2_2_1_1);
-		node_1_2_2_1_3_2_2_1->setChoice2(node_1_2_2_1_3_2_2_1_2);
-		node_1_2_2_1_3_2_2_1->setChoice3(node_1_2_2_1_3_2_2_1_3);
-
-		node_1_2_2_1_3_2_2_1_1->setChoice1(node_1_2_2_1_3_2_2_1_3_1);
-		node_1_2_2_1_3_2_2_1_2->setChoice1(node_1_2_2_1_3_2_2_1_3_1);
-		node_1_2_2_1_3_2_2_1_3->setChoice1(node_1_2_2_1_3_2_2_1_3_1);
-
-		node_1_2_2_1_3_2_2_1_3_1->setChoice1(node_1_2_2_1_3_2_2_1_3_1_1);
-		node_1_2_2_1_3_2_2_1_3_1->setChoice2(node_1_2_2_1_3_2_2_1_3_1_2);
-		node_1_2_2_1_3_2_2_1_3_1->setChoice3(node_1_2_2_1_3_2_2_1_3_1_3);
+		// Seperated Links:
+		node_1_1_1->setChoice1(node_1_1_2_1); // 1=
+		node_1_1_2_1_1_1_1->setChoice1(node_1_1_2_1_1_1_3_1); // 2=
+		node_1_1_2_1_1_1_2->setChoice1(node_1_1_2_1_1_1_3_1); // 2=
+		node_1_1_2_1_1_1_3_1_1_1_2_2_1_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_1_1); // 3=
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_1_1); // 3=
+		node_1_1_2_1_1_1_3_1_1_1_2_2_1_2_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_2_1); // 4=
+		node_1_1_2_1_1_1_3_1_1_1_2_2_1_2_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_1_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_1); // 6=
+		node_1_1_2_1_1_1_3_1_1_1_2_1_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2);
 
 		setHeadNode(node_1);
 	}

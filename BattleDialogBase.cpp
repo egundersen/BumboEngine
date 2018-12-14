@@ -4,7 +4,7 @@
 
 BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, std::pair<std::string, int> &image_file_path)
 	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), matrix_display_{ matrix_display }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), image_file_path_{ image_file_path },
-	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), boss_{ boss_fight_definition },
+	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), max_choices_(0), boss_{ boss_fight_definition },
 	displaying_response_{ false }, enter_key_pressed_{ false }, return_to_menu_{ false }
 {
 	start_time_move_cursor_ = GetTickCount();
@@ -14,6 +14,7 @@ BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vecto
 // Calls when battle dialog is opened
 void BattleDialogBase::onOpenDialog()
 {
+	cursor_index_ = 0;
 	start_time_move_cursor_ = GetTickCount();
 	enter_key_pressed_ = false;
 	should_exit_dialog_ = false;
@@ -130,6 +131,9 @@ void BattleDialogBase::setBackgroundText()
 // Updates player options as text
 void BattleDialogBase::setDialogOptions()
 {
+	drawSolidRectangle(17, 29, 57, 5, ' ', matrix_);
+	max_choices_ = -1;
+
 	int dialog_choices_index = 0;
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>>::iterator row;
 	std::vector<std::tuple<std::string, std::string, bool>>::iterator col;
@@ -141,6 +145,7 @@ void BattleDialogBase::setDialogOptions()
 			for (col = row->begin(); col != row->end(); col++)
 			{
 				addTextToMatrix(17, 29 + offset, 'l', std::get<0>(*col), matrix_);
+				max_choices_++;
 				offset++;
 			}
 			return;
@@ -163,8 +168,7 @@ void BattleDialogBase::setReponseText(std::string response_text_string)
 	drawSolidRectangle(51, 7, 19, 9, ' ', matrix_);
 	drawRectangle(50, 6, 20, 10, 'X', matrix_);
 
-	Image response_text(response_text_string);
-	addImageToMatrix(60, 10, response_text, matrix_);
+	addTextToMatrix(60, 10, 'm', response_text_string, matrix_, 17, 7);
 
 	start_time_exit_dialog_ = GetTickCount();
 	displaying_response_ = true;
@@ -176,13 +180,13 @@ void BattleDialogBase::moveCursor(std::string move_cursor_direction)
 	if (move_cursor_direction == "UP")
 	{
 		if (cursor_index_ == 0)
-			cursor_index_ = 3;
+			cursor_index_ = max_choices_;
 		else
 			cursor_index_--;
 	}
 	else if (move_cursor_direction == "DOWN")
 	{
-		if (cursor_index_ == 3)
+		if (cursor_index_ == max_choices_)
 			cursor_index_ = 0;
 		else
 			cursor_index_++;

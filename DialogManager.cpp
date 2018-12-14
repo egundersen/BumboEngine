@@ -62,7 +62,7 @@ void DialogManager::setDialogOptions()
 			addTextToMatrix(4, 4, 'l', moving_node_->choice_2_->getPlayerDialog(), dialog_matrix_);
 		if (moving_node_->choice_3_ != nullptr)
 			addTextToMatrix(4, 6, 'l', moving_node_->choice_3_->getPlayerDialog(), dialog_matrix_);
-		// Replaces empty text block with goodbye text. FOr it to work, also remove the -1 condition in setDialogText
+		// Replaces empty text block with goodbye text. For it to work, also remove the -1 condition in setDialogText
 		//else if(head_node_->choice_1_ == nullptr && head_node_->choice_2_ == nullptr && head_node_->choice_3_ != nullptr)
 		//	addTextToMatrix(4, 6, "Goodbye", dialog_matrix_);
 	}
@@ -83,25 +83,14 @@ void DialogManager::setResponseText()
 		for (int j = 0; j < 25; j++)
 			dialog_matrix_[2 + i][31 + j] = ' ';
 
+#ifdef _DEBUG
 	if (moving_node_->getAction() != "")
 	{
-#ifdef _DEBUG
 		if (moving_node_->choice_1_ == nullptr && moving_node_->getAction() == "ITEM")
 			throw std::invalid_argument(" If an item is given through a dialog node, that node must point to atleast one other node. ");
+	}
 #endif
-		if (moving_node_->choice_1_ != nullptr)
-		{
-			//Image response(head_node_->choice_1_->getResponse());
-			//addImageToMatrix(43, 4, response, dialog_matrix_);
-		}
-		Image response(moving_node_->getResponse());
-		addImageToMatrix(43, 4, response, dialog_matrix_);
-	}
-	else
-	{
-		Image response(moving_node_->getResponse());
-		addImageToMatrix(43, 4, response, dialog_matrix_);
-	}
+	addTextToMatrix(32, 2, 'l', moving_node_->getResponse(), dialog_matrix_, 23, 5);
 }
 
 // Updates cursor location

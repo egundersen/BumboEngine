@@ -38,26 +38,27 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Are you prepared to fight?! ", "I'LL BREAK YE", false));
-		dialog_choice_1.push_back(std::make_tuple("I'm gonna beat you up ", "YOU ARE A FRY", false));
-		dialog_choice_1.push_back(std::make_tuple("IS IT YOU?? ", " DON'T DOUBT ME", true));
-		dialog_choice_1.push_back(std::make_tuple("I will prove that you are weak! ", "YOU ARE WEAK", false));
+		dialog_choice_1.push_back(std::make_tuple("Where be me package!?", "WE'D BE HERE FOR MONTHS IF I HAD TO LIST EVERY PACKAGE A SMUGGLED", true));
+		dialog_choice_1.push_back(std::make_tuple("Be this EZ mode?", "I HATE OVERWATCH REFERENCES- IF ANYTHING, D.VA's THE WORST! ! !", false));
+		dialog_choice_1.push_back(std::make_tuple("I shall prove that ye be weak! ", "YOU DON'T SCARE ME, HERO!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("This will be your first lost! ", "I WILL NOT BE BEATEN", false));
-		dialog_choice_2.push_back(std::make_tuple("You will break! ", "YAR A TWIG", false));
-		dialog_choice_2.push_back(std::make_tuple("AHAHHAHAHA ", "NOTHIN BUT A PIP", false));
-		dialog_choice_2.push_back(std::make_tuple("Are you great like how I imagined you? ", "SONNY, YAR AN IDIOT", true));
+		dialog_choice_2.push_back(std::make_tuple("By 'smuggled', ye mean stolen, right?", "WELL I DON'T RECKON IT BE LEGAL!", false));
+		dialog_choice_2.push_back(std::make_tuple("Did ye pickpocket me?", "pickpocket... do ye take me fer some PETTY THIEF?", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("It might not be you ", "I'M NOT WEAK", true));
-		dialog_choice_3.push_back(std::make_tuple("This is your end! ", "I WILL FIGHT TIL YE DIE", false));
-		dialog_choice_3.push_back(std::make_tuple("I will kill! ", "DIE DIE DIE", false));
-		dialog_choice_3.push_back(std::make_tuple("I might not win.... ", "DON'T RUN AWAY", false));
+		dialog_choice_3.push_back(std::make_tuple("Oh... well I guess ye're innocent...", "AND!? I'M STILL GOING TO KILL YOU!", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_4;
+		dialog_choice_4.push_back(std::make_tuple("Wait, ye don't wanna do this!", "OH BUT I DO", false));
+		dialog_choice_4.push_back(std::make_tuple("Then I shall end ye!", "GOOD LUCK", false));
+		dialog_choice_4.push_back(std::make_tuple("'ave any interest in booty?", "GO HEAD, KEEP WASTING YOUR TIME CHATTING WITH THE INEVITABLE!", false));
+		dialog_choice_4.push_back(std::make_tuple("See if I care...", "THATS THE KIND OF NON-CARING ATTITUDE I LIKE TO SEE!!", true)); // 2=
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
 		dialog_choices_.push_back(dialog_choice_3);
+		dialog_choices_.push_back(dialog_choice_4);
 
 		/* Just a little check to make sure you typed the above code correctly.
 		* This will throw an exception if you added more than more dialog choices
@@ -103,58 +104,67 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "AAAARRRGGGHGH!ZZWHOOOO STEPSZON ME TERRITORY?Z");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "MEEEEE NAME BEZS-H-A-R-K T-O-O-T-HZ");
-		DialogNode *node_1_2 = new DialogNode("You cant take territories", "DOOOOOOOOON'T TELL MEZWHAT TO DO !!!!!Z", "FIGHT");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "LEAVE ME TERRITORY!Z");
-		DialogNode *node_1_1_1 = new DialogNode("Of the Blood Sea??", "ARRRGGGG!ZIT IS I, SHARKTOOTH!ZTHE NAME WHICHZCASTS FEAR INZTHE MANY A MANZ");
-		DialogNode *node_1_1_2 = new DialogNode("Were you at the border?", "AND SO WHAT IFZI WAS THAR??Z");
-		DialogNode *node_1_1_3 = new DialogNode("Never heard of you...", "ARRRGGHH YOU DOZNOT KNOWZWHO I ARE?? Z"); //TODO amber - add "smelling " cigar which leads to box of cigar
-		DialogNode *node_1_1_2_1 = new DialogNode("Did you lose anything?", "I BE MISSIN'ZME PRECIOUSZCIGAR BOX Z");
-		DialogNode *node_1_1_2_2 = new DialogNode("Is THIS your cigar box?", "DIS MINE ITS TRUEZZ...ZAND HOW... PRAYTELL...ZDID. YOU. GET. THIS.?Z");
-		DialogNode *node_1_1_2_2_1 = new DialogNode("I found it", "THATS ME BOX!ZTHANK YE. Z");
-		DialogNode *node_1_1_2_2_2 = new DialogNode("I stole it", "THEN BY BALGRUF'S BEARDZI WILL END YOU!Z", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1 = new DialogNode("Regarding the border...", "WHAT ABOUT IT?ZSPIT IT OUT LAD!ZI HAVEN'T ALL DAY!Z");
-		DialogNode *node_1_1_2_2_1_2 = new DialogNode("Take anything recently?", "ARE YE ACCUSINGZME OF SOMETHING?!ZIF THAT BE THE CASEZI'LL SEE YOU IN HELLZ", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_1 = new DialogNode("See anyone suspicious?", "E'RYONE IS SUSPICIOUSZIN MY EYES Z ...EVEN YAZ", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_2 = new DialogNode("Theres this hard drive", "CUT YE OFF RIGHT 'EREZYE THINK IT WAS MEZWHO STOLE ITZDON'T KNOW NOTHINGZABOUT THAT ... HEHZ");
-		DialogNode *node_1_1_2_2_1_1_2_1 = new DialogNode("You did steal it!", "ARRRGGG YE IS WRONGZ", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_2_2 = new DialogNode("I have a suspicion...", "JUST A SUSPICION?!ZYE HAVEN'T THE COURAGEZNOR THE BRAVERYZTO FACE ME!ZTIME TO DIE, COWARDZ");
-		DialogNode *node_1_1_2_2_1_1_2_3 = new DialogNode("No, not at all!", "YA CALLING MEZA SEA BARNACLE?Z", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_2_2_1 = new DialogNode("I'm no coward!", "FINALLY SOME APTITUDEZDIE WIT' A SWORDZIN YE HAND!Z", "FIGHT");
-		DialogNode *node_1_1_2_2_1_1_2_2_2 = new DialogNode("No, I dont want to fight", "WHEN WILL YE LEARN!?ZNO MATTER THE CHOICEZYOU MAKE, THISZWILL ALWAYSZEND THE SAME WAY!Z", "FIGHT");
+		DialogNode *node_1 = new DialogNode("", "AAAARRRGGGHGH! WHOOOO STEPSON ME TERRITORY?");
+		DialogNode *node_1_1 = new DialogNode("Whats yer name?", "MEEEEE NAME BE S-H-A-R-K T-O-O-T-H.");
+		DialogNode *node_1_1_1 = new DialogNode("O' th' Blood Sea??", "ARRRGGGG! IT IS I, SHARKTOOTH! THE NAME WHICH CASTS FEAR IN MANY A MAN.");
+		DialogNode *node_1_1_1_1 = new DialogNode("Were ye at th' border?", "SO WHAT IF I WAS??"); // 1=
+		DialogNode *node_1_1_1_2 = new DialogNode("Goodbye", "LEAVE ME TERRITORY!");
+		DialogNode *node_1_1_2 = new DialogNode("Were ye at th' border?", "SO WHAT IF I WAS??"); // =1
+		DialogNode *node_1_1_2_1 = new DialogNode("Did ye lose anythin'?", "I BE MISSIN' ME PRECIOUS CIGAR BOX.");
+		DialogNode *node_1_1_2_2 = new DialogNode("Be THIS yer cigar box?", "TIS MINE ITS TRUE...AND HOW... PRAYTELL... DID. YOU. GET. THIS.?");
+		DialogNode *node_1_1_2_2_1 = new DialogNode("I found it", "WELL I THANK YE FOR THAT.");
+		DialogNode *node_1_1_2_2_1_1 = new DialogNode("Regardin' th' border...", "WHAT ABOUT IT? SPIT IT OUT LAD! I HAVEN'T ALL DAY!");
+		DialogNode *node_1_1_2_2_1_1_1 = new DialogNode("See anyone suspicious?", "E'RYONE IS SUSPICIOUS IN MY EYES  ...EVEN YA.", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2 = new DialogNode("Thars this package-", "CUT YE OFF RIGHT 'ERE. YE THINK IT WAS ME WHO STOLE IT! DON'T KNOW NOTHING ABOUT THAT ... HEH.");
+		DialogNode *node_1_1_2_2_1_1_2_1 = new DialogNode("Ye did pilfer it!", "SHUT YER TRAP! I'M SICK OF YOU!", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2_2 = new DialogNode("I 'ave a suspicion...", "JUST A SUSPICION?! YE HAVEN'T THE COURAGE NOR THE BRAVERY TO FACE ME! TIME TO DIE, COWARD.");
+		DialogNode *node_1_1_2_2_1_1_2_2_1 = new DialogNode("I be no yellow-bellied cur!", "FINALLY SOME APTITUDE! DIE WIT' A SWORD IN YE HAND!", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2_2_2 = new DialogNode("No, I dont wants t' fight", "WHEN WILL YE LEARN!? NO MATTER THE CHOICE YE MAKE, THIS WILL ALWAYS END THE SAME WAY!", "FIGHT");
+		DialogNode *node_1_1_2_2_1_1_2_3 = new DialogNode("No, nah at all!", "YA CALLING ME A SEA BARNACLE?", "FIGHT");
+		DialogNode *node_1_1_2_2_1_2 = new DialogNode("Take anythin' recently?", "ARE YE ACCUSING ME OF SOMETHING?! IF THAT BE THE CASE I'LL SEE YE 'N HELL.", "FIGHT");
+		DialogNode *node_1_1_2_2_2 = new DialogNode("I plundered it", "THEN BY BALGRUFF'S BEARD I WILL END YOU!", "FIGHT");
+		DialogNode *node_1_1_3 = new DialogNode("Ne'er heard o' ye...", "PERHAPS I'LL GIVE YE SOMETHING TO REMEMBER ME BY!", "FIGHT");
+		DialogNode *node_1_2 = new DialogNode("Ye cant claim territory", "DOOOOOOOOON'T TELL ME WHAT TO DO !!!!!", "FIGHT");
+		DialogNode *node_1_3 = new DialogNode("Goodbye...", "LEAVE ME TERRITORY!");
+		DialogNode *node_2 = new DialogNode("", "PERHAPS I WAS WRONG ABOUT YE", "SAVE"); // =2
+		DialogNode *node_2_1 = new DialogNode("Well-", "SHUT UP 'n GET LOST afore th' feds find me.");
+		DialogNode *node_2_1_1 = new DialogNode("perhaps ye could hel-", "NOT INTERESTED.");
+		DialogNode *node_2_1_2_1 = new DialogNode("Bye", "JUST GET LOST ALREADY!", "SAVE");
+		DialogNode *node_2_1_2 = new DialogNode("Bye", "GET LOST!", "SAVE");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
 		node_1->setChoice2(node_1_2);
 		node_1->setChoice3(node_1_3);
-
 		node_1_1->setChoice1(node_1_1_1);
 		node_1_1->setChoice2(node_1_1_2);
 		node_1_1->setChoice3(node_1_1_3);
-
-		node_1_1_1->setChoice1(node_1_1_2);
+		node_1_1_1->setChoice1(node_1_1_1_1);
+		node_1_1_1->setChoice2(node_1_1_1_2);
 
 		node_1_1_2->setChoice1(node_1_1_2_1);
 		node_1_1_2->setChoice2(node_1_1_2_2);
-
-		node_1_1_2_1->setChoice1(node_1_1_2_2);
-
 		node_1_1_2_2->setChoice1(node_1_1_2_2_1);
 		node_1_1_2_2->setChoice2(node_1_1_2_2_2);
-
 		node_1_1_2_2_1->setChoice1(node_1_1_2_2_1_1);
 		node_1_1_2_2_1->setChoice2(node_1_1_2_2_1_2);
-
 		node_1_1_2_2_1_1->setChoice1(node_1_1_2_2_1_1_1);
 		node_1_1_2_2_1_1->setChoice2(node_1_1_2_2_1_1_2);
-
 		node_1_1_2_2_1_1_2->setChoice1(node_1_1_2_2_1_1_2_1);
 		node_1_1_2_2_1_1_2->setChoice2(node_1_1_2_2_1_1_2_2);
 		node_1_1_2_2_1_1_2->setChoice3(node_1_1_2_2_1_1_2_3);
 
 		node_1_1_2_2_1_1_2_2->setChoice1(node_1_1_2_2_1_1_2_2_1);
 		node_1_1_2_2_1_1_2_2->setChoice2(node_1_1_2_2_1_1_2_2_2);
+
+		node_2->setChoice1(node_2_1);
+		node_2_1->setChoice1(node_2_1_1);
+		node_2_1->setChoice2(node_2_1_2);
+		node_2_1_1->setChoice1(node_2_1_2);
+
+		// Seperated Links:
+		node_1_1_1_1->setChoice1(node_1_1_2_1); // 1=
+		node_1_1_1_1->setChoice2(node_1_1_2_2);
 
 		setHeadNode(node_1);
 	}

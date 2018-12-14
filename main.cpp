@@ -7,7 +7,7 @@
 #include "resource.h"
 #include <iostream>
 #include <sstream>
-#include <windows.h>
+#include <Windows.h>
 #include <utility>
 
 using namespace WinMainParameters;
@@ -227,6 +227,15 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 		return false;
 	}
 
+	// Make image transparent
+	/*BOOL qRetTransBlit = ::TransparentBlt(hWinDC, position_x, 0, 475, 425,
+		hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, RGB(0, 0, 0));
+	if (!qRetTransBlit)
+	{
+		::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
+		return false;
+	}//*/
+
 	// Blit the dc which holds the bitmap onto the window's dc
 	//BOOL qRetBlit = ::BitBlt(hWinDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight,
 	//	hLocalDC, 0, 0, SRCCOPY);
@@ -237,7 +246,7 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 	{
 		::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
 		return false;
-	}
+	}//*/
 
 	// Unitialize and deallocate resources
 	::SelectObject(hLocalDC, hOldBmp);
@@ -306,14 +315,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				"Arial");
 			SelectObject(hDCMem, font);//*/
 
-			// Load Complex Ascii-styled Image from provided file path
-			if (image_file_path_G.first != "")
-			{
-				std::wstring sTemp = std::wstring(image_file_path_G.first.begin(), image_file_path_G.first.end());
-				LPCWSTR sw = sTemp.c_str();
-				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second);
-			}
-
 			COLORREF whiteTextColor = 0x00ffffff; //ffff00
 			COLORREF blackTextColor = 0x00000000;
 			SetBkMode(hDCMem, OPAQUE);
@@ -333,6 +334,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				//int height = DrawText(hdc, helloWorldString[i], ARRAYSIZE(helloWorldStringS), &clientRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
 				//OffsetRect(&rect, 0, height);
 			}
+
+			// Load Complex Ascii-styled Image from provided file path
+			if (image_file_path_G.first != "")
+			{
+				std::wstring sTemp = std::wstring(image_file_path_G.first.begin(), image_file_path_G.first.end());
+				LPCWSTR sw = sTemp.c_str();
+				LoadAndBlitBitmap(sw, hDCMem, image_file_path_G.second);
+			}
+
 			//DeleteObject(font);
 
 			// Copy window image/bitmap to screen
