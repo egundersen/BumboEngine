@@ -30,7 +30,7 @@ public:
 	int getYOffset() { return y_offset_; }
 	bool shouldShowBitmap() { return should_show_bitmap_; }
 	std::string getFilePath() { return file_path_; }
-	RGBA getRGBA() { return rgba_; }
+	RGBA &getRGBA() { return rgba_; }
 private:
 	int x_offset_, y_offset_;
 	bool should_show_bitmap_;

@@ -15,7 +15,7 @@ public:
 		bool attack_on_sight = false,
 
 		// TRUE -> Basic Popup dialog | FALSE -> Advanced Dialog with player choices
-		bool use_basic_dialog = true,
+		bool use_basic_dialog = false,
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
 		PopupDefinition popup_sprite = PopupDefinition("This is my only dialog! Hello ", 'X', 23, 9),
 
@@ -34,12 +34,12 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			22,
+			1,
 			"ALL MIGHT", 
-			"moltar.bmp", 
-			"moltar1.bmp", 
-			"moltar1.bmp",
-			"moltar1.bmp"
+			"bonny_neutral.bmp", 
+			"bonny_neutral.bmp", 
+			"bonny_neutral.bmp",
+			"bonny_neutral.bmp"
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

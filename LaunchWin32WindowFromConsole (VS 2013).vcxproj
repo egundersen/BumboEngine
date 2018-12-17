@@ -194,6 +194,7 @@
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PlayerSprite.cpp" />
     <ClCompile Include="Popup.cpp" />
+    <ClCompile Include="RGBA.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="PopupWithCollision.cpp" />
     <ClCompile Include="StartScreen.cpp" />

@@ -42,7 +42,10 @@ public:
 
 			void setColor(char red, char green, char blue);
 			void setColor(RGBA rgba);
+			bool fadeColor(int fade_delay, int multiplier);
+
 			unsigned int getColor();
+			RGBA getRGBA() { return std::get<1>(a[index_]); }
 		private:
 			std::vector<std::tuple<char, RGBA>>& a;
 			int index_;

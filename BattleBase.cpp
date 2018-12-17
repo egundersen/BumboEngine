@@ -5,7 +5,7 @@
 #include <iostream>
 
 BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, int &player_health, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
+	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_health_{ player_health }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
 	screen_matrix_{ screen_matrix }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, screen_matrix, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
 	initial_player_health_{ player_health }
@@ -88,32 +88,32 @@ void BattleBase::setBackgroundText()
 {
 	for (int i = 1; i < height_ - 1; ++i)
 	{
-		matrix_[i][1] = 'X';
-		matrix_[i][2] = 'X';
-		matrix_[i][3] = 'X';
-		matrix_[i][width_ - 2] = 'X';
-		matrix_[i][width_ - 3] = 'X';
-		matrix_[i][width_ - 4] = 'X';
+		menu_matrix_[i][1] = 'X';
+		menu_matrix_[i][2] = 'X';
+		menu_matrix_[i][3] = 'X';
+		menu_matrix_[i][width_ - 2] = 'X';
+		menu_matrix_[i][width_ - 3] = 'X';
+		menu_matrix_[i][width_ - 4] = 'X';
 	}
 
 	if (!boss_.use_files)
 	{
 		Image main_ascii(boss_.ascii);
 		Image overlay_ascii(boss_.overlay);
-		addImageToMatrix(40, 14, main_ascii, matrix_);
-		addImageToMatrix(boss_.overlay_x, boss_.overlay_y, overlay_ascii, matrix_);
+		addImageToMatrix(40, 14, main_ascii, menu_matrix_);
+		addImageToMatrix(boss_.overlay_x, boss_.overlay_y, overlay_ascii, menu_matrix_);
 	}
 
-	drawRectangle(8, 29, 15, 5, 'X', matrix_);
-	drawRectangle(33, 29, 15, 5, 'X', matrix_);
-	drawRectangle(56, 29, 15, 5, 'X', matrix_);
+	drawRectangle(8, 29, 15, 5, 'X', menu_matrix_);
+	drawRectangle(33, 29, 15, 5, 'X', menu_matrix_);
+	drawRectangle(56, 29, 15, 5, 'X', menu_matrix_);
 
 	Image text1("SPEAK");
 	Image text2("FIGHT");
 	Image text3("ITEMS");
-	addImageToMatrix(15, 31, text1, matrix_);
-	addImageToMatrix(40, 31, text2, matrix_);
-	addImageToMatrix(63, 31, text3, matrix_);
+	addImageToMatrix(15, 31, text1, menu_matrix_);
+	addImageToMatrix(40, 31, text2, menu_matrix_);
+	addImageToMatrix(63, 31, text3, menu_matrix_);
 
 	drawCursor(27);
 
@@ -121,25 +121,25 @@ void BattleBase::setBackgroundText()
 	Image bossHealthText("BOSS HEALTH");
 	if (boss_.health > 11)
 	{
-		addImageToMatrix(8 + 11 / 2, 3, bossHealthText, matrix_);
-		matrix_[4][7] = '[';
-		matrix_[4][9 + 11] = ']';
-		matrix_[5][7] = '[';
-		matrix_[5][9 + 11] = ']';
+		addImageToMatrix(8 + 11 / 2, 3, bossHealthText, menu_matrix_);
+		menu_matrix_[4][7] = '[';
+		menu_matrix_[4][9 + 11] = ']';
+		menu_matrix_[5][7] = '[';
+		menu_matrix_[5][9 + 11] = ']';
 
 		for (int j = 0; j < 11; ++j)
-			matrix_[4][j + 8] = 'O';
+			menu_matrix_[4][j + 8] = 'O';
 	}
 	else
 	{
-		addImageToMatrix(8 + boss_.health / 2, 3, bossHealthText, matrix_);
-		matrix_[4][7] = '[';
-		matrix_[4][9 + boss_.health] = ']';
+		addImageToMatrix(8 + boss_.health / 2, 3, bossHealthText, menu_matrix_);
+		menu_matrix_[4][7] = '[';
+		menu_matrix_[4][9 + boss_.health] = ']';
 	}
 
 	// Boss name
 	Image boss_name(boss_.name);
-	addImageToMatrix(13, 7, boss_name, matrix_);
+	addImageToMatrix(13, 7, boss_name, menu_matrix_);
 }
 
 // Sets the boss health bar
@@ -150,26 +150,26 @@ void BattleBase::setBossHealthText()
 		if (initial_boss_health_ > 11)
 			for (int i = 0; i < 2; i++)
 				for (int j = 0; j < 11; j++)
-					matrix_[i + 4][j + 8] = ' ';
+					menu_matrix_[i + 4][j + 8] = ' ';
 		else
 			for (int j = 0; j < initial_boss_health_; j++)
-				matrix_[4][j + 8] = ' ';
+				menu_matrix_[4][j + 8] = ' ';
 	}
 	else if (boss_.health > 11)
 	{
 		for (int j = boss_.health - 11; j < 11; ++j)
-			matrix_[5][j + 8] = ' ';
+			menu_matrix_[5][j + 8] = ' ';
 		for (int j = 0; j < boss_.health - 11; ++j)
-			matrix_[5][j + 8] = 'O';
+			menu_matrix_[5][j + 8] = 'O';
 	}
 	else
 	{
 		if (boss_.health == 11)
-			matrix_[5][8] = ' ';
+			menu_matrix_[5][8] = ' ';
 		for (int j = boss_.health; j < initial_boss_health_; ++j)
-			matrix_[4][j + 8] = ' ';
+			menu_matrix_[4][j + 8] = ' ';
 		for (int j = 0; j < boss_.health; ++j)
-			matrix_[4][j + 8] = 'O';
+			menu_matrix_[4][j + 8] = 'O';
 	}
 }
 
@@ -178,42 +178,42 @@ void BattleBase::setPlayerHealthText(int x_position, int y_position)
 {
 	Image player_health_text("{player}'s");
 	Image lives("Lives:  ");
-	addImageToMatrix(x_position, y_position, player_health_text, matrix_);
-	addImageToMatrix(x_position, y_position + 1, lives, matrix_);
-	matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
+	addImageToMatrix(x_position, y_position, player_health_text, menu_matrix_);
+	addImageToMatrix(x_position, y_position + 1, lives, menu_matrix_);
+	menu_matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
 }
 
 // Sets the game over screen
 void BattleBase::setGameOverText()
 {
-	drawSolidRectangle(0, 0, width_, height_, ' ', matrix_);
+	drawSolidRectangle(0, 0, width_, height_, ' ', menu_matrix_);
 	for (int i = 1; i < height_ - 1; ++i)
 	{
-		matrix_[i][1] = 'X';
-		matrix_[i][2] = 'X';
-		matrix_[i][3] = 'X';
-		matrix_[i][width_ - 2] = 'X';
-		matrix_[i][width_ - 3] = 'X';
-		matrix_[i][width_ - 4] = 'X';
+		menu_matrix_[i][1] = 'X';
+		menu_matrix_[i][2] = 'X';
+		menu_matrix_[i][3] = 'X';
+		menu_matrix_[i][width_ - 2] = 'X';
+		menu_matrix_[i][width_ - 3] = 'X';
+		menu_matrix_[i][width_ - 4] = 'X';
 	}
 	for (int j = 5; j < width_ - 5; ++j)
 	{
-		matrix_[1][j] = '=';
-		matrix_[2][j] = '=';
+		menu_matrix_[1][j] = '=';
+		menu_matrix_[2][j] = '=';
 	}
 	Image game_over_letters(" [][][]     []   []      [][]=====      [][][][]      [][]==== [][][]Z[]    []   [][]  [][]  [][][]           []  [] []    [] []     []  []Z[]  ____  []__[] [] [][] [][]=====      []  []  []  []  []==== [][][]Z[]    [] []    [][] [][] [][]           []  []   [][]   []     [] [] Z [][][]  []    [][]  []  [][]=====      [][][]    []    []==== []  []Z");
 	Image funnyText(std::string("    {player} was killed by ") + boss_.name + std::string(".ZZZZZWhat? Not quite dead? Press r for a rematch!Z"));
-	addImageToMatrix(39, 16, funnyText, matrix_);
-	addImageToMatrix(39, 6, game_over_letters, matrix_);
+	addImageToMatrix(39, 16, funnyText, menu_matrix_);
+	addImageToMatrix(39, 6, game_over_letters, menu_matrix_);
 }
 
 // Chooses where to display the cursor
 void BattleBase::setCursorText()
 {
 	// erase old cursor
-	drawRectangle(11, 30, 9, 3, ' ', matrix_);
-	drawRectangle(36, 30, 9, 3, ' ', matrix_);
-	drawRectangle(59, 30, 9, 3, ' ', matrix_);
+	drawRectangle(11, 30, 9, 3, ' ', menu_matrix_);
+	drawRectangle(36, 30, 9, 3, ' ', menu_matrix_);
+	drawRectangle(59, 30, 9, 3, ' ', menu_matrix_);
 
 	// draw new cursor
 	switch (cursor_index_)
@@ -235,14 +235,14 @@ void BattleBase::setCursorText()
 // Draws a cursor at the specified location
 void BattleBase::drawCursor(int offset)
 {
-	matrix_[30][12 + offset] = 'v';
-	matrix_[30][13 + offset] = 'v';
-	matrix_[30][14 + offset] = 'v';
-	matrix_[32][12 + offset] = '^';
-	matrix_[32][13 + offset] = '^';
-	matrix_[32][14 + offset] = '^';
-	matrix_[31][17 + offset] = '<';
-	matrix_[31][9 + offset] = '>';
+	menu_matrix_[30][12 + offset] = 'v';
+	menu_matrix_[30][13 + offset] = 'v';
+	menu_matrix_[30][14 + offset] = 'v';
+	menu_matrix_[32][12 + offset] = '^';
+	menu_matrix_[32][13 + offset] = '^';
+	menu_matrix_[32][14 + offset] = '^';
+	menu_matrix_[31][17 + offset] = '<';
+	menu_matrix_[31][9 + offset] = '>';
 }
 
 // Takes input for battle menu
@@ -321,22 +321,24 @@ void BattleBase::bossDestroyed()
 {
 	double current_time_battle_end_animation = GetTickCount64() - start_time_battle_end_animation_;
 	if (current_time_battle_end_animation <= 5000)
-		showFileSprite("ANGRY");
+	{		
+		showFileSprite("NERVOUS_DEAD");
+	}
 	else if (current_time_battle_end_animation > 5000)
 	{
-		for (int i = 0; i < 27; i++)
-			for (int j = 0; j < 68; j++)
-				matrix_[1 + i][5 + j] = ' ';
-
-		showFileSprite("nervous_dead");
+		removeAllUI();
+		bitmap_.getRGBA().fadeToBlack(5, 3);
+	}
+	else if (current_time_battle_end_animation > 9000)
+	{
+		hideFileSprite();
 	}
 
 	displayScreen();
-	if (current_time_battle_end_animation > 10000)
+	if (current_time_battle_end_animation > 11000)
 	{
 		is_destroyed_ = true;
 		is_battle_finished_ = true;
-		hideFileSprite();
 	}
 }
 
@@ -348,18 +350,18 @@ void BattleBase::bossSpared()
 		showFileSprite("NEUTRAL");
 	else if (current_time_battle_end_animation > 5000)
 	{
-		for (int i = 0; i < 27; i++)
-			for (int j = 0; j < 68; j++)
-				matrix_[1 + i][5 + j] = ' ';
-
+		removeAllUI();
 		showFileSprite("HAPPY");
+	}
+	else if (current_time_battle_end_animation > 9000)
+	{
+		hideFileSprite();
 	}
 
 	displayScreen();
-	if (current_time_battle_end_animation > 10000)
+	if (current_time_battle_end_animation > 11000)
 	{
 		is_battle_finished_ = true;
-		hideFileSprite();
 	}
 }
 
@@ -416,7 +418,7 @@ void BattleBase::showFileSprite(std::string emotion)
 			bitmap_.setFilePath(boss_.file_path_neutral);
 		else if(emotion == "ANGRY")
 			bitmap_.setFilePath(boss_.file_path_angry);
-		else if (emotion == "nervous_dead")
+		else if (emotion == "NERVOUS_DEAD")
 			bitmap_.setFilePath(boss_.file_path_nervous_dead);
 		else if (emotion == "HAPPY")
 			bitmap_.setFilePath(boss_.file_path_happy);
@@ -441,7 +443,7 @@ void BattleBase::resetBattleSpace()
 	boss_.health = initial_boss_health_;
 	player_health_ = initial_player_health_;
 
-	clearMatrix(width_, height_, matrix_);
+	clearMatrix(width_, height_, menu_matrix_);
 	setBackgroundText();
 
 	is_destroyed_ = false;
@@ -451,6 +453,20 @@ void BattleBase::resetBattleSpace()
 	dialog_.reset();
 }
 
+// Fades all UI elements to black and removes them
+void BattleBase::removeAllUI()
+{
+	for (int i = 0; i < 27; i++)
+		for (int j = 0; j < 68; j++)
+			if (menu_matrix_[1 + i][5 + j] != ' ')
+			{
+				if (menu_matrix_[1 + i][5 + j].fadeColor(5, 10))
+				{
+					menu_matrix_[1 + i][5 + j] = ' ';
+				}
+			}
+}
+
 // displays matrix on screen
 void BattleBase::displayScreen()
 {
@@ -458,7 +474,9 @@ void BattleBase::displayScreen()
 	{
 		for (int j = 0; j < width_; j++)
 		{
-			screen_matrix_[i][j] = matrix_[i][j];
+			char temp = menu_matrix_[i][j];
+			screen_matrix_[i][j] = temp;
+			screen_matrix_[i][j].setColor(menu_matrix_[i][j].getRGBA());
 		}
 	}
 }

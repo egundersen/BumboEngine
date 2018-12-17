@@ -5,27 +5,14 @@
 class RGBA
 {
 public:
-	RGBA() : r(255), g(255), b(255), a(255) {}
-	RGBA(unsigned char r, unsigned char g, unsigned char b) : r(r), g(g), b(b), a(255) {}
-	RGBA(unsigned char r, char g, unsigned char b, unsigned char a) : r(r), g(g), b(b), a(a) {}
+	RGBA();
+	RGBA(unsigned char r, unsigned char g, unsigned char b);
+	RGBA(unsigned char r, char g, unsigned char b, unsigned char a);
 
-	unsigned int getHex()
-	{
-		return ((b & 0xff) << 16) + ((g & 0xff) << 8) + (r & 0xff);
-	}
-	void setRGBA(unsigned char red, unsigned char green, unsigned char blue)
-	{
-		r = red;
-		g = green;
-		b = blue;
-	}
-	void setRGBA(unsigned char red, char green, unsigned char blue, unsigned char alpha)
-	{
-		r = red;
-		g = green;
-		b = blue;
-		a = alpha;
-	}
+	unsigned int getHex();
+	void setRGBA(unsigned char red, unsigned char green, unsigned char blue);
+	void setRGBA(unsigned char red, char green, unsigned char blue, unsigned char alpha);
+	bool fadeToBlack(int fade_delay, int multiplier);
 
 	unsigned char getRed() { return r; }
 	unsigned char getGreen() { return g; }
@@ -33,6 +20,8 @@ public:
 	unsigned char getAlpha() { return a; }
 private:
 	unsigned char r, g, b, a;
+	int start_time_fade_animation_;
+	bool has_started_fade_;
 };
 
 #endif // !RGBA_H
