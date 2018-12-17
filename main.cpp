@@ -407,7 +407,7 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x, int posit
 	}
 
 	// Changes color (But since Bitmap is so pixelated, this is the only way we can include all colors
-	HBITMAP hBitmapColored = ReplaceAllColorsExcept(hBitmap, 0x000000, 0xffff00, hLocalDC);
+	HBITMAP hBitmapColored = ReplaceAllColorsExcept(hBitmap, 0x000000, bitmap_G.getRGBA().getHex(), hLocalDC);
 
 	// Get the bitmap's parameters and verify the get
 	BITMAP qBitmap;
@@ -532,8 +532,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				for (int j = 0; j < width_G; j++)
 					if (std::string(1, screen_matrix_G[i][j]).c_str() != std::string(1, ' '))
 					{
-						RGBA rgba(0, 255, 255);
-						COLORREF whiteTextColor = rgba.getHex();
+						COLORREF whiteTextColor = screen_matrix_G[i][j].getColor();
 						if (SetTextColor(hDCMem, whiteTextColor) == CLR_INVALID)
 						{
 							PostQuitMessage(1);

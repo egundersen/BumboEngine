@@ -629,22 +629,22 @@ void WorldBase::GENERATE_Enemies()
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(1027, 205, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("Four whole days.ZI've been waitingZin line so long...ZI regret to say IZchose the pirateZfactionZ", 'X', 23, 9), sprite_sheet_.player, 'u');
+		PopupDefinition("Been waitin' in line for five days...", 'X', 23, 9), sprite_sheet_.player, 'u');
 	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(1034, 202, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("Yar har harZand a bottleZof rum!Z", 'X', 23, 9), sprite_sheet_.pirate_1, ' u');
+		PopupDefinition("Yar har har 'n a bottle o' rum!", 'X', 23, 9), sprite_sheet_.pirate_1, ' u');
 	CharacterBase *standing_in_line_3 = new Chr_BackgroundNPC(1041, 200, 4, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("I'm so hungry...ZBut I don't wantZto leave theZlineZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
+		PopupDefinition("I be starvin'... But I don't wants t' leave th' line", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
 	CharacterBase *standing_in_line_4 = new Chr_BackgroundNPC(1048, 202, 5, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("STOP SHOVING!ZZOh... um, helloZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
+		PopupDefinition("STOP SHOVING! Oh... um, ahoy matey!", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
 	CharacterBase *standing_in_line_5 = new Chr_BackgroundNPC(1056, 201, 6, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("Back of the line!ZCan't you tell IZwas here first?Z", 'X', 23, 9), sprite_sheet_.player, 'r');
+		PopupDefinition("Back o' th' line! Can't ye tell I was here first?", 'X', 23, 9), sprite_sheet_.player, 'r');
 	CharacterBase *standing_in_line_6 = new Chr_BackgroundNPC(1016, 210, 7, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("You're a pirateZtoo? Better getZin line!Z", 'X', 23, 9), sprite_sheet_.player, 'r');
+		PopupDefinition("Ye're a pirate too? Better get in line!", 'X', 23, 9), sprite_sheet_.player, 'r');
 
 	CharacterBase *boarder_guard_1 = new Chr_BackgroundNPC(1079, 203, 8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("Another pirate...ZGet in line withZthe rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
+		PopupDefinition("Another pirate... Get in line with the rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
 	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(1071, 214, 9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("Another pirate...ZGet in line withZthe rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
+		PopupDefinition("Another pirate... Get in line with the rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
 
 	CharacterBase *boarder_incident_random = new Chr_BackgroundNPC(1013, 259, 15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.player, 'r');
