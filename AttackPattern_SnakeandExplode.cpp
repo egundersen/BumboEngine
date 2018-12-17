@@ -48,7 +48,7 @@ void AttackPattern_SnakeandExplode::refreshScreen()
 void AttackPattern_SnakeandExplode::createAttack1(int head_position_x, int head_position_y, int duration_of_attack, int speed)
 {
 	Attack_Snake *attack;
-	attack = new Attack_Snake(width_, height_, player_position_, matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack, speed);
+	attack = new Attack_Snake(width_, height_, player_position_, attack_matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack, speed);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;
@@ -56,7 +56,7 @@ void AttackPattern_SnakeandExplode::createAttack1(int head_position_x, int head_
 void AttackPattern_SnakeandExplode::createAttack2(int center_position_x, int center_position_y)
 {
 	Attack_Explode *attack;
-	attack = new Attack_Explode(width_, height_, player_position_, matrix_, element_is_occupied_, center_position_x, center_position_y, attack_diameter_, delay_till_explode_, duration_of_explosion_);
+	attack = new Attack_Explode(width_, height_, player_position_, attack_matrix_, element_is_occupied_, center_position_x, center_position_y, attack_diameter_, delay_till_explode_, duration_of_explosion_);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;

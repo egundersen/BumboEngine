@@ -33,7 +33,7 @@ protected:
 	double start_time_new_attack_;
 	bool has_completed_initialization_, has_completed_all_attacks_, **element_is_occupied_, border_was_destroyed_;
 	PlayerPosition player_position_;
-	std::vector<std::vector<char>> matrix_;
+	Matrix attack_matrix_;
 	std::vector<AttackBase*> attacks_list_;
 	std::vector<std::shared_ptr<int>> attack_starting_positions_;
 

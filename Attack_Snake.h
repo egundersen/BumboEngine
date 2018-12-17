@@ -7,7 +7,7 @@
 class Attack_Snake : public AttackBase, MatrixBase
 {
 public:
-	explicit Attack_Snake(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied, int head_position_x, int head_position_y, int duration_of_attack, int speed);
+	explicit Attack_Snake(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int head_position_x, int head_position_y, int duration_of_attack, int speed);
 	~Attack_Snake();
 
 	// Setters

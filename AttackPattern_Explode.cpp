@@ -48,7 +48,7 @@ void AttackPattern_Explode::refreshScreen()
 void AttackPattern_Explode::createAttack(int center_position_x, int center_position_y)
 {
 	Attack_Explode *attack;
-	attack = new Attack_Explode(width_, height_, player_position_, matrix_, element_is_occupied_, center_position_x, center_position_y, attack_diameter_, delay_till_explode_, duration_of_explosion_);
+	attack = new Attack_Explode(width_, height_, player_position_, attack_matrix_, element_is_occupied_, center_position_x, center_position_y, attack_diameter_, delay_till_explode_, duration_of_explosion_);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;

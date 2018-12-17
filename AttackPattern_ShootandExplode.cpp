@@ -51,9 +51,9 @@ void AttackPattern_ShootandExplode::createAttack2(int reverse_direction, int min
 {
 	Attack_HorizontalLine *attack;
 	if (reverse_direction == 1)
-		attack = new HorizontalLine_Left(width_, height_, player_position_, matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
+		attack = new HorizontalLine_Left(width_, height_, player_position_, attack_matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
 	else
-		attack = new HorizontalLine_Right(width_, height_, player_position_, matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
+		attack = new HorizontalLine_Right(width_, height_, player_position_, attack_matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;
@@ -61,7 +61,7 @@ void AttackPattern_ShootandExplode::createAttack2(int reverse_direction, int min
 void AttackPattern_ShootandExplode::createAttack1(int center_position_x, int center_position_y)
 {
 	Attack_Explode *attack;
-	attack = new Attack_Explode(width_, height_, player_position_, matrix_, element_is_occupied_, center_position_x, center_position_y, attack_diameter_, delay_till_explode_, duration_of_explosion_);
+	attack = new Attack_Explode(width_, height_, player_position_, attack_matrix_, element_is_occupied_, center_position_x, center_position_y, attack_diameter_, delay_till_explode_, duration_of_explosion_);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;

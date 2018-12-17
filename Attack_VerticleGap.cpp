@@ -1,8 +1,8 @@
 #include "Attack_VerticleGap.h"
 #include <Windows.h>
 
-Attack_VerticleGap::Attack_VerticleGap(int width, int height, PlayerPosition & player_position, std::vector<std::vector<char>>& matrix, bool **& element_is_occupied, int gap_position_x, int position_y, int gap_width, int screen_duration, int move_delay)
-	: AttackBase(width, height, player_position, matrix, element_is_occupied), gap_width_{ gap_width }, screen_duration_{ screen_duration },
+Attack_VerticleGap::Attack_VerticleGap(int width, int height, PlayerPosition & player_position, Matrix &attack_matrix, bool **& element_is_occupied, int gap_position_x, int position_y, int gap_width, int screen_duration, int move_delay)
+	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied), gap_width_{ gap_width }, screen_duration_{ screen_duration },
 	gap_position_x_{ gap_position_x }, position_y_{ position_y }, start_time_finish_attack_(0), move_delay_{ move_delay }, reverse_{ false }
 {
 	has_hit_player_ = false;
@@ -17,7 +17,7 @@ Attack_VerticleGap::~Attack_VerticleGap()
 	{
 		if (j < gap_position_x_ - gap_width_ || j > gap_position_x_ + gap_width_)
 		{
-			matrix_[position_y_][j] = ' ';
+			attack_matrix_[position_y_][j] = ' ';
 			element_is_occupied_[position_y_][j] = false;
 		}
 	}
@@ -47,12 +47,12 @@ void Attack_VerticleGap::move()
 			{
 				if (j < gap_position_x_ - gap_width_ || j > gap_position_x_ + gap_width_)
 				{
-					matrix_[position_y_][j] = 'X';
+					attack_matrix_[position_y_][j] = 'X';
 					element_is_occupied_[position_y_][j] = true;
 				}
 				else
 				{
-					matrix_[position_y_][j] = ' ';
+					attack_matrix_[position_y_][j] = ' ';
 					element_is_occupied_[position_y_][j] = false;
 				}
 				start_time_update_attack_ = GetTickCount64();

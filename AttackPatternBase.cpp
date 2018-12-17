@@ -4,9 +4,9 @@
 #include <algorithm>
 
 AttackPatternBase::AttackPatternBase(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false }
+	: width_{ width }, height_{ height }, attack_matrix_(width, height), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false }
 {
-	border_ = new Attack_Border(width, height, player_position_, matrix_, element_is_occupied_);
+	border_ = new Attack_Border(width, height, player_position_, attack_matrix_, element_is_occupied_);
 	element_is_occupied_ = new bool*[height_];
 	for (int i = 0; i < height_; ++i)
 		element_is_occupied_[i] = new bool[width_];
@@ -50,11 +50,11 @@ void AttackPatternBase::refreshPlayerLocation()
 		{
 			if (i == player_position_.y && j == player_position_.x) // Player Position
 			{
-				matrix_[i][j] = player_health_ + '0';
+				attack_matrix_[i][j] = player_health_ + '0';
 			}
-			else if (!element_is_occupied_[i][j] && matrix_[i][j] != ' ')
+			else if (!element_is_occupied_[i][j] && attack_matrix_[i][j] != ' ')
 			{
-				matrix_[i][j] = ' ';
+				attack_matrix_[i][j] = ' ';
 			}
 		}
 	}
@@ -173,7 +173,8 @@ void AttackPatternBase::displayScreen()
 {
 	for (int i = 0; i < height_; i++) {
 		for (int j = 0; j < width_; j++) {
-			screen_matrix_[i][j] = matrix_[i][j];
+			char temp = attack_matrix_[i][j];
+			screen_matrix_[i][j] = temp;
 		}
 	}
 }

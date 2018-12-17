@@ -40,7 +40,7 @@ void AttackPattern_VerticleGap::refreshScreen()
 		else // Displaying warning message before attack begins
 		{
 			Image warning(">>>>>>>>>>>>>Z");
-			addImageToMatrix(width_ / 2, 10, warning, matrix_);
+			addImageToMatrix(width_ / 2, 10, warning, attack_matrix_);
 			for (int j = 0; j < width_; j++)
 				element_is_occupied_[10][j] = true;
 
@@ -55,7 +55,7 @@ void AttackPattern_VerticleGap::refreshScreen()
 void AttackPattern_VerticleGap::createAttack(int gap_position_x, int position_y)
 {
 	Attack_VerticleGap *attack;
-	attack = new Attack_VerticleGap(width_, height_, player_position_, matrix_, element_is_occupied_, gap_position_x, position_y, gap_width_, screen_duration_, move_delay_);
+	attack = new Attack_VerticleGap(width_, height_, player_position_, attack_matrix_, element_is_occupied_, gap_position_x, position_y, gap_width_, screen_duration_, move_delay_);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;

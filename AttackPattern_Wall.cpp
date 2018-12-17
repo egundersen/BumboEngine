@@ -46,7 +46,7 @@ void AttackPattern_Wall::refreshScreen()
 void AttackPattern_Wall::createAttack(int min_position_x, int max_position_x, int gap_height)
 {
 	Attack_Wall *attack;
-	attack = new Attack_Wall(width_, height_, player_position_, matrix_, element_is_occupied_, min_position_x, max_position_x, gap_height, gap_width_, speed_);
+	attack = new Attack_Wall(width_, height_, player_position_, attack_matrix_, element_is_occupied_, min_position_x, max_position_x, gap_height, gap_width_, speed_);
 	attacks_list_.push_back(attack);
 	created_attacks_++;
 }

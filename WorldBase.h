@@ -69,11 +69,10 @@ private:
 		player_speed_modifier_;
 	char opposite_player_direction_;
 	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
+		enter_key_pressed_,
 		DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
 	BitmapDefinition &image_file_path_;
-	Matrix &screen_matrix_;
-	Matrix world_matrix_;
-	std::vector<std::vector<char>> DEBUG_screen_matrix_;
+	Matrix &screen_matrix_, world_matrix_, DEBUG_screen_matrix_;
 	std::vector<std::vector<std::pair<int, int>>> element_has_object_;
 	std::vector<Image> mountain_lines_;
 	std::vector<Image> fence_lines_;

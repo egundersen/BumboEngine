@@ -1,8 +1,8 @@
 #include "Attack_Explode.h"
 #include <windows.h>
 
-Attack_Explode::Attack_Explode(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>>& matrix, bool **&element_is_occupied, int center_position_x, int center_position_y, int diameter, int delay, int duration_of_explosion)
-	: AttackBase(width, height, player_position, matrix, element_is_occupied), diameter_{ diameter }, delay_{ delay }, duration_of_explosion_{ duration_of_explosion },
+Attack_Explode::Attack_Explode(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int center_position_x, int center_position_y, int diameter, int delay, int duration_of_explosion)
+	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied), diameter_{ diameter }, delay_{ delay }, duration_of_explosion_{ duration_of_explosion },
 	center_position_x_{ center_position_x }, center_position_y_{ center_position_y }
 {
 	has_hit_player_ = false;
@@ -37,15 +37,15 @@ void Attack_Explode::move()
 		{
 			for (int i = -(diameter_ / 2); i < (diameter_ / 2); i++)
 				for (int j = -(diameter_ / 2); j < (diameter_ / 2); j++)
-					if (matrix_[center_position_y_ + i][center_position_x_ + j] != 'X')
-						matrix_[center_position_y_ + i][center_position_x_ + j] = '.';
+					if (attack_matrix_[center_position_y_ + i][center_position_x_ + j] != 'X')
+						attack_matrix_[center_position_y_ + i][center_position_x_ + j] = '.';
 			for (int i = -(diameter_ / 2); i < (diameter_ / 2); i++)
 				for (int j = -(diameter_ / 2); j < (diameter_ / 2); j++)
 					element_is_occupied_[center_position_y_ + i][center_position_x_ + j] = true;
 		}
 		else if (current_time_update_attack > delay_ && current_time_update_attack < delay_ + duration_of_explosion_)
 		{
-			drawSolidRectangle(center_position_x_ - (diameter_ / 2), center_position_y_ - (diameter_ / 2), diameter_, diameter_, 'X', matrix_);
+			drawSolidRectangle(center_position_x_ - (diameter_ / 2), center_position_y_ - (diameter_ / 2), diameter_, diameter_, 'X', attack_matrix_);
 			for (int i = -(diameter_ / 2); i < (diameter_ / 2); i++)
 				for (int j = -(diameter_ / 2); j < (diameter_ / 2); j++)
 					element_is_occupied_[center_position_y_ + i][center_position_x_ + j] = true;
@@ -53,11 +53,11 @@ void Attack_Explode::move()
 		}
 		else if (current_time_update_attack > delay_ + duration_of_explosion_)
 		{
-			drawSolidRectangle(center_position_x_ - 1, center_position_y_ - 1, 3, 3, ' ', matrix_);
+			drawSolidRectangle(center_position_x_ - 1, center_position_y_ - 1, 3, 3, ' ', attack_matrix_);
 			for (int i = -(diameter_ / 2); i < (diameter_ / 2); i++)
 				for (int j = -(diameter_ / 2); j < (diameter_ / 2); j++)
-					if (matrix_[center_position_y_ + i][center_position_x_ + j] != '.')
-						matrix_[center_position_y_ + i][center_position_x_ + j] = ' ';
+					if (attack_matrix_[center_position_y_ + i][center_position_x_ + j] != '.')
+						attack_matrix_[center_position_y_ + i][center_position_x_ + j] = ' ';
 			has_attack_finished_ = true;
 			start_time_update_attack_ = GetTickCount64();
 		}

@@ -6,7 +6,7 @@
 class AttackBase
 {
 public:
-	explicit AttackBase(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
+	explicit AttackBase(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied);
 	virtual ~AttackBase() {};
 
 	// Setters
@@ -19,7 +19,7 @@ protected:
 	int width_, height_, start_time_update_attack_;
 	bool has_hit_player_, has_attack_finished_, **&element_is_occupied_;
 	PlayerPosition &player_position_;
-	std::vector<std::vector<char>> &matrix_;
+	Matrix &attack_matrix_;
 };
 
 #endif // !ATTACKBASE_H

@@ -17,7 +17,7 @@ private:
 	void moveTutorialNpc();
 	void askPlayerName(int time_interval);
 	void getPlayerName();
-	void tellFatherBackstory(int time_interval);
+	void tellFatherBackstory();
 	void skipTutorial();
 	void tutorial();
 

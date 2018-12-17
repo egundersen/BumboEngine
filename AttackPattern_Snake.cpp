@@ -46,7 +46,7 @@ void AttackPattern_Snake::refreshScreen()
 void AttackPattern_Snake::createAttack(int head_position_x, int head_position_y, int duration_of_attack, int speed)
 {
 	Attack_Snake *attack;
-	attack = new Attack_Snake(width_, height_, player_position_, matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack, speed);
+	attack = new Attack_Snake(width_, height_, player_position_, attack_matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack, speed);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;

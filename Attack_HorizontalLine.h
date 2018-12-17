@@ -7,7 +7,7 @@
 class Attack_HorizontalLine : public AttackBase
 {
 public:
-	explicit Attack_HorizontalLine(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied,int min_position_x, int max_position_x, int trail_length, int height_y, int speed);
+	explicit Attack_HorizontalLine(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied,int min_position_x, int max_position_x, int trail_length, int height_y, int speed);
 	virtual ~Attack_HorizontalLine();
 
 	// Setters

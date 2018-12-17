@@ -5,7 +5,7 @@
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_width, world_height), screen_matrix_{ screen_matrix }, player_health_{ player_health }, player_sprite_{ 12, 10, screen_matrix }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }, enter_key_pressed_{ false }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -222,7 +222,22 @@ void WorldBase::evaluatePlayerInput()
 			}
 		}
 	}
-	else if (!is_event_active_)// Walking on map
+	else if (selected_event_ != nullptr && is_event_active_) // Traversing Event Dialog
+	{
+		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+		{
+			if (!enter_key_pressed_)
+			{
+				selected_event_->progressPopup();
+				enter_key_pressed_ = true;
+			}
+		}
+		else
+		{
+			enter_key_pressed_ = false;
+		}
+	}
+	else // Walking in world
 	{
 		if (GetAsyncKeyState(0x45) & 0x8000) // Press E
 		{
@@ -782,7 +797,7 @@ void WorldBase::DEBUG_refresh()
 	// Initialize Debug Mode
 	if (!DEBUG_has_initialized_)
 	{
-		DEBUG_screen_matrix_ = std::vector<std::vector<char>>(screen_height_, std::vector<char>(screen_width_, '/'));
+		DEBUG_screen_matrix_ = Matrix(screen_width_, screen_height_, '/');
 		DEBUG_has_initialized_ = true;
 	}
 	DEBUG_drawUI();
@@ -845,7 +860,10 @@ void WorldBase::DEBUG_displayScreen()
 		for (int j = 0; j < screen_width_; j++)
 		{
 			if (DEBUG_screen_matrix_[i][j] != '/')
-				screen_matrix_[i][j] = DEBUG_screen_matrix_[i][j];
+			{
+				char temp = DEBUG_screen_matrix_[i][j];
+				screen_matrix_[i][j] = temp;
+			}
 		}
 	}
 }

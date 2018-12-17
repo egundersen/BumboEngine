@@ -12,14 +12,14 @@ public:
 	void refreshEvent();
 private:
 	// Parts of the event
-	void guardTalks(int time_interval);
+	void guardTalks();
 	void crowdLooksAround();
-	void guardReplies(int time_interval);
+	void guardReplies();
 	void approachCheckpoint();
 	void runsThroughCheckpoint();
-	void guardStopThem(int time_interval);
+	void guardStopThem();
 	void guardExits();
-	void playerThinks(int time_interval);
+	void playerThinks();
 
 	void crowdLook1();
 	void crowdLook2();

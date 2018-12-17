@@ -27,8 +27,7 @@ public:
 protected:
 	int popup_width_, popup_height_;
 	char border_character_;
-	std::vector<std::vector<char>> popup_matrix_;
-	Matrix &screen_matrix_;
+	Matrix &screen_matrix_, popup_matrix_;
 	std::string text_;
 };
 

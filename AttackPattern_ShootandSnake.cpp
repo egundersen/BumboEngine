@@ -51,9 +51,9 @@ void AttackPattern_ShootandSnake::createAttack1(int reverse_direction, int min_p
 {
 	Attack_HorizontalLine *attack;
 	if (reverse_direction == 1)
-		attack = new HorizontalLine_Left(width_, height_, player_position_, matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
+		attack = new HorizontalLine_Left(width_, height_, player_position_, attack_matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
 	else
-		attack = new HorizontalLine_Right(width_, height_, player_position_, matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
+		attack = new HorizontalLine_Right(width_, height_, player_position_, attack_matrix_, element_is_occupied_, min_position_x, max_position_x, trail_length, height_y, speed);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;
@@ -61,7 +61,7 @@ void AttackPattern_ShootandSnake::createAttack1(int reverse_direction, int min_p
 void AttackPattern_ShootandSnake::createAttack2(int head_position_x, int head_position_y, int duration_of_attack, int speed)
 {
 	Attack_Snake *attack;
-	attack = new Attack_Snake(width_, height_, player_position_, matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack, speed);
+	attack = new Attack_Snake(width_, height_, player_position_, attack_matrix_, element_is_occupied_, head_position_x, head_position_y, duration_of_attack, speed);
 
 	attacks_list_.push_back(attack);
 	created_attacks_++;

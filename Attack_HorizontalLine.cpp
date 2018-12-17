@@ -1,8 +1,8 @@
 #include "Attack_HorizontalLine.h"
 #include <windows.h>
 
-Attack_HorizontalLine::Attack_HorizontalLine(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>>& matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int trail_length, int height_y, int speed)
-	: AttackBase(width, height, player_position, matrix, element_is_occupied),
+Attack_HorizontalLine::Attack_HorizontalLine(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int trail_length, int height_y, int speed)
+	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied),
 	min_position_x_{ min_position_x }, max_position_x_{ max_position_x }, trail_length_{ trail_length }, height_y_{ height_y }, speed_{ speed }
 {
 	has_hit_player_ = false;
@@ -42,28 +42,28 @@ void HorizontalLine_Right::move()
 	{
 		if (min_position_x_ * speed_ < max_position_x_)
 		{
-			matrix_[height_y_][min_position_x_ * speed_] = '>';
+			attack_matrix_[height_y_][min_position_x_ * speed_] = '>';
 			element_is_occupied_[height_y_][min_position_x_ * speed_] = true;
 		}
 		if (min_position_x_ * speed_ - trail_length_ >= 0)
 		{
-			matrix_[height_y_][min_position_x_ * speed_ - trail_length_] = ' ';
+			attack_matrix_[height_y_][min_position_x_ * speed_ - trail_length_] = ' ';
 			element_is_occupied_[height_y_][min_position_x_ * speed_ - trail_length_] = false;
 		}
 		if (min_position_x_ * speed_ - trail_length_ * 3 / 4 >= 0 && min_position_x_ * speed_ - trail_length_ * 3 / 4 < max_position_x_)
 		{
 			if ((min_position_x_ * speed_ - trail_length_ * 3 / 4) % 2 == 0)
-				matrix_[height_y_][min_position_x_ * speed_ - trail_length_ * 3 / 4] = '-';
+				attack_matrix_[height_y_][min_position_x_ * speed_ - trail_length_ * 3 / 4] = '-';
 			else
-				matrix_[height_y_][min_position_x_ * speed_ - trail_length_ * 3 / 4] = ' ';
+				attack_matrix_[height_y_][min_position_x_ * speed_ - trail_length_ * 3 / 4] = ' ';
 		}
 		if (min_position_x_ * speed_ - trail_length_ / 2 >= 0 && min_position_x_ * speed_ - trail_length_ / 2 < max_position_x_)
 		{
-			matrix_[height_y_][min_position_x_ * speed_ - trail_length_ / 2] = '-';
+			attack_matrix_[height_y_][min_position_x_ * speed_ - trail_length_ / 2] = '-';
 		}
 		if (min_position_x_ * speed_ - 1 >= 0 && min_position_x_ * speed_ - 1 < max_position_x_)
 		{
-			matrix_[height_y_][min_position_x_ * speed_ - 1] = '=';
+			attack_matrix_[height_y_][min_position_x_ * speed_ - 1] = '=';
 		}
 		detectCollision();
 		min_position_x_++;
@@ -81,28 +81,28 @@ void HorizontalLine_Left::move()
 	{
 		if (max_position_x_ * speed_ > min_position_x_ && max_position_x_ * speed_ < width_)
 		{
-			matrix_[height_y_][max_position_x_ * speed_] = '<';
+			attack_matrix_[height_y_][max_position_x_ * speed_] = '<';
 			element_is_occupied_[height_y_][max_position_x_ * speed_] = true;
 		}
 		if (max_position_x_ * speed_ + trail_length_ < width_)
 		{
-			matrix_[height_y_][max_position_x_ * speed_ + trail_length_] = ' ';
+			attack_matrix_[height_y_][max_position_x_ * speed_ + trail_length_] = ' ';
 			element_is_occupied_[height_y_][max_position_x_ * speed_ + trail_length_] = false;
 		}
 		if (max_position_x_ * speed_ + trail_length_ * 3 / 4 < width_ && max_position_x_ * speed_ + trail_length_ * 3 / 4 > min_position_x_)
 		{
 			if ((max_position_x_ * speed_ + trail_length_ * 3 / 4) % 2 == 0)
-				matrix_[height_y_][max_position_x_ * speed_ + trail_length_ * 3 / 4] = '-';
+				attack_matrix_[height_y_][max_position_x_ * speed_ + trail_length_ * 3 / 4] = '-';
 			else
-				matrix_[height_y_][max_position_x_ * speed_ + trail_length_ * 3 / 4] = ' ';
+				attack_matrix_[height_y_][max_position_x_ * speed_ + trail_length_ * 3 / 4] = ' ';
 		}
 		if (max_position_x_ * speed_ + trail_length_ / 2 < width_ && max_position_x_ * speed_ + trail_length_ / 2 > min_position_x_)
 		{
-			matrix_[height_y_][max_position_x_ * speed_ + trail_length_ / 2] = '-';
+			attack_matrix_[height_y_][max_position_x_ * speed_ + trail_length_ / 2] = '-';
 		}
 		if (max_position_x_ * speed_ + 1 < width_ && max_position_x_ * speed_ + 1 > min_position_x_)
 		{
-			matrix_[height_y_][max_position_x_ * speed_ + 1] = '=';
+			attack_matrix_[height_y_][max_position_x_ * speed_ + 1] = '=';
 		}
 		detectCollision();
 		max_position_x_--;

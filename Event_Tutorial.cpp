@@ -13,7 +13,7 @@ void Event_Tutorial::createEvent()
 	updateColliderCoordinates();
 
 	Popup popup_1(25, 9, "Pardon me, but Could I get your name? ", screen_matrix_, 'X');
-	Popup popup_2(25, 9, "! ! ! ! !", screen_matrix_, 'X');
+	Popup popup_2(25, 9, "Press ENTER to continue.", screen_matrix_, 'X');
 	Popup popup_3(25, 9, "Very good, I was looking for you. It's about your father... ", screen_matrix_, 'X');
 	Popup popup_4(25, 9, "I am very sorry, but he wasn't able to reach the checkpoint in time... ", screen_matrix_, 'X');
 	Popup popup_5(25, 9, "You have my condolences, he was my friend as well ", screen_matrix_, 'X');
@@ -187,7 +187,7 @@ void Event_Tutorial::createEvent()
 
 void Event_Tutorial::refreshEvent()
 {
-	switch (event_index_)
+	switch (getEventIndex())
 	{
 	case 0:
 		moveTutorialNpc();
@@ -199,7 +199,7 @@ void Event_Tutorial::refreshEvent()
 		getPlayerName();
 		break;
 	case 3:
-		tellFatherBackstory(4000);
+		tellFatherBackstory();
 		break;
 	case 4:
 		skipTutorial();
@@ -211,7 +211,7 @@ void Event_Tutorial::refreshEvent()
 		attached_character_->teleportNPC(251, 633);
 		attached_character_->faceDirection('d');
 		should_enter_battle_ = true;
-		event_index_++;
+		progressEvent();
 		break;
 	case 7:
 		onEventOver();
@@ -248,7 +248,7 @@ void Event_Tutorial::moveTutorialNpc()
 		attached_character_->move(screen_position_.x + screen_width_ / 2 + 9, 'x', 20);
 		break;
 	case 7:
-		event_index_++;
+		progressEvent();
 		break;
 	default:
 		break;
@@ -260,152 +260,195 @@ void Event_Tutorial::askPlayerName(int time_interval)
 	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > time_interval)
 	{
-		event_index_++;
+		progressEvent();
 		start_time_begin_event_ = GetTickCount64();
 	}
 	else if (current_time_begin_event_ <= time_interval)
 		popups_[0].displayPopup(10, 0);
 }
 
-void Event_Tutorial::tellFatherBackstory(int time_interval)
+void Event_Tutorial::tellFatherBackstory()
 {
-	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
-	if (current_time_begin_event_ > time_interval * 12)
+	switch (getPopupIndex())
 	{
-		event_index_++;
-		start_time_begin_event_ = GetTickCount64();
-	}
-	else if (current_time_begin_event_ > time_interval * 11)
-		popups_[11].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval * 10)
-		popups_[10].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval * 9)
-		popups_[9].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval * 8)
-	{
+	case 0:
+		popups_[1].displayPopup(10, 0);
+		break;
+	case 1:
+		popups_[2].displayPopup(10, 0);
+		break;
+	case 2:
+		popups_[3].displayPopup(10, 0);
+		break;
+	case 3:
+		popups_[4].displayPopup(10, 0);
+		break;
+	case 4:
+		popups_[5].displayPopup(10, 0);
+		break;
+	case 5:
+		popups_[6].displayPopup(10, 0);
+		break;
+	case 6: // TODO: Add Item
+		popups_[7].displayPopup(-17, 9);
+		break;
+	case 7:
 		popups_[8].displayPopup(10, 0);
 		popups_[7].displayPopup(-17, 9);
+		break;
+	case 8:
+		popups_[9].displayPopup(10, 0);
+		break;
+	case 9:
+		popups_[10].displayPopup(10, 0);
+		break;
+	case 10:
+		popups_[11].displayPopup(10, 0);
+		break;
+	case 11:
+		progressEvent();
+		break;
 	}
-	else if (current_time_begin_event_ > time_interval * 7) // FAKE ITEM
-		popups_[7].displayPopup(-17, 9);
-	else if (current_time_begin_event_ > time_interval * 6)
-		popups_[6].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval * 5)
-		popups_[5].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval * 4)
-		popups_[4].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval * 3)
-		popups_[3].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval * 2)
-		popups_[2].displayPopup(10, 0);
-	else if (current_time_begin_event_ > time_interval)
-		popups_[1].displayPopup(10, 0);
 }
 
 void Event_Tutorial::tutorial()
 {
-	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
-	if (current_time_begin_event_ > 73000)
+	switch (getPopupIndex())
 	{
-		event_index_++;
-		start_time_begin_event_ = GetTickCount64();
-	}
-	else if (current_time_begin_event_ > 71000)
-		popups_[53].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 69000)
-		popups_[52].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 64000)
-		popups_[51].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 63000)
-		popups_[50].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 62000)
-		popups_[49].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 61000)
-		popups_[48].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 60000)
-		popups_[47].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 59000)
-		popups_[46].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 58000)
-		popups_[45].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 57000)
-		popups_[44].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 56000)
-		popups_[43].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 55000)
-		popups_[42].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 54000)
-		popups_[41].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 53000)
-		popups_[40].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 52000)
-		popups_[39].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 51000)
-		popups_[38].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 50000)
-		popups_[37].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 49000)
-		popups_[36].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 48000)
-		popups_[35].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 45500)
-		popups_[34].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 44000)
-		popups_[33].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 43000)
-		popups_[32].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 40000)
-		popups_[31].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 37000)
-		popups_[30].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 35000)
-		popups_[29].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 32000)
-		popups_[28].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 29000)
-		popups_[27].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 26000)
-		popups_[26].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 24000)
-		popups_[25].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 23000)
-		popups_[24].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 22000)
-		popups_[23].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 21000)
-		popups_[22].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 19000)
-		popups_[21].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 18000)
-		popups_[20].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 17000)
-		popups_[19].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 16000)
-	{
-		popups_[18].displayPopup(10, 0);
-		attached_character_->faceDirection('l');
-	}
-	else if (current_time_begin_event_ > 14000)
-	{
-		popups_[17].displayPopup(10, 0);
-		attached_character_->faceDirection('d');
-	}
-	else if (current_time_begin_event_ > 11500)
-	{
-		popups_[16].displayPopup(10, 0);
-		attached_character_->faceDirection('r');
-	}
-	else if (current_time_begin_event_ > 10000)
-	{
+	case 0:
+		popups_[12].displayPopup(10, 0);
+		break;
+	case 1:
+		popups_[13].displayPopup(10, 0);
+		break;
+	case 2:
+		popups_[14].displayPopup(10, 0);
+		break;
+	case 3:
 		popups_[15].displayPopup(10, 0);
 		attached_character_->faceDirection('u');
+		break;
+	case 4:
+		popups_[16].displayPopup(10, 0);
+		attached_character_->faceDirection('r');
+		break;
+	case 5:
+		popups_[17].displayPopup(10, 0);
+		attached_character_->faceDirection('d');
+		break;
+	case 6:
+		popups_[18].displayPopup(10, 0);
+		attached_character_->faceDirection('l');
+		break;
+	case 7:
+		popups_[19].displayPopup(10, 0);
+		break;
+	case 8:
+		popups_[20].displayPopup(10, 0);
+		break;
+	case 9:
+		popups_[21].displayPopup(10, 0);
+		break;
+	case 10:
+		popups_[22].displayPopup(10, 0);
+		break;
+	case 11:
+		popups_[23].displayPopup(10, 0);
+		break;
+	case 12:
+		popups_[24].displayPopup(10, 0);
+		break;
+	case 13:
+		popups_[25].displayPopup(10, 0);
+		break;
+	case 14:
+		popups_[26].displayPopup(10, 0);
+		break;
+	case 15:
+		popups_[27].displayPopup(10, 0);
+		break;
+	case 16:
+		popups_[28].displayPopup(10, 0);
+		break;
+	case 17:
+		popups_[29].displayPopup(10, 0);
+		break;
+	case 18:
+		popups_[30].displayPopup(10, 0);
+		break;
+	case 19:
+		popups_[31].displayPopup(10, 0);
+		break;
+	case 20:
+		popups_[32].displayPopup(10, 0);
+		break;
+	case 21:
+		popups_[33].displayPopup(10, 0);
+		break;
+	case 22:
+		popups_[34].displayPopup(10, 0);
+		break;
+	case 23:
+		popups_[35].displayPopup(10, 0);
+		break;
+	case 24:
+		popups_[36].displayPopup(10, 0);
+		break;
+	case 25:
+		popups_[37].displayPopup(10, 0);
+		break;
+	case 26:
+		popups_[38].displayPopup(10, 0);
+		break;
+	case 27:
+		popups_[39].displayPopup(10, 0);
+		break;
+	case 28:
+		popups_[40].displayPopup(10, 0);
+		break;
+	case 29:
+		popups_[41].displayPopup(10, 0);
+		break;
+	case 30:
+		popups_[42].displayPopup(10, 0);
+		break;
+	case 31:
+		popups_[43].displayPopup(10, 0);
+		break;
+	case 32:
+		popups_[44].displayPopup(10, 0);
+		break;
+	case 33:
+		popups_[45].displayPopup(10, 0);
+		break;
+	case 34:
+		popups_[46].displayPopup(10, 0);
+		break;
+	case 35:
+		popups_[47].displayPopup(10, 0);
+		break;
+	case 36:
+		popups_[48].displayPopup(10, 0);
+		break;
+	case 37:
+		popups_[49].displayPopup(10, 0);
+		break;
+	case 38:
+		popups_[50].displayPopup(10, 0);
+		break;
+	case 39:
+		popups_[51].displayPopup(10, 0);
+		break;
+	case 40:
+		popups_[52].displayPopup(10, 0);
+		break;
+	case 41:
+		popups_[53].displayPopup(10, 0);
+		break;
+	case 42:
+		progressEvent();
+		break;
 	}
-	else if (current_time_begin_event_ > 7000)
-		popups_[14].displayPopup(10, 0);
-	else if (current_time_begin_event_ > 4000)
-		popups_[13].displayPopup(10, 0);
-	else if (current_time_begin_event_ <= 4000)
-		popups_[12].displayPopup(10, 0);
 }
 
 void Event_Tutorial::getPlayerName()
@@ -421,11 +464,11 @@ void Event_Tutorial::getPlayerName()
 		}
 		// display form text
 
-		event_index_++; // REMOVE THIS LINE
+		progressEvent(); // TODO: Remove this line
 	}
 	else
 	{
-		event_index_++;
+		progressEvent();
 	}
 }
 
@@ -504,7 +547,7 @@ void Event_Tutorial::confirmSelection()
 {
 	if (dialog_choice_index_ == 0) // YES, do tutorial
 	{
-		event_index_++;
+		progressEvent();
 	}
 	else // NO
 	{

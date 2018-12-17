@@ -1,8 +1,8 @@
 #include "Attack_Snake.h"
 #include <windows.h>
 
-Attack_Snake::Attack_Snake(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>>& matrix, bool **&element_is_occupied, int head_position_x, int head_position_y, int duration_of_attack, int speed)
-	: AttackBase(width, height, player_position, matrix, element_is_occupied), duration_of_attack_{ duration_of_attack }, speed_{ speed },
+Attack_Snake::Attack_Snake(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int head_position_x, int head_position_y, int duration_of_attack, int speed)
+	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied), duration_of_attack_{ duration_of_attack }, speed_{ speed },
 	head_position_x_{ head_position_x }, head_position_y_{ head_position_y }
 {
 	has_hit_player_ = false;
@@ -16,7 +16,7 @@ Attack_Snake::~Attack_Snake()
 	//for (int i = -(diameter_ / 2); i < (diameter_ / 2); i++)
 	//	for (int j = -(diameter_ / 2); j < (diameter_ / 2); j++)
 	//		element_is_occupied_[center_position_y_ + i][center_position_x_ + j] = false;
-	matrix_[head_position_y_][head_position_x_] = ' ';
+	attack_matrix_[head_position_y_][head_position_x_] = ' ';
 	element_is_occupied_[head_position_y_][head_position_x_] = false;
 }
 
@@ -37,7 +37,7 @@ void Attack_Snake::move()
 		has_attack_finished_ = true;
 	else if (current_time_update_attack > speed_)
 	{
-		matrix_[head_position_y_][head_position_x_] = 'o';
+		attack_matrix_[head_position_y_][head_position_x_] = 'o';
 		element_is_occupied_[head_position_y_][head_position_x_] = true;
 		if (head_position_x_ < player_position_.x)
 		{

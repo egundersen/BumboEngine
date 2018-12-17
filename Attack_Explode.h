@@ -7,7 +7,7 @@
 class Attack_Explode : public AttackBase, MatrixBase
 {
 public:
-	explicit Attack_Explode(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied, int center_position_x, int center_position_y, int diameter, int delay, int duration_of_explosion);
+	explicit Attack_Explode(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int center_position_x, int center_position_y, int diameter, int delay, int duration_of_explosion);
 	~Attack_Explode();
 
 	// Setters

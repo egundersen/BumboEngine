@@ -7,7 +7,7 @@
 class Attack_VerticleGap : public AttackBase, MatrixBase
 {
 public:
-	explicit Attack_VerticleGap(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied, int gap_position_x, int position_y, int gap_width, int screen_duration, int move_delay);
+	explicit Attack_VerticleGap(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int gap_position_x, int position_y, int gap_width, int screen_duration, int move_delay);
 	~Attack_VerticleGap();
 
 	// Setters

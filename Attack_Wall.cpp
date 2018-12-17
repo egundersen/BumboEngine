@@ -1,8 +1,8 @@
 #include "Attack_Wall.h"
 #include <windows.h>
 
-Attack_Wall::Attack_Wall(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>>& matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int gap_height, int gap_width, int speed)
-	: AttackBase(width, height, player_position, matrix, element_is_occupied),
+Attack_Wall::Attack_Wall(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int gap_height, int gap_width, int speed)
+	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied),
 	min_position_x_{ min_position_x }, max_position_x_{ max_position_x }, speed_{ speed }, gap_height_{ gap_height }, gap_width_{ gap_width }
 {
 	has_hit_player_ = false;
@@ -34,7 +34,7 @@ void Attack_Wall::detectCollision()
 					has_hit_player_ = true;
 					for (int k = 0; k < height_; k++) //Loop through all of the x values at they wall's y to erase it
 					{
-						matrix_[k][i] = ' ';
+						attack_matrix_[k][i] = ' ';
 						element_is_occupied_[k][i] = false;
 					}
 				}
@@ -55,7 +55,7 @@ void Attack_Wall::move()
 			has_attack_finished_ = true;
 			for (int i = 0; i < height_; i++)
 			{
-				matrix_[i][min_position_x_ - 1] = ' ';
+				attack_matrix_[i][min_position_x_ - 1] = ' ';
 				element_is_occupied_[i][min_position_x_ - 1] = false;
 			}
 		}
@@ -65,12 +65,12 @@ void Attack_Wall::move()
 			{
 				for (int i = 0; i < gap_height_; i++)
 				{
-					matrix_[i][min_position_x_] = 'X';
+					attack_matrix_[i][min_position_x_] = 'X';
 					element_is_occupied_[i][min_position_x_] = true;
 				}
 				for (int i = gap_height_ + gap_width_; i < height_; i++) //Form a second wall, creating a gap
 				{
-					matrix_[i][min_position_x_] = 'X';
+					attack_matrix_[i][min_position_x_] = 'X';
 					element_is_occupied_[i][min_position_x_] = true;
 				}
 			}
@@ -78,12 +78,12 @@ void Attack_Wall::move()
 			{
 				for (int i = 0; i < gap_height_; i++)
 				{
-					matrix_[i][min_position_x_ - 1] = ' ';
+					attack_matrix_[i][min_position_x_ - 1] = ' ';
 					element_is_occupied_[i][min_position_x_ - 1] = false;
 				}
 				for (int i = gap_height_ + gap_width_; i < height_; i++)
 				{
-					matrix_[i][min_position_x_ - 1] = ' ';
+					attack_matrix_[i][min_position_x_ - 1] = ' ';
 					element_is_occupied_[i][min_position_x_ - 1] = false;
 				}
 			}

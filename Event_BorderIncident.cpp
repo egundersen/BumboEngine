@@ -82,23 +82,19 @@ void Event_BorderIncident::createEvent()
 
 void Event_BorderIncident::refreshEvent()
 {
-	switch (event_index_)
+	switch (getEventIndex())
 	{
 	case 0:
 		// guards talk
-		guardTalks(4000);
-		//approachCheckpoint();
+		guardTalks();
 		break;
 	case 1:
 		// audience looks around
 		crowdLooksAround();
-		//resetMovementIndexes();
-		//event_index_++;
 		break;
 	case 2:
 		// audience replies and guard responds
-		guardReplies(4000);
-		//runsThroughCheckpoint();
+		guardReplies();
 		break;
 	case 3:
 		// audience looks around (again)
@@ -110,7 +106,7 @@ void Event_BorderIncident::refreshEvent()
 		break;
 	case 5:
 		resetMovementIndexes();
-		event_index_++;
+		progressEvent();
 		break;
 	case 6:
 		// guchi gang runs through checkpoint
@@ -118,7 +114,7 @@ void Event_BorderIncident::refreshEvent()
 		break;
 	case 7:
 		// guards yells after them
-		guardStopThem(5000);
+		guardStopThem();
 		break;
 	case 8:
 		// guards follow them & person in line walks next to you
@@ -126,7 +122,7 @@ void Event_BorderIncident::refreshEvent()
 		break;
 	case 9:
 		// person says you dropped something, you check item, you realize they stole your item
-		playerThinks(5000);
+		playerThinks();
 		break;
 	case 10:
 		onEventOver();
@@ -136,36 +132,47 @@ void Event_BorderIncident::refreshEvent()
 	}
 }
 
-void Event_BorderIncident::guardTalks(int time_interval)
+void Event_BorderIncident::guardTalks()
 {
-	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
-	if (current_time_begin_event_ > time_interval * 12)
+	switch (getPopupIndex())
 	{
-		event_index_++;
-		start_time_begin_event_ = GetTickCount64();
-	}
-	else if (current_time_begin_event_ > time_interval * 11)
-		popups_[10].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 10)
-		popups_[9].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 9)
-		popups_[8].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 8)
-		popups_[7].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 7)
-		popups_[6].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 6) // skip 1 so dialogue lasts longer
-		popups_[5].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 4)
-		popups_[4].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 3)
-		popups_[3].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval * 2)
-		popups_[2].displayPopup(20, -3);
-	else if (current_time_begin_event_ > time_interval)
-		popups_[1].displayPopup(20, -3);
-	else if (current_time_begin_event_ <= time_interval)
+	case 0:
 		popups_[0].displayPopup(20, -3);
+		break;
+	case 1:
+		popups_[1].displayPopup(20, -3);
+		break;
+	case 2:
+		popups_[2].displayPopup(20, -3);
+		break;
+	case 3:
+		popups_[3].displayPopup(20, -3);
+		break;
+	case 4:
+		popups_[4].displayPopup(20, -3);
+		break;
+	case 5:
+		popups_[5].displayPopup(20, -3);
+		break;
+	case 6:
+		popups_[6].displayPopup(20, -3);
+		break;
+	case 7:
+		popups_[7].displayPopup(20, -3);
+		break;
+	case 8:
+		popups_[8].displayPopup(20, -3);
+		break;
+	case 9:
+		popups_[9].displayPopup(20, -3);
+		break;
+	case 10:
+		popups_[10].displayPopup(20, -3);
+		break;
+	case 11:
+		progressEvent();
+		break;
+	}
 }
 
 void Event_BorderIncident::crowdLooksAround()
@@ -173,7 +180,7 @@ void Event_BorderIncident::crowdLooksAround()
 	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > 3000)
 	{
-		event_index_++;
+		progressEvent();
 	}
 	else if (current_time_begin_event_ > 2500)
 	{
@@ -201,29 +208,33 @@ void Event_BorderIncident::crowdLooksAround()
 	}
 }
 
-void Event_BorderIncident::guardReplies(int time_interval)
+void Event_BorderIncident::guardReplies()
 {
-	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
-	if (current_time_begin_event_ > time_interval * 7)
+	switch (getPopupIndex())
 	{
-		event_index_++;
-		start_time_begin_event_ = GetTickCount64();
-	}
-	else if (current_time_begin_event_ > time_interval * 6)
-		popups_[16].displayPopup(27, 16);
-	else if (current_time_begin_event_ > time_interval * 5)
-		popups_[15].displayPopup(27, 16);
-	else if (current_time_begin_event_ > time_interval * 4)
-		popups_[14].displayPopup(27, 16);
-	else if (current_time_begin_event_ > time_interval * 3) // Guard 2 speaks
-	{
+	case 0:
+		popups_[11].displayPopup(-25, -3);
+		break;
+	case 1:
+		popups_[12].displayPopup(-25, -3);
+		break;
+	case 2:
 		popups_[13].displayPopup(27, 16);
 		attached_character_->move(470, 'x', 20);
+		break;
+	case 3:
+		popups_[14].displayPopup(27, 16);
+		break;
+	case 4:
+		popups_[15].displayPopup(27, 16);
+		break;
+	case 5:
+		popups_[16].displayPopup(27, 16);
+		break;
+	case 6:
+		progressEvent();
+		break;
 	}
-	else if (current_time_begin_event_ > time_interval * 2)
-		popups_[12].displayPopup(-25, -3);
-	else if (current_time_begin_event_ <= time_interval * 2) // Crowd speaks
-		popups_[11].displayPopup(-25, -3);
 }
 
 void Event_BorderIncident::approachCheckpoint()
@@ -272,7 +283,7 @@ void Event_BorderIncident::approachCheckpoint()
 		getCharacterByID(14)->incrementMovementIndex();
 		break;
 	case 6:
-		event_index_++;
+		progressEvent();
 		break;
 	default:
 		break;
@@ -469,27 +480,26 @@ void Event_BorderIncident::runsThroughCheckpoint()
 	case 9:
 		getCharacterByID(7)->teleportNPC(493, 671);
 		getCharacterByID(15)->teleportNPC(453, 671);
-		start_time_begin_event_ = GetTickCount64();
-		event_index_++;
+		progressEvent();
 		break;
 	default:
 		break;
 	}
 }
 
-void Event_BorderIncident::guardStopThem(int time_interval)
+void Event_BorderIncident::guardStopThem()
 {
-	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
-	if (current_time_begin_event_ > time_interval * 2)
+	switch (getPopupIndex())
 	{
-		event_index_++;
-		start_time_begin_event_ = GetTickCount64();
-	}
-	else if (current_time_begin_event_ > time_interval)
-		popups_[18].displayPopup(20, -3);
-	else if (current_time_begin_event_ <= time_interval)
-	{
+	case 0:
 		popups_[17].displayPopup(20, -3);
+		break;
+	case 1:
+		popups_[18].displayPopup(20, -3);
+		break;
+	case 2:
+		progressEvent();
+		break;
 	}
 }
 
@@ -499,32 +509,30 @@ void Event_BorderIncident::guardExits()
 	{
 	case 0:
 		getCharacterByID(8)->move(619, 'y', 20);
-		//getCharacterByID(9)->move(512, 'x', 20);
 		break;
 	case 1:
 		getCharacterByID(8)->move(512, 'x', 20);
-		//getCharacterByID(9)->move(518, 'x', 20);
 		break;
 	case 2:
 		getCharacterByID(8)->teleportNPC(473, 671);
-		//getCharacterByID(9)->teleportNPC(483, 671);
-		event_index_++;
+		progressEvent();
 		break;
 	default:
 		break;
 	}
 }
 
-void Event_BorderIncident::playerThinks(int time_interval)
+void Event_BorderIncident::playerThinks()
 {
-	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
-	if (current_time_begin_event_ > time_interval * 2)
+	switch (getPopupIndex())
 	{
-		event_index_++;
-		start_time_begin_event_ = GetTickCount64();
-	}
-	else if (current_time_begin_event_ <= time_interval * 2)
+	case 0:
 		popups_[19].displayPopup(0, -3);
+		break;
+	case 1:
+		progressEvent();
+		break;
+	}
 }
 
 void Event_BorderIncident::crowdLook1()

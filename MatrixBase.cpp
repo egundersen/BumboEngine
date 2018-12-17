@@ -61,7 +61,7 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 
 /* Adds a line of text to a matrix at the specified coordinates (Automatically Indents)
  * Left Aligned:	Coordinate is TOP LEFT
- * Middle ALigned:	Coordinate is Middle of Text
+ * Middle ALigned:	Coordinate is TOP MIDDLE
  * Right Aligned:	Coordinate is TOP RIGHT
  */
 void MatrixBase::addTextToMatrix(int position_x, int position_y, char alignment, std::string text, Matrix & matrix, int paragraph_width, int paragraph_height)
@@ -169,7 +169,7 @@ void MatrixBase::addTextToMatrix(int position_x, int position_y, char alignment,
 	}
 }
 
-// draws a hollow rectangle to the provided matrix and flags the location
+// draws a hollow rectangle to the provided matrix
 void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix & matrix)
 {
 	for (int j = 0; j < width - 1; j++)
@@ -181,6 +181,25 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 	{
 		matrix[top_left_y + i][top_left_x] = character;
 		matrix[top_left_y + i][top_left_x + width - 1] = character;
+	}
+}
+
+// draws a hollow rectangle to the provided matrix and flags the location
+void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix & matrix, bool **& element_is_occupied)
+{
+	for (int j = 0; j < width - 1; j++)
+	{
+		matrix[top_left_y][j + top_left_x] = character;
+		matrix[top_left_y + height - 1][j + top_left_x] = character;
+		element_is_occupied[top_left_y][j + top_left_x] = true;
+		element_is_occupied[top_left_y + height - 1][j + top_left_x] = true;
+	}
+	for (int i = 0; i < height; i++)
+	{
+		matrix[top_left_y + i][top_left_x] = character;
+		matrix[top_left_y + i][top_left_x + width - 1] = character;
+		element_is_occupied[top_left_y + i][top_left_x] = true;
+		element_is_occupied[top_left_y + i][top_left_x + width - 1] = true;
 	}
 }
 

@@ -19,6 +19,7 @@ protected:
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, Matrix &matrix, bool exclude_spaces = false);
 	void addTextToMatrix(int position_x, int position_y, char alignment, std::string text, Matrix &matrix, int paragraph_width = 0, int paragraph_height = 0);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix &matrix);
+	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix &matrix, bool **&element_is_occupied);
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix &matrix);
 	void clearMatrix(int width, int height, Matrix &matrix);
 
@@ -30,7 +31,7 @@ protected:
 	inline bool contains(Container const & container, T const & value);
 
 	void DEBUG_printMatrix(Matrix &matrix);
-	void DEBUG_print2DVector(int width, int height, std::vector<std::vector<char>> &matrix);
+	void DEBUG_print2DVector(int width, int height, std::vector<std::vector<char>>& matrix);
 	void DEBUG_printImage(Image &image);
 
 	// Deprecated Function (Legacy Support)
@@ -39,14 +40,14 @@ protected:
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
-	void clearMatrix(int width, int height, std::vector<std::vector<char>> &matrix);
+	void clearMatrix(int width, int height, std::vector<std::vector<char>>& matrix);
 	void waitForInput();
 private:
 	bool shouldIndent(std::string text, int letter_index, int matrix_iterator, int paragraph_width);
 	int addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, Matrix &matrix, int paragraph_width, int paragraph_height);
 	
 	// Deprecated Function (Legacy Support)
-	int addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>> &matrix, int paragraph_width, int paragraph_height);
+	int addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>>& matrix, int paragraph_width, int paragraph_height);
 };
 
 template<typename Container, typename T>

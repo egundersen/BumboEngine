@@ -7,7 +7,7 @@
 class Attack_Border : public AttackBase, MatrixBase
 {
 public:
-	Attack_Border(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
+	Attack_Border(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied);
 	~Attack_Border();
 
 	// Setters

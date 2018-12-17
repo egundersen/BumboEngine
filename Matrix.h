@@ -13,6 +13,8 @@ public:
 	Matrix() {}
 	Matrix(int width, int height) : width_{ width }, height_{ height },
 		matrix_(height, std::vector<std::tuple<char, RGBA>>(width, std::make_tuple(' ', RGBA()))) {}
+	Matrix(int width, int height, char default_fill_character) : width_{ width }, height_{ height },
+		matrix_(height, std::vector<std::tuple<char, RGBA>>(width, std::make_tuple(default_fill_character, RGBA()))) {}
 
 	class Proxy
 	{
@@ -32,6 +34,11 @@ public:
 			{
 				return std::get<0>(a[index_]) = other;
 			}
+
+			/*char& operator=(const std::vector<std::tuple<char, RGBA>>& other)
+			{
+				return std::get<0>(a[index_]) = std::get<0>(other[index_]);
+			}//*/
 
 			void setColor(char red, char green, char blue);
 			void setColor(RGBA rgba);

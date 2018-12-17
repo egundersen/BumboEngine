@@ -7,7 +7,7 @@
 class Attack_Wall : public AttackBase
 {
 public:
-	explicit Attack_Wall(int width, int height, PlayerPosition &player_position, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int gap_height, int gap_width, int speed);
+	explicit Attack_Wall(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int gap_height, int gap_width, int speed);
 	 ~Attack_Wall();
 
 	// Setters
