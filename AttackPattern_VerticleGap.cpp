@@ -2,8 +2,8 @@
 #include <windows.h>
 #include <iostream>
 
-AttackPattern_VerticleGap::AttackPattern_VerticleGap(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int & player_health)
-	: AttackPatternBase(width, height, matrix_display, player_health, height), create_attack_delay_{ 50 }, gap_width_{ 4 }, screen_duration_{ 20000 }, attacks_created_(0), move_delay_(80),
+AttackPattern_VerticleGap::AttackPattern_VerticleGap(int width, int height, Matrix& screen_matrix, int & player_health)
+	: AttackPatternBase(width, height, screen_matrix, player_health, height), create_attack_delay_{ 50 }, gap_width_{ 4 }, screen_duration_{ 20000 }, attacks_created_(0), move_delay_(80),
 	start_time_end_warning_(0), warning_length_(3000)
 {
 }
@@ -12,8 +12,8 @@ AttackPattern_VerticleGap::AttackPattern_VerticleGap(int width, int height, std:
 void AttackPattern_VerticleGap::OnBeginAttack()
 {
 	setAttackParameters();
-	start_time_new_attack_ = GetTickCount();
-	start_time_end_warning_ = GetTickCount();
+	start_time_new_attack_ = GetTickCount64();
+	start_time_end_warning_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -24,14 +24,14 @@ void AttackPattern_VerticleGap::refreshScreen()
 		has_completed_all_attacks_ = true;
 	else
 	{
-		double current_time_end_warning_ = GetTickCount() - start_time_end_warning_;
+		double current_time_end_warning_ = GetTickCount64() - start_time_end_warning_;
 		if (current_time_end_warning_ >= warning_length_)
 		{
-			double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
+			double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
 			if (current_time_new_attack_ >= create_attack_delay_ && created_attacks_ < attacks_to_create_) // Create new Attacks
 			{
 				createAttack(width_ / 2, created_attacks_);
-				start_time_new_attack_ = GetTickCount();
+				start_time_new_attack_ = GetTickCount64();
 			}
 
 			attacksCheckCollision();

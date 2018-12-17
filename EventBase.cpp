@@ -1,9 +1,9 @@
 #include "EventBase.h"
 #include <Windows.h>
 
-EventBase::EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::vector<CharacterBase*> &characters, ScreenPosition &screen_position, int screen_width, int screen_height)
+EventBase::EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix &screen_matrix, std::vector<CharacterBase*> &characters, ScreenPosition &screen_position, int screen_width, int screen_height)
 	: unique_object_ID_{ unique_object_ID }, element_has_object_{ element_has_object }, center_position_x_{ center_position_x }, center_position_y_{ center_position_y }, collider_width_{ collider_width }, collider_height_{ collider_height }, characters_{ characters }, character_ID_{ character_ID }, screen_position_{ screen_position }, repeatable_{ repeatable },
-	object_type_ID_(4), is_event_over_{ false }, matrix_display_{ matrix_display }, start_time_begin_event_(0), should_enter_battle_{ false }, screen_width_{ screen_width }, screen_height_{ screen_height }, event_index_(0)
+	object_type_ID_(4), is_event_over_{ false }, screen_matrix_{ screen_matrix }, start_time_begin_event_(0), should_enter_battle_{ false }, screen_width_{ screen_width }, screen_height_{ screen_height }, event_index_(0)
 {
 	setAttachedCharacterIndex();
 }
@@ -11,7 +11,7 @@ EventBase::EventBase(int unique_object_ID, int center_position_x, int center_pos
 // Called when the event begins
 void EventBase::onStartEvent()
 {
-	start_time_begin_event_ = GetTickCount();
+	start_time_begin_event_ = GetTickCount64();
 }
 
 // Resets all attributes of the event and changes it's completion state
@@ -35,13 +35,13 @@ void EventBase::createEvent()
 }
 
 // Adds colliders to world so they can be seen
-void EventBase::DEBUG_viewCollider(std::vector<std::vector<char>> &world_matrix)
+void EventBase::DEBUG_viewCollider(Matrix &world_matrix)
 {
 	drawSolidRectangle(center_position_x_ - collider_width_ / 2, center_position_y_ - collider_height_ / 2, collider_width_, collider_height_, 'C', world_matrix);
 }
 
 // Removes colliders from the world so they can't be seen
-void EventBase::DEBUG_hideCollider(std::vector<std::vector<char>> &world_matrix)
+void EventBase::DEBUG_hideCollider(Matrix &world_matrix)
 {
 	drawSolidRectangle(center_position_x_ - collider_width_ / 2, center_position_y_ - collider_height_ / 2, collider_width_, collider_height_, ' ', world_matrix);
 }

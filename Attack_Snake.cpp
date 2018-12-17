@@ -7,8 +7,8 @@ Attack_Snake::Attack_Snake(int width, int height, PlayerPosition &player_positio
 {
 	has_hit_player_ = false;
 	has_attack_finished_ = false;
-	start_time_update_attack_ = GetTickCount();
-	start_time_end_attack_ = GetTickCount();
+	start_time_update_attack_ = GetTickCount64();
+	start_time_end_attack_ = GetTickCount64();
 }
 
 Attack_Snake::~Attack_Snake()
@@ -30,8 +30,8 @@ void Attack_Snake::detectCollision()
 // Creates box, fills box
 void Attack_Snake::move()
 {
-	double current_time_end_attack = GetTickCount() - start_time_end_attack_;
-	double current_time_update_attack = GetTickCount() - start_time_update_attack_;
+	double current_time_end_attack = GetTickCount64() - start_time_end_attack_;
+	double current_time_update_attack = GetTickCount64() - start_time_update_attack_;
 
 	if (current_time_end_attack > duration_of_attack_)
 		has_attack_finished_ = true;
@@ -56,7 +56,7 @@ void Attack_Snake::move()
 			head_position_y_--;
 		}
 		detectCollision();
-		start_time_update_attack_ = GetTickCount();
+		start_time_update_attack_ = GetTickCount64();
 	}
 }
 

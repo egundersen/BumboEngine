@@ -7,14 +7,14 @@
 #include <thread>
 #include <iostream>
 
-MatrixManager::MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, std::tuple<std::string, int, int> &image_file_path)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, matrix_display, player_health_),
-	player_health_{ player_health }, matrix_display_{ matrix_display }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	maze_(width, height, 1200, 273, 730, 232, player_health_, matrix_display, inventory_, image_file_path)
+MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, screen_matrix, player_health_),
+	player_health_{ player_health }, screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
+	world_(width, height, 1200, 273, 730, 232, player_health_, screen_matrix, inventory_, image_file_path)
 {
 	inventory_.addItem("Mug o' Grog", 1); // Starting Items (Not pickups! Just starting items)
 	inventory_.addItem("Fish Mush", 1);
-	StartScreen startScreen(width_, height_, matrix_display_);
+	StartScreen startScreen(width_, height_, screen_matrix_);
 }
 
 // Takes input and decides whether to move player, use item, etc...
@@ -31,33 +31,33 @@ void MatrixManager::evaluatePlayerInput()
 			loadVectorSpace("INVENTORY");
 		else
 		{
-			maze_.refreshScreen();
-			if (maze_.shouldEnterBattle()) // Is battle going on?
+			world_.refreshScreen();
+			if (world_.shouldEnterBattle()) // Is battle going on?
 				current_vector_space_ = "BATTLE";
 		}
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
-		if (maze_.getSelectedCharacter() == nullptr) // Called if enemy is destroyed during dialog
+		if (world_.getSelectedCharacter() == nullptr) // Called if enemy is destroyed during dialog
 		{
 			has_initialized_battle_ = false;
-			maze_.onEnterWorld();
+			world_.onEnterWorld();
 			current_vector_space_ = "MAP";
 		}
-		else if (maze_.getSelectedCharacter()->isBattleOver())
+		else if (world_.getSelectedCharacter()->isBattleOver())
 		{
 			has_initialized_battle_ = false;
-			maze_.onEnterWorld();
+			world_.onEnterWorld();
 			current_vector_space_ = "MAP";
 		}
-		else if (maze_.getSelectedCharacter()->getLocalVectorSpace() != "INVENTORY")
+		else if (world_.getSelectedCharacter()->getLocalVectorSpace() != "INVENTORY")
 		{
 			if (!has_initialized_battle_)
 			{
-				maze_.getSelectedCharacter()->onBeginBattle();
+				world_.getSelectedCharacter()->onBeginBattle();
 				has_initialized_battle_ = true;
 			}
-			maze_.getSelectedCharacter()->refreshScreen();
+			world_.getSelectedCharacter()->refreshScreen();
 		}
 		else
 		{
@@ -69,7 +69,7 @@ void MatrixManager::evaluatePlayerInput()
 			if (GetAsyncKeyState(VK_BACK) & 0x8000)
 			{// CLOSE INVENTORY?
 				has_initialized_inventory_ = false;
-				maze_.getSelectedCharacter()->setVectorSpace("MENU");
+				world_.getSelectedCharacter()->setVectorSpace("MENU");
 			}
 			inventory_.evaluatePlayerInput();
 		}
@@ -95,7 +95,7 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 	}
 	else if (vector_space_name == "MAP")
 	{
-		maze_.onEnterWorld();
+		world_.onEnterWorld();
 		current_vector_space_ = "MAP";
 	}
 	else if (vector_space_name == "BATTLE")

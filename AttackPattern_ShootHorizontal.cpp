@@ -6,8 +6,8 @@
 #include <algorithm>
 #include <iostream>
 
-AttackPattern_ShootHorizontal::AttackPattern_ShootHorizontal(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks)
+AttackPattern_ShootHorizontal::AttackPattern_ShootHorizontal(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks)
 {
 	generateRandomSequence(attack_starting_positions_, 0, height_ - 1);
 }
@@ -16,7 +16,7 @@ AttackPattern_ShootHorizontal::AttackPattern_ShootHorizontal(int width, int heig
 void AttackPattern_ShootHorizontal::OnBeginAttack()
 {
 	createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
-	start_time_new_attack_ = GetTickCount();
+	start_time_new_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -27,11 +27,11 @@ void AttackPattern_ShootHorizontal::refreshScreen()
 		has_completed_all_attacks_ = true;
 	else
 	{
-		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
+		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
 		if (current_time_new_attack_ >= 1000 && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
-			start_time_new_attack_ = GetTickCount();
+			start_time_new_attack_ = GetTickCount64();
 		}
 
 		attacksCheckCollision();

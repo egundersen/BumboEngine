@@ -2,10 +2,10 @@
 #include "MatrixBase.h"
 #include <windows.h>
 
-Inventory::Inventory(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), cursor_index_(0), player_health_{ player_health }, matrix_display_{ matrix_display }, start_time_move_cursor_(0)
+Inventory::Inventory(int width, int height, Matrix &screen_matrix, int &player_health)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), cursor_index_(0), player_health_{ player_health }, screen_matrix_{ screen_matrix }, start_time_move_cursor_(0)
 {
-	start_time_move_cursor_ = GetTickCount();
+	start_time_move_cursor_ = GetTickCount64();
 	setInventoryBackgroundText();
 }
 
@@ -27,7 +27,7 @@ void Inventory::onOpenInventory(bool in_battle)
 			temporary_items_list_.push_back(*it);
 		}
 	}
-	start_time_move_cursor_ = GetTickCount();
+	start_time_move_cursor_ = GetTickCount64();
 	cursor_index_ = 0;
 	refreshScreen();
 }
@@ -110,7 +110,7 @@ void Inventory::setPlayerHealthText(int x_position, int y_position)
 // Takes input for inventory menu
 void Inventory::evaluatePlayerInput()
 {
-	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
+	double current_time_move_cursor = GetTickCount64() - start_time_move_cursor_;
 
 	if (current_time_move_cursor > 100) {
 		if (items_list_.size() > 0)
@@ -119,13 +119,13 @@ void Inventory::evaluatePlayerInput()
 			{
 				moveCursor("UP");
 				refreshScreen();
-				start_time_move_cursor_ = GetTickCount();
+				start_time_move_cursor_ = GetTickCount64();
 			}
 			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 			{
 				moveCursor("DOWN");
 				refreshScreen();
-				start_time_move_cursor_ = GetTickCount();
+				start_time_move_cursor_ = GetTickCount64();
 			}
 			if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 			{
@@ -133,7 +133,7 @@ void Inventory::evaluatePlayerInput()
 				{
 					useItem();
 					refreshScreen();
-					start_time_move_cursor_ = GetTickCount();
+					start_time_move_cursor_ = GetTickCount64();
 				}
 			}
 		}
@@ -215,7 +215,7 @@ void Inventory::displayScreen()
 {
 	for (int i = 0; i < height_; i++) {
 		for (int j = 0; j < width_; j++) {
-			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
+			screen_matrix_[i][j] = matrix_[i][j];
 		}
 	}
 }

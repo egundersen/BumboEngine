@@ -7,7 +7,7 @@ Attack_Explode::Attack_Explode(int width, int height, PlayerPosition &player_pos
 {
 	has_hit_player_ = false;
 	has_attack_finished_ = false;
-	start_time_update_attack_ = GetTickCount();
+	start_time_update_attack_ = GetTickCount64();
 }
 
 Attack_Explode::~Attack_Explode()
@@ -32,7 +32,7 @@ void Attack_Explode::move()
 {
 	if (!has_attack_finished_)
 	{
-		double current_time_update_attack = GetTickCount() - start_time_update_attack_;
+		double current_time_update_attack = GetTickCount64() - start_time_update_attack_;
 		if (current_time_update_attack < delay_)
 		{
 			for (int i = -(diameter_ / 2); i < (diameter_ / 2); i++)
@@ -59,7 +59,7 @@ void Attack_Explode::move()
 					if (matrix_[center_position_y_ + i][center_position_x_ + j] != '.')
 						matrix_[center_position_y_ + i][center_position_x_ + j] = ' ';
 			has_attack_finished_ = true;
-			start_time_update_attack_ = GetTickCount();
+			start_time_update_attack_ = GetTickCount64();
 		}
 	}
 }

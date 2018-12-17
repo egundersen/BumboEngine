@@ -5,8 +5,8 @@
 #include <windows.h>
 #include <algorithm>
 
-AttackPattern_Explode::AttackPattern_Explode(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks), create_attack_delay_{ 50 }, attack_diameter_{ 4 }, delay_till_explode_{ 1500 }, duration_of_explosion_{ 1000 }
+AttackPattern_Explode::AttackPattern_Explode(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks), create_attack_delay_{ 50 }, attack_diameter_{ 4 }, delay_till_explode_{ 1500 }, duration_of_explosion_{ 1000 }
 {
 }
 
@@ -16,7 +16,7 @@ void AttackPattern_Explode::OnBeginAttack()
 	setAttackParameters();
 	createBorder();
 	createAttack(generateRandomNumber(attack_diameter_ / 2, width_ - attack_diameter_ / 2), generateRandomNumber(attack_diameter_ / 2, height_ - attack_diameter_ / 2));
-	start_time_new_attack_ = GetTickCount();
+	start_time_new_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -27,11 +27,11 @@ void AttackPattern_Explode::refreshScreen()
 		has_completed_all_attacks_ = true;
 	else
 	{
-		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
+		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
 		if (current_time_new_attack_ >= create_attack_delay_ && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack(generateRandomNumber(attack_diameter_ / 2, width_ - attack_diameter_ / 2), generateRandomNumber(attack_diameter_ / 2, height_ - attack_diameter_ / 2));
-			start_time_new_attack_ = GetTickCount();
+			start_time_new_attack_ = GetTickCount64();
 		}
 
 		attacksCheckCollision();

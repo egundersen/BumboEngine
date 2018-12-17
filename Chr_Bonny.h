@@ -7,7 +7,7 @@
 class Chr_Bonny : public CharacterBase
 {
 public:
-	Chr_Bonny(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, int &player_health, int screen_width, int screen_height, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, std::vector<std::vector<std::string>> &matrix_display, std::tuple<std::string, int, int> &image_file_path,
+	Chr_Bonny(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, int &player_health, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -33,7 +33,7 @@ public:
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 1) // 0 = no event
 
-		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height, event_ID, player_health, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
+		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player_health, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
 	{
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
@@ -66,18 +66,18 @@ public:
 	}
 
 	/* Creates all attacks */
-	void initializeAttackPatterns(int screen_width, int screen_height, std::vector<std::vector<std::string>> &matrix_display, int &player_health)
+	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, int &player_health)
 	{
 		//for (int i = 0; i < 6; i++)
 		//{
 			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 5, 35);
+			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player_health, 10, 5, 35);
 			AttackPatternBase *attack_pattern_2;
-			attack_pattern_2 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, matrix_display, player_health, 50);
+			attack_pattern_2 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player_health, 50);
 			AttackPatternBase *attack_pattern_3;
-			attack_pattern_3 = new VerticleGap_VerySlow(screen_width, screen_height, matrix_display, player_health);
+			attack_pattern_3 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player_health);
 			AttackPatternBase *attack_pattern_4;
-			attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, matrix_display, player_health, 10, 4, 1);
+			attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player_health, 10, 4, 1);
 			attack_patterns_.push_back(attack_pattern_1);
 			attack_patterns_.push_back(attack_pattern_2);
 			attack_patterns_.push_back(attack_pattern_3);

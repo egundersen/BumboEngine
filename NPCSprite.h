@@ -7,7 +7,7 @@
 class NPCSprite : public Sprite
 {
 public:
-	NPCSprite(int sprite_width, int sprite_height, std::vector<std::vector<std::string>> &matrix_display, std::vector<std::vector<char>>& world_matrix);
+	NPCSprite(int sprite_width, int sprite_height, Matrix &screen_matrix, Matrix &world_matrix);
 
 	// Setters
 	void initializeSprites(std::vector<Image*> sprite_states);
@@ -21,7 +21,7 @@ private:
 	void displayGhostSpriteAtDirection(std::vector<std::vector<char>> &direction, int top_left_position_x, int top_left_position_y, int screen_width_, int screen_height_, char moving_direction);
 	void eraseSpriteAtDirection(std::vector<std::vector<char>> &direction, int top_left_position_x, int top_left_position_y);
 
-	std::vector<std::vector<char>>& world_matrix_;
+	Matrix &world_matrix_;
 };
 
 #endif // NPCSPRITE_H

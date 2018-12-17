@@ -1,6 +1,6 @@
 #include "MatrixBase.h"
-#include "RGBA.h"
 #include "BossFightDefinition.h"
+#include "BitmapDefinition.h"
 #include <tuple>
 
 #ifndef BATTLEDIALOGBASE_H
@@ -8,9 +8,9 @@
 
 class BattleDialogBase : public MatrixBase {
 public:
-	BattleDialogBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, 
+	BattleDialogBase(int width, int height, Matrix &screen_matrix, 
 		std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, 
-		BossFightDefinition boss_fight_definition, std::tuple<std::string, int, int> &image_file_path);
+		BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path);
 
 	// Setters
 	void onOpenDialog();
@@ -40,12 +40,12 @@ private:
 	void displayScreen();
 
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices_;
-	std::vector<std::vector<std::string>> &matrix_display_;
+	Matrix &screen_matrix_;
 	std::vector<std::vector<char>> matrix_;
 	int width_, height_, cursor_index_, start_time_move_cursor_, start_time_exit_dialog_, dialog_choices_index_, max_choices_;
 	bool has_boss_given_up_, should_exit_dialog_, displaying_response_, enter_key_pressed_, return_to_menu_;
 	std::string response_;
-	std::tuple<std::string, int, int> &image_file_path_;
+	BitmapDefinition &bitmap_;
 	BossFightDefinition boss_;
 };
 

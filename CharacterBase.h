@@ -13,10 +13,10 @@ class CharacterBase : public PopupWithCollision, public BattleBase, public Dialo
 {
 public:
 	CharacterBase(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID,
-		std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
-		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, int event_ID,
+		Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
+		Matrix &screen_matrix, int screen_width, int screen_height, int event_ID,
 
-		int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, std::tuple<std::string, int, int> &image_file_path,
+		int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &image_file_path,
 		WorldSprite world_sprite);
 	~CharacterBase();
 
@@ -55,7 +55,7 @@ public:
 	// Reset and attack creation-related
 	void reset();
 protected:
-	virtual void initializeAttackPatterns(int screen_width, int screen_height, std::vector<std::vector<std::string>> &matrix_display, int &player_health) {}
+	virtual void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, int &player_health) {}
 private:
 	void resetAttackPatterns();
 	void eraseSpriteAndColliders();
@@ -70,7 +70,7 @@ private:
 	bool use_basic_dialog_, has_begun_moving_, has_reached_destination_, attack_on_sight_;
 	int start_time_move_one_space_, start_time_move_, movement_direction_multiplier_, event_ID_,
 		screen_width_, screen_height_, &player_health_, movement_index_;
-	std::vector<std::vector<std::string>> &matrix_display_;
+	Matrix &screen_matrix_;
 };
 
 #endif // !CHARACTERBASE_H

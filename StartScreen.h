@@ -6,7 +6,7 @@
 class StartScreen : public MatrixBase
 {
 public:
-	StartScreen(int width, int height, std::vector<std::vector<std::string>> &matrix_display);
+	StartScreen(int width, int height, Matrix &screen_matrix);
 private:
 	// Setters
 	void setBackgroundText();
@@ -14,7 +14,7 @@ private:
 	// Output Displays
 	void displayScreen();
 
-	std::vector<std::vector<std::string>> &matrix_display_;
+	Matrix &screen_matrix_;
 	std::vector<std::vector<char>> matrix_;
 	std::vector<char> empty_vector_;
 	int width_;

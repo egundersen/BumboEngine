@@ -1,7 +1,7 @@
 #include "Maze.h"
 #include <iterator>
 
-Maze::Maze(std::vector<std::vector<char>>& world_matrix, int top_left_position_x, int top_left_position_y)
+Maze::Maze(Matrix &world_matrix, int top_left_position_x, int top_left_position_y)
 	: world_matrix_{ world_matrix }, position_x_{ top_left_position_x }, position_y_{ top_left_position_y }
 {
 }

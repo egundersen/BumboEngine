@@ -1,8 +1,9 @@
 #include "NPCSprite.h"
+#include <tuple>
 #include <iostream>
 
-NPCSprite::NPCSprite(int sprite_width, int sprite_height, std::vector<std::vector<std::string>> &matrix_display, std::vector<std::vector<char>>& world_matrix)
-	: Sprite(sprite_width, sprite_height, matrix_display), world_matrix_{ world_matrix }
+NPCSprite::NPCSprite(int sprite_width, int sprite_height, Matrix &screen_matrix, Matrix &world_matrix)
+	: Sprite(sprite_width, sprite_height, screen_matrix), world_matrix_{ world_matrix }
 {
 
 }
@@ -50,18 +51,18 @@ void NPCSprite::displayGhostSpriteAtDirection(std::vector<std::vector<char>>& di
 			{
 			case 'd':
 				if (direction[i][j] != ' ' && top_left_position_y < screen_height_ - sprite_height_ / 2 - 1)
-					matrix_display_[top_left_position_y + i][top_left_position_x + j] = std::string(1, direction[i][j]);
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
 				break;
 			case 'u':
 				if (direction[i][j] != ' ' && top_left_position_y > sprite_height_ / 2 - 1)
-					matrix_display_[top_left_position_y + i][top_left_position_x + j] = std::string(1, direction[i][j]);
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
 			case 'r':
 				if (direction[i][j] != ' ' && top_left_position_x < screen_width_ - sprite_width_ / 2 - 1)
-					matrix_display_[top_left_position_y + i][top_left_position_x + j] = std::string(1, direction[i][j]);
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
 				break;
 			case 'l':
 				if (direction[i][j] != ' ' && top_left_position_x > sprite_width_ / 2 - 1)
-					matrix_display_[top_left_position_y + i][top_left_position_x + j] = std::string(1, direction[i][j]);
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
 				break;
 			}
 }

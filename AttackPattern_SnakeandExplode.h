@@ -8,7 +8,7 @@
 class AttackPattern_SnakeandExplode : public AttackPatternBase
 {
 public:
-	explicit AttackPattern_SnakeandExplode(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks);
+	explicit AttackPattern_SnakeandExplode(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks);
 	virtual ~AttackPattern_SnakeandExplode() {}
 
 	// Setters

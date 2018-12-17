@@ -8,7 +8,7 @@
 class Inventory : public MatrixBase
 {
 public:
-	Inventory(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health);
+	Inventory(int width, int height, Matrix &screen_matrix, int &player_health);
 
 	// Setters
 	void onOpenInventory(bool in_battle = false);
@@ -31,7 +31,7 @@ private:
 	// Output Displays
 	void displayScreen();
 
-	std::vector<std::vector<std::string>> &matrix_display_;
+	Matrix &screen_matrix_;
 	std::vector<std::vector<char>> matrix_;
 	std::vector<Item> items_list_;
 	std::vector<Item> temporary_items_list_;

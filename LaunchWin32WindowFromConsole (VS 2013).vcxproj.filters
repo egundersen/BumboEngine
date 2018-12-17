@@ -165,6 +165,9 @@
     <ClCompile Include="AttackPattern_ShootandSnake.cpp">
       <Filter>Source Files\Attacks</Filter>
     </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -372,6 +375,12 @@
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="RGBA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapDefinition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

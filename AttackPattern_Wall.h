@@ -8,7 +8,7 @@
 class AttackPattern_Wall : public AttackPatternBase
 {
 public:
-	AttackPattern_Wall(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks, int gap_width, int speed);
+	AttackPattern_Wall(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks, int gap_width, int speed);
 
 	// Setters
 	void OnBeginAttack();

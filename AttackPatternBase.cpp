@@ -3,8 +3,8 @@
 #include <iostream>
 #include <algorithm>
 
-AttackPatternBase::AttackPatternBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, matrix_display_{ matrix_display }, border_was_destroyed_{ false }
+AttackPatternBase::AttackPatternBase(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false }
 {
 	border_ = new Attack_Border(width, height, player_position_, matrix_, element_is_occupied_);
 	element_is_occupied_ = new bool*[height_];
@@ -30,8 +30,8 @@ AttackPatternBase::~AttackPatternBase()
 // Calls once when the entire attack starts
 void AttackPatternBase::OnBeginAttack()
 {
-	start_time_new_attack_ = GetTickCount();
-	start_time_slow_player_ = GetTickCount();
+	start_time_new_attack_ = GetTickCount64();
+	start_time_slow_player_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -63,7 +63,7 @@ void AttackPatternBase::refreshPlayerLocation()
 // Takes input and decides whether to move player
 void AttackPatternBase::evaluatePlayerInput()
 {
-	double current_time_move_player = GetTickCount() - start_time_slow_player_;
+	double current_time_move_player = GetTickCount64() - start_time_slow_player_;
 
 	// Slow player if they are pressing SHIFT key
 	if (GetAsyncKeyState(VK_SHIFT) & 0x8000)
@@ -92,7 +92,7 @@ void AttackPatternBase::evaluatePlayerInput()
 			if (player_position_.x > 0)
 				--player_position_.x;
 		}
-		start_time_slow_player_ = GetTickCount();
+		start_time_slow_player_ = GetTickCount64();
 	}
 }
 
@@ -173,7 +173,7 @@ void AttackPatternBase::displayScreen()
 {
 	for (int i = 0; i < height_; i++) {
 		for (int j = 0; j < width_; j++) {
-			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
+			screen_matrix_[i][j] = matrix_[i][j];
 		}
 	}
 }

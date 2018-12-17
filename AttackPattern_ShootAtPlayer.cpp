@@ -1,8 +1,8 @@
 #include "AttackPattern_ShootAtPlayer.h"
 #include <Windows.h>
 
-AttackPattern_ShootAtPlayer::AttackPattern_ShootAtPlayer(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int & player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks)
+AttackPattern_ShootAtPlayer::AttackPattern_ShootAtPlayer(int width, int height, Matrix& screen_matrix, int & player_health, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks)
 {
 }
 
@@ -10,7 +10,7 @@ AttackPattern_ShootAtPlayer::AttackPattern_ShootAtPlayer(int width, int height, 
 void AttackPattern_ShootAtPlayer::OnBeginAttack()
 {
 	createAttack(rand() % 2, 0, width_, 60, player_position_.y, 1);
-	start_time_new_attack_ = GetTickCount();
+	start_time_new_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -21,11 +21,11 @@ void AttackPattern_ShootAtPlayer::refreshScreen()
 		has_completed_all_attacks_ = true;
 	else
 	{
-		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
+		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
 		if (current_time_new_attack_ >= 500 && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack(rand() % 2, 0, width_, 60, player_position_.y, 1);
-			start_time_new_attack_ = GetTickCount();
+			start_time_new_attack_ = GetTickCount64();
 		}
 
 		attacksCheckCollision();

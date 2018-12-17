@@ -52,5 +52,5 @@ void PlayerSprite::displaySpriteAtDirection(std::vector<std::vector<char>>& dire
 	for (int i = 0; i < sprite_height_; i++)
 		for (int j = 0; j < sprite_width_; j++)
 			if (direction[i][j] != ' ')
-				matrix_display_[i + top_left_position_y / 2 - 3][j + top_left_position_x / 2 - 5] = std::string(1, direction[i][j]);
+				screen_matrix_[i + top_left_position_y / 2 - 3][j + top_left_position_x / 2 - 5] = direction[i][j];
 }

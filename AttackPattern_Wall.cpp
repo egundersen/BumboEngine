@@ -6,8 +6,8 @@
 #include <algorithm>
 #include <iostream>
 
-AttackPattern_Wall::AttackPattern_Wall(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks, int gap_width, int speed)
-	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks), gap_width_{ gap_width }, speed_{ speed }
+AttackPattern_Wall::AttackPattern_Wall(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks, int gap_width, int speed)
+	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks), gap_width_{ gap_width }, speed_{ speed }
 {
 }
 
@@ -15,7 +15,7 @@ AttackPattern_Wall::AttackPattern_Wall(int width, int height, std::vector<std::v
 void AttackPattern_Wall::OnBeginAttack()
 {
 	createAttack( 0, width_, generateRandomNumber(0, height_ - 1));
-	start_time_new_attack_ = GetTickCount();
+	start_time_new_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -26,11 +26,11 @@ void AttackPattern_Wall::refreshScreen()
 		has_completed_all_attacks_ = true;
 	else
 	{
-		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
+		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
 		if (current_time_new_attack_ >= 1750 && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack( 0, width_, generateRandomNumber(0, height_ - 1));
-			start_time_new_attack_ = GetTickCount();
+			start_time_new_attack_ = GetTickCount64();
 		}
 
 		attacksCheckCollision();

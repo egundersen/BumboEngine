@@ -1,4 +1,5 @@
 #include "MatrixBase.h"
+#include "Matrix.h"
 
 #ifndef SPLASHSCREEN_H
 #define SPLASHSCREEN_H
@@ -6,7 +7,7 @@
 class SplashScreen: MatrixBase
 {
 public:
-	SplashScreen(int width, int height, std::vector<std::vector<std::string>> &matrix_display)
+	SplashScreen(int width, int height, Matrix &screen_matrix)
 	{
 		std::vector<std::vector<char>> matrix = std::vector<std::vector<char>>(height, std::vector<char>(width, ' '));
 		Image loading("Loading...");
@@ -16,7 +17,7 @@ public:
 		{
 			for (int j = 0; j < width; j++)
 			{
-				matrix_display[i][j] = std::string(1, matrix[i][j]);
+				screen_matrix[i][j] = matrix[i][j];
 			}
 		}
 	}

@@ -8,7 +8,7 @@
 class AttackPattern_ShootandSnake : public AttackPatternBase
 {
 public:
-	AttackPattern_ShootandSnake(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks);
+	AttackPattern_ShootandSnake(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks);
 
 	// Setters
 	void OnBeginAttack();

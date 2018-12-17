@@ -10,7 +10,7 @@
 class MatrixManager : public MatrixBase
 {
 public:
-	MatrixManager(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int player_health, std::tuple<std::string, int, int> &image_file_path);
+	MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path);
 
 	// Setters
 	void evaluatePlayerInput();
@@ -26,11 +26,11 @@ private:
 	bool has_initialized_inventory_, has_initialized_battle_;
 
 	int width_, height_, player_health_; // the real player health
-	std::vector<std::vector<std::string>> &matrix_display_;
+	Matrix &screen_matrix_;
 	std::vector<std::vector<char>> matrix_;
 	std::string current_vector_space_;
 	Inventory inventory_;
-	WorldBase maze_;
+	WorldBase world_;
 };
 
 #endif // !MatrixManager_H

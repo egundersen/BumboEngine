@@ -4,20 +4,20 @@
 #include <windows.h>
 #include <iostream>
 
-BattleBase::BattleBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, int &player_health, BossFightDefinition boss_fight_definition, std::tuple<std::string, int, int> &image_file_path)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_{ boss_fight_definition }, image_file_path_{ image_file_path },
-	matrix_display_{ matrix_display }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
-	dialog_(width, height, matrix_display, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
+BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, int &player_health, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), player_health_{ player_health }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
+	screen_matrix_{ screen_matrix }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
+	dialog_(width, height, screen_matrix, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
 	initial_player_health_{ player_health }
 {
-	start_time_move_cursor_ = GetTickCount();
+	start_time_move_cursor_ = GetTickCount64();
 	setBackgroundText();
 }
 
 // Runs when battle starts
 void BattleBase::onBeginBattle()
 {
-	start_time_move_cursor_ = GetTickCount();
+	start_time_move_cursor_ = GetTickCount64();
 	cursor_index_ = 1;
 	refreshScreen();
 	showFileSprite();
@@ -29,7 +29,7 @@ void BattleBase::refreshScreen()
 	if (boss_.health == 0) // BOSS DESTROYED
 	{
 		if (start_time_battle_end_animation_ == 0)
-			start_time_battle_end_animation_ = GetTickCount();
+			start_time_battle_end_animation_ = GetTickCount64();
 
 		bossDestroyed();
 	}
@@ -40,7 +40,7 @@ void BattleBase::refreshScreen()
 			if (dialog_.hasBossGivenUp()) // BOSS SPARED THROUGH DIALOG
 			{
 				if (start_time_battle_end_animation_ == 0)
-					start_time_battle_end_animation_ = GetTickCount();
+					start_time_battle_end_animation_ = GetTickCount64();
 
 				bossSpared();
 			}
@@ -248,7 +248,7 @@ void BattleBase::drawCursor(int offset)
 // Takes input for battle menu
 void BattleBase::evaluatePlayerInput()
 {
-	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
+	double current_time_move_cursor = GetTickCount64() - start_time_move_cursor_;
 
 	if (current_time_move_cursor > 100)
 	{
@@ -256,20 +256,20 @@ void BattleBase::evaluatePlayerInput()
 		{
 			moveCursor("RIGHT");
 			setCursorText();
-			start_time_move_cursor_ = GetTickCount();
+			start_time_move_cursor_ = GetTickCount64();
 		}
 		else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		{
 			moveCursor("LEFT");
 			setCursorText();
-			start_time_move_cursor_ = GetTickCount();
+			start_time_move_cursor_ = GetTickCount64();
 		}
 		if (GetKeyState(VK_RETURN) & 0x8000)
 		{
 			if (current_time_move_cursor > 500)
 			{
 				confirmSelection();
-				start_time_move_cursor_ = GetTickCount();
+				start_time_move_cursor_ = GetTickCount64();
 			}
 		}
 	}
@@ -319,7 +319,7 @@ void BattleBase::bossOutOfAttacks()
 // Boss is killed
 void BattleBase::bossDestroyed()
 {
-	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
+	double current_time_battle_end_animation = GetTickCount64() - start_time_battle_end_animation_;
 	if (current_time_battle_end_animation <= 5000)
 		showFileSprite("ANGRY");
 	else if (current_time_battle_end_animation > 5000)
@@ -343,7 +343,7 @@ void BattleBase::bossDestroyed()
 // Boss is spared
 void BattleBase::bossSpared()
 {
-	double current_time_battle_end_animation = GetTickCount() - start_time_battle_end_animation_;
+	double current_time_battle_end_animation = GetTickCount64() - start_time_battle_end_animation_;
 	if (current_time_battle_end_animation <= 5000)
 		showFileSprite("NEUTRAL");
 	else if (current_time_battle_end_animation > 5000)
@@ -407,20 +407,21 @@ void BattleBase::showFileSprite(std::string emotion)
 	{
 		if (emotion == "") // Decide whether to use emotion based on health left
 		{
-			if(boss_.health < initial_boss_health_ / 2) // Half Health
-				std::get<0>(image_file_path_) = boss_.file_path_angry;
+			if (boss_.health < initial_boss_health_ / 2) // Half Health
+				bitmap_.setFilePath(boss_.file_path_angry);
 			else
-				std::get<0>(image_file_path_) = boss_.file_path_neutral;
+				bitmap_.setFilePath(boss_.file_path_neutral);
 		}
 		else if (emotion == "NEUTRAL")
-			std::get<0>(image_file_path_) = boss_.file_path_neutral;
+			bitmap_.setFilePath(boss_.file_path_neutral);
 		else if(emotion == "ANGRY")
-			std::get<0>(image_file_path_) = boss_.file_path_angry;
+			bitmap_.setFilePath(boss_.file_path_angry);
 		else if (emotion == "nervous_dead")
-			std::get<0>(image_file_path_) = boss_.file_path_nervous_dead;
+			bitmap_.setFilePath(boss_.file_path_nervous_dead);
 		else if (emotion == "HAPPY")
-			std::get<0>(image_file_path_) = boss_.file_path_happy;
-		std::get<1>(image_file_path_) = 160;
+			bitmap_.setFilePath(boss_.file_path_happy);
+		bitmap_.setXOffset(160);
+		bitmap_.showBitmap();
 	}
 }
 
@@ -428,7 +429,7 @@ void BattleBase::showFileSprite(std::string emotion)
 void BattleBase::hideFileSprite()
 {
 	if (boss_.use_files)
-		std::get<0>(image_file_path_) = "";
+		bitmap_.hideBitmap();
 }
 
 // Resets the battle space
@@ -436,7 +437,7 @@ void BattleBase::resetBattleSpace()
 {
 	local_vector_space_ = "MENU";
 
-	start_time_move_cursor_ = GetTickCount();
+	start_time_move_cursor_ = GetTickCount64();
 	boss_.health = initial_boss_health_;
 	player_health_ = initial_player_health_;
 
@@ -457,7 +458,7 @@ void BattleBase::displayScreen()
 	{
 		for (int j = 0; j < width_; j++)
 		{
-			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
+			screen_matrix_[i][j] = matrix_[i][j];
 		}
 	}
 }

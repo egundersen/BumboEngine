@@ -2,9 +2,9 @@
 #include <Windows.h>
 #include <iostream>
 
-WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory, std::tuple<std::string, int, int> &image_file_path)
+WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
-	world_matrix_(world_height, std::vector<char>(world_width, ' ')), matrix_display_{ matrix_display }, player_health_{ player_health }, player_sprite_{ 12, 10, matrix_display }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
+	world_matrix_(world_width, world_height), screen_matrix_{ screen_matrix }, player_health_{ player_health }, player_sprite_{ 12, 10, screen_matrix }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
 	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
@@ -17,7 +17,7 @@ WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int w
 // Runs once whenever the player enters the world (Like when exiting a battle or the inventory)
 void WorldBase::onEnterWorld()
 {
-	start_time_player_speed_ = GetTickCount();
+	start_time_player_speed_ = GetTickCount64();
 	should_enter_battle_ = false;
 	shouldDespawnCharacter();
 }
@@ -177,7 +177,8 @@ void WorldBase::displayScreen()
 	{
 		for (int j = 0; j < screen_width_; j++)
 		{
-			matrix_display_[i][j] = std::string(1, world_matrix_[screen_position_.y + i][screen_position_.x + j]);
+			char temp = world_matrix_[screen_position_.y + i][screen_position_.x + j];
+			screen_matrix_[i][j] = temp;
 		}
 	}
 
@@ -194,7 +195,7 @@ void WorldBase::displayScreen()
 // Takes input and decides whether to move player
 void WorldBase::evaluatePlayerInput()
 {
-	double current_time_move_player = GetTickCount() - start_time_player_speed_;
+	double current_time_move_player = GetTickCount64() - start_time_player_speed_;
 
 	if (selected_character_ != nullptr && selected_character_->shouldShowDialog()) // Navigating dialog
 	{
@@ -203,17 +204,17 @@ void WorldBase::evaluatePlayerInput()
 			if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 			{
 				selected_character_->moveDialogCursor("RETURN");
-				start_time_player_speed_ = GetTickCount();
+				start_time_player_speed_ = GetTickCount64();
 			}
 			else if (GetAsyncKeyState(VK_UP) & 0x8000)
 			{
 				selected_character_->moveDialogCursor("UP");
-				start_time_player_speed_ = GetTickCount();
+				start_time_player_speed_ = GetTickCount64();
 			}
 			else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 			{
 				selected_character_->moveDialogCursor("DOWN");
-				start_time_player_speed_ = GetTickCount();
+				start_time_player_speed_ = GetTickCount64();
 			}
 			else if (GetAsyncKeyState(VK_BACK) & 0x8000)
 			{
@@ -290,7 +291,7 @@ void WorldBase::evaluatePlayerInput()
 				}
 				else
 					player_sprite_.setPlayerMoving("not horizontal");
-				start_time_player_speed_ = GetTickCount();
+				start_time_player_speed_ = GetTickCount64();
 			}
 			is_viewing_popup_ = false;
 		}
@@ -465,7 +466,7 @@ void WorldBase::setNPCAttributes()
 		character->createWorldSprite();
 		if (character->shouldAttackOnSight())
 		{
-			Event_AttackOnSight *attack_on_sight = new Event_AttackOnSight(character->getUniqueObjectID(), character->getCenterPositionX(), character->getCenterPositionY(), 10, 10, character->getUniqueObjectID(), false, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+			Event_AttackOnSight *attack_on_sight = new Event_AttackOnSight(character->getUniqueObjectID(), character->getCenterPositionX(), character->getCenterPositionY(), 10, 10, character->getUniqueObjectID(), false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 			attack_on_sight->createEvent();
 
 			events_.push_back(attack_on_sight);
@@ -594,13 +595,13 @@ void WorldBase::GENERATE_Maze()
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
 void WorldBase::GENERATE_Enemies()
 {
-	CharacterBase *tutorial_npc = new Chr_TutorialNPC(838, 225, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *aki_final = new Chr_AkiFinal(1063, 259, 10, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *tutorial_npc = new Chr_TutorialNPC(838, 225, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki_final = new Chr_AkiFinal(1063, 259, 10, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
-	CharacterBase *ryuuko = new Chr_Ryuuko(1023, 259, 11, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *aki = new Chr_Aki(1033, 259, 12, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *bonny = new Chr_Bonny(1043, 259, 13, sprite_sheet_.bonny, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
-	CharacterBase *sharktooth = new Chr_Sharktooth(1053, 259, 14, sprite_sheet_.sharktooth, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	CharacterBase *ryuuko = new Chr_Ryuuko(1023, 259, 11, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki = new Chr_Aki(1033, 259, 12, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *bonny = new Chr_Bonny(1043, 259, 13, sprite_sheet_.bonny, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sharktooth = new Chr_Sharktooth(1053, 259, 14, sprite_sheet_.sharktooth, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();
@@ -618,7 +619,7 @@ void WorldBase::GENERATE_Enemies()
 
 #ifdef _DEBUG
 	CharacterBase *test;
-	test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_);
+	test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	test->initializeCharacter();
 	characters_.push_back(test);
 #endif
@@ -627,25 +628,25 @@ void WorldBase::GENERATE_Enemies()
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
-	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(1027, 205, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(1027, 205, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("Four whole days.ZI've been waitingZin line so long...ZI regret to say IZchose the pirateZfactionZ", 'X', 23, 9), sprite_sheet_.player, 'u');
-	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(1034, 202, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(1034, 202, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("Yar har harZand a bottleZof rum!Z", 'X', 23, 9), sprite_sheet_.pirate_1, ' u');
-	CharacterBase *standing_in_line_3 = new Chr_BackgroundNPC(1041, 200, 4, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_3 = new Chr_BackgroundNPC(1041, 200, 4, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("I'm so hungry...ZBut I don't wantZto leave theZlineZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
-	CharacterBase *standing_in_line_4 = new Chr_BackgroundNPC(1048, 202, 5, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_4 = new Chr_BackgroundNPC(1048, 202, 5, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("STOP SHOVING!ZZOh... um, helloZ", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
-	CharacterBase *standing_in_line_5 = new Chr_BackgroundNPC(1056, 201, 6, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_5 = new Chr_BackgroundNPC(1056, 201, 6, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("Back of the line!ZCan't you tell IZwas here first?Z", 'X', 23, 9), sprite_sheet_.player, 'r');
-	CharacterBase *standing_in_line_6 = new Chr_BackgroundNPC(1016, 210, 7, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *standing_in_line_6 = new Chr_BackgroundNPC(1016, 210, 7, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("You're a pirateZtoo? Better getZin line!Z", 'X', 23, 9), sprite_sheet_.player, 'r');
 
-	CharacterBase *boarder_guard_1 = new Chr_BackgroundNPC(1079, 203, 8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *boarder_guard_1 = new Chr_BackgroundNPC(1079, 203, 8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("Another pirate...ZGet in line withZthe rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
-	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(1071, 214, 9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(1071, 214, 9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("Another pirate...ZGet in line withZthe rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
 
-	CharacterBase *boarder_incident_random = new Chr_BackgroundNPC(1013, 259, 15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, matrix_display_, image_file_path_,
+	CharacterBase *boarder_incident_random = new Chr_BackgroundNPC(1013, 259, 15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.player, 'r');
 
 	standing_in_line_1->initializeCharacter();
@@ -672,8 +673,8 @@ void WorldBase::GENERATE_NonHostileNPCs()
 // creates all the sign posts (These show popups)
 void WorldBase::GENERATE_Signposts()
 {
-	Signpost *checkpoint_sign_1 = new Signpost(750, 224, 23, 9, 1, "Nakinom Border Checkpoint --------> 0.2 km", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
-	Signpost *checkpoint_sign_2 = new Signpost(1000, 210, 23, 9, 2, "Nakinom Border Checkpoint", world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_1 = new Signpost(750, 224, 23, 9, 1, "Nakinom Border Checkpoint --------> 0.2 km", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
+	Signpost *checkpoint_sign_2 = new Signpost(1000, 210, 23, 9, 2, "Nakinom Border Checkpoint", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 
 	signposts_.push_back(checkpoint_sign_1);
 	signposts_.push_back(checkpoint_sign_2);
@@ -687,33 +688,33 @@ void WorldBase::GENERATE_Signposts()
 void WorldBase::GENERATE_Pickups()
 {
 	Item cliff_item("Health Potion", 2, "Restores 2 HP");
-	Pickup *cliff_pickup = new Pickup(665, 227, 23, 9, 1, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, cliff_item, inventory_);
+	Pickup *cliff_pickup = new Pickup(665, 227, 23, 9, 1, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, cliff_item, inventory_);
 
 	/*Item item_1("Pirate ALE", 1, "It looks completely black. There is a 50/50 chance this will kill you if you drink it");
-	Pickup *pickup_1 = new Pickup(859, 27, 23, 9, 2, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_1, inventory_);
+	Pickup *pickup_1 = new Pickup(859, 27, 23, 9, 2, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_1, inventory_);
 	Item item_2("Pile of Pigeon", 1, "A local delicacy, wrapped in newspaper: try not to think of whats inside");
-	Pickup *pickup_2 = new Pickup(607, 266, 23, 9, 3, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_2, inventory_);
+	Pickup *pickup_2 = new Pickup(607, 266, 23, 9, 3, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_2, inventory_);
 	Item item_3("Ground meat paste", 2, "From the cafeteria, but at least it's still warm");
-	Pickup *pickup_3 = new Pickup(589, 266, 23, 9, 4, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_3, inventory_);
+	Pickup *pickup_3 = new Pickup(589, 266, 23, 9, 4, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_3, inventory_);
 	Item item_4("Whiskey", 1, "This is the non-alcoholic version");
-	Pickup *pickup_4 = new Pickup(463, 381, 23, 9, 5, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_4, inventory_);
+	Pickup *pickup_4 = new Pickup(463, 381, 23, 9, 5, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_4, inventory_);
 	Item item_5("Bottle o' Rum", 1, "This is the non-alcoholic version");
-	Pickup *pickup_5 = new Pickup(450, 369, 23, 9, 6, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_5, inventory_);
+	Pickup *pickup_5 = new Pickup(450, 369, 23, 9, 6, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_5, inventory_);
 	Item item_6("Health Potion", 2, "Restores 2 HP");
-	Pickup *pickup_6 = new Pickup(151, 534, 23, 9, 7, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_6, inventory_);
+	Pickup *pickup_6 = new Pickup(151, 534, 23, 9, 7, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_6, inventory_);
 	Item item_7("Pizza", 2, "Dominos Pizzia: Great if you're short on cash and don't mind the delivery guy missing your house entirely");
-	Pickup *pickup_7 = new Pickup(177, 530, 23, 9, 8, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_7, inventory_);
+	Pickup *pickup_7 = new Pickup(177, 530, 23, 9, 8, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_7, inventory_);
 	Item item_8("Lemon", 1, "An ordinary lemon. It's too sour to eat");
-	Pickup *pickup_8 = new Pickup(192, 496, 23, 9, 9, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_8, inventory_);//*/
+	Pickup *pickup_8 = new Pickup(192, 496, 23, 9, 9, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_8, inventory_);//*/
 
 	Item item_clue_1("Cigar Box", 1, "Assembled in Cuba : Made in China");
-	Pickup *pickup_clue_1 = new Pickup(1130, 212, 23, 9, 10, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_1, inventory_);
+	Pickup *pickup_clue_1 = new Pickup(1130, 212, 23, 9, 10, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_1, inventory_);
 	Item item_clue_2("Long Sword", 1, "There's a tag on the side: If lost return to Ryuuko");
-	Pickup *pickup_clue_2 = new Pickup(1127, 204, 23, 9, 11, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_2, inventory_);
+	Pickup *pickup_clue_2 = new Pickup(1127, 204, 23, 9, 11, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_2, inventory_);
 	Item item_clue_3("Feather", 1, "It's a turkey feather cut to mimic a hawk feather: someone was short-changed");
-	Pickup *pickup_clue_3 = new Pickup(841, 46, 23, 9, 12, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_3, inventory_);
+	Pickup *pickup_clue_3 = new Pickup(841, 46, 23, 9, 12, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_3, inventory_);
 	Item item_clue_4("Glove", 1, "A single black glove, missing from a pair");
-	Pickup *pickup_clue_4 = new Pickup(1146, 205, 23, 9, 13, world_matrix_, element_has_object_, matrix_display_, screen_width_, screen_height_, item_clue_4, inventory_);
+	Pickup *pickup_clue_4 = new Pickup(1146, 205, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_4, inventory_);
 
 	pickups_.push_back(cliff_pickup);
 	/*pickups_.push_back(pickup_1);
@@ -743,20 +744,20 @@ void WorldBase::GENERATE_AdditionalObjects()
 // creates events that trigger cutscenes, battles, enemy_movement, etc...
 void WorldBase::GENERATE_Events()
 {
-	/* Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, matrix_display_, characters_, nullptr);
+	/* Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, screen_matrix_, characters_, nullptr);
 	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10000
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
-	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 235, 10, 8, 1, false, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1071, 206, 4, 4, 1, false, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 235, 10, 8, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1071, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	
-	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 10, 8, 296, 231, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 10, 8, 1107, 202, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_sharktooth = new Event_TeleportPlayer(10005, 297, 174, 10, 4, 104, 241, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_from_sharktooth = new Event_TeleportPlayer(10006, 104, 253, 10, 8, 297, 179, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_aki = new Event_TeleportPlayer(10007, 393, 21, 10, 8, 679, 87, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, matrix_display_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 10, 8, 296, 231, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 10, 8, 1107, 202, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_sharktooth = new Event_TeleportPlayer(10005, 297, 174, 10, 4, 104, 241, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_from_sharktooth = new Event_TeleportPlayer(10006, 104, 253, 10, 8, 297, 179, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_aki = new Event_TeleportPlayer(10007, 393, 21, 10, 8, 679, 87, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);
 	events_.push_back(tutorial);
@@ -844,7 +845,7 @@ void WorldBase::DEBUG_displayScreen()
 		for (int j = 0; j < screen_width_; j++)
 		{
 			if (DEBUG_screen_matrix_[i][j] != '/')
-				matrix_display_[i][j] = std::string(1, DEBUG_screen_matrix_[i][j]);
+				screen_matrix_[i][j] = DEBUG_screen_matrix_[i][j];
 		}
 	}
 }

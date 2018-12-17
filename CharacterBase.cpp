@@ -1,11 +1,11 @@
 #include "CharacterBase.h"
 #include <Windows.h>
 
-CharacterBase::CharacterBase(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID, std::vector<std::vector<char>>& world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, std::vector<std::vector<std::string>>& matrix_display, int screen_width, int screen_height, int event_ID, int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, std::tuple<std::string, int, int> &image_file_path, WorldSprite world_sprite)
-	: PopupWithCollision(center_position_x, center_position_y + 1, popup_sprite, unique_object_ID, world_matrix, element_has_object, matrix_display, screen_width, screen_height), event_ID_{ event_ID }, use_basic_dialog_{ use_basic_dialog }, world_sprite_{ world_sprite },
-	sprite_{ 12, 10, matrix_display, world_matrix }, has_begun_moving_{ false }, start_time_move_one_space_(0), start_time_move_(0), movement_direction_multiplier_(1), moving_direction_{ 'l' }, facing_direction_{ 'd' }, has_reached_destination_{ false }, attack_on_sight_{ attack_on_sight },
-	BattleBase(screen_width, screen_height, matrix_display, player_health, boss_fight_definition, image_file_path), DialogManager(screen_width - 10, 9, screen_width, screen_height, matrix_display),
-	screen_width_{ screen_width }, screen_height_{ screen_height }, matrix_display_{ matrix_display }, player_health_{ player_health }, movement_index_(0)
+CharacterBase::CharacterBase(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix& screen_matrix, int screen_width, int screen_height, int event_ID, int &player_health, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &image_file_path, WorldSprite world_sprite)
+	: PopupWithCollision(center_position_x, center_position_y + 1, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height), event_ID_{ event_ID }, use_basic_dialog_{ use_basic_dialog }, world_sprite_{ world_sprite },
+	sprite_{ 12, 10, screen_matrix, world_matrix }, has_begun_moving_{ false }, start_time_move_one_space_(0), start_time_move_(0), movement_direction_multiplier_(1), moving_direction_{ 'l' }, facing_direction_{ 'd' }, has_reached_destination_{ false }, attack_on_sight_{ attack_on_sight },
+	BattleBase(screen_width, screen_height, screen_matrix, player_health, boss_fight_definition, image_file_path), DialogManager(screen_width - 10, 9, screen_width, screen_height, screen_matrix),
+	screen_width_{ screen_width }, screen_height_{ screen_height }, screen_matrix_{ screen_matrix }, player_health_{ player_health }, movement_index_(0)
 {
 }
 
@@ -76,7 +76,7 @@ void CharacterBase::resetAttackPatterns()
 	attack_patterns_.clear();
 
 	// Add all attacks
-	initializeAttackPatterns(screen_width_, screen_height_, matrix_display_, player_health_);
+	initializeAttackPatterns(screen_width_, screen_height_, screen_matrix_, player_health_);
 }
 
 // Change location and/or direction of world sprite
@@ -92,7 +92,7 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 	if (!has_begun_moving_)
 	{
 		has_reached_destination_ = false; // <=== Deprecated
-		start_time_move_one_space_ = GetTickCount();
+		start_time_move_one_space_ = GetTickCount64();
 		if (axis == 'x')
 		{
 			if (ending_position - center_position_x_ < 0)
@@ -122,7 +122,7 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 		has_begun_moving_ = true;
 	}
 
-	double current_time_move = GetTickCount() - start_time_move_one_space_;
+	double current_time_move = GetTickCount64() - start_time_move_one_space_;
 	if (current_time_move > speed)
 	{
 		sprite_.removeSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
@@ -143,7 +143,7 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 		}
 		updateColliderCoordinates();
 		updateWorldSprite(moving_direction_);
-		start_time_move_one_space_ = GetTickCount();
+		start_time_move_one_space_ = GetTickCount64();
 	}
 
 	if (center_position_x_ == ending_position || center_position_y_ == ending_position)
@@ -159,17 +159,17 @@ void CharacterBase::waitForTime(int time)
 {
 	if (!has_begun_moving_) // In this case waiting, but we still use the same variable
 	{
-		start_time_move_one_space_ = GetTickCount();
+		start_time_move_one_space_ = GetTickCount64();
 		has_begun_moving_ = true;
 	}
 
-	double current_time_move = GetTickCount() - start_time_move_one_space_;
+	double current_time_move = GetTickCount64() - start_time_move_one_space_;
 	if (current_time_move > time)
 	{
 		has_begun_moving_ = false;
 		movement_index_++;
 		has_reached_destination_ = true;
-		start_time_move_one_space_ = GetTickCount();
+		start_time_move_one_space_ = GetTickCount64();
 	}
 }
 

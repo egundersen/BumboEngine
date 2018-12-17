@@ -1,8 +1,8 @@
 #include "Sprite.h"
 #include <Windows.h>
 
-Sprite::Sprite(int sprite_width, int sprite_height, std::vector<std::vector<std::string>> &matrix_display)
-	: sprite_width_{ sprite_width }, sprite_height_{ sprite_height }, matrix_display_{ matrix_display }, animation_position_(0), start_time_player_animation_(0),
+Sprite::Sprite(int sprite_width, int sprite_height, Matrix &screen_matrix)
+	: sprite_width_{ sprite_width }, sprite_height_{ sprite_height }, screen_matrix_{ screen_matrix }, animation_position_(0), start_time_player_animation_(0),
 	is_moving_vertically_{ false }, is_moving_horizontally{ false }, player_animation_speed_(240), direction_{'d'},
 	up_1_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
 	up_2_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
@@ -17,7 +17,7 @@ Sprite::Sprite(int sprite_width, int sprite_height, std::vector<std::vector<std:
 	left_s_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
 	right_s_(sprite_height_, std::vector<char>(sprite_width_, ' '))
 {
-	start_time_player_animation_ = GetTickCount();
+	start_time_player_animation_ = GetTickCount64();
 }
 
 // Chooses what to display to the screen
@@ -220,13 +220,13 @@ void Sprite::displayGhostSprite(int top_left_position_x, int top_left_position_y
 // Changes player animation every 'X' seconds
 void Sprite::animationCounter()
 {
-	double current_time_move_player = GetTickCount() - start_time_player_animation_;
+	double current_time_move_player = GetTickCount64() - start_time_player_animation_;
 	if (current_time_move_player >= player_animation_speed_)
 	{
 		if (animation_position_ == 0)
 			animation_position_ = 1;
 		else
 			animation_position_ = 0;
-		start_time_player_animation_ = GetTickCount();
+		start_time_player_animation_ = GetTickCount64();
 	}
 }

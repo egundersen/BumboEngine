@@ -7,7 +7,7 @@
 class AttackPatternBase : public MatrixBase
 {
 public:
-	explicit AttackPatternBase(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks);
+	explicit AttackPatternBase(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks);
 	virtual ~AttackPatternBase();
 
 	// Setters
@@ -40,7 +40,7 @@ protected:
 	// Output Displays
 	virtual void displayScreen();
 private:
-	std::vector<std::vector<std::string>> &matrix_display_;
+	Matrix &screen_matrix_;
 	Attack_Border *border_;
 	double start_time_slow_player_;
 	int slow_player_;

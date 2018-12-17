@@ -2,8 +2,8 @@
 #include "Image.h"
 #include <iostream>
 
-StartScreen::StartScreen(int width, int height, std::vector<std::vector<std::string>> &matrix_display)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), matrix_display_{ matrix_display }
+StartScreen::StartScreen(int width, int height, Matrix &screen_matrix)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), empty_vector_(width, ' '), screen_matrix_{ screen_matrix }
 {
 	setBackgroundText();
 	displayScreen();
@@ -51,7 +51,7 @@ void StartScreen::displayScreen()
 {
 	for (int i = 0; i < height_; i++) {
 		for (int j = 0; j < width_; j++) {
-			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
+			screen_matrix_[i][j] = matrix_[i][j];
 		}
 	}
 }

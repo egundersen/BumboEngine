@@ -10,11 +10,11 @@ class PopupWithCollision : public Popup
 {
 public:
 	explicit PopupWithCollision(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID,
-		std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
-		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, int collider_width = 9, int collider_height = 4);
+		Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
+		Matrix &screen_matrix, int screen_width, int screen_height, int collider_width = 9, int collider_height = 4);
 	explicit PopupWithCollision(int center_position_x, int center_position_y, int popup_width, int popup_height, int unique_object_ID,
-		std::string text, std::vector<std::vector<char>> &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
-		std::vector<std::vector<std::string>> &matrix_display, int screen_width, int screen_height, char border_character = 'X', int collider_width = 9, 
+		std::string text, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
+		Matrix &screen_matrix, int screen_width, int screen_height, char border_character = 'X', int collider_width = 9, 
 		int collider_height = 4);
 	virtual ~PopupWithCollision() {}
 
@@ -33,7 +33,7 @@ protected:
 	int center_position_x_, center_position_y_, screen_width_, screen_height_, 
 		object_type_ID_, unique_object_ID_, collider_width_, collider_height_;
 	std::vector<std::vector<std::pair<int, int>>> &element_has_object_;
-	std::vector<std::vector<char>> &world_matrix_;
+	Matrix &world_matrix_;
 };
 
 #endif // !POPUPWITHCOLLISION_H

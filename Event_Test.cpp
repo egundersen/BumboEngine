@@ -5,9 +5,9 @@ void Event_Test::createEvent()
 {
 	updateColliderCoordinates();
 
-	Popup popup_1(23, 9, "what is your  NAME!!!??? ", matrix_display_, 'X');
+	Popup popup_1(23, 9, "what is your  NAME!!!??? ", screen_matrix_, 'X');
 	popup_1.createPopupText();
-	Popup popup_2(23, 9, "hello my name is MANNY kanE ", matrix_display_, 'X');
+	Popup popup_2(23, 9, "hello my name is MANNY kanE ", screen_matrix_, 'X');
 	popup_2.createPopupText();
 
 	popups_.push_back(popup_1);
@@ -16,7 +16,7 @@ void Event_Test::createEvent()
 
 void Event_Test::refreshEvent()
 {
-	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > 7000)
 	{
 		onEventOver();

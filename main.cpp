@@ -5,6 +5,8 @@
 #include "MatrixManager.h"
 #include "SplashScreen.h"
 #include "resource.h"
+#include "Matrix.h"
+#include "BitmapDefinition.h"
 #include <iostream>
 #include <sstream>
 #include <Windows.h>
@@ -19,14 +21,12 @@ HINSTANCE hInst;								// current instance
 TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
-// Global (To main.cpp only) Variables for width, height and the output display screen 
-//RGBA rgba(255, 255, 255);
-//std::tuple<std::string, int, RGBA> image_file_path_G("", 160, rgba);
-std::tuple<std::string, int, int> image_file_path_G = std::make_tuple<std::string, int, int>("", 160, 255255255255);
+// Global (To main.cpp only) Variables for width, height and the output display screens
 bool should_exit_G = false;
 int width_G = 79;
 int height_G = 35;
-std::vector<std::vector<std::string>> matrix_display_G(height_G, std::vector<std::string>(width_G, " "));
+BitmapDefinition bitmap_G("", 160, 0);
+Matrix screen_matrix_G(width_G, height_G);
 
 // Forward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -97,13 +97,13 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
 	// Loading/Splash Screen
-	SplashScreen splash(width_G, height_G, matrix_display_G);
+	SplashScreen splash(width_G, height_G, screen_matrix_G);
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 
 	// MAIN SOURCE PORT - Bumbo Engine -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, matrix_display_G, 5, image_file_path_G);
+	MatrixManager grid(width_G, height_G, screen_matrix_G, 5, bitmap_G);
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
@@ -383,7 +383,7 @@ HBITMAP ReplaceAllColorsExcept(HBITMAP hBmp, COLORREF cExcludedColor, COLORREF c
 	return RetBmp;
 }
 
-bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
+bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x, int position_y)
 {
 	// Load the bitmap image file
 	HBITMAP hBitmap;
@@ -407,7 +407,7 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 	}
 
 	// Changes color (But since Bitmap is so pixelated, this is the only way we can include all colors
-	HBITMAP hBitmapColored = ReplaceAllColorsExcept(hBitmap, 0x000000, 0x00ff00, hLocalDC);
+	HBITMAP hBitmapColored = ReplaceAllColorsExcept(hBitmap, 0x000000, 0xffff00, hLocalDC);
 
 	// Get the bitmap's parameters and verify the get
 	BITMAP qBitmap;
@@ -427,13 +427,13 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 		return false;
 	}
 
-	if (std::get<2>(image_file_path_G) < 255)
+	/*if (std::get<2>(image_file_path_G).getHex() < 255)
 	{
 		// setting up the blend function
 		BLENDFUNCTION bStruct;
 		bStruct.BlendOp = AC_SRC_OVER;
 		bStruct.BlendFlags = 0;
-		bStruct.SourceConstantAlpha = std::get<2>(image_file_path_G);
+		bStruct.SourceConstantAlpha = std::get<2>(image_file_path_G).getHex();
 		bStruct.AlphaFormat = 0;
 
 		// Blit a transparent version of the dc onto the window's dc
@@ -445,17 +445,17 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x)
 		}
 	}
 	else
-	{
+	{//*/
 		// Blit the dc which holds the bitmap onto the window's dc
 		SetStretchBltMode(hWinDC, HALFTONE);
-		BOOL qRetBlit = ::StretchBlt(hWinDC, position_x, 0, 475, 425,
+		BOOL qRetBlit = ::StretchBlt(hWinDC, position_x, position_y, 475, 425,
 			hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, SRCCOPY);
 		if (!qRetBlit)
 		{
 			::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
 			return false;
 		}
-	}
+	//}
 
 	// Unitialize and deallocate resources
 	::SelectObject(hLocalDC, hOldBmp);
@@ -517,11 +517,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			FillRect(hDCMem, &rect, (HBRUSH)(COLOR_BACKGROUND + 1));
 
 			// Load Complex Ascii-styled Image from provided file path
-			if (std::get<0>(image_file_path_G) != "")
+			if (bitmap_G.shouldShowBitmap())
 			{
-				std::wstring sTemp = std::wstring(std::get<0>(image_file_path_G).begin(), std::get<0>(image_file_path_G).end());
+				std::string file_path = bitmap_G.getFilePath();
+				std::wstring sTemp = std::wstring(file_path.begin(), file_path.end());
 				LPCWSTR sw = sTemp.c_str();
-				LoadAndBlitBitmap(sw, hDCMem, std::get<1>(image_file_path_G));
+				LoadAndBlitBitmap(sw, hDCMem, bitmap_G.getXOffset(), bitmap_G.getYOffset());
 			}
 
 			COLORREF blackTextColor = 0x00000000;
@@ -529,7 +530,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			SetBkColor(hDCMem, blackTextColor);
 			for (int i = 0; i < height_G; i++)
 				for (int j = 0; j < width_G; j++)
-					if (matrix_display_G[i][j].c_str() != std::string(1, ' '))
+					if (std::string(1, screen_matrix_G[i][j]).c_str() != std::string(1, ' '))
 					{
 						RGBA rgba(0, 255, 255);
 						COLORREF whiteTextColor = rgba.getHex();
@@ -537,7 +538,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 						{
 							PostQuitMessage(1);
 						}
-						ExtTextOutA(hDCMem, j * 10, i * 15, ETO_CLIPPED, &rect, matrix_display_G[i][j].c_str(), 1, NULL);
+						ExtTextOutA(hDCMem, j * 10, i * 15, ETO_CLIPPED, &rect, std::string(1, screen_matrix_G[i][j]).c_str(), 1, NULL);
 					}
 
 			// Copy window image/bitmap to screen

@@ -186,6 +186,7 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixBase.cpp" />
     <ClCompile Include="MatrixManager.cpp" />
     <ClCompile Include="Maze.cpp" />
@@ -244,6 +245,8 @@
     <ClInclude Include="Event_TeleportPlayer.h" />
     <ClInclude Include="Event_Test.h" />
     <ClInclude Include="Event_Tutorial.h" />
+    <ClInclude Include="BitmapDefinition.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />

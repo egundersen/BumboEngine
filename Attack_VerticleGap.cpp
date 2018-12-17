@@ -7,8 +7,8 @@ Attack_VerticleGap::Attack_VerticleGap(int width, int height, PlayerPosition & p
 {
 	has_hit_player_ = false;
 	has_attack_finished_ = false;
-	start_time_update_attack_ = GetTickCount();
-	start_time_finish_attack_ = GetTickCount();
+	start_time_update_attack_ = GetTickCount64();
+	start_time_finish_attack_ = GetTickCount64();
 }
 
 Attack_VerticleGap::~Attack_VerticleGap()
@@ -27,7 +27,7 @@ void Attack_VerticleGap::move()
 {
 	if (!has_attack_finished_)
 	{
-		double current_time_update_attack = GetTickCount() - start_time_update_attack_;
+		double current_time_update_attack = GetTickCount64() - start_time_update_attack_;
 		if (current_time_update_attack > move_delay_)
 		{
 			if (!reverse_)
@@ -55,16 +55,16 @@ void Attack_VerticleGap::move()
 					matrix_[position_y_][j] = ' ';
 					element_is_occupied_[position_y_][j] = false;
 				}
-				start_time_update_attack_ = GetTickCount();
+				start_time_update_attack_ = GetTickCount64();
 			}
 		}
 		detectCollision();
 
-		double current_time_finish_attack = GetTickCount() - start_time_finish_attack_;
+		double current_time_finish_attack = GetTickCount64() - start_time_finish_attack_;
 		if (current_time_finish_attack > screen_duration_)
 		{
 			has_attack_finished_ = true;
-			start_time_finish_attack_ = GetTickCount();
+			start_time_finish_attack_ = GetTickCount64();
 		}
 	}
 }

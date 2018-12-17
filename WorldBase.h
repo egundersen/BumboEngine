@@ -10,7 +10,6 @@
 #include "ScreenPosition.h"
 #include "SpriteSheet.h"
 #include <utility>
-#include <tuple>
 
 #ifndef WORLDBASE_H
 #define WORLDBASE_H
@@ -18,7 +17,7 @@
 class WorldBase : MatrixBase
 {
 public:
-	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, std::vector<std::vector<std::string>> &matrix_display, Inventory &inventory, std::tuple<std::string, int, int> &image_file_path);
+	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path);
 
 	// Setters
 	void onEnterWorld();
@@ -71,9 +70,9 @@ private:
 	char opposite_player_direction_;
 	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
 		DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
-	std::tuple<std::string, int, int> &image_file_path_;
-	std::vector<std::vector<std::string>> &matrix_display_;
-	std::vector<std::vector<char>> world_matrix_;
+	BitmapDefinition &image_file_path_;
+	Matrix &screen_matrix_;
+	Matrix world_matrix_;
 	std::vector<std::vector<char>> DEBUG_screen_matrix_;
 	std::vector<std::vector<std::pair<int, int>>> element_has_object_;
 	std::vector<Image> mountain_lines_;

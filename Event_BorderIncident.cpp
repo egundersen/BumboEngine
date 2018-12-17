@@ -5,37 +5,37 @@ void Event_BorderIncident::createEvent()
 {
 	updateColliderCoordinates();
 
-	//Popup popup_4(25, 9, "I am very sorry,Zbut he wasn't able toZreach the checkpointZin time...Z", matrix_display_, 'X');
+	//Popup popup_4(25, 9, "I am very sorry,Zbut he wasn't able toZreach the checkpointZin time...Z", screen_matrix_, 'X');
 	
 	// Guard #1 Dialog
-	Popup popup_1(25, 9, "*cough*", matrix_display_, 'X');
-	Popup popup_2(25, 9, "*cough* *cough*", matrix_display_, 'X');
-	Popup popup_3(25, 9, "*clears throat*", matrix_display_, 'X');
-	Popup popup_4(25, 9, "Attention!", matrix_display_, 'X');
-	Popup popup_5(25, 9, "Do to deteriorating air quality, we won't be allowing anyone else into the maze ", matrix_display_, 'X');
-	Popup popup_6(25, 9, "We're truly sorry, we know you walking all the way here ", matrix_display_, 'X');
-	Popup popup_7(25, 9, "Some of you lost family members along the way ", matrix_display_, 'X');
-	Popup popup_8(25, 9, "and WE-DID-SAY that the checkpoint WOULD-REMAIN-OPEN ", matrix_display_, 'X');
-	Popup popup_9(25, 9, "But we'll be shutting down immediatly with no warning or heads-up ", matrix_display_, 'X');
-	Popup popup_10(25, 9, "Sorry ya walked all the way here, but we're closed now ", matrix_display_, 'X');
-	Popup popup_11(25, 9, "So get fucked ", matrix_display_, 'X');
+	Popup popup_1(25, 9, "*cough*", screen_matrix_, 'X');
+	Popup popup_2(25, 9, "*cough* *cough*", screen_matrix_, 'X');
+	Popup popup_3(25, 9, "*clears throat*", screen_matrix_, 'X');
+	Popup popup_4(25, 9, "Attention!", screen_matrix_, 'X');
+	Popup popup_5(25, 9, "Do to deteriorating air quality, we won't be allowing anyone else into the maze ", screen_matrix_, 'X');
+	Popup popup_6(25, 9, "We're truly sorry, we know you walking all the way here ", screen_matrix_, 'X');
+	Popup popup_7(25, 9, "Some of you lost family members along the way ", screen_matrix_, 'X');
+	Popup popup_8(25, 9, "and WE-DID-SAY that the checkpoint WOULD-REMAIN-OPEN ", screen_matrix_, 'X');
+	Popup popup_9(25, 9, "But we'll be shutting down immediatly with no warning or heads-up ", screen_matrix_, 'X');
+	Popup popup_10(25, 9, "Sorry ya walked all the way here, but we're closed now ", screen_matrix_, 'X');
+	Popup popup_11(25, 9, "So get fucked ", screen_matrix_, 'X');
 
 	// Crowd
-	Popup popup_12(25, 9, "This is an outrage!", matrix_display_, 'X');
-	Popup popup_13(25, 9, "You shouldn't have waited for us all to arrive before shutting down, this is madness!", matrix_display_, 'X');
+	Popup popup_12(25, 9, "This is an outrage!", screen_matrix_, 'X');
+	Popup popup_13(25, 9, "You shouldn't have waited for us all to arrive before shutting down, this is madness!", screen_matrix_, 'X');
 	
 	// Guard #2 Dialog
-	Popup popup_14(25, 9, "We're sorry, but I believe my associate was very clear in his message: ", matrix_display_, 'X');
-	Popup popup_15(25, 9, "*ehem*!", matrix_display_, 'X');
-	Popup popup_16(25, 9, "*clears throat*", matrix_display_, 'X');
-	Popup popup_17(25, 9, "get fucked", matrix_display_, 'X');
+	Popup popup_14(25, 9, "We're sorry, but I believe my associate was very clear in his message: ", screen_matrix_, 'X');
+	Popup popup_15(25, 9, "*ehem*!", screen_matrix_, 'X');
+	Popup popup_16(25, 9, "*clears throat*", screen_matrix_, 'X');
+	Popup popup_17(25, 9, "get fucked", screen_matrix_, 'X');
 
 	// Guard #1's Response to checkpoint attack
-	Popup popup_18(25, 9, "You think you can break through <MY> CHECKPOINT!!!??? ", matrix_display_, 'X');
-	Popup popup_19(25, 9, "DO YOU EVEN KNOW WHO I AM? ", matrix_display_, 'X');
+	Popup popup_18(25, 9, "You think you can break through <MY> CHECKPOINT!!!??? ", screen_matrix_, 'X');
+	Popup popup_19(25, 9, "DO YOU EVEN KNOW WHO I AM? ", screen_matrix_, 'X');
 
 	// Player thoughts
-	Popup popup_20(31, 9, "You think to yourself: *The guards aren't blocking the checkpoint anymore, perhaps I could slip through ...* ", matrix_display_, 'X');
+	Popup popup_20(31, 9, "You think to yourself: *The guards aren't blocking the checkpoint anymore, perhaps I could slip through ...* ", screen_matrix_, 'X');
 
 	popup_1.createPopupText();
 	popup_2.createPopupText();
@@ -138,11 +138,11 @@ void Event_BorderIncident::refreshEvent()
 
 void Event_BorderIncident::guardTalks(int time_interval)
 {
-	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > time_interval * 12)
 	{
 		event_index_++;
-		start_time_begin_event_ = GetTickCount();
+		start_time_begin_event_ = GetTickCount64();
 	}
 	else if (current_time_begin_event_ > time_interval * 11)
 		popups_[10].displayPopup(20, -3);
@@ -170,7 +170,7 @@ void Event_BorderIncident::guardTalks(int time_interval)
 
 void Event_BorderIncident::crowdLooksAround()
 {
-	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > 3000)
 	{
 		event_index_++;
@@ -203,11 +203,11 @@ void Event_BorderIncident::crowdLooksAround()
 
 void Event_BorderIncident::guardReplies(int time_interval)
 {
-	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > time_interval * 7)
 	{
 		event_index_++;
-		start_time_begin_event_ = GetTickCount();
+		start_time_begin_event_ = GetTickCount64();
 	}
 	else if (current_time_begin_event_ > time_interval * 6)
 		popups_[16].displayPopup(27, 16);
@@ -469,7 +469,7 @@ void Event_BorderIncident::runsThroughCheckpoint()
 	case 9:
 		getCharacterByID(7)->teleportNPC(493, 671);
 		getCharacterByID(15)->teleportNPC(453, 671);
-		start_time_begin_event_ = GetTickCount();
+		start_time_begin_event_ = GetTickCount64();
 		event_index_++;
 		break;
 	default:
@@ -479,11 +479,11 @@ void Event_BorderIncident::runsThroughCheckpoint()
 
 void Event_BorderIncident::guardStopThem(int time_interval)
 {
-	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > time_interval * 2)
 	{
 		event_index_++;
-		start_time_begin_event_ = GetTickCount();
+		start_time_begin_event_ = GetTickCount64();
 	}
 	else if (current_time_begin_event_ > time_interval)
 		popups_[18].displayPopup(20, -3);
@@ -517,11 +517,11 @@ void Event_BorderIncident::guardExits()
 
 void Event_BorderIncident::playerThinks(int time_interval)
 {
-	double current_time_begin_event_ = GetTickCount() - start_time_begin_event_;
+	double current_time_begin_event_ = GetTickCount64() - start_time_begin_event_;
 	if (current_time_begin_event_ > time_interval * 2)
 	{
 		event_index_++;
-		start_time_begin_event_ = GetTickCount();
+		start_time_begin_event_ = GetTickCount64();
 	}
 	else if (current_time_begin_event_ <= time_interval * 2)
 		popups_[19].displayPopup(0, -3);

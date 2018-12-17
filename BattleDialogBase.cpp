@@ -2,12 +2,12 @@
 #include <Windows.h>
 #include <iostream>
 
-BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vector<std::string>>& matrix_display, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, std::tuple<std::string, int, int> &image_file_path)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), matrix_display_{ matrix_display }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), image_file_path_{ image_file_path },
+BattleDialogBase::BattleDialogBase(int width, int height, Matrix& screen_matrix, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
+	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), screen_matrix_{ screen_matrix }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), bitmap_{ image_file_path },
 	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), max_choices_(0), boss_{ boss_fight_definition },
 	displaying_response_{ false }, enter_key_pressed_{ false }, return_to_menu_{ false }
 {
-	start_time_move_cursor_ = GetTickCount();
+	start_time_move_cursor_ = GetTickCount64();
 	setBackgroundText();
 }
 
@@ -15,7 +15,7 @@ BattleDialogBase::BattleDialogBase(int width, int height, std::vector<std::vecto
 void BattleDialogBase::onOpenDialog()
 {
 	cursor_index_ = 0;
-	start_time_move_cursor_ = GetTickCount();
+	start_time_move_cursor_ = GetTickCount64();
 	enter_key_pressed_ = false;
 	should_exit_dialog_ = false;
 	return_to_menu_ = false;
@@ -29,7 +29,7 @@ void BattleDialogBase::refreshScreen()
 	// Delay before closing dialog menu
 	if (displaying_response_)
 	{
-		double current_time_exit_dialog = GetTickCount() - start_time_exit_dialog_;
+		double current_time_exit_dialog = GetTickCount64() - start_time_exit_dialog_;
 		if (current_time_exit_dialog > 5000)
 		{
 			// check if boss has given up
@@ -39,7 +39,7 @@ void BattleDialogBase::refreshScreen()
 			}
 			hideFileSprite();
 			should_exit_dialog_ = true;
-			start_time_exit_dialog_ = GetTickCount();
+			start_time_exit_dialog_ = GetTickCount64();
 		}
 	}
 	else
@@ -62,7 +62,7 @@ void BattleDialogBase::reset()
 // accepts the player's inputs
 void BattleDialogBase::evaluatePlayerInput()
 {
-	double current_time_move_cursor = GetTickCount() - start_time_move_cursor_;
+	double current_time_move_cursor = GetTickCount64() - start_time_move_cursor_;
 
 	if (current_time_move_cursor > 100)
 	{
@@ -70,13 +70,13 @@ void BattleDialogBase::evaluatePlayerInput()
 		{
 			moveCursor("UP");
 			setCursorText();
-			start_time_move_cursor_ = GetTickCount();
+			start_time_move_cursor_ = GetTickCount64();
 		}
 		else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 		{
 			moveCursor("DOWN");
 			setCursorText();
-			start_time_move_cursor_ = GetTickCount();
+			start_time_move_cursor_ = GetTickCount64();
 		}
 		if (GetKeyState(VK_RETURN) & 0x8000)
 		{
@@ -87,7 +87,7 @@ void BattleDialogBase::evaluatePlayerInput()
 					confirmSelection();
 					enter_key_pressed_ = true;
 				}
-				start_time_move_cursor_ = GetTickCount();
+				start_time_move_cursor_ = GetTickCount64();
 			}
 		}
 		else if (GetKeyState(VK_BACK) & 0x8000)
@@ -95,7 +95,7 @@ void BattleDialogBase::evaluatePlayerInput()
 			hideFileSprite();
 			should_exit_dialog_ = true;
 			return_to_menu_ = true;
-			start_time_move_cursor_ = GetTickCount();
+			start_time_move_cursor_ = GetTickCount64();
 		}
 	}
 }
@@ -170,7 +170,7 @@ void BattleDialogBase::setReponseText(std::string response_text_string)
 
 	addTextToMatrix(60, 10, 'm', response_text_string, matrix_, 17, 7);
 
-	start_time_exit_dialog_ = GetTickCount();
+	start_time_exit_dialog_ = GetTickCount64();
 	displaying_response_ = true;
 }
 
@@ -237,9 +237,9 @@ void BattleDialogBase::showFileSprite()
 {
 	if (boss_.use_files)
 	{
-		// TODO Animate
-		std::get<0>(image_file_path_) = boss_.file_path_neutral;
-		std::get<1>(image_file_path_) = 60;
+		// TODO Animate (Based on Option emotions)
+		bitmap_.showBitmap();
+		bitmap_.setXOffset(60);
 	}
 }
 
@@ -247,7 +247,7 @@ void BattleDialogBase::showFileSprite()
 void BattleDialogBase::hideFileSprite()
 {
 	if (boss_.use_files)
-		std::get<0>(image_file_path_) = "";
+		bitmap_.hideBitmap();
 }
 
 // Draws dialog menu to the screen
@@ -257,7 +257,7 @@ void BattleDialogBase::displayScreen()
 	{
 		for (int j = 0; j < width_; j++)
 		{
-			matrix_display_[i][j] = std::string(1, matrix_[i][j]);
+			screen_matrix_[i][j] = matrix_[i][j];
 		}
 	}
 }

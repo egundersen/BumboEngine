@@ -8,8 +8,8 @@
 #include <algorithm>
 #include <iostream>
 
-AttackPattern_ShootandSnake::AttackPattern_ShootandSnake(int width, int height, std::vector<std::vector<std::string>> &matrix_display, int &player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, matrix_display, player_health, number_of_attacks)
+AttackPattern_ShootandSnake::AttackPattern_ShootandSnake(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks)
 {
 	generateRandomSequence(attack_starting_positions_, 0, height_ - 1);
 	attacks_to_create_ = number_of_attacks + 1;
@@ -19,7 +19,7 @@ AttackPattern_ShootandSnake::AttackPattern_ShootandSnake(int width, int height, 
 void AttackPattern_ShootandSnake::OnBeginAttack()
 {
 	createAttack2(0, generateRandomNumber(0, height_ - 1), 15000, 50);
-	start_time_new_attack_ = GetTickCount();
+	start_time_new_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -30,11 +30,11 @@ void AttackPattern_ShootandSnake::refreshScreen()
 		has_completed_all_attacks_ = true;
 	else
 	{
-		double current_time_new_attack_ = GetTickCount() - start_time_new_attack_;
+		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
 		if (current_time_new_attack_ >= 1000 && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack1(rand() % 2, 0, width_, 60, *attack_starting_positions_[created_attacks_], 1);
-			start_time_new_attack_ = GetTickCount();
+			start_time_new_attack_ = GetTickCount64();
 		}
 
 		attacksCheckCollision();

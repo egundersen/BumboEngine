@@ -7,7 +7,7 @@ Attack_Wall::Attack_Wall(int width, int height, PlayerPosition &player_position,
 {
 	has_hit_player_ = false;
 	has_attack_finished_ = false;
-	start_time_update_attack_ = GetTickCount();
+	start_time_update_attack_ = GetTickCount64();
 #ifdef _DEBUG
 	if (max_position_x_ > width_)
 		throw std::invalid_argument("max position must not be greater than the screen width_");
@@ -47,7 +47,7 @@ void Attack_Wall::move()
 	if (has_attack_finished_)
 		return;
 
-	double current_time_update_attack = GetTickCount() - start_time_update_attack_;
+	double current_time_update_attack = GetTickCount64() - start_time_update_attack_;
 	if (current_time_update_attack > speed_)
 	{
 		if (min_position_x_ >= max_position_x_)
@@ -89,7 +89,7 @@ void Attack_Wall::move()
 			}
 			min_position_x_++;
 		}
-		start_time_update_attack_ = GetTickCount();
+		start_time_update_attack_ = GetTickCount64();
 	}
 	detectCollision();
 }
