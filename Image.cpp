@@ -1,27 +1,29 @@
 #include "Image.h"
+#include "ColorPalette.h"
 #include <iostream>
 
-Image::Image() 
-	: ASCII_{ "" }, delimiter_{ 'Z' }, width_{ 0 }, height_{ 0 }
+Image::Image()
+	: ASCII_{ "" }, delimiter_{ 'Z' }, width_{ 0 }, height_{ 0 }, ASCII_colors_{ "" }
 {
 }
 
-Image::Image(std::string ASCII, char delimiter) 
-	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }
-{
-	setImageDimensions();
-	populateImageWithASCII();
-}
-
-Image::Image(std::string ASCII, std::string color_ASCII, char delimiter)
-	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }
+Image::Image(std::string ASCII, char delimiter)
+	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }, ASCII_colors_{ "" }
 {
 	setImageDimensions();
 	populateImageWithASCII();
 }
 
-Image::Image(std::wstring ASCII, int width, int height, char delimiter) 
-	: Wide_ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height },
+Image::Image(std::string ASCII, std::string ASCII_colors, char delimiter)
+	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }, ASCII_colors_{ ASCII_colors }
+{
+	setImageDimensions();
+	populateImageWithASCII();
+	colorImageWithASCII();
+}
+
+Image::Image(std::wstring ASCII, int width, int height, char delimiter)
+	: Wide_ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height }, ASCII_colors_{ "" },
 	image_matrix(width, height)
 {
 	populateImageWithWideASCII();
@@ -45,7 +47,8 @@ void Image::setImageDimensions()
 			++height_;
 		}
 	}
-	if (temp_width > width_) { // for lines that do not end in a delimeter
+	if (temp_width > width_)
+	{ // for lines that do not end in a delimeter
 		width_ = temp_width;
 		++height_;
 	}
@@ -87,6 +90,27 @@ void Image::populateImageWithWideASCII()
 			width_iterator++;
 		}
 		if (c == delimiter_)
+		{
+			height_iterator++;
+			width_iterator = 0;
+		}
+	}
+}
+
+// Colors Image Matrix with correct colors from ASCII Colors string
+void Image::colorImageWithASCII()
+{
+	int width_iterator = 0;
+	int height_iterator = 0;
+
+	for (std::string::iterator it = ASCII_colors_.begin(); it != ASCII_colors_.end() && height_iterator < height_; ++it)
+	{
+		if (*it != delimiter_)
+		{
+			image_matrix[height_iterator][width_iterator].setColor(ColorPalette(*it).getRGBA());
+			width_iterator++;
+		}
+		if (*it == delimiter_)
 		{
 			height_iterator++;
 			width_iterator = 0;

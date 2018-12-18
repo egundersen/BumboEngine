@@ -18,7 +18,7 @@ class Image
 public:
 	Image();
 	Image(std::string ASCII, char delimiter = 'Z');
-	Image(std::string ASCII, std::string color_ASCII, char delimiter = 'Z');
+	Image(std::string ASCII, std::string ASCII_colors, char delimiter = 'Z');
 	Image(std::wstring ASCII, int width, int height, char delimiter = 'Z');
 
 	// Setters
@@ -36,10 +36,11 @@ private:
 	void setImageDimensions();
 	void populateImageWithASCII();
 	void populateImageWithWideASCII();
+	void colorImageWithASCII();
 
 	int width_, height_;
 	char delimiter_;
-	std::string ASCII_;
+	std::string ASCII_, ASCII_colors_;
 	std::wstring Wide_ASCII_;
 };
 
