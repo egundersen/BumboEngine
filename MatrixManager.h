@@ -27,7 +27,6 @@ private:
 
 	int width_, height_, player_health_; // the real player health
 	Matrix &screen_matrix_;
-	std::vector<std::vector<char>> matrix_;
 	std::string current_vector_space_;
 	Inventory inventory_;
 	WorldBase world_;

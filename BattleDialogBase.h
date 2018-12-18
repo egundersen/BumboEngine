@@ -40,8 +40,7 @@ private:
 	void displayScreen();
 
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices_;
-	Matrix &screen_matrix_;
-	std::vector<std::vector<char>> matrix_;
+	Matrix &screen_matrix_, dialog_matrix_;
 	int width_, height_, cursor_index_, start_time_move_cursor_, start_time_exit_dialog_, dialog_choices_index_, max_choices_;
 	bool has_boss_given_up_, should_exit_dialog_, displaying_response_, enter_key_pressed_, return_to_menu_;
 	std::string response_;

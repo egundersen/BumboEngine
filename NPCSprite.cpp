@@ -34,41 +34,57 @@ void NPCSprite::DEBUG_eraseSquareSurroundingSprite(int top_left_position_x, int 
 }
 
 // Displays given sprite to the world matrix
-void NPCSprite::displaySpriteAtDirection(std::vector<std::vector<char>>& direction, int top_left_position_x, int top_left_position_y)
+void NPCSprite::displaySpriteAtDirection(Matrix& direction, int top_left_position_x, int top_left_position_y)
 {
 	for (int i = 0; i < sprite_height_; i++)
 		for (int j = 0; j < sprite_width_; j++)
-			if (direction[i][j] != ' ')
-				world_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
+		{
+			char temp = direction[i][j];
+			if (temp != ' ')
+			{
+				world_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+			}
+		}
 }
 
 // Displays a fake, "GHOST" of the sprite (does not actually move them) on the Matrix Display
-void NPCSprite::displayGhostSpriteAtDirection(std::vector<std::vector<char>>& direction, int top_left_position_x, int top_left_position_y, int screen_width_, int screen_height_, char moving_direction)
+void NPCSprite::displayGhostSpriteAtDirection(Matrix& direction, int top_left_position_x, int top_left_position_y, int screen_width_, int screen_height_, char moving_direction)
 {
 	for (int i = 0; i < sprite_height_; i++)
 		for (int j = 0; j < sprite_width_; j++)
+		{
+			char temp = direction[i][j];
 			switch (moving_direction)
 			{
 			case 'd':
 				if (direction[i][j] != ' ' && top_left_position_y < screen_height_ - sprite_height_ / 2 - 1)
-					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
+				{
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+				}
 				break;
 			case 'u':
 				if (direction[i][j] != ' ' && top_left_position_y > sprite_height_ / 2 - 1)
-					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
+				{
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+				}
 			case 'r':
 				if (direction[i][j] != ' ' && top_left_position_x < screen_width_ - sprite_width_ / 2 - 1)
-					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
+				{
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+				}
 				break;
 			case 'l':
 				if (direction[i][j] != ' ' && top_left_position_x > sprite_width_ / 2 - 1)
-					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = direction[i][j];
+				{
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+				}
 				break;
 			}
+		}
 }
 
 // Erases the exact positions of the world map that previously contained a sprite
-void NPCSprite::eraseSpriteAtDirection(std::vector<std::vector<char>>& direction, int top_left_position_x, int top_left_position_y)
+void NPCSprite::eraseSpriteAtDirection(Matrix& direction, int top_left_position_x, int top_left_position_y)
 {
 	for (int i = 0; i < sprite_height_; i++)
 		for (int j = 0; j < sprite_width_; j++)

@@ -8,8 +8,8 @@
 #include <iostream>
 
 MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), inventory_(width, height, screen_matrix, player_health_),
-	player_health_{ player_health }, screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
+	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_health_), player_health_{ player_health }, 
+	screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
 	world_(width, height, 1200, 273, 730, 232, player_health_, screen_matrix, inventory_, image_file_path)
 {
 	inventory_.addItem("Mug o' Grog", 1); // Starting Items (Not pickups! Just starting items)

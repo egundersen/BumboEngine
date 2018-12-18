@@ -31,8 +31,7 @@ private:
 	// Output Displays
 	void displayScreen();
 
-	Matrix &screen_matrix_;
-	std::vector<std::vector<char>> matrix_;
+	Matrix &screen_matrix_, inventory_matrix_;
 	std::vector<Item> items_list_;
 	std::vector<Item> temporary_items_list_;
 	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_;

@@ -14,8 +14,7 @@ private:
 	// Output Displays
 	void displayScreen();
 
-	Matrix &screen_matrix_;
-	std::vector<std::vector<char>> matrix_;
+	Matrix &screen_matrix_, startscreen_matrix_;
 	std::vector<char> empty_vector_;
 	int width_;
 	int height_;

@@ -3,7 +3,7 @@
 #include <iostream>
 
 BattleDialogBase::BattleDialogBase(int width, int height, Matrix& screen_matrix, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), screen_matrix_{ screen_matrix }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), bitmap_{ image_file_path },
+	: width_{ width }, height_{ height }, dialog_matrix_(width, height), screen_matrix_{ screen_matrix }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), bitmap_{ image_file_path },
 	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), max_choices_(0), boss_{ boss_fight_definition },
 	displaying_response_{ false }, enter_key_pressed_{ false }, return_to_menu_{ false }
 {
@@ -55,7 +55,7 @@ void BattleDialogBase::refreshScreen()
 void BattleDialogBase::reset()
 {
 	dialog_choices_index_ = 0;
-	clearMatrix(width_, height_, matrix_);
+	clearMatrix(width_, height_, dialog_matrix_);
 	setBackgroundText();
 }
 
@@ -111,27 +111,27 @@ void BattleDialogBase::setBackgroundText()
 {
 	for (int i = 1; i < height_ - 1; ++i)
 	{
-		matrix_[i][1] = 'X';
-		matrix_[i][2] = 'X';
-		matrix_[i][3] = 'X';
-		matrix_[i][width_ - 2] = 'X';
-		matrix_[i][width_ - 3] = 'X';
-		matrix_[i][width_ - 4] = 'X';
+		dialog_matrix_[i][1] = 'X';
+		dialog_matrix_[i][2] = 'X';
+		dialog_matrix_[i][3] = 'X';
+		dialog_matrix_[i][width_ - 2] = 'X';
+		dialog_matrix_[i][width_ - 3] = 'X';
+		dialog_matrix_[i][width_ - 4] = 'X';
 	}
 
 	if (!boss_.use_files)
 	{
 		Image main_ascii(boss_.ascii);
 		Image overlay_ascii(boss_.overlay);
-		addImageToMatrix(29, 14, main_ascii, matrix_);
-		addImageToMatrix(boss_.overlay_x - 11, boss_.overlay_y, overlay_ascii, matrix_);
+		addImageToMatrix(29, 14, main_ascii, dialog_matrix_);
+		addImageToMatrix(boss_.overlay_x - 11, boss_.overlay_y, overlay_ascii, dialog_matrix_);
 	}
 }
 
 // Updates player options as text
 void BattleDialogBase::setDialogOptions()
 {
-	drawSolidRectangle(17, 29, 57, 5, ' ', matrix_);
+	drawSolidRectangle(17, 29, 57, 5, ' ', dialog_matrix_);
 	max_choices_ = -1;
 
 	int dialog_choices_index = 0;
@@ -144,7 +144,7 @@ void BattleDialogBase::setDialogOptions()
 		{
 			for (col = row->begin(); col != row->end(); col++)
 			{
-				addTextToMatrix(17, 29 + offset, 'l', std::get<0>(*col), matrix_);
+				addTextToMatrix(17, 29 + offset, 'l', std::get<0>(*col), dialog_matrix_);
 				max_choices_++;
 				offset++;
 			}
@@ -158,17 +158,17 @@ void BattleDialogBase::setDialogOptions()
 void BattleDialogBase::setCursorText()
 {
 	for (int i = 0; i < 4; ++i)
-		matrix_[29 + i][15] = ' ';
-	matrix_[29 + (cursor_index_)][15] = '>';
+		dialog_matrix_[29 + i][15] = ' ';
+	dialog_matrix_[29 + (cursor_index_)][15] = '>';
 }
 
 // Updates character responses as text
 void BattleDialogBase::setReponseText(std::string response_text_string)
 {
-	drawSolidRectangle(51, 7, 19, 9, ' ', matrix_);
-	drawRectangle(50, 6, 20, 10, 'X', matrix_);
+	drawSolidRectangle(51, 7, 19, 9, ' ', dialog_matrix_);
+	drawRectangle(50, 6, 20, 10, 'X', dialog_matrix_);
 
-	addTextToMatrix(60, 10, 'm', response_text_string, matrix_, 17, 7);
+	addTextToMatrix(60, 10, 'm', response_text_string, dialog_matrix_, 17, 7);
 
 	start_time_exit_dialog_ = GetTickCount64();
 	displaying_response_ = true;
@@ -257,7 +257,8 @@ void BattleDialogBase::displayScreen()
 	{
 		for (int j = 0; j < width_; j++)
 		{
-			screen_matrix_[i][j] = matrix_[i][j];
+			char temp = dialog_matrix_[i][j];
+			screen_matrix_[i][j] = temp;
 		}
 	}
 }

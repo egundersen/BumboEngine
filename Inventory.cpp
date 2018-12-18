@@ -3,7 +3,7 @@
 #include <windows.h>
 
 Inventory::Inventory(int width, int height, Matrix &screen_matrix, int &player_health)
-	: width_{ width }, height_{ height }, matrix_(height, std::vector<char>(width, ' ')), cursor_index_(0), player_health_{ player_health }, screen_matrix_{ screen_matrix }, start_time_move_cursor_(0)
+	: width_{ width }, height_{ height }, inventory_matrix_(width, height), cursor_index_(0), player_health_{ player_health }, screen_matrix_{ screen_matrix }, start_time_move_cursor_(0)
 {
 	start_time_move_cursor_ = GetTickCount64();
 	setInventoryBackgroundText();
@@ -50,26 +50,26 @@ void Inventory::setInventoryBackgroundText()
 {
 	for (int i = 1; i < height_ - 1; ++i)
 	{
-		matrix_[i][1] = 'X';
-		matrix_[i][2] = 'X';
-		matrix_[i][3] = 'X';
-		matrix_[i][width_ - 2] = 'X';
-		matrix_[i][width_ - 3] = 'X';
-		matrix_[i][width_ - 4] = 'X';
+		inventory_matrix_[i][1] = 'X';
+		inventory_matrix_[i][2] = 'X';
+		inventory_matrix_[i][3] = 'X';
+		inventory_matrix_[i][width_ - 2] = 'X';
+		inventory_matrix_[i][width_ - 3] = 'X';
+		inventory_matrix_[i][width_ - 4] = 'X';
 	}
 	for (int i = 10; i < height_ - 1; ++i)
-		matrix_[i][45] = 'X';
+		inventory_matrix_[i][45] = 'X';
 	for (int j = 5; j < width_ - 5; ++j)
 	{
-		matrix_[1][j] = '=';
-		matrix_[2][j] = '=';
+		inventory_matrix_[1][j] = '=';
+		inventory_matrix_[2][j] = '=';
 	}
 	Image inventory_letters("Z===[]=== []   [][]      [][]==== []   [] ==[]== [][][] [][][][]    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [] []    []   Z===[]=== []  [[]    []    []==== []  [[]   []   [][][] []  []   []   Z");
 	Image instructions("Z=====================================Z============= CONTROLS ==============Z                                     ZNavigate up and down      Arrow KeysZ                                     ZUse Selected Item         ENTERZ                                     ZExit inventory            BACKSPACEZZ");
 	Image itemsMenu("Z=========================Z========= ITEMS =========ZZ");
-	addImageToMatrix(60, 11, itemsMenu, matrix_);
-	addImageToMatrix(24, 14, instructions, matrix_);
-	addImageToMatrix(39, 6, inventory_letters, matrix_);
+	addImageToMatrix(60, 11, itemsMenu, inventory_matrix_);
+	addImageToMatrix(24, 14, instructions, inventory_matrix_);
+	addImageToMatrix(39, 6, inventory_letters, inventory_matrix_);
 }
 
 // Sets the items list
@@ -77,24 +77,24 @@ void Inventory::setItemsListText()
 {
 	for (int i = 0; i < items_list_.size(); ++i)
 		for (int j = 0; j < 20; ++j)
-			matrix_[13 + (2 * i)][52 + j] = ' ';
+			inventory_matrix_[13 + (2 * i)][52 + j] = ' ';
 	for (int i = 0; i < items_list_.size(); ++i)
 	{
 		std::string item = "Z" + items_list_.at(i).getName() + "Z";
 		Image items(item);
-		addImageToMatrix(58, 13 + (2 * i), items, matrix_);
+		addImageToMatrix(58, 13 + (2 * i), items, inventory_matrix_);
 	}
 	for (int i = items_list_.size(); i < 10; ++i) // items_list_.size()
 		for (int j = 0; j < 20; ++j)
-			matrix_[13 + (2 * i)][52 + j] = ' ';
+			inventory_matrix_[13 + (2 * i)][52 + j] = ' ';
 }
 
 // Sets the cursor
 void Inventory::setCursorText()
 {
 	for (int i = 0; i < 20; ++i)
-		matrix_[13 + i][48] = ' ';
-	matrix_[13 + (2 * cursor_index_)][48] = '>';
+		inventory_matrix_[13 + i][48] = ' ';
+	inventory_matrix_[13 + (2 * cursor_index_)][48] = '>';
 }
 
 // Sets the player health text
@@ -102,9 +102,9 @@ void Inventory::setPlayerHealthText(int x_position, int y_position)
 {
 	Image player_health_text("{player}'s");
 	Image lives("Lives:  ");
-	addImageToMatrix(x_position, y_position, player_health_text, matrix_);
-	addImageToMatrix(x_position, y_position + 1, lives, matrix_);
-	matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
+	addImageToMatrix(x_position, y_position, player_health_text, inventory_matrix_);
+	addImageToMatrix(x_position, y_position + 1, lives, inventory_matrix_);
+	inventory_matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
 }
 
 // Takes input for inventory menu
@@ -215,7 +215,8 @@ void Inventory::displayScreen()
 {
 	for (int i = 0; i < height_; i++) {
 		for (int j = 0; j < width_; j++) {
-			screen_matrix_[i][j] = matrix_[i][j];
+			char temp = inventory_matrix_[i][j];
+			screen_matrix_[i][j] = temp;
 		}
 	}
 }

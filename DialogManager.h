@@ -41,8 +41,7 @@ private:
 
 	int dialog_width_, dialog_height_, screen_height_, screen_width_, cursor_index_, start_time_move_cursor_, max_choices_;
 	bool should_show_dialog_, should_give_item_, should_enter_battle_;
-	Matrix &screen_matrix_;
-	std::vector<std::vector<char>> dialog_matrix_;
+	Matrix &screen_matrix_, dialog_matrix_;
 	DialogNode *head_node_;
 	DialogNode *moving_node_;
 	Item item_;

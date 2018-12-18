@@ -3,7 +3,7 @@
 
 DialogManager::DialogManager(int dialog_width, int dialog_height, int screen_height, int screen_width, Matrix &screen_matrix)
 	: screen_matrix_{ screen_matrix }, max_choices_(2), action_{ "" }, should_give_item_{ false },
-	dialog_height_{ dialog_height }, dialog_width_{ dialog_width }, dialog_matrix_(dialog_height, std::vector<char>(dialog_width, ' ')),
+	dialog_height_{ dialog_height }, dialog_width_{ dialog_width }, dialog_matrix_(dialog_width, dialog_height),
 	screen_width_{ screen_width }, screen_height_{ screen_height }, cursor_index_(0), should_show_dialog_{ false }, should_enter_battle_{ false }
 {
 	setBackgroundText();
@@ -32,7 +32,8 @@ void DialogManager::displayDialogMenu()
 	{
 		for (int j = 0; j < dialog_width_; j++)
 		{
-			screen_matrix_[i + 24][j + 5] = dialog_matrix_[i][j];
+			char temp = dialog_matrix_[i][j];
+			screen_matrix_[i + 24][j + 5] = temp;
 		}
 	}
 }

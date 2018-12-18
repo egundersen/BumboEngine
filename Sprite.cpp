@@ -3,19 +3,19 @@
 
 Sprite::Sprite(int sprite_width, int sprite_height, Matrix &screen_matrix)
 	: sprite_width_{ sprite_width }, sprite_height_{ sprite_height }, screen_matrix_{ screen_matrix }, animation_position_(0), start_time_player_animation_(0),
-	is_moving_vertically_{ false }, is_moving_horizontally{ false }, player_animation_speed_(240), direction_{'d'},
-	up_1_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	up_2_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	down_1_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	down_2_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	right_1_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	right_2_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	left_1_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	left_2_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	up_s_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	down_s_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	left_s_(sprite_height_, std::vector<char>(sprite_width_, ' ')),
-	right_s_(sprite_height_, std::vector<char>(sprite_width_, ' '))
+	is_moving_vertically_{ false }, is_moving_horizontally{ false }, player_animation_speed_(240), direction_{'d'}, x_position_(0), y_position_(0),
+	up_1_(sprite_width, sprite_height),
+	up_2_(sprite_width, sprite_height),
+	down_1_(sprite_width, sprite_height),
+	down_2_(sprite_width, sprite_height),
+	right_1_(sprite_width, sprite_height),
+	right_2_(sprite_width, sprite_height),
+	left_1_(sprite_width, sprite_height),
+	left_2_(sprite_width, sprite_height),
+	up_s_(sprite_width, sprite_height),
+	down_s_(sprite_width, sprite_height),
+	left_s_(sprite_width, sprite_height),
+	right_s_(sprite_width, sprite_height)
 {
 	start_time_player_animation_ = GetTickCount64();
 }
