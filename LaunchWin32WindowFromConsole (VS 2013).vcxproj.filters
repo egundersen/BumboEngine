@@ -386,6 +386,9 @@
     <ClInclude Include="BitmapDefinition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ColorPalette.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">

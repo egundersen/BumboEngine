@@ -35,11 +35,6 @@ public:
 				return std::get<0>(a[index_]) = other;
 			}
 
-			/*char& operator=(const std::vector<std::tuple<char, RGBA>>& other)
-			{
-				return std::get<0>(a[index_]) = std::get<0>(other[index_]);
-			}//*/
-
 			void setColor(char red, char green, char blue);
 			void setColor(RGBA rgba);
 			bool fadeColor(int fade_delay, int multiplier);
@@ -83,6 +78,9 @@ public:
 		}
 		return Proxy(matrix_[index]);
 	}
+
+	std::vector<std::tuple<char, RGBA>> &begin();
+	std::vector<std::tuple<char, RGBA>> &end();
 
 	int getHeight() { return height_; }
 	int getWidth() { return width_; }

@@ -1,17 +1,29 @@
 #include "Image.h"
 #include <iostream>
 
-// Creates an ASCII image. The Character: 'N' is used as a delimeter
-Image::Image(std::string i_ASCII, char delimiter) : ASCII_{ i_ASCII }, delimiter_{ delimiter }
+Image::Image() 
+	: ASCII_{ "" }, delimiter_{ 'Z' }, width_{ 0 }, height_{ 0 }
+{
+}
+
+Image::Image(std::string ASCII, char delimiter) 
+	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }
 {
 	setImageDimensions();
 	populateImageWithASCII();
 }
 
-Image::Image(std::wstring i_ASCII, int width, int height, char delimiter) 
-	: Wide_ASCII_{ i_ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height }
+Image::Image(std::string ASCII, std::string color_ASCII, char delimiter)
+	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }
 {
-	image_matrix.resize(height, std::vector<char>(width));
+	setImageDimensions();
+	populateImageWithASCII();
+}
+
+Image::Image(std::wstring ASCII, int width, int height, char delimiter) 
+	: Wide_ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height },
+	image_matrix(width, height)
+{
 	populateImageWithWideASCII();
 }
 
@@ -37,7 +49,7 @@ void Image::setImageDimensions()
 		width_ = temp_width;
 		++height_;
 	}
-	image_matrix.resize(height_, std::vector<char>(width_));
+	image_matrix = Matrix(width_, height_);
 }
 
 // Fills image matrix with correct ASCII symbols
@@ -66,12 +78,6 @@ void Image::populateImageWithWideASCII()
 	int width_iterator = 0;
 	int height_iterator = 0;
 
-	/*std::wstring::iterator it = Wide_ASCII_.begin();
-	while (it != Wide_ASCII_.end())
-	{
-		
-		++it;
-	}//*/
 	for (std::wstring::iterator it = Wide_ASCII_.begin(); it != Wide_ASCII_.end() && height_iterator < height_; ++it)
 	{
 		char c = static_cast<char>(*it);
@@ -89,12 +95,14 @@ void Image::populateImageWithWideASCII()
 }
 
 // Displays the image on the screen. [FOR DEBUG ONLY!]
-void Image::DEBUG_displayImage()
+void Image::DEBUG_printImage()
 {
-	for (auto line : image_matrix)
+	for (int i = 0; i < height_; i++)
 	{
-		for (auto x : line)
-			std::cout << x;
+		for (int j = 0; j < width_; j++)
+		{
+			std::cout << image_matrix[i][j];
+		}
 		std::cout << "\n";
 	}
 }

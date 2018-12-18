@@ -42,13 +42,18 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 	{
 		while (x_position_temp < image.position.x_position_max)
 		{
+			char temp = image.image_matrix[y][x];
 			if (exclude_spaces)
 			{ // Excludes spaces and new lines
 				if (image.image_matrix[y][x] != ' ' && image.image_matrix[y][x] != '\0')
-					matrix[image.position.y_position_min][x_position_temp] = image.image_matrix[y][x];
+				{
+					matrix[image.position.y_position_min][x_position_temp] = temp;
+				}
 			}
 			else
-				matrix[image.position.y_position_min][x_position_temp] = image.image_matrix[y][x];
+			{
+				matrix[image.position.y_position_min][x_position_temp] = temp;
+			}
 			++x_position_temp;
 			++x;
 		}

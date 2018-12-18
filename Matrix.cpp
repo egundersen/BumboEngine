@@ -23,3 +23,13 @@ unsigned int Matrix::Proxy::Deref::getColor()
 {
 	return std::get<1>(a[index_]).getHex();
 }
+
+std::vector<std::tuple<char, RGBA>>& Matrix::begin()
+{
+	return matrix_[0];
+}
+
+std::vector<std::tuple<char, RGBA>>& Matrix::end()
+{
+	return matrix_[height_ - 1];
+}

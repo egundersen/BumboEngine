@@ -1,3 +1,4 @@
+#include "Matrix.h"
 #include <vector>
 #include <string>
 
@@ -15,20 +16,21 @@ struct Position_s
 class Image
 {
 public:
-	Image() : ASCII_{ 0 } {}
+	Image();
 	Image(std::string ASCII, char delimiter = 'Z');
+	Image(std::string ASCII, std::string color_ASCII, char delimiter = 'Z');
 	Image(std::wstring ASCII, int width, int height, char delimiter = 'Z');
 
 	// Setters
 	Position_s position;
-	std::vector<std::vector<char>> image_matrix;
+	Matrix image_matrix;
 
 	//Getters
 	int getWidth() { return width_; }
 	int getHeight() { return height_; }
 
 	// Output Displays
-	void DEBUG_displayImage();
+	void DEBUG_printImage();
 private:
 	//Setters
 	void setImageDimensions();
