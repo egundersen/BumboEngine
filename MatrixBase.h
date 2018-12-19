@@ -1,4 +1,5 @@
 #include "Image.h"
+#include "ColorPalette.h"
 #include "Matrix.h"
 #include <memory>
 #include <algorithm>
@@ -16,11 +17,18 @@ struct PlayerPosition
 class MatrixBase
 {
 protected:
+	// Basic Matrix Operations
 	void addImageToMatrix(int center_position_x, int center_position_y, Image &image, Matrix &matrix, bool exclude_spaces = false);
 	void addTextToMatrix(int position_x, int position_y, char alignment, std::string text, Matrix &matrix, int paragraph_width = 0, int paragraph_height = 0);
+	void addTextToMatrix(int position_x, int position_y, char alignment, std::string text, char color_code, Matrix &matrix, int paragraph_width = 0, int paragraph_height = 0);
+
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix &matrix);
+	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, char color_code, Matrix &matrix);
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix &matrix, bool **&element_is_occupied);
+	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, char color_code, Matrix &matrix, bool **&element_is_occupied);
+	
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix &matrix);
+	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, char color_code, Matrix &matrix);
 	void clearMatrix(int width, int height, Matrix &matrix);
 
 	int generateRandomNumber(int min, int max);
@@ -45,6 +53,7 @@ protected:
 private:
 	bool shouldIndent(std::string text, int letter_index, int matrix_iterator, int paragraph_width);
 	int addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, Matrix &matrix, int paragraph_width, int paragraph_height);
+	int addLeftAlignedColoredTextToMatrix(int top_left_x, int top_left_y, std::string text, char color_code, Matrix &matrix, int paragraph_width, int paragraph_height);
 	
 	// Deprecated Function (Legacy Support)
 	int addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>>& matrix, int paragraph_width, int paragraph_height);

@@ -1,5 +1,4 @@
 #include "MatrixBase.h"
-#include "Image.h"
 #include <conio.h>
 #include <iostream>
 #include <random>
@@ -176,6 +175,120 @@ void MatrixBase::addTextToMatrix(int position_x, int position_y, char alignment,
 	}
 }
 
+/* COLORED -- Adds a line of text to a matrix at the specified coordinates (Automatically Indents)
+ * Left Aligned:	Coordinate is TOP LEFT
+ * Middle ALigned:	Coordinate is TOP MIDDLE
+ * Right Aligned:	Coordinate is TOP RIGHT
+ */
+void MatrixBase::addTextToMatrix(int position_x, int position_y, char alignment, std::string text, char color_code, Matrix & matrix, int paragraph_width, int paragraph_height)
+{
+	int top_left_x = 0;
+	int top_left_y = 0;
+	int y_offset = 0;
+
+	// Exists for readability sake alone
+	int top_right_x = 0;
+
+	switch (alignment)
+	{
+	case 'l':
+		top_left_x = position_x;
+		top_left_y = position_y;
+
+		addLeftAlignedColoredTextToMatrix(top_left_x, top_left_y, text, color_code, matrix, paragraph_width, paragraph_height);
+
+		break;
+	case 'r':
+		top_right_x = paragraph_width - 1;
+		top_left_x = position_x - paragraph_width;
+		top_left_y = position_y;
+
+		y_offset = addLeftAlignedTextToMatrix(top_left_x, top_left_y, text, matrix, paragraph_width, paragraph_height) + 1;
+
+		for (int i = 0; i < y_offset; i++) // For each row
+		{
+			int white_space_counter = 0; // Calculate number of spaces after last letter
+			bool found_letter = false;
+			for (int j = 0; j < paragraph_width - 1; j++)
+			{
+				if (matrix[top_left_y + i][top_left_x + j] == ' ')
+					white_space_counter++;
+				else
+				{
+					found_letter = true;
+					white_space_counter = 0;
+				}
+			}
+
+			if (!found_letter) // Entire line of white space? Ignore it!
+				break;
+
+			std::vector<char> temp = std::vector<char>(paragraph_width - 1, ' '); // Populate temporary Matrix
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++)
+			{
+				temp[j] = matrix[top_left_y + i][top_left_x + j];
+			}
+
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++) // Clear original Matrix
+			{
+				matrix[top_left_y + i][top_left_x + j] = ' ';
+			}
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++) // Swap elements in original matrix
+			{
+				if (temp[(paragraph_width - 1 - white_space_counter) - j - 1] != ' ')
+				{
+					matrix[top_left_y + i][top_right_x - j] = temp[(paragraph_width - 1 - white_space_counter) - j - 1];
+					matrix[top_left_y + i][top_right_x - j].setColor(ColorPalette(color_code).getRGBA());
+				}
+			}
+		}
+		break;
+	case 'm':
+		top_left_x = position_x + 1 - (paragraph_width / 2);
+		top_left_y = position_y + 1 - (paragraph_height / 2);
+
+		y_offset = addLeftAlignedTextToMatrix(top_left_x, top_left_y, text, matrix, paragraph_width, paragraph_height) + 1;
+
+		for (int i = 0; i < y_offset; i++) // For each row
+		{
+			int white_space_counter = 0; // Calculate number of spaces after last letter
+			bool found_letter = false;
+			for (int j = 0; j < paragraph_width - 1; j++)
+			{
+				if (matrix[top_left_y + i][top_left_x + j] == ' ')
+					white_space_counter++;
+				else
+				{
+					found_letter = true;
+					white_space_counter = 0;
+				}
+			}
+
+			if (!found_letter) // Entire line of white space? Ignore it!
+				break;
+
+			std::vector<char> temp = std::vector<char>(paragraph_width - 1, ' '); // Populate temporary Matrix
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++)
+			{
+				temp[j] = matrix[top_left_y + i][top_left_x + j];
+			}
+
+			for (int j = 0; j < white_space_counter / 2; j++) // Populate original matrix with new spacing alignment
+			{
+				matrix[top_left_y + i][top_left_x + j] = ' ';
+			}
+			for (int j = 0; j < paragraph_width - 1 - white_space_counter; j++)
+			{
+				matrix[top_left_y + i][top_left_x + j + white_space_counter / 2] = temp[j];
+				matrix[top_left_y + i][top_left_x + j + white_space_counter / 2].setColor(ColorPalette(color_code).getRGBA());
+			}
+		}
+		break;
+	default:
+		break;
+	}
+}
+
 // draws a hollow rectangle to the provided matrix
 void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix & matrix)
 {
@@ -188,6 +301,23 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 	{
 		matrix[top_left_y + i][top_left_x] = character;
 		matrix[top_left_y + i][top_left_x + width - 1] = character;
+	}
+}
+
+// COLORED -- draws a hollow rectangle to the provided matrix
+void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, char color_code, Matrix & matrix)
+{
+	for (int j = 0; j < width - 1; j++)
+	{
+		matrix[top_left_y][j + top_left_x] = character;
+		matrix[top_left_y + height - 1][j + top_left_x] = character;
+		matrix[top_left_y + height - 1][j + top_left_x].setColor(ColorPalette(color_code).getRGBA());
+	}
+	for (int i = 0; i < height; i++)
+	{
+		matrix[top_left_y + i][top_left_x] = character;
+		matrix[top_left_y + i][top_left_x + width - 1] = character;
+		matrix[top_left_y + i][top_left_x + width - 1].setColor(ColorPalette(color_code).getRGBA());
 	}
 }
 
@@ -210,12 +340,44 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 	}
 }
 
+// COLORED -- draws a hollow rectangle to the provided matrix and flags the location
+void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, char color_code, Matrix & matrix, bool **& element_is_occupied)
+{
+	for (int j = 0; j < width - 1; j++)
+	{
+		matrix[top_left_y][j + top_left_x] = character;
+		matrix[top_left_y + height - 1][j + top_left_x] = character;
+		element_is_occupied[top_left_y][j + top_left_x] = true;
+		element_is_occupied[top_left_y + height - 1][j + top_left_x] = true;
+		matrix[top_left_y + height - 1][j + top_left_x].setColor(ColorPalette(color_code).getRGBA());
+	}
+	for (int i = 0; i < height; i++)
+	{
+		matrix[top_left_y + i][top_left_x] = character;
+		matrix[top_left_y + i][top_left_x + width - 1] = character;
+		element_is_occupied[top_left_y + i][top_left_x] = true;
+		element_is_occupied[top_left_y + i][top_left_x + width - 1] = true;
+		matrix[top_left_y + i][top_left_x + width - 1].setColor(ColorPalette(color_code).getRGBA());
+	}
+}
+
 // draws a solid rectangle to the provided matrix
 void MatrixBase::drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, Matrix & matrix)
 {
 	for (int j = 0; j < width; j++)
 		for (int i = 0; i < height; i++)
 			matrix[top_left_y + i][top_left_x + j] = character;
+}
+
+// COLORED -- draws a solid rectangle to the provided matrix
+void MatrixBase::drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, char color_code, Matrix & matrix)
+{
+	for (int j = 0; j < width; j++)
+		for (int i = 0; i < height; i++)
+		{
+			matrix[top_left_y + i][top_left_x + j] = character;
+			matrix[top_left_y + i][top_left_x + j].setColor(ColorPalette(color_code).getRGBA());
+		}
 }
 
 // Replaces every character in given matrix with white space
@@ -300,7 +462,7 @@ bool MatrixBase::shouldIndent(std::string text, int letter_index, int matrix_ite
 	return false;
 }
 
-// Replaces every character in given matrix with white space
+// Adds text from a string to a matrix (Text is left-aligned)
 int MatrixBase::addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, Matrix & matrix, int paragraph_width, int paragraph_height)
 {
 	int y_offset = 0;
@@ -322,6 +484,38 @@ int MatrixBase::addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::
 				max_line_index += (paragraph_width - 1);
 			}
 			matrix[top_left_y + y_offset][top_left_x + matrix_iterator] = text[j];
+			matrix_iterator++;
+		}
+	}
+	return y_offset;
+}
+
+// Adds colored text from a string to a matrix (Text is left-aligned)
+int MatrixBase::addLeftAlignedColoredTextToMatrix(int top_left_x, int top_left_y, std::string text, char color_code, Matrix & matrix, int paragraph_width, int paragraph_height)
+{
+	int y_offset = 0;
+
+	if (paragraph_width == 0) // Single Line Mode
+		for (int j = 0; j < text.length(); j++)
+		{
+			matrix[top_left_y][top_left_x + j] = text[j];
+			matrix[top_left_y][top_left_x + j].setColor(ColorPalette(color_code).getRGBA());
+		}
+	else // Multiple Line Mode
+	{
+		int max_line_index = (paragraph_width - 1);
+		int matrix_iterator = 0;
+
+		for (int j = 0; j < text.length(); j++)
+		{
+			if (shouldIndent(text, j, matrix_iterator, paragraph_width - 1))
+			{
+				y_offset++;
+				matrix_iterator = 0;
+				max_line_index += (paragraph_width - 1);
+			}
+			matrix[top_left_y + y_offset][top_left_x + matrix_iterator] = text[j];
+			matrix[top_left_y + y_offset][top_left_x + matrix_iterator].setColor(ColorPalette(color_code).getRGBA());
 			matrix_iterator++;
 		}
 	}

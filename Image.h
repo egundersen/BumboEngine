@@ -39,6 +39,7 @@ private:
 	void populateImageWithWideASCII();
 	void colorImageWithASCII();
 	void colorWideImageWithASCII();
+	void colorImageSingleColor();
 
 	int width_, height_;
 	char delimiter_;

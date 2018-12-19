@@ -11,27 +11,29 @@ StartScreen::StartScreen(int width, int height, Matrix &screen_matrix)
 
 void StartScreen::setBackgroundText()
 {
-	drawSolidRectangle(1, 1, 3, height_ - 2, 'X', startscreen_matrix_);
-	drawSolidRectangle(width_ - 4, 1, 3, height_ - 2, 'X', startscreen_matrix_);
+	drawSolidRectangle(1, 1, 3, height_ - 2, 'X', 'M', startscreen_matrix_);
+	drawSolidRectangle(width_ - 4, 1, 3, height_ - 2, 'X', 'M', startscreen_matrix_);
 
-	drawRectangle(5, 1, 12, 1, '=', startscreen_matrix_);
-	drawRectangle(5, 2, 8, 1, '=', startscreen_matrix_);
-	drawRectangle(5, 3, 4, 1, '=', startscreen_matrix_);
+	drawRectangle(5, 1, 12, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(5, 2, 8, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(5, 3, 4, 1, '=', 'P', startscreen_matrix_);
 
-	drawRectangle(width_ - 17, 1, 12, 1, '=', startscreen_matrix_);
-	drawRectangle(width_ - 13, 2, 8, 1, '=', startscreen_matrix_);
-	drawRectangle(width_ - 9, 3, 4, 1, '=', startscreen_matrix_);
+	drawRectangle(width_ - 17, 1, 12, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(width_ - 13, 2, 8, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(width_ - 9, 3, 4, 1, '=', 'P', startscreen_matrix_);
 
-	drawRectangle(5, height_ - 4, 4, 1, '=', startscreen_matrix_);
-	drawRectangle(5, height_ - 3, 4, 1, '=', startscreen_matrix_);
-	drawRectangle(5, height_ - 2, 12, 1, '=', startscreen_matrix_);
+	drawRectangle(5, height_ - 4, 4, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(5, height_ - 3, 4, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(5, height_ - 2, 12, 1, '=', 'P', startscreen_matrix_);
 
-	drawRectangle(width_ - 9, height_ - 4, 4, 1, '=', startscreen_matrix_);
-	drawRectangle(width_ - 13, height_ - 3, 8, 1, '=', startscreen_matrix_);
-	drawRectangle(width_ - 17, height_ - 2, 12, 1, '=', startscreen_matrix_);
+	drawRectangle(width_ - 9, height_ - 4, 4, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(width_ - 13, height_ - 3, 8, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(width_ - 17, height_ - 2, 12, 1, '=', 'P', startscreen_matrix_);
 
-	Image title_letters("[]        [] []====| []   []        []     [][][] []====| []====|Z[]   []   [] []      []]  []        []       []   []    | []     Z[]  [][]  [] []====  [][] []        []       []   []==|   []==== Z [][]  [][]  []      [] [][]        []       []   []      []     Z  []    []   []====| []  [[]        [][][] [][][] []      []====|Z");
-	Image press_enter("Press ENTER to begin");
+	Image title_letters(
+		"[]        [] []====| []   []        []     [][][] []====| []====|Z[]   []   [] []      []]  []        []       []   []    | []     Z[]  [][]  [] []====  [][] []        []       []   []==|   []==== Z [][]  [][]  []      [] [][]        []       []   []      []     Z  []    []   []====| []  [[]        [][][] [][][] []      []====|Z",
+		"PM        PM PPPPPPM PM   PM        PM     PPPPPM PPPPPPM PPPPPPMZPM   PM   PM PM      PPM  PM        PM       PM   PM    M PM     ZPM  PPPM  PM PMMMMMM PPPM PM        PM       PM   PMMMM   PMMMMM Z PMPM  PMPM  PM      PM PMPM        PM       PM   PM      PM     Z  PM    PM   PPPPPPM PM  PPM        PPPPPM PPPPPM PM      PPPPPPMZ");
+	Image press_enter("Press ENTER to begin", "M");
 	Image sprite_1("   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z");
 	Image sprite_2("   -/\\-   Z \\=/--\\=/ Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z");
 	Image sprite_3("   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z");
@@ -41,7 +43,7 @@ void StartScreen::setBackgroundText()
 	addImageToMatrix(50, 18, sprite_3, startscreen_matrix_);
 	addImageToMatrix(39, 7, title_letters, startscreen_matrix_);
 	addImageToMatrix(39, 30, press_enter, startscreen_matrix_);
-	addTextToMatrix(58, height_ - 1, 'l', "BumboEngine v0.8", startscreen_matrix_);
+	addTextToMatrix(58, height_ - 1, 'l', "BumboEngine v0.8", 'M', startscreen_matrix_);
 #ifdef _DEBUG
 	addTextToMatrix(5, height_ - 1, 'l', "Running DEBUG release : Expect Poor framerates", startscreen_matrix_);
 #endif

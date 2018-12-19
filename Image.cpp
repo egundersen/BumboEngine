@@ -19,7 +19,10 @@ Image::Image(std::string ASCII, std::string ASCII_colors, char delimiter)
 {
 	setImageDimensions();
 	populateImageWithASCII();
-	colorImageWithASCII();
+	if (ASCII_colors_.length() == 1)
+		colorImageSingleColor();
+	else
+		colorImageWithASCII();
 }
 
 Image::Image(std::wstring ASCII, int width, int height, char delimiter)
@@ -142,6 +145,27 @@ void Image::colorWideImageWithASCII()
 			width_iterator++;
 		}
 		if (c == delimiter_)
+		{
+			height_iterator++;
+			width_iterator = 0;
+		}
+	}
+}
+
+// Colors Image Matrix with a single color (uses the first and only color in the ASCII Colors string)
+void Image::colorImageSingleColor()
+{
+	int width_iterator = 0;
+	int height_iterator = 0;
+
+	for (std::string::iterator it = ASCII_.begin(); it != ASCII_.end() && height_iterator < height_; ++it)
+	{
+		if (*it != delimiter_)
+		{
+			image_matrix[height_iterator][width_iterator].setColor(ColorPalette(ASCII_colors_[0]).getRGBA());
+			width_iterator++;
+		}
+		if (*it == delimiter_)
 		{
 			height_iterator++;
 			width_iterator = 0;
