@@ -10,12 +10,23 @@ class Texture : MatrixBase
 public:
 	Texture(int center_position_x, int center_position_y, ColoredString colored_ascii, Matrix &matrix)
 	{
-		Image image(colored_ascii.getASCII(), colored_ascii.getColors());
-		addImageToMatrix(center_position_x, center_position_y, image, matrix, true);
+		if (!colored_ascii.usesWideStrings())
+		{
+			Image image(colored_ascii.getASCII(), colored_ascii.getColors());
+			addImageToMatrix(center_position_x, center_position_y, image, matrix, true);
+		}
+		else
+		{
+			std::vector<Image> lines;
+			int iterator = 0;
+			for (int i = 0; i < colored_ascii.getWstringHeight(); i++)
+			{
+				lines.push_back(Image(colored_ascii.getWideASCII()[i], colored_ascii.getWideColors()[i], colored_ascii.getWstringWidth(), 1));
+				addImageToMatrix(center_position_x, center_position_y + iterator, lines[iterator], matrix, true);
+				iterator++;
+			}
+		}
 	}
-
-private:
-
 };
 
 #endif // !TEXTURE_H

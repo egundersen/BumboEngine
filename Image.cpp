@@ -3,19 +3,19 @@
 #include <iostream>
 
 Image::Image()
-	: ASCII_{ "" }, delimiter_{ 'Z' }, width_{ 0 }, height_{ 0 }, ASCII_colors_{ "" }
+	: ASCII_{ "" }, ASCII_colors_{ "" }, delimiter_{ 'Z' }, width_{ 0 }, height_{ 0 }
 {
 }
 
 Image::Image(std::string ASCII, char delimiter)
-	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }, ASCII_colors_{ "" }
+	: ASCII_{ ASCII }, ASCII_colors_{ "" }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }
 {
 	setImageDimensions();
 	populateImageWithASCII();
 }
 
 Image::Image(std::string ASCII, std::string ASCII_colors, char delimiter)
-	: ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }, ASCII_colors_{ ASCII_colors }
+	: ASCII_{ ASCII }, ASCII_colors_{ ASCII_colors }, delimiter_{ delimiter }, width_{ 0 }, height_{ 0 }
 {
 	setImageDimensions();
 	populateImageWithASCII();
@@ -23,14 +23,14 @@ Image::Image(std::string ASCII, std::string ASCII_colors, char delimiter)
 }
 
 Image::Image(std::wstring ASCII, int width, int height, char delimiter)
-	: Wide_ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height }, ASCII_colors_{ "" },
+	: wide_ASCII_{ ASCII }, ASCII_{ "" }, ASCII_colors_{ "" }, delimiter_{ delimiter }, width_{ width }, height_{ height },
 	image_matrix(width, height)
 {
 	populateImageWithWideASCII();
 }
 
-Image::Image(std::wstring ASCII, std::string ASCII_colors, int width, int height, char delimiter)
-	: Wide_ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height }, ASCII_colors_{ "" },
+Image::Image(std::wstring ASCII, std::wstring ASCII_colors, int width, int height, char delimiter)
+	: wide_ASCII_{ ASCII }, wide_ASCII_colors_{ ASCII_colors }, ASCII_{ "" }, ASCII_colors_{ "" }, delimiter_{ delimiter }, width_{ width }, height_{ height },
 	image_matrix(width, height)
 {
 	populateImageWithWideASCII();
@@ -90,7 +90,7 @@ void Image::populateImageWithWideASCII()
 	int width_iterator = 0;
 	int height_iterator = 0;
 
-	for (std::wstring::iterator it = Wide_ASCII_.begin(); it != Wide_ASCII_.end() && height_iterator < height_; ++it)
+	for (std::wstring::iterator it = wide_ASCII_.begin(); it != wide_ASCII_.end() && height_iterator < height_; ++it)
 	{
 		char c = static_cast<char>(*it);
 		if (c != delimiter_)
@@ -130,7 +130,23 @@ void Image::colorImageWithASCII()
 // Colors Image Matrix with correct colors from ASCII Colors string saved as a wstring
 void Image::colorWideImageWithASCII()
 {
+	int width_iterator = 0;
+	int height_iterator = 0;
 
+	for (std::wstring::iterator it = wide_ASCII_colors_.begin(); it != wide_ASCII_colors_.end() && height_iterator < height_; ++it)
+	{
+		char c = static_cast<char>(*it);
+		if (c != delimiter_)
+		{
+			image_matrix[height_iterator][width_iterator].setColor(ColorPalette(*it).getRGBA());
+			width_iterator++;
+		}
+		if (c == delimiter_)
+		{
+			height_iterator++;
+			width_iterator = 0;
+		}
+	}
 }
 
 // Displays the image on the screen. [FOR DEBUG ONLY!]

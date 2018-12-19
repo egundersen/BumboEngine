@@ -20,7 +20,7 @@ public:
 	Image(std::string ASCII, char delimiter = 'Z');
 	Image(std::string ASCII, std::string ASCII_colors, char delimiter = 'Z');
 	Image(std::wstring ASCII, int width, int height, char delimiter = 'Z');
-	Image(std::wstring ASCII, std::string ASCII_colors, int width, int height, char delimiter = 'Z');
+	Image(std::wstring ASCII, std::wstring ASCII_colors, int width, int height, char delimiter = 'Z');
 
 	// Setters
 	Position_s position;
@@ -43,7 +43,7 @@ private:
 	int width_, height_;
 	char delimiter_;
 	std::string ASCII_, ASCII_colors_;
-	std::wstring Wide_ASCII_;
+	std::wstring wide_ASCII_, wide_ASCII_colors_;
 };
 
 #endif // !IMAGE_H
