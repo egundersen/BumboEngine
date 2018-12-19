@@ -507,7 +507,7 @@ void WorldBase::GENERATE_WorldBorder()
 void WorldBase::GENERATE_OutsideArea()
 {
 	// Outside area / map
-	Texture mountain(750, 137, sprite_sheet_.mountain, world_matrix_);
+	Texture mountain(900, 137, sprite_sheet_.mountain, world_matrix_);
 
 	// Fence
 	Texture fence(1161, 181, sprite_sheet_.fence, world_matrix_);
@@ -533,9 +533,9 @@ void WorldBase::GENERATE_OutsideArea()
 void WorldBase::GENERATE_Maze()
 {
 	// Maze
-	//Texture maze_1(150, 137, sprite_sheet_.maze_1, world_matrix_);
-	//Texture maze_2(150, 1, sprite_sheet_.maze_2, world_matrix_);
-	//Texture maze_3(750, 1, sprite_sheet_.maze_3, world_matrix_);
+	Texture maze_1(300, 137, sprite_sheet_.maze_1, world_matrix_);
+	Texture maze_2(300, 1, sprite_sheet_.maze_2, world_matrix_);
+	Texture maze_3(900, 1, sprite_sheet_.maze_3, world_matrix_);
 }
 
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
