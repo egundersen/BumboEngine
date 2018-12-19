@@ -1,8 +1,7 @@
 #include "WorldSprite.h"
 #include "ColoredString.h"
 
-// Area for generating sprites for npcs
-// Because there are so many, with so many different sprites, this seemed easier than making a new class for every pirate with a different shaped hat
+// Area for storing ASCII for sprites
 struct SpriteSheet
 {
 	WorldSprite player = WorldSprite(
