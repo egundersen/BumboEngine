@@ -5,6 +5,7 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
+// Takes input ASCII art and adds it to the provided matrix
 class Texture : MatrixBase
 {
 public:

@@ -1,5 +1,6 @@
 #include "MatrixBase.h"
 #include "Sprite.h"
+#include "WorldSprite.h"
 
 #ifndef PLAYERSPRITE_H
 #define PLAYERSPRITE_H
@@ -10,7 +11,7 @@ public:
 	using Sprite::Sprite;
 
 	// Setters
-	void initializeSprites();
+	void initializeSprites(WorldSprite player_sprite);
 	void setPlayerMoving(std::string direction);
 
 protected:

@@ -11,7 +11,7 @@ WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int w
 	screen_position_.y = starting_position_y - screen_height / 2;
 
 	generateWorld();
-	player_sprite_.initializeSprites();
+	player_sprite_.initializeSprites(sprite_sheet_.player);
 }
 
 // Runs once whenever the player enters the world (Like when exiting a battle or the inventory)
