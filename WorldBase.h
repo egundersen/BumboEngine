@@ -6,7 +6,6 @@
 #include "Pickup.h"
 #include "Characters.h"
 #include "Events.h"
-#include "Maze.h"
 #include "ScreenPosition.h"
 #include "SpriteSheet.h"
 #include "Texture.h"
@@ -82,7 +81,6 @@ private:
 	std::vector<CharacterBase*> characters_;
 	std::vector<EventBase*> events_;
 
-	Maze maze_;
 	Inventory &inventory_;
 	ScreenPosition screen_position_;
 	PlayerSprite player_sprite_;

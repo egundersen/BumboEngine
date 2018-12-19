@@ -135,9 +135,6 @@
     <ClCompile Include="Popup.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="Maze.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="Event_Tutorial.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
@@ -283,9 +280,6 @@
     </ClInclude>
     <ClInclude Include="Events.h">
       <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Maze.h">
-      <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="PopupWithCollision.h">
       <Filter>Header Files\World</Filter>

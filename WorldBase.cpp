@@ -5,7 +5,7 @@
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_width, world_height), screen_matrix_{ screen_matrix }, player_health_{ player_health }, player_sprite_{ 12, 10, screen_matrix }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, maze_{ world_matrix_, 150, 0 }, image_file_path_{ image_file_path }, enter_key_pressed_{ false }
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, image_file_path_{ image_file_path }, enter_key_pressed_{ false }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -506,6 +506,9 @@ void WorldBase::GENERATE_WorldBorder()
 // creates objects for the cliff area outside the maze. This is the player's spawn / start of the game
 void WorldBase::GENERATE_OutsideArea()
 {
+	// Outside area / map
+	Texture mountain(750, 137, sprite_sheet_.mountain, world_matrix_);
+
 	// Fence
 	Texture fence(1161, 181, sprite_sheet_.fence, world_matrix_);
 
@@ -529,7 +532,10 @@ void WorldBase::GENERATE_OutsideArea()
 // Creates the walls of the maze as well as objects that should be placed INSIDE the maze
 void WorldBase::GENERATE_Maze()
 {
-	maze_.GENERATE_Maze();
+	// Maze
+	//Texture maze_1(150, 137, sprite_sheet_.maze_1, world_matrix_);
+	//Texture maze_2(150, 1, sprite_sheet_.maze_2, world_matrix_);
+	//Texture maze_3(750, 1, sprite_sheet_.maze_3, world_matrix_);
 }
 
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)

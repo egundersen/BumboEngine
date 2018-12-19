@@ -189,7 +189,6 @@
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixBase.cpp" />
     <ClCompile Include="MatrixManager.cpp" />
-    <ClCompile Include="Maze.cpp" />
     <ClCompile Include="NPCSprite.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PlayerSprite.cpp" />
@@ -255,7 +254,6 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="MatrixBase.h" />
     <ClInclude Include="MatrixManager.h" />
-    <ClInclude Include="Maze.h" />
     <ClInclude Include="NPCSprite.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PlayerSprite.h" />
