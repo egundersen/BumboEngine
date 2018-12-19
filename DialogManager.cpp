@@ -34,6 +34,7 @@ void DialogManager::displayDialogMenu()
 		{
 			char temp = dialog_matrix_[i][j];
 			screen_matrix_[i + 24][j + 5] = temp;
+			screen_matrix_[i + 24][j + 5].setColor(dialog_matrix_[i][j].getRGBA());
 		}
 	}
 }

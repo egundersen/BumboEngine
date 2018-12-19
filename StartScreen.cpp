@@ -53,6 +53,7 @@ void StartScreen::displayScreen()
 		for (int j = 0; j < width_; j++) {
 			char temp = startscreen_matrix_[i][j];
 			screen_matrix_[i][j] = temp;
+			screen_matrix_[i][j].setColor(startscreen_matrix_[i][j].getRGBA());
 		}
 	}
 }

@@ -29,6 +29,14 @@ Image::Image(std::wstring ASCII, int width, int height, char delimiter)
 	populateImageWithWideASCII();
 }
 
+Image::Image(std::wstring ASCII, std::string ASCII_colors, int width, int height, char delimiter)
+	: Wide_ASCII_{ ASCII }, delimiter_{ delimiter }, width_{ width }, height_{ height }, ASCII_colors_{ "" },
+	image_matrix(width, height)
+{
+	populateImageWithWideASCII();
+	colorWideImageWithASCII();
+}
+
 // Sets width and height of image matrix
 void Image::setImageDimensions()
 {
@@ -75,6 +83,7 @@ void Image::populateImageWithASCII()
 		}
 	}
 }
+
 // Fills image matrix with correct ASCII symbols saved as a wstring
 void Image::populateImageWithWideASCII()
 {
@@ -116,6 +125,12 @@ void Image::colorImageWithASCII()
 			width_iterator = 0;
 		}
 	}
+}
+
+// Colors Image Matrix with correct colors from ASCII Colors string saved as a wstring
+void Image::colorWideImageWithASCII()
+{
+
 }
 
 // Displays the image on the screen. [FOR DEBUG ONLY!]

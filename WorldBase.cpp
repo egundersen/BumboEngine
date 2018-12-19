@@ -179,6 +179,7 @@ void WorldBase::displayScreen()
 		{
 			char temp = world_matrix_[screen_position_.y + i][screen_position_.x + j];
 			screen_matrix_[i][j] = temp;
+			screen_matrix_[i][j].setColor(world_matrix_[screen_position_.y + i][screen_position_.x + j].getRGBA());
 		}
 	}
 
@@ -572,33 +573,21 @@ void WorldBase::GENERATE_OutsideArea()
 		fence_iterator++;
 	}
 
-	// Trees (If you have a better way to organize these, go RIGHT AHEAD)
-	Image tree_1("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(665, 203, tree_1, world_matrix_, true);
-	Image tree_2("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(700, 210, tree_2, world_matrix_, true);
-	Image tree_3("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(740, 210, tree_3, world_matrix_, true);
-	Image tree_4("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(790, 217, tree_4, world_matrix_, true);
-	Image tree_5("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(830, 197, tree_5, world_matrix_, true);
-	Image tree_6("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(870, 196, tree_6, world_matrix_, true);
-	Image tree_7("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(912, 206, tree_7, world_matrix_, true);
-	Image tree_8("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(950, 203, tree_8, world_matrix_, true);
-	Image tree_9("                %%          =Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%#%%%    %%       Z              %   %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z");
-	addImageToMatrix(1096, 173, tree_9, world_matrix_, true);
+	// Trees
+	Texture tree_1(665, 205, sprite_sheet_.tree, world_matrix_);
+	Texture tree_2(700, 210, sprite_sheet_.tree, world_matrix_);
+	Texture tree_3(740, 210, sprite_sheet_.tree, world_matrix_);
+	Texture tree_4(790, 217, sprite_sheet_.tree, world_matrix_);
+	Texture tree_5(830, 192, sprite_sheet_.tree, world_matrix_);
+	Texture tree_6(870, 192, sprite_sheet_.tree, world_matrix_);
+	Texture tree_7(912, 206, sprite_sheet_.tree, world_matrix_);
+	Texture tree_8(950, 203, sprite_sheet_.tree, world_matrix_);
+	Texture tree_9(1096, 173, sprite_sheet_.tree, world_matrix_);
 
 	// Rocks
-	Image rock_1("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
-	addImageToMatrix(685, 240, rock_1, world_matrix_, true);
-	Image rock_2("   @@&@   Z #@@* #@( Z #*%  (*&%Z @(%#*,#@ Z");
-	addImageToMatrix(715, 222, rock_2, world_matrix_, true);
-	Image rock_3("   @@&@   Z #@@* #@( Z #*%  (*& Z @(%#*,#@ Z");
-	addImageToMatrix(780, 239, rock_3, world_matrix_, true);
+	Texture rock_1(685, 240, sprite_sheet_.rock, world_matrix_);
+	Texture rock_2(715, 222, sprite_sheet_.rock, world_matrix_);
+	Texture rock_3(780, 239, sprite_sheet_.rock, world_matrix_);
 }
 
 // Creates the walls of the maze as well as objects that should be placed INSIDE the maze
@@ -863,6 +852,7 @@ void WorldBase::DEBUG_displayScreen()
 			{
 				char temp = DEBUG_screen_matrix_[i][j];
 				screen_matrix_[i][j] = temp;
+				screen_matrix_[i][j].setColor(DEBUG_screen_matrix_[i][j].getRGBA());
 			}
 		}
 	}

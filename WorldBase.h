@@ -9,6 +9,7 @@
 #include "Maze.h"
 #include "ScreenPosition.h"
 #include "SpriteSheet.h"
+#include "Texture.h"
 #include <utility>
 
 #ifndef WORLDBASE_H

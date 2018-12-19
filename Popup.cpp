@@ -20,6 +20,7 @@ void Popup::displayPopup(int popup_position_x, int popup_position_y)
 		{
 			char temp = popup_matrix_[i][j];
 			screen_matrix_[i + popup_height_ / 2 + popup_position_y][j + popup_width_ + 1 + popup_position_x] = temp;
+			screen_matrix_[i + popup_height_ / 2 + popup_position_y][j + popup_width_ + 1 + popup_position_x].setColor(popup_matrix_[i][j].getRGBA());
 		}
 }
 

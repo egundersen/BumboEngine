@@ -175,6 +175,7 @@ void AttackPatternBase::displayScreen()
 		for (int j = 0; j < width_; j++) {
 			char temp = attack_matrix_[i][j];
 			screen_matrix_[i][j] = temp;
+			screen_matrix_[i][j].setColor(attack_matrix_[i][j].getRGBA());
 		}
 	}
 }

@@ -54,6 +54,9 @@ void PlayerSprite::displaySpriteAtDirection(Matrix& direction, int top_left_posi
 		{
 			char temp = direction[i][j];
 			if (temp != ' ')
+			{
 				screen_matrix_[i + top_left_position_y / 2 - 3][j + top_left_position_x / 2 - 5] = temp;
+				screen_matrix_[i + top_left_position_y / 2 - 3][j + top_left_position_x / 2 - 5].setColor(direction[i][j].getRGBA());
+			}
 		}
 }

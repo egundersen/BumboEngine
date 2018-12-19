@@ -48,11 +48,13 @@ void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, 
 				if (image.image_matrix[y][x] != ' ' && image.image_matrix[y][x] != '\0')
 				{
 					matrix[image.position.y_position_min][x_position_temp] = temp;
+					matrix[image.position.y_position_min][x_position_temp].setColor(image.image_matrix[y][x].getRGBA());
 				}
 			}
 			else
 			{
 				matrix[image.position.y_position_min][x_position_temp] = temp;
+				matrix[image.position.y_position_min][x_position_temp].setColor(image.image_matrix[y][x].getRGBA());
 			}
 			++x_position_temp;
 			++x;

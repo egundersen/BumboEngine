@@ -259,6 +259,7 @@ void BattleDialogBase::displayScreen()
 		{
 			char temp = dialog_matrix_[i][j];
 			screen_matrix_[i][j] = temp;
+			screen_matrix_[i][j].setColor(dialog_matrix_[i][j].getRGBA());
 		}
 	}
 }

@@ -1,4 +1,5 @@
 #include "WorldSprite.h"
+#include "ColoredString.h"
 
 // Area for generating sprites for npcs
 // Because there are so many, with so many different sprites, this seemed easier than making a new class for every pirate with a different shaped hat
@@ -197,5 +198,17 @@ struct SpriteSheet
 		"   -/\\-   Z \\=/--\\=/ Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  ######O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O######  Z  %U  U%  Z"
+	);
+
+	ColoredString tree = ColoredString
+	(
+		"                %%           Z               %             Z              %       %%%    Z     %       %       %       Z      %%      % %   %        Z        %%  % #  % %         Z %      #%%  %  % %         % Z  % %%  % # %%   % %  %% %%  Z        % %%# %%    %%       Z             %    %%         Z          %%  %  %#          Z            %%# #            Z             #%%             Z             %%#             Z             #%              Z             %%,             Z             %%#             Z             %%%             Z             %#%             Z             %#%             Z             %%%             Z             %%#             Z",
+		"                LL           Z               L             Z              L       LLL    Z     L       G       L       Z      LL      G L   G        Z        GL  L G  L G         Z L      LGG  G  L G         L Z  L LL  L L GG   G L  GL LL  Z        G GBG GG    BG       Z             B    BG         Z          BB  B  BG          Z            BBB B            Z             BBB             Z             BBB             Z             BB              Z             BBB             Z             BBB             Z             BBB             Z             BBB             Z             BBB             Z             BBB             Z             BBB             Z"
+	);
+
+	ColoredString rock = ColoredString
+	(
+		"   @@&@   Z #@@* #@( Z #*%  (*& Z @(%#*,#@ Z",
+		"   SSSS   Z SSSS SSS Z SSS  SSS Z SSSSSSSS Z"
 	);
 };

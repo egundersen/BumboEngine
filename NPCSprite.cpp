@@ -43,6 +43,7 @@ void NPCSprite::displaySpriteAtDirection(Matrix& direction, int top_left_positio
 			if (temp != ' ')
 			{
 				world_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+				world_matrix_[top_left_position_y + i][top_left_position_x + j].setColor(direction[i][j].getRGBA());
 			}
 		}
 }
@@ -51,7 +52,7 @@ void NPCSprite::displaySpriteAtDirection(Matrix& direction, int top_left_positio
 void NPCSprite::displayGhostSpriteAtDirection(Matrix& direction, int top_left_position_x, int top_left_position_y, int screen_width_, int screen_height_, char moving_direction)
 {
 	for (int i = 0; i < sprite_height_; i++)
-		for (int j = 0; j < sprite_width_; j++)
+		for (int j = 0; j < sprite_width_; j++) // TODO: These may have been copied incorrectly...
 		{
 			char temp = direction[i][j];
 			switch (moving_direction)
@@ -60,23 +61,27 @@ void NPCSprite::displayGhostSpriteAtDirection(Matrix& direction, int top_left_po
 				if (direction[i][j] != ' ' && top_left_position_y < screen_height_ - sprite_height_ / 2 - 1)
 				{
 					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j].setColor(direction[i][j].getRGBA());
 				}
 				break;
 			case 'u':
 				if (direction[i][j] != ' ' && top_left_position_y > sprite_height_ / 2 - 1)
 				{
 					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j].setColor(direction[i][j].getRGBA());
 				}
 			case 'r':
 				if (direction[i][j] != ' ' && top_left_position_x < screen_width_ - sprite_width_ / 2 - 1)
 				{
 					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j].setColor(direction[i][j].getRGBA());
 				}
 				break;
 			case 'l':
 				if (direction[i][j] != ' ' && top_left_position_x > sprite_width_ / 2 - 1)
 				{
 					screen_matrix_[top_left_position_y + i][top_left_position_x + j] = temp;
+					screen_matrix_[top_left_position_y + i][top_left_position_x + j].setColor(direction[i][j].getRGBA());
 				}
 				break;
 			}

@@ -237,6 +237,7 @@
     <ClInclude Include="Chr_TutorialNPC.h" />
     <ClInclude Include="Chr_AllMight.h" />
     <ClInclude Include="BattleDialogBase.h" />
+    <ClInclude Include="ColoredString.h" />
     <ClInclude Include="ColorPalette.h" />
     <ClInclude Include="DialogNode.h" />
     <ClInclude Include="EventBase.h" />
@@ -269,6 +270,7 @@
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="WinMainParameters.h" />
     <ClInclude Include="WorldBase.h" />
     <ClInclude Include="DialogManager.h" />
