@@ -11,8 +11,8 @@ StartScreen::StartScreen(int width, int height, Matrix &screen_matrix)
 
 void StartScreen::setBackgroundText()
 {
-	drawSolidRectangle(1, 1, 3, height_ - 2, 'X', 'M', startscreen_matrix_);
-	drawSolidRectangle(width_ - 4, 1, 3, height_ - 2, 'X', 'M', startscreen_matrix_);
+	drawSolidRectangle(1, 1, 3, height_ - 2, 'X', 'I', startscreen_matrix_);
+	drawSolidRectangle(width_ - 4, 1, 3, height_ - 2, 'X', 'I', startscreen_matrix_);
 
 	drawRectangle(5, 1, 12, 1, '=', 'P', startscreen_matrix_);
 	drawRectangle(5, 2, 8, 1, '=', 'P', startscreen_matrix_);
@@ -23,7 +23,7 @@ void StartScreen::setBackgroundText()
 	drawRectangle(width_ - 9, 3, 4, 1, '=', 'P', startscreen_matrix_);
 
 	drawRectangle(5, height_ - 4, 4, 1, '=', 'P', startscreen_matrix_);
-	drawRectangle(5, height_ - 3, 4, 1, '=', 'P', startscreen_matrix_);
+	drawRectangle(5, height_ - 3, 8, 1, '=', 'P', startscreen_matrix_);
 	drawRectangle(5, height_ - 2, 12, 1, '=', 'P', startscreen_matrix_);
 
 	drawRectangle(width_ - 9, height_ - 4, 4, 1, '=', 'P', startscreen_matrix_);
@@ -43,7 +43,7 @@ void StartScreen::setBackgroundText()
 	addImageToMatrix(50, 18, sprite_3, startscreen_matrix_);
 	addImageToMatrix(39, 7, title_letters, startscreen_matrix_);
 	addImageToMatrix(39, 30, press_enter, startscreen_matrix_);
-	addTextToMatrix(58, height_ - 1, 'l', "BumboEngine v0.8", 'M', startscreen_matrix_);
+	addTextToMatrix(58, height_ - 1, 'l', "BumboEngine v0.8", 'I', startscreen_matrix_);
 #ifdef _DEBUG
 	addTextToMatrix(5, height_ - 1, 'l', "Running DEBUG release : Expect Poor framerates", startscreen_matrix_);
 #endif
