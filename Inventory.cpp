@@ -40,7 +40,7 @@ void Inventory::refreshScreen()
 		throw std::invalid_argument("Inventory may not have more than 10 items!");
 #endif
 	setItemsListText();
-	setPlayerHealthText(11, 30);
+	setPlayerHealthText(6, 30);
 	setCursorText();
 	displayScreen();
 }
@@ -48,25 +48,24 @@ void Inventory::refreshScreen()
 // Sets the static parts of the inventory menu
 void Inventory::setInventoryBackgroundText()
 {
-	for (int i = 1; i < height_ - 1; ++i)
-	{
-		inventory_matrix_[i][1] = 'X';
-		inventory_matrix_[i][2] = 'X';
-		inventory_matrix_[i][3] = 'X';
-		inventory_matrix_[i][width_ - 2] = 'X';
-		inventory_matrix_[i][width_ - 3] = 'X';
-		inventory_matrix_[i][width_ - 4] = 'X';
-	}
-	for (int i = 10; i < height_ - 1; ++i)
-		inventory_matrix_[i][45] = 'X';
-	for (int j = 5; j < width_ - 5; ++j)
-	{
-		inventory_matrix_[1][j] = '=';
-		inventory_matrix_[2][j] = '=';
-	}
-	Image inventory_letters("Z===[]=== []   [][]      [][]==== []   [] ==[]== [][][] [][][][]    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [] []    []   Z===[]=== []  [[]    []    []==== []  [[]   []   [][][] []  []   []   Z");
-	Image instructions("Z=====================================Z============= CONTROLS ==============Z                                     ZNavigate up and down      Arrow KeysZ                                     ZUse Selected Item         ENTERZ                                     ZExit inventory            BACKSPACEZZ");
-	Image itemsMenu("Z=========================Z========= ITEMS =========ZZ");
+	drawSolidRectangle(1, 1, 3, height_ - 2, 'X', 'I', inventory_matrix_);
+	drawSolidRectangle(width_ - 4, 1, 3, height_ - 2, 'X', 'I', inventory_matrix_);
+
+	drawSolidRectangle(45, 10, 1, height_ - 11, 'X', 'I', inventory_matrix_);
+	drawSolidRectangle(5, 1, width_ - 10, 2, '=', 'I', inventory_matrix_);
+	
+	Image inventory_letters(
+		"===[]=== []   [][]      [][]==== []   [] ==[]== [][][] [][][][]    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [] []    []   Z===[]=== []  [[]    []    []==== []  [[]   []   [][][] []  []   []   Z",
+		"PPPPPPPM PM   PPPM      PPPPPPPM PM   PM PPPPPM PPPPPM PPPPPMPM    PMZ   PM    PPM  PM PM    PM PM     PPM  PM   PM   PM  PM PM  PM PM  PM Z   PM    PPPM PM  PM  PM  PMMMMM PPPM PM   PM   PM  PM PPPPPM  PMPM  Z   PM    PM PMPM   PMPM   PM     PM PMPM   PM   PM  PM PM PM    PM   ZPPPPPPPM PM  PPM    PM    PPPPPM PM  PPM   PM   PPPPPM PM  PM   PM   Z"
+	);
+	Image instructions(
+		"=====================================Z============= CONTROLS ==============Z                                     ZNavigate up and down      Arrow Keys Z                                     ZUse Selected Item         ENTER      Z", 
+		"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPZPPPPPPPPPPPPP MMMMMMMM PPPPPPPPPPPPPPZ                                     ZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ                                     ZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ"
+	);
+	Image itemsMenu(
+		"=========================Z========= ITEMS =========Z", 
+		"PPPPPPPPPPPPPPPPPPPPPPPPPZPPPPPPPPP MMMMM PPPPPPPPPZ"
+	);
 	addImageToMatrix(60, 11, itemsMenu, inventory_matrix_);
 	addImageToMatrix(24, 14, instructions, inventory_matrix_);
 	addImageToMatrix(39, 6, inventory_letters, inventory_matrix_);
@@ -79,12 +78,8 @@ void Inventory::setItemsListText()
 		for (int j = 0; j < 20; ++j)
 			inventory_matrix_[13 + (2 * i)][52 + j] = ' ';
 	for (int i = 0; i < items_list_.size(); ++i)
-	{
-		std::string item = "Z" + items_list_.at(i).getName() + "Z";
-		Image items(item);
-		addImageToMatrix(58, 13 + (2 * i), items, inventory_matrix_);
-	}
-	for (int i = items_list_.size(); i < 10; ++i) // items_list_.size()
+		addTextToMatrix(50, 13 + (2 * i), 'l', items_list_.at(i).getName(), inventory_matrix_);
+	for (int i = items_list_.size(); i < 10; ++i)
 		for (int j = 0; j < 20; ++j)
 			inventory_matrix_[13 + (2 * i)][52 + j] = ' ';
 }
@@ -95,16 +90,15 @@ void Inventory::setCursorText()
 	for (int i = 0; i < 20; ++i)
 		inventory_matrix_[13 + i][48] = ' ';
 	inventory_matrix_[13 + (2 * cursor_index_)][48] = '>';
+	inventory_matrix_[13 + (2 * cursor_index_)][48].setColor(ColorPalette('A').getRGBA());
 }
 
 // Sets the player health text
 void Inventory::setPlayerHealthText(int x_position, int y_position)
 {
-	Image player_health_text("{player}'s");
-	Image lives("Lives:  ");
-	addImageToMatrix(x_position, y_position, player_health_text, inventory_matrix_);
-	addImageToMatrix(x_position, y_position + 1, lives, inventory_matrix_);
-	inventory_matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
+	addTextToMatrix(x_position, y_position, 'l', "{player}'s Lives:", inventory_matrix_, 1);
+	inventory_matrix_[y_position + 2][x_position + 6] = player_health_ + '0';
+	inventory_matrix_[y_position + 2][x_position + 6].setColor(ColorPalette('A').getRGBA());
 }
 
 // Takes input for inventory menu
