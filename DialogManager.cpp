@@ -42,11 +42,17 @@ void DialogManager::displayDialogMenu()
 // Sets static parts of dialog menu
 void DialogManager::setBackgroundText()
 {
-	drawRectangle(0, 0, dialog_width_, dialog_height_, 'X', dialog_matrix_);
+	drawRectangle(0, 0, dialog_width_, dialog_height_, 'X', 'I', dialog_matrix_);
 	for (int i = 0; i < 7; i++)
+	{
 		dialog_matrix_[i + 1][56] = 'X';
+		dialog_matrix_[i + 1][56].setColor(ColorPalette('I').getRGBA());
+	}
 	for (int i = 0; i < 5; i++)
+	{
 		dialog_matrix_[i + 2][30] = '|';
+		dialog_matrix_[i + 2][30].setColor(ColorPalette('I').getRGBA());
+	}
 }
 
 // Updates player options as text
@@ -59,22 +65,22 @@ void DialogManager::setDialogOptions()
 	if (action_ == "")
 	{
 		if (moving_node_->choice_1_ != nullptr)
-			addTextToMatrix(4, 2, 'l', moving_node_->choice_1_->getPlayerDialog(), dialog_matrix_);
+			addTextToMatrix(4, 2, 'l', moving_node_->choice_1_->getPlayerDialog(), 'M', dialog_matrix_);
 		if (moving_node_->choice_2_ != nullptr)
-			addTextToMatrix(4, 4, 'l', moving_node_->choice_2_->getPlayerDialog(), dialog_matrix_);
+			addTextToMatrix(4, 4, 'l', moving_node_->choice_2_->getPlayerDialog(), 'M', dialog_matrix_);
 		if (moving_node_->choice_3_ != nullptr)
-			addTextToMatrix(4, 6, 'l', moving_node_->choice_3_->getPlayerDialog(), dialog_matrix_);
+			addTextToMatrix(4, 6, 'l', moving_node_->choice_3_->getPlayerDialog(), 'M', dialog_matrix_);
 		// Replaces empty text block with goodbye text. For it to work, also remove the -1 condition in setDialogText
 		//else if(head_node_->choice_1_ == nullptr && head_node_->choice_2_ == nullptr && head_node_->choice_3_ != nullptr)
 		//	addTextToMatrix(4, 6, "Goodbye", dialog_matrix_);
 	}
 	else if (action_ == "FIGHT")
 	{
-		addTextToMatrix(4, 4, 'l', "COMBAT INITIATED !", dialog_matrix_);
+		addTextToMatrix(4, 4, 'l', "COMBAT INITIATED !", 'M', dialog_matrix_);
 	}
 	else if (action_ == "ITEM")
 	{
-		addTextToMatrix(4, 4, 'l', "Item added to inventory", dialog_matrix_);
+		addTextToMatrix(4, 4, 'l', "Item added to inventory", 'M', dialog_matrix_);
 	}
 }
 
@@ -92,7 +98,7 @@ void DialogManager::setResponseText()
 			throw std::invalid_argument(" If an item is given through a dialog node, that node must point to atleast one other node. ");
 	}
 #endif
-	addTextToMatrix(32, 2, 'l', moving_node_->getResponse(), dialog_matrix_, 23, 5);
+	addTextToMatrix(32, 2, 'l', moving_node_->getResponse(), 'M', dialog_matrix_, 23, 5);
 }
 
 // Updates cursor location
@@ -100,7 +106,10 @@ void DialogManager::setCursorText()
 {
 	clearCursorText();
 	if (action_ == "" && max_choices_ != -1)
+	{
 		dialog_matrix_[2 + (2 * cursor_index_)][2] = '>';
+		dialog_matrix_[2 + (2 * cursor_index_)][2].setColor(ColorPalette('A').getRGBA());
+	}
 }
 
 // Clears the previous cursor(s)

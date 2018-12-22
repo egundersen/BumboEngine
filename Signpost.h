@@ -11,7 +11,7 @@ public:
 	// Setters
 	void createWorldSprite()
 	{
-		Image sign("  ______ Z [ .... ]Z [_____ ]Z    ||   Z");
+		Image sign("  ______ Z [ .... ]Z [_____ ]Z    ||   Z", "B");
 		addImageToMatrix(center_position_x_, center_position_y_, sign, world_matrix_);
 		collider_height_ = sign.getHeight();
 		collider_width_ = sign.getWidth();

@@ -33,7 +33,7 @@ void StartScreen::setBackgroundText()
 	Image title_letters(
 		"[]        [] []====| []   []        []     [][][] []====| []====|Z[]   []   [] []      []]  []        []       []   []    | []     Z[]  [][]  [] []====  [][] []        []       []   []==|   []==== Z [][]  [][]  []      [] [][]        []       []   []      []     Z  []    []   []====| []  [[]        [][][] [][][] []      []====|Z",
 		"PM        PM PPPPPPM PM   PM        PM     PPPPPM PPPPPPM PPPPPPMZPM   PM   PM PM      PPM  PM        PM       PM   PM    M PM     ZPM  PPPM  PM PMMMMMM PPPM PM        PM       PM   PMMMM   PMMMMM Z PMPM  PMPM  PM      PM PMPM        PM       PM   PM      PM     Z  PM    PM   PPPPPPM PM  PPM        PPPPPM PPPPPM PM      PPPPPPMZ");
-	Image press_enter("Press ENTER to begin", "M");
+	Image press_enter("Press ENTER to begin", "P");
 	Image sprite_1("   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z");
 	Image sprite_2("   -/\\-   Z \\=/--\\=/ Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z");
 	Image sprite_3("   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z");

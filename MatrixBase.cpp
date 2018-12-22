@@ -311,12 +311,14 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 	{
 		matrix[top_left_y][j + top_left_x] = character;
 		matrix[top_left_y + height - 1][j + top_left_x] = character;
+		matrix[top_left_y][j + top_left_x].setColor(ColorPalette(color_code).getRGBA());
 		matrix[top_left_y + height - 1][j + top_left_x].setColor(ColorPalette(color_code).getRGBA());
 	}
 	for (int i = 0; i < height; i++)
 	{
 		matrix[top_left_y + i][top_left_x] = character;
 		matrix[top_left_y + i][top_left_x + width - 1] = character;
+		matrix[top_left_y + i][top_left_x].setColor(ColorPalette(color_code).getRGBA());
 		matrix[top_left_y + i][top_left_x + width - 1].setColor(ColorPalette(color_code).getRGBA());
 	}
 }
@@ -349,6 +351,7 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 		matrix[top_left_y + height - 1][j + top_left_x] = character;
 		element_is_occupied[top_left_y][j + top_left_x] = true;
 		element_is_occupied[top_left_y + height - 1][j + top_left_x] = true;
+		matrix[top_left_y][j + top_left_x].setColor(ColorPalette(color_code).getRGBA());
 		matrix[top_left_y + height - 1][j + top_left_x].setColor(ColorPalette(color_code).getRGBA());
 	}
 	for (int i = 0; i < height; i++)
@@ -357,6 +360,7 @@ void MatrixBase::drawRectangle(int top_left_x, int top_left_y, int width, int he
 		matrix[top_left_y + i][top_left_x + width - 1] = character;
 		element_is_occupied[top_left_y + i][top_left_x] = true;
 		element_is_occupied[top_left_y + i][top_left_x + width - 1] = true;
+		matrix[top_left_y + i][top_left_x].setColor(ColorPalette(color_code).getRGBA());
 		matrix[top_left_y + i][top_left_x + width - 1].setColor(ColorPalette(color_code).getRGBA());
 	}
 }
