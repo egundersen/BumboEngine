@@ -46,18 +46,18 @@ struct SpriteSheet
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  ##(o\\>  Z   #\\!<   Z  0O==O0  Z  <H==H>O Z  /U  U\\  Z",
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  </o)##  Z   >!/#   Z  0O==O0  Z O<H==H>  Z  /U  U\\  Z",
 
-		"  JJJJJJ  ZJHJHJJHJHJZ  WFSSFW  Z   WWWW   Z JJJHHJJJ ZJ JHHHHJJ Z  JH  HJ  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  JYJJYJ  Z   JJJJ   Z JJJHHJJJ ZJ JHHHHJJ Z  JH  HJ  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  RRJYJJ  Z   RJJJ   Z  JJHHJJ  Z  JSHHHSJ Z   SS  S  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  JJYJRR  Z   JJJR   Z  JJHHJJ  Z JSHHHSJ  Z  S  SS   Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  WFSSFW  Z   WWWW   Z JJJHHJJJ Z JJHHHHJ JZ  JH  HJ  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  JYJJYJ  Z   JJJJ   Z JJJHHJJJ Z JJHHHHJ JZ  JH  HJ  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  RRJYJJ  Z   RJJJ J Z  JJHHJJ  Z SSJHSJ   Z SH  SS   Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  JJYJRR  Z J JJJR   Z  JJHHJJ  Z   JSHJSS Z   SS  HS Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  WFSSFW  Z   WWWW   Z JJJHHJJJ Z JJHHHHJJ Z  JH  HJ  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  JYJJYJ  Z   JJJJ   Z JJJHHJJJ Z JJHHHHJJ Z  JH  HJ  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  RRJYJJ  Z   RJJJ   Z  JJHHJJ  Z  JHHHHJJ Z  JH  HJ  Z",
-		"  JJJJJJ  ZJHJHJJHJHJZ  JJYJRR  Z   JJJR   Z  JJHHJJ  Z JJHHHHJ  Z  JH  HJ  Z"
+		"  BBBBBB  ZBHBHBBHBHBZ  WFSSFW  Z   WWWW   Z JJJHHJJJ ZJ JRFFRJJ Z  JH  HJ  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  JYJJYJ  Z   JJJJ   Z JJJHHJJJ ZJ JRFFRJJ Z  JH  HJ  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  RRJYJJ  Z   RJJJ   Z  JJHHJJ  Z  JSRFFSJ Z   SS  S  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  JJYJRR  Z   JJJR   Z  JJHHJJ  Z JSFFRSJ  Z  S  SS   Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  WFSSFW  Z   WWWW   Z JJJHHJJJ Z JJRFFRJ JZ  JH  HJ  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  JYJJYJ  Z   JJJJ   Z JJJHHJJJ Z JJRFFRJ JZ  JH  HJ  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  RRJYJJ  Z   RJJJ J Z  JJHHJJ  Z SSJRSJ   Z SH  SS   Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  JJYJRR  Z J JJJR   Z  JJHHJJ  Z   JSRJSS Z   SS  HS Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  WFSSFW  Z   WWWW   Z JJJHHJJJ Z JJRFFRJJ Z  JH  HJ  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  JYJJYJ  Z   JJJJ   Z JJJHHJJJ Z JJRFFRJJ Z  JH  HJ  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  RRJYJJ  Z   RJJJ   Z  JJHHJJ  Z  JRFFRJJ Z  JH  HJ  Z",
+		"  BBBBBB  ZBHBHBBHBHBZ  JJYJRR  Z   JJJR   Z  JJHHJJ  Z JJRFFRJ  Z  JH  HJ  Z"
 	);
 
 	WorldSprite bonny = WorldSprite(
@@ -74,74 +74,74 @@ struct SpriteSheet
 		"   __$_   Z \\==()==/ Z  @@\\>\\>  Z   XXXX   Z  OSuuSO  Z  S<UU>SO Z  %U  U%  Z",
 		"   __$_   Z \\==()==/ Z  </</@@  Z   XXXX   Z  OSuuSO  Z OS<UU>S  Z  %U  U%  Z",
 
-		"   HHYH   Z SHHSSHHS Z  WKKKKW  Z   WWWW   Z JSHHHHSJ ZJ SWHHWSJ Z  SH  HS  ",
-		"   HHYH   Z SHHSSHHS Z  JYJJYJ  Z   WWWW   Z JSHuuHSJ ZJ SWHHWSJ Z  SH  HS  ",
+		"   HHYH   Z SHHSSHHS Z  WKKKKW  Z   WWWW   Z JSHHHHSJ ZJ RWHHWRJ Z  SH  HS  ",
+		"   HHYH   Z SHHSSHHS Z  JYJJYJ  Z   WWWW   Z JSHuuHSJ ZJ RWHHWRJ Z  SH  HS  ",
 		"   HHYH   Z SHHSSHHS Z  KKJYJJ  Z   WWWW   Z  JSuuSJ  Z  JSWHHSJ Z   SS  S  ",
 		"   HHYH   Z SHHSSHHS Z  JJYJKK  Z   WWWW   Z  JSuuSJ  Z JSHHWSJ  Z  S  SS   ",
-		"   HHYH   Z SHHSSHHS Z  WKKKKW  Z   WWWW   Z JSHHHHSJ Z JSWHHWS JZ  SH  HS  ",
-		"   HHYH   Z SHHSSHHS Z  JYJJYJ  Z   WWWW   Z JSHuuHSJ Z JSWHHWS JZ  SH  HS  ",
-		"   HHYH   Z SHHSSHHS Z  KKJYJJ  Z   WWWW J Z  JSuuSJ  Z SSJHSS   Z SH  SS   ",
-		"   HHYH   Z SHHSSHHS Z  JJYJKK  Z J WWWW   Z  JSuuSJ  Z   SSHJSS Z   SS  HS ",
-		"   HHYH   Z SHHSSHHS Z  WKKKKW  Z   WWWW   Z JSHHHHSJ Z JSWHHWWJ Z  SH  HS  ",
-		"   HHYH   Z SHHSSHHS Z  JYJJYJ  Z   WWWW   Z JSHuuHSJ Z JSWHHJWJ Z  SH  HS  ",
-		"   HHYH   Z SHHSSHHS Z  KKJYJJ  Z   WWWW   Z  JSuuSJ  Z  SWHHJWJ Z  SH  HS  ",
-		"   HHYH   Z SHHSSHHS Z  JJYJKK  Z   WWWW   Z  JSuuSJ  Z JSWHHJW  Z  SH  HS  "
+		"   HHYH   Z SHHSSHHS Z  WKKKKW  Z   WWWW   Z JSHHHHSJ Z JRWHHWR JZ  SH  HS  ",
+		"   HHYH   Z SHHSSHHS Z  JYJJYJ  Z   WWWW   Z JSHuuHSJ Z JRWHHWR JZ  SH  HS  ",
+		"   HHYH   Z SHHSSHHS Z  KKJYJJ  Z   WWWW J Z  JSuuSJ  Z SSJHSR   Z SH  SS   ",
+		"   HHYH   Z SHHSSHHS Z  JJYJKK  Z J WWWW   Z  JSuuSJ  Z   RSHJSS Z   SS  HS ",
+		"   HHYH   Z SHHSSHHS Z  WKKKKW  Z   WWWW   Z JSHHHHSJ Z JRWHHWRJ Z  SH  HS  ",
+		"   HHYH   Z SHHSSHHS Z  JYJJYJ  Z   WWWW   Z JSHuuHSJ Z JRWHHWRJ Z  SH  HS  ",
+		"   HHYH   Z SHHSSHHS Z  KKJYJJ  Z   WWWW   Z  JSuuSJ  Z  RWHHWRJ Z  SH  HS  ",
+		"   HHYH   Z SHHSSHHS Z  JJYJKK  Z   WWWW   Z  JSuuSJ  Z JRWHHWR  Z  SH  HS  "
 	);
 
 	WorldSprite tutorial_NPC = WorldSprite(
-		"   &%%&   Z  /&&&&\\  Z   \\%%/   Z OHH  HHO ZO HHHHHHO Z  %U  U%  Z",
-		"   &%%&   Z  /[][]\\  Z   \\<>/   Z OHH  HHO ZO HHHHHHO Z  %U  U%  Z",
+		"   &%%&   Z  /&&&&\\  Z   \\%%/   Z OH]HH[HO ZO HHHHHHO Z  %U  U%  Z",
+		"   &%%&   Z  /[][]\\  Z   \\<>/   Z OH]\\/[HO ZO HHHHHHO Z  %U  U%  Z",
 		"   &%%&   Z  /&&[]\\  Z   \\%</   Z  O#HH#O  Z  O%HHH%O Z   %%  %  Z",
 		"   &%%&   Z  /[]X&\\  Z   \\>%/   Z  O#HH#O  Z O%HHH%O  Z  %  %%   Z",
-		"   &%%&   Z  /&&&&\\  Z   \\%%/   Z O#HHHH#O Z OHHHHHH OZ  %U  U%  Z",
-		"   &%%&   Z  /[][]\\  Z   \\<>/   Z O#HHHH#O Z OHHHHHH OZ  %U  U%  Z",
+		"   &%%&   Z  /&&&&\\  Z   \\%%/   Z O#]HH[#O Z OHHHHHH OZ  %U  U%  Z",
+		"   &%%&   Z  /[][]\\  Z   \\<>/   Z O#]\\/[#O Z OHHHHHH OZ  %U  U%  Z",
 		"   &%%&   Z  /&&[]\\  Z   \\%</ O Z  O#HH#O  Z %%O#%#   Z %=  %%   Z",
 		"   &%%&   Z  /[]&&\\  Z O \\>%/   Z  O#HH#O  Z   #%#O%% Z   %%  =% Z",
-		"   &%%&   Z  /&&&&\\  Z   \\%%/   Z O#XXXX#O Z OHHHHHHO Z  %U  U%  Z",
-		"   &%%&   Z  /[][]\\  Z   \\<>/   Z OHH\\/HHO Z OHHHHHHO Z  %U  U%  Z",
+		"   &%%&   Z  /&&&&\\  Z   \\%%/   Z O#]XX[#O Z OHHHHHHO Z  %U  U%  Z",
+		"   &%%&   Z  /[][]\\  Z   \\<>/   Z OH]\\/[HO Z OHHHHHHO Z  %U  U%  Z",
 		"   &%%&   Z  /&&[]\\  Z   \\%</   Z  O#HH#O  Z  HHHHHHO Z  %U  U%  Z",
 		"   &%%&   Z  /[]&&\\  Z   \\>%/   Z  O#HH#O  Z O######  Z  %U  U%  Z",
 
-		"   &%%&   Z  /&&&&\  Z   \%%/   Z OHH  HHO ZO HHHHHHO Z  %U  U%  Z",
-		"   &%%&   Z  /JJJJ\  Z   \<>/   Z OHH  HHO ZO HHHHHHO Z  %U  U%  Z",
-		"   &%%&   Z  /&&JJ\  Z   \%<    Z  O#HH#O  Z  O%HHH%O Z   %%  %  Z",
-		"   &%%&   Z  /JJJ&\  Z    >%/   Z  O#HH#O  Z O%HHH%O  Z  %  %%   Z",
-		"   &%%&   Z  /&&&&\  Z   \%%/   Z O#HHHH#O Z OHHHHHH OZ  %U  U%  Z",
-		"   &%%&   Z  /JJJJ\  Z   \<>/   Z O#HHHH#O Z OHHHHHH OZ  %U  U%  Z",
-		"   &%%&   Z  /&&JJ\  Z   \%<  O Z  O#HH#O  Z %%O#%#   Z %=  %%   Z",
-		"   &%%&   Z  /JJ&&\  Z O  >%/   Z  O#HH#O  Z   #%#O%% Z   %%  =% Z",
-		"   &%%&   Z  /&&&&\  Z   \%%/   Z O#JJJJ#O Z OHHHHHHO Z  %U  U%  Z",
-		"   &%%&   Z  /JJJJ\  Z   \<>/   Z OHH\/HHO Z OHHHHHHO Z  %U  U%  Z",
-		"   &%%&   Z  /&&JJ\  Z   \%<     Z  O#HH#O  Z  HHHHHHO Z  %U  U%  Z",
-		"   &%%&   Z  /JJ&&\  Z    >%/   Z  O#HH#O  Z O######  Z  %U  U%  Z"
+		"   0000   Z  0SSSS0  Z   JSSJ   Z JCKSSCKJ ZJ SSSSSSJ Z  FS  SF  Z",
+		"   0000   Z  0JJJJ0  Z   JJJJ   Z JCKWWCKJ ZJ SSSSSSJ Z  FS  SF  Z",
+		"   0000   Z  0SSJJ0  Z   JSJ    Z  JCSSCJ  Z  JFSSSFJ Z   FF  F  Z",
+		"   0000   Z  0JJSS0  Z    JSJ   Z  JCSSCJ  Z JFSSSFJ  Z  F  FF   Z",
+		"   0000   Z  0SSSS0  Z   JSSJ   Z JCKSSKCJ Z JSSSSSS JZ  FS  SF  Z",
+		"   0000   Z  0JJJJ0  Z   JJJJ   Z JCKWWKCJ Z JSSSSSS JZ  FS  SF  Z",
+		"   0000   Z  0SSJJ0  Z   JSJ  J Z  JCSSCJ  Z FFJCFC   Z FF  FF   Z",
+		"   0000   Z  0JJSS0  Z J   JSJ  Z  JCSSCJ  Z   CFCJFF Z   FF  FF Z",
+		"   0000   Z  0SSSS0  Z   JSSJ   Z JCKSSKCJ Z JSSSSSSJ Z  FS  SF  Z",
+		"   0000   Z  0JJJJ0  Z   JJJJ   Z JCKWWKCJ Z JSSSSSSJ Z  FS  SF  Z",
+		"   0000   Z  0SSJJ0  Z   JSJ    Z  JCSSCJ  Z  SSSSSSJ Z  FS  SF  Z",
+		"   0000   Z  0JJSS0  Z    JSJ   Z  JCSSCJ  Z JCCCCCC  Z  FS  SF  Z"
 	);
 
 	WorldSprite aki = WorldSprite(
-		"  /@@@@\\  Z @@@@@@@@ Z @ \\@@/ @ Z oHHXXHHo ZO ######O Z  %U  U%  Z",
-		"  /@@@@\\  Z @@^\\/^@@ Z @ \\vv/ @ Z oHHxxHHo ZO ######O Z  %U  U%  Z",
-		"  /@@@@\\  Z /@@\\^\\>  Z @@ \\X<   Z @OHxxHO  Z  O%#][%O Z   %%  %  Z",
-		"  /@@@@\\  Z  </^/@@\\ Z   >X/ @@ Z  OHxxHO@ Z O%][#%O  Z  %  %%   Z",
-		"  /@@@@\\  Z @@@@@@@@ Z @ \\@@/ @ Z oHHXXHHo Z O###### OZ  %U  U%  Z",
-		"  /@@@@\\  Z @@^\\/^@@ Z @ \\vv/ @ Z oHHxxHHo Z O###### OZ  %U  U%  Z",
-		"  /@@@@\\  Z /@@\\^\\>  Z @@ \\X< O Z @OHxxHO  Z %%O]%#   Z %=  %%   Z",
-		"  /@@@@\\  Z  </^/@@\\ Z O >X/ @@ Z  OHxxHO@ Z   #%[O%% Z   %%  =% Z",
-		"  /@@@@\\  Z @@@@@@@@ Z @ \\@@/ @ Z oHHXXHHo Z O######O Z  %U  U%  Z",
-		"  /@@@@\\  Z @@^\\/^@@ Z @ \\vv/ @ Z oHHxxHHo Z O######O Z  %U  U%  Z",
-		"  /@@@@\\  Z /@@\\^\\>  Z @@ \\X<   Z @OHxxHO  Z [##][##O Z  %U  U%  Z",
-		"  /@@@@\\  Z  </^/@@\\ Z   >X/ @@ Z  OHxxHO@ Z O##][##] Z  %U  U%  Z",
+		"  #@@@@#  Z @@@@@@@@ Z @ \\@@/ @ Z oxHXXHxo Z0 /####\\0 Z  %U  U%  Z",
+		"  #@@@@#  Z @@^\\/^@@ Z @ \\vv/ @ Z oxHxxHxo Z0 /####\\0 Z  %U  U%  Z",
+		"  #@@@@#  Z /@@\\^\\>  Z @@ \\X<   Z @oHxxHo  Z  0%#][%0 Z   %%  %  Z",
+		"  #@@@@#  Z  </^/@@\\ Z   >X/ @@ Z  oHxxHo@ Z 0%][#%0  Z  %  %%   Z",
+		"  #@@@@#  Z @@@@@@@@ Z @ \\@@/ @ Z oxHXXHxo Z 0/####\\ 0Z  %U  U%  Z",
+		"  #@@@@#  Z @@^\\/^@@ Z @ \\vv/ @ Z oxHxxHxo Z 0/####\\ 0Z  %U  U%  Z",
+		"  #@@@@#  Z /@@\\^\\>  Z @@ \\X< O Z @oHxxHo  Z %%0]%#   Z %=  %%   Z",
+		"  #@@@@#  Z  </^/@@\\ Z O >X/ @@ Z  oHxxHo@ Z   #%[0%% Z   %%  =% Z",
+		"  #@@@@#  Z @@@@@@@@ Z @ \\@@/ @ Z oxHXXHxo Z 0/####\\0 Z  %U  U%  Z",
+		"  #@@@@#  Z @@^\\/^@@ Z @ \\vv/ @ Z oxHxxHxo Z 0/####\\0 Z  %U  U%  Z",
+		"  #@@@@#  Z /@@\\^\\>  Z @@ \\X<   Z @oHxxHo  Z [#0][##0 Z  %U  U%  Z",
+		"  #@@@@#  Z  </^/@@\\ Z   >X/ @@ Z  oHxxHo@ Z 0##][0#] Z  %U  U%  Z",
 
-		"  PPPPPP Z PPPPPPPP Z P JPPJ P Z JSSJJSSJ ZJ TTTTTTJ Z  MR  RM  Z",
-		"  PPPPPP Z PPRJJRPP Z P JWWJ P Z JSSJJSSJ ZJ TTTTTTJ Z  MR  RM  Z",
-		"  PPPPPP Z JPPJRJJ  Z PP JJJ   Z PJSJJSJ  Z  JMTTTMJ Z   MM  M  Z",
-		"  PPPPPP Z  JJRJPPJ Z   JJJ PP Z  JSJJSJP Z JMTTTMJ  Z  M  MM   Z",
-		"  PPPPPP Z PPPPPPPP Z P JPPJ P Z JSSJJSSJ Z JTTTTTT JZ  MR  RM  Z",
-		"  PPPPPP Z PPRJJRPP Z P JWWJ P Z JSSJJSSJ Z JTTTTTT JZ  MR  RM  Z",
-		"  PPPPPP Z JPPJRJJ  Z PP JJJ J Z PJSJJSJ  Z MMJTMT   Z MM  MM   Z",
-		"  PPPPPP Z  JJRJPPJ Z J JJJ PP Z  JSJJSJP Z   TMTJMM Z   MM  MM Z",
-		"  PPPPPP Z PPPPPPPP Z P JPPJ P Z JSSJJSSJ Z JTTTTTTJ Z  MR  RM  Z",
-		"  PPPPPP Z PPRJJRPP Z P JWWJ P Z JSSJJSSJ Z JTTTTTTJ Z  MR  RM  Z",
-		"  PPPPPP Z JPPJRJJ  Z PP JJJ   Z PJSJJSJ  Z TTTTTTTJ Z  MR  RM  Z",
-		"  PPPPPP Z  JJRJPPJ Z   JJJ PP Z  JSJJSJP Z JTTTTTTT Z  MR  RM  Z"
+		"  DDDDDD Z DDDDDDDD Z D JDDJ D Z JSSJJSSJ ZJ TTTTTTJ Z  MD  DM  Z",
+		"  DDDDDD Z DDRJJRDD Z D JWWJ D Z JSSJJSSJ ZJ TTTTTTJ Z  MD  DM  Z",
+		"  DDDDDD Z DDDJRJJ  Z DD JJJ   Z DJSJJSJ  Z  JMTTTMJ Z   MM  M  Z",
+		"  DDDDDD Z  JJRJDDD Z   JJJ DD Z  JSJJSJD Z JMTTTMJ  Z  M  MM   Z",
+		"  DDDDDD Z DDDDDDDD Z D JDDJ D Z JSSJJSSJ Z JTTTTTT JZ  MD  DM  Z",
+		"  DDDDDD Z DDRJJRDD Z D JWWJ D Z JSSJJSSJ Z JTTTTTT JZ  MD  DM  Z",
+		"  DDDDDD Z DDDJRJJ  Z DD JJJ J Z DJSJJSJ  Z MMJTMT   Z MM  MM   Z",
+		"  DDDDDD Z  JJRJDDD Z J JJJ DD Z  JSJJSJD Z   TMTJMM Z   MM  MM Z",
+		"  DDDDDD Z DDDDDDDD Z D JDDJ D Z JSSJJSSJ Z JTTTTTTJ Z  MD  DM  Z",
+		"  DDDDDD Z DDRJJRDD Z D JWWJ D Z JSSJJSSJ Z JTTTTTTJ Z  MD  DM  Z",
+		"  DDDDDD Z DDDJRJJ  Z DD JJJ   Z DJSJJSJ  Z TTJTTTTJ Z  MD  DM  Z",
+		"  DDDDDD Z  JJRJDDD Z   JJJ DD Z  JSJJSJD Z JTTTTJTT Z  MD  DM  Z"
 	);
 
 	WorldSprite ryuuko = WorldSprite(
@@ -158,33 +158,33 @@ struct SpriteSheet
 		"  &    &  Z  &&\\/&&  Z  &&&()>  Z   &XX<   Z  OVxxVO  Z [#V][V#O Z  %U  U%  Z",
 		"  &    &  Z  &&\\/&&  Z  <()&&&  Z   >XX&   Z  OVxxVO  Z O#V][V#] Z  %U  U%  Z",
 
-		"  T    T  Z  TTTTTT  Z  TTTTTT  Z   GTTG   Z JGTGGTGJ ZJ GTTTTGJ Z  HR  RH  Z",
-		"  T    T  Z  TTTTTT  Z  TLLLLT  Z   JJJJ   Z JGTGGTGJ ZJ GTTJJJJ Z  HR  RH  Z",
+		"  T    T  Z  TTTTTT  Z  TTTTTT  Z   GTTG   Z JGTGGTGJ ZJ GTTTTGJ Z  HG  GH  Z",
+		"  T    T  Z  TTTTTT  Z  TLLLLT  Z   JJJJ   Z JGTGGTGJ ZJ GTTJJJJ Z  HG  GH  Z",
 		"  T    T  Z  TTTTTT  Z  TTTLLJ  Z   TGGJ   Z  JTGGTJ  Z  JHTTTHJ Z   HH  H  Z",
 		"  T    T  Z  TTTTTT  Z  JLLTTT  Z   JGGT   Z  JTGGTJ  Z JHTTTHJ  Z  H  HH   Z",
-		"  T    T  Z  TTTTTT  Z  TTTTTT  Z   GTTG   Z JGTGGTGJ Z JGTTTTG JZ  HR  RH  Z",
-		"  T    T  Z  TTTTTT  Z  TLLLLT  Z   JJJJ   Z JGTGGTGJ Z JJJJTTG JZ  HR  RH  Z",
+		"  T    T  Z  TTTTTT  Z  TTTTTT  Z   GTTG   Z JGTGGTGJ Z JGTTTTG JZ  HG  GH  Z",
+		"  T    T  Z  TTTTTT  Z  TLLLLT  Z   JJJJ   Z JGTGGTGJ Z JJJJTTG JZ  HG  GH  Z",
 		"  T    T  Z  TTTTTT  Z  TTTLLJ  Z   TGGJ J Z  JTGGTJ  Z HHJTHT   Z HH  HH   Z",
 		"  T    T  Z  TTTTTT  Z  JLLTTT  Z J JGGT   Z  JTGGTJ  Z   THTJHH Z   HH  HH Z",
-		"  T    T  Z  TTTTTT  Z  TTTTTT  Z   GTTG   Z JGTGGTGJ Z JGTTTTGJ Z  HR  RH  Z",
-		"  T    T  Z  TTTTTT  Z  TLLLLT  Z   JJJJ   Z JGTGGTGJ Z JJJJJJJJ Z  HR  RH  Z",
-		"  T    T  Z  TTTTTT  Z  TTTLLJ  Z   TGGJ   Z  JTGGTJ  Z JGTJJTGJ Z  HR  RH  Z",
-		"  T    T  Z  TTTTTT  Z  JLLTTT  Z   JGGT   Z  JTGGTJ  Z JGTJJTGJ Z  HR  RH  Z"
+		"  T    T  Z  TTTTTT  Z  TTTTTT  Z   GTTG   Z JGTGGTGJ Z JGTTTTGJ Z  HG  GH  Z",
+		"  T    T  Z  TTTTTT  Z  TLLLLT  Z   JJJJ   Z JGTGGTGJ Z JJJJJJJJ Z  HG  GH  Z",
+		"  T    T  Z  TTTTTT  Z  TTTLLJ  Z   TGGJ   Z  JTGGTJ  Z JGTJJTGJ Z  HG  GH  Z",
+		"  T    T  Z  TTTTTT  Z  JLLTTT  Z   JGGT   Z  JTGGTJ  Z JGTJJTGJ Z  HG  GH  Z"
 	);
 
 	WorldSprite mini_boss_1 = WorldSprite(
-		"  ##\\/##  Z ######## Z   \\##/   Z o#X><X#o ZO #HXXH#O Z  %U  U%  Z",
-		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z o#X><X#o ZO #HXXH#O Z  %U  U%  Z",
-		"  ##\\/##  Z /##\\\"\\>  Z ## \\*<   Z #OX><#O  Z  O%HXX%O Z   %%  %  Z",
-		"  ##\\/##  Z </\"/##/  Z   >*/ ## Z  O#><#O# Z O%XXH%O  Z  %  %%   Z",
-		"  ##\\/##  Z ######## Z   \\##/   Z o#X><X#o Z O#HXXH# OZ  %U  U%  Z",
-		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z o#X><X#o Z O#HXXH# OZ  %U  U%  Z",
-		"  ##\\/##  Z /##\\\"\\>  Z ## \\*< O Z #OX><#O  Z %%OH%X   Z %=  %%   Z",
-		"  ##\\/##  Z </\"/##/  Z O >*/ ## Z  O#><#O# Z   X%HO%% Z   %%  =% Z",
-		"  ##\\/##  Z ######## Z   \\##/   Z o#X><X#o Z O#HXXH#O Z  %U  U%  Z",
-		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z o#X><X#o Z O#HXXH#O Z  %U  U%  Z",
-		"  /####\\  Z /##\\\"\\>  Z ## \\*<   Z #OX><#O  Z  #HXXH#O Z  %U  U%  Z",
-		"  ##\\/##  Z </\"/##/  Z   >*/ ## Z  O#><#O# Z O#HXXH#  Z  %U  U%  Z",
+		"  ##\\/##  Z ######## Z   \\##/   Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
+		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
+		"  ##\\/##  Z /##\\\"\\>  Z ## \\*<   Z goX><Xo  Z  0%HXX%0 Z   %%  %  Z",
+		"  ##\\/##  Z </\"/##/  Z   >*/ ## Z  oX><Xog Z 0%XXH%0  Z  %  %%   Z",
+		"  ##\\/##  Z ######## Z   \\##/   Z ogX><Xgo Z 0#HXXH# 0Z  %U  U%  Z",
+		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z 0#HXXH# 0Z  %U  U%  Z",
+		"  ##\\/##  Z /##\\\"\\>  Z ## \\*< O Z goX><Xo  Z %%0H%X   Z %=  %%   Z",
+		"  ##\\/##  Z </\"/##/  Z O >*/ ## Z  oX><Xog Z   X%H0%% Z   %%  =% Z",
+		"  ##\\/##  Z ######## Z   \\##/   Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
+		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
+		"  /####\\  Z /##\\\"\\>  Z ## \\*<   Z goX><go  Z  #0XXH#0 Z  %U  U%  Z",
+		"  ##\\/##  Z </\"/##/  Z   >*/ ## Z  oX><Xog Z 0#HXX0#  Z  %U  U%  Z",
 
 		"  OOJJOOO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
 		"  OOJJOOO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
@@ -196,8 +196,8 @@ struct SpriteSheet
 		"  OOJJOOO Z JJLJOOJ  Z J JRJ OO Z  JOJJOJO Z   FHHJHH Z   HH  HH Z",
 		"  OOJJOOO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ Z JOHFFHOJ Z  HB  BH  Z",
 		"  OOJJOOO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ Z JOHFFHOJ Z  HB  BH  Z",
-		"  JOOOOJO Z JOOJLJJ  Z OO JRJ   Z OJFJJOJ  Z  OHFFHOJ Z  HB  BH  Z",
-		"  OOJJOOO Z JJLJOOJ  Z   JRJ OO Z  JOJJOJO Z JOHFFHO  Z  HB  BH  Z"
+		"  JOOOOJO Z JOOJLJJ  Z OO JRJ   Z OJFJJOJ  Z  OJFFHOJ Z  HB  BH  Z",
+		"  OOJJOOO Z JJLJOOJ  Z   JRJ OO Z  JOJJOJO Z JOHFFJO  Z  HB  BH  Z"
 	);
 
 	WorldSprite mini_boss_2 = WorldSprite(
@@ -242,18 +242,18 @@ struct SpriteSheet
 		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  ######O Z  %U  U%  Z",
 		"   @@@@   Z  </O/@@  Z   >XX@   Z  O#xx#O  Z O######  Z  %U  U%  Z",
 
-		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SH  HS  Z",
-		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SH  HS  Z",
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SB  BS  Z",
 		"   SSSS   Z  SSJJJJ  Z   SWWJ   Z  JRJJRJ  Z  JSRRRSJ Z   SS  S  Z",
 		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JSRRRSJ  Z  S  SS   Z",
-		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SH  HS  Z",
-		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SH  HS  Z",
-		"   SSSS   Z  SSJJJJ  Z   SWWJ J Z  JRJJRJ  Z SSJRSR   Z SH  SS   Z",
-		"   SSSS   Z  JJJJSS  Z J JWWS   Z  JRJJRJ  Z   RSRJSS Z   SS  HS Z",
-		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRRJ Z  SH  HS  Z",
-		"   SSSS   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ Z JRRRRRRJ Z  SH  HS  Z",
-		"   SSSS   Z  SSJJJJ  Z   SWWJ   Z  JRJJRJ  Z  RRRRRRJ Z  SH  HS  Z",
-		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JRRRRRR  Z  SH  HS  Z"
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ J Z  JRJJRJ  Z SSJRSR   Z SB  SS   Z",
+		"   SSSS   Z  JJJJSS  Z J JWWS   Z  JRJJRJ  Z   RSRJSS Z   SS  BS Z",
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ Z JRRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ   Z  JRJJRJ  Z  RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JRRRRRR  Z  SB  BS  Z"
 	);
 
 	WorldSprite pirate_2 = WorldSprite(
@@ -270,18 +270,18 @@ struct SpriteSheet
 		"    /\\    Z\\=//--\\\\=/Z  /@\\0\">  Z   \\(*<   Z  0OxxO0  Z  <H##H>O Z  %U  U%  Z",
 		"    /\\    Z\\=//--\\\\=/Z  <\"0/@\\  Z   >*)/   Z  0OxxO0  Z O<H##H>  Z  %U  U%  Z",
 
-		"    HH    ZHHHHWWHHHHZ  SFRRFS  Z   WWWW   Z JJJJJJJJ ZJ JHRRHJJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JJJJJJ  Z  JMJJMJ  Z JJJJJJJJ ZJ JHRRHJJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JSJJJJ  Z   JJMJ   Z  JJJJJJ  Z  JSHRRSJ Z   SS  S  Z",
-		"    HH    ZHHHHWWHHHHZ  JJJJSJ  Z   JJMJJ  Z  JJJJJJ  Z JSRRHSJ  Z  S  SS   Z",
-		"    HH    ZHHHHWWHHHHZ  SFRRFS  Z   WWWW   Z JJJJJJJJ Z JJHRRHJ JZ  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JJJJJJ  Z  JMJJMJ  Z JJJJJJJJ Z JJHRRHJ JZ  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JSJJJJ  Z   JJMJ J Z  JJJJJJ  Z SSJRSJ   Z SH  SS   Z",
-		"    HH    ZHHHHWWHHHHZ  JJJJSJ  Z J JMJJ   Z  JJJJJJ  Z   JSRJSS Z   SS  HS Z",
-		"    HH    ZHHHHWWHHHHZ  SFRRFS  Z   WWWW   Z JJJJJJJJ Z JJHRRHJJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JJJJJJ  Z  JMJJMJ  Z JJJJJJJJ Z JJHRRHJJ Z  JH  HJ  Z",
-		"    HH    ZHHHHWWHHHHZ  JSJJJJ  Z   JJMJ   Z  JJJJJJ  Z  JHRRHJJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JJJJSJ  Z   JMJJ   Z  JJJJJJ  Z JJHRRHJ  Z  SH  HS  Z"
+		"    HH    ZHHHHWWHHHHZ  SFRRFS  Z   WWWW   Z JJJJJJJJ ZJ JFRRFJJ Z  SB  BS  Z",
+		"    HH    ZHHHHWWHHHHZ  JJJJJJ  Z  JMJJMJ  Z JJJJJJJJ ZJ JFRRFJJ Z  SB  BS  Z",
+		"    HH    ZHHHHWWHHHHZ  JSJJJJ  Z   JJMJ   Z  JJJJJJ  Z  JSFRRSJ Z   SS  S  Z",
+		"    HH    ZHHHHWWHHHHZ  JJJJSJ  Z   JJMJJ  Z  JJJJJJ  Z JSRRFSJ  Z  S  SS   Z",
+		"    HH    ZHHHHWWHHHHZ  SFRRFS  Z   WWWW   Z JJJJJJJJ Z JJFRRFJ JZ  SB  BS  Z",
+		"    HH    ZHHHHWWHHHHZ  JJJJJJ  Z  JMJJMJ  Z JJJJJJJJ Z JJFRRFJ JZ  SB  BS  Z",
+		"    HH    ZHHHHWWHHHHZ  JSJJJJ  Z   JJMJ J Z  JJJJJJ  Z SSJRSJ   Z SB  SS   Z",
+		"    HH    ZHHHHWWHHHHZ  JJJJSJ  Z J JMJJ   Z  JJJJJJ  Z   JSRJSS Z   SS  BS Z",
+		"    HH    ZHHHHWWHHHHZ  SFRRFS  Z   WWWW   Z JJJJJJJJ Z JJFRRFJJ Z  SB  BS  Z",
+		"    HH    ZHHHHWWHHHHZ  JJJJJJ  Z  JMJJMJ  Z JJJJJJJJ Z JJFRRFJJ Z  SB  BS  Z",
+		"    HH    ZHHHHWWHHHHZ  JSJJJJ  Z   JJMJ   Z  JJJJJJ  Z  JFRRFJJ Z  SB  BS  Z",
+		"    HH    ZHHHHWWHHHHZ  JJJJSJ  Z   JMJJ   Z  JJJJJJ  Z JJFRRFJ  Z  SB  BS  Z"
 	);
 
 	WorldSprite pirate_3 = WorldSprite(
@@ -298,18 +298,18 @@ struct SpriteSheet
 		"  @@@@@@  Z  X@\\-\\>  Z   XX{-   Z  0O$$O0  Z  <H><H>O Z  %U  U%  Z",
 		"  @@@@@@  Z  </-/@X  Z   -}X@   Z  0O$$O0  Z O<H><H>  Z  %U  U%  Z",
 
-		"  SSSSSS  Z  WFSSFW  Z   WWWW   Z JJJ$$JJJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"  SSSSSS  Z JWWJJWWJ Z  JJWWJJ  Z JJJ$$JJJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"  SSSSSS  Z  WSJWJJ  Z   WWJW   Z  JJ$$JJ  Z  JSHJJSJ Z   SS  S  Z",
-		"  SSSSSS  Z  JJWJSW  Z   WJWS   Z  JJ$$JJ  Z JSJJHSJ  Z  S  SS   Z",
-		"  SSSSSS  Z  WFSSFW  Z   WWWW   Z JJJ$$JJJ Z JJHJJHJ JZ  SH  HS  Z",
-		"  SSSSSS  Z JWWJJWWJ Z  JJWWJJ  Z JJJ$$JJJ Z JJHJJHJ JZ  SH  HS  Z",
-		"  SSSSSS  Z  WSJWJJ  Z   WWJW J Z  JJ$$JJ  Z SSJJSJ   Z SH  SS   Z",
-		"  SSSSSS  Z  JJWJSW  Z J WJWS   Z  JJ$$JJ  Z   JSJJSS Z   SS  HS Z",
-		"  SSSSSS  Z  WFSSFW  Z   WWWW   Z JJJ$$JJJ Z JJHJJHJJ Z  SH  HS  Z",
-		"  SSSSSS  Z JWWJJWWJ Z  JJWWJJ  Z JJJ$$JJJ Z JJHJJHJJ Z   H  H   Z",
-		"  SSSSSS  Z  WSJWJJ  Z   WWJW   Z  JJ$$JJ  Z  JHJJHJJ Z  SH  HS  Z",
-		"  SSSSSS  Z  JJWJSW  Z   WJWS   Z  JJ$$JJ  Z JJHJJHJ  Z  SH  HS  Z"
+		"  SSSSSS  Z  WFSSFW  Z   WWWW   Z JJJFFJJJ ZJ JRJJRJJ Z  SH  HS  Z",
+		"  SSSSSS  Z JWWJJWWJ Z  JJWWJJ  Z JJJFFJJJ ZJ JRJJRJJ Z  SH  HS  Z",
+		"  SSSSSS  Z  WSJWJJ  Z   WWJW   Z  JJFFJJ  Z  JSRJJSJ Z   SS  S  Z",
+		"  SSSSSS  Z  JJWJSW  Z   WJWS   Z  JJFFJJ  Z JSJJRSJ  Z  S  SS   Z",
+		"  SSSSSS  Z  WFSSFW  Z   WWWW   Z JJJFFJJJ Z JJRJJRJ JZ  SH  HS  Z",
+		"  SSSSSS  Z JWWJJWWJ Z  JJWWJJ  Z JJJFFJJJ Z JJRJJRJ JZ  SH  HS  Z",
+		"  SSSSSS  Z  WSJWJJ  Z   WWJW J Z  JJFFJJ  Z SSJJSJ   Z SH  SS   Z",
+		"  SSSSSS  Z  JJWJSW  Z J WJWS   Z  JJFFJJ  Z   JSJJSS Z   SS  HS Z",
+		"  SSSSSS  Z  WFSSFW  Z   WWWW   Z JJJFFJJJ Z JJRJJRJJ Z  SH  HS  Z",
+		"  SSSSSS  Z JWWJJWWJ Z  JJWWJJ  Z JJJFFJJJ Z JJRJJRJJ Z   H  H   Z",
+		"  SSSSSS  Z  WSJWJJ  Z   WWJW   Z  JJFFJJ  Z  JRJJRJJ Z  SH  HS  Z",
+		"  SSSSSS  Z  JJWJSW  Z   WJWS   Z  JJFFJJ  Z JJRJJRJ  Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_4_monkey = WorldSprite(
@@ -326,18 +326,18 @@ struct SpriteSheet
 		"   @@@@   Z  [@\\-)>  Z   \\X(<   Z  0O==O0  Z   H/\\H O Z  %U  U%  Z",
 		"   @@@@   Z  <@-/@]  Z   >)X/   Z  0O==O0  Z O H/\\H   Z  %U  U%  Z",
 
-		"   SSSS   Z  SSSSSS  Z   WWWW   Z JJJHHJJJ ZJ  HJJH J Z  SH  HS  Z",
-		"   SSSS   Z  JWJJWJ  Z   JJJJ   Z JJJHHJJJ ZJ  HJJH J Z  SH  HS  Z",
-		"   SSSS   Z  JSJWJJ  Z   JWJJ   Z  JJHHJJ  Z  JSHJJSJ Z   SS  S  Z",
-		"   SSSS   Z  JSWJSJ  Z   JJWJ   Z  JJHHJJ  Z JSJJHSJ  Z  S  SS   Z",
-		"   SSSS   Z  SSSSSS  Z   WWWW   Z JJJHHJJJ Z J HJJH  JZ  SH  HS  Z",
-		"   SSSS   Z  JWJJWJ  Z   JJJJ   Z JJJHHJJJ Z J HJJH  JZ  SH  HS  Z",
-		"   SSSS   Z  JSJWJJ  Z   JWJJ J Z  JJHHJJ  Z SSJJS    Z SH  SS   Z",
-		"   SSSS   Z  JSWJSJ  Z J JJWJ   Z  JJHHJJ  Z    SJJSS Z   SS  HS Z",
-		"   SSSS   Z  SSSSSS  Z   WWWW   Z JJJHHJJJ Z  J HJJH J   SH  HS  Z",
-		"   SSSS   Z  JWJJWJ  Z   JJJJ   Z JJJHHJJJ Z J HJJH J Z   H  H   Z",
-		"   SSSS   Z  JSJWJJ  Z   JWJJ   Z  JJHHJJ  Z   HJJH J Z  SH  HS  Z",
-		"   SSSS   Z  JSWJSJ  Z   JJWJ   Z  JJHHJJ  Z J HJJH   Z  SH  HS  Z"
+		"   SSSS   Z  SSSSSS  Z   WWWW   Z JJJWWJJJ ZJ  BJJB J Z  SH  HS  Z",
+		"   SSSS   Z  JWJJWJ  Z   JJJJ   Z JJJWWJJJ ZJ  BJJB J Z  SH  HS  Z",
+		"   SSSS   Z  JSJWJJ  Z   JWJJ   Z  JJWWJJ  Z  JSBJJSJ Z   SS  S  Z",
+		"   SSSS   Z  JSWJSJ  Z   JJWJ   Z  JJWWJJ  Z JSJJBSJ  Z  S  SS   Z",
+		"   SSSS   Z  SSSSSS  Z   WWWW   Z JJJWWJJJ Z J BJJB  JZ  SH  HS  Z",
+		"   SSSS   Z  JWJJWJ  Z   JJJJ   Z JJJWWJJJ Z J BJJB  JZ  SH  HS  Z",
+		"   SSSS   Z  JSJWJJ  Z   JWJJ J Z  JJWWJJ  Z SSJJS    Z SH  SS   Z",
+		"   SSSS   Z  JSWJSJ  Z J JJWJ   Z  JJWWJJ  Z    SJJSS Z   SS  HS Z",
+		"   SSSS   Z  SSSSSS  Z   WWWW   Z JJJWWJJJ Z  J BJJB J   SH  HS  Z",
+		"   SSSS   Z  JWJJWJ  Z   JJJJ   Z JJJWWJJJ Z J BJJB J Z   H  H   Z",
+		"   SSSS   Z  JSJWJJ  Z   JWJJ   Z  JJWWJJ  Z   BJJB J Z  SH  HS  Z",
+		"   SSSS   Z  JSWJSJ  Z   JJWJ   Z  JJWWJJ  Z J BJJB   Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_5_monkey = WorldSprite(
@@ -354,18 +354,18 @@ struct SpriteSheet
 		"   @@@@   Z  [@\\-)>  Z   \\X(<   Z  OX==XO  Z   H/\\H O Z  %U  U%  Z",
 		"   @@@@   Z  <@+/@]  Z   >)X/   Z  OX==XO  Z O H/\\H   Z  %U  U%  Z",
 
-		"   BBBB   Z  BBBBBB  Z   WWWW   Z JJWHHWJJ ZJ  HJJH J Z  SH  HS  Z",
-		"   BBBB   Z  JWJJYJ  Z   JJJJ   Z JJWHHWJJ ZJ  HJJH J Z  SH  HS  Z",
-		"   BBBB   Z  JBJWJJ  Z   JWJJ   Z  JWHHWJ  Z  JSHJJSJ Z   SS  S  Z",
-		"   BBBB   Z  JBYJBJ  Z   JJWJ   Z  JWHHWJ  Z JSJJHSJ  Z  S  SS   Z",
-		"   BBBB   Z  BBBBBB  Z   WWWW   Z JJWHHWJJ Z J HJJH  JZ  SH  HS  Z",
-		"   BBBB   Z  JWJJYJ  Z   JJJJ   Z JJWHHWJJ Z J HJJH  JZ  SH  HS  Z",
-		"   BBBB   Z  JBJWJJ  Z   JWJJ J Z  JWHHWJ  Z SSJJS    Z SH  SS   Z",
-		"   BBBB   Z  JBYJBJ  Z J JJWJ   Z  JWHHWJ  Z    SJJSS Z   SS  HS Z",
-		"   BBBB   Z  BBBBBB  Z   WWWW   Z JJWHHWJJ Z J HJJH J Z  SH  HS  Z",
-		"   BBBB   Z  JWJJYJ  Z   JJJJ   Z JJWHHWJJ Z J HJJH J Z   H  H   Z",
-		"   BBBB   Z  JBJWJJ  Z   JWJJ   Z  JWHHWJ  Z   HJJH J Z  SH  HS  Z",
-		"   BBBB   Z  JBYJBJ  Z   JJWJ   Z  JWHHWJ  Z J HJJH   Z  SH  HS  Z"
+		"   BBBB   Z  BBBBBB  Z   WWWW   Z JJWJJWJJ ZJ  BJJB J Z  SH  HS  Z",
+		"   BBBB   Z  JWJJYJ  Z   JJJJ   Z JJWJJWJJ ZJ  BJJB J Z  SH  HS  Z",
+		"   BBBB   Z  JBJWJJ  Z   JWJJ   Z  JWJJWJ  Z  JSBJJSJ Z   SS  S  Z",
+		"   BBBB   Z  JBYJBJ  Z   JJWJ   Z  JWJJWJ  Z JSJJBSJ  Z  S  SS   Z",
+		"   BBBB   Z  BBBBBB  Z   WWWW   Z JJWJJWJJ Z J BJJB  JZ  SH  HS  Z",
+		"   BBBB   Z  JWJJYJ  Z   JJJJ   Z JJWJJWJJ Z J BJJB  JZ  SH  HS  Z",
+		"   BBBB   Z  JBJWJJ  Z   JWJJ J Z  JWJJWJ  Z SSJJS    Z SH  SS   Z",
+		"   BBBB   Z  JBYJBJ  Z J JJWJ   Z  JWJJWJ  Z    SJJSS Z   SS  HS Z",
+		"   BBBB   Z  BBBBBB  Z   WWWW   Z JJWJJWJJ Z J BJJB J Z  SH  HS  Z",
+		"   BBBB   Z  JWJJYJ  Z   JJJJ   Z JJWJJWJJ Z J BJJB J Z   H  H   Z",
+		"   BBBB   Z  JBJWJJ  Z   JWJJ   Z  JWJJWJ  Z   BJJB J Z  SH  HS  Z",
+		"   BBBB   Z  JBYJBJ  Z   JJWJ   Z  JWJJWJ  Z J BJJB   Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_6 = WorldSprite(
@@ -382,18 +382,18 @@ struct SpriteSheet
 		"   -/\\-   Z \\=/--\\=/ Z  @@\\Y\\>  Z   \\XX<   Z  OX==XO  Z  <H/\\H>O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  <\\Y\\@@  Z   >XX/   Z  OX==XO  Z O<H/\\H>  Z  %U  U%  Z",
 
-		"   WHHW   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JRWHHWRJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"   WHHW   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JRWHHWRJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"   WHHW   Z HHHWWHHH Z  BBWJJW  Z   JWWJ   Z  JWHHWJ  Z  JSHJJSJ Z   SS  S  Z",
-		"   WHHW   Z HHHWWHHH Z  WJJWBB  Z   JWWJ   Z  JWHHWJ  Z JSJJHSJ  Z  S  SS   Z",
-		"   WHHW   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JRWHHWRJ Z JJHJJHJ JZ  SH  HS  Z",
-		"   WHHW   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JRWHHWRJ Z JJHJJHJ JZ  SH  HS  Z",
-		"   WHHW   Z HHHWWHHH Z  BBWJJW  Z   JWWJ J Z  JWHHWJ  Z SSJJSJ   Z SH  SS   Z",
-		"   WHHW   Z HHHWWHHH Z  WJJWBB  Z J JWWJ   Z  JWHHWJ  Z   JSJJSS Z   SS  HS Z",
-		"   WHHW   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JRWHHWRJ Z JJHJJHJJ Z  SH  HS  Z",
-		"   WHHW   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JRWHHWRJ Z JJHJJHJJ Z  SH  HS  Z",
-		"   WHHW   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ   Z  JWHHWJ  Z  JHJJHJJ Z  SH  HS  Z",
-		"   WHHW   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JWHHWJ  Z JJHJJHJ  Z  SH  HS  Z"
+		"   WHHW   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JRWFFWRJ ZJ JWJJWJJ Z  SH  HS  Z",
+		"   WHHW   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JRWFFWRJ ZJ JWJJWJJ Z  SH  HS  Z",
+		"   WHHW   Z HHHWWHHH Z  BBWJJW  Z   JWWJ   Z  JWFFWJ  Z  JSWJJSJ Z   SS  S  Z",
+		"   WHHW   Z HHHWWHHH Z  WJJWBB  Z   JWWJ   Z  JWFFWJ  Z JSJJWSJ  Z  S  SS   Z",
+		"   WHHW   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JRWFFWRJ Z JJWJJWJ JZ  SH  HS  Z",
+		"   WHHW   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JRWFFWRJ Z JJWJJWJ JZ  SH  HS  Z",
+		"   WHHW   Z HHHWWHHH Z  BBWJJW  Z   JWWJ J Z  JWFFWJ  Z SSJJSJ   Z SH  SS   Z",
+		"   WHHW   Z HHHWWHHH Z  WJJWBB  Z J JWWJ   Z  JWFFWJ  Z   JSJJSS Z   SS  HS Z",
+		"   WHHW   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JRWFFWRJ Z JJWJJWJJ Z  SH  HS  Z",
+		"   WHHW   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JRWFFWRJ Z JJWJJWJJ Z  SH  HS  Z",
+		"   WHHW   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ   Z  JWFFWJ  Z  JWJJWJJ Z  SH  HS  Z",
+		"   WHHW   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JWFFWJ  Z JJWJJWJ  Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_7 = WorldSprite(
@@ -410,18 +410,18 @@ struct SpriteSheet
 		"   /\\/\\   Z \\/=()=\\/ Z  /X\\V\\>  Z   \\XX<   Z  OX==XO  Z  <H><H>O Z  %U  U%  Z",
 		"   /\\/\\   Z \\/=()=\\/ Z  </V/X\\  Z   >XX/   Z  OX==XO  Z O<H><H>  Z  %U  U%  Z",
 
-		"   HHHH   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JJWHHWJJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"   HHHH   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JJWHHWJJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"   HHHH   Z HHHWWHHH Z  JWJYJJ  Z   JWWJ   Z  JWHHWJ  Z  JSHJJSJ Z   SS  S  Z",
-		"   HHHH   Z HHHWWHHH Z  JJYJWJ  Z   JWWJ   Z  JWHHWJ  Z JSJJHSJ  Z  S  SS   Z",
-		"   HHHH   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JJWHHWJJ Z JJHJJHJ JZ  SH  HS  Z",
-		"   HHHH   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JJWHHWJJ Z JJHJJHJ JZ  SH  HS  Z",
-		"   HHHH   Z HHHWWHHH Z  JWJYJJ  Z   JWWJ J Z  JWHHWJ  Z SSJJSJ   Z SH  SS   Z",
-		"   HHHH   Z HHHWWHHH Z  JJYJWJ  Z J JWWJ   Z  JWHHWJ  Z   JSJJSS Z   SS  HS Z",
-		"   HHHH   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JJWHHWJJ Z JJHJJHJJ Z  SH  HS  Z",
-		"   HHHH   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JJWHHWJJ Z JJHJJHJJ Z  SH  HS  Z",
-		"   HHHH   Z HHHWWHHH Z  JWJYJJ  Z   JWWJ   Z  JWHHWJ  Z  JHJJHJJ Z  SH  HS  Z",
-		"   HHHH   Z HHHWWHHH Z  JJYJWJ  Z   JWWJ   Z  JWHHWJ  Z JJHJJHJ  Z  SH  HS  Z"
+		"   HHHH   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JJWRRWJJ ZJ JRJJRJJ Z  SH  HS  Z",
+		"   HHHH   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JJWRRWJJ ZJ JRJJRJJ Z  SH  HS  Z",
+		"   HHHH   Z HHHWWHHH Z  JWJYJJ  Z   JWWJ   Z  JWRRWJ  Z  JSRJJSJ Z   SS  S  Z",
+		"   HHHH   Z HHHWWHHH Z  JJYJWJ  Z   JWWJ   Z  JWRRWJ  Z JSJJRSJ  Z  S  SS   Z",
+		"   HHHH   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JJWRRWJJ Z JJRJJRJ JZ  SH  HS  Z",
+		"   HHHH   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JJWRRWJJ Z JJRJJRJ JZ  SH  HS  Z",
+		"   HHHH   Z HHHWWHHH Z  JWJYJJ  Z   JWWJ J Z  JWRRWJ  Z SSJJSJ   Z SH  SS   Z",
+		"   HHHH   Z HHHWWHHH Z  JJYJWJ  Z J JWWJ   Z  JWRRWJ  Z   JSJJSS Z   SS  HS Z",
+		"   HHHH   Z HHHWWHHH Z  BWBBWB  Z   WWWW   Z JJWRRWJJ Z JJRJJRJJ Z  SH  HS  Z",
+		"   HHHH   Z HHHWWHHH Z  JYJJYJ  Z   JJJJ   Z JJWRRWJJ Z JJRJJRJJ Z  SH  HS  Z",
+		"   HHHH   Z HHHWWHHH Z  JWJYJJ  Z   JWWJ   Z  JWRRWJ  Z  JRJJRJJ Z  SH  HS  Z",
+		"   HHHH   Z HHHWWHHH Z  JJYJWJ  Z   JWWJ   Z  JWRRWJ  Z JJRJJRJ  Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_8 = WorldSprite(
@@ -438,18 +438,18 @@ struct SpriteSheet
 		"   /||\\   Z\\=//\\/\\\\=/Z  /X\\V\\>  Z   \\XX/   Z  O#==#O  Z  <H/\\H>O Z  %U  U%  Z",
 		"   /||\\   Z\\=//\\/\\\\=/Z  </V/X\\  Z   \\XX/   Z  O#==#O  Z O<H/\\H>  Z  %U  U%  Z",
 
-		"   HHHH   ZHHHHWWHHHHZ  WWBBBW  Z   WWWW   Z JJRHHRJJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JYJJYJ  Z  JJJJJJ  Z JJRHHRJJ ZJ JHJJHJJ Z  SH  HS  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRHHRJ  Z  JSHJJSJ Z   SS  S  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRHHRJ  Z JSJJHSJ  Z  S  SS   Z",
-		"   HHHH   ZHHHHWWHHHHZ  WBBBWW  Z   WWWW   Z JJRHHRJJ Z JJHJJHJ JZ  SH  HS  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JYJJYJ  Z  JJJJJJ  Z JJRHHRJJ Z JJHJJHJ JZ  SH  HS  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ J Z  JRHHRJ  Z SSJJSJ   Z SH  SS   Z",
-		"   HHHH   ZHHHHWWHHHHZ  JJYJWJ  Z J JWWJ   Z  JRHHRJ  Z   JSJJSS Z   SS  HS Z",
-		"   HHHH   ZHHHHWWHHHHZ  WBBBBW  Z   WWWW   Z JJRHHRJJ Z JJHJJHJJ Z  SH  HS  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JYJJYJ  Z  JJJJJJ  Z JJRHHRJJ Z JJHJJHJJ Z  SH  HS  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRHHRJ  Z  JHJJHJJ Z  SH  HS  Z",
-		"   HHHH   ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRHHRJ  Z JJHJJHJ  Z  SH  HS  Z"
+		"   HHHH   ZHHHHWWHHHHZ  WWBBBW  Z   WWWW   Z JJRWWRJJ ZJ JRJJRJJ Z  SH  HS  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JYJJYJ  Z  JJJJJJ  Z JJRWWRJJ ZJ JRJJRJJ Z  SH  HS  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRWWRJ  Z  JSRJJSJ Z   SS  S  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRWWRJ  Z JSJJRSJ  Z  S  SS   Z",
+		"   HHHH   ZHHHHWWHHHHZ  WBBBWW  Z   WWWW   Z JJRWWRJJ Z JJRJJRJ JZ  SH  HS  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JYJJYJ  Z  JJJJJJ  Z JJRWWRJJ Z JJRJJRJ JZ  SH  HS  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ J Z  JRWWRJ  Z SSJJSJ   Z SH  SS   Z",
+		"   HHHH   ZHHHHWWHHHHZ  JJYJWJ  Z J JWWJ   Z  JRWWRJ  Z   JSJJSS Z   SS  HS Z",
+		"   HHHH   ZHHHHWWHHHHZ  WBBBBW  Z   WWWW   Z JJRWWRJJ Z JJRJJRJJ Z  SH  HS  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JYJJYJ  Z  JJJJJJ  Z JJRWWRJJ Z JJRJJRJJ Z  SH  HS  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRWWRJ  Z  JRJJRJJ Z  SH  HS  Z",
+		"   HHHH   ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRWWRJ  Z JJRJJRJ  Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_9 = WorldSprite(
@@ -466,18 +466,18 @@ struct SpriteSheet
 		"    /\\    Z\\=//--\\\\=/Z  /X\\V\\>  Z   \\XX/   Z  O#==#O  Z  #H/\\H#O Z  %U  U%  Z",
 		"    /\\    Z\\=//--\\\\=/Z  </V/X\\  Z   \\XX/   Z  O#==#O  Z O#H/\\H#  Z  %U  U%  Z",
 
-		"    HH    ZHHHHWWHHHHZ  WWBBBW  Z   WWWW   Z JJRHHRJJ ZJ RHJJHRJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JYJJYJ  Z   JJJJ   Z JJRHHRJJ ZJ RHJJHRJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRHHRJ  Z  JSHJJSJ Z   SS  S  Z",
-		"    HH    ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRHHRJ  Z JSJJHSJ  Z  S  SS   Z",
-		"    HH    ZHHHHWWHHHHZ  WBBBWW  Z   WWWW   Z JJRHHRJJ Z JRHJJHR JZ  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JYJJYJ  Z   JJJJ   Z JJRHHRJJ Z JRHJJHR JZ  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ J Z  JRHHRJ  Z SSJJSR   Z SH  SS   Z",
-		"    HH    ZHHHHWWHHHHZ  JJYJWJ  Z J JWWJ   Z  JRHHRJ  Z   RSJJSS Z   SS  HS Z",
-		"    HH    ZHHHHWWHHHHZ  WWBBWW  Z   WWWW   Z JJRHHRJJ Z JRHJJHRJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JYJJYJ  Z   JJJJ   Z JJRHHRJJ Z JRHJJHRJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRHHRJ  Z  RHJJHRJ Z  SH  HS  Z",
-		"    HH    ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRHHRJ  Z JRHJJHR  Z  SH  HS  Z"
+		"    HH    ZHHHHWWHHHHZ  WWBBBW  Z   WWWW   Z JJRWWRJJ ZJ RFJJFRJ Z  SH  HS  Z",
+		"    HH    ZHHHHWWHHHHZ  JYJJYJ  Z   JJJJ   Z JJRWWRJJ ZJ RFJJFRJ Z  SH  HS  Z",
+		"    HH    ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRWWRJ  Z  JSFJJSJ Z   SS  S  Z",
+		"    HH    ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRWWRJ  Z JSJJFSJ  Z  S  SS   Z",
+		"    HH    ZHHHHWWHHHHZ  WBBBWW  Z   WWWW   Z JJRWWRJJ Z JRFJJFR JZ  SH  HS  Z",
+		"    HH    ZHHHHWWHHHHZ  JYJJYJ  Z   JJJJ   Z JJRWWRJJ Z JRFJJFR JZ  SH  HS  Z",
+		"    HH    ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ J Z  JRWWRJ  Z SSJJSR   Z SH  SS   Z",
+		"    HH    ZHHHHWWHHHHZ  JJYJWJ  Z J JWWJ   Z  JRWWRJ  Z   RSJJSS Z   SS  HS Z",
+		"    HH    ZHHHHWWHHHHZ  WWBBWW  Z   WWWW   Z JJRWWRJJ Z JRFJJFRJ Z  SH  HS  Z",
+		"    HH    ZHHHHWWHHHHZ  JYJJYJ  Z   JJJJ   Z JJRWWRJJ Z JRFJJFRJ Z  SH  HS  Z",
+		"    HH    ZHHHHWWHHHHZ  JWJYJJ  Z   JWWJ   Z  JRWWRJ  Z  RFJJFRJ Z  SH  HS  Z",
+		"    HH    ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRWWRJ  Z JRFJJFR  Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_10 = WorldSprite(
@@ -494,18 +494,18 @@ struct SpriteSheet
 		"   @@@@   Z  @@\\V\\>  Z   \\XX<   Z  O#UU#O  Z  #H/\\H#O Z  %U  U%  Z",
 		"   @@@@   Z  </V/@@  Z   >XX/   Z  O#UU#O  Z O#H/\\H#  Z  %U  U%  Z",
 
-		"   BBBB   Z  WWBBBW  Z   WWWW   Z JJRHHRJJ ZJ RHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  JYJJYJ  Z   JJJJ   Z JJRHHRJJ ZJ RHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRHHRJ  Z  JSHJJSJ Z   SS  S  Z",
-		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRHHRJ  Z JSJJHSJ  Z  S  SS   Z",
-		"   BBBB   Z  WBBBWW  Z   WWWW   Z JJRHHRJJ Z JRHJJHR JZ  SH  HS  Z",
-		"   BBBB   Z  JYJJYJ  Z   JJJJ   Z JJRHHRJJ Z JRHJJHR JZ  SH  HS  Z",
-		"   BBBB   Z  BBJYJJ  Z   JWWJ J Z  JRHHRJ  Z SSJJSR   Z SH  SS   Z",
-		"   BBBB   Z  JJYJBB  Z J JWWJ   Z  JRHHRJ  Z   RSJJSS Z   SS  HS Z",
-		"   BBBB   Z  WWBBWW  Z   WWWW   Z JJRHHRJJ Z JRHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  JYJJYJ  Z   JJJJ   Z JJRHHRJJ Z JRHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRHHRJ  Z  RHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRHHRJ  Z JRHJJHR  Z  SH  HS  Z"
+		"   BBBB   Z  WWBBBW  Z   WWWW   Z JJRWWRJJ ZJ RFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  JYJJYJ  Z   JJJJ   Z JJRWWRJJ ZJ RFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRWWRJ  Z  JSFJJSJ Z   SS  S  Z",
+		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRWWRJ  Z JSJJFSJ  Z  S  SS   Z",
+		"   BBBB   Z  WBBBWW  Z   WWWW   Z JJRWWRJJ Z JRFJJFR JZ  SH  HS  Z",
+		"   BBBB   Z  JYJJYJ  Z   JJJJ   Z JJRWWRJJ Z JRFJJFR JZ  SH  HS  Z",
+		"   BBBB   Z  BBJYJJ  Z   JWWJ J Z  JRWWRJ  Z SSJJSR   Z SH  SS   Z",
+		"   BBBB   Z  JJYJBB  Z J JWWJ   Z  JRWWRJ  Z   RSJJSS Z   SS  HS Z",
+		"   BBBB   Z  WWBBWW  Z   WWWW   Z JJRWWRJJ Z JRFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  JYJJYJ  Z   JJJJ   Z JJRWWRJJ Z JRFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRWWRJ  Z  RFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRWWRJ  Z JRFJJFR  Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_11 = WorldSprite(
@@ -522,18 +522,18 @@ struct SpriteSheet
 		"   &&&&   Z  &&\\-\\>  Z   &XXX   Z  O#xx#O  Z  #H/\\H#O Z  %U  U%  Z",
 		"   &&&&   Z  </-/@@  Z   XXX&   Z  O#xx#O  Z O#H/\\H#  Z  %U  U%  Z",
 
-		"   BBBB   Z  WBBBBW  Z   WWWW   Z JRWWWWRJ ZJ RHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  JWJJWJ  Z   JJJJ   Z JRWJJWRJ ZJ RHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  BBJWJJ  Z   BWWW   Z  JRWWRJ  Z  JSHJJSJ Z   SS  S  Z",
-		"   BBBB   Z  JJWJBB  Z   WWWB   Z  JRWWRJ  Z JSJJHSJ  Z  S  SS   Z",
-		"   BBBB   Z  WBBBBW  Z   WWWW   Z JRWWWWRJ Z JRHJJHR JZ  SH  HS  Z",
-		"   BBBB   Z  JWJJWJ  Z   JJJJ   Z JRWJJWRJ Z JRHJJHR JZ  SH  HS  Z",
+		"   BBBB   Z  WBBBBW  Z   WWWW   Z JRWWWWRJ ZJ RFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  JWJJWJ  Z   JJJJ   Z JRWJJWRJ ZJ RFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  BBJWJJ  Z   BWWW   Z  JRWWRJ  Z  JSFJJSJ Z   SS  S  Z",
+		"   BBBB   Z  JJWJBB  Z   WWWB   Z  JRWWRJ  Z JSJJFSJ  Z  S  SS   Z",
+		"   BBBB   Z  WBBBBW  Z   WWWW   Z JRWWWWRJ Z JRFJJFR JZ  SH  HS  Z",
+		"   BBBB   Z  JWJJWJ  Z   JJJJ   Z JRWJJWRJ Z JRFJJFR JZ  SH  HS  Z",
 		"   BBBB   Z  BBJWJJ  Z   BWWW J Z  JRJJRJ  Z SSJJSR   Z SH  SS   Z",
 		"   BBBB   Z  JJWJBB  Z J WWWB   Z  JRJJRJ  Z   RSJJSS Z   SS  HS Z",
-		"   BBBB   Z  WBBBBW  Z   WWWW   Z JRWWWWRJ Z JRHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  JWJJWJ  Z   JJJJ   Z JJRJJRJJ Z JRHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  BBJWJJ  Z   BWWW   Z  JRJJRJ  Z  RHJJHRJ Z  SH  HS  Z",
-		"   BBBB   Z  JJWJBB  Z   WWWB   Z  JRJJRJ  Z JRHJJHR  Z  SH  HS  Z"
+		"   BBBB   Z  WBBBBW  Z   WWWW   Z JRWWWWRJ Z JRFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  JWJJWJ  Z   JJJJ   Z JJRJJRJJ Z JRFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  BBJWJJ  Z   BWWW   Z  JRJJRJ  Z  RFJJFRJ Z  SH  HS  Z",
+		"   BBBB   Z  JJWJBB  Z   WWWB   Z  JRJJRJ  Z JRFJJFR  Z  SH  HS  Z"
 	);
 
 	WorldSprite pirate_12 = WorldSprite(
@@ -550,18 +550,18 @@ struct SpriteSheet
 		"   @@@@   Z  @@\\V\\>  Z   \\XX<   Z  O#xx#O  Z  #H==H#O Z  %U  U%  Z",
 		"   @@@@   Z  </V/@@  Z   \\XX<   Z  O#xx#O  Z O#H==H#  Z  %U  U%  Z",
 
-		"   BBBB   Z  WWBBWW  Z   WWWW   Z JRWWWWRJ ZJ RHHHHRJ Z  SH  HS  ",
-		"   BBBB   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ ZJ RHHHHRJ Z  SH  HS  ",
-		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  JSHHHSJ Z   SS  S  ",
-		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JSHHHSJ  Z  S  SS   ",
-		"   BBBB   Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JRHHHHR JZ  SH  HS  ",
-		"   BBBB   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ Z JRHHHHR JZ  SH  HS  ",
-		"   BBBB   Z  BBJYJJ  Z   JWWJ J Z  JRJJRJ  Z SSJHSR   Z SH  SS   ",
-		"   BBBB   Z  JJYJBB  Z J JWWJ   Z  JRJJRJ  Z   RSHJSS Z   SS  HS ",
-		"   BBBB   Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JRHHHHRJ Z  SH  HS  ",
-		"   BBBB   Z  WYJJYW  Z   WJJW   Z JRRJJRRJ Z JRHHHHRJ Z  SH  HS  ",
-		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  RHHHHRJ Z  SH  HS  ",
-		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JRHHHHR  Z  SH  HS  "
+		"   BBBB   Z  WWBBWW  Z   WWWW   Z JRWWWWRJ ZJ RFFFFRJ Z  SH  HS  ",
+		"   BBBB   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ ZJ RFFFFRJ Z  SH  HS  ",
+		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  JSFFFSJ Z   SS  S  ",
+		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JSFFFSJ  Z  S  SS   ",
+		"   BBBB   Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JRFFFFR JZ  SH  HS  ",
+		"   BBBB   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ Z JRFFFFR JZ  SH  HS  ",
+		"   BBBB   Z  BBJYJJ  Z   JWWJ J Z  JRJJRJ  Z SSJFSR   Z SH  SS   ",
+		"   BBBB   Z  JJYJBB  Z J JWWJ   Z  JRJJRJ  Z   RSFJSS Z   SS  HS ",
+		"   BBBB   Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JRFFFFRJ Z  SH  HS  ",
+		"   BBBB   Z  WYJJYW  Z   WJJW   Z JRRJJRRJ Z JRFFFFRJ Z  SH  HS  ",
+		"   BBBB   Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  RFFFFRJ Z  SH  HS  ",
+		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JRFFFFR  Z  SH  HS  "
 	);
 
 	WorldSprite pirate_13 = WorldSprite(
@@ -578,18 +578,18 @@ struct SpriteSheet
 		"   _==_   Z \\==()==/ Z  @@\\>\\\\  Z   \\XX<   Z  O#xx#O  Z  X===][O Z  %U  U%  Z",
 		"   _==_   Z \\==()==/ Z  //</@@  Z   \\XX<   Z  O#xx#O  Z O][===X  Z  %U  U%  Z",
 
-		"   HHHH   Z HHHWWHHH Z  WWBBWW  Z   WWWW   Z JRWWWWRJ ZJ WHHHHWJ Z  SH  HS  ",
-		"   HHHH   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ ZJ WHJJHWJ Z  SH  HS  ",
-		"   HHHH   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  JSHHHSJ Z   SS  S  ",
-		"   HHHH   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JSHHHSJ  Z  S  SS   ",
-		"   HHHH   Z HHHWWHHH Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JWHHHHW JZ  SH  HS  ",
-		"   HHHH   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JWHJJHW JZ  SH  HS  ",
-		"   HHHH   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ J Z  JRJJRJ  Z SSJHSW   Z SH  SS   ",
-		"   HHHH   Z HHHWWHHH Z  JJYJBB  Z J JWWJ   Z  JRJJRJ  Z   WSHJSS Z   SS  HS ",
-		"   HHHH   Z HHHWWHHH Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JWHHHHWJ Z  SH  HS  ",
-		"   HHHH   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JWHJJHWJ Z  SH  HS  ",
-		"   HHHH   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  WHHHJJJ Z  SH  HS  ",
-		"   HHHH   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JJJHHHW  Z  SH  HS  "
+		"   HHHH   Z HHHWWHHH Z  WWBBWW  Z   WWWW   Z JRWWWWRJ ZJ WFFFFWJ Z  SH  HS  ",
+		"   HHHH   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ ZJ WFJJFWJ Z  SH  HS  ",
+		"   HHHH   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  JSFFFSJ Z   SS  S  ",
+		"   HHHH   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JSFFFSJ  Z  S  SS   ",
+		"   HHHH   Z HHHWWHHH Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JWFFFFW JZ  SH  HS  ",
+		"   HHHH   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JWFJJFW JZ  SH  HS  ",
+		"   HHHH   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ J Z  JRJJRJ  Z SSJFSW   Z SH  SS   ",
+		"   HHHH   Z HHHWWHHH Z  JJYJBB  Z J JWWJ   Z  JRJJRJ  Z   WSFJSS Z   SS  HS ",
+		"   HHHH   Z HHHWWHHH Z  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JWFFFFWJ Z  SH  HS  ",
+		"   HHHH   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JWFJJFWJ Z  SH  HS  ",
+		"   HHHH   Z HHHWWHHH Z  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  WFFFJJJ Z  SH  HS  ",
+		"   HHHH   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JJJFFFW  Z  SH  HS  "
 	);
 
 	WorldSprite pirate_14 = WorldSprite(
@@ -606,18 +606,18 @@ struct SpriteSheet
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  @@\\V\\>  Z   \\XX<   Z  O#xx#O  Z  X===][O Z  %U  U%  Z",
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  </V/@@  Z   \\XX<   Z  O#xx#O  Z O][===X  Z  %U  U%  Z",
 
-		"  HHHHHH  ZHHHHWWHHHHZ  WWBBBW  Z   WWWW   Z JRWWWWRJ ZJ WHHHHWJ Z  SH  HS  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  JYJJYJ  Z  JWJJWJ  Z JRWJJWRJ ZJ WHJJHWJ Z  SH  HS  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  JSHHHSJ Z   SS  S  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JSHHHSJ  Z  S  SS   ",
-		"  HHHHHH  ZHHHHWWHHHHZ  WBBBWW  Z   WWWW   Z JRWWWWRJ Z JWHHHHW JZ  SH  HS  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  JYJJYJ  Z  JWJJWJ  Z JRWJJWRJ Z JWHJJHW JZ  SH  HS  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  BBJYJJ  Z   JWWJ J Z  JRJJRJ  Z SSJHSW   Z SH  SS   ",
-		"  HHHHHH  ZHHHHWWHHHHZ  JJYJBB  Z J JWWJ   Z  JRJJRJ  Z   WSHJSS Z   SS  HS ",
-		"  HHHHHH  ZHHHHWWHHHHZ  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JWHHHHWJ Z  SH  HS  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  JYJJYJ  Z  JWJJWJ  Z JRWJJWRJ Z JWHJJHWJ Z  SH  HS  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  WHHHJJJ Z  SH  HS  ",
-		"  HHHHHH  ZHHHHWWHHHHZ  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JJJHHHW  Z  SH  HS  "
+		"  HHHHHH  ZHHHHWWHHHHZ  WWBBBW  Z   WWWW   Z JRWWWWRJ ZJ WFFFFWJ Z  SH  HS  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  JYJJYJ  Z  JWJJWJ  Z JRWJJWRJ ZJ WFJJFWJ Z  SH  HS  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  JSFFFSJ Z   SS  S  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JSFFFSJ  Z  S  SS   ",
+		"  HHHHHH  ZHHHHWWHHHHZ  WBBBWW  Z   WWWW   Z JRWWWWRJ Z JWFFFFW JZ  SH  HS  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  JYJJYJ  Z  JWJJWJ  Z JRWJJWRJ Z JWFJJFW JZ  SH  HS  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  BBJYJJ  Z   JWWJ J Z  JRJJRJ  Z SSJFSW   Z SH  SS   ",
+		"  HHHHHH  ZHHHHWWHHHHZ  JJYJBB  Z J JWWJ   Z  JRJJRJ  Z   WSFJSS Z   SS  HS ",
+		"  HHHHHH  ZHHHHWWHHHHZ  WWBBWW  Z   WWWW   Z JRWWWWRJ Z JWFFFFWJ Z  SH  HS  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  JYJJYJ  Z  JWJJWJ  Z JRWJJWRJ Z JWFJJFWJ Z  SH  HS  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  BBJYJJ  Z   JWWJ   Z  JRJJRJ  Z  WFFFJJJ Z  SH  HS  ",
+		"  HHHHHH  ZHHHHWWHHHHZ  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JJJFFFW  Z  SH  HS  "
 	);
 
 	WorldSprite pirate_15 = WorldSprite(
@@ -634,18 +634,18 @@ struct SpriteSheet
 		"   @@@@   Z  @@\\^\\>  Z   @XX<   Z  O#xx#O  Z  #===()O Z  %U  U%  Z",
 		"   @@@@   Z  </^/@@  Z   >XX@   Z  O#xx#O  Z O()===#  Z  %U  U%  Z",
 
-		"   KKKK   Z  WKKKKW  Z   WWWW   Z JRWWWWRJ ZJ RHHHHRJ Z  SH  HS  ",
-		"   KKKK   Z  JYJJYJ  Z   WJJW   Z JRWJJWRJ ZJ RHJJHRJ Z  SH  HS  ",
-		"   KKKK   Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  JSHHHSJ Z   SS  S  ",
-		"   KKKK   Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JSHHHSJ  Z  S  SS   ",
-		"   KKKK   Z  WKKKKW  Z   WWWW   Z JRWWWWRJ Z JRHHHHR JZ  SH  HS  ",
-		"   KKKK   Z  JYJJYJ  Z   WJJW   Z JRWJJWRJ Z JRHJJHR JZ  SH  HS  ",
-		"   KKKK   Z  KKJYJJ  Z   KWWJ J Z  JRJJRJ  Z SSJHSR   Z SH  SS   ",
-		"   KKKK   Z  JJYJKK  Z J JWWK   Z  JRJJRJ  Z   RSHJSS Z   SS  HS ",
-		"   KKKK   Z  WKKKKW  Z   WWWW   Z JRWWWWRJ Z JRHHHHRJ Z  SH  HS  ",
-		"   KKKK   Z  JYJJYJ  Z   WJJW   Z JRWJJWRJ Z JRHJJHRJ Z  SH  HS  ",
-		"   KKKK   Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  RHHHJJJ Z  SH  HS  ",
-		"   KKKK   Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JJJHHHR  Z  SH  HS  "
+		"   KKKK   Z  WKKKKW  Z   WWWW   Z JRWWWWRJ ZJ RFFFFRJ Z  SH  HS  ",
+		"   KKKK   Z  JYJJYJ  Z   WJJW   Z JRWJJWRJ ZJ RFJJFRJ Z  SH  HS  ",
+		"   KKKK   Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  JSFFFSJ Z   SS  S  ",
+		"   KKKK   Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JSFFFSJ  Z  S  SS   ",
+		"   KKKK   Z  WKKKKW  Z   WWWW   Z JRWWWWRJ Z JRFFFFR JZ  SH  HS  ",
+		"   KKKK   Z  JYJJYJ  Z   WJJW   Z JRWJJWRJ Z JRFJJFR JZ  SH  HS  ",
+		"   KKKK   Z  KKJYJJ  Z   KWWJ J Z  JRJJRJ  Z SSJFSR   Z SH  SS   ",
+		"   KKKK   Z  JJYJKK  Z J JWWK   Z  JRJJRJ  Z   RSFJSS Z   SS  HS ",
+		"   KKKK   Z  WKKKKW  Z   WWWW   Z JRWWWWRJ Z JRFFFFRJ Z  SH  HS  ",
+		"   KKKK   Z  JYJJYJ  Z   WJJW   Z JRWJJWRJ Z JRFJJFRJ Z  SH  HS  ",
+		"   KKKK   Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  RFFFJJJ Z  SH  HS  ",
+		"   KKKK   Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JJJFFFR  Z  SH  HS  "
 	);
 
 	WorldSprite pirate_16 = WorldSprite(
@@ -662,18 +662,18 @@ struct SpriteSheet
 		"   -/\\-   Z \\=/--\\=/ Z  @@\\'\\>  Z   @XX<   Z  O#xx#O  Z  #=XX=#O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  </'/@@  Z   >XX@   Z  O#xx#O  Z O#=XX=#  Z  %U  U%  Z",
 
-		"   WHHW   Z HHHWWHHH Z  WKKKWW  Z   WWWW   Z JRWWWWRJ ZJ RHWWHRJ Z  SH  HS  ",
-		"   WHHW   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ ZJ RHWWHRJ Z  SH  HS  ",
-		"   WHHW   Z HHHWWHHH Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  JSHWWSJ Z   SS  S  ",
-		"   WHHW   Z HHHWWHHH Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JSWWHSJ  Z  S  SS   ",
-		"   WHHW   Z HHHWWHHH Z  WWKKKW  Z   WWWW   Z JRWWWWRJ Z JRHWWHR JZ  SH  HS  ",
-		"   WHHW   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JRHWWHR JZ  SH  HS  ",
+		"   WHHW   Z HHHWWHHH Z  WKKKWW  Z   WWWW   Z JRWWWWRJ ZJ RFWWFRJ Z  SH  HS  ",
+		"   WHHW   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ ZJ RFWWFRJ Z  SH  HS  ",
+		"   WHHW   Z HHHWWHHH Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  JSFWWSJ Z   SS  S  ",
+		"   WHHW   Z HHHWWHHH Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JSWWFSJ  Z  S  SS   ",
+		"   WHHW   Z HHHWWHHH Z  WWKKKW  Z   WWWW   Z JRWWWWRJ Z JRFWWFR JZ  SH  HS  ",
+		"   WHHW   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JRFWWFR JZ  SH  HS  ",
 		"   WHHW   Z HHHWWHHH Z  KKJYJJ  Z   KWWJ J Z  JRJJRJ  Z SSJWSR   Z SH  SS   ",
 		"   WHHW   Z HHHWWHHH Z  JJYJKK  Z J JWWK   Z  JRJJRJ  Z   RSWJSS Z   SS  HS ",
-		"   WHHW   Z HHHWWHHH Z  WWKKWW  Z   WWWW   Z JRWWWWRJ Z JRHWWHRJ Z  SH  HS  ",
-		"   WHHW   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JRHWWHRJ Z  SH  HS  ",
-		"   WHHW   Z HHHWWHHH Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  RHWWHRJ Z  SH  HS  ",
-		"   WHHW   Z HHHWWHHH Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JRHWWHR  Z  SH  HS  "
+		"   WHHW   Z HHHWWHHH Z  WWKKWW  Z   WWWW   Z JRWWWWRJ Z JRFWWFRJ Z  SH  HS  ",
+		"   WHHW   Z HHHWWHHH Z  WYJJYW  Z   WJJW   Z JRWJJWRJ Z JRFWWFRJ Z  SH  HS  ",
+		"   WHHW   Z HHHWWHHH Z  KKJYJJ  Z   KWWJ   Z  JRJJRJ  Z  RFWWFRJ Z  SH  HS  ",
+		"   WHHW   Z HHHWWHHH Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JRFWWFR  Z  SH  HS  "
 	);
 
 	WorldSprite pirate_17 = WorldSprite(

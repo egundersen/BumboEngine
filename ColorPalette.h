@@ -9,6 +9,7 @@ C Crimson/Red
 O Orange
 Y Yellow
 K Khaki/Yellow
+D Deep Pink
 M Magenta/Pink
 P Purple
 L Lime
@@ -47,6 +48,9 @@ public:
 			break;
 		case 'K':
 			rgba_ = RGBA(240, 230, 140);
+			break;
+		case 'D':
+			rgba_ = RGBA(255, 140, 255);
 			break;
 		case 'M':
 			rgba_ = RGBA(200, 0, 200);

@@ -564,10 +564,72 @@ void WorldBase::GENERATE_Enemies()
 	characters_.push_back(sharktooth);
 
 #ifdef _DEBUG
-	CharacterBase *test;
-	test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	test->initializeCharacter();
 	characters_.push_back(test);
+
+	CharacterBase *sprite_1 = new Chr_AllMight(662, 213, -1, sprite_sheet_.pirate_1, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_2 = new Chr_AllMight(672, 213, -2, sprite_sheet_.pirate_2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_3 = new Chr_AllMight(682, 213, -3, sprite_sheet_.pirate_3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_4 = new Chr_AllMight(692, 213, -4, sprite_sheet_.pirate_5_monkey, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_5 = new Chr_AllMight(702, 213, -5, sprite_sheet_.pirate_5_monkey, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_6 = new Chr_AllMight(712, 213, -6, sprite_sheet_.pirate_6, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_7 = new Chr_AllMight(722, 213, -7, sprite_sheet_.pirate_7, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_8 = new Chr_AllMight(732, 213, -8, sprite_sheet_.pirate_8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_9 = new Chr_AllMight(742, 213, -9, sprite_sheet_.pirate_9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_10 = new Chr_AllMight(752, 213, -10, sprite_sheet_.pirate_10, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_11 = new Chr_AllMight(762, 213, -11, sprite_sheet_.pirate_11, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_12 = new Chr_AllMight(772, 213, -12, sprite_sheet_.pirate_12, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_13 = new Chr_AllMight(782, 213, -13, sprite_sheet_.pirate_13, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_14 = new Chr_AllMight(792, 213, -14, sprite_sheet_.pirate_14, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_15 = new Chr_AllMight(802, 213, -15, sprite_sheet_.pirate_15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_16 = new Chr_AllMight(812, 213, -16, sprite_sheet_.pirate_16, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_17 = new Chr_AllMight(822, 213, -17, sprite_sheet_.pirate_17, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_18 = new Chr_AllMight(832, 213, -18, sprite_sheet_.sharktooth, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_19 = new Chr_AllMight(842, 213, -19, sprite_sheet_.bonny, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_20 = new Chr_AllMight(852, 213, -20, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	//*/
+	sprite_1->initializeCharacter();
+	sprite_2->initializeCharacter();
+	sprite_3->initializeCharacter();
+	sprite_4->initializeCharacter();
+	sprite_5->initializeCharacter();
+	sprite_6->initializeCharacter();
+	sprite_7->initializeCharacter();
+	sprite_8->initializeCharacter();
+	sprite_9->initializeCharacter();
+	sprite_10->initializeCharacter();
+	sprite_11->initializeCharacter();
+	sprite_12->initializeCharacter();
+	sprite_13->initializeCharacter();
+	sprite_14->initializeCharacter();
+	sprite_15->initializeCharacter();
+	sprite_16->initializeCharacter();
+	sprite_17->initializeCharacter();
+	sprite_18->initializeCharacter();
+	sprite_19->initializeCharacter();
+	sprite_20->initializeCharacter();//*/
+
+	characters_.push_back(sprite_1);
+	characters_.push_back(sprite_2);
+	characters_.push_back(sprite_3);
+	characters_.push_back(sprite_4);
+	characters_.push_back(sprite_5);
+	characters_.push_back(sprite_6);
+	characters_.push_back(sprite_7);
+	characters_.push_back(sprite_8);
+	characters_.push_back(sprite_9);
+	characters_.push_back(sprite_10);
+	characters_.push_back(sprite_11);
+	characters_.push_back(sprite_12);
+	characters_.push_back(sprite_13);
+	characters_.push_back(sprite_14);
+	characters_.push_back(sprite_15);
+	characters_.push_back(sprite_16);
+	characters_.push_back(sprite_17);
+	characters_.push_back(sprite_18);
+	characters_.push_back(sprite_19);
+	characters_.push_back(sprite_20);//*/
 #endif
 }
 

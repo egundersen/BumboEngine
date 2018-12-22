@@ -76,12 +76,12 @@ void Inventory::setItemsListText()
 {
 	for (int i = 0; i < items_list_.size(); ++i)
 		for (int j = 0; j < 20; ++j)
-			inventory_matrix_[13 + (2 * i)][52 + j] = ' ';
+			inventory_matrix_[13 + (2 * i)][50 + j] = ' ';
 	for (int i = 0; i < items_list_.size(); ++i)
 		addTextToMatrix(50, 13 + (2 * i), 'l', items_list_.at(i).getName(), 'M', inventory_matrix_);
 	for (int i = items_list_.size(); i < 10; ++i)
 		for (int j = 0; j < 20; ++j)
-			inventory_matrix_[13 + (2 * i)][52 + j] = ' ';
+			inventory_matrix_[13 + (2 * i)][50 + j] = ' ';
 }
 
 // Sets the cursor
