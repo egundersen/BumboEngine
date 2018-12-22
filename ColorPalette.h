@@ -49,7 +49,7 @@ public:
 			rgba_ = RGBA(240, 230, 140);
 			break;
 		case 'M':
-			rgba_ = RGBA(180, 0, 180);
+			rgba_ = RGBA(200, 0, 200);
 			break;
 		case 'P':
 			rgba_ = RGBA(140, 0, 140);

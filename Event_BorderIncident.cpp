@@ -102,7 +102,7 @@ void Event_BorderIncident::refreshEvent()
 		break;
 	case 4:
 		// guchi gang approaches checkpoint
-		approachCheckpoint();
+		approachCheckpoint(600, -412);
 		break;
 	case 5:
 		resetMovementIndexes();
@@ -110,7 +110,7 @@ void Event_BorderIncident::refreshEvent()
 		break;
 	case 6:
 		// guchi gang runs through checkpoint
-		runsThroughCheckpoint();
+		runsThroughCheckpoint(600, -412);
 		break;
 	case 7:
 		// guards yells after them
@@ -220,7 +220,7 @@ void Event_BorderIncident::guardReplies()
 		break;
 	case 2:
 		popups_[13].displayPopup(27, 16);
-		attached_character_->move(470, 'x', 20);
+		attached_character_->move(1070, 'x', 20);
 		break;
 	case 3:
 		popups_[14].displayPopup(27, 16);
@@ -237,23 +237,23 @@ void Event_BorderIncident::guardReplies()
 	}
 }
 
-void Event_BorderIncident::approachCheckpoint()
+void Event_BorderIncident::approachCheckpoint(int position_x, int position_y)
 {
 	// Ryuuko
 	switch (getCharacterByID(11)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(11)->teleportNPC(392, 630);
+		getCharacterByID(11)->teleportNPC(392 + position_x, 630 + position_y);
 		getCharacterByID(11)->incrementMovementIndex();
 		break;
 	case 1:
-		getCharacterByID(11)->move(433, 'x', 30);
+		getCharacterByID(11)->move(433 + position_x, 'x', 30);
 		break;
 	case 2:
-		getCharacterByID(11)->move(626, 'y', 30);
+		getCharacterByID(11)->move(626 + position_y, 'y', 30);
 		break;
 	case 3:
-		getCharacterByID(11)->move(454, 'x', 30);
+		getCharacterByID(11)->move(454 + position_x, 'x', 30);
 		break;
 	default:
 		break;
@@ -263,20 +263,20 @@ void Event_BorderIncident::approachCheckpoint()
 	switch (getCharacterByID(14)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(14)->teleportNPC(382, 634);
+		getCharacterByID(14)->teleportNPC(382 + position_x, 634 + position_y);
 		getCharacterByID(14)->incrementMovementIndex();
 		break;
 	case 1:
-		getCharacterByID(14)->move(433, 'x', 32);
+		getCharacterByID(14)->move(433 + position_x, 'x', 32);
 		break;
 	case 2:
-		getCharacterByID(14)->move(629, 'y', 32);
+		getCharacterByID(14)->move(629 + position_y, 'y', 32);
 		break;
 	case 3:
-		getCharacterByID(14)->move(446, 'x', 32);
+		getCharacterByID(14)->move(446 + position_x, 'x', 32);
 		break;
 	case 4:
-		getCharacterByID(14)->move(623, 'y', 32);
+		getCharacterByID(14)->move(623 + position_y, 'y', 32);
 		break;
 	case 5:
 		getCharacterByID(14)->faceDirection('r');
@@ -293,17 +293,17 @@ void Event_BorderIncident::approachCheckpoint()
 	switch (getCharacterByID(13)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(13)->teleportNPC(372, 634);
+		getCharacterByID(13)->teleportNPC(372 + position_x, 634 + position_y);
 		getCharacterByID(13)->incrementMovementIndex();
 		break;
 	case 1:
-		getCharacterByID(13)->move(428, 'x', 40);
+		getCharacterByID(13)->move(428 + position_x, 'x', 40);
 		break;
 	case 2:
-		getCharacterByID(13)->move(626, 'y', 40);
+		getCharacterByID(13)->move(626 + position_y, 'y', 40);
 		break;
 	case 3:
-		getCharacterByID(13)->move(438, 'x', 40);
+		getCharacterByID(13)->move(438 + position_x, 'x', 40);
 		break;
 	default:
 		break;
@@ -313,11 +313,11 @@ void Event_BorderIncident::approachCheckpoint()
 	switch (getCharacterByID(12)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(12)->teleportNPC(362, 633);
+		getCharacterByID(12)->teleportNPC(362 + position_x, 633 + position_y);
 		getCharacterByID(12)->incrementMovementIndex();
 		break;
 	case 1:
-		getCharacterByID(12)->move(433, 'x', 40);
+		getCharacterByID(12)->move(433 + position_x, 'x', 40);
 		break;
 	default:
 		break;
@@ -327,24 +327,24 @@ void Event_BorderIncident::approachCheckpoint()
 	switch (getCharacterByID(15)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(15)->teleportNPC(356, 628);
+		getCharacterByID(15)->teleportNPC(356 + position_x, 628 + position_y);
 		getCharacterByID(15)->incrementMovementIndex();
 		break;
 	case 1:
-		getCharacterByID(15)->move(426, 'x', 40);
+		getCharacterByID(15)->move(426 + position_x, 'x', 40);
 		break;
 	default:
 		break;
 	}
 }
 
-void Event_BorderIncident::runsThroughCheckpoint()
+void Event_BorderIncident::runsThroughCheckpoint(int position_x, int position_y)
 {
 	// Ryuuko
 	switch (getCharacterByID(11)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(11)->move(627, 'y', 30);
+		getCharacterByID(11)->move(627 + position_y, 'y', 30);
 		break;
 	case 1:
 		getCharacterByID(11)->move(screen_position_.x + screen_width_ / 2, 'x', 30);
@@ -357,14 +357,14 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(11)->waitForTime(2000);
 		break;
 	case 4:
-		getCharacterByID(11)->move(471, 'x', 30);
+		getCharacterByID(11)->move(471 + position_x, 'x', 30);
 		break;
 	case 5:
-		getCharacterByID(9)->teleportNPC(483, 671); // Remove guard thats in the way
-		getCharacterByID(11)->move(472, 'x', 30);
+		getCharacterByID(9)->teleportNPC(483 + position_x, 671 + position_y); // Remove guard thats in the way
+		getCharacterByID(11)->move(472 + position_x, 'x', 30);
 		break;
 	case 6:
-		getCharacterByID(11)->move(518, 'x', 10);
+		getCharacterByID(11)->move(518 + position_x, 'x', 10);
 		break;
 	case 7:
 		getCharacterByID(11)->teleportNPC(192, 84); // Actual World Position
@@ -381,13 +381,13 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(14)->move(screen_position_.x + screen_width_ / 2 - 9, 'x', 32);
 		break;
 	case 1:
-		getCharacterByID(14)->move(627, 'y', 32);
+		getCharacterByID(14)->move(627 + position_y, 'y', 32);
 		break;
 	case 2:
 		getCharacterByID(14)->waitForTime(2500);
 		break;
 	case 3:
-		getCharacterByID(14)->move(518, 'x', 10);
+		getCharacterByID(14)->move(518 + position_x, 'x', 10);
 		break;
 	case 4:
 		getCharacterByID(14)->teleportNPC(104, 203);
@@ -407,10 +407,10 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(13)->move(screen_position_.x + screen_width_ / 2 - 9, 'x', 32);
 		break;
 	case 2:
-		getCharacterByID(13)->move(627, 'y', 32);
+		getCharacterByID(13)->move(627 + position_y, 'y', 32);
 		break;
 	case 3:
-		getCharacterByID(13)->move(518, 'x', 10);
+		getCharacterByID(13)->move(518 + position_x, 'x', 10);
 		break;
 	case 4:
 		getCharacterByID(13)->teleportNPC(564, 163);
@@ -427,16 +427,16 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(12)->waitForTime(2800);
 		break;
 	case 1:
-		getCharacterByID(12)->move(623, 'y', 32);
+		getCharacterByID(12)->move(623 + position_y, 'y', 32);
 		break;
 	case 2:
 		getCharacterByID(12)->move(screen_position_.x + screen_width_ / 2 - 9, 'x', 32);
 		break;
 	case 3:
-		getCharacterByID(12)->move(626, 'y', 32);
+		getCharacterByID(12)->move(626 + position_y, 'y', 32);
 		break;
 	case 4:
-		getCharacterByID(12)->move(518, 'x', 10);
+		getCharacterByID(12)->move(518 + position_x, 'x', 10);
 		break;
 	case 5:
 		getCharacterByID(12)->teleportNPC(664, 67);
@@ -453,7 +453,7 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(15)->waitForTime(2800);
 		break;
 	case 1:
-		getCharacterByID(15)->move(630, 'y', 32);
+		getCharacterByID(15)->move(630 + position_y, 'y', 32);
 		break;
 	case 2:
 		getCharacterByID(15)->waitForTime(1000);
@@ -462,7 +462,7 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(15)->move(screen_position_.x + screen_width_ / 2 - 9, 'x', 32);
 		break;
 	case 4:
-		getCharacterByID(15)->move(627, 'y', 32);
+		getCharacterByID(15)->move(627 + position_y, 'y', 32);
 		break;
 	case 5:
 		getCharacterByID(15)->move(screen_position_.x + screen_width_ / 2 - 9 + 3, 'x', 10);
@@ -471,15 +471,15 @@ void Event_BorderIncident::runsThroughCheckpoint()
 		getCharacterByID(15)->waitForTime(250);
 		break;
 	case 7:
-		getCharacterByID(15)->move(479, 'x', 1);
+		getCharacterByID(15)->move(479 + position_x, 'x', 1);
 		break;
 	case 8:
-		getCharacterByID(15)->move(518, 'x', 1);
+		getCharacterByID(15)->move(518 + position_x, 'x', 1);
 		getCharacterByID(8)->faceDirection('r'); // face guard right
 		break;
 	case 9:
-		getCharacterByID(7)->teleportNPC(493, 671);
-		getCharacterByID(15)->teleportNPC(453, 671);
+		getCharacterByID(7)->teleportNPC(493 + position_x, 671 + position_y);
+		getCharacterByID(15)->teleportNPC(453 + position_x, 671 + position_y);
 		progressEvent();
 		break;
 	default:
@@ -508,13 +508,13 @@ void Event_BorderIncident::guardExits()
 	switch (getCharacterByID(8)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(8)->move(619, 'y', 20);
+		getCharacterByID(8)->move(207, 'y', 20);
 		break;
 	case 1:
-		getCharacterByID(8)->move(512, 'x', 20);
+		getCharacterByID(8)->move(1112, 'x', 20);
 		break;
 	case 2:
-		getCharacterByID(8)->teleportNPC(473, 671);
+		getCharacterByID(8)->teleportNPC(1073, 259);
 		progressEvent();
 		break;
 	default:

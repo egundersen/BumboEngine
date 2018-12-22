@@ -24,9 +24,9 @@ public:
 			4,
 			"TUTORIAL NPC", 
 			"tutorial.bmp", 
-			"", 
-			"",
-			""
+			"tutorial.bmp", 
+			"tutorial.bmp",
+			"tutorial.bmp"
 		),//*/
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
@@ -37,8 +37,8 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Help! I move too fast!", "Just Hold SHIFT,ZIt's very simpleZ", false));
-		dialog_choice_1.push_back(std::make_tuple("Where's my health?", "You move as aZnumber. ThatZis your health", false));
+		dialog_choice_1.push_back(std::make_tuple("Help! I move too fast!", "Just Hold SHIFT, It's very simple", false));
+		dialog_choice_1.push_back(std::make_tuple("Where's my health?", "You move as a number. That is your health", false));
 		dialog_choice_1.push_back(std::make_tuple("Hello, Yes?", "Look upon", false));
 		dialog_choice_1.push_back(std::make_tuple("I'm finished with the combat tutorial", "Very good", true));
 
@@ -83,13 +83,13 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Your backZYou need moreZhelp, yes?Z");
-		DialogNode *node_1_1 = new DialogNode("Yes, I need more help", "This very goodZWhat you need Z my help with?Z");
-		DialogNode *node_1_2 = new DialogNode("What about my father?", "Sorry, I'm notZallowed to talkZabout that. ItZwould upset theZmy lemonZ");
-		DialogNode *node_1_3 = new DialogNode("No thanks", "Well, I will SeeZYou later thenZ");
-		DialogNode *node_1_2_1 = new DialogNode("Slowing down in combat", "Just hold SHIFTZThen you willZmove slowerZ");
-		DialogNode *node_1_2_2 = new DialogNode("Opening my inventory", "Oh, it very easyZJust press IZ");
-		DialogNode *node_1_2_3 = new DialogNode("Other hotkeys?", "Let's see...ZBACKSPACE is usuallyZexit what you'reZdoing somethingZ");
+		DialogNode *node_1 = new DialogNode("", "Your back You need more help, yes?");
+		DialogNode *node_1_1 = new DialogNode("Yes, I need more help", "This very good What you need my help with?");
+		DialogNode *node_1_2 = new DialogNode("What about my father?", "Sorry, I'm not allowed to talk about that. It would upset the my lemon");
+		DialogNode *node_1_3 = new DialogNode("No thanks", "Well, I will See You later then");
+		DialogNode *node_1_2_1 = new DialogNode("Slowing down in combat", "Just hold SHIFT Then you will move slower");
+		DialogNode *node_1_2_2 = new DialogNode("Opening my inventory", "Oh, it very easy Just press I");
+		DialogNode *node_1_2_3 = new DialogNode("Other hotkeys?", "Let's see... BACKSPACE is usually exit what you're doing something");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);

@@ -1,6 +1,5 @@
 #include "Event_Tutorial.h"
 #include <Windows.h>
-#include <iostream>
 
 Event_Tutorial::Event_Tutorial(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix& screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
 	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, character_ID, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height),
@@ -68,7 +67,7 @@ void Event_Tutorial::createEvent()
 	Popup popup_53(25, 9, "So I will show you how combat works, it's very easy ", screen_matrix_, 'X');
 	Popup popup_54(25, 9, "Here we go", screen_matrix_, 'X');
 
-	Popup popup_tutorial_choice(25, 9, "Do you LIKE TUTORIAL?   YES             NO  ", screen_matrix_, 'X');
+	Popup popup_tutorial_choice(25, 9, "Do you LIKE TUTORIAL?         YES             NO  ", screen_matrix_, 'X');
 
 	popup_1.createPopupText();
 	popup_2.createPopupText();
@@ -190,7 +189,7 @@ void Event_Tutorial::refreshEvent()
 	switch (getEventIndex())
 	{
 	case 0:
-		moveTutorialNpc();
+		moveTutorialNpc(600, -412);
 		break;
 	case 1:
 		askPlayerName(4000);
@@ -208,7 +207,7 @@ void Event_Tutorial::refreshEvent()
 		tutorial();
 		break;
 	case 6:
-		attached_character_->teleportNPC(251, 633);
+		attached_character_->teleportNPC(851, 221);
 		attached_character_->faceDirection('d');
 		should_enter_battle_ = true;
 		progressEvent();
@@ -221,25 +220,25 @@ void Event_Tutorial::refreshEvent()
 	}
 }
 
-void Event_Tutorial::moveTutorialNpc()
+void Event_Tutorial::moveTutorialNpc(int position_x, int position_y)
 {
 	// Will automatically increase movement index
 	switch (attached_character_->getMovementIndex())
 	{
 	case 0:
-		attached_character_->move(216, 'x', 20);
+		attached_character_->move(216 + position_x, 'x', 20);
 		break;
 	case 1:
-		attached_character_->move(640, 'y', 35);
+		attached_character_->move(640 + position_y, 'y', 35);
 		break;
 	case 2:
-		attached_character_->move(211, 'x', 20);
+		attached_character_->move(211 + position_x, 'x', 20);
 		break;
 	case 3:
-		attached_character_->move(642, 'y', 35);
+		attached_character_->move(642 + position_y, 'y', 35);
 		break;
 	case 4:
-		attached_character_->move(201, 'x', 20);
+		attached_character_->move(201 + position_x, 'x', 20);
 		break;
 	case 5:
 		attached_character_->move(screen_position_.y + screen_height_ / 2 + 1, 'y', 35);
@@ -263,8 +262,7 @@ void Event_Tutorial::askPlayerName(int time_interval)
 		progressEvent();
 		start_time_begin_event_ = GetTickCount64();
 	}
-	else if (current_time_begin_event_ <= time_interval)
-		popups_[0].displayPopup(10, 0);
+	popups_[0].displayPopup(10, 0);
 }
 
 void Event_Tutorial::tellFatherBackstory()
@@ -552,6 +550,6 @@ void Event_Tutorial::confirmSelection()
 	else // NO
 	{
 		should_go_down_ = true;
-		attached_character_->teleportNPC(163, 680);
+		attached_character_->teleportNPC(763, 268);
 	}
 }

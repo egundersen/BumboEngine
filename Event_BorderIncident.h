@@ -15,8 +15,8 @@ private:
 	void guardTalks();
 	void crowdLooksAround();
 	void guardReplies();
-	void approachCheckpoint();
-	void runsThroughCheckpoint();
+	void approachCheckpoint(int position_x, int position_y);
+	void runsThroughCheckpoint(int position_x, int position_y);
 	void guardStopThem();
 	void guardExits();
 	void playerThinks();

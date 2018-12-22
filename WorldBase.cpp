@@ -693,7 +693,7 @@ void WorldBase::GENERATE_Events()
 	/* Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, screen_matrix_, characters_, nullptr);
 	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10000
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
-	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 235, 10, 8, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1071, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	

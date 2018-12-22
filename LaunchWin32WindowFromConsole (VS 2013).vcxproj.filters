@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Attacks">
-      <UniqueIdentifier>{69d0151e-b2b3-4276-b87d-444a50c989bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Attacks">
-      <UniqueIdentifier>{ad0e7639-3ebb-4f11-a39f-ec511d5b26a9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Characters">
       <UniqueIdentifier>{a24e00ba-1987-4f2f-843e-fe8efa3ef496}</UniqueIdentifier>
     </Filter>
@@ -37,18 +31,36 @@
     <Filter Include="Source Files\Events">
       <UniqueIdentifier>{ac5d8f7e-9a7b-48ee-9132-dd156a283634}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{5c820e82-f3bd-46bf-90ed-a26cf22c3e5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{91473345-f981-4071-8754-0aad3edae09a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Battle">
+      <UniqueIdentifier>{97688c17-709e-44ac-9644-facaa55994e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Battle\Attack Patterns">
+      <UniqueIdentifier>{e4953ac9-5952-44dc-a693-d72902098ebb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Battle\Attacks">
+      <UniqueIdentifier>{69d0151e-b2b3-4276-b87d-444a50c989bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle">
+      <UniqueIdentifier>{f23d64b5-494b-4a80-8918-162c853a4def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\Attacks">
+      <UniqueIdentifier>{ad0e7639-3ebb-4f11-a39f-ec511d5b26a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\Attack Patterns">
+      <UniqueIdentifier>{6fc1f4e2-d278-44c8-b253-760f35024476}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Inventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MatrixBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MatrixManager.cpp">
@@ -58,19 +70,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Attack_HorizontalLine.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackBase.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_ShootHorizontal.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPatternBase.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleBase.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Battle\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="WorldBase.cpp">
       <Filter>Source Files\World</Filter>
@@ -79,13 +79,10 @@
       <Filter>Source Files\World</Filter>
     </ClCompile>
     <ClCompile Include="Attack_Explode.cpp">
-      <Filter>Source Files\Attacks</Filter>
+      <Filter>Source Files\Battle\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="Attack_Border.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_Explode.cpp">
-      <Filter>Source Files\Attacks</Filter>
+      <Filter>Source Files\Battle\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="CharacterBase.cpp">
       <Filter>Source Files\Characters</Filter>
@@ -99,29 +96,17 @@
     <ClCompile Include="NPCSprite.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="AttackPattern_ShootAtPlayer.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleDialogBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DialogManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Attack_VerticleGap.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_VerticleGap.cpp">
-      <Filter>Source Files\Attacks</Filter>
+      <Filter>Source Files\Battle\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="EventBase.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="Attack_Wall.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_Wall.cpp">
-      <Filter>Source Files\Attacks</Filter>
+      <Filter>Source Files\Battle\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="PopupWithCollision.cpp">
       <Filter>Source Files\World</Filter>
@@ -145,47 +130,71 @@
       <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="Attack_Snake.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_Snake.cpp">
-      <Filter>Source Files\Attacks</Filter>
+      <Filter>Source Files\Battle\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="Event_LostDevice.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="AttackPattern_ShootandExplode.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_SnakeandExplode.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_ShootandSnake.cpp">
-      <Filter>Source Files\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="RGBA.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixBase.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPatternBase.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackBase.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_Explode.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootandExplode.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootandSnake.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootAtPlayer.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootHorizontal.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_Snake.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_SnakeandExplode.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_VerticleGap.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_Wall.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleBase.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleDialogBase.cpp">
+      <Filter>Source Files\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MatrixBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MatrixManager.h">
@@ -195,25 +204,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Attack_HorizontalLine.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackBase.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_ShootHorizontal.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPatternBase.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPatterns.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="Attacks.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleBase.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Chr_AllMight.h">
       <Filter>Header Files\Characters</Filter>
@@ -231,13 +222,10 @@
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="Attack_Border.h">
-      <Filter>Header Files\Attacks</Filter>
+      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Attack_Explode.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_Explode.h">
-      <Filter>Header Files\Attacks</Filter>
+      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Header Files\World</Filter>
@@ -248,12 +236,6 @@
     <ClInclude Include="NPCSprite.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="BattleDialogBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_ShootAtPlayer.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
     <ClInclude Include="DialogManager.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
@@ -261,19 +243,13 @@
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="Attack_VerticleGap.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_VerticleGap.h">
-      <Filter>Header Files\Attacks</Filter>
+      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="EventBase.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="AttackPattern_Wall.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
     <ClInclude Include="Attack_Wall.h">
-      <Filter>Header Files\Attacks</Filter>
+      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Event_Test.h">
       <Filter>Header Files\Events</Filter>
@@ -291,9 +267,6 @@
       <Filter>Header Files\Events</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BossFightDefinition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SplashScreen.h">
@@ -342,22 +315,10 @@
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Attack_Snake.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_Snake.h">
-      <Filter>Header Files\Attacks</Filter>
+      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Event_LostDevice.h">
       <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_ShootandExplode.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_SnakeandExplode.h">
-      <Filter>Header Files\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_ShootandSnake.h">
-      <Filter>Header Files\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Chr_MiniBoss1.h">
       <Filter>Header Files\Characters</Filter>
@@ -371,23 +332,80 @@
     <ClInclude Include="Chr_MiniBoss4.h">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="RGBA.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="BitmapDefinition.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MatrixBase.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="ColorPalette.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="RGBA.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="ColoredString.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPalette.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleBase.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="BossFightDefinition.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleDialogBase.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackBase.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPatterns.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Attacks.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPatternBase.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_Explode.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootandExplode.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootandSnake.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootAtPlayer.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootHorizontal.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_Snake.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_SnakeandExplode.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_VerticleGap.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_Wall.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapDefinition.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, int &player
 	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_health_{ player_health }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
 	screen_matrix_{ screen_matrix }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, screen_matrix, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
-	initial_player_health_{ player_health }
+	initial_player_health_{ player_health }, end_animation_index_(0)
 {
 	start_time_move_cursor_ = GetTickCount64();
 	setBackgroundText();
@@ -320,25 +320,37 @@ void BattleBase::bossOutOfAttacks()
 void BattleBase::bossDestroyed()
 {
 	double current_time_battle_end_animation = GetTickCount64() - start_time_battle_end_animation_;
-	if (current_time_battle_end_animation <= 5000)
-	{		
-		showFileSprite("NERVOUS_DEAD");
-	}
-	else if (current_time_battle_end_animation > 5000)
+	switch (end_animation_index_)
 	{
-		removeAllUI();
-		bitmap_.getRGBA().fadeToBlack(5, 3);
-	}
-	else if (current_time_battle_end_animation > 9000)
-	{
-		hideFileSprite();
-	}
-
-	displayScreen();
-	if (current_time_battle_end_animation > 11000)
-	{
-		is_destroyed_ = true;
-		is_battle_finished_ = true;
+	case 0:
+		if (current_time_battle_end_animation <= 5000)
+		{
+			displayScreen();
+			removeAllUI();
+			showFileSprite("NERVOUS_DEAD");
+		}
+		else if (current_time_battle_end_animation > 5000)
+		{
+			if (bitmap_.getRGBA().fadeToBlack(5, 3))
+			{
+				end_animation_index_++;
+				start_time_battle_end_animation_ = GetTickCount64();
+			}
+		}
+		break;
+	case 1:
+		if (current_time_battle_end_animation <= 2000)
+		{
+			hideFileSprite();
+		}
+		else if (current_time_battle_end_animation > 2000)
+		{
+			is_battle_finished_ = true;
+			is_destroyed_ = true;
+		}
+		break;
+	default:
+		break;
 	}
 }
 
@@ -347,21 +359,19 @@ void BattleBase::bossSpared()
 {
 	double current_time_battle_end_animation = GetTickCount64() - start_time_battle_end_animation_;
 	if (current_time_battle_end_animation <= 5000)
-		showFileSprite("NEUTRAL");
-	else if (current_time_battle_end_animation > 5000)
 	{
+		displayScreen();
 		removeAllUI();
-		showFileSprite("HAPPY");
+		showFileSprite("NEUTRAL");
 	}
 	else if (current_time_battle_end_animation > 9000)
 	{
 		hideFileSprite();
-	}
-
-	displayScreen();
-	if (current_time_battle_end_animation > 11000)
-	{
 		is_battle_finished_ = true;
+	}
+	else if (current_time_battle_end_animation > 5000)
+	{
+		showFileSprite("HAPPY");
 	}
 }
 
@@ -456,13 +466,13 @@ void BattleBase::resetBattleSpace()
 // Fades all UI elements to black and removes them
 void BattleBase::removeAllUI()
 {
-	for (int i = 0; i < 27; i++)
+	for (int i = 0; i < height_ - 1; i++)
 		for (int j = 0; j < 68; j++)
-			if (menu_matrix_[1 + i][5 + j] != ' ')
+			if (menu_matrix_[i][5 + j] != ' ')
 			{
-				if (menu_matrix_[1 + i][5 + j].fadeColor(5, 10))
+				if (menu_matrix_[i][5 + j].fadeColor(5, 10))
 				{
-					menu_matrix_[1 + i][5 + j] = ' ';
+					menu_matrix_[i][5 + j] = ' ';
 				}
 			}
 }

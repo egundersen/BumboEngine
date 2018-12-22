@@ -14,7 +14,7 @@ public:
 
 private:
 	// Parts of the event (In-Order)
-	void moveTutorialNpc();
+	void moveTutorialNpc(int position_x, int position_y);
 	void askPlayerName(int time_interval);
 	void getPlayerName();
 	void tellFatherBackstory();
