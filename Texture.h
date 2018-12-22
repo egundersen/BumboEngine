@@ -28,6 +28,12 @@ public:
 			}
 		}
 	}
+
+	Texture(int center_position_x, int center_position_y, std::string ASCII, std::string ASCII_colors, Matrix &matrix)
+	{
+		Image image(ASCII, ASCII_colors);
+		addImageToMatrix(center_position_x, center_position_y, image, matrix, true);
+	}
 };
 
 #endif // !TEXTURE_H

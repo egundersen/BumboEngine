@@ -8,7 +8,7 @@ R Red
 C Crimson/Red
 O Orange
 Y Yellow
-D Khaki/Yellow
+K Khaki/Yellow
 M Magenta/Pink
 P Purple
 L Lime
@@ -19,7 +19,12 @@ I Indigo/Blue
 N Navy/Blue
 B Brown
 W White
-S Steel/Grey
+F Fog/Light Grey
+S Steel/Dark Grey
+H Heather/Greenish-Grey
+
+0 EXTREMELY Dark Grey
+J Skin Color
 */
 class ColorPalette
 {
@@ -40,7 +45,7 @@ public:
 		case 'Y':
 			rgba_ = RGBA(255, 255, 0);
 			break;
-		case 'D':
+		case 'K':
 			rgba_ = RGBA(240, 230, 140);
 			break;
 		case 'M':
@@ -73,8 +78,20 @@ public:
 		case 'W':
 			rgba_ = RGBA(255, 255, 255);
 			break;
+		case 'F':
+			rgba_ = RGBA(169, 169, 169);
+			break;
 		case 'S':
 			rgba_ = RGBA(105, 105, 105);
+			break;
+		case 'H':
+			rgba_ = RGBA(47, 79, 79);
+			break;
+		case '0':
+			rgba_ = RGBA(30, 30, 30);
+			break;
+		case 'J':
+			rgba_ = RGBA(255, 224, 189);
 			break;
 		default:
 			rgba_ = RGBA(255, 255, 255);
