@@ -541,6 +541,7 @@ void WorldBase::GENERATE_Maze()
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
 void WorldBase::GENERATE_Enemies()
 {
+	// Main Characters
 	CharacterBase *tutorial_npc = new Chr_TutorialNPC(838, 225, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *aki_final = new Chr_AkiFinal(1063, 259, 10, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
@@ -549,6 +550,22 @@ void WorldBase::GENERATE_Enemies()
 	CharacterBase *bonny = new Chr_Bonny(1043, 259, 13, sprite_sheet_.bonny, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *sharktooth = new Chr_Sharktooth(1053, 259, 14, sprite_sheet_.sharktooth, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
+	// Cave (Before Bridge)
+	CharacterBase *door_guard_sharktooth = new Chr_DoorGuardSharktooth(297, 179, 38, sprite_sheet_.pirate_10, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *door_guard_ryuuko = new Chr_DoorGuardRyuuko(354, 164, 16, sprite_sheet_.pirate_9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sleeping = new Chr_SleepingPirate(336, 170, 17, sprite_sheet_.pirate_15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *pacing = new Chr_PacingPirate(277, 209, 18, sprite_sheet_.pirate_8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	// pacing -> 223
+
+	// Checkpoint Guard Interrogation
+	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+
+	// Final Outside Area
+	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(985, 64, 20, sprite_sheet_.mini_boss_1, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1072, 55, 21, sprite_sheet_.mini_boss_2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+
+	// 1146, 59 aki final
+
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();
 	aki->initializeCharacter();
@@ -556,12 +573,28 @@ void WorldBase::GENERATE_Enemies()
 	bonny->initializeCharacter();
 	sharktooth->initializeCharacter();
 
+	door_guard_sharktooth->initializeCharacter();
+	door_guard_ryuuko->initializeCharacter();
+	sleeping->initializeCharacter();
+	pacing->initializeCharacter();
+	guard->initializeCharacter();
+	mini_boss_1->initializeCharacter();
+	mini_boss_2->initializeCharacter();
+
+
 	characters_.push_back(tutorial_npc);
 	characters_.push_back(aki_final);
 	characters_.push_back(aki);
 	characters_.push_back(ryuuko);
 	characters_.push_back(bonny);
 	characters_.push_back(sharktooth);
+	characters_.push_back(door_guard_sharktooth);
+	characters_.push_back(door_guard_ryuuko);
+	characters_.push_back(sleeping);
+	characters_.push_back(pacing);
+	characters_.push_back(guard);
+	characters_.push_back(mini_boss_1);
+	characters_.push_back(mini_boss_2);
 
 #ifdef _DEBUG
 	CharacterBase *test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
@@ -636,6 +669,13 @@ void WorldBase::GENERATE_Enemies()
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
+	// Main Characters
+	CharacterBase *aki_entrance = new Chr_BackgroundNPC(296, 218, 22, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.aki, 'r');
+	// aki_move to: 272, 192
+	CharacterBase *aki_after_sharktooth = new Chr_BackgroundNPC(297, 193, 23, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.aki, 'r');
+		// Border NPCs
 	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(1027, 205, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("Been waitin' in line for five days...", 'X', 23, 9), sprite_sheet_.player, 'u');
 	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(1034, 202, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
@@ -650,12 +690,57 @@ void WorldBase::GENERATE_NonHostileNPCs()
 		PopupDefinition("Ye're a pirate too? Better get in line!", 'X', 23, 9), sprite_sheet_.player, 'r');
 
 	CharacterBase *boarder_guard_1 = new Chr_BackgroundNPC(1079, 203, 8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("Another pirate... Get in line with the rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
+		PopupDefinition("Another pirate... Get in line with the rest!", 'X', 23, 9), sprite_sheet_.checkpoint_guard, 'l');
 	CharacterBase *boarder_guard_2 = new Chr_BackgroundNPC(1071, 214, 9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("Another pirate... Get in line with the rest!", 'X', 23, 9), sprite_sheet_.player, 'l');
+		PopupDefinition("Another pirate... Get in line with the rest!", 'X', 23, 9), sprite_sheet_.checkpoint_guard, 'l');
 
 	CharacterBase *boarder_incident_random = new Chr_BackgroundNPC(1013, 259, 15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.player, 'r');
+
+	// Cave (Before Bridge)
+	CharacterBase *bridge_rally_leader = new Chr_BackgroundNPC(353, 114, 24, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_2, 'r');
+	CharacterBase *bridge_rally_1 = new Chr_BackgroundNPC(341, 127, 25, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
+	CharacterBase *bridge_rally_2 = new Chr_BackgroundNPC(332, 122, 26, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_17, 'r');
+	CharacterBase *bridge_rally_3 = new Chr_BackgroundNPC(342, 117, 27, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_16, 'r');
+	CharacterBase *bridge_rally_4 = new Chr_BackgroundNPC(362, 125, 28, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_15, 'r');
+	CharacterBase *bridge_rally_5 = new Chr_BackgroundNPC(372, 123, 29, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_14, 'r');
+
+	// 207, 85
+	//227, 85 EVENT
+
+	CharacterBase *apple_salesman = new Chr_BackgroundNPC(513, 158, 30, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_7, 'r');
+	CharacterBase *everything_salesman = new Chr_BackgroundNPC(525, 158, 31, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_6, 'l');
+	CharacterBase *feather_salesman = new Chr_BackgroundNPC(551, 172, 32, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_12, 'd');
+
+	CharacterBase *cuban_1 = new Chr_BackgroundNPC(326, 212, 33, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_11, 'r');
+	CharacterBase *cuban_2 = new Chr_BackgroundNPC(326, 201, 34, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_3, 'r');
+
+	// Checkpoint Guard Interrogation
+	CharacterBase *child = new Chr_BackgroundNPC(523, 229, 35, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'l');
+
+	// Cave (After Bridge)
+
+	// Final Outside Area
+	// we came as soon as we could (JOKE TIME)
+	// All I see is a THOT that needs to BEGONE
+	// woah woah woah, dont fight us. here. fight this lemon instead
+	// sour lemon joke. LEMON:
+	CharacterBase *thot_patrol_1 = new Chr_BackgroundNPC(1088, 56, 36, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.thot_patrol, 'r');
+	CharacterBase *thot_patrol_2 = new Chr_BackgroundNPC(1075, 56, 37, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.thot_patrol, 'r');
 
 	standing_in_line_1->initializeCharacter();
 	standing_in_line_2->initializeCharacter();
@@ -667,6 +752,23 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	boarder_guard_1->initializeCharacter();
 	boarder_incident_random->initializeCharacter();
 
+	aki_entrance->initializeCharacter();
+	aki_after_sharktooth->initializeCharacter();
+	bridge_rally_leader->initializeCharacter();
+	bridge_rally_1->initializeCharacter();
+	bridge_rally_2->initializeCharacter();
+	bridge_rally_3->initializeCharacter();
+	bridge_rally_4->initializeCharacter();
+	bridge_rally_5->initializeCharacter();
+	apple_salesman->initializeCharacter();
+	everything_salesman->initializeCharacter();
+	feather_salesman->initializeCharacter();
+	cuban_1->initializeCharacter();
+	cuban_2->initializeCharacter();
+	child->initializeCharacter();
+	thot_patrol_1->initializeCharacter();
+	thot_patrol_2->initializeCharacter();
+
 	characters_.push_back(standing_in_line_1);
 	characters_.push_back(standing_in_line_2);
 	characters_.push_back(standing_in_line_3);
@@ -676,6 +778,22 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(boarder_guard_1);
 	characters_.push_back(boarder_guard_2);
 	characters_.push_back(boarder_incident_random);
+	characters_.push_back(aki_entrance);
+	characters_.push_back(aki_after_sharktooth);
+	characters_.push_back(bridge_rally_leader);
+	characters_.push_back(bridge_rally_1);
+	characters_.push_back(bridge_rally_2);
+	characters_.push_back(bridge_rally_3);
+	characters_.push_back(bridge_rally_4);
+	characters_.push_back(bridge_rally_5);
+	characters_.push_back(apple_salesman);
+	characters_.push_back(everything_salesman);
+	characters_.push_back(feather_salesman);
+	characters_.push_back(cuban_1);
+	characters_.push_back(cuban_2);
+	characters_.push_back(child);
+	characters_.push_back(thot_patrol_1);
+	characters_.push_back(thot_patrol_2);
 }
 
 // creates all the sign posts (These show popups)
@@ -758,7 +876,7 @@ void WorldBase::GENERATE_Events()
 	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1071, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	
+
 	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 10, 8, 296, 231, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 10, 8, 1107, 202, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_sharktooth = new Event_TeleportPlayer(10005, 297, 174, 10, 4, 104, 241, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);

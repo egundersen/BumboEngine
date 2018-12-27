@@ -228,6 +228,62 @@ struct SpriteSheet
 		"   YYYY   Z  WAAYYY  Z   WYYJ   Z  JRWWRJ  Z JYRRRRY  Z  NY  YN  Z"
 	);
 
+	WorldSprite checkpoint_guard = WorldSprite(
+		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
+		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
+		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  O%###%O Z   %%  %  Z",
+		"   @@@@   Z  </O/@@  Z   >XX@   Z  O#xx#O  Z O%###%O  Z  %  %%   Z",
+		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
+		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
+		"   @@@@   Z  @@\\O\\>  Z   @XX< O Z  O#xx#O  Z %%O#%#   Z %=  %%   Z",
+		"   @@@@   Z  </O/@@  Z O >XX@   Z  O#xx#O  Z   #%#O%% Z   %%  =% Z",
+		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z",
+		"   @@@@   Z  XV/\\VX  Z   X<>X   Z O#XXXX#O Z O######O Z  %U  U%  Z",
+		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  ######O Z  %U  U%  Z",
+		"   @@@@   Z  </O/@@  Z   >XX@   Z  O#xx#O  Z O######  Z  %U  U%  Z",
+
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ   Z  JRJJRJ  Z  JSRRRSJ Z   SS  S  Z",
+		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JSRRRSJ  Z  S  SS   Z",
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ J Z  JRJJRJ  Z SSJRSR   Z SB  SS   Z",
+		"   SSSS   Z  JJJJSS  Z J JWWS   Z  JRJJRJ  Z   RSRJSS Z   SS  BS Z",
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ Z JRRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ   Z  JRJJRJ  Z  RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JRRRRRR  Z  SB  BS  Z"
+	);
+
+	WorldSprite thot_patrol = WorldSprite(
+		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
+		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
+		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  O%###%O Z   %%  %  Z",
+		"   @@@@   Z  </O/@@  Z   >XX@   Z  O#xx#O  Z O%###%O  Z  %  %%   Z",
+		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
+		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O Z O###### OZ  %U  U%  Z",
+		"   @@@@   Z  @@\\O\\>  Z   @XX< O Z  O#xx#O  Z %%O#%#   Z %=  %%   Z",
+		"   @@@@   Z  </O/@@  Z O >XX@   Z  O#xx#O  Z   #%#O%% Z   %%  =% Z",
+		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z",
+		"   @@@@   Z  XV/\\VX  Z   X<>X   Z O#XXXX#O Z O######O Z  %U  U%  Z",
+		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  ######O Z  %U  U%  Z",
+		"   @@@@   Z  </O/@@  Z   >XX@   Z  O#xx#O  Z O######  Z  %U  U%  Z",
+
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ ZJ RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ   Z  JRJJRJ  Z  JSRRRSJ Z   SS  S  Z",
+		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JSRRRSJ  Z  S  SS   Z",
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WWWW   Z JRWWWWRJ Z JRRRRRR JZ  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ J Z  JRJJRJ  Z SSJRSR   Z SB  SS   Z",
+		"   SSSS   Z  JJJJSS  Z J JWWS   Z  JRJJRJ  Z   RSRJSS Z   SS  BS Z",
+		"   SSSS   Z  WWSSWW  Z   WWWW   Z JRWWWWRJ Z JRRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  WYJJYW  Z   WJJW   Z JRWWWWRJ Z JRRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  SSJJJJ  Z   SWWJ   Z  JRJJRJ  Z  RRRRRRJ Z  SB  BS  Z",
+		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JRRRRRR  Z  SB  BS  Z"
+	);
+
 	WorldSprite pirate_1 = WorldSprite(
 		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",

@@ -6,6 +6,8 @@
 /* Text and dimensions for a popup */
 struct PopupDefinition
 {
+	PopupDefinition()
+		: text{ "" }, border_character{ 'Z' }, width{ 0 }, height{ 0 } { }
 	PopupDefinition(std::string ascii_text, char popup_border_character, int popup_width, int popup_height)
 		: text{ ascii_text }, border_character{ popup_border_character }, width{ popup_width }, height{ popup_height } { }
 	

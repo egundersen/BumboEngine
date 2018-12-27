@@ -16,12 +16,10 @@ public:
 		/* Sets the sprite ascii for the NPC world sprite */
 		WorldSprite world_sprite,
 
-		char direction,
+		// Direction the NPC is facing
+		char direction)
 
-		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
-		int event_ID = 0) // 0 = no event
-
-		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player_health, BossFightDefinition(), false, true, image_file_path, world_sprite)
+		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, 0, player_health, BossFightDefinition(), false, true, image_file_path, world_sprite)
 	{
 		faceDirection(direction);
 	}

@@ -4,10 +4,10 @@
 #ifndef CHR_MINIBOSS3_H
 #define CHR_MINIBOSS3_H
 
-class Chr_MINIBOSS3 : public CharacterBase
+class Chr_MiniBoss3 : public CharacterBase
 {
 public:
-	Chr_MINIBOSS3(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, int &player_health, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_MiniBoss3(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, int &player_health, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 

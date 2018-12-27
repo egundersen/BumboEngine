@@ -55,6 +55,15 @@
     <Filter Include="Source Files\Battle\Attack Patterns">
       <UniqueIdentifier>{6fc1f4e2-d278-44c8-b253-760f35024476}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Characters\Examples">
+      <UniqueIdentifier>{615b931d-10da-4ad3-aca1-399c5033d82e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Characters\Main Characters">
+      <UniqueIdentifier>{53d98dbc-b47a-4043-aa46-7435585edf58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Characters\Cannon Fodder">
+      <UniqueIdentifier>{e0175480-8781-4aa8-9860-01ee0b03c421}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,9 +104,6 @@
     </ClCompile>
     <ClCompile Include="NPCSprite.cpp">
       <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="DialogManager.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Attack_VerticleGap.cpp">
       <Filter>Source Files\Battle\Attacks</Filter>
@@ -186,6 +192,9 @@
     <ClCompile Include="BattleDialogBase.cpp">
       <Filter>Source Files\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="DialogManager.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -205,9 +214,6 @@
     </ClInclude>
     <ClInclude Include="Attack_HorizontalLine.h">
       <Filter>Header Files\Battle\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_AllMight.h">
-      <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Characters.h">
       <Filter>Header Files\Characters</Filter>
@@ -278,9 +284,6 @@
     <ClInclude Include="CharacterBase.h">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Chr_TutorialNPC.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="WorldSprite.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
@@ -299,38 +302,11 @@
     <ClInclude Include="Event_BorderIncident.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Chr_Ryuuko.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_Aki.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_AkiFinal.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_Bonny.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_Sharktooth.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="Attack_Snake.h">
       <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Event_LostDevice.h">
       <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_MiniBoss1.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_MiniBoss2.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_MiniBoss3.h">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_MiniBoss4.h">
-      <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Utilities</Filter>
@@ -406,6 +382,57 @@
     </ClInclude>
     <ClInclude Include="BitmapDefinition.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_AllMight.h">
+      <Filter>Header Files\Characters\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_DialogExample.h">
+      <Filter>Header Files\Characters\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_Ryuuko.h">
+      <Filter>Header Files\Characters\Main Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_Sharktooth.h">
+      <Filter>Header Files\Characters\Main Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_Aki.h">
+      <Filter>Header Files\Characters\Main Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_AkiFinal.h">
+      <Filter>Header Files\Characters\Main Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_Bonny.h">
+      <Filter>Header Files\Characters\Main Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_TutorialNPC.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MiniBoss4.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MiniBoss1.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MiniBoss2.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MiniBoss3.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_DoorGuardSharktooth.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_DoorGuardRyuuko.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_SleepingPirate.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_PacingPirate.h">
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_CheckpointGuard.h">
+      <Filter>Header Files\Characters\Main Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
