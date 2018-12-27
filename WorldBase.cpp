@@ -670,9 +670,9 @@ void WorldBase::GENERATE_Enemies()
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	// Main Characters
-	CharacterBase *aki_entrance = new Chr_BackgroundNPC(296, 218, 22, sprite_sheet_.aki, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki_entrance = new Chr_AkiEntrance(296, 218, 22, sprite_sheet_.aki, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	// TODO aki_move to: 272, 192
-	CharacterBase *aki_after_sharktooth = new Chr_BackgroundNPC(297, 193, 23, sprite_sheet_.aki, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki_after_sharktooth = new Chr_AkiAfterSharktooth(297, 193, 23, sprite_sheet_.aki, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Border NPCs
 	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(1027, 205, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
@@ -710,9 +710,9 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	CharacterBase *bridge_rally_5 = new Chr_BackgroundNPC(372, 123, 29, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_14, 'r');
 
-	CharacterBase *apple_salesman = new Chr_BackgroundNPC(513, 158, 30, sprite_sheet_.pirate_7, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *everything_salesman = new Chr_BackgroundNPC(525, 158, 31, sprite_sheet_.pirate_6, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *feather_salesman = new Chr_BackgroundNPC(551, 172, 32, sprite_sheet_.pirate_12, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *apple_salesman = new Chr_AppleSalesman(513, 158, 30, sprite_sheet_.pirate_7, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *everything_salesman = new Chr_EverythingSalesman(525, 158, 31, sprite_sheet_.pirate_6, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *feather_salesman = new Chr_FeatherSalesman(551, 172, 32, sprite_sheet_.pirate_12, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *cuban_1 = new Chr_BackgroundNPC(197, 177, 33, sprite_sheet_.pirate_11, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *cuban_2 = new Chr_BackgroundNPC(197, 187, 34, sprite_sheet_.pirate_3, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	//326, 212 -|- 326, 201
@@ -867,10 +867,10 @@ void WorldBase::GENERATE_Events()
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1071, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
-	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 10, 8, 296, 231, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 10, 8, 1107, 202, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_sharktooth = new Event_TeleportPlayer(10005, 297, 174, 10, 4, 104, 241, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_from_sharktooth = new Event_TeleportPlayer(10006, 104, 253, 10, 8, 297, 179, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 18, 8, 296, 231, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 18, 8, 1107, 202, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_to_sharktooth = new Event_TeleportPlayer(10005, 297, 174, 12, 4, 104, 241, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_TeleportPlayer *teleport_from_sharktooth = new Event_TeleportPlayer(10006, 104, 253, 12, 8, 297, 179, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_aki = new Event_TeleportPlayer(10007, 393, 21, 10, 8, 679, 87, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
