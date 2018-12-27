@@ -542,27 +542,27 @@ void WorldBase::GENERATE_Maze()
 void WorldBase::GENERATE_Enemies()
 {
 	// Main Characters
-	CharacterBase *tutorial_npc = new Chr_TutorialNPC(838, 225, 1, sprite_sheet_.tutorial_NPC, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *aki_final = new Chr_AkiFinal(1063, 259, 10, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *tutorial_npc = new Chr_TutorialNPC(838, 225, 1, sprite_sheet_.tutorial_NPC, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki_final = new Chr_AkiFinal(1063, 259, 10, sprite_sheet_.aki, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
-	CharacterBase *ryuuko = new Chr_Ryuuko(1023, 259, 11, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *aki = new Chr_Aki(1033, 259, 12, sprite_sheet_.aki, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *bonny = new Chr_Bonny(1043, 259, 13, sprite_sheet_.bonny, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sharktooth = new Chr_Sharktooth(1053, 259, 14, sprite_sheet_.sharktooth, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *ryuuko = new Chr_Ryuuko(1023, 259, 11, sprite_sheet_.ryuuko, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki = new Chr_Aki(1033, 259, 12, sprite_sheet_.aki, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *bonny = new Chr_Bonny(1043, 259, 13, sprite_sheet_.bonny, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sharktooth = new Chr_Sharktooth(1053, 259, 14, sprite_sheet_.sharktooth, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Cave (Before Bridge)
-	CharacterBase *door_guard_sharktooth = new Chr_DoorGuardSharktooth(297, 179, 38, sprite_sheet_.pirate_10, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *door_guard_ryuuko = new Chr_DoorGuardRyuuko(354, 164, 16, sprite_sheet_.pirate_9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sleeping = new Chr_SleepingPirate(336, 170, 17, sprite_sheet_.pirate_15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *pacing = new Chr_PacingPirate(277, 209, 18, sprite_sheet_.pirate_8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *door_guard_sharktooth = new Chr_DoorGuardSharktooth(297, 179, 38, sprite_sheet_.pirate_10, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *door_guard_ryuuko = new Chr_DoorGuardRyuuko(354, 164, 16, sprite_sheet_.pirate_9, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sleeping = new Chr_SleepingPirate(336, 170, 17, sprite_sheet_.pirate_15, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *pacing = new Chr_PacingPirate(282, 208, 18, sprite_sheet_.pirate_8, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	// pacing -> 223
 
 	// Checkpoint Guard Interrogation
-	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Final Outside Area
-	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(985, 64, 20, sprite_sheet_.mini_boss_1, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1072, 55, 21, sprite_sheet_.mini_boss_2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(985, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1072, 55, 21, sprite_sheet_.mini_boss_2, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// 1146, 59 aki final
 
@@ -597,30 +597,30 @@ void WorldBase::GENERATE_Enemies()
 	characters_.push_back(mini_boss_2);
 
 #ifdef _DEBUG
-	CharacterBase *test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	test->initializeCharacter();
 	characters_.push_back(test);
 
-	CharacterBase *sprite_1 = new Chr_AllMight(662, 213, -1, sprite_sheet_.pirate_1, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_2 = new Chr_AllMight(672, 213, -2, sprite_sheet_.pirate_2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_3 = new Chr_AllMight(682, 213, -3, sprite_sheet_.pirate_3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_4 = new Chr_AllMight(692, 213, -4, sprite_sheet_.pirate_5_monkey, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_5 = new Chr_AllMight(702, 213, -5, sprite_sheet_.pirate_5_monkey, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_6 = new Chr_AllMight(712, 213, -6, sprite_sheet_.pirate_6, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_7 = new Chr_AllMight(722, 213, -7, sprite_sheet_.pirate_7, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_8 = new Chr_AllMight(732, 213, -8, sprite_sheet_.pirate_8, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_9 = new Chr_AllMight(742, 213, -9, sprite_sheet_.pirate_9, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_10 = new Chr_AllMight(752, 213, -10, sprite_sheet_.pirate_10, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_11 = new Chr_AllMight(762, 213, -11, sprite_sheet_.pirate_11, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_12 = new Chr_AllMight(772, 213, -12, sprite_sheet_.pirate_12, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_13 = new Chr_AllMight(782, 213, -13, sprite_sheet_.pirate_13, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_14 = new Chr_AllMight(792, 213, -14, sprite_sheet_.pirate_14, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_15 = new Chr_AllMight(802, 213, -15, sprite_sheet_.pirate_15, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_16 = new Chr_AllMight(812, 213, -16, sprite_sheet_.pirate_16, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_17 = new Chr_AllMight(822, 213, -17, sprite_sheet_.pirate_17, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_18 = new Chr_AllMight(832, 213, -18, sprite_sheet_.sharktooth, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_19 = new Chr_AllMight(842, 213, -19, sprite_sheet_.bonny, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sprite_20 = new Chr_AllMight(852, 213, -20, sprite_sheet_.ryuuko, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_1 = new Chr_AllMight(662, 213, -1, sprite_sheet_.pirate_1, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_2 = new Chr_AllMight(672, 213, -2, sprite_sheet_.pirate_2, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_3 = new Chr_AllMight(682, 213, -3, sprite_sheet_.pirate_3, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_4 = new Chr_AllMight(692, 213, -4, sprite_sheet_.pirate_5_monkey, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_5 = new Chr_AllMight(702, 213, -5, sprite_sheet_.pirate_5_monkey, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_6 = new Chr_AllMight(712, 213, -6, sprite_sheet_.pirate_6, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_7 = new Chr_AllMight(722, 213, -7, sprite_sheet_.pirate_7, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_8 = new Chr_AllMight(732, 213, -8, sprite_sheet_.pirate_8, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_9 = new Chr_AllMight(742, 213, -9, sprite_sheet_.pirate_9, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_10 = new Chr_AllMight(752, 213, -10, sprite_sheet_.pirate_10, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_11 = new Chr_AllMight(762, 213, -11, sprite_sheet_.pirate_11, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_12 = new Chr_AllMight(772, 213, -12, sprite_sheet_.pirate_12, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_13 = new Chr_AllMight(782, 213, -13, sprite_sheet_.pirate_13, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_14 = new Chr_AllMight(792, 213, -14, sprite_sheet_.pirate_14, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_15 = new Chr_AllMight(802, 213, -15, sprite_sheet_.pirate_15, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_16 = new Chr_AllMight(812, 213, -16, sprite_sheet_.pirate_16, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_17 = new Chr_AllMight(822, 213, -17, sprite_sheet_.pirate_17, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_18 = new Chr_AllMight(832, 213, -18, sprite_sheet_.sharktooth, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_19 = new Chr_AllMight(842, 213, -19, sprite_sheet_.bonny, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sprite_20 = new Chr_AllMight(852, 213, -20, sprite_sheet_.ryuuko, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	//*/
 	sprite_1->initializeCharacter();
 	sprite_2->initializeCharacter();
@@ -670,12 +670,11 @@ void WorldBase::GENERATE_Enemies()
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	// Main Characters
-	CharacterBase *aki_entrance = new Chr_BackgroundNPC(296, 218, 22, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.aki, 'r');
-	// aki_move to: 272, 192
-	CharacterBase *aki_after_sharktooth = new Chr_BackgroundNPC(297, 193, 23, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.aki, 'r');
-		// Border NPCs
+	CharacterBase *aki_entrance = new Chr_BackgroundNPC(296, 218, 22, sprite_sheet_.aki, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	// TODO aki_move to: 272, 192
+	CharacterBase *aki_after_sharktooth = new Chr_BackgroundNPC(297, 193, 23, sprite_sheet_.aki, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+
+	// Border NPCs
 	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(1027, 205, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("Been waitin' in line for five days...", 'X', 23, 9), sprite_sheet_.player, 'u');
 	CharacterBase *standing_in_line_2 = new Chr_BackgroundNPC(1034, 202, 3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
@@ -711,36 +710,27 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	CharacterBase *bridge_rally_5 = new Chr_BackgroundNPC(372, 123, 29, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_14, 'r');
 
-	// 207, 85
-	//227, 85 EVENT
+	CharacterBase *apple_salesman = new Chr_BackgroundNPC(513, 158, 30, sprite_sheet_.pirate_7, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *everything_salesman = new Chr_BackgroundNPC(525, 158, 31, sprite_sheet_.pirate_6, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *feather_salesman = new Chr_BackgroundNPC(551, 172, 32, sprite_sheet_.pirate_12, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *cuban_1 = new Chr_BackgroundNPC(197, 177, 33, sprite_sheet_.pirate_11, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *cuban_2 = new Chr_BackgroundNPC(197, 187, 34, sprite_sheet_.pirate_3, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	//326, 212 -|- 326, 201
 
-	CharacterBase *apple_salesman = new Chr_BackgroundNPC(513, 158, 30, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_7, 'r');
-	CharacterBase *everything_salesman = new Chr_BackgroundNPC(525, 158, 31, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_6, 'l');
-	CharacterBase *feather_salesman = new Chr_BackgroundNPC(551, 172, 32, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_12, 'd');
-
-	CharacterBase *cuban_1 = new Chr_BackgroundNPC(326, 212, 33, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_11, 'r');
-	CharacterBase *cuban_2 = new Chr_BackgroundNPC(326, 201, 34, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_3, 'r');
 
 	// Checkpoint Guard Interrogation
-	CharacterBase *child = new Chr_BackgroundNPC(523, 229, 35, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'l');
+	CharacterBase *child = new Chr_BackgroundNPC(523, 229, 35, sprite_sheet_.pirate_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Cave (After Bridge)
+	/* ~Left Empty~ */
 
 	// Final Outside Area
-	// we came as soon as we could (JOKE TIME)
+	// TODO we came as soon as we could (JOKE TIME)
 	// All I see is a THOT that needs to BEGONE
 	// woah woah woah, dont fight us. here. fight this lemon instead
 	// sour lemon joke. LEMON:
-	CharacterBase *thot_patrol_1 = new Chr_BackgroundNPC(1088, 56, 36, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.thot_patrol, 'r');
-	CharacterBase *thot_patrol_2 = new Chr_BackgroundNPC(1075, 56, 37, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.thot_patrol, 'r');
+	CharacterBase *thot_patrol_1 = new Chr_BackgroundNPC(1088, 56, 36, sprite_sheet_.thot_patrol, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *thot_patrol_2 = new Chr_BackgroundNPC(1075, 56, 37, sprite_sheet_.thot_patrol, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	standing_in_line_1->initializeCharacter();
 	standing_in_line_2->initializeCharacter();

@@ -21,3 +21,8 @@
 #include "Chr_CheckpointGuard.h"
 
 // Non-Hostile NPCs
+#include "Chr_AkiEntrance.h"
+#include "Chr_AkiAfterSharktooth.h"
+#include "Chr_AppleSalesman.h"
+#include "Chr_EverythingSalesman.h"
+#include "Chr_FeatherSalesman.h"

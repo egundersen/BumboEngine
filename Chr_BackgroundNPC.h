@@ -23,6 +23,13 @@ public:
 	{
 		faceDirection(direction);
 	}
+
+	Chr_BackgroundNPC(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, int &player_health, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path)
+
+		: CharacterBase(center_position_x, center_position_y, PopupDefinition(), unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, 0, player_health, BossFightDefinition(), false, true, image_file_path, world_sprite)
+	{
+		faceDirection(direction);
+	}
 };
 
 #endif // !CHR_BACKGROUNDNPC_H

@@ -64,6 +64,9 @@
     <Filter Include="Header Files\Characters\Cannon Fodder">
       <UniqueIdentifier>{e0175480-8781-4aa8-9860-01ee0b03c421}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Characters\Not Hostile">
+      <UniqueIdentifier>{47800709-ba17-4628-ae9d-c7c593366fc7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -431,8 +434,23 @@
     <ClInclude Include="Chr_PacingPirate.h">
       <Filter>Header Files\Characters\Cannon Fodder</Filter>
     </ClInclude>
+    <ClInclude Include="Chr_AkiEntrance.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_AkiAfterSharktooth.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_AppleSalesman.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_EverythingSalesman.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_FeatherSalesman.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
+    </ClInclude>
     <ClInclude Include="Chr_CheckpointGuard.h">
-      <Filter>Header Files\Characters\Main Characters</Filter>
+      <Filter>Header Files\Characters\Cannon Fodder</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
