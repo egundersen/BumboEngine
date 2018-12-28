@@ -32,6 +32,7 @@ public:
 				battle_sprite.getOverlay()
 			), attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
 	{
+		faceDirection(direction);
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;

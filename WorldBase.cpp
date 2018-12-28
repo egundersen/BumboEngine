@@ -543,7 +543,7 @@ void WorldBase::GENERATE_Enemies()
 {
 	// Main Characters
 	CharacterBase *tutorial_npc = new Chr_TutorialNPC(838, 225, 1, sprite_sheet_.tutorial_NPC, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *aki_final = new Chr_AkiFinal(1063, 259, 10, sprite_sheet_.aki, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki_final = new Chr_AkiFinal(1146, 59, 10, sprite_sheet_.aki, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	CharacterBase *ryuuko = new Chr_Ryuuko(1023, 259, 11, sprite_sheet_.ryuuko, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *aki = new Chr_Aki(1033, 259, 12, sprite_sheet_.aki, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
@@ -561,8 +561,6 @@ void WorldBase::GENERATE_Enemies()
 	// Final Outside Area
 	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(985, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1072, 55, 21, sprite_sheet_.mini_boss_2, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-
-	// 1146, 59 aki final
 
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();
@@ -694,18 +692,40 @@ void WorldBase::GENERATE_NonHostileNPCs()
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.player, 'r');
 
 	// Cave (Before Bridge)
-	CharacterBase *bridge_rally_leader = new Chr_BackgroundNPC(353, 114, 24, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_2, 'r');
+	CharacterBase *bridge_rally_leader = new Chr_BackgroundNPC(354, 104, 24, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_2, 'd');
 	CharacterBase *bridge_rally_1 = new Chr_BackgroundNPC(341, 127, 25, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'r');
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'u');
 	CharacterBase *bridge_rally_2 = new Chr_BackgroundNPC(332, 122, 26, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_17, 'r');
-	CharacterBase *bridge_rally_3 = new Chr_BackgroundNPC(342, 117, 27, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_16, 'r');
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_17, 'u');
+	CharacterBase *bridge_rally_3 = new Chr_BackgroundNPC(343, 120, 27, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_16, 'u');
 	CharacterBase *bridge_rally_4 = new Chr_BackgroundNPC(362, 125, 28, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_15, 'r');
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_15, 'u');
 	CharacterBase *bridge_rally_5 = new Chr_BackgroundNPC(372, 123, 29, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_14, 'r');
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_14, 'u');
+	CharacterBase *bridge_rally_6 = new Chr_BackgroundNPC(338, 112, 39, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_13, 'r');
+	CharacterBase *bridge_rally_7 = new Chr_BackgroundNPC(329, 115, 40, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_12, 'r');
+	CharacterBase *bridge_rally_8 = new Chr_BackgroundNPC(318, 120, 41, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_11, 'r');
+	CharacterBase *bridge_rally_9 = new Chr_BackgroundNPC(320, 112, 42, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_10, 'r');
+	CharacterBase *bridge_rally_10 = new Chr_BackgroundNPC(325, 102, 43, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_9, 'r');
+	CharacterBase *bridge_rally_11 = new Chr_BackgroundNPC(335, 105, 44, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_8, 'r');
+	CharacterBase *bridge_rally_12 = new Chr_BackgroundNPC(369, 112, 45, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_7, 'l');
+	CharacterBase *bridge_rally_13 = new Chr_BackgroundNPC(380, 116, 46, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_6, 'l');
+	CharacterBase *bridge_rally_14 = new Chr_BackgroundNPC(390, 119, 47, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_3, 'l');
+	CharacterBase *bridge_rally_15 = new Chr_BackgroundNPC(385, 110, 48, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_2, 'l');
+	CharacterBase *bridge_rally_16 = new Chr_BackgroundNPC(378, 107, 49, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
+		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'l');
 
 	CharacterBase *apple_salesman = new Chr_AppleSalesman(513, 158, 30, sprite_sheet_.pirate_7, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *everything_salesman = new Chr_EverythingSalesman(525, 158, 31, sprite_sheet_.pirate_6, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
@@ -748,6 +768,17 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	bridge_rally_3->initializeCharacter();
 	bridge_rally_4->initializeCharacter();
 	bridge_rally_5->initializeCharacter();
+	bridge_rally_6->initializeCharacter();
+	bridge_rally_7->initializeCharacter();
+	bridge_rally_8->initializeCharacter();
+	bridge_rally_9->initializeCharacter();
+	bridge_rally_10->initializeCharacter();
+	bridge_rally_11->initializeCharacter();
+	bridge_rally_12->initializeCharacter();
+	bridge_rally_13->initializeCharacter();
+	bridge_rally_14->initializeCharacter();
+	bridge_rally_15->initializeCharacter();
+	bridge_rally_16->initializeCharacter();
 	apple_salesman->initializeCharacter();
 	everything_salesman->initializeCharacter();
 	feather_salesman->initializeCharacter();
@@ -774,6 +805,17 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(bridge_rally_3);
 	characters_.push_back(bridge_rally_4);
 	characters_.push_back(bridge_rally_5);
+	characters_.push_back(bridge_rally_6);
+	characters_.push_back(bridge_rally_7);
+	characters_.push_back(bridge_rally_8);
+	characters_.push_back(bridge_rally_9);
+	characters_.push_back(bridge_rally_10);
+	characters_.push_back(bridge_rally_11);
+	characters_.push_back(bridge_rally_12);
+	characters_.push_back(bridge_rally_13);
+	characters_.push_back(bridge_rally_14);
+	characters_.push_back(bridge_rally_15);
+	characters_.push_back(bridge_rally_16);
 	characters_.push_back(apple_salesman);
 	characters_.push_back(everything_salesman);
 	characters_.push_back(feather_salesman);
@@ -864,7 +906,6 @@ void WorldBase::GENERATE_Events()
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
 	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1071, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 18, 8, 296, 231, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 18, 8, 1107, 202, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
@@ -873,6 +914,16 @@ void WorldBase::GENERATE_Events()
 	Event_TeleportPlayer *teleport_to_aki = new Event_TeleportPlayer(10007, 393, 21, 10, 8, 679, 87, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+
+	// Inside Cave
+	Event_LostDevice *lost_device = new Event_LostDevice(10003, 1033, 34, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_AkiClearCave *aki_clear_cave = new Event_AkiClearCave(10010, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_BridgeRally *bridge_rally = new Event_BridgeRally(10011, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_BridgeRally2 *bridge_rally2 = new Event_BridgeRally2(10012, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_BridgeRally3 *bridge_rally3 = new Event_BridgeRally3(10013, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_Cubans *cubans = new Event_Cubans(10014, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_ThotPatrol *thot_patrol = new Event_ThotPatrol(10015, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_ThrowOffCliff *throw_off_cliff = new Event_ThrowOffCliff(10016, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);
 	events_.push_back(tutorial);
@@ -885,6 +936,13 @@ void WorldBase::GENERATE_Events()
 	events_.push_back(teleport_to_aki);
 	events_.push_back(teleport_from_aki);
 	events_.push_back(teleport_to_mini_bosses);
+	events_.push_back(aki_clear_cave);
+	events_.push_back(bridge_rally);
+	events_.push_back(bridge_rally2);
+	events_.push_back(bridge_rally3);
+	events_.push_back(cubans);
+	events_.push_back(thot_patrol);
+	events_.push_back(throw_off_cliff);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)

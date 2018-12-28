@@ -67,6 +67,12 @@
     <Filter Include="Header Files\Characters\Not Hostile">
       <UniqueIdentifier>{47800709-ba17-4628-ae9d-c7c593366fc7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Events\Unique Events">
+      <UniqueIdentifier>{b1406013-9641-4c72-9ca6-b90f26e624f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Events\Unique Events">
+      <UniqueIdentifier>{a40bf579-cad5-4e3a-af23-6d1b88bd8f90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,20 +135,11 @@
     <ClCompile Include="Popup.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="Event_Tutorial.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
     <ClCompile Include="Event_TeleportPlayer.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Event_BorderIncident.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="Attack_Snake.cpp">
       <Filter>Source Files\Battle\Attacks</Filter>
-    </ClCompile>
-    <ClCompile Include="Event_LostDevice.cpp">
-      <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Utilities</Filter>
@@ -197,6 +194,36 @@
     </ClCompile>
     <ClCompile Include="DialogManager.cpp">
       <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_BorderIncident.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_LostDevice.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_Tutorial.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_ThrowOffCliff.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_AkiClearCave.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_Cubans.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_ThotPatrol.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_BridgeRally2.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_BridgeRally.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_BridgeRally3.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -281,9 +308,6 @@
     <ClInclude Include="SplashScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Event_Tutorial.h">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
     <ClInclude Include="CharacterBase.h">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
@@ -302,14 +326,8 @@
     <ClInclude Include="Event_TeleportPlayer.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Event_BorderIncident.h">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
     <ClInclude Include="Attack_Snake.h">
       <Filter>Header Files\Battle\Attacks</Filter>
-    </ClInclude>
-    <ClInclude Include="Event_LostDevice.h">
-      <Filter>Header Files\Events</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Utilities</Filter>
@@ -454,6 +472,36 @@
     </ClInclude>
     <ClInclude Include="Chr_MinorNPC.h">
       <Filter>Header Files\Characters\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_LostDevice.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_BorderIncident.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_Tutorial.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_BridgeRally.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_BridgeRally2.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_BridgeRally3.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_Cubans.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_AkiClearCave.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_ThrowOffCliff.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_ThotPatrol.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
