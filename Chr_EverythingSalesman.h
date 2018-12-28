@@ -16,7 +16,7 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
+		Item android("Android", "ATTACKUP", 1, "Explosive core doubles player damage for the next attack.");
 
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC
@@ -26,35 +26,20 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh fancy seeing you here");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! Can you guess why?");
-		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love me a good joke!");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me! Let's fight!!!!", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here, have my most valuble possession!", health_potion);
-		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where are you going!!!?");
-		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "I dont know... What?");
-		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!! DIE!!! DIEE!!!", "FIGHT");
-		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will never speak with you again");
-		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see. Sorry, I only had the one item...", "SAVE");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lost", "SAVE");
+		DialogNode *node_1 = new DialogNode("", "Everythin' else fer sale! Jus' $400 'n ye get two o' them! AND they be better!");
+			DialogNode *node_1_1 = new DialogNode("Wha' are ye sellin'?", "Everythin' else. Wha' does it look like? Wants some (two)?");
+				DialogNode *node_1_1_1 = new DialogNode("Aye", "Thank ye, come again!", android);
+					DialogNode *node_1_1_1_1 = new DialogNode("", "Thank ye, come again!", "SAVE");
+				DialogNode *node_1_1_2 = new DialogNode("No", "That be too bad...");
+			DialogNode *node_1_2 = new DialogNode("No thanks", "That be too bad...");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
 		node_1->setChoice2(node_1_2);
-		node_1->setChoice3(node_1_3);
 
 		node_1_1->setChoice1(node_1_1_1);
 		node_1_1->setChoice2(node_1_1_2);
-		node_1_1->setChoice3(node_1_1_3);
 
-		node_1_2->setChoice1(node_1_2_1);
-		node_1_2->setChoice2(node_1_2_2);
-		node_1_2->setChoice3(node_1_2_3);
-
-		node_1_2_1->setChoice1(node_1_2_1_1);
-		node_1_1_2->setChoice1(node_1_1_2_1);
 		node_1_1_1->setChoice1(node_1_1_1_1);
 
 		setHeadNode(node_1);

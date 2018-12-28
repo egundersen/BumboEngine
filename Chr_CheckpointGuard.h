@@ -7,7 +7,7 @@
 class Chr_CheckpointGuard : public CharacterBase
 {
 public:
-	Chr_CheckpointGuard(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, int &player_health, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_CheckpointGuard(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, BattleSprite battle_sprite, int &player_health, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -19,58 +19,57 @@ public:
 		// Basic Popup Dialog (Only used if use_basic_dialog == TRUE)
 		PopupDefinition popup_sprite = PopupDefinition("This is my only dialog! Hello", 'X', 23, 9),
 
-
-		// Basic ASCII Example (The all Might face)
-		/*BossFightDefinition boss_fight_definition = BossFightDefinition(
-			22, // boss health
-			40, // his smile/eyes (overlay) offset X position
-			20, // his smile/eyes (overlay) offset Y position
-			"ALL MIGHT",
-			// ASCII Art for All Might
-			"            ,,#,@@@@@,@,*@@@@,*#@@@%             Z           ,,,,,,,@@(&,@@@@@@@@@@@@@%,           Z          @,#,,,,,,,,,,,@,%@@@@@&,,@@@           Z         ,,,@@,,,,,,,,,,,,%@@@@@@,,@@@@          Z         @@,#,,,,,,,,,,,,,%@@@@@@,,,@@@          Z         @@@,,,,,,,,,,,,,,@@@@@@@@,,,@@          Z        ,,@,,,,,,,,,,,,,,,@@@@@@@@,,,@@@         Z        ,@@,,&,&,@,,,.,,,@@@@@,@,@,,,,@@         Z       ,@#,,,,,@@&,@,#(%,,@,&@@@@@@,,,@@@        Z        ,@,,,,,%@@@@@,,/#*@@@@@@@@,,,,@@@        Z       ,@#,,,,,,,(@@@%,@@@@@@@@@@@@,,,*@,,       Z      ,,@,,,,,,,,,,,,,,,,@@@,,*@@@@@,,,,@,       Z      ,@,,,,,,,,,,,,,,,,,@@@,,,,@@@@,,,@,,       Z      @,*,#,,,,,,,,,,,,,,@@@@,,@@@@@@,@@,,       Z      ,@@,,@,@,,,,,,@@@@@@@@@&,@@@@@@,,@,,       Z      ,,@,,,@,,,,&,,,,,@@@@/,@@@@@@@@,@@,.       Z       ,,@,,,,,@,,,,,,,,,,,,,,(@@@@@,,@%,,       Z      ,&,,,,,,@,,,,,,,,,,,,,,,,,,@@@,,,,@@,&     Z     ,,,@@,,,,,@@%@**,,,,,,,,,,,@@@@,,@@@@  .    Z   @@,,@,@#,,/,,@&,,,,,,,,,,,,@,@@@@,,@@@@@      Z    ,(@@,,@,,@,,,&,,,,,,,,,,,,@@@@@@,,@@.@@@@,   Z   ,@@@@,,/,,@@,,,,,,,,,,,,@@@@@@@@@,.@@,@@@@@@  Z &@@@@@@,,,@,,,,,,,,,,,,,@@@@@@@@@@@,@@@&@@(     Z@@@@ @@(,,,,@@,,,,,,,,,,,@@@@@@@@@,@@@@@@*@@@@,  Z    @@@,,,,,,,@@,,,,,,,,,@@@@@@@,@@@@@@@@,       Z      @,,,,,,,,,,@@,,,,,*@@@@%,@@@@@@@@@@@%      Z       @@,,,,,,,,,,@@@@@@@@@@@@@@@@@@@@@@@       Z     @@@@@@@@/,,,,,,@@@@@@@@@@@@@@@@@@@@@@@@     ",
-			// ASCI Art for his smile and his eyes (The overlay)
-			"X*XXXXX________XXXXXXZ,X*  --        -- *X,Z,,X*   --------  *X,,Z,,,,X**        **X,,,Z,,,,,,,XXXXXXXX,,,,,,"
-		),//*/
-
-		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
-		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			1,
-			"ALL MIGHT",
-			"bonny_neutral.bmp",
-			"bonny_neutral.bmp",
-			"bonny_neutral.bmp",
-			"bonny_neutral.bmp"
-		),
-
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 0) // 0 = no event
 
-		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player_health, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
+		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player_health,
+			BossFightDefinition(
+				11, // boss health
+				40, // his smile/eyes (overlay) offset X position
+				20, // his smile/eyes (overlay) offset Y position
+				"Checkpoint Security",
+				battle_sprite.getFace(),
+				battle_sprite.getOverlay()
+			), attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
 	{
 		faceDirection(direction);
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.1", "1.1 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.2", "1.2 NO", false));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.C", "1.C YES", true));
-		dialog_choice_1.push_back(std::make_tuple("HELLO WORLD 1.4", "1.4 NO", false));
+		dialog_choice_1.push_back(std::make_tuple("Can't we talk this out?", "Can't you just die?", false));
+		dialog_choice_1.push_back(std::make_tuple("Who are ye anyway?", "First name: Checkpoint. Last name: security. Middle initial: a space", false));
+		dialog_choice_1.push_back(std::make_tuple("Wha' did that kid do?", "Kid? I don't see no kid. He was CLEARLY an adult", false));
+		dialog_choice_1.push_back(std::make_tuple("Ahoy look, a flyin' saucer!", "A wha- ... You can't distract me that easily! Who do you take me for?", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.1", "2.1 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.2", "2.2 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.3", "2.3 NO", false));
-		dialog_choice_2.push_back(std::make_tuple("HELLO WORLD 2.C", "2.C YES", true));
+		dialog_choice_2.push_back(std::make_tuple("Checkpoint Security", "That's right... and it's my solemn duty to protect this checkpoint!", false));
+		dialog_choice_2.push_back(std::make_tuple("A pushover!", "I'll show you who will be pushed over!", false));
+		dialog_choice_2.push_back(std::make_tuple("A yellow-bellied cur!", "I'll show you which one of us drinks yellow curry!", false));
+		dialog_choice_2.push_back(std::make_tuple("Nobody cares! Har har har!", "Are you <MOCKING> me?", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.C", "3.C YES", true));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.2", "3.2 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.3", "3.3 NO", false));
-		dialog_choice_3.push_back(std::make_tuple("HELLO WORLD 3.4", "3.4 NO", false));
+		dialog_choice_3.push_back(std::make_tuple("Blisterin' Barnacles, no... (Yes)", "I shall not be made a fool!", false));
+		dialog_choice_3.push_back(std::make_tuple("No", "Good! (Last thing I want is to be made fun of)", false));
+		dialog_choice_3.push_back(std::make_tuple("Aye", "That's why this battlefield will be your grave!", false));
+		dialog_choice_3.push_back(std::make_tuple("Har har har!", "Stop laughing! Why can't you take this seriously!", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_4;
+		dialog_choice_4.push_back(std::make_tuple("'cause I be better than ye!", "Impossible! Prove it! Prove your are better than me!", true));
+		dialog_choice_4.push_back(std::make_tuple("'cause I don't like ye", "That's fine, I don't like you either!", false));
+		dialog_choice_4.push_back(std::make_tuple("I dunno", "I hate people governed by indecisiveness!", false));
+		dialog_choice_4.push_back(std::make_tuple("Eh... I don't really care", "If you don't CARE, then I don't CARE!", false));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_5;
+		dialog_choice_5.push_back(std::make_tuple("I don't go around terrorisin' pirates!", "F*ck pirates and their self-righteous attitude. They've created a VIRTUAL HOLOCAUST.", false));
+		dialog_choice_5.push_back(std::make_tuple("Me jacket be tailor-made", "And I'm wearing designer jeans.", false));
+		dialog_choice_5.push_back(std::make_tuple("I don't CAPITALIZE everythin' I say", "NO! IT CAN'T BE TRUE!!!! NO O O O O O O O!", false));
+		dialog_choice_5.push_back(std::make_tuple("I won't stoop t' yer level!", "<MY LEVEL>? Son your a criminal wanted for piracy!", true)); // START EVENT
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
 		dialog_choices_.push_back(dialog_choice_3);
+		dialog_choices_.push_back(dialog_choice_4);
+		dialog_choices_.push_back(dialog_choice_5);
 
 		/* Just a little check to make sure you typed the above code correctly.
 		 * This will throw an exception if you added more than more dialog choices
@@ -124,8 +123,6 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
-
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC
 		*	item		Including an Item will have the NPC give the player the provided item
@@ -134,36 +131,47 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh fancy seeing you here");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! Can you guess why?");
-		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love me a good joke!");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me! Let's fight!!!!", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here, have my most valuble possession!", health_potion);
-		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where are you going!!!?");
-		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "I dont know... What?");
-		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!! DIE!!! DIEE!!!", "FIGHT");
-		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will never speak with you again");
-		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see. Sorry, I only had the one item...", "SAVE");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lost", "SAVE");
+		DialogNode *node_1 = new DialogNode("", "Well if it isn't... Haven't I seen you somewhere before. YES?");
+		DialogNode *node_1_1 = new DialogNode("Um... what?", "Look I'm a busy man. Everyone looks alike. Just say what you gotta say or get lost!");
+		DialogNode *node_1_1_1 = new DialogNode("I was pick pocketed!", "Yeah so? Thats not my pro- wait... I'm checkpoint security. That <IS> my problem!");
+		DialogNode *node_1_1_1_1 = new DialogNode("Any idea who?", "Any IDEA!? His name is Sharktooth, and he definetly stole from you.");
+		DialogNode *node_1_1_1_1_1 = new DialogNode("Are ye sure?", "No, But I've been waiting for a poor excuse to lock up this guy for ages!");
+		DialogNode *node_1_1_1_1_1_1 = new DialogNode("Any evidence?", "Well no... I have absolutely no evidence that he ever did anything wrong. I just don't like the guy.");
+		DialogNode *node_1_1_1_1_1_1_1 = new DialogNode("(Give Cigar Box)", "This is... HIS CIGAR BOX! I knew it was him! Good work, now I'm tasking YOU with finding him.");
+		DialogNode *node_1_1_1_1_1_1_1_1 = new DialogNode("Thanks...", "No need to thank me, fulfilling heroic duties is why I'm checkpoint security! >:D", "SAVE");
+		DialogNode *node_1_1_1_1_1_1_2 = new DialogNode("(Give Feather)", "What do I look like, some kind of bird? What am I supposed to do with this?");
+		DialogNode *node_1_1_1_1_1_1_2_1 = new DialogNode("'tis evidence", "Thats not evidence. Now GET LOST!", "SAVE");
+		DialogNode *node_1_1_1_1_1_1_3 = new DialogNode("So ye're speculatin'", "I never said that. I'm merely guestimating. Now GET LOST!");
+		DialogNode *node_1_1_1_1_1_1_3_1 = new DialogNode("\"Guestimating?\"", "Are you questioning the legitimacy of my vocabulary?");
+		DialogNode *node_1_1_1_1_1_1_3_1_1 = new DialogNode("YES", "Free speech is dead and you'll be too!", "FIGHT");
+		DialogNode *node_1_1_1_1_1_1_3_1_2 = new DialogNode("NO", "Really? Because it seemed like you were.");
+		DialogNode *node_1_1_1_1_1_1_3_1_2_1 = new DialogNode("Thats 'cause I was!", "You think your better than me.", "FIGHT");
+		DialogNode *node_1_1_1_1_1_1_3_1_2_2 = new DialogNode("No, sir", "Thats right. Bow your head to me!", "SAVE");
+		DialogNode *node_1_1_1_1_1_1_3_2 = new DialogNode("Goodbye", "Be about your business, pirate!", "SAVE");
+		DialogNode *node_1_2 = new DialogNode("Nevermind", "Be about your business, pirate!");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
 		node_1->setChoice2(node_1_2);
-		node_1->setChoice3(node_1_3);
 
 		node_1_1->setChoice1(node_1_1_1);
-		node_1_1->setChoice2(node_1_1_2);
-		node_1_1->setChoice3(node_1_1_3);
-
-		node_1_2->setChoice1(node_1_2_1);
-		node_1_2->setChoice2(node_1_2_2);
-		node_1_2->setChoice3(node_1_2_3);
-
-		node_1_2_1->setChoice1(node_1_2_1_1);
-		node_1_1_2->setChoice1(node_1_1_2_1);
 		node_1_1_1->setChoice1(node_1_1_1_1);
+		node_1_1_1_1->setChoice1(node_1_1_1_1_1);
+		node_1_1_1_1_1->setChoice1(node_1_1_1_1_1_1);
+
+		node_1_1_1_1_1_1->setChoice1(node_1_1_1_1_1_1_1);
+		node_1_1_1_1_1_1->setChoice2(node_1_1_1_1_1_1_2);
+		node_1_1_1_1_1_1->setChoice3(node_1_1_1_1_1_1_3);
+
+		node_1_1_1_1_1_1_1->setChoice1(node_1_1_1_1_1_1_1_1);
+		node_1_1_1_1_1_1_2->setChoice1(node_1_1_1_1_1_1_2_1);
+		node_1_1_1_1_1_1_3->setChoice1(node_1_1_1_1_1_1_3_1);
+		node_1_1_1_1_1_1_3->setChoice2(node_1_1_1_1_1_1_3_2);
+
+		node_1_1_1_1_1_1_3_1->setChoice1(node_1_1_1_1_1_1_3_1_1);
+		node_1_1_1_1_1_1_3_1->setChoice2(node_1_1_1_1_1_1_3_1_2);
+		node_1_1_1_1_1_1_3_1_2->setChoice1(node_1_1_1_1_1_1_3_1_2_1);
+		node_1_1_1_1_1_1_3_1_2->setChoice2(node_1_1_1_1_1_1_3_1_2_2);
 
 		setHeadNode(node_1);
 	}

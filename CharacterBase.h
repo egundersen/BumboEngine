@@ -3,6 +3,7 @@
 #include "DialogNode.h"
 #include "BattleBase.h"
 #include "PopupWithCollision.h"
+#include "BattleSprite.h"
 #include "NPCSprite.h"
 #include "WorldSprite.h"
 

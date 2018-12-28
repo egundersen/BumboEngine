@@ -16,7 +16,7 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
+		Item apple("Apple", "SHIELD", 1, "The glass case lets you survive an extra hit.");
 
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC
@@ -26,36 +26,25 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Oh hello, heh he heh fancy seeing you here");
-		DialogNode *node_1_1 = new DialogNode("Whats your name?", "All MIGHT! Can you guess why?");
-		DialogNode *node_1_2 = new DialogNode("Want to hear a joke?", "Sure! I love me a good joke!");
-		DialogNode *node_1_3 = new DialogNode("Goodbye...", "SEE YOU LATER!");
-		DialogNode *node_1_1_1 = new DialogNode("No", "You irritated me! Let's fight!!!!", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Because you're ALL MIGHT", "You guess it! Here, have my most valuble possession!", health_potion);
-		DialogNode *node_1_1_3 = new DialogNode("*sigh* and walk away", "Hey! where are you going!!!?");
-		DialogNode *node_1_2_1 = new DialogNode("Whats smiling and red?", "I dont know... What?");
-		DialogNode *node_1_2_2 = new DialogNode("Too bad! ha ha ha!", "YOU DARE!!! DIE!! DIE!!! DIEE!!!", "FIGHT");
-		DialogNode *node_1_2_3 = new DialogNode("YOUR EXPRESSION! get it?", "I will never speak with you again");
-		DialogNode *node_1_2_1_1 = new DialogNode("YOUR FACE WHEN I BREAK IT", "...", "FIGHT");
-		DialogNode *node_1_1_2_1 = new DialogNode("Goodbye", "Back again I see. Sorry, I only had the one item...", "SAVE");
-		DialogNode *node_1_1_1_1 = new DialogNode("Goodbye", "I lost", "SAVE");
+		DialogNode *node_1 = new DialogNode("", "Apples fer sale! Wants some apples? Only $1000 an elder!");
+		DialogNode *node_1_1 = new DialogNode("I'll take one", "Splendid! Here ya go! Tell yer mateys t' get one too (Jus' nah th' friends ye wants t' keep).", apple); //1=
+		DialogNode *node_1_1_1 = new DialogNode("", "Tell yer mateys t' get one too (Jus' nah th' friends ye wants t' keep).", "SAVE"); // =1
+		DialogNode *node_1_2 = new DialogNode("Don't 'ave th' doubloons", "Belay that! Ye can finance it wit' yer student loans!");
+		DialogNode *node_1_2_1 = new DialogNode("Sounds good t' me!", "Tell yer mateys t' get one too (Jus' nah th' friends ye wants t' keep).", apple); // 1=
+		DialogNode *node_1_2_2 = new DialogNode("I be nah interested", "Then stop wastin' me time!");
+		DialogNode *node_1_3 = new DialogNode("Nevermind", "Oh, leavin' so soon?");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
 		node_1->setChoice2(node_1_2);
 		node_1->setChoice3(node_1_3);
 
-		node_1_1->setChoice1(node_1_1_1);
-		node_1_1->setChoice2(node_1_1_2);
-		node_1_1->setChoice3(node_1_1_3);
-
 		node_1_2->setChoice1(node_1_2_1);
 		node_1_2->setChoice2(node_1_2_2);
-		node_1_2->setChoice3(node_1_2_3);
 
-		node_1_2_1->setChoice1(node_1_2_1_1);
-		node_1_1_2->setChoice1(node_1_1_2_1);
-		node_1_1_1->setChoice1(node_1_1_1_1);
+		// Seperated Links:
+		node_1_1->setChoice1(node_1_1_1); // 1=
+		node_1_2_1->setChoice1(node_1_1_1);
 
 		setHeadNode(node_1);
 	}

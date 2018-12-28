@@ -551,14 +551,12 @@ void WorldBase::GENERATE_Enemies()
 	CharacterBase *sharktooth = new Chr_Sharktooth(1053, 259, 14, sprite_sheet_.sharktooth, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Cave (Before Bridge)
-	CharacterBase *door_guard_sharktooth = new Chr_DoorGuardSharktooth(297, 179, 38, sprite_sheet_.pirate_10, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *door_guard_ryuuko = new Chr_DoorGuardRyuuko(354, 164, 16, sprite_sheet_.pirate_9, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *sleeping = new Chr_SleepingPirate(336, 170, 17, sprite_sheet_.pirate_15, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *pacing = new Chr_PacingPirate(282, 208, 18, sprite_sheet_.pirate_8, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	// pacing -> 223
+	CharacterBase *door_guard_sharktooth = new Chr_DoorGuardSharktooth(297, 179, 38, sprite_sheet_.pirate_10, 'd', sprite_sheet_.face_pirate_1, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *door_guard_ryuuko = new Chr_DoorGuardRyuuko(354, 164, 16, sprite_sheet_.pirate_9, 'd', sprite_sheet_.face_pirate_2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *sleeping = new Chr_SleepingPirate(336, 170, 17, sprite_sheet_.pirate_15, 'l', sprite_sheet_.face_pirate_3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Checkpoint Guard Interrogation
-	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, 'r', sprite_sheet_.guard, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Final Outside Area
 	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(985, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
@@ -576,7 +574,6 @@ void WorldBase::GENERATE_Enemies()
 	door_guard_sharktooth->initializeCharacter();
 	door_guard_ryuuko->initializeCharacter();
 	sleeping->initializeCharacter();
-	pacing->initializeCharacter();
 	guard->initializeCharacter();
 	mini_boss_1->initializeCharacter();
 	mini_boss_2->initializeCharacter();
@@ -591,7 +588,6 @@ void WorldBase::GENERATE_Enemies()
 	characters_.push_back(door_guard_sharktooth);
 	characters_.push_back(door_guard_ryuuko);
 	characters_.push_back(sleeping);
-	characters_.push_back(pacing);
 	characters_.push_back(guard);
 	characters_.push_back(mini_boss_1);
 	characters_.push_back(mini_boss_2);
@@ -670,9 +666,10 @@ void WorldBase::GENERATE_Enemies()
 void WorldBase::GENERATE_NonHostileNPCs()
 {
 	// Main Characters
-	CharacterBase *aki_entrance = new Chr_AkiEntrance(296, 218, 22, sprite_sheet_.aki, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	// TODO aki_move to: 272, 192
-	CharacterBase *aki_after_sharktooth = new Chr_AkiAfterSharktooth(297, 193, 23, sprite_sheet_.aki, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *aki_passive = new Chr_AkiPassive(275, 198, 22, sprite_sheet_.aki, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	// TODO Aki Entrance: 296, 218
+	// TODO Aki Off Screen: 272, 192
+	// TODO Aki After Sharktooth: 297, 193
 
 	// Border NPCs
 	CharacterBase *standing_in_line_1 = new Chr_BackgroundNPC(1027, 205, 2, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_,
@@ -717,6 +714,8 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	CharacterBase *cuban_2 = new Chr_BackgroundNPC(197, 187, 34, sprite_sheet_.pirate_3, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	//326, 212 -|- 326, 201
 
+	// pacing -> 223
+	CharacterBase *pacing = new Chr_PacingPirate(282, 208, 18, sprite_sheet_.pirate_8, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Checkpoint Guard Interrogation
 	CharacterBase *child = new Chr_BackgroundNPC(523, 229, 35, sprite_sheet_.pirate_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
@@ -742,8 +741,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	boarder_guard_1->initializeCharacter();
 	boarder_incident_random->initializeCharacter();
 
-	aki_entrance->initializeCharacter();
-	aki_after_sharktooth->initializeCharacter();
+	aki_passive->initializeCharacter();
 	bridge_rally_leader->initializeCharacter();
 	bridge_rally_1->initializeCharacter();
 	bridge_rally_2->initializeCharacter();
@@ -755,6 +753,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	feather_salesman->initializeCharacter();
 	cuban_1->initializeCharacter();
 	cuban_2->initializeCharacter();
+	pacing->initializeCharacter();
 	child->initializeCharacter();
 	thot_patrol_1->initializeCharacter();
 	thot_patrol_2->initializeCharacter();
@@ -768,8 +767,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(boarder_guard_1);
 	characters_.push_back(boarder_guard_2);
 	characters_.push_back(boarder_incident_random);
-	characters_.push_back(aki_entrance);
-	characters_.push_back(aki_after_sharktooth);
+	characters_.push_back(aki_passive);
 	characters_.push_back(bridge_rally_leader);
 	characters_.push_back(bridge_rally_1);
 	characters_.push_back(bridge_rally_2);
@@ -781,6 +779,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(feather_salesman);
 	characters_.push_back(cuban_1);
 	characters_.push_back(cuban_2);
+	characters_.push_back(pacing);
 	characters_.push_back(child);
 	characters_.push_back(thot_patrol_1);
 	characters_.push_back(thot_patrol_2);

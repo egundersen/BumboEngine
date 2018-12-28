@@ -431,15 +431,6 @@
     <ClInclude Include="Chr_SleepingPirate.h">
       <Filter>Header Files\Characters\Cannon Fodder</Filter>
     </ClInclude>
-    <ClInclude Include="Chr_PacingPirate.h">
-      <Filter>Header Files\Characters\Cannon Fodder</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_AkiEntrance.h">
-      <Filter>Header Files\Characters\Not Hostile</Filter>
-    </ClInclude>
-    <ClInclude Include="Chr_AkiAfterSharktooth.h">
-      <Filter>Header Files\Characters\Not Hostile</Filter>
-    </ClInclude>
     <ClInclude Include="Chr_AppleSalesman.h">
       <Filter>Header Files\Characters\Not Hostile</Filter>
     </ClInclude>
@@ -451,6 +442,18 @@
     </ClInclude>
     <ClInclude Include="Chr_CheckpointGuard.h">
       <Filter>Header Files\Characters\Cannon Fodder</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_AkiPassive.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_PacingPirate.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSprite.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_MinorNPC.h">
+      <Filter>Header Files\Characters\Examples</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

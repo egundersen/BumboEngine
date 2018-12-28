@@ -220,12 +220,12 @@
     <ClInclude Include="Attack_VerticleGap.h" />
     <ClInclude Include="Attack_Wall.h" />
     <ClInclude Include="BattleBase.h" />
+    <ClInclude Include="BattleSprite.h" />
     <ClInclude Include="BossFightDefinition.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="CharacterBase.h" />
     <ClInclude Include="Chr_Aki.h" />
-    <ClInclude Include="Chr_AkiAfterSharktooth.h" />
-    <ClInclude Include="Chr_AkiEntrance.h" />
+    <ClInclude Include="Chr_AkiPassive.h" />
     <ClInclude Include="Chr_AkiFinal.h" />
     <ClInclude Include="Chr_AppleSalesman.h" />
     <ClInclude Include="Chr_BackgroundNPC.h" />
@@ -240,6 +240,7 @@
     <ClInclude Include="Chr_MiniBoss2.h" />
     <ClInclude Include="Chr_MiniBoss3.h" />
     <ClInclude Include="Chr_MiniBoss4.h" />
+    <ClInclude Include="Chr_MinorNPC.h" />
     <ClInclude Include="Chr_PacingPirate.h" />
     <ClInclude Include="Chr_Ryuuko.h" />
     <ClInclude Include="Chr_Sharktooth.h" />
