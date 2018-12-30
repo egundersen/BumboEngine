@@ -1,5 +1,6 @@
 #include "Event_AttackOnSight.h"
 #include "Event_TeleportPlayer.h"
+#include "Event_MoveNPCIfDefeated.h"
 #include "Event_Test.h"
 
 // Unique Events

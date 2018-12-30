@@ -185,6 +185,7 @@
     <ClCompile Include="Event_BridgeRally3.cpp" />
     <ClCompile Include="Event_Cubans.cpp" />
     <ClCompile Include="Event_LostDevice.cpp" />
+    <ClCompile Include="Event_MoveNPCIfDefeated.cpp" />
     <ClCompile Include="Event_TeleportPlayer.cpp" />
     <ClCompile Include="Event_Test.cpp" />
     <ClCompile Include="Event_ThotPatrol.cpp" />
@@ -268,6 +269,7 @@
     <ClInclude Include="Event_BridgeRally3.h" />
     <ClInclude Include="Event_Cubans.h" />
     <ClInclude Include="Event_LostDevice.h" />
+    <ClInclude Include="Event_MoveNPCIfDefeated.h" />
     <ClInclude Include="Event_TeleportPlayer.h" />
     <ClInclude Include="Event_Test.h" />
     <ClInclude Include="Event_ThotPatrol.h" />

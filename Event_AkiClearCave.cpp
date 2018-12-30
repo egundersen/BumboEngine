@@ -62,7 +62,8 @@ void Event_AkiClearCave::refreshEvent()
 
 bool Event_AkiClearCave::isAvailable()
 {
-	if (getCharacterByID(14)->isBattleOver())
+	return true;
+	if (getCharacterByID(14) == nullptr || getCharacterByID(14)->isBattleOver())
 		return true;
 	else
 		return false;
@@ -102,7 +103,7 @@ void Event_AkiClearCave::moveToPlayer()
 	switch (getCharacterByID(22)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(22)->move(screen_position_.y + screen_height_ / 2 + 15, 'y', 20);
+		getCharacterByID(22)->move(screen_position_.y + screen_height_ / 2 + 8, 'y', 20);
 		break;
 	case 1:
 		progressEvent(22);

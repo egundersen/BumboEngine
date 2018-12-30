@@ -63,7 +63,7 @@ CharacterBase * EventBase::getCharacterByID(int character_ID)
 		}
 	}
 #ifdef _DEBUG
-	throw "Invalid ID : No character exists with the given ID";
+	//throw "Invalid ID : No character exists with the given ID";
 #endif
 	return nullptr;
 }

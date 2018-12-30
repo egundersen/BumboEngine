@@ -915,6 +915,9 @@ void WorldBase::GENERATE_Events()
 	Event_TeleportPlayer *teleport_to_aki = new Event_TeleportPlayer(10007, 393, 21, 10, 8, 679, 87, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_MoveNPCIfDefeated *move_doorguard_sharktooth = new Event_MoveNPCIfDefeated(10017, 538, 167, 2, 24, 198, 165, 38, 13, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_MoveNPCIfDefeated *move_doorguard_ryuuko = new Event_MoveNPCIfDefeated(10017, 105, 228, 14, 2, 198, 165, 16, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_MoveNPCIfDefeated *move_aki = new Event_MoveNPCIfDefeated(10017, 105, 228, 14, 2, 296, 195, 22, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// Inside Cave
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 296, 224, 56, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
@@ -936,6 +939,9 @@ void WorldBase::GENERATE_Events()
 	events_.push_back(teleport_from_sharktooth);
 	events_.push_back(teleport_to_aki);
 	events_.push_back(teleport_from_aki);
+	events_.push_back(move_doorguard_sharktooth);
+	events_.push_back(move_doorguard_ryuuko);
+	events_.push_back(move_aki);
 	events_.push_back(teleport_to_mini_bosses);
 	events_.push_back(aki_clear_cave);
 	events_.push_back(bridge_rally);

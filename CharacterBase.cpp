@@ -189,6 +189,7 @@ void CharacterBase::waitForTime(int time)
 // Teleports NPC to given coordinates
 void CharacterBase::teleportNPC(int center_position_x, int center_position_y)
 {
+	faceDirection('d'); // Handles a bug
 	eraseSpriteAndColliders();
 	center_position_x_ = center_position_x;
 	center_position_y_ = center_position_y;
@@ -199,6 +200,7 @@ void CharacterBase::teleportNPC(int center_position_x, int center_position_y)
 // Called when character is destroyed or removed from map
 void CharacterBase::onDespawn()
 {
+	faceDirection('d'); // Handles a bug
 	sprite_.removeSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
 }
 

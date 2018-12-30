@@ -218,31 +218,31 @@ void Event_BridgeRally::speak()
 void Event_BridgeRally::leave()
 {
 	if (getCharacterByID(43)->getMovementIndex() == 0)
-		getCharacterByID(43)->moveAndTeleport(86, 'y', 20, 'l', 322, 85);
+		getCharacterByID(43)->moveAndTeleport(86, 'y', 30, 'l', 322, 85);
 	if (getCharacterByID(44)->getMovementIndex() == 0)
 		getCharacterByID(44)->moveAndTeleport(86, 'y', 20, 'l', 332, 85);
 	if (getCharacterByID(39)->getMovementIndex() == 0)
-		getCharacterByID(39)->moveAndTeleport(86, 'y', 20, 'l', 344, 86);
+		getCharacterByID(39)->moveAndTeleport(86, 'y', 25, 'l', 344, 86);
 	if (getCharacterByID(25)->getMovementIndex() == 0)
-		getCharacterByID(25)->moveAndTeleport(86, 'y', 20, 'l', 310, 93);
+		getCharacterByID(25)->moveAndTeleport(86, 'y', 28, 'l', 310, 93);
 	if (getCharacterByID(27)->getMovementIndex() == 0)
-		getCharacterByID(27)->moveAndTeleport(86, 'y', 20, 'l', 310, 85);
+		getCharacterByID(27)->moveAndTeleport(86, 'y', 25, 'l', 310, 85);
 	if (getCharacterByID(24)->getMovementIndex() == 0)
-		getCharacterByID(24)->moveAndTeleport(86, 'y', 20, 'l', 275, 86); // LEADER
+		getCharacterByID(24)->moveAndTeleport(86, 'y', 25, 'l', 275, 86); // LEADER
 	if (getCharacterByID(28)->getMovementIndex() == 0)
-		getCharacterByID(28)->moveAndTeleport(86, 'y', 20, 'u', 293, 109);
+		getCharacterByID(28)->moveAndTeleport(86, 'y', 28, 'u', 293, 109);
 	if (getCharacterByID(45)->getMovementIndex() == 0)
 		getCharacterByID(45)->moveAndTeleport(86, 'y', 20, 'l', 288, 82);
 	if (getCharacterByID(29)->getMovementIndex() == 0)
-		getCharacterByID(29)->moveAndTeleport(86, 'y', 20, 'u', 281, 100);
+		getCharacterByID(29)->moveAndTeleport(86, 'y', 25, 'u', 281, 100);
 	if (getCharacterByID(49)->getMovementIndex() == 0)
 		getCharacterByID(49)->moveAndTeleport(86, 'y', 20, 'l', 299, 87);
 	if (getCharacterByID(46)->getMovementIndex() == 0)
-		getCharacterByID(46)->moveAndTeleport(86, 'y', 20, 'u', 284, 117);
+		getCharacterByID(46)->moveAndTeleport(86, 'y', 25, 'u', 284, 117);
 	if (getCharacterByID(48)->getMovementIndex() == 0)
 		getCharacterByID(48)->moveAndTeleport(86, 'y', 20, 'u', 271, 110);
 	if (getCharacterByID(47)->getMovementIndex() == 0)
-		getCharacterByID(47)->moveAndTeleport(86, 'y', 20, 'd', 300, 79);
+		getCharacterByID(47)->moveAndTeleport(86, 'y', 25, 'd', 300, 79);
 	if (getCharacterByID(41)->getMovementIndex() == 0)
 		getCharacterByID(41)->moveAndTeleport(304, 'x', 20, 'u', 284, 117);
 	if (getCharacterByID(40)->getMovementIndex() == 0)
@@ -253,7 +253,7 @@ void Event_BridgeRally::leave()
 	switch (getCharacterByID(26)->getMovementIndex())
 	{
 	case 0:
-		getCharacterByID(26)->move(107, 'y', 20);
+		getCharacterByID(26)->move(107, 'y', 30);
 		break;
 	case 1:
 		getCharacterByID(26)->moveAndTeleport(304, 'x', 20, 'u', 271, 99);

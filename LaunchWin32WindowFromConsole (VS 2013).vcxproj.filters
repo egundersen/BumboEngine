@@ -225,6 +225,9 @@
     <ClCompile Include="Event_BridgeRally3.cpp">
       <Filter>Source Files\Events\Unique Events</Filter>
     </ClCompile>
+    <ClCompile Include="Event_MoveNPCIfDefeated.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -502,6 +505,9 @@
     </ClInclude>
     <ClInclude Include="Event_ThotPatrol.h">
       <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_MoveNPCIfDefeated.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
