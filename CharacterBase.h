@@ -34,10 +34,11 @@ public:
 	// World Sprite Movement
 	void resetMovingPath();
 	void move(int ending_position, char axis, int speed);
+	void moveAndTeleport(int ending_position, char axis, int speed, char ending_direction, int center_position_x, int center_position_y);
 	void waitForTime(int time);
 	void teleportNPC(int center_position_x, int center_position_y);
 	void onDespawn();
-	void displayGhostSprite(int top_left_position_y, int top_left_position_x, char moving_direction);
+	void displayGhostSprite(int top_left_position_x, int top_left_position_y, char moving_direction);
 	void DEBUG_eraseSpriteColliders();
 
 	int eventID() { return event_ID_; }
@@ -46,7 +47,8 @@ public:
 	int getCenterPositionY() { return center_position_y_; }
 	int getMovementIndex() { return movement_index_; }
 	void incrementMovementIndex() { movement_index_++; }
-	void resetMovementIndex() { movement_index_ = 0; }
+	void resetDestination() { has_reached_destination_ = false; }
+	void resetMovementIndex() { movement_index_ = 0; has_reached_destination_ = false; }
 
 	// Basic Popup
 	void refreshPopup();

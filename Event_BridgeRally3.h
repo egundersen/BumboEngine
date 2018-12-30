@@ -10,6 +10,9 @@ public:
 
 	void createEvent();
 	void refreshEvent();
+private:
+	void speak();
+	void killPirate();
 };
 
 #endif // !EVENT_BRIDGERALLY3_H

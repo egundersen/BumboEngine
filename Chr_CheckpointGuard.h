@@ -60,7 +60,7 @@ public:
 		dialog_choice_4.push_back(std::make_tuple("Eh... I don't really care", "If you don't CARE, then I don't CARE!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_5;
-		dialog_choice_5.push_back(std::make_tuple("I don't go around terrorisin' pirates!", "F*ck pirates and their self-righteous attitude. They've created a VIRTUAL HOLOCAUST.", false));
+		dialog_choice_5.push_back(std::make_tuple("I don't go around terrorisin' pirates!", "Farrdin' pirates and their self-righteous attitude. They've created a VIRTUAL HOLOCAUST.", false));
 		dialog_choice_5.push_back(std::make_tuple("Me jacket be tailor-made", "And I'm wearing designer jeans.", false));
 		dialog_choice_5.push_back(std::make_tuple("I don't CAPITALIZE everythin' I say", "NO! IT CAN'T BE TRUE!!!! NO O O O O O O O!", false));
 		dialog_choice_5.push_back(std::make_tuple("I won't stoop t' yer level!", "<MY LEVEL>? Son your a criminal wanted for piracy!", true)); // START EVENT
@@ -77,7 +77,7 @@ public:
 #ifdef _DEBUG
 		for (auto dialog_choice : dialog_choices_)
 			if (dialog_choice.size() > 4)
-				throw std::invalid_argument("dialog_choice size must not be greater than 4! There can only be 4 dialog options at a time");
+				throw "dialog_choice size must not be greater than 4! There can only be 4 dialog options at a time";
 #endif
 	}
 

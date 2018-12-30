@@ -34,6 +34,7 @@ private:
 	void checkRemovePickup();
 	void checkForItem();
 	void checkForBattle();
+	void checkForEvent();
 	void shouldDespawnCharacter();
 	void shouldRemoveEvent();
 	void shouldStartEventByLocation();
@@ -64,6 +65,7 @@ private:
 	void DEBUG_displayCollisions();
 	void DEBUG_stopDisplayingCollisions();
 	void DEBUG_displayScreen();
+	void DEBUG_createPlaceholder(int center_position_x, int center_position_y);
 
 	int screen_width_, screen_height_, world_width_, world_height_, &player_health_, start_time_player_speed_,
 		player_speed_modifier_;

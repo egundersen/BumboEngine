@@ -10,6 +10,10 @@ public:
 
 	void createEvent();
 	void refreshEvent();
+private:
+	void moveCubans();
+	void speak();
+	void leave();
 };
 
 #endif // !EVENT_CUBANS_H

@@ -10,6 +10,9 @@ public:
 
 	void createEvent();
 	void refreshEvent();
+private:
+	void speak();
+	void leave();
 };
 
 #endif // !EVENT_BRIDGERALLY2_H

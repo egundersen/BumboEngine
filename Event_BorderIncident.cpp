@@ -5,34 +5,32 @@ void Event_BorderIncident::createEvent()
 {
 	updateColliderCoordinates();
 
-	//Popup popup_4(25, 9, "I am very sorry,Zbut he wasn't able toZreach the checkpointZin time...Z", screen_matrix_, 'X');
-	
 	// Guard #1 Dialog
-	Popup popup_1(25, 9, "*cough*", screen_matrix_, 'X');
-	Popup popup_2(25, 9, "*cough* *cough*", screen_matrix_, 'X');
-	Popup popup_3(25, 9, "*clears throat*", screen_matrix_, 'X');
-	Popup popup_4(25, 9, "Attention!", screen_matrix_, 'X');
-	Popup popup_5(25, 9, "Do to deteriorating air quality, we won't be allowing anyone else into the maze ", screen_matrix_, 'X');
-	Popup popup_6(25, 9, "We're truly sorry, we know you walking all the way here ", screen_matrix_, 'X');
-	Popup popup_7(25, 9, "Some of you lost family members along the way ", screen_matrix_, 'X');
-	Popup popup_8(25, 9, "and WE-DID-SAY that the checkpoint WOULD-REMAIN-OPEN ", screen_matrix_, 'X');
-	Popup popup_9(25, 9, "But we'll be shutting down immediatly with no warning or heads-up ", screen_matrix_, 'X');
-	Popup popup_10(25, 9, "Sorry ya walked all the way here, but we're closed now ", screen_matrix_, 'X');
-	Popup popup_11(25, 9, "So get fucked ", screen_matrix_, 'X');
+	Popup popup_1(25, 9, "*cough*", screen_matrix_, '#');
+	Popup popup_2(25, 9, "*cough* *cough*", screen_matrix_, '#');
+	Popup popup_3(25, 9, "*clears throat*", screen_matrix_, '#');
+	Popup popup_4(25, 9, "Attention!", screen_matrix_, '#');
+	Popup popup_5(25, 9, "Do to deteriorating air quality, we won't be allowing anyone else into the maze ", screen_matrix_, '#');
+	Popup popup_6(25, 9, "We're truly sorry, we know you walking all the way here ", screen_matrix_, '#');
+	Popup popup_7(25, 9, "Some of you lost family members along the way ", screen_matrix_, '#');
+	Popup popup_8(25, 9, "and WE-DID-SAY that the checkpoint WOULD-REMAIN-OPEN ", screen_matrix_, '#');
+	Popup popup_9(25, 9, "But we'll be shutting down immediatly with no warning or heads-up ", screen_matrix_, '#');
+	Popup popup_10(25, 9, "Sorry ya walked all the way here, but we're closed now ", screen_matrix_, '#');
+	Popup popup_11(25, 9, "So get focked ", screen_matrix_, '#');
 
 	// Crowd
 	Popup popup_12(25, 9, "This is an outrage!", screen_matrix_, 'X');
 	Popup popup_13(25, 9, "You shouldn't have waited for us all to arrive before shutting down, this is madness!", screen_matrix_, 'X');
 	
 	// Guard #2 Dialog
-	Popup popup_14(25, 9, "We're sorry, but I believe my associate was very clear in his message: ", screen_matrix_, 'X');
-	Popup popup_15(25, 9, "*ehem*!", screen_matrix_, 'X');
-	Popup popup_16(25, 9, "*clears throat*", screen_matrix_, 'X');
-	Popup popup_17(25, 9, "get fucked", screen_matrix_, 'X');
+	Popup popup_14(25, 9, "We're sorry, but I believe my associate was very clear in his message: ", screen_matrix_, '#');
+	Popup popup_15(25, 9, "*ehem*!", screen_matrix_, '#');
+	Popup popup_16(25, 9, "*clears throat*", screen_matrix_, '#');
+	Popup popup_17(25, 9, "get focked", screen_matrix_, '#');
 
 	// Guard #1's Response to checkpoint attack
-	Popup popup_18(25, 9, "You think you can break through <MY> CHECKPOINT!!!??? ", screen_matrix_, 'X');
-	Popup popup_19(25, 9, "DO YOU EVEN KNOW WHO I AM? ", screen_matrix_, 'X');
+	Popup popup_18(25, 9, "You think you can break through <MY> CHECKPOINT!!!??? ", screen_matrix_, '#');
+	Popup popup_19(25, 9, "DO YOU EVEN KNOW WHO I AM? ", screen_matrix_, '#');
 
 	// Player thoughts
 	Popup popup_20(31, 9, "You think to yourself: *The guards aren't blocking the checkpoint anymore, perhaps I could slip through ...* ", screen_matrix_, 'X');
@@ -367,7 +365,7 @@ void Event_BorderIncident::runsThroughCheckpoint(int position_x, int position_y)
 		getCharacterByID(11)->move(518 + position_x, 'x', 10);
 		break;
 	case 7:
-		getCharacterByID(11)->teleportNPC(192, 84); // Actual World Position
+		getCharacterByID(11)->teleportNPC(192, 85); // Actual World Position
 		getCharacterByID(11)->faceDirection('r');
 		break;
 	default:
@@ -459,13 +457,13 @@ void Event_BorderIncident::runsThroughCheckpoint(int position_x, int position_y)
 		getCharacterByID(15)->waitForTime(1000);
 		break;
 	case 3:
-		getCharacterByID(15)->move(screen_position_.x + screen_width_ / 2 - 9, 'x', 32);
+		getCharacterByID(15)->move(screen_position_.x + screen_width_ / 2 - 14, 'x', 32);
 		break;
 	case 4:
 		getCharacterByID(15)->move(627 + position_y, 'y', 32);
 		break;
 	case 5:
-		getCharacterByID(15)->move(screen_position_.x + screen_width_ / 2 - 9 + 3, 'x', 10);
+		getCharacterByID(15)->move(screen_position_.x + screen_width_ / 2 - 6, 'x', 10);
 		break;
 	case 6:
 		getCharacterByID(15)->waitForTime(250);
@@ -480,7 +478,11 @@ void Event_BorderIncident::runsThroughCheckpoint(int position_x, int position_y)
 	case 9:
 		getCharacterByID(7)->teleportNPC(493 + position_x, 671 + position_y);
 		getCharacterByID(15)->teleportNPC(453 + position_x, 671 + position_y);
-		progressEvent();
+		getCharacterByID(11)->resetMovementIndex();
+		getCharacterByID(12)->resetMovementIndex();
+		getCharacterByID(13)->resetMovementIndex();
+		getCharacterByID(14)->resetMovementIndex();
+		progressEvent(15);
 		break;
 	default:
 		break;

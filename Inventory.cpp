@@ -37,7 +37,7 @@ void Inventory::refreshScreen()
 {
 #ifdef _DEBUG
 	if (items_list_.size() > 10)
-		throw std::invalid_argument("Inventory may not have more than 10 items!");
+		throw "Inventory may not have more than 10 items!";
 #endif
 	setItemsListText();
 	setPlayerHealthText(6, 30);

@@ -25,7 +25,7 @@ private:
 	void displayDialogChoice(int position_x, int position_y);
 	void confirmSelection();
 
-	int dialog_choice_index_, go_down_iterator_, fall_speed;
+	int dialog_choice_index_, go_down_iterator_, fall_speed_;
 	bool should_go_down_, has_entered_name_;
 };
 

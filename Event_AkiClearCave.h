@@ -10,6 +10,12 @@ public:
 
 	void createEvent();
 	void refreshEvent();
+	bool isAvailable();
+private:
+	void lookAround();
+	void moveToPlayer();
+	void speak();
+	void leave();
 };
 
 #endif // !EVENT_AKICLEARCAVE_H

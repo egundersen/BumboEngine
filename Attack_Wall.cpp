@@ -10,9 +10,9 @@ Attack_Wall::Attack_Wall(int width, int height, PlayerPosition &player_position,
 	start_time_update_attack_ = GetTickCount64();
 #ifdef _DEBUG
 	if (max_position_x_ > width_)
-		throw std::invalid_argument("max position must not be greater than the screen width_");
+		throw "max position must not be greater than the screen width_";
 	if (min_position_x_ < 0)
-		throw std::invalid_argument("min position must not be less than 0");
+		throw "min position must not be less than 0";
 #endif
 }
 

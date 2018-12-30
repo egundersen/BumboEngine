@@ -1,4 +1,4 @@
-#include "Image.h";
+#include "Image.h"
 
 #ifndef ITEM_H
 #define ITEM_H

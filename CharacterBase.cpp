@@ -46,6 +46,7 @@ void CharacterBase::refreshPopup()
 	displayPopup(0, 0);
 }
 
+// Force character to face up, down, left or right
 void CharacterBase::faceDirection(char player_facing_direction)
 {
 	facing_direction_ = player_facing_direction;
@@ -66,6 +67,7 @@ void CharacterBase::initializeCharacter()
 	reset();
 }
 
+// Resets all attack patterns, usually called when player restarts from a game over
 void CharacterBase::resetAttackPatterns()
 {
 	// Erase all attacks (If attacks exist)
@@ -91,7 +93,7 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 {
 	if (!has_begun_moving_)
 	{
-		has_reached_destination_ = false; // <=== Deprecated
+		has_reached_destination_ = false; // <=== Only really effects moveAndTeleport()
 		start_time_move_one_space_ = GetTickCount64();
 		if (axis == 'x')
 		{
@@ -154,6 +156,17 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 	}
 }
 
+// (Really just a convenience function) Moves NPC to position, Face direction, Teleport
+void CharacterBase::moveAndTeleport(int ending_position, char axis, int speed, char ending_direction, int center_position_x, int center_position_y)
+{
+	move(ending_position, axis, speed);
+	if (hasReachDestination())
+	{
+		teleportNPC(center_position_x, center_position_y);
+		faceDirection(ending_direction);
+	}
+}
+
 // Waits for a specified amount of time, then increases the movement index
 void CharacterBase::waitForTime(int time)
 {
@@ -210,10 +223,10 @@ void CharacterBase::resetMovingPath()
 // Removes Sprite and Colliders from world map. Does not deallocate them!
 void CharacterBase::eraseSpriteAndColliders()
 {
+	sprite_.removeSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
 	for (int i = 0; i < collider_height_; ++i)
 		for (int j = 0; j < collider_width_; ++j)
 		{
-			world_matrix_[center_position_y_ - collider_height_ / 2 + i][center_position_x_ - collider_width_ / 2 + j] = ' ';
 			element_has_object_[center_position_y_ - collider_height_ / 2 + i][center_position_x_ - collider_width_ / 2 + j].first = 0;
 			element_has_object_[center_position_y_ - collider_height_ / 2 + i][center_position_x_ - collider_width_ / 2 + j].second = 0;
 		}

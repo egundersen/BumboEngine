@@ -67,7 +67,7 @@ public:
 #ifdef _DEBUG
 		for (auto dialog_choice : dialog_choices_)
 			if (dialog_choice.size() > 4)
-				throw std::invalid_argument("dialog_choice size must not be greater than 4! There can only be 4 dialog options at a time");
+				throw "dialog_choice size must not be greater than 4! There can only be 4 dialog options at a time";
 #endif
 	}
 

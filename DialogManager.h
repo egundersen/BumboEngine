@@ -24,6 +24,7 @@ public:
 	bool shouldShowDialog() { return should_show_dialog_; }
 	bool shouldGiveItem() { return should_give_item_; }
 	bool shouldEnterBattle() { return should_enter_battle_; }
+	bool shouldStartEvent() { return should_start_event_; }
 	Item givenItem() { return item_; }
 private:
 	// Setters
@@ -40,7 +41,7 @@ private:
 	void dialogEvent(DialogNode *dialog_node);
 
 	int dialog_width_, dialog_height_, screen_height_, screen_width_, cursor_index_, start_time_move_cursor_, max_choices_;
-	bool should_show_dialog_, should_give_item_, should_enter_battle_;
+	bool should_show_dialog_, should_give_item_, should_enter_battle_, should_start_event_;
 	Matrix &screen_matrix_, dialog_matrix_;
 	DialogNode *head_node_;
 	DialogNode *moving_node_;

@@ -2,7 +2,7 @@
 #include <iostream>
 
 DialogManager::DialogManager(int dialog_width, int dialog_height, int screen_height, int screen_width, Matrix &screen_matrix)
-	: screen_matrix_{ screen_matrix }, max_choices_(2), action_{ "" }, should_give_item_{ false },
+	: screen_matrix_{ screen_matrix }, max_choices_(2), action_{ "" }, should_give_item_{ false }, should_start_event_{ false },
 	dialog_height_{ dialog_height }, dialog_width_{ dialog_width }, dialog_matrix_(dialog_width, dialog_height),
 	screen_width_{ screen_width }, screen_height_{ screen_height }, cursor_index_(0), should_show_dialog_{ false }, should_enter_battle_{ false }
 {
@@ -95,7 +95,7 @@ void DialogManager::setResponseText()
 	if (moving_node_->getAction() != "")
 	{
 		if (moving_node_->choice_1_ == nullptr && moving_node_->getAction() == "ITEM")
-			throw std::invalid_argument(" If an item is given through a dialog node, that node must point to atleast one other node. ");
+			throw " If an item is given through a dialog node, that node must point to atleast one other node. ";
 	}
 #endif
 	addTextToMatrix(32, 2, 'l', moving_node_->getResponse(), 'M', dialog_matrix_, 23, 5);
@@ -165,6 +165,11 @@ void DialogManager::dialogEvent(DialogNode * dialog_node)
 		action_ = "ITEM";
 		moving_node_ = dialog_node;
 	}
+	else if (dialog_node->getAction() == "EVENT")
+	{
+		action_ = "EVENT";
+		moving_node_ = dialog_node;
+	}
 	else
 	{
 		if (dialog_node->getAction() == "SAVE")
@@ -191,6 +196,14 @@ void DialogManager::moveDialogCursor(std::string move_cursor_direction)
 		item_ = moving_node_->getItem();
 		should_give_item_ = true;
 		should_show_dialog_ = false;
+		dialogEvent(moving_node_->choice_1_);
+		setMaxChoices();
+	}
+	else if (action_ == "EVENT")
+	{
+		action_ = "";
+		should_show_dialog_ = false;
+		should_start_event_ = true;
 		dialogEvent(moving_node_->choice_1_);
 		setMaxChoices();
 	}

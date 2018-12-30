@@ -63,7 +63,7 @@ CharacterBase * EventBase::getCharacterByID(int character_ID)
 		}
 	}
 #ifdef _DEBUG
-	throw std::invalid_argument("Invalid ID : No character exists with the given ID");
+	throw "Invalid ID : No character exists with the given ID";
 #endif
 	return nullptr;
 }
@@ -78,8 +78,8 @@ void EventBase::updateColliderCoordinates()
 		}
 }
 
-// Called when the event ends
-void EventBase::onEventOver()
+// Removes all event colliders from world matrix, so it cannot be triggered
+void EventBase::removeColliders()
 {
 	for (int i = 0; i < collider_height_; ++i)
 		for (int j = 0; j < collider_width_; ++j)
@@ -87,15 +87,23 @@ void EventBase::onEventOver()
 			element_has_object_[center_position_y_ - collider_height_ / 2 + i][center_position_x_ - collider_width_ / 2 + j].first = 0;
 			element_has_object_[center_position_y_ - collider_height_ / 2 + i][center_position_x_ - collider_width_ / 2 + j].second = 0;
 		}
+}
+
+// Called when the event ends
+void EventBase::onEventOver()
+{
+	removeColliders();
 	is_event_over_ = true;
 }
 
 // Progresses Event Index & resets popup & movement indexes
-void EventBase::progressEvent()
+void EventBase::progressEvent(int id)
 {
 	event_index_++;
 	popup_index_ = 0;
 	start_time_begin_event_ = GetTickCount64();
+	if (id != 0)
+		getCharacterByID(id)->resetMovementIndex();
 	if (attached_character_ != nullptr)
 		attached_character_->resetMovementIndex();
 }

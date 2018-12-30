@@ -6,7 +6,7 @@
 #ifndef EVENTBASE_H
 #define EVENTBASE_H
 
-class EventBase: public MatrixBase
+class EventBase : public MatrixBase
 {
 public:
 	explicit EventBase(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable,
@@ -23,6 +23,7 @@ public:
 	void DEBUG_hideCollider(Matrix &world_matrix);
 
 	// Getters
+	virtual bool isAvailable() { return true; }
 	bool isComplete() { return is_event_over_; }
 	bool isRepeatable() { return repeatable_; }
 	bool shouldEnterBattle() { return should_enter_battle_; }
@@ -32,8 +33,9 @@ public:
 protected:
 	// Setters
 	virtual void updateColliderCoordinates();
+	void removeColliders();
 	void onEventOver();
-	void progressEvent();
+	void progressEvent(int id = 0);
 	void setAttachedCharacterIndex();
 	void teleportPlayer(int position_x, int position_y);
 

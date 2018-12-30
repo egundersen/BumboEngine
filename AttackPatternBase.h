@@ -12,7 +12,7 @@ public:
 
 	// Setters
 	virtual void OnBeginAttack();
-	virtual void refreshScreen() { throw std::invalid_argument("Tried to create attack using superclass alone"); };
+	virtual void refreshScreen() { throw "Tried to create attack using superclass alone"; };
 
 	// Getters
 	bool areAttacksOver() { return has_completed_all_attacks_; }
