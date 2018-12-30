@@ -335,7 +335,7 @@ void WorldBase::evaluatePlayerInput()
 			DEBUG_showing_collisions_ = false;
 		}
 		if (GetAsyncKeyState(0x54) & 0x8000) // Teleport Player			Press T
-			teleportPlayer(1048, 210);
+			teleportPlayer(1000, 64); // 1048, 210
 		else if (GetAsyncKeyState(0x4D) & 0x8000) // Teleport Player    Press M (Teleport to Maze)
 			teleportPlayer(353, 130); // Maze: 296, 231
 		else if (GetAsyncKeyState(0x50) & 0x8000) // Add Placeholder to Map    Press P (Place Placeholder)
@@ -516,9 +516,11 @@ void WorldBase::GENERATE_WorldBorder()
 		world_matrix_[world_height_ - 2][j] = 'X';
 }
 
-// creates objects for the cliff area outside the maze. This is the player's spawn / start of the game
+// creates objects for the cliff area outside the maze. This is the start/end of the game
 void WorldBase::GENERATE_OutsideArea()
 {
+	/* Start of Game ---------- */
+
 	// Outside area / map
 	Texture mountain(900, 137, sprite_sheet_.mountain, world_matrix_);
 
@@ -540,6 +542,17 @@ void WorldBase::GENERATE_OutsideArea()
 	Texture rock_1(685, 240, sprite_sheet_.rock, world_matrix_);
 	Texture rock_2(715, 222, sprite_sheet_.rock, world_matrix_);
 	Texture rock_3(780, 239, sprite_sheet_.rock, world_matrix_);
+
+	/* End of Game ---------- */
+
+	// Trees
+	Texture tree_10(872, 54, sprite_sheet_.tree, world_matrix_);
+	Texture tree_11(906, 60, sprite_sheet_.tree, world_matrix_);
+	Texture tree_12(953, 51, sprite_sheet_.tree, world_matrix_);
+	Texture tree_13(1019, 46, sprite_sheet_.tree, world_matrix_);
+	Texture tree_14(1044, 43, sprite_sheet_.tree, world_matrix_);
+	Texture tree_15(1069, 41, sprite_sheet_.tree, world_matrix_);
+	Texture tree_16(1105, 47, sprite_sheet_.tree, world_matrix_);
 }
 
 // Creates the walls of the maze as well as objects that should be placed INSIDE the maze
@@ -549,6 +562,11 @@ void WorldBase::GENERATE_Maze()
 	Texture maze_1(300, 137, sprite_sheet_.maze_1, world_matrix_);
 	Texture maze_2(300, 1, sprite_sheet_.maze_2, world_matrix_);
 	Texture maze_3(900, 1, sprite_sheet_.maze_3, world_matrix_);
+
+	// Rocks
+	Texture rock_1(457, 86, sprite_sheet_.rock, world_matrix_);
+	Texture rock_2(485, 96, sprite_sheet_.rock, world_matrix_);
+	Texture rock_3(495, 89, sprite_sheet_.rock, world_matrix_);
 }
 
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
@@ -573,7 +591,7 @@ void WorldBase::GENERATE_Enemies()
 
 	// Final Outside Area
 	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(985, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1072, 55, 21, sprite_sheet_.mini_boss_2, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1047, 57, 21, sprite_sheet_.mini_boss_2, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();

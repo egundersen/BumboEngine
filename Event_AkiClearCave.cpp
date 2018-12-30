@@ -62,7 +62,6 @@ void Event_AkiClearCave::refreshEvent()
 
 bool Event_AkiClearCave::isAvailable()
 {
-	return true;
 	if (getCharacterByID(14) == nullptr || getCharacterByID(14)->isBattleOver())
 		return true;
 	else

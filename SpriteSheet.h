@@ -174,31 +174,31 @@ struct SpriteSheet
 	);
 
 	WorldSprite mini_boss_1 = WorldSprite(
-		"  ##\\/##  Z ######## Z   \\##/   Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
-		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
-		"  ##\\/##  Z /##\\\"\\>  Z ## \\*<   Z goX><Xo  Z  0%HXX%0 Z   %%  %  Z",
-		"  ##\\/##  Z </\"/##/  Z   >*/ ## Z  oX><Xog Z 0%XXH%0  Z  %  %%   Z",
-		"  ##\\/##  Z ######## Z   \\##/   Z ogX><Xgo Z 0#HXXH# 0Z  %U  U%  Z",
-		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z 0#HXXH# 0Z  %U  U%  Z",
-		"  ##\\/##  Z /##\\\"\\>  Z ## \\*< O Z goX><Xo  Z %%0H%X   Z %=  %%   Z",
-		"  ##\\/##  Z </\"/##/  Z O >*/ ## Z  oX><Xog Z   X%H0%% Z   %%  =% Z",
-		"  ##\\/##  Z ######## Z   \\##/   Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
-		"  ##\\/##  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
+		"  /####\\  Z ######## Z   \\##/   Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
+		"  /####\\  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
+		"  /####\\  Z /##\\\"\\>  Z ## \\*<   Z goX><Xo  Z  0%HXX%0 Z   %%  %  Z",
+		"  /####\\  Z  </\"/##\\ Z   >*/ ## Z  oX><Xog Z 0%XXH%0  Z  %  %%   Z",
+		"  /####\\  Z ######## Z   \\##/   Z ogX><Xgo Z 0#HXXH# 0Z  %U  U%  Z",
+		"  /####\\  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z 0#HXXH# 0Z  %U  U%  Z",
+		"  /####\\  Z /##\\\"\\>  Z ## \\*< O Z goX><Xo  Z %%0H%X   Z %=  %%   Z",
+		"  /####\\  Z  </\"/##\\ Z O >*/ ## Z  oX><Xog Z   X%H0%% Z   %%  =% Z",
+		"  /####\\  Z ######## Z   \\##/   Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
+		"  /####\\  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
 		"  /####\\  Z /##\\\"\\>  Z ## \\*<   Z goX><go  Z  #0XXH#0 Z  %U  U%  Z",
-		"  ##\\/##  Z </\"/##/  Z   >*/ ## Z  oX><Xog Z 0#HXX0#  Z  %U  U%  Z",
+		"  /####\\  Z  </\"/##\\ Z   >*/ ## Z  oX><Xog Z 0#HXX0#  Z  %U  U%  Z",
 
-		"  OOJJOOO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
-		"  OOJJOOO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
-		"  OOJJOOO Z JOOJLJJ  Z OO JRJ   Z OJFJJOJ  Z  JHHFFHJ Z   HH  H  Z",
-		"  OOJJOOO Z JJLJOOJ  Z   JRJ OO Z  JOJJOJO Z JHFFHHJ  Z  H  HH   Z",
-		"  OOJJOOO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ Z JOHFFHO JZ  HB  BH  Z",
-		"  OOJJOOO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ Z JOHFFHO JZ  HB  BH  Z",
-		"  OOJJOOO Z JOOJLJJ  Z OO JRJ J Z OJFJJOJ  Z HHJHHF   Z HH  HH   Z",
-		"  OOJJOOO Z JJLJOOJ  Z J JRJ OO Z  JOJJOJO Z   FHHJHH Z   HH  HH Z",
-		"  OOJJOOO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ Z JOHFFHOJ Z  HB  BH  Z",
-		"  OOJJOOO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ Z JOHFFHOJ Z  HB  BH  Z",
+		"  JOOOOJO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
+		"  JOOOOJO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
+		"  JOOOOJO Z JOOJLJJ  Z OO JRJ   Z OJFJJOJ  Z  JHHFFHJ Z   HH  H  Z",
+		" OJOOOOJ  Z  JJLJOOJ Z   JRJ OO Z  JOJJFJO Z JHFFHHJ  Z  H  HH   Z",
+		"  JOOOOJO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ Z JOHFFHO JZ  HB  BH  Z",
+		"  JOOOOJO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ Z JOHFFHO JZ  HB  BH  Z",
+		"  JOOOOJO Z JOOJLJJ  Z OO JRJ J Z OJFJJOJ  Z HHJHHF   Z HH  HH   Z",
+		" OJOOOOJ  Z  JJLJOOJ Z J JRJ OO Z  JOJJFJO Z   FHHJHH Z   HH  HH Z",
+		"  JOOOOJO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ Z JOHFFHOJ Z  HB  BH  Z",
+		"  JOOOOJO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ Z JOHFFHOJ Z  HB  BH  Z",
 		"  JOOOOJO Z JOOJLJJ  Z OO JRJ   Z OJFJJOJ  Z  OJFFHOJ Z  HB  BH  Z",
-		"  OOJJOOO Z JJLJOOJ  Z   JRJ OO Z  JOJJOJO Z JOHFFJO  Z  HB  BH  Z"
+		" OJOOOOJ  Z  JJLJOOJ Z   JRJ OO Z  JOJJFJO Z JOHFFJO  Z  HB  BH  Z"
 	);
 
 	WorldSprite mini_boss_2 = WorldSprite(
