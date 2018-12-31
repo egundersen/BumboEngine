@@ -148,7 +148,7 @@ public:
 		DialogNode *node_1_1_2_1_1_1_3_1_1 = new DialogNode("Where?", "Just to the right of this room, I'll remove the rock blocking the entrance.");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1 = new DialogNode("Thank ye", "Oh hey, I have a glove that looks just like yours, I used to have a pair but I...");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1 = new DialogNode("Welp, see ya", "Of course. Here, let me remove the rock for you."); // =3
-		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1_1 = new DialogNode("Goodbye", "'Good luck' finding your father's package.", "SAVE"); // ROCK EVENT
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1_1 = new DialogNode("Goodbye", "'Good luck' finding your father's package.", "EVENT"); // ROCK EVENT
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2 = new DialogNode("'But you...' what?", "Nothing, I merely misplaced it. Thats all, why does it even matter?");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_1 = new DialogNode("'twas at th' checkpoint", "I don't see what you're getting at here... we're wasting valubale time!");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_1_1 = new DialogNode("Does it belong t' ye?", "Maybe... it does bare some resemblence to mine, but why does that matter?"); // 6=
@@ -165,7 +165,7 @@ public:
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_2 = new DialogNode("I believe ye", "What a relief... Now for that boulder: I'll clear it so you can progress."); // 3=
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2 = new DialogNode("'cause ye hate pirates", "Where are you going with this? It's not like I wanted you to-");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2_1 = new DialogNode("eliminate th' pirates", "Are you DONE? Let's just get this over with...", "FIGHT");
-		DialogNode *node_2 = new DialogNode("", "Thank you for believeing me. I PROMISE you won't regret this later.", "SAVE"); // =5 ROCK EVENT
+		DialogNode *node_2 = new DialogNode("", "Thank you for believeing me. I PROMISE you won't regret this later.", "EVENT"); // =5 ROCK EVENT
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);

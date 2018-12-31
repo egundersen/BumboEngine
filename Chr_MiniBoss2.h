@@ -23,7 +23,7 @@ public:
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			22,
-			"mini_boss_2", 
+			"J.K. Literal", 
 			"mini_boss_2_neutral_happy.bmp",
 			"mini_boss_2_angry.bmp",
 			"mini_boss_2_neutral_happy.bmp",
