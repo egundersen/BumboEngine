@@ -53,7 +53,7 @@ public:
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
 		dialog_choice_3.push_back(std::make_tuple("Fine, I take your word for it", "Yes! Please no more!", true)); // 5=
 		dialog_choice_3.push_back(std::make_tuple("I still don't believe you!", "That's alright, I can promise a quick and painless death.", false));
-		dialog_choice_3.push_back(std::make_tuple("Can't take any chances", "I guess I did tell you to accuse everyone... that one's on me.", false));
+		dialog_choice_3.push_back(std::make_tuple("Can't take any chances", "I guess I did tell you to accuse EVERYONE... that one's on me.", false));
 		dialog_choice_3.push_back(std::make_tuple("Anime should die", "I don't agree.", false));
 
 		dialog_choices_.push_back(dialog_choice_1);

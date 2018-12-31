@@ -590,8 +590,8 @@ void WorldBase::GENERATE_Enemies()
 	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, 'r', sprite_sheet_.guard, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Final Outside Area
-	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(985, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1047, 57, 21, sprite_sheet_.mini_boss_2, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(965, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1047, 56, 21, sprite_sheet_.mini_boss_2, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();

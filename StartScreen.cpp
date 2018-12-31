@@ -34,9 +34,15 @@ void StartScreen::setBackgroundText()
 		"[]        [] []====| []   []        []     [][][] []====| []====|Z[]   []   [] []      []]  []        []       []   []    | []     Z[]  [][]  [] []====  [][] []        []       []   []==|   []==== Z [][]  [][]  []      [] [][]        []       []   []      []     Z  []    []   []====| []  [[]        [][][] [][][] []      []====|Z",
 		"PM        PM PPPPPPM PM   PM        PM     PPPPPM PPPPPPM PPPPPPMZPM   PM   PM PM      PPM  PM        PM       PM   PM    M PM     ZPM  PPPM  PM PMMMMMM PPPM PM        PM       PM   PMMMM   PMMMMM Z PMPM  PMPM  PM      PM PMPM        PM       PM   PM      PM     Z  PM    PM   PPPPPPM PM  PPM        PPPPPM PPPPPM PM      PPPPPPMZ");
 	Image press_enter("Press ENTER to begin", "P");
-	Image sprite_1("   @@@@   Z  X[]X@@  Z   XXX@   Z  O#XX#O  Z O%###%O  Z  %  %%   Z");
-	Image sprite_2("   -/\\-   Z \\=/--\\=/ Z  X[][]X  Z   XXXX   Z O#XXXX#O Z O######O Z  %U  U%  Z");
-	Image sprite_3("   @@@@   Z  @@X[]X  Z   @XXX   Z  O#XX#O  Z  O%###%O Z   %%  %  Z");
+	Image sprite_1(
+		"   mmmm   Z  <[]MMm  Z   >MM/   Z  O3><EO  Z OY3E3EY  Z  %U  U%  Z",
+		"   YYYY   Z  WAAYYY  Z   WYYJ   Z  JRWWRJ  Z JYRRRRY  Z  NY  YN  Z");
+	Image sprite_2(
+		"  #@@@@#  Z @@^\\/^@@ Z @ \\vv/ @ Z oxHxxHxo Z 0/####\\0 Z  %U  U%  Z",
+		"  DDDDDD Z DDRJJRDD Z D JWWJ D Z JSSJJSSJ Z JTTTTTTJ Z  MD  DM  Z");
+	Image sprite_3(
+		"  /####\\  Z /##\\\"\\>  Z ## \\*<   Z goX><go  Z  #0XXH#0 Z  %U  U%  Z",
+		"  JOOOOJO Z JOOJLJJ  Z OO JRJ   Z OJFJJOJ  Z  OJFFHOJ Z  HB  BH  Z");
 	
 	addImageToMatrix(28, 18, sprite_1, startscreen_matrix_);
 	addImageToMatrix(39, 18, sprite_2, startscreen_matrix_);

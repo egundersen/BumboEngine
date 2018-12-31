@@ -185,7 +185,7 @@ struct SpriteSheet
 		"  /####\\  Z ######## Z   \\##/   Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
 		"  /####\\  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z 0#HXXH#0 Z  %U  U%  Z",
 		"  /####\\  Z /##\\\"\\>  Z ## \\*<   Z goX><go  Z  #0XXH#0 Z  %U  U%  Z",
-		"  /####\\  Z  </\"/##\\ Z   >*/ ## Z  oX><Xog Z 0#HXX0#  Z  %U  U%  Z",
+		"  /####\\  Z  </\"/##\\ Z   >*/ ## Z  og><Xog Z 0#HXX0#  Z  %U  U%  Z",
 
 		"  JOOOOJO Z OOOOOOOO Z   JOOJ   Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
 		"  JOOOOJO Z OOLJJLOO Z OJRJJRJO Z JOFJJFOJ ZJ OHFFHOJ Z  HB  BH  Z",
