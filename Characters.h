@@ -7,6 +7,7 @@
 #include "Chr_Ryuuko.h"
 #include "Chr_Aki.h"
 #include "Chr_AkiFinal.h"
+#include "Chr_ThotPatrol.h"
 
 // Cannon Fodder
 #include "Chr_TutorialNPC.h"

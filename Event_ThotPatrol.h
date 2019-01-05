@@ -10,6 +10,10 @@ public:
 
 	void createEvent();
 	void refreshEvent();
+private:
+	void moveToPlayer();
+	void speak();
+	void battle();
 };
 
 #endif // !EVENT_THOTPATROL_H

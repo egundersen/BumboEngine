@@ -567,6 +567,7 @@ void WorldBase::GENERATE_Maze()
 	Texture rock_1(457, 86, sprite_sheet_.rock, world_matrix_);
 	Texture rock_2(485, 96, sprite_sheet_.rock, world_matrix_);
 	Texture rock_3(495, 89, sprite_sheet_.rock, world_matrix_);
+	Texture rock_4(697, 61, sprite_sheet_.rock_2, world_matrix_); // Rock Blocking Door
 }
 
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
@@ -587,11 +588,12 @@ void WorldBase::GENERATE_Enemies()
 	CharacterBase *sleeping = new Chr_SleepingPirate(336, 170, 17, sprite_sheet_.pirate_15, 'l', sprite_sheet_.face_pirate_3, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Checkpoint Guard Interrogation
-	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, 'r', sprite_sheet_.guard, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *guard = new Chr_CheckpointGuard(492, 229, 19, sprite_sheet_.checkpoint_guard, 'r', sprite_sheet_.face_guard, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	// Final Outside Area
 	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(965, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1047, 56, 21, sprite_sheet_.mini_boss_2, 'l', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *thot_patrol_1 = new Chr_ThotPatrol(188, 165, 36, sprite_sheet_.thot_patrol, 'r', sprite_sheet_.face_thot_patrol, player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
 	aki_final->initializeCharacter();
@@ -606,6 +608,7 @@ void WorldBase::GENERATE_Enemies()
 	guard->initializeCharacter();
 	mini_boss_1->initializeCharacter();
 	mini_boss_2->initializeCharacter();
+	thot_patrol_1->initializeCharacter();
 
 
 	characters_.push_back(tutorial_npc);
@@ -620,6 +623,7 @@ void WorldBase::GENERATE_Enemies()
 	characters_.push_back(guard);
 	characters_.push_back(mini_boss_1);
 	characters_.push_back(mini_boss_2);
+	characters_.push_back(thot_patrol_1);
 
 #ifdef _DEBUG
 	CharacterBase *test = new Chr_AllMight(732, 223, 0, sprite_sheet_.player, 'd', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
@@ -769,12 +773,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	/* ~Left Empty~ */
 
 	// Final Outside Area
-	// TODO we came as soon as we could (JOKE TIME)
-	// All I see is a THOT that needs to BEGONE
-	// woah woah woah, dont fight us. here. fight this lemon instead
-	// sour lemon joke. LEMON:
-	CharacterBase *thot_patrol_1 = new Chr_BackgroundNPC(1088, 56, 36, sprite_sheet_.thot_patrol, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *thot_patrol_2 = new Chr_BackgroundNPC(1075, 56, 37, sprite_sheet_.thot_patrol, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *thot_patrol_2 = new Chr_BackgroundNPC(188, 165, 37, sprite_sheet_.thot_patrol, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	standing_in_line_1->initializeCharacter();
 	standing_in_line_2->initializeCharacter();
@@ -811,7 +810,6 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	cuban_2->initializeCharacter();
 	pacing->initializeCharacter();
 	child->initializeCharacter();
-	thot_patrol_1->initializeCharacter();
 	thot_patrol_2->initializeCharacter();
 
 	characters_.push_back(standing_in_line_1);
@@ -848,7 +846,6 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(cuban_2);
 	characters_.push_back(pacing);
 	characters_.push_back(child);
-	characters_.push_back(thot_patrol_1);
 	characters_.push_back(thot_patrol_2);
 }
 
@@ -934,8 +931,8 @@ void WorldBase::GENERATE_Events()
 	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_MoveNPCIfDefeated *move_doorguard_sharktooth = new Event_MoveNPCIfDefeated(10017, 538, 167, 2, 24, 198, 165, 38, 13, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_MoveNPCIfDefeated *move_doorguard_ryuuko = new Event_MoveNPCIfDefeated(10017, 105, 228, 14, 2, 198, 165, 16, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_MoveNPCIfDefeated *move_aki = new Event_MoveNPCIfDefeated(10017, 105, 228, 14, 2, 296, 195, 22, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_MoveNPCIfDefeated *move_doorguard_ryuuko = new Event_MoveNPCIfDefeated(10018, 105, 228, 14, 2, 198, 165, 16, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_MoveNPCIfDefeated *move_aki = new Event_MoveNPCIfDefeated(10019, 105, 228, 14, 2, 296, 195, 22, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// Inside Cave
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 296, 224, 56, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
@@ -943,9 +940,10 @@ void WorldBase::GENERATE_Events()
 	Event_BridgeRally *bridge_rally = new Event_BridgeRally(10011, 353, 113, 20, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BridgeRally2 *bridge_rally2 = new Event_BridgeRally2(10012, 285, 90, 5, 5, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BridgeRally3 *bridge_rally3 = new Event_BridgeRally3(10013, 215, 85, 5, 5, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_Cubans *cubans = new Event_Cubans(10014, 198, 165, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_Cubans *cubans = new Event_Cubans(10014, 198, 165, 10, 10, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_ThotPatrol *thot_patrol = new Event_ThotPatrol(10015, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_ThrowOffCliff *throw_off_cliff = new Event_ThrowOffCliff(10016, 496, 225, 20, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_RemoveObject *remove_object = new Event_RemoveObject(10020, 198, 165, 10, 10, 697, 61, 5, 5, 1, false, world_matrix_, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);
 	events_.push_back(tutorial);

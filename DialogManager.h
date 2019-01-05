@@ -15,6 +15,7 @@ public:
 	virtual void setDialogNodes() {}
 	void moveDialogCursor(std::string move_cursor_direction);
 	void setHeadNode(DialogNode *dialog_node);
+	void enterBattle() { should_enter_battle_ = true; }
 	void showDialog();
 	void stopGivingItem();
 	void stopBattle();

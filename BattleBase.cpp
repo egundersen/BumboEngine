@@ -8,7 +8,7 @@ BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, int &player
 	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_health_{ player_health }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
 	screen_matrix_{ screen_matrix }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, screen_matrix, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
-	initial_player_health_{ player_health }, end_animation_index_(0)
+	initial_player_health_{ player_health }, end_animation_index_(0), do_not_despawn_{ false }
 {
 	start_time_move_cursor_ = GetTickCount64();
 	setBackgroundText();
@@ -346,7 +346,8 @@ void BattleBase::bossDestroyed()
 		else if (current_time_battle_end_animation > 2000)
 		{
 			is_battle_finished_ = true;
-			is_destroyed_ = true;
+			if (!do_not_despawn_)
+				is_destroyed_ = true;
 		}
 		break;
 	default:
@@ -426,7 +427,7 @@ void BattleBase::showFileSprite(std::string emotion)
 		}
 		else if (emotion == "NEUTRAL")
 			bitmap_.setFilePath(boss_.file_path_neutral);
-		else if(emotion == "ANGRY")
+		else if (emotion == "ANGRY")
 			bitmap_.setFilePath(boss_.file_path_angry);
 		else if (emotion == "NERVOUS_DEAD")
 			bitmap_.setFilePath(boss_.file_path_nervous_dead);

@@ -31,7 +31,7 @@ public:
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
-		int event_ID = 9) // 0 = no event
+		int event_ID = 10015) // 0 = no event
 
 		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player_health, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
 	{
@@ -39,26 +39,9 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Why did you do this?! ", "HOW STUPID OF YOU", false));
-		dialog_choice_1.push_back(std::make_tuple("You will pay for this! ", "WHO DO YOU THINK I AM", false));
-		dialog_choice_1.push_back(std::make_tuple("Stop this! ", "AHHHHHAHAHAHHA", true));
-		dialog_choice_1.push_back(std::make_tuple("You're no magical girl! ", "IT WAS ALL AND ACT", false));
-
-		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("What's your motive?! ", "TO GET RID YOU", false));
-		dialog_choice_2.push_back(std::make_tuple("Who are you really?? ", "AKI, STUUPID", false));
-		dialog_choice_2.push_back(std::make_tuple("Did you plan this from the start! ", "THAT'S A SEECRET", false));
-		dialog_choice_2.push_back(std::make_tuple("I will defeat you! ", "TRY ME!", true));
-
-		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("THIS IS YOUR END ", "I WILL HAUNT YOU", true));
-		dialog_choice_3.push_back(std::make_tuple("You will be defeated! ", "HAHAHAHA IDIOT", false));
-		dialog_choice_3.push_back(std::make_tuple("You won't get away with this! ", "I WILL", false));
-		dialog_choice_3.push_back(std::make_tuple("You're a fraud!!! ", "AND YOU FELL FOR IT", false));
+		dialog_choice_1.push_back(std::make_tuple("We can talk this out", "We're long past that point...", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
-		dialog_choices_.push_back(dialog_choice_2);
-		dialog_choices_.push_back(dialog_choice_3);
 
 		/* Just a little check to make sure you typed the above code correctly.
 		* This will throw an exception if you added more than more dialog choices
@@ -124,8 +107,6 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
-
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC
 		*	item		Including an Item will have the NPC give the player the provided item
@@ -134,46 +115,87 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "ha...ha...ha.");
-		DialogNode *node_1_1 = new DialogNode("Aki??", "hee hehehe");
-		DialogNode *node_1_2 = new DialogNode("It was you...", "hmm? Was it?");
-		DialogNode *node_1_3 = new DialogNode("It can't be", "oh? Z Can't be what?");
-
-		DialogNode *node_1_1_1 = new DialogNode("How could you?", "How could I not?");
-		DialogNode *node_1_1_2 = new DialogNode("But you wanted to help.", "Help a pirate? Z I would never.");
-
-		DialogNode *node_1_1_1_1 = new DialogNode("I trusted you.", "I would never trust Z a pirate.");
-
-		DialogNode *node_1_1_2_1 = new DialogNode("Give it back...", "This dirty thing? Z Ha, too bad");
-
-		DialogNode *node_1_1_2_1_1 = new DialogNode("tell why", "ENOUGH! You. Z Die. Here.", "FIGHT");
-
+		DialogNode *node_1 = new DialogNode("", "Seriously!? You're still alive?");
+		DialogNode *node_1_1 = new DialogNode("I be unstoppable!", "Gonna stop ya right there... How did you get past my roadies?"); // 4=
+		DialogNode *node_1_2 = new DialogNode("You be one to talk", "Fair enough... But how did you get past my roadies?"); // =4 (Options 1 & 2)
+		DialogNode *node_1_2_1 = new DialogNode("They were suitably challenging", "Obviously not challenging enough if you're still alive..."); // 1=
+		DialogNode *node_1_2_2 = new DialogNode("They were a breeze", "Really? Worthless... ");
+		DialogNode *node_1_2_2_1 = new DialogNode("Jus' give up!", "Me? Really? But we're just getting started! Did you at least enjoy the show I put on for you?"); // =1
+		DialogNode *node_1_2_2_1_1 = new DialogNode("What show?", "Don't act so innocent. I even wrote out scripts for my roadies to follow. Don't pretend not to notice!");
+		DialogNode *node_1_2_2_1_1_1 = new DialogNode("I be unimpressed!", "I'm sorry to hear that.");
+		DialogNode *node_1_2_2_1_1_1_1 = new DialogNode("Show's over! Me package, please", "What package? I don't remember any sort of package.");
+		DialogNode *node_1_2_2_1_1_1_1_1 = new DialogNode("Me father's package", "OH, THAT PACKAGE! Do you really want that old thing?");
+		DialogNode *node_1_2_2_1_1_1_1_1_1 = new DialogNode("Aye", "Sorry, but I'm not going to be handing it over any time soon, so...");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1 = new DialogNode("Return it or die!", "Tisk, tisk, tisk. You still can't see the full picture. It was never about the package...");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1 = new DialogNode("...", "I gave you an adventure! Instead of a simple quest, I had you going up, down, left, right, fighting literally everyone.");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1 = new DialogNode("...", "The best part? None of them had any idea I was doing any of this. It was brilliant!");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1 = new DialogNode("...", "You, well, you probably guessed this already but... killing off the pirates was a brilliant move on my part, if I do say so for myself.");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1 = new DialogNode("...", "So how about we leave it at that? I get the package... and you get the satisfaction of knowing you beat the \"game\"?");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1 = new DialogNode("Yes", "Glad to hear it- Glad to hear something positive from filthy pirate scum.");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1 = new DialogNode("Wha' was that?", "FILTHY PIRATE SCUM. I can spell it out if you need me to~");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1_1 = new DialogNode("Take it back!", "NEVER~! Piracy destroys the animation community, making your very existance a threat.");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1 = new DialogNode("...", "You're the reason that my favorite anime was canceled!"); // 3=
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2 = new DialogNode("NO!", "*ugh*! You still can't see all the good I've done for you?");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1 = new DialogNode("...", "I made you a story. It was cheesy, sure, but at least you learned something!");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1 = new DialogNode("...", "(Thats more than I can say about my data structures class)");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1 = new DialogNode("Wha' was that?", "What, too soon? Sorry, It's hard to converse when everything that comes out of my mouth is an outdated reference.");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1 = new DialogNode("But why us pirates?", "Why do I hate them so much? Thats a bit complicated... Can't we just agree on our love of anime?");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1 = new DialogNode("No", "Why so cold all of a sudden? It's just an art style, it's not like you could guess my favorite~");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1 = new DialogNode("Let me guess: My Hero Academia", "Actually, I prefer Lucky Star and Eromanga Sensei~"); // =3
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1_1 = new DialogNode("NO! You're the worst kind of anime fan!", "Heh heh heh... So are we done here... or?");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1_1_1 = new DialogNode("Hand over me package!", "No, Heh ha hah. Go to hell!", "FIGHT"); // 2=
+		DialogNode *node_2 = new DialogNode("", "W-well... you won..."); // =2
+		DialogNode *node_2_1 = new DialogNode("YES I DID!", "I... don't know... if it was worth it...");
+		DialogNode *node_2_1_1 = new DialogNode("It was", "I hope your happy");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
 		node_1->setChoice2(node_1_2);
-		node_1->setChoice3(node_1_3);
+		node_1_2->setChoice1(node_1_2_1);
+		node_1_2->setChoice2(node_1_2_2);
+		node_1_2_2->setChoice1(node_1_2_2_1);
+		node_1_2_2_1->setChoice1(node_1_2_2_1_1);
+		node_1_2_2_1_1->setChoice1(node_1_2_2_1_1_1);
+		node_1_2_2_1_1_1->setChoice1(node_1_2_2_1_1_1_1);
+		node_1_2_2_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1);
 
-		node_1_1->setChoice1(node_1_1_1);
-		node_1_1->setChoice2(node_1_1_2);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1->setChoice2(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1_1);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1_1_1);
 
-		node_1_2->setChoice1(node_1_1_1);
-		node_1_2->setChoice2(node_1_1_2);
+		node_2->setChoice1(node_2_1);
+		node_2_1->setChoice1(node_2_1_1);
 
-		node_1_3->setChoice1(node_1_1_1);
-		node_1_3->setChoice2(node_1_1_2);
-
-		node_1_1_1->setChoice1(node_1_1_1_1);
-		node_1_1_1->setChoice2(node_1_1_2_1);
-		node_1_1_2->setChoice1(node_1_1_1_1);
-		node_1_1_2->setChoice2(node_1_1_2_1);
-
-		node_1_1_1_1->setChoice1(node_1_1_2_1_1);
-		node_1_1_2_1->setChoice1(node_1_1_2_1_1);
-
-
+		// Seperated Links:
+		node_1_2_1->setChoice1(node_1_2_2_1); // 1=
+		node_1_1->setChoice1(node_1_2_1); // 4=
+		node_1_1->setChoice1(node_1_2_2);
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1->setChoice1(node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1); // 3=
+		node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1_1_1->setChoice1(node_2); // 2=
 
 		setHeadNode(node_1);
+	}
+
+	// Sets ANYTHING you want about a specific character (If more than 1 character uses this, try refactoring your code)
+	void setUniqueAttributes() 
+	{
+		setPersistent();
 	}
 };
 

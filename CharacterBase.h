@@ -59,6 +59,7 @@ public:
 	void reset();
 protected:
 	virtual void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, int &player_health) {}
+	virtual void setUniqueAttributes() {}
 private:
 	void resetAttackPatterns();
 	void eraseSpriteAndColliders();

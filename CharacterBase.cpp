@@ -64,6 +64,7 @@ void CharacterBase::reset()
 void CharacterBase::initializeCharacter()
 {
 	setDialogNodes();
+	setUniqueAttributes();
 	reset();
 }
 

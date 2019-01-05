@@ -22,7 +22,7 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			22,
+			7,
 			"J.K. Literal", 
 			"mini_boss_2_neutral_happy.bmp",
 			"mini_boss_2_angry.bmp",
@@ -39,26 +39,42 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Who are you? ", "A lost pirate", false));
-		dialog_choice_1.push_back(std::make_tuple("Do you know where I should go? ", "yes", false));
-		dialog_choice_1.push_back(std::make_tuple("Where am I? ", "In between factions", true));
-		dialog_choice_1.push_back(std::make_tuple("I'm tired ", "ok?", false));
+		dialog_choice_1.push_back(std::make_tuple("We can talk this out", "HOO HOO HA HA HA! IMPOSSIBLE! WHO DO YOU TAKE ME FOR?", true));
+		dialog_choice_1.push_back(std::make_tuple("Who are you?", "J.K. LITERAL.", true));
+		dialog_choice_1.push_back(std::make_tuple("Why are you attacking me?", "ALL PIRATES MUST BE CLEANSED FROM OUR WORLD!", true));
+		dialog_choice_1.push_back(std::make_tuple("Something's wrong...", "No. Nothing's wrong.", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("Where do I go? ", "Past tis; door", false));
-		dialog_choice_2.push_back(std::make_tuple("Can you stop? ", "no mate", false));
-		dialog_choice_2.push_back(std::make_tuple("Please stop ", "Can't do such thing", false));
-		dialog_choice_2.push_back(std::make_tuple("Why are you here? ", "To kill you", true));
+		dialog_choice_2.push_back(std::make_tuple("We can talk this out", "HOO HOO HA HA HA! IMPOSSIBLE! WHO DO YOU TAKE ME FOR?", true));
+		dialog_choice_2.push_back(std::make_tuple("Who are you?", "J.K. LITERAL.", true));
+		dialog_choice_2.push_back(std::make_tuple("Why are you attacking me?", "ALL PIRATES MUST BE CLEANSED FROM OUR WORLD!", true));
+		dialog_choice_2.push_back(std::make_tuple("Something's wrong...", "No. Nothing's wrong.", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("Could you stop? ", "Perhaps", true));
-		dialog_choice_3.push_back(std::make_tuple("Why are you helping but killing? ", "Feel like it", false));
-		dialog_choice_3.push_back(std::make_tuple("I don't understand why I'm targeted ", "it's ye flashdrive", false));
-		dialog_choice_3.push_back(std::make_tuple("Will you kill me? ", "Maybe", false));
+		dialog_choice_3.push_back(std::make_tuple("We can talk this out", "HOO HOO HA HA HA! IMPOSSIBLE! WHO DO YOU TAKE ME FOR?", true));
+		dialog_choice_3.push_back(std::make_tuple("Who are you?", "J.K. LITERAL.", true));
+		dialog_choice_3.push_back(std::make_tuple("Why are you attacking me?", "ALL PIRATES MUST BE CLEANSED FROM OUR WORLD!", true));
+		dialog_choice_3.push_back(std::make_tuple("Something's wrong...", "No. Nothing's wrong.", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_4;
+		dialog_choice_4.push_back(std::make_tuple("We can talk this out", "HOO HOO HA HA HA! IMPOSSIBLE! WHO DO YOU TAKE ME FOR?", true));
+		dialog_choice_4.push_back(std::make_tuple("Who are you?", "J.K. LITERAL.", true));
+		dialog_choice_4.push_back(std::make_tuple("Why are you attacking me?", "ALL PIRATES MUST BE CLEANSED FROM OUR WORLD!", true));
+		dialog_choice_4.push_back(std::make_tuple("Something's wrong...", "No. Nothing's wrong.", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_5;
+		dialog_choice_5.push_back(std::make_tuple("Surrender! I've exhausted all of your dialog!", "Only if you promise... to never forget me. EVER!", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_6;
+		dialog_choice_6.push_back(std::make_tuple("I promise", "You have just given me your soul. Deh Devil thanks you.", true)); // 3=
+		dialog_choice_6.push_back(std::make_tuple("What was your name again?", "Close enough.", true)); // 3=
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
 		dialog_choices_.push_back(dialog_choice_3);
+		dialog_choices_.push_back(dialog_choice_4);
+		dialog_choices_.push_back(dialog_choice_5);
+		dialog_choices_.push_back(dialog_choice_6);
 
 		/* Just a little check to make sure you typed the above code correctly.
 		 * This will throw an exception if you added more than more dialog choices
@@ -99,8 +115,6 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
-
 		/* ACTIONS (Mini-Tutorial)
 		 *	"FIGHT"		Will start a battle with the NPC
 		 *	item		Including an Item will have the NPC give the player the provided item
@@ -109,14 +123,55 @@ public:
 		 */
 
 		 // CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Ye shall not pass");
-		DialogNode *node_1_1 = new DialogNode("Oh no...", "Argh, I will Z defeat ye!");
-		DialogNode *node_1_2 = new DialogNode("wait, please - ", "Get ready", "FIGHT");
+		DialogNode *node_1 = new DialogNode("", "HALT! I THE GREAT AND POWERFUL J.K. LITUH- Uh... hmm... Hold on... Gimme a second... I need to find my... thing.");
+		DialogNode *node_1_1 = new DialogNode("Ok", "I found the script! It's written right here... No panic attack! I... -wait- I can't read that word... um... Oh yes:");
+		DialogNode *node_1_1_1 = new DialogNode("Go on", "*ehem!* *Let me just get back in character:* WHERE DO YOU THINK YOU'RE GOING?");
+		DialogNode *node_1_1_1_1 = new DialogNode("I needs t' get past ye", "IMPOSSIBLE! FOR YOU SEE: I AM GUARDING THIS DOOR.");
+		DialogNode *node_1_1_1_1_1 = new DialogNode("Are ye really though?", "YES. I. AM."); // 2=
+		DialogNode *node_1_1_1_1_2 = new DialogNode("Not fer long!", "That sounded vague enough to be a threat! PREPARE THINE SELF! FOR COMBAT!", "FIGHT"); // 3=
+		DialogNode *node_1_1_1_2 = new DialogNode("Where do you think YOU'RE going?", "I'M GUARDING THIS HALLWAY.");
+		DialogNode *node_1_1_1_2_1 = new DialogNode("Are ye?", "YES. I. AM.");
+		DialogNode *node_1_1_1_2_1_1 = new DialogNode("But are ye REALLY?", "YES"); // =2
+		DialogNode *node_1_1_1_2_1_1_1 = new DialogNode("But are ye REEEAAAAALLLY?", "YES"); // 1=
+		DialogNode *node_1_1_1_2_2 = new DialogNode("No ye're not", "Wait you can't say that, it's not on the script. I have no way to respond to that! What's going on here?"); // =1
+		DialogNode *node_1_1_1_2_2_1 = new DialogNode("Ye're nah guardin' this gangway", "I'm not? But I thought... well then what am I doing?");
+		DialogNode *node_1_1_1_2_2_1_1 = new DialogNode("Ye're tryin' t' get past me!", "I am?");
+		DialogNode *node_1_1_1_2_2_1_1_1 = new DialogNode("Aye, but ye're failin' at it!", "No!");
+		DialogNode *node_1_1_1_2_2_1_1_1_1 = new DialogNode("Aye!", "This is terrible news! What am I to do?");
+		DialogNode *node_1_1_1_2_2_1_1_1_1_1 = new DialogNode("Ye should go right", "And then what?");
+		DialogNode *node_1_1_1_2_2_1_1_1_1_1_1 = new DialogNode("Don't stop. Jus' go right", "I'll do my best not to let you down.", "EVENT");
+		DialogNode *node_1_1_1_2_2_1_1_1_1_2 = new DialogNode("We should fight!", "Ok, I'll do my best not to let you down.", "FIGHT"); // 3=
+		DialogNode *node_1_2 = new DialogNode("Hold that thought...", "I understand completely. I'll do my best not to let you down.");
+		DialogNode *node_2 = new DialogNode("", "I do hope I will see you again soon, maybe even sooner than you think.", "EVENT"); // =3
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
-		node_1_1->setChoice2(node_1_2);
+		node_1->setChoice2(node_1_2);
+		node_1_1->setChoice1(node_1_1_1);
+		node_1_1_1->setChoice1(node_1_1_1_1);
+		node_1_1_1_1->setChoice1(node_1_1_1_1_1);
+		node_1_1_1_1->setChoice2(node_1_1_1_1_2);
 
+		node_1_1_1->setChoice2(node_1_1_1_2);
+		node_1_1_1_2->setChoice1(node_1_1_1_2_1);
+		node_1_1_1_2_1->setChoice1(node_1_1_1_2_1_1);
+		node_1_1_1_2_1_1->setChoice1(node_1_1_1_2_1_1_1);
+
+		node_1_1_1_2->setChoice2(node_1_1_1_2_2);
+		node_1_1_1_2_2->setChoice1(node_1_1_1_2_2_1);
+		node_1_1_1_2_2_1->setChoice1(node_1_1_1_2_2_1_1);
+		node_1_1_1_2_2_1_1->setChoice1(node_1_1_1_2_2_1_1_1);
+		node_1_1_1_2_2_1_1_1->setChoice1(node_1_1_1_2_2_1_1_1_1);
+		node_1_1_1_2_2_1_1_1_1->setChoice1(node_1_1_1_2_2_1_1_1_1_1);
+		node_1_1_1_2_2_1_1_1_1_1->setChoice1(node_1_1_1_2_2_1_1_1_1_1_1);
+
+		node_1_1_1_2_2_1_1_1_1->setChoice2(node_1_1_1_2_2_1_1_1_1_2);
+
+		// Seperated Links:
+		node_1_1_1_2_1_1_1->setChoice1(node_1_1_1_2_2); // 1=
+		node_1_1_1_1_1->setChoice1(node_1_1_1_2_1_1_1); // 2=
+		node_1_1_1_1_2->setChoice1(node_2); // 3=
+		node_1_1_1_2_2_1_1_1_1_2->setChoice1(node_2); // 3=
 
 		setHeadNode(node_1);
 	}

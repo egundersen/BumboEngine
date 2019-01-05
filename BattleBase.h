@@ -20,6 +20,7 @@ public:
 	void onBeginBattle();
 	void refreshScreen();
 	void setVectorSpace(std::string local_vector_space) { local_vector_space_ = local_vector_space; }
+	void setPersistent() { do_not_despawn_ = true; }
 
 	// Getters
 	bool isBattleOver() { return is_battle_finished_; }
@@ -58,7 +59,7 @@ protected:
 		initial_boss_health_, initial_player_health_, end_animation_index_;
 	std::string local_vector_space_;
 	BitmapDefinition &bitmap_;
-	bool is_battle_finished_, is_destroyed_, should_restart_battle_;
+	bool is_battle_finished_, is_destroyed_, should_restart_battle_, do_not_despawn_;
 	BattleDialogBase dialog_;
 	BossFightDefinition boss_;
 };

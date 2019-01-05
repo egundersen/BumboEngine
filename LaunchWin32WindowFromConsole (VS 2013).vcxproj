@@ -186,6 +186,7 @@
     <ClCompile Include="Event_Cubans.cpp" />
     <ClCompile Include="Event_LostDevice.cpp" />
     <ClCompile Include="Event_MoveNPCIfDefeated.cpp" />
+    <ClCompile Include="Event_RemoveObject.cpp" />
     <ClCompile Include="Event_TeleportPlayer.cpp" />
     <ClCompile Include="Event_Test.cpp" />
     <ClCompile Include="Event_ThotPatrol.cpp" />
@@ -253,6 +254,7 @@
     <ClInclude Include="Chr_Ryuuko.h" />
     <ClInclude Include="Chr_Sharktooth.h" />
     <ClInclude Include="Chr_SleepingPirate.h" />
+    <ClInclude Include="Chr_ThotPatrol.h" />
     <ClInclude Include="Chr_TutorialNPC.h" />
     <ClInclude Include="Chr_AllMight.h" />
     <ClInclude Include="BattleDialogBase.h" />
@@ -270,6 +272,7 @@
     <ClInclude Include="Event_Cubans.h" />
     <ClInclude Include="Event_LostDevice.h" />
     <ClInclude Include="Event_MoveNPCIfDefeated.h" />
+    <ClInclude Include="Event_RemoveObject.h" />
     <ClInclude Include="Event_TeleportPlayer.h" />
     <ClInclude Include="Event_Test.h" />
     <ClInclude Include="Event_ThotPatrol.h" />

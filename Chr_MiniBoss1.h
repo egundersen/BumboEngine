@@ -22,8 +22,8 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			22,
-			"mini_boss_1", 
+			19,
+			"Kriis",
 			"mini_boss_1_neutral_happy.bmp",
 			"mini_boss_1_mad.bmp",
 			"mini_boss_1_neutral_happy.bmp",
@@ -39,26 +39,54 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Who are you? ", "Not important!", false));
-		dialog_choice_1.push_back(std::make_tuple("Why are you fighting me? ", "Not sure honestly!", true));
-		dialog_choice_1.push_back(std::make_tuple("Did someone send you? ", "Secret!", false));
-		dialog_choice_1.push_back(std::make_tuple("Where am I? ", "About to die!!", false));
+		dialog_choice_1.push_back(std::make_tuple("We can talk this out", "Less chatting. More Stabbing.", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_2;
-		dialog_choice_2.push_back(std::make_tuple("What's your motive? ", "Money money!", false));
-		dialog_choice_2.push_back(std::make_tuple("Can we talk? ", "There's no time!", false));
-		dialog_choice_2.push_back(std::make_tuple("Let me breathe first! ", "No!", false));
-		dialog_choice_2.push_back(std::make_tuple("Can you stop? ", "Not really!", true));
+		dialog_choice_2.push_back(std::make_tuple("We can talk this out", "Again, less chatting, more Stabbing.", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("I'm gonna finish this. ", "Awww, booo!", true));
-		dialog_choice_3.push_back(std::make_tuple("This is going too fast! ", "Time is money!", false));
-		dialog_choice_3.push_back(std::make_tuple("Why are you in a hurry? ", "Boss wants me done!", false));
-		dialog_choice_3.push_back(std::make_tuple("You're so mean! ", "It's part of the job.", false));
+		dialog_choice_3.push_back(std::make_tuple("We can talk this out", "Quiet!", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_4;
+		dialog_choice_4.push_back(std::make_tuple("We can talk this out", "...", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_5;
+		dialog_choice_5.push_back(std::make_tuple("We can talk this out", "Do you mind? I'm trying TO KILL YOU!", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_6;
+		dialog_choice_6.push_back(std::make_tuple("We can talk this out", "...", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_7;
+		dialog_choice_7.push_back(std::make_tuple("We can talk this out", "STOP SAYING THAT!", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_8;
+		dialog_choice_8.push_back(std::make_tuple("We can talk this out", "BE QUIET ALREADY OR I'LL...", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_9;
+		dialog_choice_9.push_back(std::make_tuple("We can talk this out", "...", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_10;
+		dialog_choice_10.push_back(std::make_tuple("We can talk this out", "...", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_11;
+		dialog_choice_11.push_back(std::make_tuple("We can talk this out", "...", true));
+
+		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_12;
+		dialog_choice_12.push_back(std::make_tuple("We can talk this out", "FINE! It's not even worth fighting you anymore. You're just too annoying!", true)); // 1=
+
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
 		dialog_choices_.push_back(dialog_choice_3);
+		dialog_choices_.push_back(dialog_choice_4);
+		dialog_choices_.push_back(dialog_choice_5);
+		dialog_choices_.push_back(dialog_choice_6);
+		dialog_choices_.push_back(dialog_choice_7);
+		dialog_choices_.push_back(dialog_choice_8);
+		dialog_choices_.push_back(dialog_choice_9);
+		dialog_choices_.push_back(dialog_choice_10);
+		dialog_choices_.push_back(dialog_choice_11);
+		dialog_choices_.push_back(dialog_choice_12);
 
 		/* Just a little check to make sure you typed the above code correctly.
 		 * This will throw an exception if you added more than more dialog choices
@@ -99,8 +127,6 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item health_potion("Bottle o' syrup", 1);
-
 		/* ACTIONS (Mini-Tutorial)
 		 *	"FIGHT"		Will start a battle with the NPC
 		 *	item		Including an Item will have the NPC give the player the provided item
@@ -109,15 +135,37 @@ public:
 		 */
 
 		 // CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Stooop right there!");
-		DialogNode *node_1_1 = new DialogNode("who?", "That's not important! Z I'm here to stop you!");
-		DialogNode *node_1_2 = new DialogNode("Wait, but-", "Nope!", "FIGHT");
+		DialogNode *node_1 = new DialogNode("", "STOP RIGHT THERE. YOU DIDN'T HONESTLY THINK IT'D BE THAT EASY, DID YOU?");
+		DialogNode *node_1_1 = new DialogNode("No more nonsense. Have at you!", "WITH PLEASURE!", "FIGHT"); // 1=
+		DialogNode *node_1_2 = new DialogNode("What?", "*Ugh* *This was written so poorly* Look, Can we just skip these formal introductions? I'm here to kill you.");
+		DialogNode *node_1_2_1 = new DialogNode("Yes", "What a relief. Let's get this over with.", "FIGHT"); // 1=
+		DialogNode *node_1_2_2 = new DialogNode("No", "Are you kidding me? I can't be held accountable for staying in character.");
+		DialogNode *node_1_2_2_1 = new DialogNode("Ye're right", "Thank god! Now, where were we?", "FIGHT"); // 1=
+		DialogNode *node_1_2_2_2 = new DialogNode("No, stay in character!", "But it's soo... you know what, fine: TRAVELER, WHO ARE... ye?");
+		DialogNode *node_1_2_2_2_1 = new DialogNode("Please continue", "TRAVELER, WHO ARE \"YE\" TO TRESSPASS ON THIS MOST... SACRED GROUND!");
+		DialogNode *node_1_2_2_2_1_1 = new DialogNode("{player}", "{player}? YOU MEAN THE LOWLY PIRATE?");
+		DialogNode *node_1_2_2_2_1_1_1 = new DialogNode("Aye", "YOU HAVE TRAVELED FAR AND WIDE... BUT YOUR JOURNEY ENDS HERE.");
+		DialogNode *node_1_2_2_2_1_1_1_1 = new DialogNode("Ok", "FOR IT IS I, THE ILUSTRIO... Ok. F*ck this. You win. GG.", "EVENT");
+		DialogNode *node_2 = new DialogNode("", "I honestly hope \"We can talk this out.\" is written on your tombstone!", "EVENT"); // =1
 
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
-		node_1_1->setChoice1(node_1_2);
+		node_1->setChoice2(node_1_2);
+		node_1_2->setChoice1(node_1_2_1);
+		node_1_2->setChoice2(node_1_2_2);
+		node_1_2_2->setChoice1(node_1_2_2_1);
+		node_1_2_2->setChoice2(node_1_2_2_2);
 
+		node_1_2_2_2->setChoice1(node_1_2_2_2_1);
+		node_1_2_2_2_1->setChoice1(node_1_2_2_2_1_1);
+		node_1_2_2_2_1_1->setChoice1(node_1_2_2_2_1_1_1);
+		node_1_2_2_2_1_1_1->setChoice1(node_1_2_2_2_1_1_1_1);
+
+		// Seperated Links:
+		node_1_1->setChoice1(node_2); // 1=
+		node_1_2_1->setChoice1(node_2); // 1=
+		node_1_2_2_1->setChoice1(node_2); // 1=
 
 		setHeadNode(node_1);
 	}

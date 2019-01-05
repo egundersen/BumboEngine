@@ -228,6 +228,9 @@
     <ClCompile Include="Event_MoveNPCIfDefeated.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Event_RemoveObject.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -507,6 +510,12 @@
       <Filter>Header Files\Events\Unique Events</Filter>
     </ClInclude>
     <ClInclude Include="Event_MoveNPCIfDefeated.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_ThotPatrol.h">
+      <Filter>Header Files\Characters\Main Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_RemoveObject.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
