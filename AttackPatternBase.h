@@ -1,4 +1,5 @@
 #include "MatrixBase.h"
+#include "PlayerDefinition.h"
 #include "Attacks.h"
 
 #ifndef ATTACKPATTERNBASE_H
@@ -7,7 +8,7 @@
 class AttackPatternBase : public MatrixBase
 {
 public:
-	explicit AttackPatternBase(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks);
+	explicit AttackPatternBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks);
 	virtual ~AttackPatternBase();
 
 	// Setters
@@ -29,11 +30,12 @@ protected:
 	void checkBorderCollision();
 	void attacksCheckCollision();
 
-	int width_, height_, &player_health_, attacks_to_create_, created_attacks_;
+	int width_, height_, attacks_to_create_, created_attacks_;
 	double start_time_new_attack_;
 	bool has_completed_initialization_, has_completed_all_attacks_, **element_is_occupied_, border_was_destroyed_;
 	PlayerPosition player_position_;
 	Matrix attack_matrix_;
+	PlayerDefinition &player_;
 	std::vector<AttackBase*> attacks_list_;
 	std::vector<std::shared_ptr<int>> attack_starting_positions_;
 

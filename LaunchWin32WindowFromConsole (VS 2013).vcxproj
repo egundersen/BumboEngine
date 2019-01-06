@@ -294,6 +294,7 @@
     <ClInclude Include="MatrixManager.h" />
     <ClInclude Include="NPCSprite.h" />
     <ClInclude Include="Pickup.h" />
+    <ClInclude Include="PlayerDefinition.h" />
     <ClInclude Include="PlayerSprite.h" />
     <ClInclude Include="Popup.h" />
     <ClInclude Include="RGBA.h" />

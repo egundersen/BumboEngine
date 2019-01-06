@@ -26,7 +26,8 @@ private:
 	void indentLines(int number_of_indents);
 	bool has_initialized_inventory_, has_initialized_battle_;
 
-	int width_, height_, player_health_; // the real player health
+	PlayerDefinition player_; // the real player health
+	int width_, height_;
 	Matrix &screen_matrix_;
 	std::string current_vector_space_;
 	Inventory inventory_;

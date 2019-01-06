@@ -1,4 +1,5 @@
 #include "MatrixBase.h"
+#include "PlayerDefinition.h"
 #include "Image.h"
 #include "Item.h"
 
@@ -8,7 +9,7 @@
 class Inventory : public MatrixBase
 {
 public:
-	Inventory(int width, int height, Matrix &screen_matrix, int &player_health);
+	Inventory(int width, int height, Matrix &screen_matrix, PlayerDefinition &player);
 
 	// Setters
 	void onOpenInventory(bool in_battle = false);
@@ -34,7 +35,8 @@ private:
 	Matrix &screen_matrix_, inventory_matrix_;
 	std::vector<Item> items_list_;
 	std::vector<Item> temporary_items_list_;
-	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_;
+	PlayerDefinition &player_;
+	int width_, height_, cursor_index_, start_time_move_cursor_;
 	bool in_battle_;
 };
 

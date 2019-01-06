@@ -8,9 +8,9 @@
 #include <iostream>
 
 MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_health_), player_health_{ player_health },
+	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_), player_{ player_health, 9 },
 	screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	world_(width, height, 1200, 273, 730, 232, player_health_, screen_matrix, inventory_, image_file_path), credits_(width_, height_, image_file_path, screen_matrix_)
+	world_(width, height, 1200, 273, 730, 232, player_, screen_matrix, inventory_, image_file_path), credits_(width_, height_, image_file_path, screen_matrix_)
 {
 	inventory_.addItem("Mug o' Grog", 1); // Starting Items (Not pickups! Just starting items)
 	inventory_.addItem("Fish Mush", 1);

@@ -1,6 +1,7 @@
 #include "MatrixBase.h"
 #include "Image.h"
 #include "RGBA.h"
+#include "PlayerDefinition.h"
 #include "AttackPatterns.h"
 #include "AttackPatternBase.h"
 #include "BattleDialogBase.h"
@@ -13,7 +14,7 @@
 class BattleBase : public MatrixBase
 {
 public:
-	explicit BattleBase(int width, int height, Matrix &screen_matrix, int &player_health, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path);
+	explicit BattleBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path);
 	virtual ~BattleBase() {}
 
 	// Setters
@@ -55,11 +56,12 @@ protected:
 	std::vector<std::vector<std::tuple<std::string, std::string, bool>>> dialog_choices_;
 	Matrix &screen_matrix_, menu_matrix_;
 	std::vector<AttackPatternBase*> attack_patterns_;
-	int width_, height_, &player_health_, cursor_index_, start_time_move_cursor_, start_time_battle_end_animation_,
+	int width_, height_, cursor_index_, start_time_move_cursor_, start_time_battle_end_animation_,
 		initial_boss_health_, initial_player_health_, end_animation_index_;
 	std::string local_vector_space_;
 	BitmapDefinition &bitmap_;
 	bool is_battle_finished_, is_destroyed_, should_restart_battle_, do_not_despawn_;
+	PlayerDefinition &player_;
 	BattleDialogBase dialog_;
 	BossFightDefinition boss_;
 };

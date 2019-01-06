@@ -3,8 +3,8 @@
 #include <iostream>
 #include <algorithm>
 
-AttackPatternBase::AttackPatternBase(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
-	: width_{ width }, height_{ height }, attack_matrix_(width, height), player_health_{ player_health }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false }
+AttackPatternBase::AttackPatternBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
+	: width_{ width }, height_{ height }, attack_matrix_(width, height), player_{ player }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false }
 {
 	border_ = new Attack_Border(width, height, player_position_, attack_matrix_, element_is_occupied_);
 	element_is_occupied_ = new bool*[height_];
@@ -50,7 +50,7 @@ void AttackPatternBase::refreshPlayerLocation()
 		{
 			if (i == player_position_.y && j == player_position_.x) // Player Position
 			{
-				attack_matrix_[i][j] = player_health_ + '0';
+				attack_matrix_[i][j] = player_.getHealthText();
 			}
 			else if (!element_is_occupied_[i][j] && attack_matrix_[i][j] != ' ')
 			{
@@ -99,7 +99,9 @@ void AttackPatternBase::evaluatePlayerInput()
 // Hurts the player
 void AttackPatternBase::hurtPlayer()
 {
-	player_health_--;
+	if (player_.hasShield) { player_.useShield(); }
+	else { player_.subtractHealth(1); }
+
 	playPlayerHurtSound();
 }
 

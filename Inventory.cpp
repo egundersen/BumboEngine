@@ -2,8 +2,8 @@
 #include "MatrixBase.h"
 #include <windows.h>
 
-Inventory::Inventory(int width, int height, Matrix &screen_matrix, int &player_health)
-	: width_{ width }, height_{ height }, inventory_matrix_(width, height), cursor_index_(0), player_health_{ player_health }, screen_matrix_{ screen_matrix }, start_time_move_cursor_(0)
+Inventory::Inventory(int width, int height, Matrix &screen_matrix, PlayerDefinition &player)
+	: width_{ width }, height_{ height }, inventory_matrix_(width, height), cursor_index_(0), player_{ player }, screen_matrix_{ screen_matrix }, start_time_move_cursor_(0)
 {
 	start_time_move_cursor_ = GetTickCount64();
 	setInventoryBackgroundText();
@@ -97,7 +97,7 @@ void Inventory::setCursorText()
 void Inventory::setPlayerHealthText(int x_position, int y_position)
 {
 	addTextToMatrix(x_position, y_position, 'l', "{player}'s Lives:", 'M', inventory_matrix_, 1);
-	inventory_matrix_[y_position + 2][x_position + 6] = player_health_ + '0';
+	inventory_matrix_[y_position + 2][x_position + 6] = player_.getHealthText();
 	inventory_matrix_[y_position + 2][x_position + 6].setColor(ColorPalette('A').getRGBA());
 }
 
@@ -139,16 +139,16 @@ void Inventory::useItem()
 {
 	//TODO: Do something for item name: items_list_.at(cursor_index_);
 	if (items_list_.at(cursor_index_).getType() == "HEAL")
-		player_health_ += items_list_.at(cursor_index_).getModifier();
+		player_.addHealth(items_list_.at(cursor_index_).getModifier());
+	else if (items_list_.at(cursor_index_).getType() == "SHIELD")
+		player_.enableShield();
+	else if (items_list_.at(cursor_index_).getType() == "ATTACKUP")
+		player_.increaseDamage(items_list_.at(cursor_index_).getModifier());
 
 	// delete selected item
 	removeItem(cursor_index_);
 	if (items_list_.size() <= cursor_index_ && items_list_.size() != 0)
 		cursor_index_--;
-
-	// Set player health maximum
-	if (player_health_ > 9)
-		player_health_ = 9;
 }
 
 // Add item to inventory (from a string)

@@ -539,6 +539,9 @@
     <ClInclude Include="Chr_BadEndingGuy.h">
       <Filter>Header Files\Characters\Not Hostile</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerDefinition.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">

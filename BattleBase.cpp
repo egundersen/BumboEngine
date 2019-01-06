@@ -4,11 +4,11 @@
 #include <windows.h>
 #include <iostream>
 
-BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, int &player_health, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_health_{ player_health }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
+BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
+	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_{ player }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
 	screen_matrix_{ screen_matrix }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
 	dialog_(width, height, screen_matrix, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
-	initial_player_health_{ player_health }, end_animation_index_(0), do_not_despawn_{ false }
+	initial_player_health_{ player.getHealth() }, end_animation_index_(0), do_not_despawn_{ false }
 {
 	start_time_move_cursor_ = GetTickCount64();
 	setBackgroundText();
@@ -68,10 +68,7 @@ void BattleBase::refreshScreen()
 	{ // ATTACK IN PROGRESS
 		if (attack_patterns_.size() != 0)
 		{
-			if (player_health_ <= 0)
-			{
-				gameOver();
-			}
+			if (player_.hasDied()) { gameOver(); }
 			else if (attack_patterns_.back()->areAttacksOver())
 			{
 				attack_patterns_.pop_back();
@@ -180,7 +177,7 @@ void BattleBase::setPlayerHealthText(int x_position, int y_position)
 	Image lives("Lives:  ");
 	addImageToMatrix(x_position, y_position, player_health_text, menu_matrix_);
 	addImageToMatrix(x_position, y_position + 1, lives, menu_matrix_);
-	menu_matrix_[y_position + 1][x_position + 4] = player_health_ + '0';
+	menu_matrix_[y_position + 1][x_position + 4] = player_.getHealthText();
 }
 
 // Sets the game over screen
@@ -301,7 +298,8 @@ void BattleBase::damageBoss()
 	{
 		attack_patterns_.back()->OnBeginAttack();
 		local_vector_space_ = "FIGHT";
-		boss_.health--;
+		boss_.health-=player_.getDamage();
+		player_.resetDamage();
 		hideFileSprite();
 	}
 	else // attacking boss when boss is out of attacks is an instant kill
@@ -452,7 +450,7 @@ void BattleBase::resetBattleSpace()
 
 	start_time_move_cursor_ = GetTickCount64();
 	boss_.health = initial_boss_health_;
-	player_health_ = initial_player_health_;
+	player_.setHealth(initial_player_health_);
 
 	clearMatrix(width_, height_, menu_matrix_);
 	setBackgroundText();

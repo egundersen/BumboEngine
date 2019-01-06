@@ -17,7 +17,7 @@
 class WorldBase : MatrixBase
 {
 public:
-	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path);
+	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path);
 
 	// Setters
 	void onEnterWorld();
@@ -68,7 +68,7 @@ private:
 	void DEBUG_displayScreen();
 	void DEBUG_createPlaceholder(int center_position_x, int center_position_y);
 
-	int screen_width_, screen_height_, world_width_, world_height_, &player_health_, start_time_player_speed_,
+	int screen_width_, screen_height_, world_width_, world_height_, PlayerDefinition &player_, start_time_player_speed_,
 		player_speed_modifier_;
 	char opposite_player_direction_;
 	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
