@@ -6,8 +6,8 @@
 #include "Image.h"
 #include <algorithm>
 #include <Windows.h>
-AttackPattern_ShootandExplode::AttackPattern_ShootandExplode(int width, int height, Matrix& screen_matrix, int & player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks)
+AttackPattern_ShootandExplode::AttackPattern_ShootandExplode(int width, int height, Matrix& screen_matrix, PlayerDefinition &player, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks)
 {
 	attacks_to_create_ = number_of_attacks * 2;
 }

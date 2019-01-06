@@ -8,7 +8,7 @@
 class AttackPattern_ShootAtPlayer : public AttackPatternBase
 {
 public:
-	AttackPattern_ShootAtPlayer(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks);
+	AttackPattern_ShootAtPlayer(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks);
 
 	// Setters
 	void OnBeginAttack();

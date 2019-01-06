@@ -99,7 +99,7 @@ void AttackPatternBase::evaluatePlayerInput()
 // Hurts the player
 void AttackPatternBase::hurtPlayer()
 {
-	if (player_.hasShield) { player_.useShield(); }
+	if (player_.hasShield()) { player_.useShield(); }
 	else { player_.subtractHealth(1); }
 
 	playPlayerHurtSound();

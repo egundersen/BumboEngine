@@ -8,7 +8,7 @@
 class AttackPattern_ShootandExplode : public AttackPatternBase
 {
 public:
-	explicit AttackPattern_ShootandExplode(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks);
+	explicit AttackPattern_ShootandExplode(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks);
 	virtual ~AttackPattern_ShootandExplode() {}
 
 	// Setters

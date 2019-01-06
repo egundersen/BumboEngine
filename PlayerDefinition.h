@@ -5,7 +5,7 @@ class PlayerDefinition {
 public:
 	PlayerDefinition(int starting_health, int max_health)
 		: health_{ starting_health }, damage_modifier_(1), shield_{ false },
-		max_health_{ max_health }, health_text_{ starting_health + '0' } {}
+		max_health_{ max_health }, health_text_(starting_health + '0') {}
 
 	// Setters
 	void setHealth(int health) {

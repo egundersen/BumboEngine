@@ -7,7 +7,7 @@
 class Chr_ThotPatrol : public CharacterBase
 {
 public:
-	Chr_ThotPatrol(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, BattleSprite battle_sprite, int &player_health, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_ThotPatrol(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -22,7 +22,7 @@ public:
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 10021) // 0 = no event
 
-		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player_health,
+		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player,
 			BossFightDefinition(
 				-1, // boss health
 				40, // his smile/eyes (overlay) offset X position
@@ -117,28 +117,28 @@ public:
 	}
 
 	/* Creates all attacks */
-	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, int &player_health)
+	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player_health, 10, 5, 1);
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
 		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player_health, 200);
+		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
 		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player_health, 50);
+		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 50);
 		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player_health, 10);
+		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 10);
 		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player_health, 10); //50
+		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 10); //50
 		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player_health);
+		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
 		AttackPatternBase *attack_pattern_7;
-		attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player_health, 1);
+		attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1);
 		AttackPatternBase *attack_pattern_8;
-		attack_pattern_8 = new ShootandExplode_Fast(screen_width, screen_height, screen_matrix, player_health, 10);
+		attack_pattern_8 = new ShootandExplode_Fast(screen_width, screen_height, screen_matrix, player, 10);
 		AttackPatternBase *attack_pattern_9;
-		attack_pattern_9 = new ShootandExplode_Slow(screen_width, screen_height, screen_matrix, player_health, 10);
+		attack_pattern_9 = new ShootandExplode_Slow(screen_width, screen_height, screen_matrix, player, 10);
 		AttackPatternBase *attack_pattern_10;
-		attack_pattern_10 = new AttackPattern_ShootandSnake(screen_width, screen_height, screen_matrix, player_health, 10);
+		attack_pattern_10 = new AttackPattern_ShootandSnake(screen_width, screen_height, screen_matrix, player, 10);
 		attack_patterns_.push_back(attack_pattern_1);
 		attack_patterns_.push_back(attack_pattern_8);
 		attack_patterns_.push_back(attack_pattern_9);

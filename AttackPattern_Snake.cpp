@@ -5,8 +5,8 @@
 #include <windows.h>
 #include <algorithm>
 
-AttackPattern_Snake::AttackPattern_Snake(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks)
+AttackPattern_Snake::AttackPattern_Snake(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks)
 {
 }
 

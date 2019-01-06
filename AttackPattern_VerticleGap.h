@@ -8,7 +8,7 @@
 class AttackPattern_VerticleGap : public AttackPatternBase
 {
 public:
-	explicit AttackPattern_VerticleGap(int width, int height, Matrix &screen_matrix, int &player_health);
+	explicit AttackPattern_VerticleGap(int width, int height, Matrix &screen_matrix, PlayerDefinition &player);
 	virtual ~AttackPattern_VerticleGap() {}
 
 	// Setters

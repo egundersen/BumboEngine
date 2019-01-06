@@ -8,7 +8,7 @@
 class AttackPattern_Snake : public AttackPatternBase
 {
 public:
-	explicit AttackPattern_Snake(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks);
+	explicit AttackPattern_Snake(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks);
 	virtual ~AttackPattern_Snake() {}
 
 	// Setters

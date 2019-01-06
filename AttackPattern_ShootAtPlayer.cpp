@@ -1,8 +1,8 @@
 #include "AttackPattern_ShootAtPlayer.h"
 #include <Windows.h>
 
-AttackPattern_ShootAtPlayer::AttackPattern_ShootAtPlayer(int width, int height, Matrix& screen_matrix, int & player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks)
+AttackPattern_ShootAtPlayer::AttackPattern_ShootAtPlayer(int width, int height, Matrix& screen_matrix, PlayerDefinition &player, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks)
 {
 }
 

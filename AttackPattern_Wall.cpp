@@ -6,8 +6,8 @@
 #include <algorithm>
 #include <iostream>
 
-AttackPattern_Wall::AttackPattern_Wall(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks, int gap_width, int speed)
-	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks), gap_width_{ gap_width }, speed_{ speed }
+AttackPattern_Wall::AttackPattern_Wall(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks, int gap_width, int speed)
+	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks), gap_width_{ gap_width }, speed_{ speed }
 {
 }
 

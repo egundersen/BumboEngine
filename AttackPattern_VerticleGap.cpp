@@ -2,8 +2,8 @@
 #include <windows.h>
 #include <iostream>
 
-AttackPattern_VerticleGap::AttackPattern_VerticleGap(int width, int height, Matrix& screen_matrix, int & player_health)
-	: AttackPatternBase(width, height, screen_matrix, player_health, height), create_attack_delay_{ 50 }, gap_width_{ 4 }, screen_duration_{ 20000 }, attacks_created_(0), move_delay_(80),
+AttackPattern_VerticleGap::AttackPattern_VerticleGap(int width, int height, Matrix& screen_matrix, PlayerDefinition &player)
+	: AttackPatternBase(width, height, screen_matrix, player, height), create_attack_delay_{ 50 }, gap_width_{ 4 }, screen_duration_{ 20000 }, attacks_created_(0), move_delay_(80),
 	start_time_end_warning_(0), warning_length_(3000)
 {
 }

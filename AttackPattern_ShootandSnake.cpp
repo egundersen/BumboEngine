@@ -8,8 +8,8 @@
 #include <algorithm>
 #include <iostream>
 
-AttackPattern_ShootandSnake::AttackPattern_ShootandSnake(int width, int height, Matrix &screen_matrix, int &player_health, int number_of_attacks)
-	: AttackPatternBase(width, height, screen_matrix, player_health, number_of_attacks)
+AttackPattern_ShootandSnake::AttackPattern_ShootandSnake(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
+	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks)
 {
 	generateRandomSequence(attack_starting_positions_, 0, height_ - 1);
 	attacks_to_create_ = number_of_attacks + 1;

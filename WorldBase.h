@@ -68,7 +68,8 @@ private:
 	void DEBUG_displayScreen();
 	void DEBUG_createPlaceholder(int center_position_x, int center_position_y);
 
-	int screen_width_, screen_height_, world_width_, world_height_, PlayerDefinition &player_, start_time_player_speed_,
+	PlayerDefinition &player_;
+	int screen_width_, screen_height_, world_width_, world_height_, start_time_player_speed_,
 		player_speed_modifier_;
 	char opposite_player_direction_;
 	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
