@@ -231,6 +231,15 @@
     <ClCompile Include="Event_RemoveObject.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Event_RollCredits.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Event_SetupEnding.cpp">
+      <Filter>Source Files\Events\Unique Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -517,6 +526,18 @@
     </ClInclude>
     <ClInclude Include="Event_RemoveObject.h">
       <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_RollCredits.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Credits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_SetupEnding.h">
+      <Filter>Header Files\Events\Unique Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Chr_BadEndingGuy.h">
+      <Filter>Header Files\Characters\Not Hostile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

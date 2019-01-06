@@ -15,3 +15,5 @@
 #include "Event_ThotPatrol.h"
 #include "Event_ThrowOffCliff.h"
 #include "Event_Tutorial.h"
+#include "Event_RollCredits.h"
+#include "Event_SetupEnding.h"

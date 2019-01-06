@@ -26,3 +26,4 @@
 #include "Chr_EverythingSalesman.h"
 #include "Chr_FeatherSalesman.h"
 #include "Chr_PacingPirate.h"
+#include "Chr_BadEndingGuy.h"

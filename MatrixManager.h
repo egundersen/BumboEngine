@@ -1,6 +1,7 @@
 #include "MatrixBase.h"
 #include "Image.h"
 #include "Inventory.h"
+#include "Credits.h"
 #include "StartScreen.h"
 #include "WorldBase.h"
 
@@ -29,6 +30,7 @@ private:
 	Matrix &screen_matrix_;
 	std::string current_vector_space_;
 	Inventory inventory_;
+	Credits credits_;
 	WorldBase world_;
 };
 

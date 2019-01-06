@@ -175,6 +175,7 @@
     <ClCompile Include="BattleBase.cpp" />
     <ClCompile Include="CharacterBase.cpp" />
     <ClCompile Include="BattleDialogBase.cpp" />
+    <ClCompile Include="Credits.cpp" />
     <ClCompile Include="DialogManager.cpp" />
     <ClCompile Include="EventBase.cpp" />
     <ClCompile Include="Event_AkiClearCave.cpp" />
@@ -187,6 +188,8 @@
     <ClCompile Include="Event_LostDevice.cpp" />
     <ClCompile Include="Event_MoveNPCIfDefeated.cpp" />
     <ClCompile Include="Event_RemoveObject.cpp" />
+    <ClCompile Include="Event_RollCredits.cpp" />
+    <ClCompile Include="Event_SetupEnding.cpp" />
     <ClCompile Include="Event_TeleportPlayer.cpp" />
     <ClCompile Include="Event_Test.cpp" />
     <ClCompile Include="Event_ThotPatrol.cpp" />
@@ -238,6 +241,7 @@
     <ClInclude Include="Chr_AkiFinal.h" />
     <ClInclude Include="Chr_AppleSalesman.h" />
     <ClInclude Include="Chr_BackgroundNPC.h" />
+    <ClInclude Include="Chr_BadEndingGuy.h" />
     <ClInclude Include="Chr_Bonny.h" />
     <ClInclude Include="Chr_CheckpointGuard.h" />
     <ClInclude Include="Chr_DialogExample.h" />
@@ -260,6 +264,7 @@
     <ClInclude Include="BattleDialogBase.h" />
     <ClInclude Include="ColoredString.h" />
     <ClInclude Include="ColorPalette.h" />
+    <ClInclude Include="Credits.h" />
     <ClInclude Include="DialogNode.h" />
     <ClInclude Include="EventBase.h" />
     <ClInclude Include="Events.h" />
@@ -273,6 +278,8 @@
     <ClInclude Include="Event_LostDevice.h" />
     <ClInclude Include="Event_MoveNPCIfDefeated.h" />
     <ClInclude Include="Event_RemoveObject.h" />
+    <ClInclude Include="Event_RollCredits.h" />
+    <ClInclude Include="Event_SetupEnding.h" />
     <ClInclude Include="Event_TeleportPlayer.h" />
     <ClInclude Include="Event_Test.h" />
     <ClInclude Include="Event_ThotPatrol.h" />

@@ -25,6 +25,7 @@ public:
 
 	// Getters
 	bool shouldEnterBattle() { return should_enter_battle_; }
+	bool shouldRollCredits() { return should_roll_credits_; }
 	CharacterBase *getSelectedCharacter();
 private:
 	// Setters
@@ -71,7 +72,7 @@ private:
 		player_speed_modifier_;
 	char opposite_player_direction_;
 	bool is_viewing_popup_, should_enter_battle_, is_event_active_,
-		enter_key_pressed_,
+		enter_key_pressed_, should_roll_credits_,
 		DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
 	BitmapDefinition &image_file_path_;
 	Matrix &screen_matrix_, world_matrix_, DEBUG_screen_matrix_;

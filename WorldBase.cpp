@@ -5,7 +5,7 @@
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, int &player_health, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_width, world_height), screen_matrix_{ screen_matrix }, player_health_{ player_health }, player_sprite_{ 12, 10, screen_matrix }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false },
-	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, image_file_path_{ image_file_path }, enter_key_pressed_{ false }
+	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, image_file_path_{ image_file_path }, enter_key_pressed_{ false }, should_roll_credits_{ false }
 {
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
@@ -774,6 +774,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 
 	// Final Outside Area
 	CharacterBase *thot_patrol_2 = new Chr_BackgroundNPC(188, 165, 37, sprite_sheet_.thot_patrol, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *bad_ending_guy = new Chr_BadEndingGuy(198, 165, 50, sprite_sheet_.pirate_14, 'r', player_health_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	standing_in_line_1->initializeCharacter();
 	standing_in_line_2->initializeCharacter();
@@ -811,6 +812,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	pacing->initializeCharacter();
 	child->initializeCharacter();
 	thot_patrol_2->initializeCharacter();
+	bad_ending_guy->initializeCharacter();
 
 	characters_.push_back(standing_in_line_1);
 	characters_.push_back(standing_in_line_2);
@@ -847,6 +849,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(pacing);
 	characters_.push_back(child);
 	characters_.push_back(thot_patrol_2);
+	characters_.push_back(bad_ending_guy);
 }
 
 // creates all the sign posts (These show popups)
@@ -922,6 +925,7 @@ void WorldBase::GENERATE_Events()
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
 	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1070, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_RollCredits *roll_credits = new Event_RollCredits(10021, should_roll_credits_, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	Event_TeleportPlayer *teleport_to_maze = new Event_TeleportPlayer(10001, 1107, 195, 18, 8, 296, 231, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_mountain = new Event_TeleportPlayer(10004, 296, 250, 18, 8, 1107, 202, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
@@ -929,7 +933,7 @@ void WorldBase::GENERATE_Events()
 	Event_TeleportPlayer *teleport_from_sharktooth = new Event_TeleportPlayer(10006, 104, 253, 12, 8, 297, 179, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_to_aki = new Event_TeleportPlayer(10007, 393, 21, 10, 8, 679, 87, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_TeleportPlayer *teleport_to_mini_bosses = new Event_TeleportPlayer(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_SetupEnding *teleport_to_mini_bosses = new Event_SetupEnding(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_MoveNPCIfDefeated *move_doorguard_sharktooth = new Event_MoveNPCIfDefeated(10017, 538, 167, 2, 24, 198, 165, 38, 13, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_MoveNPCIfDefeated *move_doorguard_ryuuko = new Event_MoveNPCIfDefeated(10018, 105, 228, 14, 2, 198, 165, 16, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_MoveNPCIfDefeated *move_aki = new Event_MoveNPCIfDefeated(10019, 105, 228, 14, 2, 296, 195, 22, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
@@ -966,6 +970,8 @@ void WorldBase::GENERATE_Events()
 	events_.push_back(cubans);
 	events_.push_back(thot_patrol);
 	events_.push_back(throw_off_cliff);
+	events_.push_back(remove_object);
+	events_.push_back(roll_credits);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)

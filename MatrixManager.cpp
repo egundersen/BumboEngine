@@ -8,9 +8,9 @@
 #include <iostream>
 
 MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_health_), player_health_{ player_health }, 
+	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_health_), player_health_{ player_health },
 	screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	world_(width, height, 1200, 273, 730, 232, player_health_, screen_matrix, inventory_, image_file_path)
+	world_(width, height, 1200, 273, 730, 232, player_health_, screen_matrix, inventory_, image_file_path), credits_(width_, height_, image_file_path, screen_matrix_)
 {
 	inventory_.addItem("Mug o' Grog", 1); // Starting Items (Not pickups! Just starting items)
 	inventory_.addItem("Fish Mush", 1);
@@ -22,33 +22,24 @@ void MatrixManager::evaluatePlayerInput()
 {
 	if (current_vector_space_ == "START SCREEN") // START GAME
 	{
-		if (GetAsyncKeyState(VK_RETURN) & 0x8000)
-			current_vector_space_ = "MAP";
+		if (GetAsyncKeyState(VK_RETURN) & 0x8000) { loadVectorSpace("MAP"); }
 	}
 	else if (current_vector_space_ == "MAP")
 	{
-		if (GetAsyncKeyState(0x49) & 0x8000) // OPEN INVENTORY?
-			loadVectorSpace("INVENTORY");
+		if (GetAsyncKeyState(0x49) & 0x8000) { loadVectorSpace("INVENTORY"); } // OPEN INVENTORY?
 		else
 		{
 			world_.refreshScreen();
-			if (world_.shouldEnterBattle()) // Is battle going on?
-				current_vector_space_ = "BATTLE";
+			if (world_.shouldEnterBattle()) { loadVectorSpace("BATTLE"); } // Is battle going on?
+			else if (world_.shouldRollCredits()) { loadVectorSpace("CREDITS"); } // Should Roll Credits?
 		}
 	}
 	else if (current_vector_space_ == "BATTLE")
 	{
-		if (world_.getSelectedCharacter() == nullptr) // Called if enemy is destroyed during dialog
-		{
+		if (world_.getSelectedCharacter() == nullptr || world_.getSelectedCharacter()->isBattleOver())
+		{// Called if enemy is destroyed during dialog
 			has_initialized_battle_ = false;
-			world_.onEnterWorld();
-			current_vector_space_ = "MAP";
-		}
-		else if (world_.getSelectedCharacter()->isBattleOver())
-		{
-			has_initialized_battle_ = false;
-			world_.onEnterWorld();
-			current_vector_space_ = "MAP";
+			loadVectorSpace("MAP");
 		}
 		else if (world_.getSelectedCharacter()->getLocalVectorSpace() != "INVENTORY")
 		{
@@ -76,12 +67,12 @@ void MatrixManager::evaluatePlayerInput()
 	}
 	else if (current_vector_space_ == "INVENTORY")
 	{
-		if (GetAsyncKeyState(VK_BACK) & 0x8000)
-		{// CLOSE INVENTORY?
-			loadVectorSpace("MAP");
-		}
-
+		if (GetAsyncKeyState(VK_BACK) & 0x8000) { loadVectorSpace("MAP"); } // CLOSE INVENTORY?
 		inventory_.evaluatePlayerInput();
+	}
+	else if (current_vector_space_ == "CREDITS")
+	{
+		credits_.refreshScreen();
 	}
 }
 
@@ -101,6 +92,11 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 	else if (vector_space_name == "BATTLE")
 	{
 		current_vector_space_ = "BATTLE";
+	}
+	else if (vector_space_name == "CREDITS")
+	{
+		credits_.setBackgroundText();
+		current_vector_space_ = "CREDITS";
 	}
 }
 

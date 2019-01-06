@@ -811,8 +811,8 @@ struct SpriteSheet
 
 	ColoredString rock_2 = ColoredString
 	(
-		"   @#&@   Z  @@* #@) Z   % *(   ",
-		"   SSSS   Z  SSS SSS Z   hS S   "
+		"   @#&@   Z  @@* #@) Z   % *(   Z",
+		"   SSSS   Z  SSS SSS Z   hS S   Z"
 	);
 
 	ColoredString fence = ColoredString
