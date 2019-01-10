@@ -186,6 +186,7 @@
     <ClCompile Include="Event_BridgeRally3.cpp" />
     <ClCompile Include="Event_Cubans.cpp" />
     <ClCompile Include="Event_LostDevice.cpp" />
+    <ClCompile Include="Event_MoveNPC.cpp" />
     <ClCompile Include="Event_MoveNPCIfDefeated.cpp" />
     <ClCompile Include="Event_RemoveObject.cpp" />
     <ClCompile Include="Event_RollCredits.cpp" />
@@ -276,6 +277,7 @@
     <ClInclude Include="Event_BridgeRally3.h" />
     <ClInclude Include="Event_Cubans.h" />
     <ClInclude Include="Event_LostDevice.h" />
+    <ClInclude Include="Event_MoveNPC.h" />
     <ClInclude Include="Event_MoveNPCIfDefeated.h" />
     <ClInclude Include="Event_RemoveObject.h" />
     <ClInclude Include="Event_RollCredits.h" />
@@ -311,7 +313,7 @@
     <ClInclude Include="WinMainParameters.h" />
     <ClInclude Include="WorldBase.h" />
     <ClInclude Include="DialogManager.h" />
-    <ClInclude Include="WorldSprite.h" />
+    <ClInclude Include="WorldSpriteContainer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc" />

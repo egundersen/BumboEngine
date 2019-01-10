@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_MINIBOSS2_H
 #define CHR_MINIBOSS2_H
+
+#include "CharacterBase.h"
 
 class Chr_MiniBoss2 : public CharacterBase
 {
 public:
-	Chr_MiniBoss2(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_MiniBoss2(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -31,7 +30,7 @@ public:
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
-		int event_ID = 0) // 0 = no event
+		int event_ID = 10024) // 0 = no event
 
 		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
 	{
@@ -66,8 +65,8 @@ public:
 		dialog_choice_5.push_back(std::make_tuple("Surrender! I've exhausted all of your dialog!", "Only if you promise... to never forget me. EVER!", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_6;
-		dialog_choice_6.push_back(std::make_tuple("I promise", "You have just given me your soul. Deh Devil thanks you.", true)); // 3=
-		dialog_choice_6.push_back(std::make_tuple("What was your name again?", "Close enough.", true)); // 3=
+		dialog_choice_6.push_back(std::make_tuple("I promise", "You have just given me your soul. Deh Devil thanks you.", true));
+		dialog_choice_6.push_back(std::make_tuple("What was your name again?", "Close enough.", true));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -91,25 +90,7 @@ public:
 	{
 		AttackPatternBase *attack_pattern_1;
 		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);//*/
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
@@ -128,7 +109,7 @@ public:
 		DialogNode *node_1_1_1 = new DialogNode("Go on", "*ehem!* *Let me just get back in character:* WHERE DO YOU THINK YOU'RE GOING?");
 		DialogNode *node_1_1_1_1 = new DialogNode("I needs t' get past ye", "IMPOSSIBLE! FOR YOU SEE: I AM GUARDING THIS DOOR.");
 		DialogNode *node_1_1_1_1_1 = new DialogNode("Are ye really though?", "YES. I. AM."); // 2=
-		DialogNode *node_1_1_1_1_2 = new DialogNode("Not fer long!", "That sounded vague enough to be a threat! PREPARE THINE SELF! FOR COMBAT!", "FIGHT"); // 3=
+		DialogNode *node_1_1_1_1_2 = new DialogNode("Not fer long!", "That sounded vague enough to be a threat! PREPARE THINE SELF! FOR COMBAT!", "FIGHT");
 		DialogNode *node_1_1_1_2 = new DialogNode("Where do you think YOU'RE going?", "I'M GUARDING THIS HALLWAY.");
 		DialogNode *node_1_1_1_2_1 = new DialogNode("Are ye?", "YES. I. AM.");
 		DialogNode *node_1_1_1_2_1_1 = new DialogNode("But are ye REALLY?", "YES"); // =2
@@ -140,9 +121,9 @@ public:
 		DialogNode *node_1_1_1_2_2_1_1_1_1 = new DialogNode("Aye!", "This is terrible news! What am I to do?");
 		DialogNode *node_1_1_1_2_2_1_1_1_1_1 = new DialogNode("Ye should go right", "And then what?");
 		DialogNode *node_1_1_1_2_2_1_1_1_1_1_1 = new DialogNode("Don't stop. Jus' go right", "I'll do my best not to let you down.", "EVENT");
-		DialogNode *node_1_1_1_2_2_1_1_1_1_2 = new DialogNode("We should fight!", "Ok, I'll do my best not to let you down.", "FIGHT"); // 3=
+		DialogNode *node_1_1_1_2_2_1_1_1_1_2 = new DialogNode("We should fight!", "Ok, I'll do my best not to let you down.", "FIGHT");
 		DialogNode *node_1_2 = new DialogNode("Hold that thought...", "I understand completely. I'll do my best not to let you down.");
-		DialogNode *node_2 = new DialogNode("", "I do hope I will see you again soon, maybe even sooner than you think.", "EVENT"); // =3
+		DialogNode *node_2 = new DialogNode("", "I do hope I will see you again soon, maybe even sooner than you think.", "EVENT"); // =FIGHT
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -170,8 +151,8 @@ public:
 		// Seperated Links:
 		node_1_1_1_2_1_1_1->setChoice1(node_1_1_1_2_2); // 1=
 		node_1_1_1_1_1->setChoice1(node_1_1_1_2_1_1_1); // 2=
-		node_1_1_1_1_2->setChoice1(node_2); // 3=
-		node_1_1_1_2_2_1_1_1_1_2->setChoice1(node_2); // 3=
+		node_1_1_1_1_2->setChoice1(node_2); // FIGHT
+		node_1_1_1_2_2_1_1_1_1_2->setChoice1(node_2);
 
 		setHeadNode(node_1);
 	}

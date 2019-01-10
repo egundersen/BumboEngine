@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_CHECKPOINTGUARD_H
 #define CHR_CHECKPOINTGUARD_H
+
+#include "CharacterBase.h"
 
 class Chr_CheckpointGuard : public CharacterBase
 {
 public:
-	Chr_CheckpointGuard(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_CheckpointGuard(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -27,7 +26,7 @@ public:
 				11, // boss health
 				40, // his smile/eyes (overlay) offset X position
 				20, // his smile/eyes (overlay) offset Y position
-				"Checkpoint Security",
+				"Security",
 				battle_sprite.getFace(),
 				battle_sprite.getOverlay()
 			), attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
@@ -60,10 +59,10 @@ public:
 		dialog_choice_4.push_back(std::make_tuple("Eh... I don't really care", "If you don't CARE, then I don't CARE!", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_5;
-		dialog_choice_5.push_back(std::make_tuple("I don't go around terrorisin' pirates!", "Farrdin' pirates and their self-righteous attitude. They've created a VIRTUAL HOLOCAUST.", false));
+		dialog_choice_5.push_back(std::make_tuple("I don't go around terrorisin' pirates!", "Farrdin' pirates and their self-righteous attitude...", false));
 		dialog_choice_5.push_back(std::make_tuple("Me jacket be tailor-made", "And I'm wearing designer jeans.", false));
 		dialog_choice_5.push_back(std::make_tuple("I don't CAPITALIZE everythin' I say", "NO! IT CAN'T BE TRUE!!!! NO O O O O O O O!", false));
-		dialog_choice_5.push_back(std::make_tuple("I won't stoop t' yer level!", "<MY LEVEL>? Son your a criminal wanted for piracy!", true)); // START EVENT
+		dialog_choice_5.push_back(std::make_tuple("I won't stoop t' yer level!", "<MY LEVEL>? I BE NO PIRATE!!!! wait...", true));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -85,44 +84,15 @@ public:
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
-		AttackPatternBase *attack_pattern_7;
-		attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1);
-		AttackPatternBase *attack_pattern_8;
-		attack_pattern_8 = new ShootandExplode_Fast(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_9;
-		attack_pattern_9 = new ShootandExplode_Slow(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_10;
-		attack_pattern_10 = new AttackPattern_ShootandSnake(screen_width, screen_height, screen_matrix, player, 10);
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
 		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_8);
-		attack_patterns_.push_back(attack_pattern_9);
-		attack_patterns_.push_back(attack_pattern_10);
-		//attack_patterns_.push_back(attack_pattern_3);
-		/*attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);
-		attack_patterns_.push_back(attack_pattern_7);//*/
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
+		Item energy_drink("Energy Drink", "HEAL", 9, "C0L4! Drink to restore full health.");
+
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC
 		*	item		Including an Item will have the NPC give the player the provided item
@@ -136,7 +106,7 @@ public:
 		DialogNode *node_1_1_1 = new DialogNode("I was pick pocketed!", "Yeah so? Thats not my pro- wait... I'm checkpoint security. That <IS> my problem!");
 		DialogNode *node_1_1_1_1 = new DialogNode("Any idea who?", "Any IDEA!? His name is Sharktooth, and he definetly stole from you.");
 		DialogNode *node_1_1_1_1_1 = new DialogNode("Are ye sure?", "No, But I've been waiting for a poor excuse to lock up this guy for ages!");
-		DialogNode *node_1_1_1_1_1_1 = new DialogNode("Any evidence?", "Well no... I have absolutely no evidence that he ever did anything wrong. I just don't like the guy.");
+		DialogNode *node_1_1_1_1_1_1 = new DialogNode("Evidence?", "Well no... I have absolutely no evidence that he ever did anything wrong. I just don't like him.");
 		DialogNode *node_1_1_1_1_1_1_1 = new DialogNode("(Give Cigar Box)", "This is... HIS CIGAR BOX! I knew it was him! Good work, now I'm tasking YOU with finding him.");
 		DialogNode *node_1_1_1_1_1_1_1_1 = new DialogNode("Thanks...", "No need to thank me, fulfilling heroic duties is why I'm checkpoint security! >:D", "SAVE");
 		DialogNode *node_1_1_1_1_1_1_2 = new DialogNode("(Give Feather)", "What do I look like, some kind of bird? What am I supposed to do with this?");
@@ -149,6 +119,11 @@ public:
 		DialogNode *node_1_1_1_1_1_1_3_1_2_2 = new DialogNode("No, sir", "Thats right. Bow your head to me!", "SAVE");
 		DialogNode *node_1_1_1_1_1_1_3_2 = new DialogNode("Goodbye", "Be about your business, pirate!", "SAVE");
 		DialogNode *node_1_2 = new DialogNode("Nevermind", "Be about your business, pirate!");
+		DialogNode *node_2 = new DialogNode("", "I think I get it now...", "SAVE"); // =FIGHT
+		DialogNode *node_2_1 = new DialogNode("You do?", "You want to be checkpoint security as well!");
+		DialogNode *node_2_1_1 = new DialogNode("Yes", "I knew it! Now, as your first assignment... BUZZ OFF, KID!"); // 1=
+		DialogNode *node_2_1_2 = new DialogNode("No", "No need to be shy. What, need some help? Perhaps an energy drink would suffice", energy_drink); // 1=
+		DialogNode *node_3 = new DialogNode("Yes", "BUZZ OFF, KID! Can't you see I'm doing something!?", "SAVE"); // =1
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -172,6 +147,16 @@ public:
 		node_1_1_1_1_1_1_3_1->setChoice2(node_1_1_1_1_1_1_3_1_2);
 		node_1_1_1_1_1_1_3_1_2->setChoice1(node_1_1_1_1_1_1_3_1_2_1);
 		node_1_1_1_1_1_1_3_1_2->setChoice2(node_1_1_1_1_1_1_3_1_2_2);
+
+		node_2->setChoice1(node_2_1);
+		node_2_1->setChoice1(node_2_1_1);
+		node_2_1->setChoice2(node_2_1_2);
+
+		// Seperated Links:
+		node_1_1_1_1_1_1_3_1_1->setChoice1(node_2); // FIGHT
+		node_1_1_1_1_1_1_3_1_2_1->setChoice1(node_2);
+		node_2_1_1->setChoice1(node_3); // 1=
+		node_2_1_2->setChoice1(node_3);
 
 		setHeadNode(node_1);
 	}

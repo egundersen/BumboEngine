@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_MINIBOSS1_H
 #define CHR_MINIBOSS1_H
+
+#include "CharacterBase.h"
 
 class Chr_MiniBoss1 : public CharacterBase
 {
 public:
-	Chr_MiniBoss1(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_MiniBoss1(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -31,7 +30,7 @@ public:
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
-		int event_ID = 0) // 0 = no event
+		int event_ID = 10023) // 0 = no event
 
 		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
 	{
@@ -72,7 +71,7 @@ public:
 		dialog_choice_11.push_back(std::make_tuple("We can talk this out", "...", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_12;
-		dialog_choice_12.push_back(std::make_tuple("We can talk this out", "FINE! It's not even worth fighting you anymore. You're just too annoying!", true)); // 1=
+		dialog_choice_12.push_back(std::make_tuple("We can talk this out", "FINE! It's not even worth fighting you anymore. You're just too annoying!", true));
 
 
 		dialog_choices_.push_back(dialog_choice_1);
@@ -103,25 +102,7 @@ public:
 	{
 		AttackPatternBase *attack_pattern_1;
 		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
 		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);//*/
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
@@ -136,17 +117,17 @@ public:
 
 		 // CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "STOP RIGHT THERE. YOU DIDN'T HONESTLY THINK IT'D BE THAT EASY, DID YOU?");
-		DialogNode *node_1_1 = new DialogNode("No more nonsense. Have at you!", "WITH PLEASURE!", "FIGHT"); // 1=
+		DialogNode *node_1_1 = new DialogNode("No more nonsense. Have at you!", "WITH PLEASURE!", "FIGHT");
 		DialogNode *node_1_2 = new DialogNode("What?", "*Ugh* *This was written so poorly* Look, Can we just skip these formal introductions? I'm here to kill you.");
-		DialogNode *node_1_2_1 = new DialogNode("Yes", "What a relief. Let's get this over with.", "FIGHT"); // 1=
+		DialogNode *node_1_2_1 = new DialogNode("Yes", "What a relief. Let's get this over with.", "FIGHT");
 		DialogNode *node_1_2_2 = new DialogNode("No", "Are you kidding me? I can't be held accountable for staying in character.");
-		DialogNode *node_1_2_2_1 = new DialogNode("Ye're right", "Thank god! Now, where were we?", "FIGHT"); // 1=
+		DialogNode *node_1_2_2_1 = new DialogNode("Ye're right", "Thank god! Now, where were we?", "FIGHT");
 		DialogNode *node_1_2_2_2 = new DialogNode("No, stay in character!", "But it's soo... you know what, fine: TRAVELER, WHO ARE... ye?");
 		DialogNode *node_1_2_2_2_1 = new DialogNode("Please continue", "TRAVELER, WHO ARE \"YE\" TO TRESSPASS ON THIS MOST... SACRED GROUND!");
 		DialogNode *node_1_2_2_2_1_1 = new DialogNode("{player}", "{player}? YOU MEAN THE LOWLY PIRATE?");
 		DialogNode *node_1_2_2_2_1_1_1 = new DialogNode("Aye", "YOU HAVE TRAVELED FAR AND WIDE... BUT YOUR JOURNEY ENDS HERE.");
 		DialogNode *node_1_2_2_2_1_1_1_1 = new DialogNode("Ok", "FOR IT IS I, THE ILUSTRIO... Ok. F*ck this. You win. GG.", "EVENT");
-		DialogNode *node_2 = new DialogNode("", "I honestly hope \"We can talk this out.\" is written on your tombstone!", "EVENT"); // =1
+		DialogNode *node_2 = new DialogNode("", "I honestly hope \"We can talk this out.\" is written on your tombstone!", "EVENT"); // =FIGHT
 
 
 		// Link Dialog Nodes
@@ -163,9 +144,9 @@ public:
 		node_1_2_2_2_1_1_1->setChoice1(node_1_2_2_2_1_1_1_1);
 
 		// Seperated Links:
-		node_1_1->setChoice1(node_2); // 1=
-		node_1_2_1->setChoice1(node_2); // 1=
-		node_1_2_2_1->setChoice1(node_2); // 1=
+		node_1_1->setChoice1(node_2); // FIGHT
+		node_1_2_1->setChoice1(node_2);
+		node_1_2_2_1->setChoice1(node_2);
 
 		setHeadNode(node_1);
 	}

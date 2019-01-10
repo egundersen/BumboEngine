@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_LOSTDEVICE_H
 #define EVENT_LOSTDEVICE_H
+
+#include "EventBase.h"
 
 class Event_LostDevice : public EventBase
 {

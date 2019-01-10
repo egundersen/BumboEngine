@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_DOORGUARDSHARKTOOTH_H
 #define CHR_DOORGUARDSHARKTOOTH_H
+
+#include "CharacterBase.h"
 
 class Chr_DoorGuardSharktooth : public CharacterBase
 {
 public:
-	Chr_DoorGuardSharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_DoorGuardSharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -60,39 +59,8 @@ public:
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
-		AttackPatternBase *attack_pattern_7;
-		attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1);
-		AttackPatternBase *attack_pattern_8;
-		attack_pattern_8 = new ShootandExplode_Fast(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_9;
-		attack_pattern_9 = new ShootandExplode_Slow(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_10;
-		attack_pattern_10 = new AttackPattern_ShootandSnake(screen_width, screen_height, screen_matrix, player, 10);
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
 		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_8);
-		attack_patterns_.push_back(attack_pattern_9);
-		attack_patterns_.push_back(attack_pattern_10);
-		//attack_patterns_.push_back(attack_pattern_3);
-		/*attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);
-		attack_patterns_.push_back(attack_pattern_7);//*/
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
@@ -109,13 +77,16 @@ public:
 		DialogNode *node_1 = new DialogNode("", "Where do ye reckon YOU'RE goin'?");
 		DialogNode *node_1_1 = new DialogNode("UP", "Sharktooth ain't seein' no visitors! So scram, sprog, afore I bust a nut!");
 		DialogNode *node_1_1_1 = new DialogNode("Pardon?", ". . .", "FIGHT");
-		DialogNode *node_1_1_2 = new DialogNode("Ok", "Scram!");
+		DialogNode *node_1_1_2 = new DialogNode("Ok", "Scram!", "SAVE"); // =FIGHT
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
 
 		node_1_1->setChoice1(node_1_1_1);
 		node_1_1->setChoice2(node_1_1_2);
+
+		// Seperated Links:
+		node_1_1_1->setChoice1(node_1_1_2); // FIGHT
 
 		setHeadNode(node_1);
 	}

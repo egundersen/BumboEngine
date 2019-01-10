@@ -1,5 +1,4 @@
 #include "Event_ThrowOffCliff.h"
-#include <windows.h>
 
 void Event_ThrowOffCliff::createEvent()
 {
@@ -142,7 +141,7 @@ void Event_ThrowOffCliff::throwOffCliff()
 			// TODO Audio Play Crash sound
 		}
 		else if (go_down_iterator_ == 0) {
-			getCharacterByID(35)->teleportNPC(272, 192);
+			getCharacterByID(35)->teleportNPC(198, 165);
 		}
 		go_down_iterator_++;
 		start_time_begin_event_ = GetTickCount64();

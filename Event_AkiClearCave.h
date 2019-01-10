@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_AKICLEARCAVE_H
 #define EVENT_AKICLEARCAVE_H
+
+#include "EventBase.h"
 
 class Event_AkiClearCave : public EventBase
 {

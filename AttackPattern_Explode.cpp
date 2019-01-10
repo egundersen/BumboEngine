@@ -1,9 +1,4 @@
 #include "AttackPattern_Explode.h"
-#include "MatrixBase.h"
-#include "Attacks.h"
-#include "Image.h"
-#include <windows.h>
-#include <algorithm>
 
 AttackPattern_Explode::AttackPattern_Explode(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
 	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks), create_attack_delay_{ 50 }, attack_diameter_{ 4 }, delay_till_explode_{ 1500 }, duration_of_explosion_{ 1000 }

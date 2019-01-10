@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_PACINGPIRATE_H
 #define CHR_PACINGPIRATE_H
+
+#include "CharacterBase.h"
 
 class Chr_PacingPirate : public CharacterBase
 {
 public:
-	Chr_PacingPirate(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path)
+	Chr_PacingPirate(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path)
 		: CharacterBase(center_position_x, center_position_y, PopupDefinition(), unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, 10014, player, BossFightDefinition(), false, false, image_file_path, world_sprite)
 	{
 		faceDirection(direction);
@@ -28,7 +27,7 @@ public:
 			DialogNode *node_1_1 = new DialogNode("Cigars?", "No. Not cigars.", "EVENT"); // START EVENT
 			DialogNode *node_1_2 = new DialogNode("(Show 'im Cigar Box)", "Aren't those Sharktooth's? He'll scuttle ye if ye don't return them.");
 				DialogNode *node_1_2_1 = new DialogNode("They be nah yers?", "No");
-					DialogNode *node_1_2_1_1 = new DialogNode("(Quietly leave)", ".Ye better return those t' Sharktooth ASAP!", "SAVE");
+					DialogNode *node_1_2_1_1 = new DialogNode("(Quietly leave)", "Ye better return those t' Sharktooth ASAP!", "SAVE");
 			DialogNode *node_1_3 = new DialogNode("(Quietly leave)", "What am I t' do?");
 
 		// Link Dialog Nodes

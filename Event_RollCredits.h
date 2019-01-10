@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_ROLLCREDITS_H
 #define EVENT_ROLLCREDITS_H
+
+#include "EventBase.h"
 
 class Event_RollCredits : public EventBase
 {

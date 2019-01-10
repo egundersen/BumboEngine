@@ -1,12 +1,10 @@
-#include "MatrixBase.h"
-#include "Image.h"
-#include "Inventory.h"
-#include "Credits.h"
-#include "StartScreen.h"
-#include "WorldBase.h"
-
 #ifndef MatrixManager_H
 #define MatrixManager_H
+
+#include "WorldBase.h"
+#include "Inventory.h"
+#include "StartScreen.h"
+#include "Credits.h"
 
 class MatrixManager : public MatrixBase
 {
@@ -21,7 +19,6 @@ public:
 private:
 	// Setters
 	void loadVectorSpace(std::string vector_space_name);
-	void onShutdown();
 	void hideTypingCursor();
 	void indentLines(int number_of_indents);
 	bool has_initialized_inventory_, has_initialized_battle_;

@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_BRIDGERALLY3_H
 #define EVENT_BRIDGERALLY3_H
+
+#include "EventBase.h"
 
 class Event_BridgeRally3 : public EventBase
 {

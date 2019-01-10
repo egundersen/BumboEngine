@@ -1,6 +1,10 @@
+#ifndef EVENTS_H
+#define EVENTS_H
+
 #include "Event_AttackOnSight.h"
 #include "Event_TeleportPlayer.h"
 #include "Event_MoveNPCIfDefeated.h"
+#include "Event_MoveNPC.h"
 #include "Event_RemoveObject.h"
 #include "Event_Test.h"
 
@@ -17,3 +21,5 @@
 #include "Event_Tutorial.h"
 #include "Event_RollCredits.h"
 #include "Event_SetupEnding.h"
+
+#endif // !EVENTS_H

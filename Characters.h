@@ -1,3 +1,6 @@
+#ifndef CHARACTERS_H
+#define CHARACTERS_H
+
 #include "Chr_AllMight.h"
 #include "Chr_BackgroundNPC.h"
 
@@ -27,3 +30,5 @@
 #include "Chr_FeatherSalesman.h"
 #include "Chr_PacingPirate.h"
 #include "Chr_BadEndingGuy.h"
+
+#endif // !CHARACTERS_H

@@ -1,5 +1,4 @@
 #include "Attack_Snake.h"
-#include <windows.h>
 
 Attack_Snake::Attack_Snake(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int head_position_x, int head_position_y, int duration_of_attack, int speed)
 	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied), duration_of_attack_{ duration_of_attack }, speed_{ speed },

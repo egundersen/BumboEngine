@@ -1,6 +1,4 @@
 #include "Inventory.h"
-#include "MatrixBase.h"
-#include <windows.h>
 
 Inventory::Inventory(int width, int height, Matrix &screen_matrix, PlayerDefinition &player)
 	: width_{ width }, height_{ height }, inventory_matrix_(width, height), cursor_index_(0), player_{ player }, screen_matrix_{ screen_matrix }, start_time_move_cursor_(0)
@@ -55,7 +53,7 @@ void Inventory::setInventoryBackgroundText()
 	drawSolidRectangle(5, 1, width_ - 10, 2, '=', 'I', inventory_matrix_);
 	
 	Image inventory_letters(
-		"===[]=== []   [][]      [][]==== []   [] ==[]== [][][] [][][][]    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [] []    []   Z===[]=== []  [[]    []    []==== []  [[]   []   [][][] []  []   []   Z",
+		"===[]=== []   [][]      [][]==== []   [] ==[]==  [[]]  [][]] []    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [][]     []   Z===[]=== []  [[]    []    []==== []  [[]   []    [[]]  [] []_   []   Z",
 		"PPPPPPPM PM   PPPM      PPPPPPPM PM   PM PPPPPM PPPPPM PPPPPMPM    PMZ   PM    PPM  PM PM    PM PM     PPM  PM   PM   PM  PM PM  PM PM  PM Z   PM    PPPM PM  PM  PM  PMMMMM PPPM PM   PM   PM  PM PPPPPM  PMPM  Z   PM    PM PMPM   PMPM   PM     PM PMPM   PM   PM  PM PM PM    PM   ZPPPPPPPM PM  PPM    PM    PPPPPM PM  PPM   PM   PPPPPM PM  PM   PM   Z"
 	);
 	Image instructions(

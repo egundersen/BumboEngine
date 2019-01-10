@@ -1,10 +1,10 @@
+#ifndef MATRIX_H
+#define MATRIX_H
+
 #include "RGBA.h"
 #include <tuple>
 #include <vector>
 #include <string>
-
-#ifndef MATRIX_H
-#define MATRIX_H
 
 // Creates an m x n matrix of characters. Includes Color in RGBA
 class Matrix

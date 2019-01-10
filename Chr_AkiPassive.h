@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_AKIPASSIVE_H
 #define CHR_AKIPASSIVE_H
+
+#include "CharacterBase.h"
 
 class Chr_AkiPassive : public CharacterBase
 {
 public:
-	Chr_AkiPassive(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path)
+	Chr_AkiPassive(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path)
 		: CharacterBase(center_position_x, center_position_y, PopupDefinition(), unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, 0, player, BossFightDefinition(), false, false, image_file_path, world_sprite)
 	{
 		faceDirection(direction);
@@ -25,10 +24,10 @@ public:
 
 		// CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "What the hell do you wan- Oh! It's you! Sorry, got any burning questions?");
-			DialogNode *node_1_1 = new DialogNode("Any idea who stole it?", "Nope. Try looking for clues and asking around. Perhaps the culprit dropped something at the crime scene.");
-			DialogNode *node_1_2 = new DialogNode("Wha' should I do?", "Just go around accusing everyone of stealing it and eventually you'll find the culprit. It's just P.O.E.");
+			DialogNode *node_1_1 = new DialogNode("Any idea who stole it?", "Nope. Try asking around. Perhaps the culprit dropped something at the crime scene.");
+			DialogNode *node_1_2 = new DialogNode("Wha' should I do?", "Just go around accusing everyone of stealing it. Eventually you'll find the culprit. It's P.O.E.");
 				DialogNode *node_1_2_1 = new DialogNode("P.O.E.?", "Process of Elimination. What, were you born yesterday?");
-				DialogNode *node_1_2_2 = new DialogNode("That sounds cruel", "Pffff* no! The fate of the world's at stake! No one cares about who did what to get where. Just find your father's package!");
+				DialogNode *node_1_2_2 = new DialogNode("That sounds cruel", "Pffff* no! The fate of the world's at stake! No one cares about who did what to get where.");
 			DialogNode *node_1_3 = new DialogNode("Nevermind", "If you think of any questions, don't hesitate to ask~");
 
 		// Link Dialog Nodes

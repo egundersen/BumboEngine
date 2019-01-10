@@ -1,5 +1,4 @@
 #include "Attack_Explode.h"
-#include <windows.h>
 
 Attack_Explode::Attack_Explode(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int center_position_x, int center_position_y, int diameter, int delay, int duration_of_explosion)
 	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied), diameter_{ diameter }, delay_{ delay }, duration_of_explosion_{ duration_of_explosion },

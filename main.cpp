@@ -5,12 +5,6 @@
 #include "MatrixManager.h"
 #include "SplashScreen.h"
 #include "resource.h"
-#include "Matrix.h"
-#include "BitmapDefinition.h"
-#include <iostream>
-#include <sstream>
-#include <Windows.h>
-#include <tuple>
 
 using namespace WinMainParameters;
 

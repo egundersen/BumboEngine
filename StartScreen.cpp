@@ -1,6 +1,4 @@
 #include "StartScreen.h"
-#include "Image.h"
-#include <iostream>
 
 StartScreen::StartScreen(int width, int height, Matrix &screen_matrix)
 	: width_{ width }, height_{ height }, startscreen_matrix_(width, height), empty_vector_(width, ' '), screen_matrix_{ screen_matrix }

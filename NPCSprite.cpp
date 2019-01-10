@@ -1,6 +1,4 @@
 #include "NPCSprite.h"
-#include <tuple>
-#include <iostream>
 
 NPCSprite::NPCSprite(int sprite_width, int sprite_height, Matrix &screen_matrix, Matrix &world_matrix)
 	: Sprite(sprite_width, sprite_height, screen_matrix), world_matrix_{ world_matrix }

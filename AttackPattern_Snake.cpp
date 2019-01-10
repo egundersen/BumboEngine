@@ -1,9 +1,4 @@
 #include "AttackPattern_Snake.h"
-#include "MatrixBase.h"
-#include "Attacks.h"
-#include "Image.h"
-#include <windows.h>
-#include <algorithm>
 
 AttackPattern_Snake::AttackPattern_Snake(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
 	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks)

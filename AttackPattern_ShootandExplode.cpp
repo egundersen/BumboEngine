@@ -1,11 +1,5 @@
-#include "AttackPattern_ShootAtPlayer.h"
 #include "AttackPattern_ShootandExplode.h"
-#include "AttackPattern_Explode.h"
-#include "MatrixBase.h"
-#include "Attacks.h"
-#include "Image.h"
-#include <algorithm>
-#include <Windows.h>
+
 AttackPattern_ShootandExplode::AttackPattern_ShootandExplode(int width, int height, Matrix& screen_matrix, PlayerDefinition &player, int number_of_attacks)
 	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks)
 {

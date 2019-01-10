@@ -1,11 +1,4 @@
 #include "MatrixManager.h"
-#include "MatrixBase.h"
-#include "Inventory.h"
-#include "Characters.h"
-#include "Image.h"
-#include <windows.h>
-#include <thread>
-#include <iostream>
 
 MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path)
 	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_), player_{ player_health, 9 },
@@ -98,13 +91,6 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 		credits_.setBackgroundText();
 		current_vector_space_ = "CREDITS";
 	}
-}
-
-// runs when the game should shut down
-void MatrixManager::onShutdown()
-{
-	// TODO: display shutdown popup
-	waitForInput();
 }
 
 // Hides the typing cursor from being displayed

@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_TELEPORTPLAYER_H
 #define EVENT_TELEPORTPLAYER_H
+
+#include "EventBase.h"
 
 class Event_TeleportPlayer : public EventBase
 {

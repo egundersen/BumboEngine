@@ -1,7 +1,7 @@
-#include "RGBA.h"
-
 #ifndef COLORPALETTE_H
 #define COLORPALETTE_H
+
+#include "RGBA.h"
 
 /*
 R Red

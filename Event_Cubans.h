@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_CUBANS_H
 #define EVENT_CUBANS_H
+
+#include "EventBase.h"
 
 class Event_Cubans : public EventBase
 {

@@ -1,5 +1,4 @@
 #include "Event_LostDevice.h"
-#include <windows.h>
 
 void Event_LostDevice::createEvent()
 {

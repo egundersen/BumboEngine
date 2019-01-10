@@ -1,5 +1,4 @@
 #include "Event_AkiClearCave.h"
-#include <Windows.h>
 
 void Event_AkiClearCave::createEvent()
 {

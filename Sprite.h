@@ -1,7 +1,7 @@
-#include "MatrixBase.h"
-
 #ifndef SPRITE_H
 #define SPRITE_H
+
+#include "MatrixBase.h"
 
 class Sprite : public MatrixBase
 {

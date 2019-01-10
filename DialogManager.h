@@ -1,8 +1,8 @@
-#include "MatrixBase.h"
-#include "DialogNode.h"
-
 #ifndef DIALOGMANAGER_H
 #define DIALOGMANAGER_H
+
+#include "DialogNode.h"
+#include "MatrixBase.h"
 
 class DialogManager : MatrixBase
 {

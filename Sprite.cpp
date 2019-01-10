@@ -1,5 +1,4 @@
 #include "Sprite.h"
-#include <Windows.h>
 
 Sprite::Sprite(int sprite_width, int sprite_height, Matrix &screen_matrix)
 	: sprite_width_{ sprite_width }, sprite_height_{ sprite_height }, screen_matrix_{ screen_matrix }, animation_position_(0), start_time_player_animation_(0),

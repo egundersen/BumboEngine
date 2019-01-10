@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_THOTPATROL_H
 #define EVENT_THOTPATROL_H
+
+#include "EventBase.h"
 
 class Event_ThotPatrol : public EventBase
 {

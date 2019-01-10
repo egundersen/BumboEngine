@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_TUTORIAL_H
 #define EVENT_TUTORIAL_H
+
+#include "EventBase.h"
 
 class Event_Tutorial : public EventBase
 {

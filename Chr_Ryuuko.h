@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_RYUUKO_H
 #define CHR_RYUUKO_H
+
+#include "CharacterBase.h"
 
 class Chr_Ryuuko : public CharacterBase
 {
 public:
-	Chr_Ryuuko(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_Ryuuko(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -62,7 +61,7 @@ public:
 		dialog_choice_4.push_back(std::make_tuple("Today is the fall of Ryuuko! ", "NOOOOOOO", false));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_5;
-		dialog_choice_5.push_back(std::make_tuple("I believe you", "Makes sense to me!", true)); // 3=
+		dialog_choice_5.push_back(std::make_tuple("I believe you", "Makes sense to me!", true));
 		dialog_choice_5.push_back(std::make_tuple("I don't believe you", "Believe what you want, I stick to my ideals!", false));
 		dialog_choice_5.push_back(std::make_tuple("This is why I hate anime!", "We hate pirates!", false));
 
@@ -85,28 +84,9 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		for (int i = 0; i < 6; i++)
-		{
-			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1);
-			AttackPatternBase *attack_pattern_2;
-			attack_pattern_2 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 10);
-			AttackPatternBase *attack_pattern_3;
-			attack_pattern_3 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2);
-			AttackPatternBase *attack_pattern_4;
-			attack_pattern_4 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 50);
-			AttackPatternBase *attack_pattern_5;
-			attack_pattern_5 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 3);
-			AttackPatternBase *attack_pattern_6;
-			attack_pattern_6 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player);
-
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
-			attack_patterns_.push_back(attack_pattern_5);
-			attack_patterns_.push_back(attack_pattern_6);
-		}
+		AttackPatternBase *attack_pattern_1;
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
+		attack_patterns_.push_back(attack_pattern_1);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
@@ -135,7 +115,7 @@ public:
 		DialogNode *node_1_2_2_1_2 = new DialogNode("Aye", "Then prepare yourself!", "FIGHT");
 		DialogNode *node_1_2_2_2 = new DialogNode("I was pickpocketed", "OH NO! Thats sounds terrible! I feel SOOOO bad for you!");
 		DialogNode *node_1_2_2_2_1 = new DialogNode("Thanks fer th' concern", "No problem. Could I help with your search?"); // =1
-		DialogNode *node_1_2_2_2_1_1 = new DialogNode("Can I trust ye?", "If you trust me,  I'll trust you. We're in this together!", "SAVE"); // =3
+		DialogNode *node_1_2_2_2_1_1 = new DialogNode("Can I trust ye?", "If you trust me,  I'll trust you. We're in this together!", "SAVE"); // =FIGHT
 		DialogNode *node_1_2_2_2_1_1_1 = new DialogNode("How will ye help?", "Have no fear! If you need my help in a fight, I'll be there!", "SAVE");
 		DialogNode *node_1_2_2_2_1_1_1_1 = new DialogNode("Goodbye...", "Oh? leaving already?");
 		DialogNode *node_1_2_2_2_1_2 = new DialogNode("I don't trust ye", "I say we settle this in battle. En guard!", "FIGHT");
@@ -187,6 +167,12 @@ public:
 		node_1_2_2_2_2_2->setChoice3(node_1_2_2_2_1_3);
 		node_1_2_1_1->setChoice1(node_1_2_2_1_1); // 2=
 		node_1_2_1_1->setChoice2(node_1_2_2_1_2);
+		node_1_2_1_2_1->setChoice1(node_1_2_2_2_1_1); // FIGHT
+		node_1_2_2_1_1->setChoice1(node_1_2_2_2_1_1);
+		node_1_2_2_1_2->setChoice1(node_1_2_2_2_1_1);
+		node_1_2_2_2_1_2->setChoice1(node_1_2_2_2_1_1);
+		node_1_2_2_2_1_3_1_1_1->setChoice1(node_1_2_2_2_1_1);
+		node_1_2_2_2_2_1->setChoice1(node_1_2_2_2_1_1);
 
 		setHeadNode(node_1);
 	}

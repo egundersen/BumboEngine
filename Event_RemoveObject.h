@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_REMOVEOBJECT_H
 #define EVENT_REMOVEOBJECT_H
+
+#include "EventBase.h"
 
 class Event_RemoveObject : public EventBase
 {

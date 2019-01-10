@@ -1,5 +1,4 @@
 #include "DialogManager.h"
-#include <iostream>
 
 DialogManager::DialogManager(int dialog_width, int dialog_height, int screen_height, int screen_width, Matrix &screen_matrix)
 	: screen_matrix_{ screen_matrix }, max_choices_(2), action_{ "" }, should_give_item_{ false }, should_start_event_{ false },

@@ -1,8 +1,7 @@
-#include "MatrixBase.h"
-#include "Sprite.h"
-
 #ifndef NPCSPRITE_H
 #define NPCSPRITE_H
+
+#include "Sprite.h"
 
 class NPCSprite : public Sprite
 {

@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_AKI_H
 #define CHR_AKI_H
+
+#include "CharacterBase.h"
 
 class Chr_Aki : public CharacterBase
 {
 public:
-	Chr_Aki(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_Aki(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -51,7 +50,7 @@ public:
 		dialog_choice_2.push_back(std::make_tuple("You're not lying?", "Of course not! Who do you take me for?", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("Fine, I take your word for it", "Yes! Please no more!", true)); // 5=
+		dialog_choice_3.push_back(std::make_tuple("Fine, I take your word for it", "Yes! Please no more!", true));
 		dialog_choice_3.push_back(std::make_tuple("I still don't believe you!", "That's alright, I can promise a quick and painless death.", false));
 		dialog_choice_3.push_back(std::make_tuple("Can't take any chances", "I guess I did tell you to accuse EVERYONE... that one's on me.", false));
 		dialog_choice_3.push_back(std::make_tuple("Anime should die", "I don't agree.", false));
@@ -73,52 +72,9 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		for (int i = 0; i < 6; i++)
-		{
-			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player);
-			AttackPatternBase *attack_pattern_2;
-			attack_pattern_2 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 600);
-			AttackPatternBase *attack_pattern_3;
-			attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 3, 25);
-
-			AttackPatternBase *attack_pattern_4;
-			attack_pattern_4 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
-			AttackPatternBase *attack_pattern_13;
-			attack_pattern_13 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player);
-			AttackPatternBase *attack_pattern_5;
-			attack_pattern_5 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 30);
-			AttackPatternBase *attack_pattern_6;
-			attack_pattern_6 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1);
-			AttackPatternBase *attack_pattern_7;
-			attack_pattern_7 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 1, 35);
-
-			AttackPatternBase *attack_pattern_8;
-			attack_pattern_8 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 50);
-			AttackPatternBase *attack_pattern_9;
-			attack_pattern_9 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 4);
-			AttackPatternBase *attack_pattern_10;
-			attack_pattern_10 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 3, 15);
-			AttackPatternBase *attack_pattern_11;
-			attack_pattern_11 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 30);
-
-			AttackPatternBase *attack_pattern_12;
-			attack_pattern_12 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
-
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
-			attack_patterns_.push_back(attack_pattern_13); // <----- This was intentional
-			attack_patterns_.push_back(attack_pattern_5);
-			attack_patterns_.push_back(attack_pattern_6);
-			attack_patterns_.push_back(attack_pattern_7);
-			attack_patterns_.push_back(attack_pattern_8);
-			attack_patterns_.push_back(attack_pattern_9);
-			attack_patterns_.push_back(attack_pattern_10);
-			attack_patterns_.push_back(attack_pattern_11);
-			attack_patterns_.push_back(attack_pattern_12);
-		}
+		AttackPatternBase *attack_pattern_1;
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
+		attack_patterns_.push_back(attack_pattern_1);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
@@ -165,7 +121,8 @@ public:
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_2 = new DialogNode("I believe ye", "What a relief... Now for that boulder: I'll clear it so you can progress."); // 3=
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2 = new DialogNode("'cause ye hate pirates", "Where are you going with this? It's not like I wanted you to-");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2_1 = new DialogNode("eliminate th' pirates", "Are you DONE? Let's just get this over with...", "FIGHT");
-		DialogNode *node_2 = new DialogNode("", "Thank you for believeing me. I PROMISE you won't regret this later.", "EVENT"); // =5 ROCK EVENT
+		DialogNode *node_2 = new DialogNode("", "Thank you for believeing me", "SAVE"); // =FIGHT
+		DialogNode *node_2_1 = new DialogNode("Yeah...", "I PROMISE you won't regret this later.", "EVENT");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -201,6 +158,8 @@ public:
 		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_2);
 		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2_1);
 
+		node_2->setChoice1(node_2_1);
+
 		// Seperated Links:
 		node_1_1_1->setChoice1(node_1_1_2_1); // 1=
 		node_1_1_2_1_1_1_1->setChoice1(node_1_1_2_1_1_1_3_1); // 2=
@@ -211,6 +170,9 @@ public:
 		node_1_1_2_1_1_1_3_1_1_1_2_2_1_2_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2_2);
 		node_1_1_2_1_1_1_3_1_1_1_2_1_1->setChoice1(node_1_1_2_1_1_1_3_1_1_1_2_2_1); // 6=
 		node_1_1_2_1_1_1_3_1_1_1_2_1_1->setChoice2(node_1_1_2_1_1_1_3_1_1_1_2_2_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_1->setChoice1(node_2); // FIGHT
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_1_1->setChoice1(node_2);
+		node_1_1_2_1_1_1_3_1_1_1_2_2_2_2_2_1->setChoice1(node_2);
 
 		setHeadNode(node_1);
 	}

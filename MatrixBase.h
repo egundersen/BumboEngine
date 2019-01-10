@@ -1,11 +1,12 @@
-#include "Image.h"
-#include "ColorPalette.h"
-#include "Matrix.h"
-#include <memory>
-#include <algorithm>
-
 #ifndef MATRIXBASE_H
 #define MATRIXBASE_H
+
+#include "ColorPalette.h"
+#include "Matrix.h"
+#include "Image.h"
+#include <algorithm>
+#include <memory>
+#include <random>
 
 struct PlayerPosition
 {
@@ -49,7 +50,7 @@ protected:
 	void drawRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix, bool **&element_is_occupied);
 	void drawSolidRectangle(int top_left_x, int top_left_y, int width, int height, char character, std::vector<std::vector<char>> &matrix);
 	void clearMatrix(int width, int height, std::vector<std::vector<char>>& matrix);
-	void waitForInput();
+	//void waitForInput();
 private:
 	bool shouldIndent(std::string text, int letter_index, int matrix_iterator, int paragraph_width);
 	int addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, Matrix &matrix, int paragraph_width, int paragraph_height);

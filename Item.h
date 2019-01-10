@@ -1,12 +1,12 @@
-#include "Image.h"
-
 #ifndef ITEM_H
 #define ITEM_H
+
+#include "Image.h"
 
 class Item
 {
 public:
-	Item() : item_name_{ "" }, description_{ "" }, image_{ "" }, modifier_{ 0 }, item_type_{ "HEAL" }, use_item_{ false } {}
+	Item() : item_name_{ "" }, description_{ "" }, image_{ "/  \\Z|O |Z\\_ /Z", "Y  YZYR YZYY YZ" }, modifier_{ 0 }, item_type_{ "HEAL" }, use_item_{ false } {}
 	Item(std::string item_name, int modifier, std::string description = "") : item_name_{ item_name }, description_{ description }, image_{ "/  \\Z|O |Z\\_ /Z", "Y  YZYR YZYY YZ" }, modifier_{ modifier }, item_type_{ "HEAL" }, use_item_{ false } {}
 	Item(std::string item_name, int modifier, Image image, std::string description = "") : item_name_{ item_name }, description_{ description }, image_{ image }, modifier_{ modifier }, item_type_{ "HEAL" }, use_item_{ false } {}
 	

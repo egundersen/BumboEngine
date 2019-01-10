@@ -1,6 +1,4 @@
 #include "BattleDialogBase.h"
-#include <Windows.h>
-#include <iostream>
 
 BattleDialogBase::BattleDialogBase(int width, int height, Matrix& screen_matrix, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
 	: width_{ width }, height_{ height }, dialog_matrix_(width, height), screen_matrix_{ screen_matrix }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), bitmap_{ image_file_path },
@@ -165,8 +163,8 @@ void BattleDialogBase::setCursorText()
 // Updates character responses as text
 void BattleDialogBase::setReponseText(std::string response_text_string)
 {
-	drawSolidRectangle(51, 7, 19, 9, ' ', dialog_matrix_);
-	drawRectangle(50, 6, 20, 10, 'X', dialog_matrix_);
+	drawSolidRectangle(51, 7, 20, 9, ' ', dialog_matrix_);
+	drawRectangle(50, 6, 21, 10, 'X', dialog_matrix_);
 
 	addTextToMatrix(60, 10, 'm', response_text_string, dialog_matrix_, 17, 7);
 

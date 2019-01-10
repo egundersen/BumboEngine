@@ -1,9 +1,8 @@
-#include "PopupWithCollision.h"
-#include "Image.h"
-#include "Inventory.h"
-
 #ifndef PICKUP_H
 #define PICKUP_H
+
+#include "PopupWithCollision.h"
+#include "Inventory.h"
 
 class Pickup : public PopupWithCollision
 {

@@ -1,7 +1,4 @@
 #include "MatrixBase.h"
-#include <conio.h>
-#include <iostream>
-#include <random>
 
 // Adds an image / text to a matrix at the specified coordinates
 void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, Image & image, Matrix & matrix, bool exclude_spaces)
@@ -765,13 +762,13 @@ void MatrixBase::clearMatrix(int width, int height, std::vector<std::vector<char
 }
 
 // -- DEPRECATED -- Freezes entire program and waits for input from user.
-void MatrixBase::waitForInput()
-{
-	_getch();
-	char c = ' ';
-	while (c == ' ')
-		c = _getch();
-}
+//void MatrixBase::waitForInput()
+//{
+//	_getch();
+//	char c = ' ';
+//	while (c == ' ')
+//		c = _getch();
+//}
 
 // -- DEPRECATED -- Adds text to vector of vectors (Left-aligned) Returns the number of rows in the vector of vectors
 int MatrixBase::addLeftAlignedTextToMatrix(int top_left_x, int top_left_y, std::string text, std::vector<std::vector<char>>& matrix, int paragraph_width, int paragraph_height)

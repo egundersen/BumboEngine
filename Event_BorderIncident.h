@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_BORDERINCIDENT_H
 #define EVENT_BORDERINCIDENT_H
+
+#include "EventBase.h"
 
 class Event_BorderIncident : public EventBase
 {

@@ -1,8 +1,4 @@
 #include "BattleBase.h"
-#include "AttackPatterns.h"
-#include "AttackPatternBase.h"
-#include <windows.h>
-#include <iostream>
 
 BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
 	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_{ player }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },

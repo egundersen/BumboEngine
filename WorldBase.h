@@ -1,18 +1,15 @@
-#include "MatrixBase.h"
-#include "RGBA.h"
-#include "PlayerSprite.h"
-#include "PopupWithCollision.h"
-#include "Signpost.h"
-#include "Pickup.h"
-#include "Characters.h"
-#include "Events.h"
-#include "ScreenPosition.h"
-#include "SpriteSheet.h"
-#include "Texture.h"
-#include <utility>
-
 #ifndef WORLDBASE_H
 #define WORLDBASE_H
+
+#include "Signpost.h"
+#include "Pickup.h"
+#include "ScreenPosition.h"
+#include "PlayerSprite.h"
+#include "Texture.h"
+
+#include "SpriteSheet.h"
+#include "Characters.h"
+#include "Events.h"
 
 class WorldBase : MatrixBase
 {

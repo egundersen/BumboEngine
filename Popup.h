@@ -1,7 +1,7 @@
-#include "MatrixBase.h"
-
 #ifndef POPUP_H
 #define POPUP_H
+
+#include "MatrixBase.h"
 
 /* Text and dimensions for a popup */
 struct PopupDefinition

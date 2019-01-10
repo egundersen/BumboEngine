@@ -1,7 +1,7 @@
-#include "PopupWithCollision.h"
-
 #ifndef SIGNPOST_H
 #define SIGNPOST_H
+
+#include "PopupWithCollision.h"
 
 class Signpost : public PopupWithCollision
 {

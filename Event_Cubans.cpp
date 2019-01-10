@@ -94,7 +94,7 @@ void Event_Cubans::leave()
 		getCharacterByID(33)->move(493, 'x', 30);
 		break;
 	case 4:
-		getCharacterByID(33)->move(94, 'y', 30);
+		getCharacterByID(33)->move(96, 'y', 30);
 		break;
 	case 5:
 		getCharacterByID(33)->moveAndTeleport(519, 'x', 30, 'd', 197, 177);

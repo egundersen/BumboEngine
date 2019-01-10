@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_TUTORIALNPC
 #define CHR_TUTORIALNPC
+
+#include "CharacterBase.h"
 
 class Chr_TutorialNPC : public CharacterBase
 {
 public:
-	Chr_TutorialNPC(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_TutorialNPC(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -58,19 +57,9 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		for (int i = 0; i < 6; i++)
-		{
-			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 10);
-			AttackPatternBase *attack_pattern_2;
-			attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 15);
-			AttackPatternBase *attack_pattern_3;
-			attack_pattern_3 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 3);
-
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_1);
-		}
+		AttackPatternBase *attack_pattern_1;
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
+		attack_patterns_.push_back(attack_pattern_1);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

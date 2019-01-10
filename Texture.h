@@ -1,9 +1,9 @@
+#ifndef TEXTURE_H
+#define TEXTURE_H
+
 #include "MatrixBase.h"
 #include "ColoredString.h"
 #include "Image.h"
-
-#ifndef TEXTURE_H
-#define TEXTURE_H
 
 // Takes input ASCII art and adds it to the provided matrix
 class Texture : MatrixBase

@@ -1,6 +1,4 @@
 #include "WorldBase.h"
-#include <Windows.h>
-#include <iostream>
 
 WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &image_file_path)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
@@ -566,7 +564,7 @@ void WorldBase::GENERATE_Maze()
 	// Rocks
 	Texture rock_1(457, 86, sprite_sheet_.rock, world_matrix_);
 	Texture rock_2(485, 96, sprite_sheet_.rock, world_matrix_);
-	Texture rock_3(495, 89, sprite_sheet_.rock, world_matrix_);
+	Texture rock_3(495, 90, sprite_sheet_.rock, world_matrix_);
 	Texture rock_4(697, 61, sprite_sheet_.rock_2, world_matrix_); // Rock Blocking Door
 }
 
@@ -592,7 +590,7 @@ void WorldBase::GENERATE_Enemies()
 
 	// Final Outside Area
 	CharacterBase *mini_boss_1 = new Chr_MiniBoss1(965, 64, 20, sprite_sheet_.mini_boss_1, 'l', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
-	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1047, 56, 21, sprite_sheet_.mini_boss_2, 'l', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
+	CharacterBase *mini_boss_2 = new Chr_MiniBoss2(1055, 56, 21, sprite_sheet_.mini_boss_2, 'l', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 	CharacterBase *thot_patrol_1 = new Chr_ThotPatrol(188, 165, 36, sprite_sheet_.thot_patrol, 'r', sprite_sheet_.face_thot_patrol, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, image_file_path_);
 
 	tutorial_npc->initializeCharacter();
@@ -857,9 +855,13 @@ void WorldBase::GENERATE_Signposts()
 {
 	Signpost *checkpoint_sign_1 = new Signpost(750, 224, 23, 9, 1, "Nakinom Border Checkpoint --------> 0.2 km", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 	Signpost *checkpoint_sign_2 = new Signpost(1000, 210, 23, 9, 2, "Nakinom Border Checkpoint", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
+	Signpost *deep_cave = new Signpost(318, 191, 23, 9, 3, "Welcome ye pirates to the DEEP cave", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
+	Signpost *clear_cave = new Signpost(85, 88, 23, 9, 4, "Welcome to the CLEAR cave", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 
 	signposts_.push_back(checkpoint_sign_1);
 	signposts_.push_back(checkpoint_sign_2);
+	signposts_.push_back(deep_cave);
+	signposts_.push_back(clear_cave);
 
 	// Displays all sign posts
 	for (auto signpost : signposts_)
@@ -877,19 +879,10 @@ void WorldBase::GENERATE_Pickups()
 	Item item_clue_2("Long Sword", "ATTACKUP", 1, "There's a tag on the side: If lost return to Ryuuko");
 	Pickup *pickup_clue_2 = new Pickup(1127, 204, 23, 9, 11, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_2, inventory_);
 	Item item_clue_3("Feather", "STATIC", 1, "It's a turkey feather cut to mimic a hawk feather: someone was short-changed");
-	Pickup *pickup_clue_3 = new Pickup(841, 46, 23, 9, 12, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_3, inventory_);
+	Pickup *pickup_clue_3 = new Pickup(1144, 213, 23, 9, 12, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_3, inventory_);
 	Item item_clue_4("Glove", "STATIC", 1, "A single black glove, missing from a pair");
 	Pickup *pickup_clue_4 = new Pickup(1146, 205, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_4, inventory_);
 	Pickup *unobtainable = new Pickup(462, 222, 23, 9, 14, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, Item(), inventory_);
-
-	/*pickups_.push_back(pickup_1);
-	pickups_.push_back(pickup_2);
-	pickups_.push_back(pickup_3);
-	pickups_.push_back(pickup_4);
-	pickups_.push_back(pickup_5);
-	pickups_.push_back(pickup_6);
-	pickups_.push_back(pickup_7);
-	pickups_.push_back(pickup_8);//*/
 
 	pickups_.push_back(cliff_pickup);
 	pickups_.push_back(pickup_clue_1);
@@ -897,14 +890,6 @@ void WorldBase::GENERATE_Pickups()
 	pickups_.push_back(pickup_clue_3);
 	pickups_.push_back(pickup_clue_4);
 	pickups_.push_back(unobtainable);
-	/*pickups_.push_back(pickup_1);
-	pickups_.push_back(pickup_2);
-	pickups_.push_back(pickup_3);
-	pickups_.push_back(pickup_4);
-	pickups_.push_back(pickup_5);
-	pickups_.push_back(pickup_6);
-	pickups_.push_back(pickup_7);
-	pickups_.push_back(pickup_8);//*/
 
 	// Displays all pickups
 	for (auto pickup : pickups_)
@@ -935,8 +920,10 @@ void WorldBase::GENERATE_Events()
 	Event_TeleportPlayer *teleport_from_aki = new Event_TeleportPlayer(10008, 679, 103, 10, 8, 393, 33, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_SetupEnding *teleport_to_mini_bosses = new Event_SetupEnding(10009, 731, 59, 10, 8, 857, 65, 1, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_MoveNPCIfDefeated *move_doorguard_sharktooth = new Event_MoveNPCIfDefeated(10017, 538, 167, 2, 24, 198, 165, 38, 13, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_MoveNPCIfDefeated *move_doorguard_ryuuko = new Event_MoveNPCIfDefeated(10018, 105, 228, 14, 2, 198, 165, 16, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_MoveNPCIfDefeated *move_doorguard_ryuuko = new Event_MoveNPCIfDefeated(10018, 104, 234, 14, 2, 198, 165, 16, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_MoveNPCIfDefeated *move_aki = new Event_MoveNPCIfDefeated(10019, 105, 228, 14, 2, 296, 195, 22, 14, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_MoveNPC *mov_mini_boss_1 = new Event_MoveNPC(10023, 198, 165, 10, 10, 1007, 'x', 20, 'd', 20, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_, 198, 165);
+	Event_MoveNPC *mov_mini_boss_2 = new Event_MoveNPC(10024, 198, 165, 10, 10, 54, 'y', 30, 'd', 21, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// Inside Cave
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 296, 224, 56, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
@@ -945,7 +932,7 @@ void WorldBase::GENERATE_Events()
 	Event_BridgeRally2 *bridge_rally2 = new Event_BridgeRally2(10012, 285, 90, 5, 5, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BridgeRally3 *bridge_rally3 = new Event_BridgeRally3(10013, 215, 85, 5, 5, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_Cubans *cubans = new Event_Cubans(10014, 198, 165, 10, 10, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_ThotPatrol *thot_patrol = new Event_ThotPatrol(10015, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_ThotPatrol *thot_patrol = new Event_ThotPatrol(10022, 198, 165, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_ThrowOffCliff *throw_off_cliff = new Event_ThrowOffCliff(10016, 496, 225, 20, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_RemoveObject *remove_object = new Event_RemoveObject(10020, 198, 165, 10, 10, 697, 61, 5, 5, 1, false, world_matrix_, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 

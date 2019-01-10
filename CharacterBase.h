@@ -1,14 +1,13 @@
-#include "MatrixBase.h"
+#ifndef CHARACTERBASE_H
+#define CHARACTERBASE_H
+
 #include "DialogManager.h"
 #include "DialogNode.h"
 #include "BattleBase.h"
-#include "PopupWithCollision.h"
 #include "BattleSprite.h"
 #include "NPCSprite.h"
-#include "WorldSprite.h"
-
-#ifndef CHARACTERBASE_H
-#define CHARACTERBASE_H
+#include "PopupWithCollision.h"
+#include "WorldSpriteContainer.h"
 
 class CharacterBase : public PopupWithCollision, public BattleBase, public DialogManager
 {
@@ -18,7 +17,7 @@ public:
 		Matrix &screen_matrix, int screen_width, int screen_height, int event_ID,
 
 		PlayerDefinition &player, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &image_file_path,
-		WorldSprite world_sprite);
+		WorldSpriteContainer world_sprite);
 	~CharacterBase();
 
 	// Initializes the character class (Must be called once)
@@ -66,7 +65,7 @@ private:
 	void eraseOldColliders();
 	void setObjectID() { object_type_ID_ = 3; };
 
-	WorldSprite world_sprite_;
+	WorldSpriteContainer world_sprite_;
 	NPCSprite sprite_;
 	
 	std::vector<Image*> sprite_states_;

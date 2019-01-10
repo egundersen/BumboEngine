@@ -1,12 +1,12 @@
-#include "Image.h"
-
 #ifndef WORLDSPRITE_H
 #define WORLDSPRITE_H
 
+#include "Image.h"
+
 // Stores the images for the world sprite of an NPC or player
-struct WorldSprite
+struct WorldSpriteContainer
 {
-	WorldSprite(
+	WorldSpriteContainer(
 		std::string up_1_ASCII, std::string down_1_ASCII, std::string right_1_ASCII, std::string left_1_ASCII,
 		std::string up_2_ASCII, std::string down_2_ASCII, std::string right_2_ASCII, std::string left_2_ASCII, 
 		std::string up_s_ASCII, std::string down_s_ASCII, std::string right_s_ASCII, std::string left_s_ASCII,

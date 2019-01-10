@@ -1,5 +1,4 @@
 #include "Attack_Wall.h"
-#include <windows.h>
 
 Attack_Wall::Attack_Wall(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int gap_height, int gap_width, int speed)
 	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied),

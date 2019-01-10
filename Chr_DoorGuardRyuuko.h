@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_DOORGUARDRYUUKO_H
 #define CHR_DOORGUARDRYUUKO_H
+
+#include "CharacterBase.h"
 
 class Chr_DoorGuardRyuuko : public CharacterBase
 {
 public:
-	Chr_DoorGuardRyuuko(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_DoorGuardRyuuko(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -68,38 +67,7 @@ public:
 	{
 		AttackPatternBase *attack_pattern_1;
 		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
-		AttackPatternBase *attack_pattern_2;
-		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
-		AttackPatternBase *attack_pattern_3;
-		attack_pattern_3 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 50);
-		AttackPatternBase *attack_pattern_4;
-		attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_5;
-		attack_pattern_5 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 10); //50
-		AttackPatternBase *attack_pattern_6;
-		attack_pattern_6 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
-		AttackPatternBase *attack_pattern_7;
-		attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1);
-		AttackPatternBase *attack_pattern_8;
-		attack_pattern_8 = new ShootandExplode_Fast(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_9;
-		attack_pattern_9 = new ShootandExplode_Slow(screen_width, screen_height, screen_matrix, player, 10);
-		AttackPatternBase *attack_pattern_10;
-		attack_pattern_10 = new AttackPattern_ShootandSnake(screen_width, screen_height, screen_matrix, player, 10);
 		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_8);
-		attack_patterns_.push_back(attack_pattern_9);
-		attack_patterns_.push_back(attack_pattern_10);
-		//attack_patterns_.push_back(attack_pattern_3);
-		/*attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);
-		attack_patterns_.push_back(attack_pattern_7);//*/
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
@@ -115,7 +83,7 @@ public:
 		// CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "RUP! UP! PUP! Gonna 'ave ta stop ya right thar!");
 		DialogNode *node_1_1 = new DialogNode("Let me through!", "Can nah! Checkpoint guards are conductin' an investigation! Ye'll 'ave t' wait till they be finished.", "SAVE");
-		DialogNode *node_1_2 = new DialogNode("Wha' are ye, 7?", "Normally I'd thrug that off, but I've had a bad day, 'n breakin' yer bones sounds pretty thereputic!", "FIGHT");
+		DialogNode *node_1_2 = new DialogNode("Wha' are ye, 7?", "Normally I'd thrug that off, but I've had a bad day, 'n breakin' yer bones sounds thereputic!", "FIGHT");
 		DialogNode *node_1_2_1 = new DialogNode("", "Thanks fer th' compliment but ye'll 'ave t' wait till they be finished.", "SAVE");
 
 		// Link Dialog Nodes

@@ -1,9 +1,8 @@
-#include "MatrixBase.h"
-#include "Popup.h"
-#include <utility>
-
 #ifndef POPUPWITHCOLLISION_H
 #define POPUPWITHCOLLISION_H
+
+#include "Popup.h"
+#include <utility>
 
 // Creates popup with world collider to trigger popup
 class PopupWithCollision : public Popup

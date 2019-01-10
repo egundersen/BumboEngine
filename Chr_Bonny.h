@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_BONNY_H
 #define CHR_BONNY_H
+
+#include "CharacterBase.h"
 
 class Chr_Bonny : public CharacterBase
 {
 public:
-	Chr_Bonny(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_Bonny(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -49,7 +48,7 @@ public:
 		dialog_choice_2.push_back(std::make_tuple("Wanna die today!?", "Wait no! I- I smuggle packages fer Sharktooth! But I didn' plunder yer loot", true));
 
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_3;
-		dialog_choice_3.push_back(std::make_tuple("I believe ye", "Thank th' stars!!!", true)); // 5=
+		dialog_choice_3.push_back(std::make_tuple("I believe ye", "Thank th' stars!!!", true));
 		dialog_choice_3.push_back(std::make_tuple("I still don't believe ye", "I' nah be lyin'!", false));
 
 		dialog_choices_.push_back(dialog_choice_1);
@@ -71,18 +70,9 @@ public:
 	{
 		//for (int i = 0; i < 6; i++)
 		//{
-			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 35);
-			AttackPatternBase *attack_pattern_2;
-			attack_pattern_2 = new AttackPattern_ShootAtPlayer(screen_width, screen_height, screen_matrix, player, 50);
-			AttackPatternBase *attack_pattern_3;
-			attack_pattern_3 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player);
-			AttackPatternBase *attack_pattern_4;
-			attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 4, 1);
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
+		AttackPatternBase *attack_pattern_1;
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
+		attack_patterns_.push_back(attack_pattern_1);
 		//}
 	}
 
@@ -113,7 +103,7 @@ public:
 		DialogNode *node_1_1_3_1_2_1 = new DialogNode("I was pickpocketed!", "Yarr.. how sad (fer ye). Do ya know who done it?");
 		DialogNode *node_1_1_3_1_2_1_1 = new DialogNode("....'twas YOU!", "YARR! I be nah lookin' fer a fight! Twas nah me!"); // =1
 		DialogNode *node_1_1_3_1_2_1_1_1 = new DialogNode("Then who?", "I dunno! Maybe Sharktooth, he's a bad scallywag...");
-		DialogNode *node_1_1_3_1_2_1_1_1_1 = new DialogNode("Fine, I believe ye", "Thank th' stars! 'n... perhaps I could offer somethin' as a token o' me thanks?"); // =5
+		DialogNode *node_1_1_3_1_2_1_1_1_1 = new DialogNode("Fine, I believe ye", "Thank th' stars! 'n... perhaps I could offer somethin' as a token o' me thanks?", "SAVE"); // =FIGHT
 		DialogNode *node_1_1_3_1_2_1_1_1_1_1 = new DialogNode("No thanks necessary", "Ye are truly a kind sort.");
 		DialogNode *node_1_1_3_1_2_1_1_1_1_1_1 = new DialogNode("Goodbye", "Good luck t' ya. Goodbye matey!", "SAVE");
 		DialogNode *node_1_1_3_1_2_1_1_1_1_2 = new DialogNode("Much appreciated!", "'Tis a cutlass, maybe nah th' best, but I've owned it all me life!", sword);
@@ -183,6 +173,10 @@ public:
 		node_1_1_3_2_1_1->setChoice2(node_1_1_3_1_2);
 		node_1_1_3_2_2_1->setChoice1(node_1_1_3_1_1); // 4=
 		node_1_1_3_2_2_1->setChoice2(node_1_1_3_1_2);
+		node_1_1_1->setChoice1(node_1_1_3_1_2_1_1_1_1);  // FIGHT
+		node_1_1_3_1_1->setChoice1(node_1_1_3_1_2_1_1_1_1); 
+		node_1_1_3_1_2_1_1_1_2_1->setChoice1(node_1_1_3_1_2_1_1_1_1);
+		node_1_1_3_1_2_1_1_2->setChoice1(node_1_1_3_1_2_1_1_1_1);
 
 		setHeadNode(node_1);
 	}

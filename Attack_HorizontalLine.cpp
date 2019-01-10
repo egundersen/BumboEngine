@@ -1,5 +1,4 @@
 #include "Attack_HorizontalLine.h"
-#include <windows.h>
 
 Attack_HorizontalLine::Attack_HorizontalLine(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int trail_length, int height_y, int speed)
 	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied),

@@ -1,5 +1,4 @@
 #include "RGBA.h"
-#include <Windows.h>
 
 RGBA::RGBA()
 	: r(255), g(255), b(255), a(255), start_time_fade_animation_(0), has_started_fade_{ false }

@@ -1,8 +1,8 @@
-#include "RGBA.h"
-#include <string>
-
 #ifndef BITMAPDEFINITION_H
 #define BITMAPDEFINITION_H
+
+#include "RGBA.h"
+#include <string>
 
 class BitmapDefinition
 {

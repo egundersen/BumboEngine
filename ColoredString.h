@@ -1,7 +1,7 @@
-#include <string>
-
 #ifndef COLOREDSTRING_H
 #define COLOREDSTRING_H
+
+#include <string>
 
 class ColoredString
 {

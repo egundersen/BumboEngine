@@ -1,9 +1,14 @@
+#ifndef IMAGE_H
+#define IMAGE_H
+
 #include "Matrix.h"
+#include "ColorPalette.h"
 #include <vector>
 #include <string>
 
-#ifndef IMAGE_H
-#define IMAGE_H
+#ifdef _DEBUG
+#include <iostream>
+#endif
 
 struct Position_s
 {

@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_SETUPENDING_H
 #define EVENT_SETUPENDING_H
+
+#include "EventBase.h"
 
 class Event_SetupEnding : public EventBase
 {

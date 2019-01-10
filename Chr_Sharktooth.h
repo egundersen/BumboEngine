@@ -1,13 +1,12 @@
-#include "CharacterBase.h"
-#include <string>
-
 #ifndef CHR_SHARKTOOTH_H
 #define CHR_SHARKTOOTH_H
+
+#include "CharacterBase.h"
 
 class Chr_Sharktooth : public CharacterBase
 {
 public:
-	Chr_Sharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSprite world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_Sharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -54,7 +53,7 @@ public:
 		dialog_choice_4.push_back(std::make_tuple("Wait, ye don't wanna do this!", "OH BUT I DO", false));
 		dialog_choice_4.push_back(std::make_tuple("Then I shall end ye!", "GOOD LUCK", false));
 		dialog_choice_4.push_back(std::make_tuple("'ave any interest in booty?", "GO HEAD, KEEP WASTING YOUR TIME CHATTING WITH THE INEVITABLE!", false));
-		dialog_choice_4.push_back(std::make_tuple("See if I care...", "THATS THE KIND OF NON-CARING ATTITUDE I LIKE TO SEE!!", true)); // 2=
+		dialog_choice_4.push_back(std::make_tuple("See if I care...", "THATS THE KIND OF NON-CARING ATTITUDE I LIKE TO SEE!!", true));
 
 		dialog_choices_.push_back(dialog_choice_1);
 		dialog_choices_.push_back(dialog_choice_2);
@@ -74,24 +73,9 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		for (int i = 0; i < 6; i++)
-		{
-			AttackPatternBase *attack_pattern_1;
-			attack_pattern_1 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 200);
-			AttackPatternBase *attack_pattern_2;
-			attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 3, 35);
-			AttackPatternBase *attack_pattern_3;
-			attack_pattern_3 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player);
-			AttackPatternBase *attack_pattern_4;
-			attack_pattern_4 = new AttackPattern_ShootHorizontal(screen_width, screen_height, screen_matrix, player, 20);
-			AttackPatternBase *attack_pattern_5;
-			attack_pattern_5 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player);
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
-			attack_patterns_.push_back(attack_pattern_5);
-		}
+		AttackPatternBase *attack_pattern_1;
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
+		attack_patterns_.push_back(attack_pattern_1);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
@@ -111,7 +95,7 @@ public:
 		DialogNode *node_1_1_1_1 = new DialogNode("Were ye at th' border?", "SO WHAT IF I WAS??"); // 1=
 		DialogNode *node_1_1_1_2 = new DialogNode("Goodbye", "LEAVE ME TERRITORY!");
 		DialogNode *node_1_1_2 = new DialogNode("Were ye at th' border?", "SO WHAT IF I WAS??"); // =1
-		DialogNode *node_1_1_2_1 = new DialogNode("Did ye lose anythin'?", "I BE MISSIN' ME PRECIOUS CIGAR BOX.");
+		DialogNode *node_1_1_2_1 = new DialogNode("Did ye lose anythin'?", "I BE MISSIN' ME PRECIOUS CIGAR BOX."); // 2= (Options)
 		DialogNode *node_1_1_2_2 = new DialogNode("Be THIS yer cigar box?", "TIS MINE ITS TRUE...AND HOW... PRAYTELL... DID. YOU. GET. THIS.?");
 		DialogNode *node_1_1_2_2_1 = new DialogNode("I found it", "WELL I THANK YE FOR THAT.");
 		DialogNode *node_1_1_2_2_1_1 = new DialogNode("Regardin' th' border...", "WHAT ABOUT IT? SPIT IT OUT LAD! I HAVEN'T ALL DAY!");
@@ -127,7 +111,7 @@ public:
 		DialogNode *node_1_1_3 = new DialogNode("Ne'er heard o' ye...", "PERHAPS I'LL GIVE YE SOMETHING TO REMEMBER ME BY!", "FIGHT");
 		DialogNode *node_1_2 = new DialogNode("Ye cant claim territory", "DOOOOOOOOON'T TELL ME WHAT TO DO !!!!!", "FIGHT");
 		DialogNode *node_1_3 = new DialogNode("Goodbye...", "LEAVE ME TERRITORY!");
-		DialogNode *node_2 = new DialogNode("", "PERHAPS I WAS WRONG ABOUT YE", "SAVE"); // =2
+		DialogNode *node_2 = new DialogNode("", "PERHAPS I WAS WRONG ABOUT YE", "SAVE"); // =FIGHT
 		DialogNode *node_2_1 = new DialogNode("Well-", "SHUT UP 'n GET LOST afore th' feds find me.");
 		DialogNode *node_2_1_1 = new DialogNode("perhaps ye could hel-", "NOT INTERESTED.");
 		DialogNode *node_2_1_2_1 = new DialogNode("Bye", "JUST GET LOST ALREADY!", "SAVE");
@@ -166,6 +150,17 @@ public:
 		// Seperated Links:
 		node_1_1_1_1->setChoice1(node_1_1_2_1); // 1=
 		node_1_1_1_1->setChoice2(node_1_1_2_2);
+		node_1_1_2_1->setChoice1(node_1_1_2_2_1); // 2=
+		node_1_1_2_1->setChoice2(node_1_1_2_2_2);
+		node_1_1_2_2_1_1_1->setChoice1(node_2); // FIGHT
+		node_1_1_2_2_1_1_2_1->setChoice1(node_2);
+		node_1_1_2_2_1_1_2_2_1->setChoice1(node_2);
+		node_1_1_2_2_1_1_2_2_2->setChoice1(node_2);
+		node_1_1_2_2_1_1_2_3->setChoice1(node_2);
+		node_1_1_2_2_1_2->setChoice1(node_2);
+		node_1_1_2_2_2->setChoice1(node_2);
+		node_1_1_3->setChoice1(node_2);
+		node_1_2->setChoice1(node_2);
 
 		setHeadNode(node_1);
 	}

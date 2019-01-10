@@ -1,5 +1,4 @@
 #include "Event_Test.h"
-#include <Windows.h>
 
 void Event_Test::createEvent()
 {

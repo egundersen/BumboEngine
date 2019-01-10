@@ -1,7 +1,7 @@
 #include "PlayerSprite.h"
 
 // Draws character sprites on matrix
-void PlayerSprite::initializeSprites(WorldSprite player_sprite)
+void PlayerSprite::initializeSprites(WorldSpriteContainer player_sprite)
 {
 	addImageToMatrix(sprite_width_ / 2 - 1, sprite_height_ / 2 - 1, *player_sprite.up_1, up_1_);
 	addImageToMatrix(sprite_width_ / 2 - 1, sprite_height_ / 2 - 1, *player_sprite.down_1, down_1_);

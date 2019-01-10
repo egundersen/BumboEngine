@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_THROWOFFCLIFF_H
 #define EVENT_THROWOFFCLIFF_H
+
+#include "EventBase.h"
 
 class Event_ThrowOffCliff : public EventBase
 {

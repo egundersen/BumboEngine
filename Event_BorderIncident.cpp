@@ -1,5 +1,4 @@
 #include "Event_BorderIncident.h"
-#include <Windows.h>
 
 void Event_BorderIncident::createEvent()
 {

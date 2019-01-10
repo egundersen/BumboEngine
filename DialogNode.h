@@ -1,8 +1,7 @@
-#include "Item.h"
-#include <string>
-
 #ifndef DIALOGNODE
 #define DIALOGNODE
+
+#include "Item.h"
 
 class DialogNode
 {

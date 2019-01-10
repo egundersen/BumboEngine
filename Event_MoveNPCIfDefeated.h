@@ -1,7 +1,7 @@
-#include "EventBase.h"
-
 #ifndef EVENT_MOVENPCIFDEFEATED_H
 #define EVENT_MOVENPCIFDEFEATED_H
+
+#include "EventBase.h"
 
 class Event_MoveNPCIfDefeated : public EventBase
 {

@@ -1,5 +1,4 @@
 #include "Event_AttackOnSight.h"
-#include <Windows.h>
 
 void Event_AttackOnSight::createEvent()
 {

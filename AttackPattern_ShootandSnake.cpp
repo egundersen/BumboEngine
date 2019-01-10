@@ -1,12 +1,4 @@
-#include "MatrixBase.h"
-#include "AttackPattern_ShootHorizontal.h"
 #include "AttackPattern_ShootandSnake.h"
-#include "AttackPattern_Snake.h"
-#include "Attacks.h"
-#include "Image.h"
-#include <windows.h>
-#include <algorithm>
-#include <iostream>
 
 AttackPattern_ShootandSnake::AttackPattern_ShootandSnake(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
 	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks)

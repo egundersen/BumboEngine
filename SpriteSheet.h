@@ -1,11 +1,14 @@
-#include "WorldSprite.h"
+#ifndef SPRITESHEET_H
+#define SPRITESHEET_H
+
+#include "WorldSpriteContainer.h"
 #include "BattleSprite.h"
 #include "ColoredString.h"
 
 // Area for storing ASCII for sprites
 struct SpriteSheet
 {
-	WorldSprite player = WorldSprite(
+	WorldSpriteContainer player = WorldSpriteContainer(
 		"   @@@@   Z  X&@@&X  Z   XXXX   Z O#XXXX#O ZO #X][X#O Z  %U  U%  Z",
 		"   @@@@   Z  [V/\\V]  Z   X--X   Z O#XxxX#O ZO #X][X#O Z  %U  U%  Z",
 		"   @@@@   Z  [@\\v\\>  Z   @XX<   Z  O#xx#O  Z  O%X][%O Z   %%  %  Z",
@@ -33,7 +36,7 @@ struct SpriteSheet
 		"   KKKK   Z  JJYJKJ  Z   JWWK   Z  JRJJRJ  Z JRRWWRRW Z  SH  HS  Z"
 	);
 
-	WorldSprite sharktooth = WorldSprite(
+	WorldSpriteContainer sharktooth = WorldSpriteContainer(
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  X@&&@X  Z   XXXX   Z o0O==O0o ZO <H==H>O Z  /U  U\\  Z",
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  xM\\/Mx  Z   WWWW   Z o0O==O0o ZO <H==H>O Z  /U  U\\  Z",
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  ##(o\\>  Z   #\\!<   Z  0O==O0  Z  O%H==%O Z   %%  %  Z",
@@ -61,7 +64,7 @@ struct SpriteSheet
 		"  BBBBBB  ZBHBHBBHBHBZ  JJYJRR  Z   JJJR   Z  JJHHJJ  Z JJRFFRJ  Z  JH  HJ  Z"
 	);
 
-	WorldSprite bonny = WorldSprite(
+	WorldSpriteContainer bonny = WorldSpriteContainer(
 		"   __$_   Z \\==()==/ Z  X@@@@X  Z   XXXX   Z OSUUUUSO ZO S<UU>SO Z  %U  U%  Z",
 		"   __$_   Z \\==()==/ Z  (>/\\<)  Z   XXXX   Z OSUuuUSO ZO S<UU>SO Z  %U  U%  Z",
 		"   __$_   Z \\==()==/ Z  @@\\>\\>  Z   XXXX   Z  OSuuSO  Z  O%<UU%O Z   %%  %  Z",
@@ -89,7 +92,7 @@ struct SpriteSheet
 		"   HHYH   Z SHHSSHHS Z  JJYJKK  Z   WWWW   Z  JSuuSJ  Z JRWHHWR  Z  SH  HS  "
 	);
 
-	WorldSprite tutorial_NPC = WorldSprite(
+	WorldSpriteContainer tutorial_NPC = WorldSpriteContainer(
 		"   &%%&   Z  /&&&&\\  Z   \\%%/   Z OH]HH[HO ZO HHHHHHO Z  %U  U%  Z",
 		"   &%%&   Z  /[][]\\  Z   \\<>/   Z OH]\\/[HO ZO HHHHHHO Z  %U  U%  Z",
 		"   &%%&   Z  /&&[]\\  Z   \\%</   Z  O#HH#O  Z  O%HHH%O Z   %%  %  Z",
@@ -117,7 +120,7 @@ struct SpriteSheet
 		"   0000   Z  0JJSS0  Z    JSJ   Z  JCSSCJ  Z JCCCCCC  Z  FS  SF  Z"
 	);
 
-	WorldSprite aki = WorldSprite(
+	WorldSpriteContainer aki = WorldSpriteContainer(
 		"  #@@@@#  Z @@@@@@@@ Z @ \\@@/ @ Z oxHXXHxo Z0 /####\\0 Z  %U  U%  Z",
 		"  #@@@@#  Z @@^\\/^@@ Z @ \\vv/ @ Z oxHxxHxo Z0 /####\\0 Z  %U  U%  Z",
 		"  #@@@@#  Z /@@\\^\\>  Z @@ \\X<   Z @oHxxHo  Z  0%#][%0 Z   %%  %  Z",
@@ -145,7 +148,7 @@ struct SpriteSheet
 		"  DDDDDD Z  JJRJDDD Z   JJJ DD Z  JSJJSJD Z JTTTTJTT Z  MD  DM  Z"
 	);
 
-	WorldSprite ryuuko = WorldSprite(
+	WorldSpriteContainer ryuuko = WorldSpriteContainer(
 		"  &    &  Z  &&\\/&&  Z  &&&&&&  Z   X&&X   Z O#VXXV#O ZO #VVVV#O Z  %U  U%  Z",
 		"  &    &  Z  &&\\/&&  Z  &()()&  Z   ><><   Z O#VxxV#O ZO #VV[8OO Z  %U  U%  Z",
 		"  &    &  Z  &&\\/&&  Z  &&&()>  Z   &XX<   Z  OVxxVO  Z  O%VVV%O Z   %%  %  Z",
@@ -173,7 +176,7 @@ struct SpriteSheet
 		"  T    T  Z  TTTTTT  Z  JLLTTT  Z   JGGT   Z  JTGGTJ  Z JGTJJTGJ Z  HG  GH  Z"
 	);
 
-	WorldSprite mini_boss_1 = WorldSprite(
+	WorldSpriteContainer mini_boss_1 = WorldSpriteContainer(
 		"  /####\\  Z ######## Z   \\##/   Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
 		"  /####\\  Z ##\"\\/\"## Z #\\*<>*/# Z ogX><Xgo Z0 #HXXH#0 Z  %U  U%  Z",
 		"  /####\\  Z /##\\\"\\>  Z ## \\*<   Z goX><Xo  Z  0%HXX%0 Z   %%  %  Z",
@@ -201,7 +204,7 @@ struct SpriteSheet
 		" OJOOOOJ  Z  JJLJOOJ Z   JRJ OO Z  JOJJFJO Z JOHFFJO  Z  HB  BH  Z"
 	);
 
-	WorldSprite mini_boss_2 = WorldSprite(
+	WorldSpriteContainer mini_boss_2 = WorldSpriteContainer(
 		"   mmmm   Z  MMMMMM  Z   \\MM/   Z OY3XXEYO ZO Y3E3EYO Z  %U  U%  Z",
 		"   mmmm   Z  M[][]M  Z   \\<>/   Z OY3><EYO ZO Y3E3EYO Z  %U  U%  Z",
 		"   mmmm   Z  mMM[]>  Z   \\MM<   Z  O3><EO  Z  O%3E3%O Z   %%  %  Z",
@@ -229,7 +232,7 @@ struct SpriteSheet
 		"   YYYY   Z  WAAYYY  Z   WYYJ   Z  JRWWRJ  Z JYRRRRY  Z  NY  YN  Z"
 	);
 
-	WorldSprite checkpoint_guard = WorldSprite(
+	WorldSpriteContainer checkpoint_guard = WorldSpriteContainer(
 		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  O%###%O Z   %%  %  Z",
@@ -257,7 +260,7 @@ struct SpriteSheet
 		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JRRRRRR  Z  SB  BS  Z"
 	);
 
-	WorldSprite thot_patrol = WorldSprite(
+	WorldSpriteContainer thot_patrol = WorldSpriteContainer(
 		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  O%###%O Z   %%  %  Z",
@@ -285,7 +288,7 @@ struct SpriteSheet
 		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JRRRRRR  Z  SB  BS  Z"
 	);
 
-	WorldSprite pirate_1 = WorldSprite(
+	WorldSpriteContainer pirate_1 = WorldSpriteContainer(
 		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  XV/\\VX  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  @@\\O\\>  Z   @XX<   Z  O#xx#O  Z  O%###%O Z   %%  %  Z",
@@ -313,7 +316,7 @@ struct SpriteSheet
 		"   SSSS   Z  JJJJSS  Z   JWWS   Z  JRJJRJ  Z JRRRRRR  Z  SB  BS  Z"
 	);
 
-	WorldSprite pirate_2 = WorldSprite(
+	WorldSpriteContainer pirate_2 = WorldSpriteContainer(
 		"    /\\    Z\\=//--\\\\=/Z  @&##&@  Z   XXXX   Z o0OxxO0o ZO <H##H>O Z  %U  U%  Z",
 		"    /\\    Z\\=//--\\\\=/Z  /0""0\\  Z  <*<>*>  Z o0OxxO0o ZO <H##H>O Z  %U  U%  Z",
 		"    /\\    Z\\=//--\\\\=/Z  /@\\0\">  Z   \\(*<   Z  0OxxO0  Z  O%H##%O Z   %%  %  Z",
@@ -341,7 +344,7 @@ struct SpriteSheet
 		"    HH    ZHHHHWWHHHHZ  JJJJSJ  Z   JMJJ   Z  JJJJJJ  Z JJFRRFJ  Z  SB  BS  Z"
 	);
 
-	WorldSprite pirate_3 = WorldSprite(
+	WorldSpriteContainer pirate_3 = WorldSpriteContainer(
 		"  @@@@@@  Z  X&@@&X  Z   XXXX   Z o0O$$O0o ZO <H><H>O Z  %U  U%  Z",
 		"  @@@@@@  Z [X-/\\-X] Z  [/--\\]  Z o0O$$O0o ZO <H><H>O Z  %U  U%  Z",
 		"  @@@@@@  Z  X@\\-\\>  Z   XX{-   Z  0O$$O0  Z  O%H><%O Z   %%  %  Z",
@@ -369,7 +372,7 @@ struct SpriteSheet
 		"  SSSSSS  Z  JJWJSW  Z   WJWS   Z  JJFFJJ  Z JJRJJRJ  Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_4_monkey = WorldSprite(
+	WorldSpriteContainer pirate_4_monkey = WorldSpriteContainer(
 		"   @@@@   Z  @@@@@@  Z   XXXX   Z o0O==O0o ZO  H/\\H O Z  %U  U%  Z",
 		"   @@@@   Z  [-\\/-]  Z   (><)   Z o0O==O0o ZO  H/\\H O Z  %U  U%  Z",
 		"   @@@@   Z  [@\\-)>  Z   \\X(<   Z  0O==O0  Z  O%H/\\%O Z   %%  %  Z",
@@ -397,7 +400,7 @@ struct SpriteSheet
 		"   SSSS   Z  JSWJSJ  Z   JJWJ   Z  JJWWJJ  Z J BJJB   Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_5_monkey = WorldSprite(
+	WorldSpriteContainer pirate_5_monkey = WorldSpriteContainer(
 		"   @@@@   Z  @@@@@@  Z   XXXX   Z oOX==XOo ZO  H/\\H O Z  %U  U%  Z",
 		"   @@@@   Z  [-\\/+]  Z   (><)   Z oOX==XOo ZO  H/\\H O Z  %U  U%  Z",
 		"   @@@@   Z  [@\\-)>  Z   \\X(<   Z  OX==XO  Z  O%H/\\%O Z   %%  %  Z",
@@ -425,7 +428,7 @@ struct SpriteSheet
 		"   BBBB   Z  JBYJBJ  Z   JJWJ   Z  JWJJWJ  Z J BJJB   Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_6 = WorldSprite(
+	WorldSpriteContainer pirate_6 = WorldSpriteContainer(
 		"   -/\\-   Z \\=/--\\=/ Z  &X@@X&  Z   XXXX   Z O#X==X#O ZO <H/\\H>O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  (Y\\/Y)  Z   |<>|   Z O#X==X#O ZO <H/\\H>O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  @@X[]X  Z   \\XX<   Z  OX==XO  Z  O%H/\\%O Z   %%  %  Z",
@@ -453,7 +456,7 @@ struct SpriteSheet
 		"   WHHW   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JWFFWJ  Z JJWJJWJ  Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_7 = WorldSprite(
+	WorldSpriteContainer pirate_7 = WorldSpriteContainer(
 		"   /\\/\\   Z \\/=()=\\/ Z  @X@@X@  Z   XXXX   Z OOX==XOO ZO <H><H>O Z  %U  U%  Z",
 		"   /\\/\\   Z \\/=()=\\/ Z  /V\\/V\\  Z   x<>x   Z OOX==XOO ZO <H><H>O Z  %U  U%  Z",
 		"   /\\/\\   Z \\/=()=\\/ Z  /X\\V\\>  Z   \\XX<   Z  OX==XO  Z  O%H><%O Z   %%  %  Z",
@@ -481,7 +484,7 @@ struct SpriteSheet
 		"   HHHH   Z HHHWWHHH Z  JJYJWJ  Z   JWWJ   Z  JWRRWJ  Z JJRJJRJ  Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_8 = WorldSprite(
+	WorldSpriteContainer pirate_8 = WorldSpriteContainer(
 		"   /||\\   Z\\=//\\/\\\\=/Z  XX@@@X  Z   XXXX   Z OO#==#OO ZO <H/\\H>O Z  %U  U%  Z",
 		"   /||\\   Z\\=//\\/\\\\=/Z  /V/\\V\\  Z  \\x<>x/  Z OO#==#OO ZO <H/\\H>O Z  %U  U%  Z",
 		"   /||\\   Z\\=//\\/\\\\=/Z  /X\\V\\>  Z   \\XX/   Z  O#==#O  Z  O%H/\\%O Z   %%  %  Z",
@@ -509,7 +512,7 @@ struct SpriteSheet
 		"   HHHH   ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRWWRJ  Z JJRJJRJ  Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_9 = WorldSprite(
+	WorldSpriteContainer pirate_9 = WorldSpriteContainer(
 		"    /\\    Z\\=//--\\\\=/Z  XX@@@X  Z   XXXX   Z OO#==#OO ZO #H/\\H#O Z  %U  U%  Z",
 		"    /\\    Z\\=//--\\\\=/Z  /V/\\V\\  Z   |<>|   Z OO#==#OO ZO #H/\\H#O Z  %U  U%  Z",
 		"    /\\    Z\\=//--\\\\=/Z  /X\\V\\>  Z   \\XX/   Z  O#==#O  Z  O%H/\\%O Z   %%  %  Z",
@@ -537,7 +540,7 @@ struct SpriteSheet
 		"    HH    ZHHHHWWHHHHZ  JJYJWJ  Z   JWWJ   Z  JRWWRJ  Z JRFJJFR  Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_10 = WorldSprite(
+	WorldSpriteContainer pirate_10 = WorldSpriteContainer(
 		"   @@@@   Z  XX@@@X  Z   XXXX   Z OO#UU#OO ZO #H/\\H#O Z  %U  U%  Z",
 		"   @@@@   Z  [V/\\V]  Z   \\<>/   Z OO#UU#OO ZO #H/\\H#O Z  %U  U%  Z",
 		"   @@@@   Z  @@\\V\\>  Z   \\XX<   Z  O#UU#O  Z  O%H/\\%O Z   %%  %  Z",
@@ -565,7 +568,7 @@ struct SpriteSheet
 		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRWWRJ  Z JRFJJFR  Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_11 = WorldSprite(
+	WorldSpriteContainer pirate_11 = WorldSpriteContainer(
 		"   &&&&   Z  X&&&&X  Z   XXXX   Z O#XXXX#O ZO #H/\\H#O Z  %U  U%  Z",
 		"   &&&&   Z  [-/\\-]  Z   \\></   Z O#XxxX#O ZO #H/\\H#O Z  %U  U%  Z",
 		"   &&&&   Z  &&\\-\\>  Z   &XXX   Z  O#XX#O  Z  O%H/\\%O Z   %%  %  Z",
@@ -593,7 +596,7 @@ struct SpriteSheet
 		"   BBBB   Z  JJWJBB  Z   WWWB   Z  JRJJRJ  Z JRFJJFR  Z  SH  HS  Z"
 	);
 
-	WorldSprite pirate_12 = WorldSprite(
+	WorldSpriteContainer pirate_12 = WorldSpriteContainer(
 		"   @@@@   Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO #H==H#O Z  %U  U%  Z",
 		"   @@@@   Z  XV\\/VX  Z   X<>X   Z O#XXXX#O ZO #H==H#O Z  %U  U%  Z",
 		"   @@@@   Z  @@\\V\\>  Z   \\XX<   Z  O#xx#O  Z  O%H==%O Z   %%  %  Z",
@@ -621,7 +624,7 @@ struct SpriteSheet
 		"   BBBB   Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JRFFFFR  Z  SH  HS  "
 	);
 
-	WorldSprite pirate_13 = WorldSprite(
+	WorldSpriteContainer pirate_13 = WorldSpriteContainer(
 		"   _==_   Z \\==()==/ Z  XX@@XX  Z   XXXX   Z O#XXXX#O ZO X====XO Z  %U  U%  Z",
 		"   _==_   Z \\==()==/ Z  XV||VX  Z   X<>X   Z O#XxxX#O ZO X=][=XO Z  %U  U%  Z",
 		"   _==_   Z \\==()==/ Z  @@\\>\\\\  Z   \\XX<   Z  O#xx#O  Z  O%===%O Z   %%  %  Z",
@@ -649,7 +652,7 @@ struct SpriteSheet
 		"   HHHH   Z HHHWWHHH Z  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JJJFFFW  Z  SH  HS  "
 	);
 
-	WorldSprite pirate_14 = WorldSprite(
+	WorldSpriteContainer pirate_14 = WorldSpriteContainer(
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  XX@@@X  Z   XXXX   Z O#XXXX#O ZO X====XO Z  %U  U%  Z",
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  [V/\\V]  Z  [X><X]  Z O#XxxX#O ZO X=][=XO Z  %U  U%  Z",
 		"  /\\/\\/\\  Z\\=/=\\/=\\=/Z  @@\\V\\>  Z   \\XX<   Z  O#xx#O  Z  O%===%O Z   %%  %  Z",
@@ -677,7 +680,7 @@ struct SpriteSheet
 		"  HHHHHH  ZHHHHWWHHHHZ  JJYJBB  Z   JWWJ   Z  JRJJRJ  Z JJJFFFW  Z  SH  HS  "
 	);
 
-	WorldSprite pirate_15 = WorldSprite(
+	WorldSpriteContainer pirate_15 = WorldSpriteContainer(
 		"   @@@@   Z  X@@@@X  Z   XXXX   Z O#XXXX#O ZO #====#O Z  %U  U%  Z",
 		"   @@@@   Z  [^/\\^]  Z   X<>X   Z O#XxxX#O ZO #=()=#O Z  %U  U%  Z",
 		"   @@@@   Z  @@\\^\\>  Z   @XX<   Z  O#xx#O  Z  O%===%O Z   %%  %  Z",
@@ -705,7 +708,7 @@ struct SpriteSheet
 		"   KKKK   Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JJJFFFR  Z  SH  HS  "
 	);
 
-	WorldSprite pirate_16 = WorldSprite(
+	WorldSpriteContainer pirate_16 = WorldSpriteContainer(
 		"   -/\\-   Z \\=/--\\=/ Z  X@@@XX  Z   XXXX   Z O#XXXX#O ZO #=XX=#O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  X'/\\'X  Z   X<>X   Z O#XxxX#O ZO #=XX=#O Z  %U  U%  Z",
 		"   -/\\-   Z \\=/--\\=/ Z  @@\\'\\>  Z   @XX<   Z  O#xx#O  Z  O%=XX%O Z   %%  %  Z",
@@ -733,7 +736,7 @@ struct SpriteSheet
 		"   WHHW   Z HHHWWHHH Z  JJYJKK  Z   JWWK   Z  JRJJRJ  Z JRFWWFR  Z  SH  HS  "
 	);
 
-	WorldSprite pirate_17 = WorldSprite(
+	WorldSpriteContainer pirate_17 = WorldSpriteContainer(
 		"   @@@@   Z  X@@@@X  Z   XXXX   Z O#XXXX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  XV/\\VX  Z  \\XXXX/  Z O#XxxX#O ZO ######O Z  %U  U%  Z",
 		"   @@@@   Z  @@\\>\\>  Z   @XX<   Z  O#xx#O  Z  O%###%O Z   %%  %  Z",
@@ -769,7 +772,7 @@ struct SpriteSheet
 
 	BattleSprite face_pirate_1 = BattleSprite
 	(
-		"    *@@@@@@      %@/                  (,         Z   @@@@       %%        &%@&*(             /,    Z  .@@#  (.  %.     %#%                       ,   Z  %@@ #@& #.    %,          &&%#%&&&&&&%#& (     Z  @@@@@@ #  &(%       %%#%                    &, Z #@@@@@@   /   & %% % /%@&%*...,%%@@&%&        ( Z    /@@  #   %%  &%/                    /@&(  (. Z    .@@@#  #.  %      (##(,,,(## &        &@#    Z     &@@#(  #  & ##*2@@@@@&%          .%%      % Z     /@@@ .%%# ## @%&@.&@@@@@@@#%       ( & #    Z  ,@#%@@@@@  //@#####@@@%    @@@#####@@@@@@@#   /Z .@% %  @@%.&%.#(   &@%     @@@@@   @@@@@@ /   # Z.@@@@ #&@@@#   *&@@#          @@@@@@@@@@/  #. *  Z#(&@@@@@@%      .                          # (   Z@@@@ @@@%,%                                  #*  Z#(#  @@#/,(        %@&%&&%%&&%&@&         &% %@@.Z*    @@  (/((%%. %@%(@&&&%@&  ,%#((%& @&&  @@    Z%   (@# #(.    #&@@@@@@@@@@@@@@@@@&&     (*@&(@@@Z%   @@  @. # (%@@@@@&        @ @@@@@%&   (  (@@@.Z&  @&  %/  #@@@@@*@@(&      @#%@# (@@@@@&/       Z#     &,   ,          .%#%#/ %          %..      Z    (@.     *#%                      &%,         Z (@&.           .(%#             %.              Z                     .(%@&/.                           ",
+		"                 %@/                  (,         Z              %%        &%@&*(             /,    Z            %.     %#%                       ,   Z          #.    %,          &&%#%&&&&&&%#& (     Z         #  &(%       %%#%                    &, Z           /   & %% % /%@&%*...,%%@@&%&        ( Z         #   %%  &%/                    /@&(  (. Z        #  #.  %      (##(,,,(## &        &@#    Z       @#(  #  & ##*2@@@@@&%          .%%      % Z     /@@@ .%%# ## @%&@.&@@@@@@@#%       ( & #    Z  ,@#%@@@@@  //@#####@@@%    @@@#####@@@@@@@#   /Z .@% %  @@%.&%.#(   &@%     @@@@@   @@@@@@ /   # Z.@@@@ #&@@@#   *&@@#          @@@@@@@@@@/  #. *  Z#(&@@@@@@%      .                          # (   Z@@@@ @@@%,%                                  #*  Z#(#  @@#/,(        %@&%&&%%&&%&@&         &% %@@.Z*    @@  (/((%%. %@%(@&&&%@&  ,%#((%& @&&  @@    Z%   (@# #(.    #&@@@@@@@@@@@@@@@@@&&     (*@&(@@@Z%   @@  @. # (%@@@@@&        @ @@@@@%&   (  (@@@.Z&  @&  %/  #@@@@@*@@(&      @#%@# (@@@@@&/       Z#     &,   ,          .%#%#/ %          %..      Z    (@.     *#%                      &%,         Z (@&.           .(%#             %.              Z                     .(%@&/.                     ",
 		" \  (##(,,,(##/& Z#*\@@@@@&%   /   Z@%&\.&@@@@@@/#%  Z###@\@%    /@@###ZO &@%     @@@@@ O"
 	);
 
@@ -781,7 +784,7 @@ struct SpriteSheet
 
 	BattleSprite face_pirate_3 = BattleSprite
 	(
-		"                 *@@         @@*                 Z              .@      @         @&               Z             /@   @@@@@@@@@@@@@   @*             Z            #   @@@@@@@@@@@@@@@@@   #            Z           %  @@@@@@@@@@@@@@@@@@@@   %           Z&&(.     &@  @@@@@@@@@@@@@@@@@@@@@@@  @&     .(&&Z@          @@@@@@@@@@@ @@ @@@@@@@@@@@           @Z &@@@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@@& Z  .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   Z    .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&.    Z       (@@@@                        @@@@@,       Z        .@@  @@@@@@@@@@@@@@@@@@@@@@@  @@         Z    *@@@@         @@@@@@@@@@@@@@        @@%,     Z  ,@   @   @@/-\@@             @@/-\@   @   @&   Z  @    @  @  |O| @@@ @@@ @@  @@  |O|  @  @    &  Z  @   @      \-/@@@@  @      @@@@\-/@    @    @  Z   @@ @       @  @ @@       @@@ @ @      @   @   Z     *@                                @  @%.    Z     /   @          @@@  @@@@             @      Z     &             @       @@@            @      Z     &          @               @         @      Z     ( @ @    @ @              @      @   @      Z      @@     @ @ @@@@@@@@@@@@@@         @@*      Z      ,@        @@\| @@@@@@@ |/@         %       Z       /@          \_|_|_|_|_/ @        &        Z         @              %  @   @      @(         Z           #@@                 @   @&,           Z             .@                  @@              Z               (@              @@,               ",
+		"                  @@@@@@@@@@@@@                  Z                @@@@@@@@@@@@@@@@@                Z              @@@@@@@@@@@@@@@@@@@@               Z             @@@@@@@@@@@@@@@@@@@@@@@             Z           @@@@@@@@@@@ @@ @@@@@@@@@@@            Z  @@@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@@  Z   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   Z     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      Z       @@@@@                        @@@@@        Z         @@  @@@@@@@@@@@@@@@@@@@@@@@  @@         Z     @@@@         @@@@@@@@@@@@@@        @@%,     Z   @   @   @@/-\@@             @@/-\@   @   @&   Z  @    @  @  |X| @@@ @@@ @@  @@  |X|  @  @    &  Z  @   @      \-/@@@@  @      @@@@\-/@    @    @  Z   @@ @       @  @ @@       @@@ @ @      @   @   Z     *@                                @  @%.    Z     /   @          @@@  @@@@             @      Z     &             @       @@@            @      Z     &          @               @         @      Z     ( @ @    @ @              @      @   @      Z      @@     @ @ @@@@@@@@@@@@@@         @@*      Z      ,@        @@\| @@@@@@@ |/@         %       Z       /@          \_|_|_|_|_/ @        &        Z         @              %  @   @      @(         Z           #@@                 @   @&,           Z             .@                  @@              Z               (@              @@,               ",
 		"/-\@@             @@/-\@Z|O| @@@ @@@ @@  @@  |O| Z\-/@@@@  @      @@@@\-/@"
 	);
 
@@ -793,7 +796,7 @@ struct SpriteSheet
 
 	BattleSprite face_guard = BattleSprite
 	(
-		"                .@@@@@@@                         Z              @@@@@@@@@@@@@@#                    Z             @@@@@@@@@@@@@@@@@@/                 Z           /@@@@@@@@@@@@@@@@@@@@@%               Z         *@@@@@@@@@@@@@@@@@@@@@@@@@@             Z     #@@(@@@@@@@@@@@@@@@@@@@@@@@@@@@@#@@@&       Z   #@@@@@@@@@@@@ /#    @@@@@@@@@@@@@@@@@@@@@,    Z    @@@@@@@@@@,         (@    ,@@@@@@@@@@@@@@    Z       @    ,%@@@@@@@@@@@@,         @@@@@@@@@    Z       @@@@@@@@@@@%@@@@@@@@&@@@@@/     (@@@@     Z     ,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,   @       Z    ,@@@@@@@@@@@@@@@@@&@@@@@@@@@@@@@@@@@@        Z    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       Z     #@@@@@@%@@@@@@@@@@@@@ *@@*  .@@@    %#      Z      @@@  ,@# @@@@@@@@@  @@@   #@@@/@@% @       Z      @(  @@ @@@&     @ @@@@   (@@@@%*@ &&       Z      @,@@@@@@.@        #@@@@@@#@@@  %  @        Z      #%@    *@                    #   @@        Z        *@   @,                     @@@@ @       Z         /@ %&&        &,&         #,@@@@ @/     Z          @ @@@#,%@@&%@@%           #@(@@@ @@@@  Z         *@   @@@@@%                ##@,@@@@@@ @ Z         @                  X       # @&@@@@@@ @(Z        @.     -----                # @@/@@@@@* @Z       *@    ,  , ,, ,            ## @@,@@@@@@  &Z    .@@@@( ,, ,  # ., ,         ## @#@ @@@@@@@  #Z &@@@@@@@@@# %@*  # ############ @@@ @@@@@@@@@  #Z&  @@@@@@@@@@@@@  #@#@@@@&@@@@@@.(@@@@@@@@@@@@  #",
+		"                 .@@@@@@@                         Z              @@@@@@@@@@@@@@#                    Z             @@@@@@@@@@@@@@@@@@/                 Z           /@@@@@@@@@@@@@@@@@@@@@%               Z         *@@@@@@@@@@@@@@@@@@@@@@@@@@             Z     #@@(@@@@@@@@@@@@@@@@@@@@@@@@@@@@#@@@&       Z   #@@@@@@@@@@@@ /#    @@@@@@@@@@@@@@@@@@@@@,    Z    @@@@@@@@@@,         (@    ,@@@@@@@@@@@@@@    Z       @    ,%@@@@@@@@@@@@,         @@@@@@@@@    Z       @@@@@@@@@@@%@@@@@@@@&@@@@@/     (@@@@     Z     ,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,   @       Z    ,@@@@@@@@@@@@@@@@@&@@@@@@@@@@@@@@@@@@        Z    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       Z     #@@@@@@%@@@@@@@@@@@@@ *@@*  .@@@    %#      Z      @@@  ,@# @@@@@@@@@  @@@   #@@@/@@% @       Z      @(  @@ @@@&     @ @@@@   (@@@@%*@ &&       Z      @,@@@@@@.@        #@@@@@@#@@@  %  @        Z      #%@    *@                    #   @@        Z        *@   @,                     @@@@         Z         /@ %&&        &,&         #,            Z          @ @@@#,%@@&%@@%           #@           Z         *@   @@@@@%                ##@          Z         @                  X       # @          Z        @.     -----                # @          Z       *@    ,  , ,, ,            ## @@          Z        @( ,, ,  # ., ,         ## @#@           Z         @@# %@*  # ############ @@              Z            @@@@  #@#@@@@&@@@@@@                ",
 		""
 	);
 
@@ -2086,3 +2089,5 @@ private:
 		L"NNNNNNNNNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ"
 	};
 };
+
+#endif // !SPRITESHEET_H

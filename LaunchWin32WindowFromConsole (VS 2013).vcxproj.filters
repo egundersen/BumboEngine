@@ -240,6 +240,9 @@
     <ClCompile Include="Event_SetupEnding.cpp">
       <Filter>Source Files\Events\Unique Events</Filter>
     </ClCompile>
+    <ClCompile Include="Event_MoveNPC.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -325,9 +328,6 @@
     </ClInclude>
     <ClInclude Include="CharacterBase.h">
       <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSprite.h">
-      <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="ScreenPosition.h">
       <Filter>Header Files\World</Filter>
@@ -541,6 +541,12 @@
     </ClInclude>
     <ClInclude Include="PlayerDefinition.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_MoveNPC.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldSpriteContainer.h">
+      <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

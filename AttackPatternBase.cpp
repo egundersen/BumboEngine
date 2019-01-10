@@ -1,7 +1,4 @@
 #include "AttackPatternBase.h"
-#include <windows.h>
-#include <iostream>
-#include <algorithm>
 
 AttackPatternBase::AttackPatternBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
 	: width_{ width }, height_{ height }, attack_matrix_(width, height), player_{ player }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false }

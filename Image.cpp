@@ -1,6 +1,4 @@
 #include "Image.h"
-#include "ColorPalette.h"
-#include <iostream>
 
 Image::Image()
 	: ASCII_{ "" }, ASCII_colors_{ "" }, delimiter_{ 'Z' }, width_{ 0 }, height_{ 0 }
@@ -176,6 +174,7 @@ void Image::colorImageSingleColor()
 // Displays the image on the screen. [FOR DEBUG ONLY!]
 void Image::DEBUG_printImage()
 {
+#ifdef _DEBUG
 	for (int i = 0; i < height_; i++)
 	{
 		for (int j = 0; j < width_; j++)
@@ -184,4 +183,5 @@ void Image::DEBUG_printImage()
 		}
 		std::cout << "\n";
 	}
+#endif
 }

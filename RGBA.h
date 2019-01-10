@@ -1,6 +1,8 @@
 #ifndef RGBA_H
 #define RGBA_H
 
+#include <Windows.h>
+
 // Stores RED GREEN BLUE and ALPHA channel using 4 bytes
 class RGBA
 {

@@ -1,10 +1,9 @@
-#include "MatrixBase.h"
+#ifndef EVENTBASE_H
+#define EVENTBASE_H
+
 #include "Characters.h"
 #include "ScreenPosition.h"
 #include "Popup.h"
-
-#ifndef EVENTBASE_H
-#define EVENTBASE_H
 
 class EventBase : public MatrixBase
 {
