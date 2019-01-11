@@ -17,7 +17,7 @@ void Event_ThotPatrol::createEvent()
 	Popup popup_5(25, 9, "Thot patrol reportin'!", screen_matrix_, '#');
 	Popup popup_6(25, 9, "What do we have here, Jenkins?", screen_matrix_, '#');
 	Popup popup_7(25, 9, "Excuse me. My name's not \"Jenkins\"! I am Kayden motherF*****g Karper!", screen_matrix_, '#');
-	Popup popup_8(25, 9, "Errr... WELL WHAT DO YOU HAVE HERE, HARPER?", screen_matrix_, '#');
+	Popup popup_8(25, 9, "Errr... WELL WHAT DO YOU HAVE HERE, KARPER?", screen_matrix_, '#');
 	Popup popup_9(25, 9, "Two people alone...", screen_matrix_, '#');
 	Popup popup_10(25, 9, "All I see is a THOT that needs to BEGONE!", screen_matrix_, '#');
 	Popup popup_11(25, 9, "I can't get to sleep!", screen_matrix_, '#');
