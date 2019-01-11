@@ -12,6 +12,6 @@ void Event_RemoveObject::createEvent()
 
 void Event_RemoveObject::refreshEvent()
 {
-	drawSolidRectangle(object_coordinate_x_, object_coordinate_y_, object_width_, object_height_, ' ', world_matrix_);
+	drawSolidRectangle(object_coordinate_x_ - object_width_ / 2, object_coordinate_y_ - object_height_ / 2, object_width_, object_height_, ' ', world_matrix_);
 	onEventOver();
 }

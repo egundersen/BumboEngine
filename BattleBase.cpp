@@ -125,9 +125,16 @@ void BattleBase::setBackgroundText()
 	}
 	else
 	{
-		addImageToMatrix(8 + boss_.health / 2, 3, bossHealthText, menu_matrix_);
-		menu_matrix_[4][7] = '[';
-		menu_matrix_[4][9 + boss_.health] = ']';
+		if (boss_.health > 3) {
+			addImageToMatrix(8 + boss_.health / 2, 3, bossHealthText, menu_matrix_);
+			menu_matrix_[4][7] = '[';
+			menu_matrix_[4][9 + boss_.health] = ']';
+		}
+		else {
+			addImageToMatrix(8 + 5, 3, bossHealthText, menu_matrix_);
+			menu_matrix_[4][7 + 4] = '[';
+			menu_matrix_[4][9 + 4 + boss_.health] = ']';
+		}
 	}
 
 	// Boss name
@@ -294,7 +301,7 @@ void BattleBase::damageBoss()
 	{
 		attack_patterns_.back()->OnBeginAttack();
 		local_vector_space_ = "FIGHT";
-		boss_.health-=player_.getDamage();
+		boss_.health -= player_.getDamage();
 		player_.resetDamage();
 		hideFileSprite();
 	}

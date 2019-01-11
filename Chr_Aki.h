@@ -103,7 +103,7 @@ public:
 		DialogNode *node_1_1_2_1_1_1_3_1 = new DialogNode("Back to the package", "Oh course. How could I of been distracted? There's still one place left to check.");
 		DialogNode *node_1_1_2_1_1_1_3_1_1 = new DialogNode("Where?", "Just to the right of this room, I'll remove the rock blocking the entrance.");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1 = new DialogNode("Thank ye", "Oh hey, I have a glove that looks just like yours, I used to have a pair but I...");
-		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1 = new DialogNode("Welp, see ya", "Of course. Here, let me remove the rock for you."); // =3
+		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1 = new DialogNode("Welp, see ya", "Of course. Here, let me remove the rock for you.", "SAVE"); // =3
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_1_1 = new DialogNode("Goodbye", "'Good luck' finding your father's package.", "EVENT"); // ROCK EVENT
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2 = new DialogNode("'But you...' what?", "Nothing, I merely misplaced it. Thats all, why does it even matter?");
 		DialogNode *node_1_1_2_1_1_1_3_1_1_1_2_1 = new DialogNode("'twas at th' checkpoint", "I don't see what you're getting at here... we're wasting valubale time!");

@@ -25,7 +25,7 @@ public:
 			"J.K. Literal", 
 			"mini_boss_2_neutral_happy.bmp",
 			"mini_boss_2_angry.bmp",
-			"mini_boss_2_neutral_happy.bmp",
+			"mini_boss_2_angry.bmp",
 			"mini_boss_2_nervous_dead.bmp"
 		),
 
@@ -104,9 +104,9 @@ public:
 		 */
 
 		 // CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "HALT! I THE GREAT AND POWERFUL J.K. LITUH- Uh... hmm... Hold on... Gimme a second... I need to find my... thing.");
-		DialogNode *node_1_1 = new DialogNode("Ok", "I found the script! It's written right here... No panic attack! I... -wait- I can't read that word... um... Oh yes:");
-		DialogNode *node_1_1_1 = new DialogNode("Go on", "*ehem!* *Let me just get back in character:* WHERE DO YOU THINK YOU'RE GOING?");
+		DialogNode *node_1 = new DialogNode("", "HALT! I THE GREAT AND POWERFUL J.K. LITUH- Uh... hmm... Hold on... Gimme a second...");
+		DialogNode *node_1_1 = new DialogNode("Ok", "I found my script! It's written right here... I... -wait- I can't read that word...");
+		DialogNode *node_1_1_1 = new DialogNode("Go on", "Ah yes: *ehem!* *Let me just get back in character:* WHERE DO YOU THINK YOU'RE GOING?");
 		DialogNode *node_1_1_1_1 = new DialogNode("I needs t' get past ye", "IMPOSSIBLE! FOR YOU SEE: I AM GUARDING THIS DOOR.");
 		DialogNode *node_1_1_1_1_1 = new DialogNode("Are ye really though?", "YES. I. AM."); // 2=
 		DialogNode *node_1_1_1_1_2 = new DialogNode("Not fer long!", "That sounded vague enough to be a threat! PREPARE THINE SELF! FOR COMBAT!", "FIGHT");
@@ -114,16 +114,19 @@ public:
 		DialogNode *node_1_1_1_2_1 = new DialogNode("Are ye?", "YES. I. AM.");
 		DialogNode *node_1_1_1_2_1_1 = new DialogNode("But are ye REALLY?", "YES"); // =2
 		DialogNode *node_1_1_1_2_1_1_1 = new DialogNode("But are ye REEEAAAAALLLY?", "YES"); // 1=
-		DialogNode *node_1_1_1_2_2 = new DialogNode("No ye're not", "Wait you can't say that, it's not on the script. I have no way to respond to that! What's going on here?"); // =1
+		DialogNode *node_1_1_1_2_2 = new DialogNode("No ye're not", "Wait you can't say that, it's not on the script. I have no way to respond to that!"); // =1
 		DialogNode *node_1_1_1_2_2_1 = new DialogNode("Ye're nah guardin' this gangway", "I'm not? But I thought... well then what am I doing?");
 		DialogNode *node_1_1_1_2_2_1_1 = new DialogNode("Ye're tryin' t' get past me!", "I am?");
 		DialogNode *node_1_1_1_2_2_1_1_1 = new DialogNode("Aye, but ye're failin' at it!", "No!");
 		DialogNode *node_1_1_1_2_2_1_1_1_1 = new DialogNode("Aye!", "This is terrible news! What am I to do?");
 		DialogNode *node_1_1_1_2_2_1_1_1_1_1 = new DialogNode("Ye should go right", "And then what?");
 		DialogNode *node_1_1_1_2_2_1_1_1_1_1_1 = new DialogNode("Don't stop. Jus' go right", "I'll do my best not to let you down.", "EVENT");
+		DialogNode *node_1_1_1_2_2_1_1_1_1_1_1_1 = new DialogNode("", "I tried to go right... but I got lost. Sorry for letting you down.", "SAVE");
 		DialogNode *node_1_1_1_2_2_1_1_1_1_2 = new DialogNode("We should fight!", "Ok, I'll do my best not to let you down.", "FIGHT");
 		DialogNode *node_1_2 = new DialogNode("Hold that thought...", "I understand completely. I'll do my best not to let you down.");
-		DialogNode *node_2 = new DialogNode("", "I do hope I will see you again soon, maybe even sooner than you think.", "EVENT"); // =FIGHT
+		DialogNode *node_2 = new DialogNode("", "I do hope I will see you again soon...", "SAVE"); // =FIGHT
+		DialogNode *node_2_1 = new DialogNode("I don't", "...maybe even sooner than you think.", "EVENT");
+		DialogNode *node_2_1_1 = new DialogNode("", "Surprise! I'm still here!", "SAVE");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -145,8 +148,12 @@ public:
 		node_1_1_1_2_2_1_1_1->setChoice1(node_1_1_1_2_2_1_1_1_1);
 		node_1_1_1_2_2_1_1_1_1->setChoice1(node_1_1_1_2_2_1_1_1_1_1);
 		node_1_1_1_2_2_1_1_1_1_1->setChoice1(node_1_1_1_2_2_1_1_1_1_1_1);
+		node_1_1_1_2_2_1_1_1_1_1_1->setChoice1(node_1_1_1_2_2_1_1_1_1_1_1_1);
 
 		node_1_1_1_2_2_1_1_1_1->setChoice2(node_1_1_1_2_2_1_1_1_1_2);
+
+		node_2->setChoice1(node_2_1);
+		node_2_1->setChoice1(node_2_1_1);
 
 		// Seperated Links:
 		node_1_1_1_2_1_1_1->setChoice1(node_1_1_1_2_2); // 1=

@@ -12,15 +12,14 @@ public:
 	// Setters
 	void setBackgroundText();
 	void refreshScreen();
+	void clearText();
 private:
 	// Setters
 	void displayScreen();
 
 	Matrix &screen_matrix_, credits_matrix_;
-	std::vector<char> empty_vector_;
 	BitmapDefinition &image_file_path_;
-	int width_;
-	int height_;
+	int width_, height_;
 };
 
 #endif // !CREDITS_H

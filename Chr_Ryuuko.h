@@ -102,8 +102,8 @@ public:
 		// CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "Woah there! I've never seen a pirate in the CLEAR cave before!");
 		DialogNode *node_1_1 = new DialogNode("Whats yer name?", "The one and only: Ryuuko!");
-		DialogNode *node_1_1_1 = new DialogNode("What a weird name", "Of course it is, I am <THE> Ryuuko!");
-		DialogNode *node_1_1_1_1 = new DialogNode("Nevermind", "Leaving already?");
+		DialogNode *node_1_1_1 = new DialogNode("What a weird name", "OF COURSE IT IS, For I am... <THE> Ryuuko!");
+		DialogNode *node_1_1_1_1 = new DialogNode("Nevermind", "Wait, leaving already?");
 		DialogNode *node_1_2 = new DialogNode("Be this your Sword?", "Wow! How did you find it?!");
 		DialogNode *node_1_2_1 = new DialogNode("Ye wrote yer name upon it", "You'd have to agree that I'm pretty smart :D");
 		DialogNode *node_1_2_1_1 = new DialogNode("It was you wasn't it?!", "That accusation... Are you challenging me... to... a... f-FIGHT?"); // 2=
@@ -119,7 +119,7 @@ public:
 		DialogNode *node_1_2_2_2_1_1_1 = new DialogNode("How will ye help?", "Have no fear! If you need my help in a fight, I'll be there!", "SAVE");
 		DialogNode *node_1_2_2_2_1_1_1_1 = new DialogNode("Goodbye...", "Oh? leaving already?");
 		DialogNode *node_1_2_2_2_1_2 = new DialogNode("I don't trust ye", "I say we settle this in battle. En guard!", "FIGHT");
-		DialogNode *node_1_2_2_2_1_3 = new DialogNode("...Why do ye want t' know?", "I'm just curious senpai?");
+		DialogNode *node_1_2_2_2_1_3 = new DialogNode("Why do ye want t' know?", "I'm just curious senpai?");
 		DialogNode *node_1_2_2_2_1_3_1 = new DialogNode("you done messed up...", "What do you mean?");
 		DialogNode *node_1_2_2_2_1_3_1_1 = new DialogNode("That 'word' has... ", "What about it?");
 		DialogNode *node_1_2_2_2_1_3_1_1_1 = new DialogNode("no place in english!", "...", "FIGHT");

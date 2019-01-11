@@ -25,7 +25,7 @@ public:
 			"Kriis",
 			"mini_boss_1_neutral_happy.bmp",
 			"mini_boss_1_mad.bmp",
-			"mini_boss_1_neutral_happy.bmp",
+			"mini_boss_1_mad.bmp",
 			"mini_boss_1_nervous_dead.bmp"
 		),
 
@@ -117,8 +117,8 @@ public:
 
 		 // CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "STOP RIGHT THERE. YOU DIDN'T HONESTLY THINK IT'D BE THAT EASY, DID YOU?");
-		DialogNode *node_1_1 = new DialogNode("No more nonsense. Have at you!", "WITH PLEASURE!", "FIGHT");
-		DialogNode *node_1_2 = new DialogNode("What?", "*Ugh* *This was written so poorly* Look, Can we just skip these formal introductions? I'm here to kill you.");
+		DialogNode *node_1_1 = new DialogNode("Enough nonsense!", "I COULDN'T AGREE MORE!", "FIGHT");
+		DialogNode *node_1_2 = new DialogNode("What?", "*This was written so poorly* Look, Can we just skip introductions? I'm here to kill you.");
 		DialogNode *node_1_2_1 = new DialogNode("Yes", "What a relief. Let's get this over with.", "FIGHT");
 		DialogNode *node_1_2_2 = new DialogNode("No", "Are you kidding me? I can't be held accountable for staying in character.");
 		DialogNode *node_1_2_2_1 = new DialogNode("Ye're right", "Thank god! Now, where were we?", "FIGHT");
@@ -127,7 +127,8 @@ public:
 		DialogNode *node_1_2_2_2_1_1 = new DialogNode("{player}", "{player}? YOU MEAN THE LOWLY PIRATE?");
 		DialogNode *node_1_2_2_2_1_1_1 = new DialogNode("Aye", "YOU HAVE TRAVELED FAR AND WIDE... BUT YOUR JOURNEY ENDS HERE.");
 		DialogNode *node_1_2_2_2_1_1_1_1 = new DialogNode("Ok", "FOR IT IS I, THE ILUSTRIO... Ok. F*ck this. You win. GG.", "EVENT");
-		DialogNode *node_2 = new DialogNode("", "I honestly hope \"We can talk this out.\" is written on your tombstone!", "EVENT"); // =FIGHT
+		DialogNode *node_2 = new DialogNode("", "I honestly hope \"We can talk this out.\" is written on your tombstone!", "SAVE"); // =FIGHT
+		DialogNode *node_2_1 = new DialogNode("Now let me past!", "...", "EVENT");
 
 
 		// Link Dialog Nodes
@@ -142,6 +143,8 @@ public:
 		node_1_2_2_2_1->setChoice1(node_1_2_2_2_1_1);
 		node_1_2_2_2_1_1->setChoice1(node_1_2_2_2_1_1_1);
 		node_1_2_2_2_1_1_1->setChoice1(node_1_2_2_2_1_1_1_1);
+
+		node_2->setChoice1(node_2_1);
 
 		// Seperated Links:
 		node_1_1->setChoice1(node_2); // FIGHT

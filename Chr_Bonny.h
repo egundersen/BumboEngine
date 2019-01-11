@@ -23,7 +23,7 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			6,
 			"BONNY", 
-			"bonny_neutral.bmp", 
+			"bonny_neutral.bmp",
 			"bonny_angry.bmp", 
 			"bonny_happy.bmp",
 			"bonny_nervous_dead.bmp"

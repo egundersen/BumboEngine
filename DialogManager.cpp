@@ -57,21 +57,18 @@ void DialogManager::setBackgroundText()
 // Updates player options as text
 void DialogManager::setDialogOptions()
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 6; i++)
 		for (int j = 0; j < 25; j++)
 			dialog_matrix_[2 + i][4 + j] = ' ';
 
 	if (action_ == "")
 	{
 		if (moving_node_->choice_1_ != nullptr)
-			addTextToMatrix(4, 2, 'l', moving_node_->choice_1_->getPlayerDialog(), 'M', dialog_matrix_);
+			addTextToMatrix(4, 2, 'l', moving_node_->choice_1_->getPlayerDialog(), 'M', dialog_matrix_, 25, 2);
 		if (moving_node_->choice_2_ != nullptr)
-			addTextToMatrix(4, 4, 'l', moving_node_->choice_2_->getPlayerDialog(), 'M', dialog_matrix_);
+			addTextToMatrix(4, 4, 'l', moving_node_->choice_2_->getPlayerDialog(), 'M', dialog_matrix_, 25, 2);
 		if (moving_node_->choice_3_ != nullptr)
-			addTextToMatrix(4, 6, 'l', moving_node_->choice_3_->getPlayerDialog(), 'M', dialog_matrix_);
-		// Replaces empty text block with goodbye text. For it to work, also remove the -1 condition in setDialogText
-		//else if(head_node_->choice_1_ == nullptr && head_node_->choice_2_ == nullptr && head_node_->choice_3_ != nullptr)
-		//	addTextToMatrix(4, 6, "Goodbye", dialog_matrix_);
+			addTextToMatrix(4, 6, 'l', moving_node_->choice_3_->getPlayerDialog(), 'M', dialog_matrix_, 25, 2);
 	}
 	else if (action_ == "FIGHT")
 	{
@@ -261,7 +258,7 @@ void DialogManager::stopBattle()
 // Closes dialog if all conditions are met (Usually only called when player hits BACKSPACE key)
 void DialogManager::closeDialog()
 {
-	if (moving_node_->getAction() != "FIGHT" && moving_node_->getAction() != "ITEM")
+	if (moving_node_->getAction() != "FIGHT" && moving_node_->getAction() != "ITEM" && moving_node_->getAction() != "EVENT")
 	{
 		should_show_dialog_ = false;
 	}

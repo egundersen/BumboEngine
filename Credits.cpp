@@ -1,13 +1,26 @@
 #include "Credits.h"
 
 Credits::Credits(int width, int height, BitmapDefinition &image_file_path, Matrix &screen_matrix)
-	: width_{ width }, height_{ height }, credits_matrix_(width, height), empty_vector_(width, ' '), screen_matrix_{ screen_matrix }, image_file_path_{ image_file_path }
+	: width_{ width }, height_{ height }, credits_matrix_(width, height), screen_matrix_{ screen_matrix }, image_file_path_{ image_file_path }
 {
 }
 
 void Credits::refreshScreen() 
 {
 	displayScreen();
+}
+
+// Clears all text on the matrix (aside from the border)
+void Credits::clearText()
+{
+	for (int i = 0; i < height_; i++) {
+		for (int j = 0; j < width_ - 8; j++) {
+			credits_matrix_[i][j + 4] = ' ';
+			credits_matrix_[i][j + 4].setColor(255, 255, 255);
+		}
+	}
+
+	addTextToMatrix(5, 1, 'l', "Upon finally opening your father's package... the contents are revealed. It appears to be some type of image or secret code.", credits_matrix_, 69, 2);
 }
 
 void Credits::setBackgroundText()

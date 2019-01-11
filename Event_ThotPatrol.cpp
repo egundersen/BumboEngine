@@ -1,17 +1,22 @@
 #include "Event_ThotPatrol.h"
 
+Event_ThotPatrol::Event_ThotPatrol(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, CharacterBase * &selected_character, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix & screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, 0, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height), selected_character_{ selected_character }
+{
+}
+
 void Event_ThotPatrol::createEvent()
 {
 	updateColliderCoordinates();
 
 	Popup popup_0(25, 9, "Wooo! Wooo! Wooo!", screen_matrix_, '#');
 	Popup popup_1(25, 9, "(Insert Police Siren Sound Effect Here)", screen_matrix_, '#');
-	Popup popup_2(25, 9, "We came as we could.", screen_matrix_, '#');
+	Popup popup_2(25, 9, "We came as as soon as we could.", screen_matrix_, '#');
 	Popup popup_3(25, 9, "And it's been a while.", screen_matrix_, '#');
 	Popup popup_4(25, 9, "Since October, actually.", screen_matrix_, '#');
 	Popup popup_5(25, 9, "Thot patrol reportin'!", screen_matrix_, '#');
 	Popup popup_6(25, 9, "What do we have here, Jenkins?", screen_matrix_, '#');
-	Popup popup_7(25, 9, "Excuse me. My name's not \"Jenkins\"! I am Jayden motherLOVING Harper!", screen_matrix_, '#');
+	Popup popup_7(25, 9, "Excuse me. My name's not \"Jenkins\"! I am Kayden motherF*****g Karper!", screen_matrix_, '#');
 	Popup popup_8(25, 9, "Errr... WELL WHAT DO YOU HAVE HERE, HARPER?", screen_matrix_, '#');
 	Popup popup_9(25, 9, "Two people alone...", screen_matrix_, '#');
 	Popup popup_10(25, 9, "All I see is a THOT that needs to BEGONE!", screen_matrix_, '#');
@@ -173,106 +178,106 @@ void Event_ThotPatrol::speak()
 	switch (getPopupIndex())
 	{
 	case 0:
-		popups_[0].displayPopup(-20, 0);
+		popups_[0].displayPopup(-23, -3);
 		break;
 	case 1:
-		popups_[1].displayPopup(-20, 15);
+		popups_[1].displayPopup(-23, 21);
 		break;
 	case 2:
-		popups_[2].displayPopup(-20, 0);
+		popups_[2].displayPopup(-23, -3);
 		break;
 	case 3:
-		popups_[3].displayPopup(-20, 0);
+		popups_[3].displayPopup(-23, 21);
 		break;
 	case 4:
-		popups_[4].displayPopup(-20, 0);
+		popups_[4].displayPopup(-23, -3);
 		break;
 	case 5:
-		popups_[5].displayPopup(-20, 0);
+		popups_[5].displayPopup(-23, 21);
 		break;
 	case 6:
-		popups_[6].displayPopup(-20, 0);
+		popups_[6].displayPopup(-23, -3);
 		break;
 	case 7:
 		getCharacterByID(37)->faceDirection('u');
-		popups_[7].displayPopup(-20, 0);
+		popups_[7].displayPopup(-23, 21);
 		break;
 	case 8:
 		getCharacterByID(37)->faceDirection('r');
-		popups_[8].displayPopup(-20, 0);
+		popups_[8].displayPopup(-23, -3);
 		break;
 	case 9:
-		popups_[9].displayPopup(-20, 0);
+		popups_[9].displayPopup(-23, 21);
 		break;
 	case 10:
-		popups_[10].displayPopup(-20, 0);
+		popups_[10].displayPopup(-23, -3);
 		break;
 	case 11:
 		getCharacterByID(37)->faceDirection('u');
-		popups_[11].displayPopup(-20, 0);
+		popups_[11].displayPopup(-23, 21);
 		break;
 	case 12:
 		getCharacterByID(36)->faceDirection('d');
-		popups_[12].displayPopup(-20, 0);
+		popups_[12].displayPopup(-23, -3);
 		break;
 	case 13:
-		popups_[13].displayPopup(-20, 0);
+		popups_[13].displayPopup(-23, 21);
 		break;
 	case 14:
-		popups_[14].displayPopup(-20, 0);
+		popups_[14].displayPopup(-23, -3);
 		break;
 	case 15:
 		getCharacterByID(37)->faceDirection('r');
-		popups_[15].displayPopup(-20, 0);
+		popups_[15].displayPopup(-23, 21);
 		break;
 	case 16:
-		popups_[16].displayPopup(-20, 0);
+		popups_[16].displayPopup(-23, -3);
 		break;
 	case 17:
 		getCharacterByID(37)->faceDirection('u');
-		popups_[17].displayPopup(-20, 0);
+		popups_[17].displayPopup(-23, 21);
 		break;
 	case 18:
-		popups_[18].displayPopup(-20, 0);
+		popups_[18].displayPopup(-23, -3);
 		break;
 	case 19:
-		popups_[19].displayPopup(-20, 0);
+		popups_[19].displayPopup(-23, 21);
 		break;
 	case 20:
 		getCharacterByID(36)->faceDirection('r');
-		popups_[20].displayPopup(-20, 0);
+		popups_[20].displayPopup(-23, -3);
 		break;
 	case 21:
 		getCharacterByID(37)->faceDirection('r'); // FROM OVERKILL
-		popups_[21].displayPopup(-20, 0);
-		popups_[21].displayPopup(10, 0);
+		popups_[21].displayPopup(-23, 21);
+		popups_[21].displayPopup(-23, -3);
 		break;
 	case 22:
-		popups_[22].displayPopup(-20, 0); // AKI
+		popups_[22].displayPopup(23, 1); // AKI
 		break;
 	case 23:
-		popups_[23].displayPopup(-20, 0);
+		popups_[23].displayPopup(-23, 21);
 		break;
 	case 24:
-		popups_[24].displayPopup(-20, 0);
+		popups_[24].displayPopup(-23, -3);
 		break;
 	case 25:
-		popups_[25].displayPopup(-20, 0); // AKI
+		popups_[25].displayPopup(23, 1); // AKI
 		break;
 	case 26:
-		popups_[26].displayPopup(-20, 0); // AKI
+		popups_[26].displayPopup(23, 1); // AKI
 		break;
 	case 27:
-		popups_[27].displayPopup(-20, 0);
+		popups_[27].displayPopup(-23, 21);
 		break;
 	case 28:
-		popups_[28].displayPopup(-20, 0);
+		popups_[28].displayPopup(-23, -3);
 		break;
 	case 29:
-		popups_[29].displayPopup(-20, 0);
+		popups_[29].displayPopup(-23, 21);
 		break;
 	case 30:
-		popups_[30].displayPopup(-20, 0);
+		popups_[30].displayPopup(-23, -3);
 		break;
 	case 31:
 		progressEvent();
@@ -282,5 +287,6 @@ void Event_ThotPatrol::speak()
 
 void Event_ThotPatrol::battle()
 {
-	getCharacterByID(36)->enterBattle();
+	selected_character_ = getCharacterByID(36);
+	selected_character_->enterBattle();
 }

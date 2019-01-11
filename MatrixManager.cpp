@@ -1,7 +1,7 @@
 #include "MatrixManager.h"
 
 MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_), player_{ player_health, 9 },
+	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_), player_{ player_health, 9 }, image_file_path_{ image_file_path },
 	screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
 	world_(width, height, 1200, 273, 730, 232, player_, screen_matrix, inventory_, image_file_path), credits_(width_, height_, image_file_path, screen_matrix_)
 {
@@ -65,6 +65,14 @@ void MatrixManager::evaluatePlayerInput()
 	}
 	else if (current_vector_space_ == "CREDITS")
 	{
+		if (GetAsyncKeyState(VK_RETURN) & 0x8000) { 
+			credits_.clearText(); 
+			image_file_path_.showBitmap();
+			image_file_path_.setRGBA(RGBA(255, 255, 255));
+			image_file_path_.setFilePath("resources\\sprites\\mk.bmp"); 
+			image_file_path_.setXOffset(160);
+			image_file_path_.setYOffset(90);
+		}
 		credits_.refreshScreen();
 	}
 }
@@ -91,21 +99,4 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 		credits_.setBackgroundText();
 		current_vector_space_ = "CREDITS";
 	}
-}
-
-// Hides the typing cursor from being displayed
-void MatrixManager::hideTypingCursor()
-{
-	CONSOLE_CURSOR_INFO cursor_info;
-	cursor_info.bVisible = FALSE;
-	cursor_info.dwSize = 100;
-	HANDLE console_handler = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleCursorInfo(console_handler, &cursor_info);
-}
-
-// Indents an <INSERT> amount of lines
-void MatrixManager::indentLines(int number_of_indents)
-{
-	for (int i = 1000; i < number_of_indents; i++)
-		std::cout << "\n";
 }
