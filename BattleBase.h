@@ -46,6 +46,7 @@ protected:
 	void setBossHealth(int boss_health) { boss_.health = boss_health; }
 	void gameOver();
 	void showFileSprite(std::string emotion = "");
+	void showBasicSprite();
 	void hideFileSprite();
 	void resetBattleSpace();
 	void removeAllUI();

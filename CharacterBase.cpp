@@ -84,6 +84,7 @@ void CharacterBase::resetAttackPatterns()
 // Change location and/or direction of world sprite
 void CharacterBase::updateWorldSprite(char direction)
 {
+	sprite_.removeSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
 	sprite_.setDirection(direction);
 	sprite_.displaySprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
 }

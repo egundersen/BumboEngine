@@ -93,7 +93,7 @@ public:
 		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1 = new DialogNode("...", "You're the reason that my favorite anime was canceled!"); // 3=
 		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2 = new DialogNode("NO!", "*ugh*! You still can't see all the good I've done for you?");
 		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1 = new DialogNode("...", "I made you a story. It was cheesy, sure, but at least you learned something!");
-		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1 = new DialogNode("...", "(Thats more than I can say about my data structures class)");
+		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1 = new DialogNode("...", "(Thats more than I can say about my data structures class).");
 		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1 = new DialogNode("Wha' was that?", "What, too soon? Sorry,  but it's hard to converse when all I say are outdated references.");
 		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1 = new DialogNode("But why us pirates?", "Why do I hate them so much? Thats complicated... Can't we just agree on our love of anime?");
 		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1 = new DialogNode("No", "Why so cold all of a sudden? It's just an art style, not like you could guess my favorite~");
@@ -102,7 +102,7 @@ public:
 		DialogNode *node_1_2_2_1_1_1_1_1_1_1_1_1_1_1_2_1_1_1_1_1_1_1_1 = new DialogNode("Hand over me package!", "No, Heh ha hah. Go to hell!", "FIGHT");
 		DialogNode *node_2 = new DialogNode("", "W-well... you won...", "SAVE"); // =FIGHT
 		DialogNode *node_2_1 = new DialogNode("YES I DID!", "I... don't know... if it was worth it...");
-		DialogNode *node_2_1_1 = new DialogNode("It was", "I hope you're happy", "EVENT");
+		DialogNode *node_2_1_1 = new DialogNode("It was", "I hope you're happy.", "EVENT");
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);

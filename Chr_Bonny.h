@@ -30,7 +30,7 @@ public:
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
-		int event_ID = 1) // 0 = no event
+		int event_ID = 10026) // 0 = no event
 
 		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
 	{
@@ -105,15 +105,15 @@ public:
 		DialogNode *node_1_1_3_1_2_1_1_1 = new DialogNode("Then who?", "I dunno! Maybe Sharktooth, he's a bad scallywag...");
 		DialogNode *node_1_1_3_1_2_1_1_1_1 = new DialogNode("Fine, I believe ye", "Thank th' stars! 'n... perhaps I could offer somethin' as a token o' me thanks?", "SAVE"); // =FIGHT
 		DialogNode *node_1_1_3_1_2_1_1_1_1_1 = new DialogNode("No thanks necessary", "Ye are truly a kind sort.");
-		DialogNode *node_1_1_3_1_2_1_1_1_1_1_1 = new DialogNode("Goodbye", "Good luck t' ya. Goodbye matey!", "SAVE");
+		DialogNode *node_1_1_3_1_2_1_1_1_1_1_1 = new DialogNode("Goodbye", "Good luck t' ya.", "EVENT"); // EVENT=
 		DialogNode *node_1_1_3_1_2_1_1_1_1_2 = new DialogNode("Much appreciated!", "'Tis a cutlass, maybe nah th' best, but I've owned it all me life!", sword);
-		DialogNode *node_1_1_3_1_2_1_1_1_1_2_1 = new DialogNode("Thank ye", "Good luck t' ya. Goodbye matey!", "SAVE");
+		DialogNode *node_1_1_3_1_2_1_1_1_1_2_1 = new DialogNode("Thank ye", "Good luck t' ya.", "EVENT"); // EVENT=
 		DialogNode *node_1_1_3_1_2_1_1_1_2 = new DialogNode("I don't believe ye", "'N wha' will ye do about it, hm?");
 		DialogNode *node_1_1_3_1_2_1_1_1_2_1 = new DialogNode("I be goin' t' take it", "GET BACK! ye reckon ye can loot me!?", "FIGHT");
 		DialogNode *node_1_1_3_1_2_1_1_2 = new DialogNode("Die wit' honor!", "Nooooooo!", "FIGHT");
 		DialogNode *node_1_1_3_1_2_1_2 = new DialogNode("I dunno", "If I was t' offer me advise, I'd say 'twas Sharktooth.");
-		DialogNode *node_1_1_3_1_2_1_2_1 = new DialogNode("Thanks fer th' tip", "Tis been a pleasure", "SAVE");
-		DialogNode *node_1_1_3_1_2_1_2_2 = new DialogNode("BTW, ye stole it!", "WHAT!? Are ye accusin' me... o' lootin' from ye?", "SAVE");
+		DialogNode *node_1_1_3_1_2_1_2_1 = new DialogNode("Thanks fer th' tip", "Tis been a pleasure.", "EVENT"); // EVENT=
+		DialogNode *node_1_1_3_1_2_1_2_2 = new DialogNode("BTW, ye stole it!", "WHAT!? Are ye accusin' me... o' lootin' from ye?", "FIGHT");
 		DialogNode *node_1_1_3_2 = new DialogNode("LIAR! ! !", "Wha'? Tis true, I cried fer hours!");
 		DialogNode *node_1_1_3_2_1 = new DialogNode("I believe ye", "Thats good t' hear... but where did ye find me feather?");
 		DialogNode *node_1_1_3_2_1_1 = new DialogNode("'twas at th' checkpoint", "'Oh, I supposed it twas hectic thar, dropped a few thin's... loot few thin's..."); // 4=
@@ -123,6 +123,7 @@ public:
 		DialogNode *node_1_2_1 = new DialogNode("Were ye at th' border?", "Come t' reckon o' it, I may 'ave passed through once or twice!"); // 3=
 		DialogNode *node_1_2_2 = new DialogNode("Goodbye", "Sea ya around matey!");
 		DialogNode *node_1_3 = new DialogNode("Goodbye", "Sea ya around matey!");
+		DialogNode *node_3 = new DialogNode("", "Goodbye matey!", "SAVE"); // =EVENT
 
 		// Link Dialog Nodes
 		node_1->setChoice1(node_1_1);
@@ -177,6 +178,9 @@ public:
 		node_1_1_3_1_1->setChoice1(node_1_1_3_1_2_1_1_1_1); 
 		node_1_1_3_1_2_1_1_1_2_1->setChoice1(node_1_1_3_1_2_1_1_1_1);
 		node_1_1_3_1_2_1_1_2->setChoice1(node_1_1_3_1_2_1_1_1_1);
+		node_1_1_3_1_2_1_1_1_1_1_1->setChoice1(node_3); // EVENT
+		node_1_1_3_1_2_1_1_1_1_2_1->setChoice1(node_3);
+		node_1_1_3_1_2_1_2_1->setChoice1(node_3);
 
 		setHeadNode(node_1);
 	}

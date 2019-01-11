@@ -89,13 +89,7 @@ void BattleBase::setBackgroundText()
 		menu_matrix_[i][width_ - 4] = 'X';
 	}
 
-	if (!boss_.use_files)
-	{
-		Image main_ascii(boss_.ascii);
-		Image overlay_ascii(boss_.overlay);
-		addImageToMatrix(40, 14, main_ascii, menu_matrix_);
-		addImageToMatrix(boss_.overlay_x, boss_.overlay_y, overlay_ascii, menu_matrix_);
-	}
+	if (!boss_.use_files) { showBasicSprite(); }
 
 	drawRectangle(8, 29, 15, 5, 'X', menu_matrix_);
 	drawRectangle(33, 29, 15, 5, 'X', menu_matrix_);
@@ -364,6 +358,7 @@ void BattleBase::bossSpared()
 	{
 		displayScreen();
 		removeAllUI();
+		if (!boss_.use_files) { showBasicSprite(); }
 		showFileSprite("NEUTRAL");
 	}
 	else if (current_time_battle_end_animation > 9000)
@@ -437,6 +432,15 @@ void BattleBase::showFileSprite(std::string emotion)
 		bitmap_.setXOffset(160);
 		bitmap_.showBitmap();
 	}
+}
+
+// Writes basic boss ascii to the matrix
+void BattleBase::showBasicSprite()
+{
+	Image main_ascii(boss_.ascii);
+	Image overlay_ascii(boss_.overlay);
+	addImageToMatrix(40, 14, main_ascii, menu_matrix_);
+	addImageToMatrix(boss_.overlay_x, boss_.overlay_y, overlay_ascii, menu_matrix_);
 }
 
 // Erases the file sprite

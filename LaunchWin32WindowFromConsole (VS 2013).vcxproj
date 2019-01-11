@@ -191,6 +191,7 @@
     <ClCompile Include="Event_RemoveObject.cpp" />
     <ClCompile Include="Event_RollCredits.cpp" />
     <ClCompile Include="Event_SetupEnding.cpp" />
+    <ClCompile Include="Event_TeleportNPC.cpp" />
     <ClCompile Include="Event_TeleportPlayer.cpp" />
     <ClCompile Include="Event_Test.cpp" />
     <ClCompile Include="Event_ThotPatrol.cpp" />
@@ -282,6 +283,7 @@
     <ClInclude Include="Event_RemoveObject.h" />
     <ClInclude Include="Event_RollCredits.h" />
     <ClInclude Include="Event_SetupEnding.h" />
+    <ClInclude Include="Event_TeleportNPC.h" />
     <ClInclude Include="Event_TeleportPlayer.h" />
     <ClInclude Include="Event_Test.h" />
     <ClInclude Include="Event_ThotPatrol.h" />

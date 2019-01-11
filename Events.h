@@ -5,6 +5,7 @@
 #include "Event_TeleportPlayer.h"
 #include "Event_MoveNPCIfDefeated.h"
 #include "Event_MoveNPC.h"
+#include "Event_TeleportNPC.h"
 #include "Event_RemoveObject.h"
 #include "Event_Test.h"
 

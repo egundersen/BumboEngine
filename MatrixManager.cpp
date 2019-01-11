@@ -30,7 +30,8 @@ void MatrixManager::evaluatePlayerInput()
 	else if (current_vector_space_ == "BATTLE")
 	{
 		if (world_.getSelectedCharacter() == nullptr || world_.getSelectedCharacter()->isBattleOver())
-		{// Called if enemy is destroyed during dialog
+		{
+			image_file_path_.setRGBA(RGBA(255, 255, 255));
 			has_initialized_battle_ = false;
 			loadVectorSpace("MAP");
 		}
@@ -50,8 +51,8 @@ void MatrixManager::evaluatePlayerInput()
 				inventory_.onOpenInventory(true);
 				has_initialized_inventory_ = true;
 			}
-			if (GetAsyncKeyState(VK_BACK) & 0x8000)
-			{// CLOSE INVENTORY?
+			if (GetAsyncKeyState(VK_BACK) & 0x8000) // CLOSE INVENTORY?
+			{
 				has_initialized_inventory_ = false;
 				world_.getSelectedCharacter()->setVectorSpace("MENU");
 			}
@@ -68,7 +69,6 @@ void MatrixManager::evaluatePlayerInput()
 		if (GetAsyncKeyState(VK_RETURN) & 0x8000) { 
 			credits_.clearText(); 
 			image_file_path_.showBitmap();
-			image_file_path_.setRGBA(RGBA(255, 255, 255));
 			image_file_path_.setFilePath("resources\\sprites\\mk.bmp"); 
 			image_file_path_.setXOffset(160);
 			image_file_path_.setYOffset(90);
