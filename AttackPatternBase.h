@@ -27,7 +27,7 @@ protected:
 	void evaluatePlayerInput();
 	void hurtPlayer();
 	void playPlayerHurtSound();
-	void playPlayerHurtAnimation();
+	void playPlayerDeathAnimation();
 	void movePlayerToPosition(int x_position, int y_position, bool should_round_position = false);
 	void moveAttack();
 	void checkBorderCollision();
