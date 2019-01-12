@@ -38,6 +38,7 @@ void Inventory::refreshScreen()
 		throw "Inventory may not have more than 10 items!";
 #endif
 	setItemsListText();
+	setItemDescriptionText();
 	setPlayerHealthText(6, 30);
 	setCursorText();
 	displayScreen();
@@ -48,13 +49,13 @@ void Inventory::setInventoryBackgroundText()
 {
 	drawSolidRectangle(1, 1, 3, height_ - 2, 'X', 'I', inventory_matrix_);
 	drawSolidRectangle(width_ - 4, 1, 3, height_ - 2, 'X', 'I', inventory_matrix_);
-
 	drawSolidRectangle(45, 10, 1, height_ - 11, 'X', 'I', inventory_matrix_);
 	drawSolidRectangle(5, 1, width_ - 10, 2, '=', 'I', inventory_matrix_);
+	drawRectangle(6, 19, 37, 10, 'X', 'I', inventory_matrix_);
 	
 	Image inventory_letters(
 		"===[]=== []   [][]      [][]==== []   [] ==[]==  [[]]  [][]] []    []Z   []    []]  [] []    [] []     []]  []   []   []  [] []  [] []  [] Z   []    [][] []  []  []  []==== [][] []   []   []  [] [][][]  [][]  Z   []    [] [][]   [][]   []     [] [][]   []   []  [] [][]     []   Z===[]=== []  [[]    []    []==== []  [[]   []    [[]]  [] []_   []   Z",
-		"PPPPPPPM PM   PPPM      PPPPPPPM PM   PM PPPPPM PPPPPM PPPPPMPM    PMZ   PM    PPM  PM PM    PM PM     PPM  PM   PM   PM  PM PM  PM PM  PM Z   PM    PPPM PM  PM  PM  PMMMMM PPPM PM   PM   PM  PM PPPPPM  PMPM  Z   PM    PM PMPM   PMPM   PM     PM PMPM   PM   PM  PM PM PM    PM   ZPPPPPPPM PM  PPM    PM    PPPPPM PM  PPM   PM   PPPPPM PM  PM   PM   Z"
+		"PPPPPPPM PM   PPPM      PPPPPPPM PM   PM PPPPPM PPPPPM PPPPPMPM    PMZ   PM    PPM  PM PM    PM PM     PPM  PM   PM   PM  PM PM  PM PM  PM Z   PM    PPPM PM  PM  PM  PMMMMM PPPM PM   PM   PM  PM PPPPPM  PMPM  Z   PM    PM PMPM   PMPM   PM     PM PMPM   PM   PM  PM PMPPM    PM   ZPPPPPPPM PM  PPM    PM    PPPPPM PM  PPM   PM   PPPPPM PM PPM   PM   Z"
 	);
 	Image instructions(
 		"=====================================Z============= CONTROLS ==============Z                                     ZNavigate up and down      Arrow Keys Z                                     ZUse Selected Item         ENTER      Z", 
@@ -80,6 +81,14 @@ void Inventory::setItemsListText()
 	for (int i = items_list_.size(); i < 10; ++i)
 		for (int j = 0; j < 20; ++j)
 			inventory_matrix_[13 + (2 * i)][50 + j] = ' ';
+}
+
+// Sets text for the Item description
+void Inventory::setItemDescriptionText()
+{
+	std::string description = items_list_.size() == 0 ? "" : items_list_.at(cursor_index_).getDescription();
+	drawSolidRectangle(8, 21, 33, 6, ' ', inventory_matrix_);
+	addTextToMatrix(8, 21, 'l', description, 'A', inventory_matrix_, 33, 6);
 }
 
 // Sets the cursor
@@ -135,7 +144,6 @@ void Inventory::evaluatePlayerInput()
 // Use an item
 void Inventory::useItem()
 {
-	//TODO: Do something for item name: items_list_.at(cursor_index_);
 	if (items_list_.at(cursor_index_).getType() == "HEAL")
 		player_.addHealth(items_list_.at(cursor_index_).getModifier());
 	else if (items_list_.at(cursor_index_).getType() == "SHIELD")
@@ -150,9 +158,9 @@ void Inventory::useItem()
 }
 
 // Add item to inventory (from a string)
-void Inventory::addItem(std::string item_name, int modifier)
+void Inventory::addItem(std::string item_name, int modifier, std::string item_description)
 {
-	Item item(item_name, modifier);
+	Item item(item_name, modifier, item_description);
 	items_list_.push_back(item);
 }
 

@@ -14,7 +14,7 @@ public:
 	// Setters
 	void onOpenInventory(bool in_battle = false);
 	void evaluatePlayerInput();
-	void addItem(std::string item_name, int modifier);
+	void addItem(std::string item_name, int modifier, std::string item_description);
 	void addItem(Item item);
 	void reset();
 
@@ -26,6 +26,7 @@ private:
 	void refreshScreen();
 	void setInventoryBackgroundText();
 	void setItemsListText();
+	void setItemDescriptionText();
 	void setCursorText();
 	void setPlayerHealthText(int x_position, int y_position);
 

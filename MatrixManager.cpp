@@ -5,8 +5,9 @@ MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int p
 	screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
 	world_(width, height, 1200, 273, 730, 232, player_, screen_matrix, inventory_, image_file_path), credits_(width_, height_, image_file_path, screen_matrix_)
 {
-	inventory_.addItem("Mug o' Grog", 1); // Starting Items (Not pickups! Just starting items)
-	inventory_.addItem("Fish Mush", 1);
+	// Starting Items (Not pickups! Just starting items)
+	inventory_.addItem("Mug o' Grog", 1, "Looks like it could burn a hole through anything it touches. Bottoms up?");
+	inventory_.addItem("Fish Mush", 1, "Number 1 meal for all pirates alike.");
 	StartScreen startScreen(width_, height_, screen_matrix_);
 }
 
