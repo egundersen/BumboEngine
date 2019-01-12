@@ -47,7 +47,7 @@ void StartScreen::setBackgroundText()
 	addImageToMatrix(50, 18, sprite_3, startscreen_matrix_);
 	addImageToMatrix(39, 7, title_letters, startscreen_matrix_);
 	addImageToMatrix(39, 30, press_enter, startscreen_matrix_);
-	addTextToMatrix(58, height_ - 1, 'l', "BumboEngine v0.8", 'I', startscreen_matrix_);
+	addTextToMatrix(58, height_ - 1, 'l', "BumboEngine v0.9", 'I', startscreen_matrix_);
 #ifdef _DEBUG
 	addTextToMatrix(5, height_ - 1, 'l', "Running DEBUG release : Expect Poor framerates", startscreen_matrix_);
 #endif
