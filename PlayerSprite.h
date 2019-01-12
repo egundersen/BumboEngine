@@ -11,7 +11,6 @@ public:
 
 	// Setters
 	void initializeSprites(WorldSpriteContainer player_sprite);
-	void setPlayerMoving(std::string direction);
 
 protected:
 	// Output Displays

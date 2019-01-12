@@ -17,19 +17,6 @@ void PlayerSprite::initializeSprites(WorldSpriteContainer player_sprite)
 	addImageToMatrix(sprite_width_ / 2 - 1, sprite_height_ / 2 - 1, *player_sprite.right_s, right_s_);
 }
 
-// Decide whether player should use "moving" animation
-void PlayerSprite::setPlayerMoving(std::string direction)
-{
-	if (direction == "verticle")
-		is_moving_vertically_ = true;
-	else if (direction == "not verticle")
-		is_moving_vertically_ = false;
-	else if (direction == "horizontal")
-		is_moving_horizontally = true;
-	else
-		is_moving_horizontally = false;
-}
-
 // Displays given sprite to the screen
 void PlayerSprite::displaySpriteAtDirection(Matrix& direction, int top_left_position_x, int top_left_position_y)
 {

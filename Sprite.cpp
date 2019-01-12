@@ -109,40 +109,24 @@ void Sprite::removeSprite(int top_left_position_x, int top_left_position_y)
 			break;
 		}
 	}
-	else if (animation_position_ == 0)
-	{
-		switch (direction_)
-		{
-		case 'u':
-			eraseSpriteAtDirection(up_1_, top_left_position_x, top_left_position_y);
-			break;
-		case 'd':
-			eraseSpriteAtDirection(down_1_, top_left_position_x, top_left_position_y);
-			break;
-		case 'l':
-			eraseSpriteAtDirection(left_1_, top_left_position_x, top_left_position_y);
-			break;
-		case 'r':
-			eraseSpriteAtDirection(right_1_, top_left_position_x, top_left_position_y);
-			break;
-		default:
-			break;
-		}
-	}
 	else
 	{
 		switch (direction_)
 		{
 		case 'u':
+			eraseSpriteAtDirection(up_1_, top_left_position_x, top_left_position_y);
 			eraseSpriteAtDirection(up_2_, top_left_position_x, top_left_position_y);
 			break;
 		case 'd':
+			eraseSpriteAtDirection(down_1_, top_left_position_x, top_left_position_y);
 			eraseSpriteAtDirection(down_2_, top_left_position_x, top_left_position_y);
 			break;
 		case 'l':
+			eraseSpriteAtDirection(left_1_, top_left_position_x, top_left_position_y);
 			eraseSpriteAtDirection(left_2_, top_left_position_x, top_left_position_y);
 			break;
 		case 'r':
+			eraseSpriteAtDirection(right_1_, top_left_position_x, top_left_position_y);
 			eraseSpriteAtDirection(right_2_, top_left_position_x, top_left_position_y);
 			break;
 		default:
@@ -214,6 +198,19 @@ void Sprite::displayGhostSprite(int top_left_position_x, int top_left_position_y
 			break;
 		}
 	}
+}
+
+// Decide whether sprite should use "moving" animation
+void Sprite::setMoving(std::string direction)
+{
+	if (direction == "verticle")
+		is_moving_vertically_ = true;
+	else if (direction == "not verticle")
+		is_moving_vertically_ = false;
+	else if (direction == "horizontal")
+		is_moving_horizontally = true;
+	else
+		is_moving_horizontally = false;
 }
 
 // Changes player animation every 'X' seconds

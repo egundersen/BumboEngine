@@ -16,6 +16,7 @@ public:
 	void displayGhostSprite(int top_left_position_x, int top_left_position_y, int screen_width, int screen_height, char moving_direction);
 	void setPlayerAnimationSpeed(int player_animation_speed) { player_animation_speed_ = player_animation_speed; }
 	void setDirection(char direction) { direction_ = direction; }
+	void setMoving(std::string direction);
 	virtual void initializeSprites() {}
 
 	// Getters

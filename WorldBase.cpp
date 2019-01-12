@@ -55,8 +55,8 @@ void WorldBase::refreshScreen()
 						selected_character_->showDialog();
 					}
 					character->faceDirection(opposite_player_direction_);
-					player_sprite_.setPlayerMoving("not verticle");
-					player_sprite_.setPlayerMoving("not horizontal");
+					player_sprite_.setMoving("not verticle");
+					player_sprite_.setMoving("not horizontal");
 				}
 			is_viewing_popup_ = false;
 			break;
@@ -259,7 +259,7 @@ void WorldBase::evaluatePlayerInput()
 					if (screen_position_.y > 0 && !hasCollided('u', 5)) // 2
 					{
 						--screen_position_.y;
-						player_sprite_.setPlayerMoving("verticle");
+						player_sprite_.setMoving("verticle");
 					}
 					player_sprite_.setDirection('u');
 					opposite_player_direction_ = 'd';
@@ -270,20 +270,20 @@ void WorldBase::evaluatePlayerInput()
 					if (screen_position_.y + screen_height_ < world_height_ - 1 && !hasCollided('d', 1))
 					{
 						++screen_position_.y;
-						player_sprite_.setPlayerMoving("verticle");
+						player_sprite_.setMoving("verticle");
 					}
 					player_sprite_.setDirection('d');
 					opposite_player_direction_ = 'u';
 					shouldStartEventByLocation();
 				}
 				else
-					player_sprite_.setPlayerMoving("not verticle");
+					player_sprite_.setMoving("not verticle");
 				if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 				{
 					if (screen_position_.x + screen_width_ < world_width_ - 1 && !hasCollided('r', 1))
 					{
 						++screen_position_.x;
-						player_sprite_.setPlayerMoving("horizontal");
+						player_sprite_.setMoving("horizontal");
 					}
 					player_sprite_.setDirection('r');
 					opposite_player_direction_ = 'l';
@@ -294,14 +294,14 @@ void WorldBase::evaluatePlayerInput()
 					if (screen_position_.x > 0 && !hasCollided('l', 0))
 					{
 						--screen_position_.x;
-						player_sprite_.setPlayerMoving("horizontal");
+						player_sprite_.setMoving("horizontal");
 					}
 					player_sprite_.setDirection('l');
 					opposite_player_direction_ = 'r';
 					shouldStartEventByLocation();
 				}
 				else
-					player_sprite_.setPlayerMoving("not horizontal");
+					player_sprite_.setMoving("not horizontal");
 				start_time_player_speed_ = GetTickCount64();
 			}
 			is_viewing_popup_ = false;
@@ -456,8 +456,8 @@ void WorldBase::shouldStartEventByLocation()
 		for (EventBase *event : events_)
 			if (event->getUniqueObjectID() == getFacingEntity().second && event->isAvailable())
 			{
-				player_sprite_.setPlayerMoving("not verticle");
-				player_sprite_.setPlayerMoving("not horizontal");
+				player_sprite_.setMoving("not verticle");
+				player_sprite_.setMoving("not horizontal");
 
 				event->onStartEvent();
 				selected_event_ = event;
@@ -474,8 +474,8 @@ void WorldBase::shouldStartEventByID(int event_ID)
 		for (EventBase *event : events_)
 			if (event_ID == event->getUniqueObjectID())
 			{
-				player_sprite_.setPlayerMoving("not verticle");
-				player_sprite_.setPlayerMoving("not horizontal");
+				player_sprite_.setMoving("not verticle");
+				player_sprite_.setMoving("not horizontal");
 
 				event->onStartEvent();
 				selected_event_ = event;

@@ -136,6 +136,7 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 				center_position_x_--;
 			else
 				center_position_x_++;
+			sprite_.setMoving("horizontal");
 		}
 		else
 		{
@@ -143,6 +144,7 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 				center_position_y_--;
 			else
 				center_position_y_++;
+			sprite_.setMoving("verticle");
 		}
 		updateColliderCoordinates();
 		updateWorldSprite(moving_direction_);
@@ -151,8 +153,13 @@ void CharacterBase::move(int ending_position, char axis, int speed)
 
 	if (center_position_x_ == ending_position || center_position_y_ == ending_position)
 	{
-		has_begun_moving_ = false;
+		sprite_.removeSprite(center_position_x_ - sprite_.getWidth() / 2 + 1, center_position_y_ - sprite_.getHeight() / 2 + 1);
+		sprite_.setMoving("not verticle");
+		sprite_.setMoving("not horizontal");
+		updateWorldSprite(moving_direction_);
+
 		movement_index_++;
+		has_begun_moving_ = false;
 		has_reached_destination_ = true;
 	}
 }
