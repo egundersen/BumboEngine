@@ -6,7 +6,7 @@
 class Chr_MiniBoss1 : public CharacterBase
 {
 public:
-	Chr_MiniBoss1(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap,
+	Chr_MiniBoss1(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,  Matrix &screen_matrix, BitmapDefinition &bitmap, AudioDefinition &audio,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -23,6 +23,7 @@ public:
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
 			19,
 			"Kriis",
+			"Guns_n_Roses_-_Nightrain.mp3",
 			"mini_boss_1_neutral_happy.bmp",
 			"mini_boss_1_mad.bmp",
 			"mini_boss_1_mad.bmp",
@@ -32,7 +33,7 @@ public:
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 10023) // 0 = no event
 
-		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player, boss_fight_definition, attack_on_sight, use_basic_dialog, bitmap, world_sprite)
+		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player, boss_fight_definition, attack_on_sight, use_basic_dialog, bitmap, audio, world_sprite)
 	{
 		faceDirection(direction);
 

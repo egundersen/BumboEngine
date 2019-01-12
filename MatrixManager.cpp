@@ -3,7 +3,7 @@
 MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap, AudioDefinition &audio)
 	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_), player_{ player_health, 9 }, bitmap_{ bitmap },
 	screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	world_(width, height, 1200, 273, 730, 232, player_, screen_matrix, inventory_, bitmap), credits_(width_, height_, bitmap, screen_matrix_),
+	world_(width, height, 1200, 273, 730, 232, player_, screen_matrix, inventory_, bitmap, audio), credits_(width_, height_, bitmap, screen_matrix_),
 	audio_(audio)
 {
 	// Starting Items (Not pickups! Just starting items)

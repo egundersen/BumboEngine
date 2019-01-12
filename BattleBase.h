@@ -6,6 +6,7 @@
 #include "AttackPatternBase.h"
 #include "BattleDialogBase.h"
 #include "BossFightDefinition.h"
+#include "AudioDefinition.h"
 #include <tuple>
 
 #ifndef BATTLEBASE_H
@@ -14,7 +15,7 @@
 class BattleBase : public MatrixBase
 {
 public:
-	explicit BattleBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &bitmap);
+	explicit BattleBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &bitmap, AudioDefinition &audio);
 	virtual ~BattleBase() {}
 
 	// Setters
@@ -60,8 +61,9 @@ protected:
 	int width_, height_, cursor_index_, start_time_move_cursor_, start_time_battle_end_animation_,
 		initial_boss_health_, initial_player_health_, end_animation_index_;
 	std::string local_vector_space_;
-	BitmapDefinition &bitmap_;
 	bool is_battle_finished_, is_destroyed_, should_restart_battle_, do_not_despawn_;
+	BitmapDefinition &bitmap_;
+	AudioDefinition &audio_;
 	PlayerDefinition &player_;
 	BattleDialogBase dialog_;
 	BossFightDefinition boss_;

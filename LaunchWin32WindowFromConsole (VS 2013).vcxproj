@@ -263,7 +263,7 @@
     <ClInclude Include="Chr_SleepingPirate.h" />
     <ClInclude Include="Chr_ThotPatrol.h" />
     <ClInclude Include="Chr_TutorialNPC.h" />
-    <ClInclude Include="Chr_AllMight.h" />
+    <ClInclude Include="Chr_MajorNPC.h" />
     <ClInclude Include="BattleDialogBase.h" />
     <ClInclude Include="ColoredString.h" />
     <ClInclude Include="ColorPalette.h" />

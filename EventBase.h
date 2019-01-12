@@ -1,7 +1,7 @@
 #ifndef EVENTBASE_H
 #define EVENTBASE_H
 
-#include "Characters.h"
+#include "CharacterBase.h"
 #include "ScreenPosition.h"
 #include "Popup.h"
 

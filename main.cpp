@@ -2,6 +2,7 @@
 #define NOMINMAX
 #include "MP3Player.h"
 #include "stdafx.h"
+#pragma comment(lib, "Winmm.lib")
 #include "WinMainParameters.h"
 #include "MatrixManager.h"
 #include "SplashScreen.h"
@@ -20,6 +21,7 @@ TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 bool should_exit_G = false;
 int width_G = 79;
 int height_G = 35;
+std::string current_song_G = "";
 BitmapDefinition bitmap_G("", 160, 0);
 AudioDefinition audio_G("");
 Matrix screen_matrix_G(width_G, height_G);
@@ -92,19 +94,6 @@ int main(int /*argc*/, char* /*argv*/[]) {
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
-	/*MP3Player player;
-
-	player.OpenFromFile(L"demo.mp3");
-
-	player.Play();
-
-	while (player.GetPosition() < 20) {
-		printf("Test music for 20s : %f elapsed\n", player.GetPosition());
-		Sleep(1000);
-	}
-
-	player.Close();//*/
-
 	// Loading/Splash Screen
 	SplashScreen splash(width_G, height_G, screen_matrix_G);
 	GetMessage(&msg, NULL, 0, 0);
@@ -125,10 +114,26 @@ int main(int /*argc*/, char* /*argv*/[]) {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+		if (should_exit_G || msg.message == WM_QUIT) { break; }
 
-		if (should_exit_G || msg.message == WM_QUIT)
-		{
-			break;
+		// Audio
+		if (audio_G.shouldStop()) {  
+			mciSendString(L"stop soundtrack", NULL, 0, NULL);
+			mciSendString(L"close soundtrack", NULL, 0, NULL);
+			current_song_G = "";
+			audio_G.forceStop();
+		}
+		else if (audio_G.isPlaying()) {
+			if (current_song_G != audio_G.getFilePath())
+			{
+				current_song_G = audio_G.getFilePath();
+				std::wstring sTemp = std::wstring(current_song_G.begin(), current_song_G.end());
+				TCHAR * sTemp2 = (wchar_t *)sTemp.c_str();
+				if (audio_G.getFilePath() != "") {
+					mciSendString(sTemp2, NULL, 0, NULL);
+					mciSendString(L"play soundtrack repeat", NULL, 0, NULL);
+				}
+			}
 		}
 
 		// Update the game (loop)

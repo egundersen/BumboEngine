@@ -14,7 +14,7 @@
 class WorldBase : MatrixBase
 {
 public:
-	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &bitmap);
+	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &bitmap, AudioDefinition &audio);
 
 	// Setters
 	void onEnterWorld();
@@ -73,6 +73,7 @@ private:
 		enter_key_pressed_, should_roll_credits_,
 		DEBUG_mode_enabled_, DEBUG_has_initialized_, DEBUG_showing_collisions_;
 	BitmapDefinition &bitmap_;
+	AudioDefinition &audio_;
 	Matrix &screen_matrix_, world_matrix_, DEBUG_screen_matrix_;
 	std::vector<std::vector<std::pair<int, int>>> element_has_object_;
 	std::vector<Image> mountain_lines_;

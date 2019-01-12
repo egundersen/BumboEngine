@@ -6,7 +6,7 @@
 class Chr_ThotPatrol : public CharacterBase
 {
 public:
-	Chr_ThotPatrol(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap,
+	Chr_ThotPatrol(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,  Matrix &screen_matrix, BitmapDefinition &bitmap, AudioDefinition &audio,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -27,9 +27,10 @@ public:
 				40, // his smile/eyes (overlay) offset X position
 				20, // his smile/eyes (overlay) offset Y position
 				"THOT Patrol",
+				"Initial_D_-_Deja_Vu.mp3",
 				battle_sprite.getFace(),
 				battle_sprite.getOverlay()
-			), attack_on_sight, use_basic_dialog, bitmap, world_sprite)
+			), attack_on_sight, use_basic_dialog, bitmap, audio, world_sprite)
 	{
 		faceDirection(direction);
 

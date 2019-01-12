@@ -1,9 +1,9 @@
 #include "CharacterBase.h"
 
-CharacterBase::CharacterBase(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix& screen_matrix, int screen_width, int screen_height, int event_ID, PlayerDefinition &player, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &bitmap, WorldSpriteContainer world_sprite)
+CharacterBase::CharacterBase(int center_position_x, int center_position_y, PopupDefinition popup_sprite, int unique_object_ID, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix& screen_matrix, int screen_width, int screen_height, int event_ID, PlayerDefinition &player, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &bitmap, AudioDefinition &audio, WorldSpriteContainer world_sprite)
 	: PopupWithCollision(center_position_x, center_position_y + 1, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height), event_ID_{ event_ID }, use_basic_dialog_{ use_basic_dialog }, world_sprite_{ world_sprite },
 	sprite_{ 12, 10, screen_matrix, world_matrix }, has_begun_moving_{ false }, start_time_move_one_space_(0), start_time_move_(0), movement_direction_multiplier_(1), moving_direction_{ 'l' }, facing_direction_{ 'd' }, has_reached_destination_{ false }, attack_on_sight_{ attack_on_sight },
-	BattleBase(screen_width, screen_height, screen_matrix, player, boss_fight_definition, bitmap), DialogManager(screen_width - 10, 9, screen_width, screen_height, screen_matrix),
+	BattleBase(screen_width, screen_height, screen_matrix, player, boss_fight_definition, bitmap, audio), DialogManager(screen_width - 10, 9, screen_width, screen_height, screen_matrix),
 	screen_width_{ screen_width }, screen_height_{ screen_height }, screen_matrix_{ screen_matrix }, player_{ player }, movement_index_(0)
 {
 }

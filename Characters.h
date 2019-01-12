@@ -1,7 +1,7 @@
 #ifndef CHARACTERS_H
 #define CHARACTERS_H
 
-#include "Chr_AllMight.h"
+#include "Chr_MajorNPC.h"
 #include "Chr_BackgroundNPC.h"
 
 // Main Characters

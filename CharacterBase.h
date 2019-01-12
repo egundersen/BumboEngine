@@ -17,7 +17,7 @@ public:
 		Matrix &screen_matrix, int screen_width, int screen_height, int event_ID,
 
 		PlayerDefinition &player, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &bitmap,
-		WorldSpriteContainer world_sprite);
+		AudioDefinition &audio, WorldSpriteContainer world_sprite);
 	~CharacterBase();
 
 	// Initializes the character class (Must be called once)

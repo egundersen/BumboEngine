@@ -6,7 +6,7 @@
 class Chr_DoorGuardRyuuko : public CharacterBase
 {
 public:
-	Chr_DoorGuardRyuuko(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap,
+	Chr_DoorGuardRyuuko(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap, AudioDefinition &audio,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -27,9 +27,10 @@ public:
 				40, // his smile/eyes (overlay) offset X position
 				20, // his smile/eyes (overlay) offset Y position
 				"Door Guard",
+				"Pink_Floyd_-_Another_Brick_in_the_Wall.mp3",
 				battle_sprite.getFace(),
 				battle_sprite.getOverlay()
-			), attack_on_sight, use_basic_dialog, bitmap, world_sprite)
+			), attack_on_sight, use_basic_dialog, bitmap, audio, world_sprite)
 	{
 		faceDirection(direction);
 
