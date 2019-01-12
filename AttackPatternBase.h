@@ -13,11 +13,13 @@ public:
 
 	// Setters
 	virtual void OnBeginAttack();
-	virtual void refreshScreen() { throw "Tried to create attack using superclass alone"; };
+	void refreshBackend();
 
 	// Getters
 	bool areAttacksOver() { return has_completed_all_attacks_; }
 protected:
+	virtual void refreshScreen() { throw "Tried to create attack using superclass alone"; };
+
 	// Setters
 	virtual void createAttack() {};
 	void createBorder();
@@ -25,6 +27,7 @@ protected:
 	void evaluatePlayerInput();
 	void hurtPlayer();
 	void playPlayerHurtSound();
+	void playPlayerHurtAnimation();
 	void movePlayerToPosition(int x_position, int y_position, bool should_round_position = false);
 	void moveAttack();
 	void checkBorderCollision();
@@ -42,10 +45,12 @@ protected:
 	// Output Displays
 	virtual void displayScreen();
 private:
+
 	Matrix &screen_matrix_;
 	Attack_Border *border_;
 	double start_time_slow_player_;
-	int slow_player_;
+	int slow_player_, start_time_hurt_animation_, animation_counter_;
+	bool is_playing_animation_;
 };
 
 #endif // !ATTACKPATTERNBASE_H

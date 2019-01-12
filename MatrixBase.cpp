@@ -389,6 +389,7 @@ void MatrixBase::clearMatrix(int width, int height, Matrix & matrix)
 			matrix[i][j] = ' ';
 }
 
+#ifdef _DEBUG
 // Prints matrix to console
 void MatrixBase::DEBUG_printMatrix(Matrix & matrix)
 {
@@ -427,6 +428,7 @@ void MatrixBase::DEBUG_printImage(Image & image)
 		std::cout << "\n";
 	}
 }
+#endif
 
 // Generates a random number between two integers
 int MatrixBase::generateRandomNumber(int min, int max)

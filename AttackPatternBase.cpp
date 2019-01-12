@@ -1,7 +1,8 @@
 #include "AttackPatternBase.h"
 
 AttackPatternBase::AttackPatternBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks)
-	: width_{ width }, height_{ height }, attack_matrix_(width, height), player_{ player }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false }
+	: width_{ width }, height_{ height }, attack_matrix_(width, height), player_{ player }, attacks_to_create_{ number_of_attacks }, screen_matrix_{ screen_matrix }, border_was_destroyed_{ false },
+	is_playing_animation_{ false }, start_time_hurt_animation_(0), animation_counter_(0)
 {
 	border_ = new Attack_Border(width, height, player_position_, attack_matrix_, element_is_occupied_);
 	element_is_occupied_ = new bool*[height_];
@@ -30,6 +31,12 @@ void AttackPatternBase::OnBeginAttack()
 	start_time_new_attack_ = GetTickCount64();
 	start_time_slow_player_ = GetTickCount64();
 	has_completed_initialization_ = true;
+}
+
+// Refreshes the Screen as well as Animations
+void AttackPatternBase::refreshBackend()
+{
+	is_playing_animation_ ? playPlayerDeathAnimation() : refreshScreen();
 }
 
 // Runs when border should appear (Like on beginning of attack pattern)
@@ -99,6 +106,14 @@ void AttackPatternBase::hurtPlayer()
 	if (player_.hasShield()) { player_.useShield(); }
 	else { player_.subtractHealth(1); }
 
+	if (player_.getHealth() <= 0) // Animation ONLY
+	{
+		is_playing_animation_ = true;
+		animation_counter_ = 0;
+		start_time_hurt_animation_ = GetTickCount64();
+		playPlayerDeathAnimation();
+		player_.setHealth(1); // Allows animation to finish
+	}
 	playPlayerHurtSound();
 }
 
@@ -107,6 +122,29 @@ void AttackPatternBase::playPlayerHurtSound()
 {
 	Beep(600, 50);
 	Beep(600, 500);
+}
+
+// Plays player death animation
+void AttackPatternBase::playPlayerDeathAnimation()
+{
+	int current_time_hurt_animation = GetTickCount64() - start_time_hurt_animation_, speed = 2;
+	bool completed_right = false, completed_left = false, completed_up = false, completed_down = false;
+	if (current_time_hurt_animation > 10)
+	{
+		player_position_.x + animation_counter_ < width_ ? screen_matrix_[player_position_.y][player_position_.x + animation_counter_] = 'O' : completed_right = true;
+		player_position_.x - animation_counter_ >= 0 ? screen_matrix_[player_position_.y][player_position_.x - animation_counter_] = 'O' : completed_left = true;
+		player_position_.y - animation_counter_ >= 0 ? screen_matrix_[player_position_.y - animation_counter_][player_position_.x] = 'O' : completed_up = true;
+		player_position_.y + animation_counter_ < height_ ? screen_matrix_[player_position_.y + animation_counter_][player_position_.x] = 'O' : completed_down = true;
+		
+		if (player_position_.x + animation_counter_ - speed < width_) { screen_matrix_[player_position_.y][player_position_.x + animation_counter_ - speed] = ' '; }
+		if (player_position_.x - animation_counter_ + speed >= 0) { screen_matrix_[player_position_.y][player_position_.x - animation_counter_ + speed] = ' '; }
+		if (player_position_.y - animation_counter_ + speed >= 0) { screen_matrix_[player_position_.y - animation_counter_ + speed][player_position_.x] = ' '; }
+		if (player_position_.y + animation_counter_ - speed < height_) { screen_matrix_[player_position_.y + animation_counter_ - speed][player_position_.x] = ' '; }
+		
+		animation_counter_+=speed;
+		start_time_hurt_animation_ = GetTickCount64();
+	}
+	if (completed_right && completed_left && completed_up && completed_down) { is_playing_animation_ = false; player_.setHealth(0); }
 }
 
 // Sets the player's position coordinates
@@ -177,4 +215,5 @@ void AttackPatternBase::displayScreen()
 			screen_matrix_[i][j].setColor(attack_matrix_[i][j].getRGBA());
 		}
 	}
+	screen_matrix_[player_position_.y][player_position_.x].setColor(255, 255, 0);
 }

@@ -71,7 +71,7 @@ void BattleBase::refreshScreen()
 				local_vector_space_ = "MENU";
 			}
 			else if (attack_patterns_.size() != 0)
-				attack_patterns_.back()->refreshScreen();
+				attack_patterns_.back()->refreshBackend();
 		}
 	}
 }
