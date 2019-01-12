@@ -1,5 +1,6 @@
 // Exclude the min and max macros from Windows.h
 #define NOMINMAX
+#include "MP3Player.h"
 #include "stdafx.h"
 #include "WinMainParameters.h"
 #include "MatrixManager.h"
@@ -20,6 +21,7 @@ bool should_exit_G = false;
 int width_G = 79;
 int height_G = 35;
 BitmapDefinition bitmap_G("", 160, 0);
+AudioDefinition audio_G("");
 Matrix screen_matrix_G(width_G, height_G);
 
 // Forward declarations of functions included in this code module:
@@ -90,6 +92,19 @@ int main(int /*argc*/, char* /*argv*/[]) {
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
+	/*MP3Player player;
+
+	player.OpenFromFile(L"demo.mp3");
+
+	player.Play();
+
+	while (player.GetPosition() < 20) {
+		printf("Test music for 20s : %f elapsed\n", player.GetPosition());
+		Sleep(1000);
+	}
+
+	player.Close();//*/
+
 	// Loading/Splash Screen
 	SplashScreen splash(width_G, height_G, screen_matrix_G);
 	GetMessage(&msg, NULL, 0, 0);
@@ -97,7 +112,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 
 	// MAIN SOURCE PORT - Bumbo Engine -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, screen_matrix_G, 5, bitmap_G);
+	MatrixManager grid(width_G, height_G, screen_matrix_G, 5, bitmap_G, audio_G);
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
@@ -421,13 +436,13 @@ bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x, int posit
 		return false;
 	}
 
-	/*if (std::get<2>(image_file_path_G).getHex() < 255)
+	/*if (std::get<2>(bitmap_G).getHex() < 255)
 	{
 		// setting up the blend function
 		BLENDFUNCTION bStruct;
 		bStruct.BlendOp = AC_SRC_OVER;
 		bStruct.BlendFlags = 0;
-		bStruct.SourceConstantAlpha = std::get<2>(image_file_path_G).getHex();
+		bStruct.SourceConstantAlpha = std::get<2>(bitmap_G).getHex();
 		bStruct.AlphaFormat = 0;
 
 		// Blit a transparent version of the dc onto the window's dc

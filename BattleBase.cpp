@@ -1,9 +1,9 @@
 #include "BattleBase.h"
 
-BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_{ player }, boss_{ boss_fight_definition }, bitmap_{ image_file_path },
+BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &bitmap)
+	: width_{ width }, height_{ height }, menu_matrix_(width, height), player_{ player }, boss_{ boss_fight_definition }, bitmap_{ bitmap },
 	screen_matrix_{ screen_matrix }, local_vector_space_("MENU"), cursor_index_(1), is_battle_finished_{ false }, start_time_move_cursor_{ 0 }, start_time_battle_end_animation_{ 0 },
-	dialog_(width, height, screen_matrix, dialog_choices_, boss_fight_definition, image_file_path), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
+	dialog_(width, height, screen_matrix, dialog_choices_, boss_fight_definition, bitmap), is_destroyed_{ false }, should_restart_battle_{ false }, initial_boss_health_{ boss_fight_definition.health },
 	initial_player_health_{ player.getHealth() }, end_animation_index_(0), do_not_despawn_{ false }
 {
 	start_time_move_cursor_ = GetTickCount64();

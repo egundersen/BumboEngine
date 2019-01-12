@@ -1,7 +1,7 @@
 #include "BattleDialogBase.h"
 
-BattleDialogBase::BattleDialogBase(int width, int height, Matrix& screen_matrix, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path)
-	: width_{ width }, height_{ height }, dialog_matrix_(width, height), screen_matrix_{ screen_matrix }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), bitmap_{ image_file_path },
+BattleDialogBase::BattleDialogBase(int width, int height, Matrix& screen_matrix, std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, BossFightDefinition boss_fight_definition, BitmapDefinition &bitmap)
+	: width_{ width }, height_{ height }, dialog_matrix_(width, height), screen_matrix_{ screen_matrix }, dialog_choices_index_(0), should_exit_dialog_{ false }, start_time_exit_dialog_(0), bitmap_{ bitmap },
 	dialog_choices_{ dialog_choices }, start_time_move_cursor_(0), cursor_index_(0), max_choices_(0), boss_{ boss_fight_definition },
 	displaying_response_{ false }, enter_key_pressed_{ false }, return_to_menu_{ false }
 {

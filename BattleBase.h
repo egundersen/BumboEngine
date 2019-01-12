@@ -14,7 +14,7 @@
 class BattleBase : public MatrixBase
 {
 public:
-	explicit BattleBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path);
+	explicit BattleBase(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, BossFightDefinition boss_fight_definition, BitmapDefinition &bitmap);
 	virtual ~BattleBase() {}
 
 	// Setters

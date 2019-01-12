@@ -16,7 +16,7 @@ public:
 		Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,
 		Matrix &screen_matrix, int screen_width, int screen_height, int event_ID,
 
-		PlayerDefinition &player, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &image_file_path,
+		PlayerDefinition &player, BossFightDefinition boss_fight_definition, bool attack_on_sight, bool use_basic_dialog, BitmapDefinition &bitmap,
 		WorldSpriteContainer world_sprite);
 	~CharacterBase();
 

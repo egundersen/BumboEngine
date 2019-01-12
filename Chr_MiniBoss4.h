@@ -6,7 +6,7 @@
 class Chr_MiniBoss4 : public CharacterBase
 {
 public:
-	Chr_MiniBoss4(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_MiniBoss4(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -32,7 +32,7 @@ public:
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
 		int event_ID = 0) // 0 = no event
 
-		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player, boss_fight_definition, attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
+		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player, boss_fight_definition, attack_on_sight, use_basic_dialog, bitmap, world_sprite)
 	{
 		faceDirection(direction);
 

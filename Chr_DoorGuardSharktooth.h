@@ -6,7 +6,7 @@
 class Chr_DoorGuardSharktooth : public CharacterBase
 {
 public:
-	Chr_DoorGuardSharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &image_file_path,
+	Chr_DoorGuardSharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, BattleSprite battle_sprite, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -29,7 +29,7 @@ public:
 				"Door Guard",
 				battle_sprite.getFace(),
 				battle_sprite.getOverlay()
-			), attack_on_sight, use_basic_dialog, image_file_path, world_sprite)
+			), attack_on_sight, use_basic_dialog, bitmap, world_sprite)
 	{
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )

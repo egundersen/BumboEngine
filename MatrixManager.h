@@ -9,7 +9,7 @@
 class MatrixManager : public MatrixBase
 {
 public:
-	MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &image_file_path);
+	MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap, AudioDefinition &audio);
 
 	// Setters
 	void evaluatePlayerInput();
@@ -27,7 +27,8 @@ private:
 	Inventory inventory_;
 	Credits credits_;
 	WorldBase world_;
-	BitmapDefinition &image_file_path_;
+	BitmapDefinition &bitmap_;
+	AudioDefinition &audio_;
 };
 
 #endif // !MatrixManager_H

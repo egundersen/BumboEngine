@@ -1,7 +1,7 @@
 #include "Credits.h"
 
-Credits::Credits(int width, int height, BitmapDefinition &image_file_path, Matrix &screen_matrix)
-	: width_{ width }, height_{ height }, credits_matrix_(width, height), screen_matrix_{ screen_matrix }, image_file_path_{ image_file_path }
+Credits::Credits(int width, int height, BitmapDefinition &bitmap, Matrix &screen_matrix)
+	: width_{ width }, height_{ height }, credits_matrix_(width, height), screen_matrix_{ screen_matrix }, bitmap_{ bitmap }
 {
 }
 

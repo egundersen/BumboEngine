@@ -1,6 +1,7 @@
 #include "MatrixBase.h"
 #include "BossFightDefinition.h"
 #include "BitmapDefinition.h"
+#include "AudioDefinition.h"
 #include <tuple>
 
 #ifndef BATTLEDIALOGBASE_H
@@ -10,7 +11,7 @@ class BattleDialogBase : public MatrixBase {
 public:
 	BattleDialogBase(int width, int height, Matrix &screen_matrix, 
 		std::vector<std::vector<std::tuple<std::string, std::string, bool>>> &dialog_choices, 
-		BossFightDefinition boss_fight_definition, BitmapDefinition &image_file_path);
+		BossFightDefinition boss_fight_definition, BitmapDefinition &bitmap);
 
 	// Setters
 	void onOpenDialog();

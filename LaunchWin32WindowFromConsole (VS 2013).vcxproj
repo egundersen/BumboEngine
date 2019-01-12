@@ -233,6 +233,7 @@
     <ClInclude Include="Attack_Snake.h" />
     <ClInclude Include="Attack_VerticleGap.h" />
     <ClInclude Include="Attack_Wall.h" />
+    <ClInclude Include="AudioDefinition.h" />
     <ClInclude Include="BattleBase.h" />
     <ClInclude Include="BattleSprite.h" />
     <ClInclude Include="BossFightDefinition.h" />
@@ -296,6 +297,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="MatrixBase.h" />
     <ClInclude Include="MatrixManager.h" />
+    <ClInclude Include="MP3Player.h" />
     <ClInclude Include="NPCSprite.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PlayerDefinition.h" />
