@@ -191,6 +191,7 @@
     <ClCompile Include="Event_RemoveObject.cpp" />
     <ClCompile Include="Event_RollCredits.cpp" />
     <ClCompile Include="Event_SetupEnding.cpp" />
+    <ClCompile Include="Event_StopAudio.cpp" />
     <ClCompile Include="Event_TeleportNPC.cpp" />
     <ClCompile Include="Event_TeleportPlayer.cpp" />
     <ClCompile Include="Event_Test.cpp" />
@@ -208,6 +209,7 @@
     <ClCompile Include="PlayerSprite.cpp" />
     <ClCompile Include="Popup.cpp" />
     <ClCompile Include="RGBA.cpp" />
+    <ClCompile Include="SoundtrackManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="PopupWithCollision.cpp" />
     <ClCompile Include="StartScreen.cpp" />
@@ -284,6 +286,7 @@
     <ClInclude Include="Event_RemoveObject.h" />
     <ClInclude Include="Event_RollCredits.h" />
     <ClInclude Include="Event_SetupEnding.h" />
+    <ClInclude Include="Event_StopAudio.h" />
     <ClInclude Include="Event_TeleportNPC.h" />
     <ClInclude Include="Event_TeleportPlayer.h" />
     <ClInclude Include="Event_Test.h" />
@@ -297,7 +300,6 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="MatrixBase.h" />
     <ClInclude Include="MatrixManager.h" />
-    <ClInclude Include="MP3Player.h" />
     <ClInclude Include="NPCSprite.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PlayerDefinition.h" />
@@ -305,6 +307,7 @@
     <ClInclude Include="Popup.h" />
     <ClInclude Include="RGBA.h" />
     <ClInclude Include="ScreenPosition.h" />
+    <ClInclude Include="SoundtrackManager.h" />
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="resource.h" />

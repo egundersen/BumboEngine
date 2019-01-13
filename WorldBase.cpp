@@ -904,7 +904,7 @@ void WorldBase::GENERATE_AdditionalObjects()
 void WorldBase::GENERATE_Events()
 {
 	/* Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, screen_matrix_, characters_, nullptr);
-	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10027
+	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10029
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
 	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1070, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
@@ -924,6 +924,8 @@ void WorldBase::GENERATE_Events()
 	Event_MoveNPC *mov_mini_boss_1 = new Event_MoveNPC(10023, 198, 165, 10, 10, 1007, 'x', 20, 'd', 20, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_, 198, 165);
 	Event_MoveNPC *mov_mini_boss_2 = new Event_MoveNPC(10024, 198, 165, 10, 10, 54, 'y', 30, 'd', 21, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_TeleportNPC *teleport_doorguard_sharktooth = new Event_TeleportNPC(10026, 198, 165, 10, 10, 198, 165, 38, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_StopAudio *stopTutorialFall = new Event_StopAudio(10027, 886, 224, 6, 6, "falling", 0, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_StopAudio *stopThrowFall = new Event_StopAudio(10028, 497, 199, 6, 6, "falling", 0, true, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 
 	// Inside Cave
@@ -964,6 +966,8 @@ void WorldBase::GENERATE_Events()
 	events_.push_back(mov_mini_boss_2);
 	events_.push_back(move_bad_ending_guy);
 	events_.push_back(teleport_doorguard_sharktooth);
+	events_.push_back(stopTutorialFall);
+	events_.push_back(stopThrowFall);
 
 	// Set all event colliders / tiggers
 	for (auto event : events_)

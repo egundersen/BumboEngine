@@ -1,10 +1,10 @@
 #include "MatrixManager.h"
 
-MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap, AudioDefinition &audio)
+MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap)
 	: width_{ width }, height_{ height }, inventory_(width, height, screen_matrix, player_), player_{ player_health, 9 }, bitmap_{ bitmap },
 	screen_matrix_{ screen_matrix }, current_vector_space_("START SCREEN"), has_initialized_inventory_(false), has_initialized_battle_(false),
-	world_(width, height, 1200, 273, 730, 232, player_, screen_matrix, inventory_, bitmap, audio), credits_(width_, height_, bitmap, screen_matrix_),
-	audio_(audio)
+	world_(width, height, 1200, 273, 730, 232, player_, screen_matrix, inventory_, bitmap, audio_), credits_(width_, height_, bitmap, screen_matrix_),
+	soundtrack_manager_{ audio_ }
 {
 	// Starting Items (Not pickups! Just starting items)
 	inventory_.addItem("Mug o' Grog", 1, "Looks like it could burn a hole through anything it touches. Bottoms up?");
@@ -77,6 +77,8 @@ void MatrixManager::evaluatePlayerInput()
 		}
 		credits_.refreshScreen();
 	}
+
+	soundtrack_manager_.refreshAudio();
 }
 
 // Changes from MAP to INVENTORY to BATTLE scenes
@@ -89,15 +91,20 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 	}
 	else if (vector_space_name == "MAP")
 	{
+		audio_.setFilePath("open \"resources\\audio\\soundtrack\\Neil_Diamond_-_Solitary_Man.mp3\" type mpegvideo alias soundtrack");
+		audio_.setVolume(30);
+		audio_.play();
 		world_.onEnterWorld();
 		current_vector_space_ = "MAP";
 	}
 	else if (vector_space_name == "BATTLE")
 	{
+		audio_.stop();
 		current_vector_space_ = "BATTLE";
 	}
 	else if (vector_space_name == "CREDITS")
 	{
+		audio_.stop();
 		credits_.setBackgroundText();
 		current_vector_space_ = "CREDITS";
 	}

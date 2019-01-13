@@ -116,6 +116,8 @@ void Event_ThrowOffCliff::speak2()
 	case 8:
 		go_down_iterator_ = 0;
 		fall_speed_ = 125;
+		mciSendString(L"open \"resources\\audio\\effects\\falling.mp3\" type mpegvideo alias falling", NULL, 0, NULL);
+		mciSendString(L"play falling", NULL, 0, NULL);
 		progressEvent(19);
 		break;
 	}

@@ -1,8 +1,6 @@
 // Exclude the min and max macros from Windows.h
 #define NOMINMAX
-#include "MP3Player.h"
 #include "stdafx.h"
-#pragma comment(lib, "Winmm.lib")
 #include "WinMainParameters.h"
 #include "MatrixManager.h"
 #include "SplashScreen.h"
@@ -21,9 +19,7 @@ TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 bool should_exit_G = false;
 int width_G = 79;
 int height_G = 35;
-std::string current_song_G = "";
 BitmapDefinition bitmap_G("", 160, 0);
-AudioDefinition audio_G("");
 Matrix screen_matrix_G(width_G, height_G);
 
 // Forward declarations of functions included in this code module:
@@ -101,7 +97,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 
 	// MAIN SOURCE PORT - Bumbo Engine -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, screen_matrix_G, 5, bitmap_G, audio_G);
+	MatrixManager grid(width_G, height_G, screen_matrix_G, 5, bitmap_G);
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
@@ -115,26 +111,6 @@ int main(int /*argc*/, char* /*argv*/[]) {
 			DispatchMessage(&msg);
 		}
 		if (should_exit_G || msg.message == WM_QUIT) { break; }
-
-		// Audio
-		if (audio_G.shouldStop()) {  
-			mciSendString(L"stop soundtrack", NULL, 0, NULL);
-			mciSendString(L"close soundtrack", NULL, 0, NULL);
-			current_song_G = "";
-			audio_G.forceStop();
-		}
-		else if (audio_G.isPlaying()) {
-			if (current_song_G != audio_G.getFilePath())
-			{
-				current_song_G = audio_G.getFilePath();
-				std::wstring sTemp = std::wstring(current_song_G.begin(), current_song_G.end());
-				TCHAR * sTemp2 = (wchar_t *)sTemp.c_str();
-				if (audio_G.getFilePath() != "") {
-					mciSendString(sTemp2, NULL, 0, NULL);
-					mciSendString(L"play soundtrack repeat", NULL, 0, NULL);
-				}
-			}
-		}
 
 		// Update the game (loop)
 		grid.evaluatePlayerInput();

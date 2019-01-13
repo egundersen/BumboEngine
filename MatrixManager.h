@@ -4,12 +4,13 @@
 #include "WorldBase.h"
 #include "Inventory.h"
 #include "StartScreen.h"
+#include "SoundtrackManager.h"
 #include "Credits.h"
 
 class MatrixManager : public MatrixBase
 {
 public:
-	MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap, AudioDefinition &audio);
+	MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap);
 
 	// Setters
 	void evaluatePlayerInput();
@@ -28,7 +29,8 @@ private:
 	Credits credits_;
 	WorldBase world_;
 	BitmapDefinition &bitmap_;
-	AudioDefinition &audio_;
+	AudioDefinition audio_;
+	SoundtrackManager soundtrack_manager_;
 };
 
 #endif // !MatrixManager_H

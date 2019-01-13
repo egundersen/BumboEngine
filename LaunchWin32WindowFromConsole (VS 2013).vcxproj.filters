@@ -246,6 +246,12 @@
     <ClCompile Include="Event_TeleportNPC.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Event_StopAudio.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundtrackManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -551,14 +557,17 @@
     <ClInclude Include="Event_TeleportNPC.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="MP3Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AudioDefinition.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Chr_MajorNPC.h">
       <Filter>Header Files\Characters\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="Event_StopAudio.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundtrackManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
