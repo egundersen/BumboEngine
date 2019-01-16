@@ -1,4 +1,3 @@
-#include "MatrixBase.h"
 #include "AttackBase.h"
 
 #ifndef ATTACK_BORDER_H

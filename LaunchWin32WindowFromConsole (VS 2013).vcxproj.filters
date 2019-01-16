@@ -87,9 +87,6 @@
     <ClCompile Include="StartScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Attack_HorizontalLine.cpp">
-      <Filter>Source Files\Battle\Attacks</Filter>
-    </ClCompile>
     <ClCompile Include="WorldBase.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
@@ -252,6 +249,18 @@
     <ClCompile Include="SoundtrackManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Attack_HorizontalLineArrow.cpp">
+      <Filter>Source Files\Battle\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_Clock.cpp">
+      <Filter>Source Files\Battle\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_Line.cpp">
+      <Filter>Source Files\Battle\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_SafeBox.cpp">
+      <Filter>Source Files\Battle\Attacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -268,9 +277,6 @@
     </ClInclude>
     <ClInclude Include="StartScreen.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Attack_HorizontalLine.h">
-      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="Characters.h">
       <Filter>Header Files\Characters</Filter>
@@ -568,6 +574,18 @@
     </ClInclude>
     <ClInclude Include="SoundtrackManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_HorizontalLineArrow.h">
+      <Filter>Header Files\Battle\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_SafeBox.h">
+      <Filter>Header Files\Battle\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_Line.h">
+      <Filter>Header Files\Battle\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_Clock.h">
+      <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

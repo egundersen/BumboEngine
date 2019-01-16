@@ -1,6 +1,6 @@
-#include "Attack_HorizontalLine.h"
+#include "Attack_HorizontalLineArrow.h"
 
-Attack_HorizontalLine::Attack_HorizontalLine(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int trail_length, int height_y, int speed)
+Attack_HorizontalLineArrow::Attack_HorizontalLineArrow(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int min_position_x, int max_position_x, int trail_length, int height_y, int speed)
 	: AttackBase(width, height, player_position, attack_matrix, element_is_occupied),
 	min_position_x_{ min_position_x }, max_position_x_{ max_position_x }, trail_length_{ trail_length }, height_y_{ height_y }, speed_{ speed }
 {
@@ -15,14 +15,14 @@ Attack_HorizontalLine::Attack_HorizontalLine(int width, int height, PlayerPositi
 #endif
 }
 
-Attack_HorizontalLine::~Attack_HorizontalLine()
+Attack_HorizontalLineArrow::~Attack_HorizontalLineArrow()
 {
 	for (int i = 0; i < width_; ++i)
 		element_is_occupied_[height_y_][i] = false;
 }
 
 // checks if player has collided with attack
-void Attack_HorizontalLine::detectCollision()
+void Attack_HorizontalLineArrow::detectCollision()
 {
 	for (int i = 0; i < width_; ++i)
 		if (element_is_occupied_[height_y_][i] == true)
@@ -31,7 +31,7 @@ void Attack_HorizontalLine::detectCollision()
 }
 
 // Moves attack 1-frame ( -----> Move left to right)
-void HorizontalLine_Right::move()
+void HorizontalLineArrow_Right::move()
 {
 	if (min_position_x_ * speed_ - trail_length_ >= max_position_x_)
 	{
@@ -70,7 +70,7 @@ void HorizontalLine_Right::move()
 }
 
 // Moves attack 1-frame ( <----- Move right to left)
-void HorizontalLine_Left::move()
+void HorizontalLineArrow_Left::move()
 {
 	if (max_position_x_ * speed_ + trail_length_ <= 0)
 	{

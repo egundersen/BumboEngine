@@ -1,0 +1,22 @@
+#include "AttackBase.h"
+
+#ifndef ATTACK_SAFEBOX_H
+#define ATTACK_SAFEBOX_H
+
+class Attack_SafeBox : public AttackBase, MatrixBase
+{
+public:
+	explicit Attack_SafeBox(int width, int height, PlayerPosition &player_position, Matrix &attack_matrix, bool **&element_is_occupied, int center_position_x, int center_position_y, int diameter, int delay, int duration_of_explosion);
+	~Attack_SafeBox();
+
+	// Setters
+	void move();
+
+private:
+	// Setters
+	void detectCollision();
+
+	int center_position_x_, center_position_y_, start_time_update_attack_, diameter_, delay_, duration_of_explosion_;
+};
+
+#endif // !ATTACK_SAFEBOX_H

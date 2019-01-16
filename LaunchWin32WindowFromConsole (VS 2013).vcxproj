@@ -167,8 +167,11 @@
     <ClCompile Include="AttackPattern_VerticleGap.cpp" />
     <ClCompile Include="AttackPattern_Wall.cpp" />
     <ClCompile Include="Attack_Border.cpp" />
+    <ClCompile Include="Attack_Clock.cpp" />
     <ClCompile Include="Attack_Explode.cpp" />
-    <ClCompile Include="Attack_HorizontalLine.cpp" />
+    <ClCompile Include="Attack_HorizontalLineArrow.cpp" />
+    <ClCompile Include="Attack_Line.cpp" />
+    <ClCompile Include="Attack_SafeBox.cpp" />
     <ClCompile Include="Attack_Snake.cpp" />
     <ClCompile Include="Attack_VerticleGap.cpp" />
     <ClCompile Include="Attack_Wall.cpp" />
@@ -230,8 +233,11 @@
     <ClInclude Include="AttackPattern_Wall.h" />
     <ClInclude Include="Attacks.h" />
     <ClInclude Include="Attack_Border.h" />
+    <ClInclude Include="Attack_Clock.h" />
     <ClInclude Include="Attack_Explode.h" />
-    <ClInclude Include="Attack_HorizontalLine.h" />
+    <ClInclude Include="Attack_HorizontalLineArrow.h" />
+    <ClInclude Include="Attack_Line.h" />
+    <ClInclude Include="Attack_SafeBox.h" />
     <ClInclude Include="Attack_Snake.h" />
     <ClInclude Include="Attack_VerticleGap.h" />
     <ClInclude Include="Attack_Wall.h" />
