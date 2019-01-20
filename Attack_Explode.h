@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_EXPLODE_H
 #define ATTACK_EXPLODE_H
+
+#include "AttackBase.h"
 
 class Attack_Explode : public AttackBase, MatrixBase
 {

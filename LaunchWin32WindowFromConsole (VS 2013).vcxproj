@@ -158,6 +158,8 @@
     <ClCompile Include="AttackBase.cpp" />
     <ClCompile Include="AttackPatternBase.cpp" />
     <ClCompile Include="AttackPattern_Explode.cpp" />
+    <ClCompile Include="AttackPattern_HailStorm.cpp" />
+    <ClCompile Include="AttackPattern_SafeSquares.cpp" />
     <ClCompile Include="AttackPattern_ShootandExplode.cpp" />
     <ClCompile Include="AttackPattern_ShootandSnake.cpp" />
     <ClCompile Include="AttackPattern_ShootAtPlayer.cpp" />
@@ -170,7 +172,7 @@
     <ClCompile Include="Attack_Clock.cpp" />
     <ClCompile Include="Attack_Explode.cpp" />
     <ClCompile Include="Attack_HorizontalLineArrow.cpp" />
-    <ClCompile Include="Attack_Line.cpp" />
+    <ClCompile Include="Attack_Dot.cpp" />
     <ClCompile Include="Attack_SafeBox.cpp" />
     <ClCompile Include="Attack_Snake.cpp" />
     <ClCompile Include="Attack_VerticleGap.cpp" />
@@ -223,6 +225,8 @@
     <ClInclude Include="AttackPatternBase.h" />
     <ClInclude Include="AttackPatterns.h" />
     <ClInclude Include="AttackPattern_Explode.h" />
+    <ClInclude Include="AttackPattern_HailStorm.h" />
+    <ClInclude Include="AttackPattern_SafeSquares.h" />
     <ClInclude Include="AttackPattern_ShootandExplode.h" />
     <ClInclude Include="AttackPattern_ShootandSnake.h" />
     <ClInclude Include="AttackPattern_ShootAtPlayer.h" />
@@ -236,7 +240,7 @@
     <ClInclude Include="Attack_Clock.h" />
     <ClInclude Include="Attack_Explode.h" />
     <ClInclude Include="Attack_HorizontalLineArrow.h" />
-    <ClInclude Include="Attack_Line.h" />
+    <ClInclude Include="Attack_Dot.h" />
     <ClInclude Include="Attack_SafeBox.h" />
     <ClInclude Include="Attack_Snake.h" />
     <ClInclude Include="Attack_VerticleGap.h" />

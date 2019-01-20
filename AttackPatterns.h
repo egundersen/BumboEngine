@@ -8,3 +8,5 @@
 #include "AttackPattern_ShootandExplode.h"
 #include "AttackPattern_SnakeandExplode.h"
 #include "AttackPattern_ShootandSnake.h"
+#include "AttackPattern_SafeSquares.h"
+#include "AttackPattern_HailStorm.h"

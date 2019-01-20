@@ -1,10 +1,10 @@
+#ifndef BATTLEDIALOGBASE_H
+#define BATTLEDIALOGBASE_H
+
 #include "MatrixBase.h"
 #include "BossFightDefinition.h"
 #include "BitmapDefinition.h"
 #include <tuple>
-
-#ifndef BATTLEDIALOGBASE_H
-#define BATTLEDIALOGBASE_H
 
 class BattleDialogBase : public MatrixBase {
 public:

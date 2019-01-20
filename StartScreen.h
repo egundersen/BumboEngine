@@ -1,7 +1,7 @@
-#include "MatrixBase.h"
-
 #ifndef STARTSCREEN_H
 #define STARTSCREEN_H
+
+#include "MatrixBase.h"
 
 class StartScreen : public MatrixBase
 {

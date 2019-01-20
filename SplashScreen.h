@@ -1,8 +1,8 @@
-#include "MatrixBase.h"
-#include "Matrix.h"
-
 #ifndef SPLASHSCREEN_H
 #define SPLASHSCREEN_H
+
+#include "MatrixBase.h"
+#include "Matrix.h"
 
 class SplashScreen: MatrixBase
 {

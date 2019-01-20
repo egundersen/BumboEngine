@@ -1,9 +1,7 @@
-#include "MatrixBase.h"
-#include "AttackPatternBase.h"
-#include "Attacks.h"
-
 #ifndef ATTACKPATTERN_SHOOTANDSNAKE_H
 #define ATTACKPATTERN_SHOOTANDSNAKE_H
+
+#include "AttackPatternBase.h"
 
 class AttackPattern_ShootandSnake : public AttackPatternBase
 {

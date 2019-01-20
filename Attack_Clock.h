@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_CLOCK_H
 #define ATTACK_CLOCK_H
+
+#include "AttackBase.h"
 
 class Attack_Clock : public AttackBase, MatrixBase
 {

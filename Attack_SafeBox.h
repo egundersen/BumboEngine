@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_SAFEBOX_H
 #define ATTACK_SAFEBOX_H
+
+#include "AttackBase.h"
 
 class Attack_SafeBox : public AttackBase, MatrixBase
 {
@@ -15,7 +15,12 @@ public:
 private:
 	// Setters
 	void detectCollision();
+	void screenWarning();
+	void screenKill();
+	void safeZone();
+	void erasePlayerPosition();
 
+	bool complete_1_, complete_2_;
 	int center_position_x_, center_position_y_, start_time_update_attack_, diameter_, delay_, duration_of_explosion_;
 };
 

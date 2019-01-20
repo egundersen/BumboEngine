@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_VERTICLEGAP_H
 #define ATTACK_VERTICLEGAP_H
+
+#include "AttackBase.h"
 
 class Attack_VerticleGap : public AttackBase, MatrixBase
 {

@@ -1,9 +1,7 @@
-#include "MatrixBase.h"
-#include "AttackPatternBase.h"
-#include "Attacks.h"
-
 #ifndef ATTACKPATTERN_VERTICLEGAP_H
 #define ATTACKPATTERN_VERTICLEGAP_H
+
+#include "AttackPatternBase.h"
 
 class AttackPattern_VerticleGap : public AttackPatternBase
 {

@@ -1,7 +1,7 @@
-#include <string>
-
 #ifndef BATTLESPRITE_H
 #define BATTLESPRITE_H
+
+#include <string>
 
 class BattleSprite
 {

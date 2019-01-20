@@ -1,16 +1,16 @@
+#ifndef BATTLEBASE_H
+#define BATTLEBASE_H
+
 #include "MatrixBase.h"
 #include "Image.h"
 #include "RGBA.h"
 #include "PlayerDefinition.h"
-#include "AttackPatterns.h"
 #include "AttackPatternBase.h"
+#include "AttackPatterns.h"
 #include "BattleDialogBase.h"
 #include "BossFightDefinition.h"
 #include "AudioDefinition.h"
 #include <tuple>
-
-#ifndef BATTLEBASE_H
-#define BATTLEBASE_H
 
 class BattleBase : public MatrixBase
 {

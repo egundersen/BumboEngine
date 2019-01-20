@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_BORDER_H
 #define ATTACK_BORDER_H
+
+#include "AttackBase.h"
 
 class Attack_Border : public AttackBase, MatrixBase
 {

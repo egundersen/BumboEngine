@@ -1,7 +1,7 @@
-#include "MatrixBase.h"
-
 #ifndef ATTACKBASE_H
 #define ATTACKBASE_H
+
+#include "MatrixBase.h"
 
 class AttackBase
 {

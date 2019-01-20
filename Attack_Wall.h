@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_WALL_H
 #define ATTACK_WALL_H
+
+#include "AttackBase.h"
 
 class Attack_Wall : public AttackBase
 {

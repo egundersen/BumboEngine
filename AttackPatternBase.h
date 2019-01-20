@@ -1,9 +1,9 @@
+#ifndef ATTACKPATTERNBASE_H
+#define ATTACKPATTERNBASE_H
+
 #include "MatrixBase.h"
 #include "PlayerDefinition.h"
 #include "Attacks.h"
-
-#ifndef ATTACKPATTERNBASE_H
-#define ATTACKPATTERNBASE_H
 
 class AttackPatternBase : public MatrixBase
 {
@@ -35,7 +35,8 @@ protected:
 
 	int width_, height_, attacks_to_create_, created_attacks_;
 	double start_time_new_attack_;
-	bool has_completed_initialization_, has_completed_all_attacks_, **element_is_occupied_, border_was_destroyed_;
+	bool has_completed_initialization_, has_completed_all_attacks_, 
+		**element_is_occupied_, border_was_destroyed_;
 	PlayerPosition player_position_;
 	Matrix attack_matrix_;
 	PlayerDefinition &player_;

@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_HORIZONTALLINEARROW_H
 #define ATTACK_HORIZONTALLINEARROW_H
+
+#include "AttackBase.h"
 
 class Attack_HorizontalLineArrow : public AttackBase
 {

@@ -1,9 +1,7 @@
-#include "MatrixBase.h"
-#include "AttackPatternBase.h"
-#include "Attacks.h"
-
 #ifndef ATTACKPATTERN_SHOOTATPLAYER_H
 #define ATTACKPATTERN_SHOOTATPLAYER_H
+
+#include "AttackPatternBase.h"
 
 class AttackPattern_ShootAtPlayer : public AttackPatternBase
 {

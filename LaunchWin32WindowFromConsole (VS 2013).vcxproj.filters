@@ -255,11 +255,17 @@
     <ClCompile Include="Attack_Clock.cpp">
       <Filter>Source Files\Battle\Attacks</Filter>
     </ClCompile>
-    <ClCompile Include="Attack_Line.cpp">
-      <Filter>Source Files\Battle\Attacks</Filter>
-    </ClCompile>
     <ClCompile Include="Attack_SafeBox.cpp">
       <Filter>Source Files\Battle\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_SafeSquares.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_Dot.cpp">
+      <Filter>Source Files\Battle\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_HailStorm.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -581,11 +587,17 @@
     <ClInclude Include="Attack_SafeBox.h">
       <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
-    <ClInclude Include="Attack_Line.h">
-      <Filter>Header Files\Battle\Attacks</Filter>
-    </ClInclude>
     <ClInclude Include="Attack_Clock.h">
       <Filter>Header Files\Battle\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_SafeSquares.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_Dot.h">
+      <Filter>Header Files\Battle\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_HailStorm.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

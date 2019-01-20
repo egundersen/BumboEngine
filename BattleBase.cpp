@@ -128,7 +128,7 @@ void BattleBase::setBackgroundText()
 			menu_matrix_[4][9 + boss_.health] = ']';
 		}
 		else {
-			addImageToMatrix(8 + 5, 3, bossHealthText, menu_matrix_);
+			addImageToMatrix(8 + 9, 3, bossHealthText, menu_matrix_);
 			menu_matrix_[4][7 + 4] = '[';
 			menu_matrix_[4][9 + 4 + boss_.health] = ']';
 		}

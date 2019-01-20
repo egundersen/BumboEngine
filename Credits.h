@@ -1,8 +1,8 @@
-#include "MatrixBase.h"
-#include "BitmapDefinition.h"
-
 #ifndef CREDITS_H
 #define CREDITS_H
+
+#include "MatrixBase.h"
+#include "BitmapDefinition.h"
 
 class Credits : public MatrixBase
 {

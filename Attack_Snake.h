@@ -1,7 +1,7 @@
-#include "AttackBase.h"
-
 #ifndef ATTACK_SNAKE_H
 #define ATTACK_SNAKE_H
+
+#include "AttackBase.h"
 
 class Attack_Snake : public AttackBase, MatrixBase
 {

@@ -1,10 +1,9 @@
-#include "MatrixBase.h"
-#include "PlayerDefinition.h"
-#include "Image.h"
-#include "Item.h"
-
 #ifndef INVENTORY_H
 #define INVENTORY_H
+
+#include "MatrixBase.h"
+#include "PlayerDefinition.h"
+#include "Item.h"
 
 class Inventory : public MatrixBase
 {

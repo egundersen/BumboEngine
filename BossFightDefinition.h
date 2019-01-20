@@ -1,7 +1,7 @@
-#include <string>
-
 #ifndef BOSSFIGHTDEFINITION_H
 #define BOSSFIGHTDEFINITION_H
+
+#include <string>
 
 // Text and dimensions for boss battle scene sprite : Neutral, Angry, Happy, Defeated
 struct BossFightDefinition
