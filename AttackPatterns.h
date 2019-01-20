@@ -10,3 +10,4 @@
 #include "AttackPattern_ShootandSnake.h"
 #include "AttackPattern_SafeSquares.h"
 #include "AttackPattern_HailStorm.h"
+#include "AttackPattern_CoordinatedStorm.h"

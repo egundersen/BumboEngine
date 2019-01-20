@@ -34,7 +34,7 @@ protected:
 	void attacksCheckCollision();
 
 	int width_, height_, attacks_to_create_, created_attacks_;
-	double start_time_new_attack_;
+	double start_time_new_attack_, start_time_move_attack_;
 	bool has_completed_initialization_, has_completed_all_attacks_, 
 		**element_is_occupied_, border_was_destroyed_;
 	PlayerPosition player_position_;

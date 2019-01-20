@@ -267,6 +267,9 @@
     <ClCompile Include="AttackPattern_HailStorm.cpp">
       <Filter>Source Files\Battle\Attack Patterns</Filter>
     </ClCompile>
+    <ClCompile Include="AttackPattern_CoordinatedStorm.cpp">
+      <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -597,6 +600,9 @@
       <Filter>Header Files\Battle\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="AttackPattern_HailStorm.h">
+      <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_CoordinatedStorm.h">
       <Filter>Header Files\Battle\Attack Patterns</Filter>
     </ClInclude>
   </ItemGroup>

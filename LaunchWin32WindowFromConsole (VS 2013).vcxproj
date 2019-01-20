@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="AttackBase.cpp" />
     <ClCompile Include="AttackPatternBase.cpp" />
+    <ClCompile Include="AttackPattern_CoordinatedStorm.cpp" />
     <ClCompile Include="AttackPattern_Explode.cpp" />
     <ClCompile Include="AttackPattern_HailStorm.cpp" />
     <ClCompile Include="AttackPattern_SafeSquares.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="AttackBase.h" />
     <ClInclude Include="AttackPatternBase.h" />
     <ClInclude Include="AttackPatterns.h" />
+    <ClInclude Include="AttackPattern_CoordinatedStorm.h" />
     <ClInclude Include="AttackPattern_Explode.h" />
     <ClInclude Include="AttackPattern_HailStorm.h" />
     <ClInclude Include="AttackPattern_SafeSquares.h" />

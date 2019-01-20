@@ -34,7 +34,7 @@ protected:
 
 	int generateRandomNumber(int min, int max);
 	void generateRandomSequence(std::vector<std::shared_ptr<int>> &random_sequence, int min, int max);
-	void generateInOrderSequence(std::vector <std::shared_ptr<int>> &in_order_sequence, int min, int max);
+	void generateInOrderSequence(std::vector <std::shared_ptr<int>> &in_order_sequence, int min, int max, int increment, int amount_required_to_create = 0);
 
 	template<typename Container, typename T>
 	inline bool contains(Container const & container, T const & value);

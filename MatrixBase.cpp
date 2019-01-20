@@ -542,13 +542,15 @@ void MatrixBase::generateRandomSequence(std::vector<std::shared_ptr<int>> & rand
 }
 
 // Generates in-order sequence.
-void MatrixBase::generateInOrderSequence(std::vector<std::shared_ptr<int>> &in_order_sequence, int min, int max)
+void MatrixBase::generateInOrderSequence(std::vector<std::shared_ptr<int>> &in_order_sequence, int min, int max, int increment, int amount_required_to_create)
 {
-	for (int i = min; i < max; i++)
-	{
-		std::shared_ptr<int> number = std::make_shared<int>();
-		*number = i;
-		in_order_sequence.push_back(number);
+	while (in_order_sequence.size() < amount_required_to_create) {
+		for (int i = min; i < max; i += increment)
+		{
+			std::shared_ptr<int> number = std::make_shared<int>();
+			*number = i;
+			in_order_sequence.push_back(number);
+		}
 	}
 }
 

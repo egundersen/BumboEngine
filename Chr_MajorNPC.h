@@ -73,7 +73,8 @@ public:
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new HailStorm(screen_width, screen_height, screen_matrix, player, 800, 'r', 0, 'd');
+		//attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 50, 100, 'l', 1, 'd', true, true, 200);
+		attack_pattern_1 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 400, 50, 100, 'l', 1, 'd', false, false, 1000);
 		attack_patterns_.push_back(attack_pattern_1);
 	}
 
