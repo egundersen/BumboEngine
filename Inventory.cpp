@@ -103,7 +103,8 @@ void Inventory::setCursorText()
 // Sets the player health text
 void Inventory::setPlayerHealthText(int x_position, int y_position)
 {
-	addTextToMatrix(x_position, y_position, 'l', "{player}'s Lives:", 'M', inventory_matrix_, 1);
+
+	addTextToMatrix(x_position, y_position, 'l', player_.getPlayerName() + "'s Lives:", 'M', inventory_matrix_, 1);
 	inventory_matrix_[y_position + 2][x_position + 6] = player_.getHealthText();
 	inventory_matrix_[y_position + 2][x_position + 6].setColor(ColorPalette('A').getRGBA());
 }

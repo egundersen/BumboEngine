@@ -91,7 +91,7 @@ public:
 		*/
 
 		// CREATE DIALOG NODES
-		DialogNode *node_1 = new DialogNode("", "Hey {player}, any progress in finding the package?");
+		DialogNode *node_1 = new DialogNode("", "Hey " + player_.getPlayerName() + ", any progress in finding the package?");
 		DialogNode *node_1_1 = new DialogNode("No", "Really? *sigh*... I could of sworn Ryuuko would of had it.");
 		DialogNode *node_1_1_1 = new DialogNode("Him? Impossible.", "Not that he would try and steal something, he's just such an idiot that there's a possibility..."); // 1=
 		DialogNode *node_1_1_2 = new DialogNode("I checked already", "And how hard was that? I swear they never should have let him past the checkpoint..."); // =1

@@ -59,6 +59,8 @@ public:
 protected:
 	virtual void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player) {}
 	virtual void setUniqueAttributes() {}
+
+	PlayerDefinition &player_;
 private:
 	void resetAttackPatterns();
 	void eraseSpriteAndColliders();
@@ -73,7 +75,6 @@ private:
 	bool use_basic_dialog_, has_begun_moving_, has_reached_destination_, attack_on_sight_;
 	int start_time_move_one_space_, start_time_move_, movement_direction_multiplier_, event_ID_,
 		screen_width_, screen_height_, movement_index_;
-	PlayerDefinition &player_;
 	Matrix &screen_matrix_;
 };
 

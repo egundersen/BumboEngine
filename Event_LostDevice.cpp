@@ -1,12 +1,17 @@
 #include "Event_LostDevice.h"
 
+Event_LostDevice::Event_LostDevice(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, std::string player_name, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix & screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, 0, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height), player_name_{ player_name }
+{
+}
+
 void Event_LostDevice::createEvent()
 {
 	updateColliderCoordinates();
 
 	Popup popup_1(25, 9, "! ! !", screen_matrix_, 'O');
 
-	Popup popup_2(25, 9, "Hello, you must be {player}", screen_matrix_, 'O');
+	Popup popup_2(25, 9, "Hello, you must be " + player_name_, screen_matrix_, 'O');
 	Popup popup_3(25, 9, "My name is Aki~", screen_matrix_, 'O');
 	Popup popup_4(25, 9, "I trust you received your father's package?", screen_matrix_, 'O');
 	Popup popup_5(25, 9, "Please let me see it~", screen_matrix_, 'O');

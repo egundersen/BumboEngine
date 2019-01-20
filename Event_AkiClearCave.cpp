@@ -1,10 +1,15 @@
 #include "Event_AkiClearCave.h"
 
+Event_AkiClearCave::Event_AkiClearCave(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, std::string player_name, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix & screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, 0, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height), player_name_{ player_name }
+{
+}
+
 void Event_AkiClearCave::createEvent()
 {
 	updateColliderCoordinates();
 
-	Popup popup_1(25, 9, "Oh, {player}, I was just looking for you.", screen_matrix_, 'O');
+	Popup popup_1(25, 9, "Oh, " + player_name_ + ", I was just looking for you.", screen_matrix_, 'O');
 	Popup popup_2(25, 9, "I think the perpetrator is hiding in the CLEAR cave.", screen_matrix_, 'O');
 	Popup popup_3(25, 9, "It's just... due north of here...", screen_matrix_, 'O');
 	Popup popup_4(25, 9, "...not that you would want to come along or anything.", screen_matrix_, 'O');

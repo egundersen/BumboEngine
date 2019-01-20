@@ -12,7 +12,7 @@ void Event_Tutorial::createEvent()
 
 	Popup popup_1(25, 9, "Pardon me, but Could I get your name? ", screen_matrix_, 'X');
 	Popup popup_2(25, 9, "Press ENTER to continue.", screen_matrix_, 'X');
-	Popup popup_3(25, 9, "Very good, I was looking for you. It's about your father... ", screen_matrix_, 'X');
+	Popup popup_3(25, 9, "Oh! Very good, I was looking for you. It's about your father... ", screen_matrix_, 'X');
 	Popup popup_4(25, 9, "I am very sorry, but he wasn't able to reach the checkpoint in time... ", screen_matrix_, 'X');
 	Popup popup_5(25, 9, "You have my condolences, he was my friend as well ", screen_matrix_, 'X');
 	Popup popup_6(25, 9, "Bay-si-call-e, he left me this package for you ", screen_matrix_, 'X');

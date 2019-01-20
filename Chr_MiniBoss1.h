@@ -6,7 +6,7 @@
 class Chr_MiniBoss1 : public CharacterBase
 {
 public:
-	Chr_MiniBoss1(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,  Matrix &screen_matrix, BitmapDefinition &bitmap, AudioDefinition &audio,
+	Chr_MiniBoss1(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap, AudioDefinition &audio,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -125,7 +125,7 @@ public:
 		DialogNode *node_1_2_2_1 = new DialogNode("Ye're right", "Thank god! Now, where were we?", "FIGHT");
 		DialogNode *node_1_2_2_2 = new DialogNode("No, stay in character!", "But it's soo... you know what, fine: TRAVELER, WHO ARE... ye?");
 		DialogNode *node_1_2_2_2_1 = new DialogNode("Please continue", "TRAVELER, WHO ARE \"YE\" TO TRESSPASS ON THIS MOST... SACRED GROUND!");
-		DialogNode *node_1_2_2_2_1_1 = new DialogNode("{player}", "{player}? YOU MEAN THE LOWLY PIRATE?");
+		DialogNode *node_1_2_2_2_1_1 = new DialogNode(player_.getPlayerName(), player_.getPlayerName() + "? YOU MEAN THE LOWLY PIRATE?");
 		DialogNode *node_1_2_2_2_1_1_1 = new DialogNode("Aye", "YOU HAVE TRAVELED FAR AND WIDE... BUT YOUR JOURNEY ENDS HERE.");
 		DialogNode *node_1_2_2_2_1_1_1_1 = new DialogNode("Ok", "FOR IT IS I, THE ILUSTRIO... Ok. F*ck this. You win. GG.", "EVENT");
 		DialogNode *node_2 = new DialogNode("", "I honestly hope \"We can talk this out.\" is written on your tombstone!", "SAVE"); // =FIGHT

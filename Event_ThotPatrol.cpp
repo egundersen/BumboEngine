@@ -1,7 +1,7 @@
 #include "Event_ThotPatrol.h"
 
-Event_ThotPatrol::Event_ThotPatrol(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, CharacterBase * &selected_character, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix & screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
-	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, 0, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height), selected_character_{ selected_character }
+Event_ThotPatrol::Event_ThotPatrol(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, std::string player_name, CharacterBase * &selected_character, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix & screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, 0, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height), selected_character_{ selected_character }, player_name_{ player_name }
 {
 }
 
@@ -35,7 +35,7 @@ void Event_ThotPatrol::createEvent()
 	Popup popup_23(25, 9, "BEGONE THOT!", screen_matrix_, '#');
 	Popup popup_24(25, 9, "The French Revolution is here!", screen_matrix_, '#');
 	Popup popup_25(25, 9, "Wait! I can understand what I did was wrong... and I deserve to be punished...", screen_matrix_, 'O');
-	Popup popup_26(25, 9, "...but {player} is innocent! Can't you let him go?", screen_matrix_, 'O');
+	Popup popup_26(25, 9, "...but " + player_name_ + " is innocent! Can't you let him go?", screen_matrix_, 'O');
 	Popup popup_27(25, 9, "You still don't get it, do you?", screen_matrix_, '#');
 	Popup popup_28(25, 9, "WENLIFE(tm) gives you lemons...", screen_matrix_, '#');
 	Popup popup_29(25, 9, "You don't make lemonade.", screen_matrix_, '#');
