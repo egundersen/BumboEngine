@@ -63,12 +63,12 @@ public:
 			AttackPatternBase *attack_pattern_5 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 3, 30, 1750); // [MEDIUM] SLOW
 			AttackPatternBase *attack_pattern_6 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 60, 300, 50, 'u', 0, ' ', false, false, 0); // [Easy] U
 
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
-			attack_patterns_.push_back(attack_pattern_5);
 			attack_patterns_.push_back(attack_pattern_6);
+			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
 		}
 	}
 

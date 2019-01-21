@@ -449,12 +449,10 @@ bool MatrixBase::shouldIndent(std::string text, int letter_index, int matrix_ite
 	{
 		for (int k = letter_index; k < text.length(); k++) // Iterate over word to find best place for indent
 		{
-			//std::cout << text[k];
 			if (text[k] == ' ' || text[k] == '\0' || k >= text.length() - 1)
 			{
 				if (matrix_iterator + letter_counter > paragraph_width - 1)
 				{
-					//std::cout << "^\n";
 					return true;
 				}
 				break;

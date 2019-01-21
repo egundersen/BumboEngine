@@ -50,8 +50,10 @@ void BattleBase::refreshScreen()
 				{
 					if (attack_patterns_.size() == 0 || dialog_.shouldReturnToMenu()) // BOSS OUT OF ATTACKS
 						local_vector_space_ = "MENU";
-					else
+					else {
+						attack_patterns_.back()->OnBeginAttack();
 						local_vector_space_ = "FIGHT";
+					}
 				}
 		}
 		else

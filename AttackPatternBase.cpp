@@ -73,7 +73,7 @@ void AttackPatternBase::evaluatePlayerInput()
 	if (GetAsyncKeyState(VK_SHIFT) & 0x8000)
 		slow_player_ = 60;
 	else
-		slow_player_ = 0;
+		slow_player_ = 10;
 	if (current_time_move_player >= slow_player_)
 	{
 		if (GetAsyncKeyState(VK_UP) & 0x8000)

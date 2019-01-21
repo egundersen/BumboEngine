@@ -108,9 +108,9 @@ public:
 		AttackPatternBase *attack_pattern_6 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 7, 10, 1000); // [Medium] FAST (Wide)
 		AttackPatternBase *attack_pattern_7 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 50); // [Hard]
 		AttackPatternBase *attack_pattern_8 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 650); // [Medium] Fast
-		AttackPatternBase *attack_pattern_9 = new SnakeExplode_Fast(screen_width, screen_height, screen_matrix, player, 325, 10000, 250); // [Medium] Fast
+		AttackPatternBase *attack_pattern_9 = new SnakeExplode_Fast(screen_width, screen_height, screen_matrix, player, 40, 10000, 200); // [Medium] Fast
 		AttackPatternBase *attack_pattern_10 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 300); // [Medium] Slow
-		AttackPatternBase *attack_pattern_11 = new SnakeExplode_Slow(screen_width, screen_height, screen_matrix, player, 150, 10000, 250); // [Medium] Slow
+		AttackPatternBase *attack_pattern_11 = new SnakeExplode_Slow(screen_width, screen_height, screen_matrix, player, 20, 10000, 250); // [Medium] Slow
 		AttackPatternBase *attack_pattern_12 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 100); // [Hard] Slowest
 		AttackPatternBase *attack_pattern_13 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'r', 1, 'd', false, false, 0); // [EASY]
 		AttackPatternBase *attack_pattern_14 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'l', 0, ' ', false, false, 0); // [EASY]
@@ -131,35 +131,35 @@ public:
 		AttackPatternBase *attack_pattern_29 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'd', 1, 'r', false, false, 0); // [HARD]
 		AttackPatternBase *attack_pattern_30 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 1, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
 	
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);
-		attack_patterns_.push_back(attack_pattern_7);
-		attack_patterns_.push_back(attack_pattern_8);
-		attack_patterns_.push_back(attack_pattern_9);
-		attack_patterns_.push_back(attack_pattern_10);
-		attack_patterns_.push_back(attack_pattern_11);
-		attack_patterns_.push_back(attack_pattern_12);
-		attack_patterns_.push_back(attack_pattern_13);
-		attack_patterns_.push_back(attack_pattern_14);
-		attack_patterns_.push_back(attack_pattern_15);
-		attack_patterns_.push_back(attack_pattern_16);
-		attack_patterns_.push_back(attack_pattern_17);
-		attack_patterns_.push_back(attack_pattern_18);
-		attack_patterns_.push_back(attack_pattern_19);
-		attack_patterns_.push_back(attack_pattern_20);
-		attack_patterns_.push_back(attack_pattern_21);
-		attack_patterns_.push_back(attack_pattern_22);
-		attack_patterns_.push_back(attack_pattern_23);
-		attack_patterns_.push_back(attack_pattern_24);
-		attack_patterns_.push_back(attack_pattern_25);
-		attack_patterns_.push_back(attack_pattern_26);
-		attack_patterns_.push_back(attack_pattern_27);
-		attack_patterns_.push_back(attack_pattern_28);
-		attack_patterns_.push_back(attack_pattern_29);
 		attack_patterns_.push_back(attack_pattern_30);
+		attack_patterns_.push_back(attack_pattern_29);
+		attack_patterns_.push_back(attack_pattern_28);
+		attack_patterns_.push_back(attack_pattern_27);
+		attack_patterns_.push_back(attack_pattern_26);
+		attack_patterns_.push_back(attack_pattern_25);
+		attack_patterns_.push_back(attack_pattern_24);
+		attack_patterns_.push_back(attack_pattern_23);
+		attack_patterns_.push_back(attack_pattern_22);
+		attack_patterns_.push_back(attack_pattern_21);
+		attack_patterns_.push_back(attack_pattern_20);
+		attack_patterns_.push_back(attack_pattern_19);
+		attack_patterns_.push_back(attack_pattern_18);
+		attack_patterns_.push_back(attack_pattern_17);
+		attack_patterns_.push_back(attack_pattern_16);
+		attack_patterns_.push_back(attack_pattern_15);
+		attack_patterns_.push_back(attack_pattern_14);
+		attack_patterns_.push_back(attack_pattern_13);
+		attack_patterns_.push_back(attack_pattern_12);
+		attack_patterns_.push_back(attack_pattern_11);
+		attack_patterns_.push_back(attack_pattern_10);
+		attack_patterns_.push_back(attack_pattern_9);
+		attack_patterns_.push_back(attack_pattern_8);
+		attack_patterns_.push_back(attack_pattern_7);
+		attack_patterns_.push_back(attack_pattern_6);
+		attack_patterns_.push_back(attack_pattern_5);
+		attack_patterns_.push_back(attack_pattern_4);
+		attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_2);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

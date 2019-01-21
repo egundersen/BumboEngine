@@ -1,5 +1,11 @@
 #include "Event_BridgeRally.h"
 
+Event_BridgeRally::Event_BridgeRally(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable, Matrix & world_matrix, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix & screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, character_ID, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height), world_matrix_{ world_matrix }, rock_("   @@&@   Z #@@* #@( Z #*%  (*& Z @(%#*,#@ Z", "   SSSS   Z SSSS SSS Z SSS  SSS Z SSSSSSSS Z")
+{
+	
+}
+
 void Event_BridgeRally::createEvent()
 {
 	updateColliderCoordinates();
@@ -125,6 +131,7 @@ void Event_BridgeRally::speak()
 	switch (getPopupIndex())
 	{
 	case 0:
+		addImageToMatrix(498, 176, rock_, world_matrix_);
 		popups_[0].displayPopup(-20, 0);
 		break;
 	case 1:

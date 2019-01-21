@@ -102,18 +102,18 @@ public:
 		AttackPatternBase *attack_pattern_11 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
 		AttackPatternBase *attack_pattern_12 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 20, 9, 1, 500); // [Medium] FAST
 	
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);
-		attack_patterns_.push_back(attack_pattern_7);
-		attack_patterns_.push_back(attack_pattern_8);
-		attack_patterns_.push_back(attack_pattern_9);
-		attack_patterns_.push_back(attack_pattern_10);
-		attack_patterns_.push_back(attack_pattern_11);
 		attack_patterns_.push_back(attack_pattern_12);
+		attack_patterns_.push_back(attack_pattern_11);
+		attack_patterns_.push_back(attack_pattern_10);
+		attack_patterns_.push_back(attack_pattern_9);
+		attack_patterns_.push_back(attack_pattern_8);
+		attack_patterns_.push_back(attack_pattern_7);
+		attack_patterns_.push_back(attack_pattern_6);
+		attack_patterns_.push_back(attack_pattern_5);
+		attack_patterns_.push_back(attack_pattern_4);
+		attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_2);
+		attack_patterns_.push_back(attack_pattern_1);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

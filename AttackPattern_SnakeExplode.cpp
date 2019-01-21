@@ -23,7 +23,7 @@ void AttackPattern_SnakeExplode::refreshScreen()
 	else
 	{
 		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
-		if (current_time_new_attack_ >= 1500 && created_attacks_ < attacks_to_create_) // Create new Attacks
+		if (current_time_new_attack_ >= create_attack_delay_ && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack2(generateRandomNumber(attack_diameter_ / 2, width_ - attack_diameter_ / 2), generateRandomNumber(attack_diameter_ / 2, height_ - attack_diameter_ / 2));
 			start_time_new_attack_ = GetTickCount64();

@@ -104,24 +104,24 @@ public:
 		AttackPatternBase *attack_pattern_17 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'd', 1, 'r', false, false, 0); // [HARD]
 		AttackPatternBase *attack_pattern_18 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 1, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
 
-		attack_patterns_.push_back(attack_pattern_1);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_6);
-		attack_patterns_.push_back(attack_pattern_7);
-		attack_patterns_.push_back(attack_pattern_8);
-		attack_patterns_.push_back(attack_pattern_9);
-		attack_patterns_.push_back(attack_pattern_10);
-		attack_patterns_.push_back(attack_pattern_11);
-		attack_patterns_.push_back(attack_pattern_12);
-		attack_patterns_.push_back(attack_pattern_13);
-		attack_patterns_.push_back(attack_pattern_14);
-		attack_patterns_.push_back(attack_pattern_15);
-		attack_patterns_.push_back(attack_pattern_16);
-		attack_patterns_.push_back(attack_pattern_17);
 		attack_patterns_.push_back(attack_pattern_18);
+		attack_patterns_.push_back(attack_pattern_17);
+		attack_patterns_.push_back(attack_pattern_16);
+		attack_patterns_.push_back(attack_pattern_15);
+		attack_patterns_.push_back(attack_pattern_14);
+		attack_patterns_.push_back(attack_pattern_13);
+		attack_patterns_.push_back(attack_pattern_12);
+		attack_patterns_.push_back(attack_pattern_11);
+		attack_patterns_.push_back(attack_pattern_10);
+		attack_patterns_.push_back(attack_pattern_9);
+		attack_patterns_.push_back(attack_pattern_8);
+		attack_patterns_.push_back(attack_pattern_7);
+		attack_patterns_.push_back(attack_pattern_6);
+		attack_patterns_.push_back(attack_pattern_5);
+		attack_patterns_.push_back(attack_pattern_4);
+		attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_2);
+		attack_patterns_.push_back(attack_pattern_1);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

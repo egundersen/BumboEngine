@@ -68,12 +68,12 @@ public:
 			AttackPatternBase *attack_pattern_5 = new SafeSquares_Fast(screen_width, screen_height, screen_matrix, player, 8); // [Easy-Hard] Fast
 			AttackPatternBase *attack_pattern_6 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 150); // [Easy] Fast
 		
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
-			attack_patterns_.push_back(attack_pattern_5);
 			attack_patterns_.push_back(attack_pattern_6);
+			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
 		}
 	}
 

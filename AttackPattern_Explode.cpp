@@ -31,7 +31,12 @@ void AttackPattern_Explode::refreshScreen()
 
 		attacksCheckCollision();
 		checkBorderCollision();
-		moveAttack();
+		double current_time_move_attack_ = GetTickCount64() - start_time_move_attack_;
+		if (current_time_move_attack_ >= 50)
+		{
+			moveAttack();
+			start_time_move_attack_ = GetTickCount64();
+		}
 
 		evaluatePlayerInput();
 		refreshPlayerLocation();

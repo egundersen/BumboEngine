@@ -91,11 +91,11 @@ public:
 			AttackPatternBase *attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 20, 9, 1, 500); // [Medium] FAST
 			AttackPatternBase *attack_pattern_5 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
 
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
 			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
 		}
 	}
 

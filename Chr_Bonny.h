@@ -69,24 +69,24 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		AttackPatternBase *attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 100); // [EASY]
-		attack_patterns_.push_back(attack_pattern_1);
-
 		for (int i = 0; i < 3; i++) {
-			AttackPatternBase *attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1750); // [EASY] SLOW
-			AttackPatternBase *attack_pattern_3 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 75); // [Medium]
-			AttackPatternBase *attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 3, 30, 1750); // [MEDIUM] SLOW
-			AttackPatternBase *attack_pattern_5 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 15000, 75); // [Medium] 2
-			AttackPatternBase *attack_pattern_6 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 7, 10, 1000); // [Medium] FAST (Wide)
-			AttackPatternBase *attack_pattern_7 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 50); // [Hard]
+			AttackPatternBase *attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1750); // [EASY] SLOW
+			AttackPatternBase *attack_pattern_2 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 10000, 100); // [Medium]
+			AttackPatternBase *attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 3, 30, 1750); // [MEDIUM] SLOW
+			AttackPatternBase *attack_pattern_4 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 12000, 150); // [Medium] 2
+			AttackPatternBase *attack_pattern_5 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 7, 10, 1000); // [Medium] FAST (Wide)
+			AttackPatternBase *attack_pattern_6 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 50); // [Hard]
 
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
-			attack_patterns_.push_back(attack_pattern_5);
 			attack_patterns_.push_back(attack_pattern_6);
-			attack_patterns_.push_back(attack_pattern_7);
+			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
 		}
+
+		AttackPatternBase *attack_pattern_7 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 100); // [EASY]
+		attack_patterns_.push_back(attack_pattern_7);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

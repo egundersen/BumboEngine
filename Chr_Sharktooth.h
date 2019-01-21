@@ -21,7 +21,7 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			8,
+			7,
 			"SHARKTOOTH",
 			"Jimi_Hendrix_-_All_Along_the_Watchtower.mp3",
 			"sharktooth_neutral.bmp",
@@ -39,7 +39,7 @@ public:
 
 		// (In-Battle) Dialog:		( player dialog choice; boss's response; should progress dialog? )
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_1;
-		dialog_choice_1.push_back(std::make_tuple("Where be me package!?", "WE'D BE HERE FOR MONTHS IF I HAD TO LIST EVERY PACKAGE A SMUGGLED", true));
+		dialog_choice_1.push_back(std::make_tuple("Where be me package!?", "WE'D BE HERE FOR MONTHS IF I HAD TO LIST EVERY PACKAGE I SMUGGLED", true));
 		dialog_choice_1.push_back(std::make_tuple("Be this EZ mode?", "I HATE OVERWATCH REFERENCES- IF ANYTHING, D.VA's THE WORST! ! !", false));
 		dialog_choice_1.push_back(std::make_tuple("I shall prove that ye be weak! ", "YOU DON'T SCARE ME, HERO!", false));
 
@@ -76,16 +76,16 @@ public:
 	{
 		for (int i = 0; i < 3; i++) {
 			AttackPatternBase *attack_pattern_1 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 650); // [Medium] Fast
-			AttackPatternBase *attack_pattern_2 = new SnakeExplode_Fast(screen_width, screen_height, screen_matrix, player, 325, 10000, 250); // [Medium] Fast
+			AttackPatternBase *attack_pattern_2 = new SnakeExplode_Fast(screen_width, screen_height, screen_matrix, player, 40, 10000, 200); // [Medium] Fast
 			AttackPatternBase *attack_pattern_3 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 300); // [Medium] Slow
-			AttackPatternBase *attack_pattern_4 = new SnakeExplode_Slow(screen_width, screen_height, screen_matrix, player, 150, 10000, 250); // [Medium] Slow
+			AttackPatternBase *attack_pattern_4 = new SnakeExplode_Slow(screen_width, screen_height, screen_matrix, player, 20, 10000, 250); // [Medium] Slow
 			AttackPatternBase *attack_pattern_5 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 100); // [Hard] Slowest
 
-			attack_patterns_.push_back(attack_pattern_1);
-			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_3);
-			attack_patterns_.push_back(attack_pattern_4);
 			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
 		}
 	}
 

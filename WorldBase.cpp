@@ -729,39 +729,39 @@ void WorldBase::GENERATE_NonHostileNPCs()
 
 	// Cave (Before Bridge)
 	CharacterBase *bridge_rally_leader = new Chr_BackgroundNPC(354, 104, 24, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_2, 'd');
+		PopupDefinition("Aye, wha' 'tis?", 'X', 23, 9), sprite_sheet_.pirate_2, 'd');
 	CharacterBase *bridge_rally_1 = new Chr_BackgroundNPC(341, 127, 25, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'u');
+		PopupDefinition("Wha' are ye lookin' at?", 'X', 23, 9), sprite_sheet_.pirate_1, 'u');
 	CharacterBase *bridge_rally_2 = new Chr_BackgroundNPC(332, 122, 26, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_17, 'u');
+		PopupDefinition("I'd be a whole lot happier wit' some rum!", 'X', 23, 9), sprite_sheet_.pirate_17, 'u');
 	CharacterBase *bridge_rally_3 = new Chr_BackgroundNPC(343, 120, 27, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_16, 'u');
+		PopupDefinition("Grog! I love me some grog!", 'X', 23, 9), sprite_sheet_.pirate_16, 'u');
 	CharacterBase *bridge_rally_4 = new Chr_BackgroundNPC(362, 125, 28, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_15, 'u');
+		PopupDefinition("I be sick o' livin' in th' DEEP cave!", 'X', 23, 9), sprite_sheet_.pirate_15, 'u');
 	CharacterBase *bridge_rally_5 = new Chr_BackgroundNPC(372, 123, 29, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_14, 'u');
+		PopupDefinition("Those Weebs won't know wha' hit 'em! Let's get 'em!", 'X', 23, 9), sprite_sheet_.pirate_14, 'u');
 	CharacterBase *bridge_rally_6 = new Chr_BackgroundNPC(338, 112, 39, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_13, 'r');
+		PopupDefinition("Do ye reckon we'll win this war?", 'X', 23, 9), sprite_sheet_.pirate_13, 'r');
 	CharacterBase *bridge_rally_7 = new Chr_BackgroundNPC(329, 115, 40, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_12, 'r');
+		PopupDefinition("Why pirates always gotta wear red, huh?", 'X', 23, 9), sprite_sheet_.pirate_12, 'r');
 	CharacterBase *bridge_rally_8 = new Chr_BackgroundNPC(318, 120, 41, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_11, 'r');
+		PopupDefinition("Lost me fav'rit piece o' eight yesterday... a real shame.", 'X', 23, 9), sprite_sheet_.pirate_11, 'r');
 	CharacterBase *bridge_rally_9 = new Chr_BackgroundNPC(320, 112, 42, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_10, 'r');
+		PopupDefinition("Do ye reckon thar's a city gold on th' other side o' th' bridge?", 'X', 23, 9), sprite_sheet_.pirate_10, 'r');
 	CharacterBase *bridge_rally_10 = new Chr_BackgroundNPC(325, 102, 43, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_9, 'r');
+		PopupDefinition("I wonder wha' th' CLEAR cave be like...", 'X', 23, 9), sprite_sheet_.pirate_9, 'r');
 	CharacterBase *bridge_rally_11 = new Chr_BackgroundNPC(335, 105, 44, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_8, 'r');
+		PopupDefinition("It be time fer th' pirates t' rise up!", 'X', 23, 9), sprite_sheet_.pirate_8, 'r');
 	CharacterBase *bridge_rally_12 = new Chr_BackgroundNPC(369, 112, 45, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_7, 'l');
+		PopupDefinition("Could really go fer some spiced rum...", 'X', 23, 9), sprite_sheet_.pirate_7, 'l');
 	CharacterBase *bridge_rally_13 = new Chr_BackgroundNPC(380, 116, 46, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_6, 'l');
+		PopupDefinition("I used t' know someone who looked like ye, killed that one too.", 'X', 23, 9), sprite_sheet_.pirate_6, 'l');
 	CharacterBase *bridge_rally_14 = new Chr_BackgroundNPC(390, 119, 47, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_3, 'l');
+		PopupDefinition("Do ye 'ave a cousin named Sven?", 'X', 23, 9), sprite_sheet_.pirate_3, 'l');
 	CharacterBase *bridge_rally_15 = new Chr_BackgroundNPC(388, 110, 48, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_2, 'l');
+		PopupDefinition("I'll skewer thar gizzards!", 'X', 23, 9), sprite_sheet_.pirate_2, 'l');
 	CharacterBase *bridge_rally_16 = new Chr_BackgroundNPC(378, 107, 49, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
-		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'l');
+		PopupDefinition("Yo ho, yo ho 'n a bottle o' rum!", 'X', 23, 9), sprite_sheet_.pirate_1, 'l');
 
 	CharacterBase *hold_shift = new Chr_BackgroundNPC(351, 189, 51, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
 		PopupDefinition("Heh. Heh. Fighting too hard? Try holding [SHIFT] in combat to slow down.", 'X', 23, 9), sprite_sheet_.pirate_3, 'd');
@@ -866,12 +866,14 @@ void WorldBase::GENERATE_Signposts()
 {
 	Signpost *checkpoint_sign_1 = new Signpost(750, 224, 23, 9, 1, "Nakinom Border Checkpoint --------> 0.2 km", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 	Signpost *checkpoint_sign_2 = new Signpost(1000, 210, 23, 9, 2, "Nakinom Border Checkpoint", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
+	Signpost *shift_run = new Signpost(923, 215, 23, 9, 6, "Hold SHIFT to run", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 	Signpost *deep_cave = new Signpost(318, 191, 23, 9, 3, "Welcome ye pirates to the DEEP cave", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 	Signpost *clear_cave = new Signpost(85, 88, 23, 9, 4, "Welcome to the CLEAR cave", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 	Signpost *no_entry = new Signpost(377, 47, 23, 9, 5, "Stop! No Entry beyond this point!", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 
 	signposts_.push_back(checkpoint_sign_1);
 	signposts_.push_back(checkpoint_sign_2);
+	signposts_.push_back(shift_run);
 	signposts_.push_back(deep_cave);
 	signposts_.push_back(clear_cave);
 	signposts_.push_back(no_entry);
@@ -897,10 +899,7 @@ void WorldBase::GENERATE_Pickups()
 	Pickup *pickup_clue_4 = new Pickup(1146, 205, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_4, inventory_);
 	Pickup *unobtainable = new Pickup(462, 222, 23, 9, 14, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, Item(), inventory_);
 	Item item_super_duper_shield("Super-Duper Shield", "SHIELD", 1, "Protects the wearer once... then breaks instantly");
-	Pickup *shield_1 = new Pickup(435, 83, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_super_duper_shield, inventory_);
-	Pickup *shield_2 = new Pickup(460, 50, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_super_duper_shield, inventory_);
-	Item item_sharp_sword("Sharp Sword", "ATTACKUP", 1, "Danger! Pointy tip, keep away from children! ATTACK++");
-	Pickup *sharp_sword = new Pickup(62, 37, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_sharp_sword, inventory_);
+	Pickup *shield_1 = new Pickup(435, 83, 23, 9, 15, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_super_duper_shield, inventory_);
 
 	pickups_.push_back(cliff_pickup);
 	pickups_.push_back(pickup_clue_1);
@@ -909,8 +908,6 @@ void WorldBase::GENERATE_Pickups()
 	pickups_.push_back(pickup_clue_4);
 	pickups_.push_back(unobtainable);
 	pickups_.push_back(shield_1);
-	pickups_.push_back(shield_2);
-	pickups_.push_back(sharp_sword);
 
 	// Displays all pickups
 	for (auto pickup : pickups_)
@@ -954,7 +951,7 @@ void WorldBase::GENERATE_Events()
 	// Inside Cave
 	Event_LostDevice *lost_device = new Event_LostDevice(10003, 296, 224, 56, 1, player_.getPlayerName(), false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_AkiClearCave *aki_clear_cave = new Event_AkiClearCave(10010, 297, 179, 10, 11, player_.getPlayerName(), false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_BridgeRally *bridge_rally = new Event_BridgeRally(10011, 353, 113, 20, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_BridgeRally *bridge_rally = new Event_BridgeRally(10011, 353, 113, 20, 1, 1, false, world_matrix_, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BridgeRally2 *bridge_rally2 = new Event_BridgeRally2(10012, 285, 90, 5, 5, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BridgeRally3 *bridge_rally3 = new Event_BridgeRally3(10013, 215, 85, 5, 5, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_Cubans *cubans = new Event_Cubans(10014, 198, 165, 10, 10, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);

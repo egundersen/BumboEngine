@@ -25,7 +25,7 @@ public:
 		// CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "What the hell do you wan- Oh! It's you! Sorry, got any burning questions?");
 			DialogNode *node_1_1 = new DialogNode("Any idea who stole it?", "Nope. Try asking around. Perhaps the culprit dropped something at the crime scene.");
-			DialogNode *node_1_2 = new DialogNode("Wha' should I do?", "Just go around accusing everyone of stealing it. Eventually you'll find the culprit. It's P.O.E.");
+			DialogNode *node_1_2 = new DialogNode("Wha' should I do?", "Just go around accusing everyone until you find who stole it. It's P.O.E.");
 				DialogNode *node_1_2_1 = new DialogNode("P.O.E.?", "Process of Elimination. What, were you born yesterday?");
 				DialogNode *node_1_2_2 = new DialogNode("That sounds cruel", "Pffff* no! The fate of the world's at stake! No one cares about who did what to get where.");
 			DialogNode *node_1_3 = new DialogNode("Nevermind", "If you think of any questions, don't hesitate to ask~");

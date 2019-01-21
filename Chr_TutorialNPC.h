@@ -83,7 +83,7 @@ public:
 		// CREATE DIALOG NODES
 		DialogNode *node_1 = new DialogNode("", "Your back You need more help, yes?");
 		DialogNode *node_1_1 = new DialogNode("Yes, I need more help", "This very good What you need my help with?");
-		DialogNode *node_1_2 = new DialogNode("What about my father?", "Sorry, I'm not allowed to talk about that. It would upset the my lemon");
+		DialogNode *node_1_2 = new DialogNode("What about my father?", "Sorry, I'm not allowed to talk about that. It would upset my lemon");
 		DialogNode *node_1_3 = new DialogNode("No thanks", "Well, I will See You later then");
 		DialogNode *node_1_2_1 = new DialogNode("Slowing down in combat", "Just hold SHIFT Then you will move slower");
 		DialogNode *node_1_2_2 = new DialogNode("Opening my inventory", "Oh, it very easy Just press I");
