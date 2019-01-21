@@ -71,7 +71,7 @@ void MatrixManager::evaluatePlayerInput()
 		if (GetAsyncKeyState(VK_RETURN) & 0x8000) { 
 			credits_.clearText(); 
 			bitmap_.showBitmap();
-			bitmap_.setFilePath("resources\\sprites\\mk.bmp");
+			bitmap_.setResourceID(134);
 			bitmap_.setXOffset(160);
 			bitmap_.setYOffset(90);
 		}

@@ -24,10 +24,10 @@ public:
 			6,
 			"BONNY",
 			"Led_Zeppelin_-_Immigrant_Song.mp3",
-			"bonny_neutral.bmp",
-			"bonny_angry.bmp", 
-			"bonny_happy.bmp",
-			"bonny_nervous_dead.bmp"
+			121,
+			118, 
+			119,
+			120
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

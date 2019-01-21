@@ -23,10 +23,10 @@ public:
 			5,
 			"Major NPC",
 			"Bee_Gees_-_Stayin_Alive.mp3",
-			"bonny_neutral.bmp",
-			"bonny_neutral.bmp",
-			"bonny_neutral.bmp",
-			"bonny_neutral.bmp"
+			121,
+			121,
+			121,
+			121
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

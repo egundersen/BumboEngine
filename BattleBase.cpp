@@ -425,18 +425,18 @@ void BattleBase::showFileSprite(std::string emotion)
 		if (emotion == "") // Decide whether to use emotion based on health left
 		{
 			if (boss_.health < initial_boss_health_ / 2) // Half Health
-				bitmap_.setFilePath(boss_.file_path_angry);
+				bitmap_.setResourceID(boss_.resource_ID_angry);
 			else
-				bitmap_.setFilePath(boss_.file_path_neutral);
+				bitmap_.setResourceID(boss_.resource_ID_neutral);
 		}
 		else if (emotion == "NEUTRAL")
-			bitmap_.setFilePath(boss_.file_path_neutral);
+			bitmap_.setResourceID(boss_.resource_ID_neutral);
 		else if (emotion == "ANGRY")
-			bitmap_.setFilePath(boss_.file_path_angry);
+			bitmap_.setResourceID(boss_.resource_ID_angry);
 		else if (emotion == "NERVOUS_DEAD")
-			bitmap_.setFilePath(boss_.file_path_nervous_dead);
+			bitmap_.setResourceID(boss_.resource_ID_nervous_dead);
 		else if (emotion == "HAPPY")
-			bitmap_.setFilePath(boss_.file_path_happy);
+			bitmap_.setResourceID(boss_.resource_ID_happy);
 		bitmap_.setXOffset(160);
 		bitmap_.showBitmap();
 	}

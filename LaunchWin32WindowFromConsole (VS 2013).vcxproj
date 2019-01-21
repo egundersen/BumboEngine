@@ -343,6 +343,40 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="LaunchWin32WindowFromConsole.ico" />
+    <Image Include="resources\sprites\aki_angry_neutral.bmp" />
+    <Image Include="resources\sprites\aki_happy_neutral.bmp" />
+    <Image Include="resources\sprites\aki_insane_nervous_dead.bmp" />
+    <Image Include="resources\sprites\aki_insane_neutral_happy.bmp" />
+    <Image Include="resources\sprites\aki_mad.bmp" />
+    <Image Include="resources\sprites\aki_nervous.bmp" />
+    <Image Include="resources\sprites\bonny_angry.bmp" />
+    <Image Include="resources\sprites\bonny_happy.bmp" />
+    <Image Include="resources\sprites\bonny_nervous_dead.bmp" />
+    <Image Include="resources\sprites\bonny_neutral.bmp" />
+    <Image Include="resources\sprites\mini_boss_1_mad.bmp" />
+    <Image Include="resources\sprites\mini_boss_1_nervous_dead.bmp" />
+    <Image Include="resources\sprites\mini_boss_1_neutral_happy.bmp" />
+    <Image Include="resources\sprites\mini_boss_2_angry.bmp" />
+    <Image Include="resources\sprites\mini_boss_2_nervous_dead.bmp" />
+    <Image Include="resources\sprites\mini_boss_2_neutral_happy.bmp" />
+    <Image Include="resources\sprites\mini_boss_3_angry.bmp" />
+    <Image Include="resources\sprites\mini_boss_3_nervous_dead.bmp" />
+    <Image Include="resources\sprites\mini_boss_3_neutral_happy.bmp" />
+    <Image Include="resources\sprites\mini_boss_4_angry.bmp" />
+    <Image Include="resources\sprites\mini_boss_4_nervous_dead.bmp" />
+    <Image Include="resources\sprites\mini_boss_4_neutral_happy.bmp" />
+    <Image Include="resources\sprites\mk.bmp" />
+    <Image Include="resources\sprites\moltar.bmp" />
+    <Image Include="resources\sprites\ryuuko_friend.bmp" />
+    <Image Include="resources\sprites\ryuuko_happy.bmp" />
+    <Image Include="resources\sprites\ryuuko_mad.bmp" />
+    <Image Include="resources\sprites\ryuuko_nervous.bmp" />
+    <Image Include="resources\sprites\ryuuko_neutral.bmp" />
+    <Image Include="resources\sprites\sharktooth_angry.bmp" />
+    <Image Include="resources\sprites\sharktooth_happy.bmp" />
+    <Image Include="resources\sprites\sharktooth_nervous_dead.bmp" />
+    <Image Include="resources\sprites\sharktooth_neutral.bmp" />
+    <Image Include="resources\sprites\tutorial.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

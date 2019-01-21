@@ -24,10 +24,10 @@ public:
 			11,
 			"RYUUKO",
 			"Led_Zeppelin_-_Achilles_Last_Stand.mp3",
-			"ryuuko_neutral.bmp", 
-			"ryuuko_mad.bmp", 
-			"ryuuko_happy.bmp",
-			"ryuuko_nervous.bmp"
+			140, 
+			138, 
+			137,
+			139
 		),//*/
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

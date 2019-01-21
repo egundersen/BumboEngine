@@ -79,6 +79,9 @@
     <Filter Include="Source Files\Battle\Multi-Attack Patterns">
       <UniqueIdentifier>{56e874d0-a0f4-46cf-8ecf-f981b26f58ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Sprites">
+      <UniqueIdentifier>{1b019998-0f5a-4c37-b261-0d0f93624f90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -632,6 +635,108 @@
   <ItemGroup>
     <Image Include="LaunchWin32WindowFromConsole.ico">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\sprites\mk.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\sprites\bonny_neutral.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\aki_angry_neutral.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\aki_happy_neutral.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\aki_insane_nervous_dead.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\aki_insane_neutral_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\aki_mad.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\aki_nervous.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\bonny_angry.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\bonny_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\bonny_nervous_dead.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_1_mad.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_1_nervous_dead.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_1_neutral_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_2_angry.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_2_nervous_dead.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_2_neutral_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_3_angry.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_3_nervous_dead.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_3_neutral_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_4_angry.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_4_nervous_dead.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\mini_boss_4_neutral_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\moltar.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\ryuuko_friend.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\ryuuko_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\ryuuko_mad.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\ryuuko_nervous.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\ryuuko_neutral.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\sharktooth_angry.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\sharktooth_happy.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\sharktooth_nervous_dead.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\sharktooth_neutral.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\tutorial.bmp">
+      <Filter>Resource Files\Sprites</Filter>
     </Image>
   </ItemGroup>
 </Project>

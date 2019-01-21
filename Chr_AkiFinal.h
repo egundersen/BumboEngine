@@ -24,10 +24,10 @@ public:
 			14,
 			"AKI (INSANE)",
 			"Peter_Schilling_-_Major_Tom.mp3",
-			"aki_insane_neutral_happy.bmp", 
-			"aki_mad.bmp", 
-			"aki_angry_neutral.bmp",
-			"aki_insane_nervous_dead.bmp"
+			115, 
+			116, 
+			110,
+			114
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

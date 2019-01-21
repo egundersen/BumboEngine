@@ -24,10 +24,10 @@ public:
 			13,
 			"AKI",
 			"Van_Halen_-_Ain't_Talkin_Bout_Love.mp3",
-			"aki_happy_neutral.bmp",
-			"aki_angry_neutral.bmp",
-			"aki_happy_neutral.bmp",
-			"aki_nervous.bmp"
+			113,
+			110,
+			113,
+			117
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

@@ -24,10 +24,10 @@ public:
 			7,
 			"J.K. Literal",
 			"The_Who_-_Behind_Blue_Eyes.mp3",
-			"mini_boss_2_neutral_happy.bmp",
-			"mini_boss_2_angry.bmp",
-			"mini_boss_2_angry.bmp",
-			"mini_boss_2_nervous_dead.bmp"
+			127,
+			125,
+			125,
+			126
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

@@ -24,10 +24,10 @@ public:
 			22,
 			"mini_boss_3",
 			"",
-			"mini_boss_3_neutral_happy.bmp",
-			"mini_boss_3_angry.bmp",
-			"mini_boss_3_neutral_happy.bmp",
-			"mini_boss_3_nervous_dead.bmp"
+			130,
+			128,
+			130,
+			129
 		),
 
 	/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

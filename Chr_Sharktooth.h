@@ -24,10 +24,10 @@ public:
 			7,
 			"SHARKTOOTH",
 			"Jimi_Hendrix_-_All_Along_the_Watchtower.mp3",
-			"sharktooth_neutral.bmp",
-			"sharktooth_angry.bmp",
-			"sharktooth_happy.bmp",
-			"sharktooth_nervous_dead.bmp"
+			144,
+			141,
+			142,
+			143
 		),//*/
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

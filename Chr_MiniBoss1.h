@@ -24,10 +24,10 @@ public:
 			19,
 			"Kriis",
 			"Guns_n_Roses_-_Nightrain.mp3",
-			"mini_boss_1_neutral_happy.bmp",
-			"mini_boss_1_mad.bmp",
-			"mini_boss_1_mad.bmp",
-			"mini_boss_1_nervous_dead.bmp"
+			124,
+			122,
+			122,
+			123
 		),
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */

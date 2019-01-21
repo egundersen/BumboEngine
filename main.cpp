@@ -1,10 +1,10 @@
 // Exclude the min and max macros from Windows.h
 #define NOMINMAX
 #include "stdafx.h"
+#include "resource.h"
 #include "WinMainParameters.h"
 #include "MatrixManager.h"
 #include "SplashScreen.h"
-#include "resource.h"
 
 using namespace WinMainParameters;
 
@@ -19,7 +19,7 @@ TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 bool should_exit_G = false;
 int width_G = 79;
 int height_G = 35;
-BitmapDefinition bitmap_G("", 160, 0);
+BitmapDefinition bitmap_G(0, 160, 0);
 Matrix screen_matrix_G(width_G, height_G);
 
 // Forward declarations of functions included in this code module:
@@ -373,12 +373,13 @@ HBITMAP ReplaceAllColorsExcept(HBITMAP hBmp, COLORREF cExcludedColor, COLORREF c
 	return RetBmp;
 }
 
-bool LoadAndBlitBitmap(LPCWSTR szFileName, HDC hWinDC, int position_x, int position_y)
+bool LoadAndBlitBitmap(int resource_ID, HDC hWinDC, int position_x, int position_y)
 {
+	HINSTANCE hInstance = (HINSTANCE)GetModuleHandle(NULL);
+
 	// Load the bitmap image file
 	HBITMAP hBitmap;
-	hBitmap = (HBITMAP)::LoadImage(NULL, szFileName, IMAGE_BITMAP, 0, 0,
-		LR_LOADFROMFILE);
+	hBitmap = LoadBitmap(hInstance, MAKEINTRESOURCE(resource_ID));
 	// Verify that the image was loaded
 	if (hBitmap == NULL)
 	{
@@ -508,12 +509,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			// Load Complex Ascii-styled Image from provided file path
 			if (bitmap_G.shouldShowBitmap())
-			{
-				std::string file_path = bitmap_G.getFilePath();
-				std::wstring sTemp = std::wstring(file_path.begin(), file_path.end());
-				LPCWSTR sw = sTemp.c_str();
-				LoadAndBlitBitmap(sw, hDCMem, bitmap_G.getXOffset(), bitmap_G.getYOffset());
-			}
+				LoadAndBlitBitmap(bitmap_G.getResourceID(), hDCMem, bitmap_G.getXOffset(), bitmap_G.getYOffset());
 
 			COLORREF blackTextColor = 0x00000000;
 			SetBkMode(hDCMem, OPAQUE);

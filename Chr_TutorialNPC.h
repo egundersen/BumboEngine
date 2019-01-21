@@ -23,10 +23,10 @@ public:
 			4,
 			"TUTORIAL NPC",
 			"The_Police_-_Message_in_a_Bottle.mp3",
-			"tutorial.bmp", 
-			"tutorial.bmp", 
-			"tutorial.bmp",
-			"tutorial.bmp"
+			108, 
+			108, 
+			108,
+			108
 		),//*/
 
 		/* Use Event at end of battle (Whether slay or spare is called) | Must match ID of an actual event in the events folder */
