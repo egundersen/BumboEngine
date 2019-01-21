@@ -74,21 +74,21 @@ public:
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		for (int i = 0; i < 3; i++) {
-			AttackPatternBase *attack_pattern_10 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 150, 120, 10, 'l', 0, ' ', false, false, 0); // [HARD] --FAST
+			AttackPatternBase *attack_pattern_10 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'r', 0, ' ', false, false, 0); // [HARD]
 			AttackPatternBase *attack_pattern_11 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', true, false, 2000); // [HARD]
 			AttackPatternBase *attack_pattern_12 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 20000, 50); // [Medium] 2
 			AttackPatternBase *attack_pattern_13 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'u', 0, ' ', false, false, 0); // [Hard]
-			AttackPatternBase *attack_pattern_14 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 100, 15, 100, 'l', 1, 'd', false, false, 0); // [HARD] --SINGLECOLUMN
+			AttackPatternBase *attack_pattern_14 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 100, 30, 100, 'l', 1, 'd', false, false, 0); // [HARD] --SINGLECOLUMN
 			AttackPatternBase *attack_pattern_15 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', true, false, 2000); // [HARD]
-			AttackPatternBase *attack_pattern_16 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 1, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
+			AttackPatternBase *attack_pattern_16 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 20, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
 
-			attack_patterns_.push_back(attack_pattern_10);
-			attack_patterns_.push_back(attack_pattern_11);
-			attack_patterns_.push_back(attack_pattern_12);
-			attack_patterns_.push_back(attack_pattern_13);
-			attack_patterns_.push_back(attack_pattern_14);
-			attack_patterns_.push_back(attack_pattern_15);
 			attack_patterns_.push_back(attack_pattern_16);
+			attack_patterns_.push_back(attack_pattern_15);
+			attack_patterns_.push_back(attack_pattern_14);
+			attack_patterns_.push_back(attack_pattern_13);
+			attack_patterns_.push_back(attack_pattern_12);
+			attack_patterns_.push_back(attack_pattern_11);
+			attack_patterns_.push_back(attack_pattern_10);
 		}
 
 		AttackPatternBase *attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'd', 0, ' ', true, false, 200); // [EASY]
@@ -97,7 +97,7 @@ public:
 		AttackPatternBase *attack_pattern_4 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 10, 'u', 1, 'l', false, false, 0); // [MEDIUM] --FAST
 		AttackPatternBase *attack_pattern_5 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'u', 1, ' ', false, false, 0); // [Medium]
 		AttackPatternBase *attack_pattern_6 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 50, 100, 'd', 0, ' ', true, false, 2000); // [MEDIUM] --SINGLECOLUMN
-		AttackPatternBase *attack_pattern_7 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'r', 1, 'd', false, false, 0, 15000, 75); // [EASY]
+		AttackPatternBase *attack_pattern_7 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'r', 1, 'd', false, false, 0, 15000, 250); // [EASY]
 		AttackPatternBase *attack_pattern_8 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'r', 0, ' ', true, false, 2000); // [MEDIUM]
 		AttackPatternBase *attack_pattern_9 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 50, 100, 'r', 1, 'u', false, false, 0); // [MEDIUM] --SINGLECOLUMN
 

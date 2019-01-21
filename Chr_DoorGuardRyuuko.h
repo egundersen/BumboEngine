@@ -70,8 +70,8 @@ public:
 			AttackPatternBase *attack_pattern_8 = new SafeSquares_Fast(screen_width, screen_height, screen_matrix, player, 8); // [Easy-Hard] Fast
 			AttackPatternBase *attack_pattern_9 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player); // [Hard] Wavy
 		
-			attack_patterns_.push_back(attack_pattern_8);
 			attack_patterns_.push_back(attack_pattern_9);
+			attack_patterns_.push_back(attack_pattern_8);
 		}
 
 		AttackPatternBase *attack_pattern_1 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player); // [Medium] Slow

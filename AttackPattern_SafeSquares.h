@@ -43,9 +43,9 @@ public:
 private:
 	void setAttackParameters()
 	{
-		create_attack_delay_ = 3350;
+		create_attack_delay_ = 2800;
 		attack_diameter_ = 26;
-		delay_till_explode_ = 1750;
+		delay_till_explode_ = 1200;
 		duration_of_explosion_ = 1500;
 	}
 };
@@ -58,9 +58,9 @@ public:
 private:
 	void setAttackParameters()
 	{
-		create_attack_delay_ = 5100;
+		create_attack_delay_ = 3600;
 		attack_diameter_ = 14;
-		delay_till_explode_ = 3500;
+		delay_till_explode_ = 2000;
 		duration_of_explosion_ = 1500;
 	}
 };
@@ -73,9 +73,9 @@ public:
 private:
 	void setAttackParameters()
 	{
-		create_attack_delay_ = 5600;
+		create_attack_delay_ = 3000;
 		attack_diameter_ = 2;
-		delay_till_explode_ = 4000;
+		delay_till_explode_ = 2500;
 		duration_of_explosion_ = 1500;
 	}
 };
