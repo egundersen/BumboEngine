@@ -564,6 +564,12 @@ void WorldBase::GENERATE_Maze()
 	Texture rock_2(485, 96, sprite_sheet_.rock, world_matrix_);
 	Texture rock_3(495, 90, sprite_sheet_.rock, world_matrix_);
 	Texture rock_4(697, 61, sprite_sheet_.rock_2, world_matrix_); // Rock Blocking Door
+	Texture rock_5(152, 33, sprite_sheet_.rock, world_matrix_);
+	Texture rock_6(126, 52, sprite_sheet_.rock, world_matrix_);
+	Texture rock_7(178, 52, sprite_sheet_.rock, world_matrix_);
+	Texture rock_8(205, 49, sprite_sheet_.rock, world_matrix_);
+	Texture rock_9(277, 32, sprite_sheet_.rock, world_matrix_);
+	Texture rock_10(263, 36, sprite_sheet_.rock, world_matrix_);
 }
 
 // creates NPCs that SHOULD attack (They don't have to at first, but if they attack at any time, but them here)
@@ -626,7 +632,7 @@ void WorldBase::GENERATE_Enemies()
 	test->initializeCharacter();
 	characters_.push_back(test);
 
-	CharacterBase *sprite_1 = new Chr_MajorNPC(662, 213, -1, sprite_sheet_.pirate_1, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
+	/*CharacterBase *sprite_1 = new Chr_MajorNPC(662, 213, -1, sprite_sheet_.pirate_1, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 	CharacterBase *sprite_2 = new Chr_MajorNPC(672, 213, -2, sprite_sheet_.pirate_2, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 	CharacterBase *sprite_3 = new Chr_MajorNPC(682, 213, -3, sprite_sheet_.pirate_3, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 	CharacterBase *sprite_4 = new Chr_MajorNPC(692, 213, -4, sprite_sheet_.pirate_5_monkey, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
@@ -646,7 +652,7 @@ void WorldBase::GENERATE_Enemies()
 	CharacterBase *sprite_18 = new Chr_MajorNPC(832, 213, -18, sprite_sheet_.sharktooth, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 	CharacterBase *sprite_19 = new Chr_MajorNPC(842, 213, -19, sprite_sheet_.bonny, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 	CharacterBase *sprite_20 = new Chr_MajorNPC(852, 213, -20, sprite_sheet_.ryuuko, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
-	//*/
+	
 	sprite_1->initializeCharacter();
 	sprite_2->initializeCharacter();
 	sprite_3->initializeCharacter();
@@ -666,7 +672,7 @@ void WorldBase::GENERATE_Enemies()
 	sprite_17->initializeCharacter();
 	sprite_18->initializeCharacter();
 	sprite_19->initializeCharacter();
-	sprite_20->initializeCharacter();//*/
+	sprite_20->initializeCharacter();
 
 	characters_.push_back(sprite_1);
 	characters_.push_back(sprite_2);
@@ -694,6 +700,8 @@ void WorldBase::GENERATE_Enemies()
 // creates NPCs that SHOULD NOT attack (They are capable of it, but this section is for NPCs that shouldn't)
 void WorldBase::GENERATE_NonHostileNPCs()
 {
+	// Lowest Empty ID: 52
+
 	// Main Characters
 	CharacterBase *aki_passive = new Chr_AkiPassive(296, 212, 22, sprite_sheet_.aki, 'u', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 
@@ -755,6 +763,9 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	CharacterBase *bridge_rally_16 = new Chr_BackgroundNPC(378, 107, 49, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
 		PopupDefinition("", 'X', 23, 9), sprite_sheet_.pirate_1, 'l');
 
+	CharacterBase *hold_shift = new Chr_BackgroundNPC(351, 189, 51, player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_,
+		PopupDefinition("Heh. Heh. Fighting too hard? Try holding [SHIFT] in combat to slow down.", 'X', 23, 9), sprite_sheet_.pirate_3, 'd');
+
 	CharacterBase *apple_salesman = new Chr_AppleSalesman(513, 158, 30, sprite_sheet_.pirate_7, 'r', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 	CharacterBase *everything_salesman = new Chr_EverythingSalesman(525, 158, 31, sprite_sheet_.pirate_6, 'l', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
 	CharacterBase *feather_salesman = new Chr_FeatherSalesman(551, 172, 32, sprite_sheet_.pirate_12, 'd', player_, screen_width_, screen_height_, world_matrix_, element_has_object_, screen_matrix_, bitmap_, audio_);
@@ -800,6 +811,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	bridge_rally_14->initializeCharacter();
 	bridge_rally_15->initializeCharacter();
 	bridge_rally_16->initializeCharacter();
+	hold_shift->initializeCharacter();
 	apple_salesman->initializeCharacter();
 	everything_salesman->initializeCharacter();
 	feather_salesman->initializeCharacter();
@@ -837,6 +849,7 @@ void WorldBase::GENERATE_NonHostileNPCs()
 	characters_.push_back(bridge_rally_14);
 	characters_.push_back(bridge_rally_15);
 	characters_.push_back(bridge_rally_16);
+	characters_.push_back(hold_shift);
 	characters_.push_back(apple_salesman);
 	characters_.push_back(everything_salesman);
 	characters_.push_back(feather_salesman);
@@ -855,11 +868,13 @@ void WorldBase::GENERATE_Signposts()
 	Signpost *checkpoint_sign_2 = new Signpost(1000, 210, 23, 9, 2, "Nakinom Border Checkpoint", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 	Signpost *deep_cave = new Signpost(318, 191, 23, 9, 3, "Welcome ye pirates to the DEEP cave", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 	Signpost *clear_cave = new Signpost(85, 88, 23, 9, 4, "Welcome to the CLEAR cave", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
+	Signpost *no_entry = new Signpost(377, 47, 23, 9, 5, "Stop! No Entry beyond this point!", world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_);
 
 	signposts_.push_back(checkpoint_sign_1);
 	signposts_.push_back(checkpoint_sign_2);
 	signposts_.push_back(deep_cave);
 	signposts_.push_back(clear_cave);
+	signposts_.push_back(no_entry);
 
 	// Displays all sign posts
 	for (auto signpost : signposts_)
@@ -881,6 +896,11 @@ void WorldBase::GENERATE_Pickups()
 	Item item_clue_4("Glove", "STATIC", 1, "A single black glove, missing from a pair");
 	Pickup *pickup_clue_4 = new Pickup(1146, 205, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_4, inventory_);
 	Pickup *unobtainable = new Pickup(462, 222, 23, 9, 14, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, Item(), inventory_);
+	Item item_super_duper_shield("Super-Duper Shield", "SHIELD", 1, "Protects the wearer once... then breaks instantly");
+	Pickup *shield_1 = new Pickup(435, 83, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_super_duper_shield, inventory_);
+	Pickup *shield_2 = new Pickup(460, 50, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_super_duper_shield, inventory_);
+	Item item_sharp_sword("Sharp Sword", "ATTACKUP", 1, "Danger! Pointy tip, keep away from children! ATTACK++");
+	Pickup *sharp_sword = new Pickup(62, 37, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_sharp_sword, inventory_);
 
 	pickups_.push_back(cliff_pickup);
 	pickups_.push_back(pickup_clue_1);
@@ -888,6 +908,9 @@ void WorldBase::GENERATE_Pickups()
 	pickups_.push_back(pickup_clue_3);
 	pickups_.push_back(pickup_clue_4);
 	pickups_.push_back(unobtainable);
+	pickups_.push_back(shield_1);
+	pickups_.push_back(shield_2);
+	pickups_.push_back(sharp_sword);
 
 	// Displays all pickups
 	for (auto pickup : pickups_)

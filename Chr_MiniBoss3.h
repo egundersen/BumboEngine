@@ -74,7 +74,7 @@ public:
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
+		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1, 1);
 		AttackPatternBase *attack_pattern_2;
 		attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 200);
 		AttackPatternBase *attack_pattern_3;

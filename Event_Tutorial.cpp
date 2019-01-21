@@ -491,8 +491,6 @@ void Event_Tutorial::skipTutorial()
 			else if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 			{
 				start_time_begin_event_ = GetTickCount64();
-				mciSendString(L"open \"resources\\audio\\effects\\falling.mp3\" type mpegvideo alias falling", NULL, 0, NULL);
-				mciSendString(L"play falling", NULL, 0, NULL);
 				confirmSelection();
 			}
 		}
@@ -551,6 +549,8 @@ void Event_Tutorial::confirmSelection()
 	else // NO
 	{
 		should_go_down_ = true;
+		mciSendString(L"open \"resources\\audio\\effects\\falling.mp3\" type mpegvideo alias falling", NULL, 0, NULL);
+		mciSendString(L"play falling", NULL, 0, NULL);
 		attached_character_->teleportNPC(763, 268);
 	}
 }

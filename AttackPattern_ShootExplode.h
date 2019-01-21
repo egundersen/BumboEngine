@@ -1,13 +1,13 @@
-#ifndef ATTACKPATTERN_SHOOTANDEXPLODE_H
-#define ATTACKPATTERN_SHOOTANDEXPLODE_H
+#ifndef ATTACKPATTERN_SHOOTEXPLODE_H
+#define ATTACKPATTERN_SHOOTEXPLODE_H
 
 #include "AttackPatternBase.h"
 
-class AttackPattern_ShootandExplode : public AttackPatternBase
+class AttackPattern_ShootExplode : public AttackPatternBase
 {
 public:
-	explicit AttackPattern_ShootandExplode(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks);
-	virtual ~AttackPattern_ShootandExplode() {}
+	explicit AttackPattern_ShootExplode(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks);
+	virtual ~AttackPattern_ShootExplode() {}
 
 	// Setters
 	void OnBeginAttack();
@@ -21,10 +21,10 @@ protected:
 	int create_attack_delay_, attack_diameter_, delay_till_explode_, duration_of_explosion_;
 };
 
-class ShootandExplode_Fast : public AttackPattern_ShootandExplode
+class ShootExplode_Fast : public AttackPattern_ShootExplode
 {
 public:
-	using AttackPattern_ShootandExplode::AttackPattern_ShootandExplode;
+	using AttackPattern_ShootExplode::AttackPattern_ShootExplode;
 
 private:
 	void setAttackParameters()
@@ -35,10 +35,10 @@ private:
 		duration_of_explosion_ = 1500;
 	}
 };
-class ShootandExplode_Slow : public AttackPattern_ShootandExplode
+class ShootExplode_Slow : public AttackPattern_ShootExplode
 {
 public:
-	using AttackPattern_ShootandExplode::AttackPattern_ShootandExplode;
+	using AttackPattern_ShootExplode::AttackPattern_ShootExplode;
 
 private:
 	void setAttackParameters()
@@ -50,10 +50,10 @@ private:
 	}
 };
 
-class ShootandExplode_Slowest : public AttackPattern_ShootandExplode
+class ShootExplode_Slowest : public AttackPattern_ShootExplode
 {
 public:
-	using AttackPattern_ShootandExplode::AttackPattern_ShootandExplode;
+	using AttackPattern_ShootExplode::AttackPattern_ShootExplode;
 
 private:
 	void setAttackParameters()
@@ -65,4 +65,4 @@ private:
 	}
 };
 
-#endif // !ATTACKPATTERN_SHOOTANDEXPLODE_H
+#endif // !ATTACKPATTERN_SHOOTEXPLODE_H

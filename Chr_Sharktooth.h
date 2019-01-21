@@ -6,7 +6,7 @@
 class Chr_Sharktooth : public CharacterBase
 {
 public:
-	Chr_Sharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object,  Matrix &screen_matrix, BitmapDefinition &bitmap, AudioDefinition &audio,
+	Chr_Sharktooth(int center_position_x, int center_position_y, int unique_object_ID, WorldSpriteContainer world_sprite, char direction, PlayerDefinition &player, int screen_width, int screen_height, Matrix &world_matrix, std::vector<std::vector<std::pair<int, int>>> &element_has_object, Matrix &screen_matrix, BitmapDefinition &bitmap, AudioDefinition &audio,
 		// START CONFIGURABLE VARIABLES HERE -------------------------------------------------
 
 
@@ -24,7 +24,7 @@ public:
 			8,
 			"SHARKTOOTH",
 			"Jimi_Hendrix_-_All_Along_the_Watchtower.mp3",
-			"sharktooth_neutral.bmp", 
+			"sharktooth_neutral.bmp",
 			"sharktooth_angry.bmp",
 			"sharktooth_happy.bmp",
 			"sharktooth_nervous_dead.bmp"
@@ -74,9 +74,19 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
-		attack_patterns_.push_back(attack_pattern_1);
+		for (int i = 0; i < 3; i++) {
+			AttackPatternBase *attack_pattern_1 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 650); // [Medium] Fast
+			AttackPatternBase *attack_pattern_2 = new SnakeExplode_Fast(screen_width, screen_height, screen_matrix, player, 325, 10000, 250); // [Medium] Fast
+			AttackPatternBase *attack_pattern_3 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 300); // [Medium] Slow
+			AttackPatternBase *attack_pattern_4 = new SnakeExplode_Slow(screen_width, screen_height, screen_matrix, player, 150, 10000, 250); // [Medium] Slow
+			AttackPatternBase *attack_pattern_5 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 100); // [Hard] Slowest
+
+			attack_patterns_.push_back(attack_pattern_1);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_5);
+		}
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

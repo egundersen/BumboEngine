@@ -1,13 +1,13 @@
-#ifndef ATTACKPATTERN_SNAKEANDEXPLODE_H
-#define ATTACKPATTERN_SNAKEANDEXPLODE_H
+#ifndef ATTACKPATTERN_SNAKEEXPLODE_H
+#define ATTACKPATTERN_SNAKEEXPLODE_H
 
 #include "AttackPatternBase.h"
 
-class AttackPattern_SnakeandExplode : public AttackPatternBase
+class AttackPattern_SnakeExplode : public AttackPatternBase
 {
 public:
-	explicit AttackPattern_SnakeandExplode(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks);
-	virtual ~AttackPattern_SnakeandExplode() {}
+	explicit AttackPattern_SnakeExplode(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_explosions, int duration_of_attack, int snake_speed);
+	virtual ~AttackPattern_SnakeExplode() {}
 
 	// Setters
 	void OnBeginAttack();
@@ -19,12 +19,14 @@ protected:
 	virtual void setAttackParameters() {}
 
 	int create_attack_delay_, attack_diameter_, delay_till_explode_, duration_of_explosion_;
+private:
+	int duration_of_attack_, snake_speed_;
 };
 
-class SnakeandExplode_Fast : public AttackPattern_SnakeandExplode
+class SnakeExplode_Fast : public AttackPattern_SnakeExplode
 {
 public:
-	using AttackPattern_SnakeandExplode::AttackPattern_SnakeandExplode;
+	using AttackPattern_SnakeExplode::AttackPattern_SnakeExplode;
 
 private:
 	void setAttackParameters()
@@ -35,10 +37,10 @@ private:
 		duration_of_explosion_ = 1500;
 	}
 };
-class SnakeandExplode_Slow : public AttackPattern_SnakeandExplode
+class SnakeExplode_Slow : public AttackPattern_SnakeExplode
 {
 public:
-	using AttackPattern_SnakeandExplode::AttackPattern_SnakeandExplode;
+	using AttackPattern_SnakeExplode::AttackPattern_SnakeExplode;
 
 private:
 	void setAttackParameters()
@@ -50,10 +52,10 @@ private:
 	}
 };
 
-class SnakeandExplode_Slowest : public AttackPattern_SnakeandExplode
+class SnakeExplode_Slowest : public AttackPattern_SnakeExplode
 {
 public:
-	using AttackPattern_SnakeandExplode::AttackPattern_SnakeandExplode;
+	using AttackPattern_SnakeExplode::AttackPattern_SnakeExplode;
 
 private:
 	void setAttackParameters()
@@ -64,10 +66,10 @@ private:
 		duration_of_explosion_ = 2000;
 	}
 };
-class SnakeandExplode_Mine : public AttackPattern_SnakeandExplode
+class SnakeExplode_Mine : public AttackPattern_SnakeExplode
 {
 public:
-	using AttackPattern_SnakeandExplode::AttackPattern_SnakeandExplode;
+	using AttackPattern_SnakeExplode::AttackPattern_SnakeExplode;
 
 private:
 	void setAttackParameters()
@@ -79,4 +81,4 @@ private:
 	}
 };
 
-#endif // !ATTACKPATTERN_SNAKEANDEXPLODE_H
+#endif // !ATTACKPATTERN_SNAKEEXPLODE_H

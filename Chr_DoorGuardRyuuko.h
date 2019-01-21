@@ -66,9 +66,29 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 5, 1);
+		AttackPatternBase *attack_pattern_1 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player); // [Medium] Slow
+		AttackPatternBase *attack_pattern_2 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slowest
+		AttackPatternBase *attack_pattern_3 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
+		AttackPatternBase *attack_pattern_4 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
+		AttackPatternBase *attack_pattern_5 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player); // [Hard] Slowest
+		AttackPatternBase *attack_pattern_6 = new SafeSquares_Fast(screen_width, screen_height, screen_matrix, player, 8); // [Easy-Hard] Fast
+		AttackPatternBase *attack_pattern_7 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player); // [Hard] Wavy
+
 		attack_patterns_.push_back(attack_pattern_1);
+		attack_patterns_.push_back(attack_pattern_2);
+		attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_4);
+		attack_patterns_.push_back(attack_pattern_5);
+		attack_patterns_.push_back(attack_pattern_6);
+		attack_patterns_.push_back(attack_pattern_7);
+
+		for (int i = 0; i < 6; i++) {
+			AttackPatternBase *attack_pattern_8 = new SafeSquares_Fast(screen_width, screen_height, screen_matrix, player, 8); // [Easy-Hard] Fast
+			AttackPatternBase *attack_pattern_9 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player); // [Hard] Wavy
+		
+			attack_patterns_.push_back(attack_pattern_8);
+			attack_patterns_.push_back(attack_pattern_9);
+		}
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

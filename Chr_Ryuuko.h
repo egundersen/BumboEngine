@@ -85,9 +85,43 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
+		AttackPatternBase *attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'r', 1, 'd', false, false, 0); // [EASY]
+		AttackPatternBase *attack_pattern_2 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'l', 0, ' ', false, false, 0); // [EASY]
+		AttackPatternBase *attack_pattern_3 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 50, 100, 'r', 1, 'u', false, false, 0); // [EASY] --SINGLECOLUMN
+		AttackPatternBase *attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 20, 9, 1, 500); // [Medium] FAST
+		AttackPatternBase *attack_pattern_5 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 350, 10, 'u', 0, ' ', false, false, 0); // [EASY] --FAST
+		AttackPatternBase *attack_pattern_6 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
+		AttackPatternBase *attack_pattern_7 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'l', 1, 'u', false, false, 0); // [MEDIUM]
+		AttackPatternBase *attack_pattern_8 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'r', 0, ' ', false, false, 0); // [MEDIUM]
+		AttackPatternBase *attack_pattern_9 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 10, 'd', 1, 'l', false, false, 0); // [MEDIUM] --FAST
+		AttackPatternBase *attack_pattern_10 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 50, 100, 'l', 0, ' ', false, false, 0); // [MEDIUM] --SINGLECOLUMN
+		AttackPatternBase *attack_pattern_11 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'd', 0, ' ', false, false, 0); // [HARD]
+		AttackPatternBase *attack_pattern_12 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player); // [Hard] Wavy
+		AttackPatternBase *attack_pattern_13 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 150, 120, 10, 'l', 1, 'u', false, false, 0); // [HARD] --FAST
+		AttackPatternBase *attack_pattern_14 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'r', 1, 'd', false, false, 0); // [MEDIUM]
+		AttackPatternBase *attack_pattern_15 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 150, 120, 10, 'r', 1, 'd', false, false, 0); // [HARD] --FAST
+		AttackPatternBase *attack_pattern_16 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 100, 15, 100, 'l', 1, 'd', false, false, 0); // [HARD] --SINGLECOLUMN
+		AttackPatternBase *attack_pattern_17 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'd', 1, 'r', false, false, 0); // [HARD]
+		AttackPatternBase *attack_pattern_18 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 1, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
+
 		attack_patterns_.push_back(attack_pattern_1);
+		attack_patterns_.push_back(attack_pattern_2);
+		attack_patterns_.push_back(attack_pattern_3);
+		attack_patterns_.push_back(attack_pattern_4);
+		attack_patterns_.push_back(attack_pattern_5);
+		attack_patterns_.push_back(attack_pattern_6);
+		attack_patterns_.push_back(attack_pattern_7);
+		attack_patterns_.push_back(attack_pattern_8);
+		attack_patterns_.push_back(attack_pattern_9);
+		attack_patterns_.push_back(attack_pattern_10);
+		attack_patterns_.push_back(attack_pattern_11);
+		attack_patterns_.push_back(attack_pattern_12);
+		attack_patterns_.push_back(attack_pattern_13);
+		attack_patterns_.push_back(attack_pattern_14);
+		attack_patterns_.push_back(attack_pattern_15);
+		attack_patterns_.push_back(attack_pattern_16);
+		attack_patterns_.push_back(attack_pattern_17);
+		attack_patterns_.push_back(attack_pattern_18);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

@@ -10,6 +10,7 @@ void AttackPattern_ShootAtPlayer::OnBeginAttack()
 {
 	createAttack(rand() % 2, 0, width_, 60, player_position_.y, 1);
 	start_time_new_attack_ = GetTickCount64();
+	start_time_move_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
 
@@ -21,14 +22,19 @@ void AttackPattern_ShootAtPlayer::refreshScreen()
 	else
 	{
 		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
-		if (current_time_new_attack_ >= 500 && created_attacks_ < attacks_to_create_) // Create new Attacks
+		if (current_time_new_attack_ >= 1000 && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack(rand() % 2, 0, width_, 60, player_position_.y, 1);
 			start_time_new_attack_ = GetTickCount64();
 		}
 
 		attacksCheckCollision();
-		moveAttack();
+		double current_time_move_attack_ = GetTickCount64() - start_time_move_attack_;
+		if (current_time_move_attack_ >= 50)
+		{
+			moveAttack();
+			start_time_move_attack_ = GetTickCount64();
+		}
 
 		evaluatePlayerInput();
 		refreshPlayerLocation();

@@ -1,14 +1,13 @@
 #include "AttackPattern_Wall.h"
 
-AttackPattern_Wall::AttackPattern_Wall(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks, int gap_width, int speed)
-	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks), gap_width_{ gap_width }, speed_{ speed }
+AttackPattern_Wall::AttackPattern_Wall(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks, int gap_width, int speed, int create_attack_delay)
+	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks), gap_width_{ gap_width }, speed_{ speed }, create_attack_delay_{ create_attack_delay }
 {
 }
 
 // Calls once when the entire attack starts
 void AttackPattern_Wall::OnBeginAttack()
 {
-	createAttack( 0, width_, generateRandomNumber(0, height_ - 1));
 	start_time_new_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;
 }
@@ -21,7 +20,7 @@ void AttackPattern_Wall::refreshScreen()
 	else
 	{
 		double current_time_new_attack_ = GetTickCount64() - start_time_new_attack_;
-		if (current_time_new_attack_ >= 1750 && created_attacks_ < attacks_to_create_) // Create new Attacks
+		if (current_time_new_attack_ >= create_attack_delay_ && created_attacks_ < attacks_to_create_) // Create new Attacks
 		{
 			createAttack( 0, width_, generateRandomNumber(0, height_ - 1));
 			start_time_new_attack_ = GetTickCount64();

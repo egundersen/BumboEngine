@@ -59,9 +59,22 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		AttackPatternBase *attack_pattern_1;
-		attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 3, 5, 1);
-		attack_patterns_.push_back(attack_pattern_1);
+		for (int i = 0; i < 3; i++)
+		{
+			AttackPatternBase *attack_pattern_1 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slowest
+			AttackPatternBase *attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 75); // [Easy] Slow
+			AttackPatternBase *attack_pattern_3 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
+			AttackPatternBase *attack_pattern_4 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 25); // [Easy] Slowest
+			AttackPatternBase *attack_pattern_5 = new SafeSquares_Fast(screen_width, screen_height, screen_matrix, player, 8); // [Easy-Hard] Fast
+			AttackPatternBase *attack_pattern_6 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 150); // [Easy] Fast
+		
+			attack_patterns_.push_back(attack_pattern_1);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_6);
+		}
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

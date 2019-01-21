@@ -73,6 +73,12 @@
     <Filter Include="Source Files\Events\Unique Events">
       <UniqueIdentifier>{a40bf579-cad5-4e3a-af23-6d1b88bd8f90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Battle\Multi-Attack Patterns">
+      <UniqueIdentifier>{abb25811-0944-4a65-8fe6-e74019e7e695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\Multi-Attack Patterns">
+      <UniqueIdentifier>{56e874d0-a0f4-46cf-8ecf-f981b26f58ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -159,12 +165,6 @@
     <ClCompile Include="AttackPattern_Explode.cpp">
       <Filter>Source Files\Battle\Attack Patterns</Filter>
     </ClCompile>
-    <ClCompile Include="AttackPattern_ShootandExplode.cpp">
-      <Filter>Source Files\Battle\Attack Patterns</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_ShootandSnake.cpp">
-      <Filter>Source Files\Battle\Attack Patterns</Filter>
-    </ClCompile>
     <ClCompile Include="AttackPattern_ShootAtPlayer.cpp">
       <Filter>Source Files\Battle\Attack Patterns</Filter>
     </ClCompile>
@@ -172,9 +172,6 @@
       <Filter>Source Files\Battle\Attack Patterns</Filter>
     </ClCompile>
     <ClCompile Include="AttackPattern_Snake.cpp">
-      <Filter>Source Files\Battle\Attack Patterns</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackPattern_SnakeandExplode.cpp">
       <Filter>Source Files\Battle\Attack Patterns</Filter>
     </ClCompile>
     <ClCompile Include="AttackPattern_VerticleGap.cpp">
@@ -269,6 +266,21 @@
     </ClCompile>
     <ClCompile Include="AttackPattern_CoordinatedStorm.cpp">
       <Filter>Source Files\Battle\Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootSnake.cpp">
+      <Filter>Source Files\Battle\Multi-Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_ShootExplode.cpp">
+      <Filter>Source Files\Battle\Multi-Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_SnakeExplode.cpp">
+      <Filter>Source Files\Battle\Multi-Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_SnakeCoordinatedStorm.cpp">
+      <Filter>Source Files\Battle\Multi-Attack Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPattern_SnakeHailStorm.cpp">
+      <Filter>Source Files\Battle\Multi-Attack Patterns</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,12 +428,6 @@
     <ClInclude Include="AttackPattern_Explode.h">
       <Filter>Header Files\Battle\Attack Patterns</Filter>
     </ClInclude>
-    <ClInclude Include="AttackPattern_ShootandExplode.h">
-      <Filter>Header Files\Battle\Attack Patterns</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_ShootandSnake.h">
-      <Filter>Header Files\Battle\Attack Patterns</Filter>
-    </ClInclude>
     <ClInclude Include="AttackPattern_ShootAtPlayer.h">
       <Filter>Header Files\Battle\Attack Patterns</Filter>
     </ClInclude>
@@ -429,9 +435,6 @@
       <Filter>Header Files\Battle\Attack Patterns</Filter>
     </ClInclude>
     <ClInclude Include="AttackPattern_Snake.h">
-      <Filter>Header Files\Battle\Attack Patterns</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPattern_SnakeandExplode.h">
       <Filter>Header Files\Battle\Attack Patterns</Filter>
     </ClInclude>
     <ClInclude Include="AttackPattern_VerticleGap.h">
@@ -604,6 +607,21 @@
     </ClInclude>
     <ClInclude Include="AttackPattern_CoordinatedStorm.h">
       <Filter>Header Files\Battle\Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootSnake.h">
+      <Filter>Header Files\Battle\Multi-Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_ShootExplode.h">
+      <Filter>Header Files\Battle\Multi-Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_SnakeExplode.h">
+      <Filter>Header Files\Battle\Multi-Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_SnakeCoordinatedStorm.h">
+      <Filter>Header Files\Battle\Multi-Attack Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPattern_SnakeHailStorm.h">
+      <Filter>Header Files\Battle\Multi-Attack Patterns</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

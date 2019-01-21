@@ -20,6 +20,21 @@ protected:
 	int create_attack_delay_, attack_diameter_, delay_till_explode_, duration_of_explosion_;
 };
 
+class SafeSquares_Fast_Easy : public AttackPattern_SafeSquares
+{
+public:
+	using AttackPattern_SafeSquares::AttackPattern_SafeSquares;
+
+private:
+	void setAttackParameters()
+	{
+		create_attack_delay_ = 3300;
+		attack_diameter_ = 30;
+		delay_till_explode_ = 1800;
+		duration_of_explosion_ = 1500;
+	}
+};
+
 class SafeSquares_Fast : public AttackPattern_SafeSquares
 {
 public:

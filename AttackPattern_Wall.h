@@ -6,7 +6,7 @@
 class AttackPattern_Wall : public AttackPatternBase
 {
 public:
-	AttackPattern_Wall(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks, int gap_width, int speed);
+	AttackPattern_Wall(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks, int gap_width, int speed, int create_attack_delay);
 
 	// Setters
 	void OnBeginAttack();
@@ -14,7 +14,7 @@ public:
 	void createAttack( int min_position_x, int max_position_x, int gap_height);
 
 private:
-	int gap_width_, speed_;
+	int gap_width_, speed_, create_attack_delay_;
 };
 
 #endif // !ATTACKPATTERN_WALL_H
