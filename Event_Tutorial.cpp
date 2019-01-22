@@ -550,6 +550,7 @@ void Event_Tutorial::confirmSelection()
 	{
 		should_go_down_ = true;
 		mciSendString(L"open \"resources\\audio\\effects\\falling.mp3\" type mpegvideo alias falling", NULL, 0, NULL);
+		mciSendString(L"setaudio falling volume to 35", NULL, 0, NULL);
 		mciSendString(L"play falling", NULL, 0, NULL);
 		attached_character_->teleportNPC(763, 268);
 	}

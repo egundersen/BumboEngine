@@ -62,7 +62,7 @@ public:
 		std::vector<std::tuple<std::string, std::string, bool>> dialog_choice_5;
 		dialog_choice_5.push_back(std::make_tuple("I don't go around terrorisin' pirates!", "Farrdin' pirates and their self-righteous attitude...", false));
 		dialog_choice_5.push_back(std::make_tuple("Me jacket be tailor-made", "And I'm wearing designer jeans.", false));
-		dialog_choice_5.push_back(std::make_tuple("I don't CAPITALIZE everythin' I say", "NO! IT CAN'T BE TRUE!!!! NO O O O O O O O!", false));
+		dialog_choice_5.push_back(std::make_tuple("I don't CAPITALIZE everythin' I say", "NO! IT CAN'T BE TRUE!!!! NO O O O O O O O!", true));
 		dialog_choice_5.push_back(std::make_tuple("I won't stoop t' yer level!", "<MY LEVEL>? I BE NO PIRATE!!!! wait...", true));
 
 		dialog_choices_.push_back(dialog_choice_1);
@@ -85,7 +85,6 @@ public:
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		for (int i = 0; i < 3; i++) {
-			AttackPatternBase *attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1750); // [EASY] SLOW
 			AttackPatternBase *attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 3, 30, 1750); // [MEDIUM] SLOW
 			AttackPatternBase *attack_pattern_3 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
 			AttackPatternBase *attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 20, 9, 1, 500); // [Medium] FAST
@@ -95,8 +94,10 @@ public:
 			attack_patterns_.push_back(attack_pattern_4);
 			attack_patterns_.push_back(attack_pattern_3);
 			attack_patterns_.push_back(attack_pattern_2);
-			attack_patterns_.push_back(attack_pattern_1);
 		}
+
+		AttackPatternBase *attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1750); // [EASY] SLOW
+		attack_patterns_.push_back(attack_pattern_1);
 	}
 
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */

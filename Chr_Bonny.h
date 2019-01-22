@@ -92,7 +92,7 @@ public:
 	/* Advanced Dialog	(Shows multiple text screens with dialog options. Leave BLANK for minor characters) */
 	void setDialogNodes()
 	{
-		Item sword("An 'ok' sword", "WEAPON", 7, "Looks like something you'd get for 5 bucks on a street corner. Do x7 damage for one attack");
+		Item sword("An 'ok' sword", "ATTACKUP", 7, "Looks like something you'd get for 5 bucks on a street corner. Do x7 damage for one attack");
 
 		/* ACTIONS (Mini-Tutorial)
 		*	"FIGHT"		Will start a battle with the NPC

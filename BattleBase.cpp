@@ -50,7 +50,8 @@ void BattleBase::refreshScreen()
 				{
 					if (attack_patterns_.size() == 0 || dialog_.shouldReturnToMenu()) // BOSS OUT OF ATTACKS
 						local_vector_space_ = "MENU";
-					else {
+					else
+					{
 						attack_patterns_.back()->OnBeginAttack();
 						local_vector_space_ = "FIGHT";
 					}
@@ -124,12 +125,14 @@ void BattleBase::setBackgroundText()
 	}
 	else
 	{
-		if (boss_.health > 3) {
+		if (boss_.health > 3)
+		{
 			addImageToMatrix(8 + boss_.health / 2, 3, bossHealthText, menu_matrix_);
 			menu_matrix_[4][7] = '[';
 			menu_matrix_[4][9 + boss_.health] = ']';
 		}
-		else {
+		else
+		{
 			addImageToMatrix(8 + 9, 3, bossHealthText, menu_matrix_);
 			menu_matrix_[4][7 + 4] = '[';
 			menu_matrix_[4][9 + 4 + boss_.health] = ']';
@@ -163,10 +166,9 @@ void BattleBase::setBossHealthText()
 	}
 	else
 	{
-		if (boss_.health == 11)
-			menu_matrix_[5][8] = ' ';
-		for (int j = boss_.health; j < initial_boss_health_; ++j)
-			menu_matrix_[4][j + 8] = ' ';
+		for (int i = 0; i < 3; i++)
+			for (int j = boss_.health; j < initial_boss_health_; ++j)
+				menu_matrix_[4 + i][j + 8] = ' ';
 		for (int j = 0; j < boss_.health; ++j)
 			menu_matrix_[4][j + 8] = 'O';
 	}

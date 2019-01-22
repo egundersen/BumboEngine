@@ -7,8 +7,8 @@ MatrixManager::MatrixManager(int width, int height, Matrix &screen_matrix, int p
 	soundtrack_manager_{ audio_ }
 {
 	// Starting Items (Not pickups! Just starting items)
-	inventory_.addItem("Mug o' Grog", 1, "Looks like it could burn a hole through anything it touches. Bottoms up?");
-	inventory_.addItem("Fish Mush", 1, "Number 1 meal for all pirates alike.");
+	inventory_.addItem("Mug o' Grog", 2, "Looks like it could burn a hole through anything it touches. Bottoms up?");
+	inventory_.addItem("Fish Mush", 3, "Number 1 meal for all pirates alike.");
 	StartScreen startScreen(width_, height_, screen_matrix_);
 }
 

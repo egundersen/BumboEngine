@@ -55,7 +55,8 @@ public:
 			if (index > vector_.size() - 1)
 			{
 #ifdef _DEBUG
-				throw "Index must not be greater than width";
+				//throw "Index must not be greater than width";
+
 #endif
 				index = 0;
 			}
@@ -72,7 +73,8 @@ public:
 		if (index > height_)
 		{
 #ifdef _DEBUG
-			throw "Index must not be greater than height";
+			//throw "Index must not be greater than height";
+			std::cout << "Width out of bounds!\n";
 #endif
 			index = 0;
 		}
