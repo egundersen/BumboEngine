@@ -82,6 +82,15 @@
     <Filter Include="Resource Files\Sprites">
       <UniqueIdentifier>{1b019998-0f5a-4c37-b261-0d0f93624f90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Audio">
+      <UniqueIdentifier>{c546bfd6-9b89-48de-9e1c-d9f55def1fdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Audio\Soundtrack">
+      <UniqueIdentifier>{d34b3360-59f0-442e-8345-4b90ca8cbe95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Audio\Effects">
+      <UniqueIdentifier>{84720feb-6618-4776-ba1e-30600e870cd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -284,9 +293,6 @@
     </ClCompile>
     <ClCompile Include="AttackPattern_SnakeHailStorm.cpp">
       <Filter>Source Files\Battle\Multi-Attack Patterns</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioManager.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -629,9 +635,6 @@
     <ClInclude Include="AttackPattern_SnakeHailStorm.h">
       <Filter>Header Files\Battle\Multi-Attack Patterns</Filter>
     </ClInclude>
-    <ClInclude Include="AudioManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">
@@ -747,7 +750,55 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="resources\audio\soundtrack\Bee_Gees_-_Stayin_Alive.mp3">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Earth_Wind_and_Fire_-_September.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Guns_n_Roses_-_Nightrain.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Initial D - Deja Vu.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\James_Brown_-_Sex_Machine.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Jimi_Hendrix_-_All_Along_the_Watchtower.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Led_Zeppelin_-_Achilles_Last_Stand.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Led_Zeppelin_-_Immigrant_Song.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Men_At_Work_-_Who_Can_It_Be_Now.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Neil_Diamond_-_Solitary_Man.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Peter_Schilling_-_Major_Tom.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Pink_Floyd_-_Another_Brick_in_the_Wall.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\The_Police_-_Message_in_a_Bottle.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\The_Who_-_Behind_Blue_Eyes.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\soundtrack\Van_Halen_-_Ain%27t_Talkin_Bout_Love.mp3">
+      <Filter>Resource Files\Audio\Soundtrack</Filter>
+    </Media>
+    <Media Include="resources\audio\effects\falling.mp3">
+      <Filter>Resource Files\Audio\Effects</Filter>
+    </Media>
+    <Media Include="resources\audio\effects\step.mp3">
+      <Filter>Resource Files\Audio\Effects</Filter>
     </Media>
   </ItemGroup>
 </Project>

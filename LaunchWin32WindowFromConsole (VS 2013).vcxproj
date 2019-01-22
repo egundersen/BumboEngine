@@ -181,7 +181,6 @@
     <ClCompile Include="Attack_Snake.cpp" />
     <ClCompile Include="Attack_VerticleGap.cpp" />
     <ClCompile Include="Attack_Wall.cpp" />
-    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BattleBase.cpp" />
     <ClCompile Include="CharacterBase.cpp" />
     <ClCompile Include="BattleDialogBase.cpp" />
@@ -254,7 +253,6 @@
     <ClInclude Include="Attack_VerticleGap.h" />
     <ClInclude Include="Attack_Wall.h" />
     <ClInclude Include="AudioDefinition.h" />
-    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BattleBase.h" />
     <ClInclude Include="BattleSprite.h" />
     <ClInclude Include="BossFightDefinition.h" />
@@ -382,7 +380,23 @@
     <Image Include="resources\sprites\tutorial.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="resources\audio\effects\falling.mp3" />
+    <Media Include="resources\audio\effects\step.mp3" />
     <Media Include="resources\audio\soundtrack\Bee_Gees_-_Stayin_Alive.mp3" />
+    <Media Include="resources\audio\soundtrack\Earth_Wind_and_Fire_-_September.mp3" />
+    <Media Include="resources\audio\soundtrack\Guns_n_Roses_-_Nightrain.mp3" />
+    <Media Include="resources\audio\soundtrack\Initial D - Deja Vu.mp3" />
+    <Media Include="resources\audio\soundtrack\James_Brown_-_Sex_Machine.mp3" />
+    <Media Include="resources\audio\soundtrack\Jimi_Hendrix_-_All_Along_the_Watchtower.mp3" />
+    <Media Include="resources\audio\soundtrack\Led_Zeppelin_-_Achilles_Last_Stand.mp3" />
+    <Media Include="resources\audio\soundtrack\Led_Zeppelin_-_Immigrant_Song.mp3" />
+    <Media Include="resources\audio\soundtrack\Men_At_Work_-_Who_Can_It_Be_Now.mp3" />
+    <Media Include="resources\audio\soundtrack\Neil_Diamond_-_Solitary_Man.mp3" />
+    <Media Include="resources\audio\soundtrack\Peter_Schilling_-_Major_Tom.mp3" />
+    <Media Include="resources\audio\soundtrack\Pink_Floyd_-_Another_Brick_in_the_Wall.mp3" />
+    <Media Include="resources\audio\soundtrack\The_Police_-_Message_in_a_Bottle.mp3" />
+    <Media Include="resources\audio\soundtrack\The_Who_-_Behind_Blue_Eyes.mp3" />
+    <Media Include="resources\audio\soundtrack\Van_Halen_-_Ain%27t_Talkin_Bout_Love.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

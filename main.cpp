@@ -9,6 +9,8 @@
 using namespace WinMainParameters;
 
 #define MAX_LOADSTRING 100
+#define BUFSIZE 4096
+TCHAR buf[MAX_PATH];
 
 // Global Variables (are (usually) evil; this code comes from the Visual C++ Win32 Application project template):
 HINSTANCE hInst;								// current instance
@@ -21,6 +23,11 @@ int width_G = 79;
 int height_G = 35;
 BitmapDefinition bitmap_G(0, 160, 0);
 Matrix screen_matrix_G(width_G, height_G);
+
+void createDirectory(HINSTANCE hInstance, TCHAR directory[MAX_PATH]);
+void createMP3File(HINSTANCE hInstance, TCHAR directory[MAX_PATH], TCHAR file_name[MAX_PATH], int MP3_ID);
+void deleteMP3File(TCHAR directory[MAX_PATH], TCHAR file_name[MAX_PATH]);
+void deleteDirectory(TCHAR directory[MAX_PATH]);
 
 // Forward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -90,25 +97,15 @@ int main(int /*argc*/, char* /*argv*/[]) {
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
-	//-----------------------------------------------------
-	HRSRC hResInfo = ::FindResource(hInstance, MAKEINTRESOURCE(IDR_MP32), _T("MP3"));
-	HGLOBAL hRes = ::LoadResource(hInstance, hResInfo);
-	LPVOID memRes = ::LockResource(hRes);
-	DWORD sizeRes = ::SizeofResource(hInstance, hResInfo);
+	// Create Temporary Directory for audio files
+	if (GetTempPath(MAX_PATH, buf) == 0)
+		MessageBox(0, buf, _T("Failed to create audio"), 0);
+	TCHAR directory[MAX_PATH] = L"";
+	TCHAR folder_name[MAX_PATH] = L"\Wenlife\\";
+	_stprintf_s(directory, MAX_PATH, _T("%s%s"), buf, folder_name);
+	CreateDirectory(directory, NULL);
 
-	HANDLE hFile = ::CreateFile(L"C:\\Users\\Erik\\Documents\\TEST\\Bee_Gees_-_Stayin_Alive.mp3", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	DWORD dwWritten = 0;
-	::WriteFile(hFile, memRes, sizeRes, &dwWritten, NULL);
-	::CloseHandle(hFile);
-	//-----------------------------------------------------
-	DeleteFile(L"C:\\Users\\Erik\\Documents\\TEST\\Bee_Gees_-_Stayin_Alive.mp3");
-	//-----------------------------------------------------
-	if (CreateDirectory(L"C:\\Users\\Erik\\Documents\\TEST\\BOMB", NULL) ||
-		ERROR_ALREADY_EXISTS == GetLastError())
-	{
-		// CopyFile(...)
-	}
-
+	createDirectory(hInstance, directory);
 
 	// Loading/Splash Screen
 	SplashScreen splash(width_G, height_G, screen_matrix_G);
@@ -137,6 +134,8 @@ int main(int /*argc*/, char* /*argv*/[]) {
 		RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 			RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 	}
+
+	deleteDirectory(directory);
 
 	return (int)msg.wParam;
 }
@@ -393,6 +392,75 @@ HBITMAP ReplaceAllColorsExcept(HBITMAP hBmp, COLORREF cExcludedColor, COLORREF c
 	return RetBmp;
 }
 
+// Creates Directory
+void createDirectory(HINSTANCE hInstance, TCHAR directory[MAX_PATH]) {
+
+	// Names don't actually matter.. could be "Hello.mp3" just there for readability
+	createMP3File(hInstance, directory, L"Bee_Gees_-_Stayin_Alive.mp3", 146);
+	createMP3File(hInstance, directory, L"Earth_Wind_and_Fire_-_September.mp3", 148);
+	createMP3File(hInstance, directory, L"Guns_n_Roses_-_Nightrain.mp3", 149);
+	createMP3File(hInstance, directory, L"Initial D - Deja Vu.mp3", 150);
+	createMP3File(hInstance, directory, L"James_Brown_-_Sex_Machine.mp3", 151);
+	createMP3File(hInstance, directory, L"Jimi_Hendrix_-_All_Along_the_Watchtower.mp3", 152);
+	createMP3File(hInstance, directory, L"Led_Zeppelin_-_Achilles_Last_Stand.mp3", 153);
+	createMP3File(hInstance, directory, L"Led_Zeppelin_-_Immigrant_Song.mp3", 154);
+	createMP3File(hInstance, directory, L"Men_At_Work_-_Who_Can_It_Be_Now.mp3", 155);
+	createMP3File(hInstance, directory, L"Neil_Diamond_-_Solitary_Man.mp3", 156);
+	createMP3File(hInstance, directory, L"Peter_Schilling_-_Major_Tom.mp3", 157);
+	createMP3File(hInstance, directory, L"Pink_Floyd_-_Another_Brick_in_the_Wall.mp3", 158);
+	createMP3File(hInstance, directory, L"The_Police_-_Message_in_a_Bottle.mp3", 159);
+	createMP3File(hInstance, directory, L"The_Who_-_Behind_Blue_Eyes.mp3", 160);
+	createMP3File(hInstance, directory, L"Van_Halen_-_Ain't_Talkin_Bout_Love.mp3", 161);
+	createMP3File(hInstance, directory, L"falling.mp3", 162);
+	createMP3File(hInstance, directory, L"step.mp3", 163);
+}
+
+// Creates an MP3 file in the provided directory
+void createMP3File(HINSTANCE hInstance, TCHAR directory[MAX_PATH], TCHAR file_name[MAX_PATH], int MP3_ID) {
+	HRSRC hResInfo = ::FindResource(hInstance, MAKEINTRESOURCE(MP3_ID), _T("MP3"));
+	HGLOBAL hRes = ::LoadResource(hInstance, hResInfo);
+	LPVOID memRes = ::LockResource(hRes);
+	DWORD sizeRes = ::SizeofResource(hInstance, hResInfo);
+
+	TCHAR file_path[MAX_PATH] = L"";
+	_stprintf_s(file_path, MAX_PATH, _T("%s%s"), directory, file_name);
+
+	HANDLE hFile = ::CreateFile(file_path, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	DWORD dwWritten = 0;
+	::WriteFile(hFile, memRes, sizeRes, &dwWritten, NULL);
+	::CloseHandle(hFile);
+}
+
+// Deletes MP3 File from provided directory
+void deleteMP3File(TCHAR directory[MAX_PATH], TCHAR file_name[MAX_PATH]) {
+	TCHAR file_path[MAX_PATH] = L"";
+	_stprintf_s(file_path, MAX_PATH, _T("%s%s"), directory, file_name);
+
+	DeleteFile(file_path);
+}
+
+void deleteDirectory(TCHAR directory[MAX_PATH])
+{
+	deleteMP3File(directory, L"Bee_Gees_-_Stayin_Alive.mp3");
+	deleteMP3File(directory, L"Earth_Wind_and_Fire_-_September.mp3");
+	deleteMP3File(directory, L"Guns_n_Roses_-_Nightrain.mp3");
+	deleteMP3File(directory, L"Initial D - Deja Vu.mp3");
+	deleteMP3File(directory, L"James_Brown_-_Sex_Machine.mp3");
+	deleteMP3File(directory, L"Jimi_Hendrix_-_All_Along_the_Watchtower.mp3");
+	deleteMP3File(directory, L"Led_Zeppelin_-_Achilles_Last_Stand.mp3");
+	deleteMP3File(directory, L"Led_Zeppelin_-_Immigrant_Song.mp3");
+	deleteMP3File(directory, L"Men_At_Work_-_Who_Can_It_Be_Now.mp3");
+	deleteMP3File(directory, L"Neil_Diamond_-_Solitary_Man.mp3");
+	deleteMP3File(directory, L"Peter_Schilling_-_Major_Tom.mp3");
+	deleteMP3File(directory, L"Pink_Floyd_-_Another_Brick_in_the_Wall.mp3");
+	deleteMP3File(directory, L"The_Police_-_Message_in_a_Bottle.mp3");
+	deleteMP3File(directory, L"The_Who_-_Behind_Blue_Eyes.mp3");
+	deleteMP3File(directory, L"Van_Halen_-_Ain't_Talkin_Bout_Love.mp3");
+	deleteMP3File(directory, L"falling.mp3");
+	deleteMP3File(directory, L"step.mp3");
+	RemoveDirectory(directory);
+}
+
 bool LoadAndBlitBitmap(int resource_ID, HDC hWinDC, int position_x, int position_y)
 {
 	HINSTANCE hInstance = (HINSTANCE)GetModuleHandle(NULL);
@@ -457,15 +525,15 @@ bool LoadAndBlitBitmap(int resource_ID, HDC hWinDC, int position_x, int position
 	}
 	else
 	{//*/
-		// Blit the dc which holds the bitmap onto the window's dc
-		SetStretchBltMode(hWinDC, HALFTONE);
-		BOOL qRetBlit = ::StretchBlt(hWinDC, position_x, position_y, 475, 425,
-			hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, SRCCOPY);
-		if (!qRetBlit)
-		{
-			::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
-			return false;
-		}
+	// Blit the dc which holds the bitmap onto the window's dc
+	SetStretchBltMode(hWinDC, HALFTONE);
+	BOOL qRetBlit = ::StretchBlt(hWinDC, position_x, position_y, 475, 425,
+		hLocalDC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, SRCCOPY);
+	if (!qRetBlit)
+	{
+		::MessageBox(NULL, __T("Blit Failed"), __T("Error"), MB_OK);
+		return false;
+	}
 	//}
 
 	// Unitialize and deallocate resources
