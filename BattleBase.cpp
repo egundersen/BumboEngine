@@ -166,8 +166,8 @@ void BattleBase::setBossHealthText()
 	}
 	else
 	{
-		for (int i = 0; i < 3; i++)
-			for (int j = boss_.health; j < initial_boss_health_; ++j)
+		for (int i = 0; i < 2; i++)
+			for (int j = 0; j < 11; ++j)
 				menu_matrix_[4 + i][j + 8] = ' ';
 		for (int j = 0; j < boss_.health; ++j)
 			menu_matrix_[4][j + 8] = 'O';
@@ -203,7 +203,7 @@ void BattleBase::setGameOverText()
 		menu_matrix_[2][j] = '=';
 	}
 	Image game_over_letters(" [][][]     []   []      [][]=====      [][][][]      [][]==== [][][]Z[]    []   [][]  [][]  [][][]           []  [] []    [] []     []  []Z[]  ____  []__[] [] [][] [][]=====      []  []  []  []  []==== [][][]Z[]    [] []    [][] [][] [][]           []  []   [][]   []     [] [] Z [][][]  []    [][]  []  [][]=====      [][][]    []    []==== []  []Z");
-	Image funnyText(std::string("    " + player_.getPlayerName() + "  was killed by ") + boss_.name + std::string(".ZZZZZWhat? Not quite dead? Press r for a rematch!Z"));
+	Image funnyText(std::string("    " + player_.getPlayerName() + " was killed by ") + boss_.name + std::string(".ZZZZZWhat? Not quite dead? Press r for a rematch!Z"));
 	addImageToMatrix(39, 16, funnyText, menu_matrix_);
 	addImageToMatrix(39, 6, game_over_letters, menu_matrix_);
 }

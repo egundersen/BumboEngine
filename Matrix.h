@@ -6,6 +6,10 @@
 #include <vector>
 #include <string>
 
+#ifdef _DEBUG
+#include <iostream>
+#endif
+
 // Creates an m x n matrix of characters. Includes Color in RGBA
 class Matrix
 {
@@ -55,7 +59,7 @@ public:
 			if (index > vector_.size() - 1)
 			{
 #ifdef _DEBUG
-				//throw "Index must not be greater than width";
+				std::cout << "Width out of bounds!\n";
 
 #endif
 				index = 0;
@@ -73,8 +77,7 @@ public:
 		if (index > height_)
 		{
 #ifdef _DEBUG
-			//throw "Index must not be greater than height";
-			std::cout << "Width out of bounds!\n";
+			std::cout << "Height out of bounds!\n";
 #endif
 			index = 0;
 		}

@@ -6,10 +6,6 @@
 #include <vector>
 #include <string>
 
-#ifdef _DEBUG
-#include <iostream>
-#endif
-
 struct Position_s
 {
 	int x_position_min = 0;
