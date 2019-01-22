@@ -120,7 +120,7 @@ public:
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
 		AttackPatternBase *attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 100); // [EASY]
-		AttackPatternBase *attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1750); // [EASY] SLOW
+		AttackPatternBase *attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1000); // [EASY] SLOW
 		AttackPatternBase *attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 15, 10, 500); // [EASY] FAST
 		AttackPatternBase *attack_pattern_4 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 150); // [Easy] Fast
 		AttackPatternBase *attack_pattern_5 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 75); // [Easy] Slow

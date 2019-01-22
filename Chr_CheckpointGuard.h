@@ -96,7 +96,7 @@ public:
 			attack_patterns_.push_back(attack_pattern_2);
 		}
 
-		AttackPatternBase *attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1750); // [EASY] SLOW
+		AttackPatternBase *attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1000); // [EASY] SLOW
 		attack_patterns_.push_back(attack_pattern_1);
 	}
 
