@@ -285,6 +285,9 @@
     <ClCompile Include="AttackPattern_SnakeHailStorm.cpp">
       <Filter>Source Files\Battle\Multi-Attack Patterns</Filter>
     </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMainParameters.h">
@@ -626,6 +629,9 @@
     <ClInclude Include="AttackPattern_SnakeHailStorm.h">
       <Filter>Header Files\Battle\Multi-Attack Patterns</Filter>
     </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LaunchWin32WindowFromConsole.rc">
@@ -738,5 +744,10 @@
     <Image Include="resources\sprites\tutorial.bmp">
       <Filter>Resource Files\Sprites</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\soundtrack\Bee_Gees_-_Stayin_Alive.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

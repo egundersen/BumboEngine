@@ -90,6 +90,26 @@ int main(int /*argc*/, char* /*argv*/[]) {
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHWIN32WINDOWFROMCONSOLE));
 
+	//-----------------------------------------------------
+	HRSRC hResInfo = ::FindResource(hInstance, MAKEINTRESOURCE(IDR_MP32), _T("MP3"));
+	HGLOBAL hRes = ::LoadResource(hInstance, hResInfo);
+	LPVOID memRes = ::LockResource(hRes);
+	DWORD sizeRes = ::SizeofResource(hInstance, hResInfo);
+
+	HANDLE hFile = ::CreateFile(L"C:\\Users\\Erik\\Documents\\TEST\\Bee_Gees_-_Stayin_Alive.mp3", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	DWORD dwWritten = 0;
+	::WriteFile(hFile, memRes, sizeRes, &dwWritten, NULL);
+	::CloseHandle(hFile);
+	//-----------------------------------------------------
+	DeleteFile(L"C:\\Users\\Erik\\Documents\\TEST\\Bee_Gees_-_Stayin_Alive.mp3");
+	//-----------------------------------------------------
+	if (CreateDirectory(L"C:\\Users\\Erik\\Documents\\TEST\\BOMB", NULL) ||
+		ERROR_ALREADY_EXISTS == GetLastError())
+	{
+		// CopyFile(...)
+	}
+
+
 	// Loading/Splash Screen
 	SplashScreen splash(width_G, height_G, screen_matrix_G);
 	GetMessage(&msg, NULL, 0, 0);
