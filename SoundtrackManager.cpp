@@ -1,7 +1,7 @@
 #include "SoundtrackManager.h"
 
-SoundtrackManager::SoundtrackManager(AudioDefinition & audio) 
-	: audio_{ audio }, current_song_{ "" }
+SoundtrackManager::SoundtrackManager(AudioDefinition & audio, std::string directory)
+	: audio_{ audio }, current_song_{ "" }, directory_{ directory }
 {
 }
 
@@ -14,11 +14,13 @@ void SoundtrackManager::refreshAudio()
 		audio_.forceStop();
 	}
 	else if (audio_.isPlaying()) {
-		if (current_song_ != audio_.getFilePath())
+		if (current_song_ != audio_.getFileName())
 		{
-			current_song_ = audio_.getFilePath();
-			if (audio_.getFilePath() != "") {
-				std::wstring songTemp = std::wstring(current_song_.begin(), current_song_.end());
+			current_song_ = audio_.getFileName();
+			std::string current_path = "open \"" + directory_ + audio_.getFileName() + std::string("\" type mpegvideo alias soundtrack");
+			
+			if (audio_.getFileName() != "") {
+				std::wstring songTemp = std::wstring(current_path.begin(), current_path.end());
 				TCHAR * songTemp2 = (wchar_t *)songTemp.c_str();
 
 				std::string volume = std::string("setaudio soundtrack volume to ") + std::to_string(audio_.getVolume());

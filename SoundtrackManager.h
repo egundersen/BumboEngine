@@ -8,11 +8,11 @@
 // Manages play & stop functionality for the AudioDefinition
 class SoundtrackManager {
 public:
-	SoundtrackManager(AudioDefinition &audio);
+	SoundtrackManager(AudioDefinition &audio, std::string directory);
 
 	void refreshAudio();
 private:
-	std::string current_song_;
+	std::string current_song_, directory_;
 	AudioDefinition &audio_;
 };
 

@@ -552,6 +552,31 @@ void MatrixBase::generateInOrderSequence(std::vector<std::shared_ptr<int>> &in_o
 	}
 }
 
+// Plays an audio file, given the file's name, directory, an alias to access it later, OPTIONAL: volume
+void MatrixBase::playMP3(std::string file_name, std::string directory, std::string audio_alias, int volume)
+{
+#ifdef _DEBUG
+	if (file_name == "") { std::cout << "AUDIO ERROR\tFile name was empty!\n"; }
+	if (directory == "") { std::cout << "AUDIO ERROR\tDirectory path was empty!\n"; }
+#endif
+
+	std::string file_path = "open \"" + directory + file_name + "\" type mpegvideo alias " + audio_alias;
+	std::wstring songTemp = std::wstring(file_path.begin(), file_path.end());
+	TCHAR * songTemp2 = (wchar_t *)songTemp.c_str();
+
+	std::string volume_command = "setaudio " + audio_alias + " volume to " + std::to_string(volume);
+	std::wstring volumeTemp = std::wstring(volume_command.begin(), volume_command.end());
+	TCHAR * volumeTemp2 = (wchar_t *)volumeTemp.c_str();
+
+	std::string play_command = "play " + audio_alias;
+	std::wstring playTemp = std::wstring(play_command.begin(), play_command.end());
+	TCHAR * playTemp2 = (wchar_t *)playTemp.c_str();
+
+	mciSendString(songTemp2, NULL, 0, NULL);
+	mciSendString(volumeTemp2, NULL, 0, NULL);
+	mciSendString(playTemp2, NULL, 0, NULL);
+}
+
 // -- DEPRECATED -- Adds an image/text to a vector of vectors at the specified coordinates
 void MatrixBase::addImageToMatrix(int center_position_x, int center_position_y, Image & image, std::vector<std::vector<char>>& matrix, bool exclude_spaces)
 {

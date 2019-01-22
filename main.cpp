@@ -104,6 +104,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	TCHAR folder_name[MAX_PATH] = L"\Wenlife\\";
 	_stprintf_s(directory, MAX_PATH, _T("%s%s"), buf, folder_name);
 	CreateDirectory(directory, NULL);
+	std::wstring directory_w = directory; // w_string version of directory
 
 	createDirectory(hInstance, directory);
 
@@ -114,7 +115,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);
 
 	// MAIN SOURCE PORT - Bumbo Engine -----------------------------------------------------
-	MatrixManager grid(width_G, height_G, screen_matrix_G, 5, bitmap_G);
+	MatrixManager grid(width_G, height_G, screen_matrix_G, 5, bitmap_G, std::string(directory_w.begin(), directory_w.end()));
 	GetMessage(&msg, NULL, 0, 0);
 	RedrawWindow(msg.hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN |
 		RDW_ERASE | RDW_NOFRAME | RDW_UPDATENOW);

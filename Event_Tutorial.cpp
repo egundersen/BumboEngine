@@ -1,8 +1,8 @@
 #include "Event_Tutorial.h"
 
-Event_Tutorial::Event_Tutorial(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix& screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
+Event_Tutorial::Event_Tutorial(int unique_object_ID, int center_position_x, int center_position_y, int collider_width, int collider_height, int character_ID, std::string directory, bool repeatable, std::vector<std::vector<std::pair<int, int>>>& element_has_object, Matrix& screen_matrix, std::vector<CharacterBase*>& characters, ScreenPosition & screen_position, int screen_width, int screen_height)
 	: EventBase(unique_object_ID, center_position_x, center_position_y, collider_width, collider_height, character_ID, repeatable, element_has_object, screen_matrix, characters, screen_position, screen_width, screen_height),
-	fall_speed_(125), go_down_iterator_(0), dialog_choice_index_(0), should_go_down_{ false }, has_entered_name_{ false }
+	fall_speed_(125), go_down_iterator_(0), dialog_choice_index_(0), should_go_down_{ false }, has_entered_name_{ false }, directory_{ directory }
 {
 }
 
@@ -549,9 +549,7 @@ void Event_Tutorial::confirmSelection()
 	else // NO
 	{
 		should_go_down_ = true;
-		mciSendString(L"open \"resources\\audio\\effects\\falling.mp3\" type mpegvideo alias falling", NULL, 0, NULL);
-		mciSendString(L"setaudio falling volume to 35", NULL, 0, NULL);
-		mciSendString(L"play falling", NULL, 0, NULL);
+		playMP3("falling.mp3", directory_, "falling", 35);
 		attached_character_->teleportNPC(763, 268);
 	}
 }

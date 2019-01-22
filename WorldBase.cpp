@@ -1,6 +1,6 @@
 #include "WorldBase.h"
 
-WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &bitmap, AudioDefinition &audio)
+WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &bitmap, AudioDefinition &audio, std::string directory)
 	: screen_width_{ screen_width }, screen_height_{ screen_height }, world_width_{ world_width }, world_height_{ world_height }, start_time_player_speed_(0), element_has_object_(world_height, std::vector<std::pair<int, int>>(world_width, std::make_pair<int, int>(0, 0))),
 	world_matrix_(world_width, world_height), screen_matrix_{ screen_matrix }, player_{ player }, player_sprite_{ 12, 10, screen_matrix }, player_speed_modifier_(30), inventory_{ inventory }, DEBUG_has_initialized_{ false }, audio_{ audio },
 	DEBUG_showing_collisions_{ false }, opposite_player_direction_('d'), should_enter_battle_{ false }, is_event_active_{ false }, bitmap_{ bitmap }, enter_key_pressed_{ false }, should_roll_credits_{ false }
@@ -8,6 +8,7 @@ WorldBase::WorldBase(int screen_width, int screen_height, int world_width, int w
 	screen_position_.x = starting_position_x - screen_width / 2;
 	screen_position_.y = starting_position_y - screen_height / 2;
 
+	audio_.setDirectory(directory);
 	generateWorld();
 	player_sprite_.initializeSprites(sprite_sheet_.player);
 }
@@ -923,7 +924,7 @@ void WorldBase::GENERATE_Events()
 	/* Event_Test *test = new Event_Test(9999, 150, 649, 10, 10, element_has_object_, screen_matrix_, characters_, nullptr);
 	 * Excluding the test event, Event Unique Object ID's should BEGIN at 10029
 	 * Events with ID's 1 - 9998 are reserved for characters that start battles */
-	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 232, 10, 11, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_Tutorial *tutorial = new Event_Tutorial(10000, 790, 232, 10, 11, 1, audio_.getDirectory(), false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_BorderIncident *border_incident = new Event_BorderIncident(10002, 1070, 206, 4, 4, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_RollCredits *roll_credits = new Event_RollCredits(10021, should_roll_credits_, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
@@ -953,7 +954,7 @@ void WorldBase::GENERATE_Events()
 	Event_BridgeRally3 *bridge_rally3 = new Event_BridgeRally3(10013, 215, 85, 5, 5, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_Cubans *cubans = new Event_Cubans(10014, 198, 165, 10, 10, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_ThotPatrol *thot_patrol = new Event_ThotPatrol(10022, 198, 165, 10, 11, player_.getPlayerName(), selected_character_, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
-	Event_ThrowOffCliff *throw_off_cliff = new Event_ThrowOffCliff(10016, 496, 225, 20, 1, 1, false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
+	Event_ThrowOffCliff *throw_off_cliff = new Event_ThrowOffCliff(10016, 496, 225, 20, 1, 1, audio_.getDirectory(), false, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 	Event_RemoveObject *remove_object = new Event_RemoveObject(10020, 198, 165, 10, 10, 697, 61, 7, 3, 1, false, world_matrix_, element_has_object_, screen_matrix_, characters_, screen_position_, screen_width_, screen_height_);
 
 	// events_.push_back(test);

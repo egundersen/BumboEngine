@@ -13,7 +13,7 @@ BattleBase::BattleBase(int width, int height, Matrix& screen_matrix, PlayerDefin
 // Runs when battle starts
 void BattleBase::onBeginBattle()
 {
-	audio_.setFilePath(boss_.theme_song);
+	audio_.setFileName(boss_.theme_song);
 	audio_.setVolume(50);
 	audio_.play();
 	start_time_move_cursor_ = GetTickCount64();

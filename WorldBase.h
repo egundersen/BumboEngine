@@ -14,7 +14,7 @@
 class WorldBase : MatrixBase
 {
 public:
-	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &bitmap, AudioDefinition &audio);
+	WorldBase(int screen_width, int screen_height, int world_width, int world_height, int starting_position_x, int starting_position_y, PlayerDefinition &player, Matrix &screen_matrix, Inventory &inventory, BitmapDefinition &bitmap, AudioDefinition &audio, std::string directory);
 
 	// Setters
 	void onEnterWorld();

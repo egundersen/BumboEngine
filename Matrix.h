@@ -59,7 +59,7 @@ public:
 			if (index > vector_.size() - 1)
 			{
 #ifdef _DEBUG
-				std::cout << "Width out of bounds!\n";
+				std::cout << "Matrix ERROR\tWidth out of bounds!\n";
 
 #endif
 				index = 0;
@@ -77,7 +77,7 @@ public:
 		if (index > height_)
 		{
 #ifdef _DEBUG
-			std::cout << "Height out of bounds!\n";
+			std::cout << "Matrix ERROR\tHeight out of bounds!\n";
 #endif
 			index = 0;
 		}

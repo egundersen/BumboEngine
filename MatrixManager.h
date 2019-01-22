@@ -10,7 +10,7 @@
 class MatrixManager : public MatrixBase
 {
 public:
-	MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap);
+	MatrixManager(int width, int height, Matrix &screen_matrix, int player_health, BitmapDefinition &bitmap, std::string directory);
 
 	// Setters
 	void evaluatePlayerInput();
