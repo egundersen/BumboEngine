@@ -28,7 +28,7 @@ public:
 private:
 	void setAttackParameters()
 	{
-		create_attack_delay_ = 3300;
+		create_attack_delay_ = 3400;
 		attack_diameter_ = 30;
 		delay_till_explode_ = 1800;
 		duration_of_explosion_ = 1500;
@@ -73,7 +73,7 @@ public:
 private:
 	void setAttackParameters()
 	{
-		create_attack_delay_ = 3000;
+		create_attack_delay_ = 4200;
 		attack_diameter_ = 2;
 		delay_till_explode_ = 2500;
 		duration_of_explosion_ = 1500;

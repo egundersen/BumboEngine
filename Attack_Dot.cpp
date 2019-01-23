@@ -11,7 +11,7 @@ Attack_Dot::Attack_Dot(int width, int height, PlayerPosition & player_position, 
 
 Attack_Dot::~Attack_Dot()
 {
-	if (direction_ == 'r') { // fixes a bug
+	if (direction_ == 'r') {
 		attack_matrix_[position_2D_ + slip_][position_ * speed_ - 1] = ' ';
 		element_is_occupied_[position_2D_ + slip_][position_ * speed_ - 1] = false;
 	}
@@ -151,5 +151,6 @@ void Attack_Dot::detectCollision()
 	if (attack_matrix_[player_position_.y][player_position_.x] == 'O') {
 		has_hit_player_ = true;
 		attack_matrix_[player_position_.y][player_position_.x] = ' ';
+		element_is_occupied_[player_position_.y][player_position_.x] = false;
 	}
 }

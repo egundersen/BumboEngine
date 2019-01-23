@@ -21,7 +21,7 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			17,
+			16,
 			"AKI",
 			"Van_Halen_-_Ain't_Talkin_Bout_Love.mp3",
 			113,
@@ -76,11 +76,11 @@ public:
 		for (int i = 0; i < 3; i++) {
 			AttackPatternBase *attack_pattern_10 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'r', 0, ' ', false, false, 0); // [HARD]
 			AttackPatternBase *attack_pattern_11 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', true, false, 2000); // [HARD]
-			AttackPatternBase *attack_pattern_12 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 20000, 50); // [Medium] 2
-			AttackPatternBase *attack_pattern_13 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'u', 0, ' ', false, false, 0); // [Hard]
+			AttackPatternBase *attack_pattern_12 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 15000, 100); // [Medium] 2
+			AttackPatternBase *attack_pattern_13 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 200, 110, 70, 'u', 1, ' ', false, false, 0); // [Hard]
 			AttackPatternBase *attack_pattern_14 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 100, 30, 100, 'l', 1, 'd', false, false, 0); // [HARD] --SINGLECOLUMN
 			AttackPatternBase *attack_pattern_15 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', true, false, 2000); // [HARD]
-			AttackPatternBase *attack_pattern_16 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 20, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
+			AttackPatternBase *attack_pattern_16 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 40, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
 
 			attack_patterns_.push_back(attack_pattern_16);
 			attack_patterns_.push_back(attack_pattern_15);
@@ -92,13 +92,13 @@ public:
 		}
 
 		AttackPatternBase *attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'd', 0, ' ', true, false, 2000); // [EASY]
-		AttackPatternBase *attack_pattern_2 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 350, 10, 'l', 1, 'd', false, false, 0); // [EASY] --FAST
+		AttackPatternBase *attack_pattern_2 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 350, 20, 'l', 1, 'd', false, false, 0); // [EASY] --FAST
 		AttackPatternBase *attack_pattern_3 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'r', 1, 'd', true, false, 2000); // [MEDIUM]
-		AttackPatternBase *attack_pattern_4 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 10, 'l', 0, ' ', false, false, 0); // [MEDIUM] --FAST
-		AttackPatternBase *attack_pattern_5 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'u', 1, ' ', false, false, 0); // [Medium]
+		AttackPatternBase *attack_pattern_4 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 20, 'l', 0, ' ', false, false, 0); // [MEDIUM] --FAST
+		AttackPatternBase *attack_pattern_5 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 75, 25, 50, 'l', 1, 'u', false, false, 0); // [Easy]
 		AttackPatternBase *attack_pattern_6 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 50, 100, 'd', 0, ' ', true, false, 2000); // [MEDIUM] --SINGLECOLUMN
-		AttackPatternBase *attack_pattern_7 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'r', 1, 'd', false, false, 0, 15000, 250); // [EASY]
-		AttackPatternBase *attack_pattern_8 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'r', 0, ' ', true, false, 2000); // [MEDIUM]
+		AttackPatternBase *attack_pattern_7 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 120, 'r', 1, 'd', false, false, 0, 15000); // [EASY]
+		AttackPatternBase *attack_pattern_8 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 200, 50, 50, 'd', 1, ' ', false, false, 0); // [Medium] Symmetrical
 		AttackPatternBase *attack_pattern_9 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 50, 100, 'r', 1, 'u', false, false, 0); // [MEDIUM] --SINGLECOLUMN
 
 		attack_patterns_.push_back(attack_pattern_9);

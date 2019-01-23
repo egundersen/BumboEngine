@@ -6,7 +6,7 @@
 class AttackPattern_SnakeHailStorm : public AttackPatternBase
 {
 public:
-	AttackPattern_SnakeHailStorm(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks, int creation_speed, int movement_speed, char direction, int slip_modifier, char slip_direction, bool dynamic_movement_speed, bool dynamic_creation_speed, int swap_modifier_speed, int duration_of_attack, int snake_speed);
+	AttackPattern_SnakeHailStorm(int width, int height, Matrix &screen_matrix, PlayerDefinition &player, int number_of_attacks, int creation_speed, int movement_speed, char direction, int slip_modifier, char slip_direction, bool dynamic_movement_speed, bool dynamic_creation_speed, int swap_modifier_speed, int duration_of_attack);
 
 	// Setters
 	void OnBeginAttack();
@@ -15,7 +15,7 @@ public:
 	void createSnake(int head_position_x, int head_position_y, int duration_of_attack, int speed);
 private:
 	char direction_, slip_direction_;
-	int slip_modifier_, max_starting_position_, creation_speed_, movement_speed_, duration_of_attack_, snake_speed_,
+	int slip_modifier_, max_starting_position_, creation_speed_, movement_speed_, duration_of_attack_,
 		start_time_modify_speed_, initial_movement_speed_, initial_creation_speed_, swap_modifier_speed_;
 	bool dynamic_movement_speed_, dynamic_creation_speed_;
 };

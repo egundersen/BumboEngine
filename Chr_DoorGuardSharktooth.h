@@ -61,7 +61,7 @@ public:
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			AttackPatternBase *attack_pattern_1 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slowest
+			AttackPatternBase *attack_pattern_1 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
 			AttackPatternBase *attack_pattern_2 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 75); // [Easy] Slow
 			AttackPatternBase *attack_pattern_3 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
 			AttackPatternBase *attack_pattern_4 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 25); // [Easy] Slowest

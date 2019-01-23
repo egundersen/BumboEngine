@@ -50,7 +50,7 @@ void MatrixManager::evaluatePlayerInput()
 		{
 			if (!has_initialized_inventory_)
 			{
-				inventory_.onOpenInventory(true);
+				inventory_.onOpenInventory();
 				has_initialized_inventory_ = true;
 			}
 			if (GetAsyncKeyState(VK_BACK) & 0x8000) // CLOSE INVENTORY?
@@ -70,8 +70,9 @@ void MatrixManager::evaluatePlayerInput()
 	{
 		if (GetAsyncKeyState(VK_RETURN) & 0x8000) {
 			credits_.clearText();
+			bitmap_.useOriginalColors();
 			bitmap_.showBitmap();
-			bitmap_.setResourceID(134);
+			bitmap_.setResourceID(164);
 			bitmap_.setXOffset(160);
 			bitmap_.setYOffset(90);
 		}
@@ -100,6 +101,7 @@ void MatrixManager::loadVectorSpace(std::string vector_space_name)
 	else if (vector_space_name == "BATTLE")
 	{
 		audio_.stop();
+		inventory_.backup();
 		current_vector_space_ = "BATTLE";
 	}
 	else if (vector_space_name == "CREDITS")

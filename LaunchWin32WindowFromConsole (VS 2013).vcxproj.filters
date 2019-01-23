@@ -645,9 +645,6 @@
     <Image Include="LaunchWin32WindowFromConsole.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\sprites\mk.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="resources\sprites\bonny_neutral.bmp">
       <Filter>Resource Files\Sprites</Filter>
     </Image>
@@ -745,6 +742,9 @@
       <Filter>Resource Files\Sprites</Filter>
     </Image>
     <Image Include="resources\sprites\tutorial.bmp">
+      <Filter>Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\sprites\package.bmp">
       <Filter>Resource Files\Sprites</Filter>
     </Image>
   </ItemGroup>

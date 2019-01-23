@@ -12,6 +12,8 @@ void Event_MoveNPC::createEvent()
 
 void Event_MoveNPC::refreshEvent()
 {
+	if (getCharacterByID(moved_character_ID_) == nullptr) { onEventOver(); return; }
+
 	switch (getEventIndex()) {
 	case 0:
 		if (getCharacterByID(moved_character_ID_)->getMovementIndex() == 0)

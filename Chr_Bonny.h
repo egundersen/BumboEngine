@@ -73,9 +73,9 @@ public:
 			AttackPatternBase *attack_pattern_1 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1000); // [EASY] SLOW
 			AttackPatternBase *attack_pattern_2 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 10000, 100); // [Medium]
 			AttackPatternBase *attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 3, 30, 1750); // [MEDIUM] SLOW
-			AttackPatternBase *attack_pattern_4 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 12000, 150); // [Medium] 2
+			AttackPatternBase *attack_pattern_4 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 12000, 150); // [Easy] 2
 			AttackPatternBase *attack_pattern_5 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 7, 10, 1000); // [Medium] FAST (Wide)
-			AttackPatternBase *attack_pattern_6 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 50); // [Hard]
+			AttackPatternBase *attack_pattern_6 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 60); // [Hard]
 
 			attack_patterns_.push_back(attack_pattern_6);
 			attack_patterns_.push_back(attack_pattern_5);
@@ -120,7 +120,9 @@ public:
 		DialogNode *node_1_1_3_1_2_1_1_1_1_1 = new DialogNode("No thanks necessary", "Ye are truly a kind sort.");
 		DialogNode *node_1_1_3_1_2_1_1_1_1_1_1 = new DialogNode("Goodbye", "Good luck t' ya.", "EVENT"); // EVENT=
 		DialogNode *node_1_1_3_1_2_1_1_1_1_2 = new DialogNode("Much appreciated!", "'Tis a cutlass, maybe nah th' best, but I've owned it all me life!", sword);
-		DialogNode *node_1_1_3_1_2_1_1_1_1_2_1 = new DialogNode("Thank ye", "Good luck t' ya.", "EVENT"); // EVENT=
+		DialogNode *node_1_1_3_1_2_1_1_1_1_2_1 = new DialogNode("Thank you", "An' I almost forgot...", "SAVE");
+		DialogNode *node_1_1_3_1_2_1_1_1_1_2_1_1 = new DialogNode("What?", "Don't tell Sharktooth about this!", "EVENT"); // EVENT=
+		DialogNode *node_1_1_3_1_2_1_1_1_1_2_1_1_1 = new DialogNode("Sure", "Goodbye matey!", "SAVE");
 		DialogNode *node_1_1_3_1_2_1_1_1_2 = new DialogNode("I don't believe ye", "'N wha' will ye do about it, hm?");
 		DialogNode *node_1_1_3_1_2_1_1_1_2_1 = new DialogNode("I be goin' t' take it", "GET BACK! ye reckon ye can loot me!?", "FIGHT");
 		DialogNode *node_1_1_3_1_2_1_1_2 = new DialogNode("Die wit' honor!", "Nooooooo!", "FIGHT");
@@ -176,6 +178,8 @@ public:
 		node_1_1_3_1_2_1_1_1_1->setChoice2(node_1_1_3_1_2_1_1_1_1_2);
 		node_1_1_3_1_2_1_1_1_1_1->setChoice1(node_1_1_3_1_2_1_1_1_1_1_1);
 		node_1_1_3_1_2_1_1_1_1_2->setChoice1(node_1_1_3_1_2_1_1_1_1_2_1);
+		node_1_1_3_1_2_1_1_1_1_2_1->setChoice1(node_1_1_3_1_2_1_1_1_1_2_1_1);
+		node_1_1_3_1_2_1_1_1_1_2_1_1->setChoice1(node_1_1_3_1_2_1_1_1_1_2_1_1_1);
 
 		// Seperated Links:
 		node_1_1_2_1_2->setChoice1(node_1_1_3_1_2_1_1_1); // 1=
@@ -192,7 +196,6 @@ public:
 		node_1_1_3_1_2_1_1_1_2_1->setChoice1(node_1_1_3_1_2_1_1_1_1);
 		node_1_1_3_1_2_1_1_2->setChoice1(node_1_1_3_1_2_1_1_1_1);
 		node_1_1_3_1_2_1_1_1_1_1_1->setChoice1(node_3); // EVENT
-		node_1_1_3_1_2_1_1_1_1_2_1->setChoice1(node_3);
 		node_1_1_3_1_2_1_2_1->setChoice1(node_3);
 
 		setHeadNode(node_1);

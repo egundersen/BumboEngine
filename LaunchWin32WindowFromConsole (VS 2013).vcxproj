@@ -366,8 +366,8 @@
     <Image Include="resources\sprites\mini_boss_4_angry.bmp" />
     <Image Include="resources\sprites\mini_boss_4_nervous_dead.bmp" />
     <Image Include="resources\sprites\mini_boss_4_neutral_happy.bmp" />
-    <Image Include="resources\sprites\mk.bmp" />
     <Image Include="resources\sprites\moltar.bmp" />
+    <Image Include="resources\sprites\package.bmp" />
     <Image Include="resources\sprites\ryuuko_friend.bmp" />
     <Image Include="resources\sprites\ryuuko_happy.bmp" />
     <Image Include="resources\sprites\ryuuko_mad.bmp" />

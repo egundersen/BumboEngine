@@ -53,8 +53,10 @@ void Attack_SafeBox::move()
 
 void Attack_SafeBox::detectCollision()
 {
-	if(element_is_occupied_[player_position_.y][player_position_.x])
+	if (element_is_occupied_[player_position_.y][player_position_.x]) {
 		has_hit_player_ = true;
+		has_attack_finished_ = true;
+	}
 }
 
 void Attack_SafeBox::screenWarning()
@@ -89,5 +91,8 @@ void Attack_SafeBox::safeZone()
 
 void Attack_SafeBox::erasePlayerPosition()
 {
-	attack_matrix_[player_position_.y][player_position_.x] = '.';
+	for (int i = 0; i < height_; i++)
+		for (int j = 0; j < width_; j++)
+			if (attack_matrix_[i][j] != ' ')
+				attack_matrix_[i][j] = '.';
 }

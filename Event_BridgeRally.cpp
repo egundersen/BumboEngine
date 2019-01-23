@@ -38,7 +38,7 @@ void Event_BridgeRally::createEvent()
 	Popup popup_22(25, 9, "LET THIS DAY mark th' end o' a society rooted in bigotry.", screen_matrix_, 'X');
 	Popup popup_23(25, 9, "Fer years th' weebs 'ave kept from us, whats rightfully ours!", screen_matrix_, 'X');
 	Popup popup_24(25, 9, "Lads, if ye stand t' fight oppression, say I!", screen_matrix_, 'X');
-	Popup popup_25(25, 9, "...", screen_matrix_, 'X');
+	Popup popup_25(15, 5, "...", screen_matrix_, 'X');
 	Popup popup_26(25, 9, "Er...", screen_matrix_, 'X');
 	Popup popup_27(25, 9, "If ye stand against oppression AND fer loot, say I!", screen_matrix_, 'X');
 	Popup popup_28(9, 5, "I", screen_matrix_, 'X');
@@ -198,7 +198,9 @@ void Event_BridgeRally::speak()
 		popups_[24].displayPopup(-20, 0);
 		break;
 	case 19:
-		popups_[25].displayPopup(-20, 0);
+		popups_[25].displayPopup(15, 24);
+		popups_[25].displayPopup(-13, 13);
+		popups_[25].displayPopup(-10, 5);
 		break;
 	case 20:
 		popups_[26].displayPopup(-20, 0);

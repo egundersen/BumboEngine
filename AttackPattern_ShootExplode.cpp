@@ -10,7 +10,7 @@ AttackPattern_ShootExplode::AttackPattern_ShootExplode(int width, int height, Ma
 void AttackPattern_ShootExplode::OnBeginAttack()
 {
 	setAttackParameters();
-	createAttack2(rand() % 2, 0, width_, 60, player_position_.y, 1);
+	created_attacks_++;
 	createAttack1(generateRandomNumber(attack_diameter_ / 2, width_ - attack_diameter_ / 2), generateRandomNumber(attack_diameter_ / 2, height_ - attack_diameter_ / 2));
 	start_time_new_attack_ = GetTickCount64();
 	has_completed_initialization_ = true;

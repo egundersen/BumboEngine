@@ -12,6 +12,8 @@ void Event_TeleportNPC::createEvent()
 
 void Event_TeleportNPC::refreshEvent()
 {
+	if (getCharacterByID(character_ID_) == nullptr) { onEventOver(); return; }
+
 	getCharacterByID(character_ID_)->teleportNPC(teleported_coordinated_x_, teleported_coordinated_y_);
 	onEventOver();
 }

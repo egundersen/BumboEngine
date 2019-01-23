@@ -1,7 +1,7 @@
 #include "AttackPattern_SnakeHailStorm.h"
 
-AttackPattern_SnakeHailStorm::AttackPattern_SnakeHailStorm(int width, int height, Matrix & screen_matrix, PlayerDefinition & player, int number_of_attacks, int creation_speed, int movement_speed, char direction, int slip_modifier, char slip_direction, bool dynamic_movement_speed, bool dynamic_creation_speed, int  swap_modifier_speed, int duration_of_attack, int snake_speed)
-	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks), direction_{ direction }, slip_direction_{ slip_direction }, slip_modifier_{ slip_modifier }, creation_speed_{ creation_speed }, movement_speed_{ movement_speed }, dynamic_creation_speed_{ dynamic_creation_speed }, duration_of_attack_{ duration_of_attack }, snake_speed_{ snake_speed },
+AttackPattern_SnakeHailStorm::AttackPattern_SnakeHailStorm(int width, int height, Matrix & screen_matrix, PlayerDefinition & player, int number_of_attacks, int creation_speed, int movement_speed, char direction, int slip_modifier, char slip_direction, bool dynamic_movement_speed, bool dynamic_creation_speed, int  swap_modifier_speed, int duration_of_attack)
+	: AttackPatternBase(width, height, screen_matrix, player, number_of_attacks), direction_{ direction }, slip_direction_{ slip_direction }, slip_modifier_{ slip_modifier }, creation_speed_{ creation_speed }, movement_speed_{ movement_speed }, dynamic_creation_speed_{ dynamic_creation_speed }, duration_of_attack_{ duration_of_attack },
 	initial_movement_speed_{ movement_speed }, initial_creation_speed_{ creation_speed }, dynamic_movement_speed_{ dynamic_movement_speed }, swap_modifier_speed_{ swap_modifier_speed }
 {
 	max_starting_position_ = direction_ == 'u' || direction_ == 'd' ? width_ : height_;
@@ -47,9 +47,9 @@ void AttackPattern_SnakeHailStorm::refreshScreen()
 		if (current_time_modify_speed >= swap_modifier_speed_)
 		{
 			if (dynamic_creation_speed_)
-				creation_speed_ = generateRandomNumber(10, initial_creation_speed_);
+				creation_speed_ = generateRandomNumber(15, initial_creation_speed_);
 			if (dynamic_movement_speed_)
-				movement_speed_ = generateRandomNumber(10, initial_movement_speed_);
+				movement_speed_ = generateRandomNumber(15, initial_movement_speed_);
 			start_time_modify_speed_ = GetTickCount64();
 		}
 	}

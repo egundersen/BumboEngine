@@ -75,7 +75,7 @@ public:
 		}
 
 		AttackPatternBase *attack_pattern_1 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player); // [Medium] Slow
-		AttackPatternBase *attack_pattern_2 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slowest
+		AttackPatternBase *attack_pattern_2 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
 		AttackPatternBase *attack_pattern_3 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
 		AttackPatternBase *attack_pattern_4 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
 		AttackPatternBase *attack_pattern_5 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player); // [Hard] Slowest

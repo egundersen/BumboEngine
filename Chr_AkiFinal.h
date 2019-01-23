@@ -21,7 +21,7 @@ public:
 
 		// Advanced ASCII (Highly detailed) and read from a file as a screenshot/image
 		BossFightDefinition boss_fight_definition = BossFightDefinition(
-			14,
+			13,
 			"AKI (INSANE)",
 			"Peter_Schilling_-_Major_Tom.mp3",
 			115, 
@@ -56,21 +56,19 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		AttackPatternBase *attack_pattern_1 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'd', true, false, 2000, 15000, 250); // [INSANE]
-		AttackPatternBase *attack_pattern_2 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 150, 120, 10, 'd', 0, ' ', false, false, 0); // [HARD] --FAST
-		AttackPatternBase *attack_pattern_3 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 5, 25000, 100); // [INSANE] 5
+		AttackPatternBase *attack_pattern_1 = new SafeSquares_Slowest(screen_width, screen_height, screen_matrix, player, 3); // [Easy-Hard] Slowest
+		AttackPatternBase *attack_pattern_2 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 150, 75, 175, 'l', 1, 'd', false, false, 0, 25000); // [INSANE]
+		AttackPatternBase *attack_pattern_3 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 5, 13000, 100); // [INSANE] 5
 		AttackPatternBase *attack_pattern_4 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 7, 100, 800); // [Hard] CLUMP
 		AttackPatternBase *attack_pattern_5 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
-		AttackPatternBase *attack_pattern_6 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', true, false, 2000); // [HARD]
-		AttackPatternBase *attack_pattern_7 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 20, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
-		AttackPatternBase *attack_pattern_8 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', false, false, 0); // [HARD]
-		AttackPatternBase *attack_pattern_9 = new ShootExplode_Fast(screen_width, screen_height, screen_matrix, player, 50); // [Hard]
+		AttackPatternBase *attack_pattern_6 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', true, false, 16000); // [HARD]
+		AttackPatternBase *attack_pattern_7 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 40, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
+		AttackPatternBase *attack_pattern_8 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 15, 'r', 0, ' ', false, false, 0); // [HARD]
+		AttackPatternBase *attack_pattern_9 = new ShootExplode_Fast(screen_width, screen_height, screen_matrix, player, 10); // [Hard]
 		AttackPatternBase *attack_pattern_10 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player); // [Hard] Wavy
 		AttackPatternBase *attack_pattern_11 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 400, 50, 100, 'l', 1, 'd', false, false, 1000); // [INSANE] Rows
 		AttackPatternBase *attack_pattern_12 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 45000, 100); // [INSANE] Long
-		AttackPatternBase *attack_pattern_13 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 36, 30000, 100); // [INSANE] Long
 	
-		attack_patterns_.push_back(attack_pattern_13);
 		attack_patterns_.push_back(attack_pattern_12);
 		attack_patterns_.push_back(attack_pattern_11);
 		attack_patterns_.push_back(attack_pattern_10);

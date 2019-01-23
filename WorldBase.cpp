@@ -427,6 +427,9 @@ void WorldBase::shouldDespawnCharacter()
 				selected_character_ = nullptr;
 			}
 		}
+		else {
+			shouldStartEventByID(selected_character_->eventID());
+		}
 	}
 }
 

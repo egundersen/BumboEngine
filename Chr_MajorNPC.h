@@ -79,10 +79,10 @@ public:
 		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 75); // [Medium]
 		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 25000, 50); // [Hard]
 		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 45000, 100); // [INSANE] Long
-		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 15000, 75); // [Medium] 2
+		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 15000, 150); // [Medium] 2
 		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 20000, 50); // [Medium] 2
 		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 3, 15000, 75); // [Hard] 3
-		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 5, 25000, 100); // [INSANE] 5
+		//attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 5, 15000, 100); // [INSANE] 5
 		//attack_pattern_1 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 50); // [Hard]
 		//attack_pattern_1 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 36, 30000, 100); // [INSANE] Long
 
@@ -122,7 +122,7 @@ public:
 		//attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'r', 1, 'd', false, false, 0); // [HARD]
 		//attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 150, 120, 10, 'r', 1, 'd', false, false, 0); // [HARD] --FAST
 		//attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 100, 15, 100, 'r', 1, 'd', false, false, 0); // [HARD] --SINGLECOLUMN
-		//attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 20, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
+		//attack_pattern_1 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 40, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
 
 		//Freeze Fast: 200, Slow: 2000
 		//Coordinated: Easy + Medium (DO NOT GO TO HARD)

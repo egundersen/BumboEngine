@@ -25,7 +25,7 @@ void BattleBase::onBeginBattle()
 // Refreshes screen to show updated items list
 void BattleBase::refreshScreen()
 {
-	if (boss_.health == 0) // BOSS DESTROYED
+	if (boss_.health <= 0 && boss_.health != -9999) // BOSS DESTROYED
 	{
 		if (start_time_battle_end_animation_ == 0)
 			start_time_battle_end_animation_ = GetTickCount64();
@@ -325,14 +325,14 @@ void BattleBase::bossDestroyed()
 	switch (end_animation_index_)
 	{
 	case 0:
-		if (current_time_battle_end_animation <= 5000)
+		if (current_time_battle_end_animation <= 2500)
 		{
 			audio_.stop();
 			displayScreen();
 			removeAllUI();
 			showFileSprite("NERVOUS_DEAD");
 		}
-		else if (current_time_battle_end_animation > 5000)
+		else if (current_time_battle_end_animation > 2500)
 		{
 			if (bitmap_.getRGBA().fadeToBlack(5, 3))
 			{
@@ -362,7 +362,7 @@ void BattleBase::bossDestroyed()
 void BattleBase::bossSpared()
 {
 	double current_time_battle_end_animation = GetTickCount64() - start_time_battle_end_animation_;
-	if (current_time_battle_end_animation <= 5000)
+	if (current_time_battle_end_animation <= 2500)
 	{
 		audio_.stop();
 		displayScreen();
@@ -370,12 +370,12 @@ void BattleBase::bossSpared()
 		if (!boss_.use_files) { showBasicSprite(); }
 		showFileSprite("NEUTRAL");
 	}
-	else if (current_time_battle_end_animation > 9000)
+	else if (current_time_battle_end_animation > 6500)
 	{
 		hideFileSprite();
 		is_battle_finished_ = true;
 	}
-	else if (current_time_battle_end_animation > 5000)
+	else if (current_time_battle_end_animation > 2500)
 	{
 		showFileSprite("HAPPY");
 	}

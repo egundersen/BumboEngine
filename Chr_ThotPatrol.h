@@ -23,11 +23,11 @@ public:
 
 		: CharacterBase(center_position_x, center_position_y, popup_sprite, unique_object_ID, world_matrix, element_has_object, screen_matrix, screen_width, screen_height, event_ID, player,
 			BossFightDefinition(
-				-1, // boss health
+				-9999, // boss health
 				40, // his smile/eyes (overlay) offset X position
 				20, // his smile/eyes (overlay) offset Y position
 				"THOT Patrol",
-				"Initial_D_-_Deja_Vu.mp3",
+				"Initial D - Deja Vu.mp3",
 				battle_sprite.getFace(),
 				battle_sprite.getOverlay()
 			), attack_on_sight, use_basic_dialog, bitmap, audio, world_sprite)
@@ -119,99 +119,97 @@ public:
 	/* Creates all attacks */
 	void initializeAttackPatterns(int screen_width, int screen_height, Matrix &screen_matrix, PlayerDefinition &player)
 	{
-		AttackPatternBase *attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 100); // [EASY]
-		AttackPatternBase *attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1000); // [EASY] SLOW
-		AttackPatternBase *attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 15, 10, 500); // [EASY] FAST
-		AttackPatternBase *attack_pattern_4 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 150); // [Easy] Fast
-		AttackPatternBase *attack_pattern_5 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 75); // [Easy] Slow
-		AttackPatternBase *attack_pattern_6 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 25); // [Easy] Slowest
-		AttackPatternBase *attack_pattern_7 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'l', 1, 'u', false, false, 0); // [EASY]
-		AttackPatternBase *attack_pattern_8 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 350, 10, 'r', 1, 'd', false, false, 0); // [EASY] --FAST
-		AttackPatternBase *attack_pattern_9 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 50, 100, 'd', 0, ' ', false, false, 0); // [EASY] --SINGLECOLUMN
-		AttackPatternBase *attack_pattern_10 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'r', 1, 'd', false, false, 0, 15000, 250); // [EASY]
-		AttackPatternBase *attack_pattern_11 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 75); // [Medium]
-		AttackPatternBase *attack_pattern_12 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 15000, 75); // [Medium] 2
-		AttackPatternBase *attack_pattern_13 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 20000, 50); // [Medium] 2
-		AttackPatternBase *attack_pattern_14 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 3, 30, 1750); // [MEDIUM] SLOW
-		AttackPatternBase *attack_pattern_15 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 7, 10, 1000); // [Medium] FAST (Wide)
-		AttackPatternBase *attack_pattern_16 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 20, 9, 1, 500); // [Medium] FAST
-		AttackPatternBase *attack_pattern_17 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 650); // [Medium] Fast
-		AttackPatternBase *attack_pattern_18 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 300); // [Medium] Slow
-		AttackPatternBase *attack_pattern_19 = new SnakeExplode_Fast(screen_width, screen_height, screen_matrix, player, 40, 10000, 200); // [Medium] Fast
-		AttackPatternBase *attack_pattern_20 = new SnakeExplode_Slow(screen_width, screen_height, screen_matrix, player, 20, 10000, 250); // [Medium] Slow
-		AttackPatternBase *attack_pattern_21 = new SafeSquares_Fast(screen_width, screen_height, screen_matrix, player, 8); // [Easy-Hard] Fast
-		AttackPatternBase *attack_pattern_22 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
-		AttackPatternBase *attack_pattern_23 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player); // [Medium] Slow
-		AttackPatternBase *attack_pattern_24 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'r', 1, 'd', false, false, 0); // [MEDIUM]
-		AttackPatternBase *attack_pattern_25 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 10, 'l', 0, ' ', false, false, 0); // [MEDIUM] --FAST
-		AttackPatternBase *attack_pattern_26 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 50, 100, 'd', 1, 'l', false, false, 0); // [MEDIUM] --SINGLECOLUMN
-		AttackPatternBase *attack_pattern_27 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 25000, 50); // [Hard]
-		AttackPatternBase *attack_pattern_28 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 3, 15000, 150); // [Hard] 3
-		AttackPatternBase *attack_pattern_29 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 50); // [Hard]
-		AttackPatternBase *attack_pattern_30 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 1, 28, 1750); // [Hard] SLOW
-		AttackPatternBase *attack_pattern_31 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 28, 19, 1, 350); // [Hard] FAST
-		AttackPatternBase *attack_pattern_32 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 7, 100, 800); // [Hard] CLUMP
-		AttackPatternBase *attack_pattern_33 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 100); // [Hard] Slowest
-		AttackPatternBase *attack_pattern_34 = new ShootExplode_Fast(screen_width, screen_height, screen_matrix, player, 50); // [Hard]
-		AttackPatternBase *attack_pattern_35 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
-		AttackPatternBase *attack_pattern_36 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slowest
-		AttackPatternBase *attack_pattern_37 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player); // [Hard] Wavy
-		AttackPatternBase *attack_pattern_38 = new VerticleGap_VerySlow(screen_width, screen_height, screen_matrix, player); // [Hard] Slowest
-		AttackPatternBase *attack_pattern_39 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'd', 0, ' ', false, false, 0); // [HARD]
-		AttackPatternBase *attack_pattern_40 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 150, 120, 10, 'r', 0, ' ', false, false, 0); // [HARD] --FAST
-		AttackPatternBase *attack_pattern_41 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 100, 30, 100, 'l', 1, 'd', false, false, 0); // [HARD] --SINGLECOLUMN
-		AttackPatternBase *attack_pattern_42 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 45000, 100); // [INSANE] Long
-		AttackPatternBase *attack_pattern_43 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 5, 25000, 100); // [INSANE] 5
-		AttackPatternBase *attack_pattern_44 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 36, 30000, 100); // [INSANE] Long
-		AttackPatternBase *attack_pattern_45 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 20, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
-		AttackPatternBase *attack_pattern_46 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 400, 50, 100, 'l', 1, 'd', true, true, 1000); // [INSANE] Rows
-	
-		attack_patterns_.push_back(attack_pattern_46);
-		attack_patterns_.push_back(attack_pattern_45);
-		attack_patterns_.push_back(attack_pattern_44);
-		attack_patterns_.push_back(attack_pattern_43);
-		attack_patterns_.push_back(attack_pattern_42);
-		attack_patterns_.push_back(attack_pattern_41);
-		attack_patterns_.push_back(attack_pattern_40);
-		attack_patterns_.push_back(attack_pattern_39);
-		attack_patterns_.push_back(attack_pattern_38);
-		attack_patterns_.push_back(attack_pattern_37);
-		attack_patterns_.push_back(attack_pattern_36);
-		attack_patterns_.push_back(attack_pattern_35);
-		attack_patterns_.push_back(attack_pattern_34);
-		attack_patterns_.push_back(attack_pattern_33);
-		attack_patterns_.push_back(attack_pattern_32);
-		attack_patterns_.push_back(attack_pattern_31);
-		attack_patterns_.push_back(attack_pattern_30);
-		attack_patterns_.push_back(attack_pattern_29);
-		attack_patterns_.push_back(attack_pattern_28);
-		attack_patterns_.push_back(attack_pattern_27);
-		attack_patterns_.push_back(attack_pattern_26);
-		attack_patterns_.push_back(attack_pattern_25);
-		attack_patterns_.push_back(attack_pattern_24);
-		attack_patterns_.push_back(attack_pattern_23);
-		attack_patterns_.push_back(attack_pattern_22);
-		attack_patterns_.push_back(attack_pattern_21);
-		attack_patterns_.push_back(attack_pattern_20);
-		attack_patterns_.push_back(attack_pattern_19);
-		attack_patterns_.push_back(attack_pattern_18);
-		attack_patterns_.push_back(attack_pattern_17);
-		attack_patterns_.push_back(attack_pattern_16);
-		attack_patterns_.push_back(attack_pattern_15);
-		attack_patterns_.push_back(attack_pattern_14);
-		attack_patterns_.push_back(attack_pattern_13);
-		attack_patterns_.push_back(attack_pattern_12);
-		attack_patterns_.push_back(attack_pattern_11);
-		attack_patterns_.push_back(attack_pattern_10);
-		attack_patterns_.push_back(attack_pattern_9);
-		attack_patterns_.push_back(attack_pattern_8);
-		attack_patterns_.push_back(attack_pattern_7);
-		attack_patterns_.push_back(attack_pattern_6);
-		attack_patterns_.push_back(attack_pattern_5);
-		attack_patterns_.push_back(attack_pattern_4);
-		attack_patterns_.push_back(attack_pattern_3);
-		attack_patterns_.push_back(attack_pattern_2);
-		attack_patterns_.push_back(attack_pattern_1);
+		for (int i = 0; i < 3; i++) {
+			AttackPatternBase *attack_pattern_1 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 100); // [EASY]
+			AttackPatternBase *attack_pattern_2 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 15, 40, 1000); // [EASY] SLOW
+			AttackPatternBase *attack_pattern_3 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 15, 10, 500); // [EASY] FAST
+			AttackPatternBase *attack_pattern_4 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 150); // [Easy] Fast
+			AttackPatternBase *attack_pattern_5 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 75); // [Easy] Slow
+			AttackPatternBase *attack_pattern_6 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 25); // [Easy] Slowest
+			AttackPatternBase *attack_pattern_7 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 250, 50, 'l', 1, 'u', false, false, 0); // [EASY]
+			AttackPatternBase *attack_pattern_8 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 350, 20, 'r', 1, 'd', false, false, 0); // [EASY] --FAST
+			AttackPatternBase *attack_pattern_9 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 50, 100, 'd', 0, ' ', false, false, 0); // [EASY] --SINGLECOLUMN
+			AttackPatternBase *attack_pattern_10 = new AttackPattern_SnakeHailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 120, 'r', 1, 'd', false, false, 0, 15000); // [EASY]
+			AttackPatternBase *attack_pattern_11 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 15000, 75); // [Medium]
+			AttackPatternBase *attack_pattern_12 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 15000, 100); // [Medium] 2
+			AttackPatternBase *attack_pattern_13 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 2, 20000, 100); // [Medium] 2
+			AttackPatternBase *attack_pattern_14 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 3, 30, 1750); // [MEDIUM] SLOW
+			AttackPatternBase *attack_pattern_15 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 9, 7, 10, 1000); // [Medium] FAST (Wide)
+			AttackPatternBase *attack_pattern_16 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 20, 9, 1, 500); // [Medium] FAST
+			AttackPatternBase *attack_pattern_17 = new Explode_Fast(screen_width, screen_height, screen_matrix, player, 650); // [Medium] Fast
+			AttackPatternBase *attack_pattern_18 = new Explode_Slow(screen_width, screen_height, screen_matrix, player, 300); // [Medium] Slow
+			AttackPatternBase *attack_pattern_21 = new SafeSquares_Fast(screen_width, screen_height, screen_matrix, player, 8); // [Easy-Hard] Fast
+			AttackPatternBase *attack_pattern_22 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
+			AttackPatternBase *attack_pattern_23 = new VerticleGap_Slow(screen_width, screen_height, screen_matrix, player); // [Medium] Slow
+			AttackPatternBase *attack_pattern_24 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 150, 50, 'r', 1, 'd', false, false, 0); // [MEDIUM]
+			AttackPatternBase *attack_pattern_25 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 50, 250, 20, 'l', 0, ' ', false, false, 0); // [MEDIUM] --FAST
+			AttackPatternBase *attack_pattern_26 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 75, 50, 100, 'd', 1, 'l', false, false, 0); // [MEDIUM] --SINGLECOLUMN
+			AttackPatternBase *attack_pattern_27 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 25000, 50); // [Hard]
+			AttackPatternBase *attack_pattern_28 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 3, 15000, 150); // [Hard] 3
+			AttackPatternBase *attack_pattern_29 = new AttackPattern_ShootSnake(screen_width, screen_height, screen_matrix, player, 10, 13000, 60); // [Hard]
+			AttackPatternBase *attack_pattern_30 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 6, 1, 28, 1750); // [Hard] SLOW
+			AttackPatternBase *attack_pattern_31 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 28, 19, 1, 350); // [Hard] FAST
+			AttackPatternBase *attack_pattern_32 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 7, 100, 800); // [Hard] CLUMP
+			AttackPatternBase *attack_pattern_33 = new Explode_Slowest(screen_width, screen_height, screen_matrix, player, 100); // [Hard] Slowest
+			AttackPatternBase *attack_pattern_34 = new ShootExplode_Fast(screen_width, screen_height, screen_matrix, player, 50); // [Hard]
+			AttackPatternBase *attack_pattern_35 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slow
+			AttackPatternBase *attack_pattern_36 = new SafeSquares_Slow(screen_width, screen_height, screen_matrix, player, 6); // [Easy-Hard] Slowest
+			AttackPatternBase *attack_pattern_37 = new SafeSquares_Slowest(screen_width, screen_height, screen_matrix, player, 3); // [Easy-Hard] Slowest
+			AttackPatternBase *attack_pattern_38 = new AttackPattern_Wall(screen_width, screen_height, screen_matrix, player, 10, 7, 100, 800); // [Hard] CLUMP
+			AttackPatternBase *attack_pattern_39 = new VerticleGap_VeryFast(screen_width, screen_height, screen_matrix, player); // [Medium] Fast
+			AttackPatternBase *attack_pattern_40 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 50, 'l', 1, 'u', true, false, 16000); // [HARD]
+			AttackPatternBase *attack_pattern_41 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 400, 40, 250, 'r', 1, 'd', false, false, 0); // [INSANE] --SINGLECOLUMN
+			AttackPatternBase *attack_pattern_42 = new AttackPattern_HailStorm(screen_width, screen_height, screen_matrix, player, 200, 75, 15, 'r', 0, ' ', false, false, 0); // [HARD]
+			AttackPatternBase *attack_pattern_43 = new ShootExplode_Fast(screen_width, screen_height, screen_matrix, player, 10); // [Hard]
+			AttackPatternBase *attack_pattern_44 = new VerticleGap_Wavy(screen_width, screen_height, screen_matrix, player); // [Hard] Wavy
+			AttackPatternBase *attack_pattern_45 = new AttackPattern_CoordinatedStorm(screen_width, screen_height, screen_matrix, player, 400, 50, 100, 'l', 1, 'd', false, false, 1000); // [INSANE] Rows
+			AttackPatternBase *attack_pattern_46 = new AttackPattern_Snake(screen_width, screen_height, screen_matrix, player, 1, 45000, 100); // [INSANE] Long
+
+			attack_patterns_.push_back(attack_pattern_46);
+			attack_patterns_.push_back(attack_pattern_45);
+			attack_patterns_.push_back(attack_pattern_44);
+			attack_patterns_.push_back(attack_pattern_43);
+			attack_patterns_.push_back(attack_pattern_42);
+			attack_patterns_.push_back(attack_pattern_41);
+			attack_patterns_.push_back(attack_pattern_40);
+			attack_patterns_.push_back(attack_pattern_39);
+			attack_patterns_.push_back(attack_pattern_38);
+			attack_patterns_.push_back(attack_pattern_37);
+			attack_patterns_.push_back(attack_pattern_36);
+			attack_patterns_.push_back(attack_pattern_35);
+			attack_patterns_.push_back(attack_pattern_34);
+			attack_patterns_.push_back(attack_pattern_33);
+			attack_patterns_.push_back(attack_pattern_32);
+			attack_patterns_.push_back(attack_pattern_31);
+			attack_patterns_.push_back(attack_pattern_30);
+			attack_patterns_.push_back(attack_pattern_29);
+			attack_patterns_.push_back(attack_pattern_28);
+			attack_patterns_.push_back(attack_pattern_27);
+			attack_patterns_.push_back(attack_pattern_26);
+			attack_patterns_.push_back(attack_pattern_25);
+			attack_patterns_.push_back(attack_pattern_24);
+			attack_patterns_.push_back(attack_pattern_23);
+			attack_patterns_.push_back(attack_pattern_22);
+			attack_patterns_.push_back(attack_pattern_21);
+			attack_patterns_.push_back(attack_pattern_18);
+			attack_patterns_.push_back(attack_pattern_17);
+			attack_patterns_.push_back(attack_pattern_16);
+			attack_patterns_.push_back(attack_pattern_15);
+			attack_patterns_.push_back(attack_pattern_14);
+			attack_patterns_.push_back(attack_pattern_13);
+			attack_patterns_.push_back(attack_pattern_12);
+			attack_patterns_.push_back(attack_pattern_11);
+			attack_patterns_.push_back(attack_pattern_10);
+			attack_patterns_.push_back(attack_pattern_9);
+			attack_patterns_.push_back(attack_pattern_8);
+			attack_patterns_.push_back(attack_pattern_7);
+			attack_patterns_.push_back(attack_pattern_6);
+			attack_patterns_.push_back(attack_pattern_5);
+			attack_patterns_.push_back(attack_pattern_4);
+			attack_patterns_.push_back(attack_pattern_3);
+			attack_patterns_.push_back(attack_pattern_2);
+			attack_patterns_.push_back(attack_pattern_1);
+		}
 	}
 };
 

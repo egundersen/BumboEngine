@@ -12,6 +12,8 @@ void Event_MoveNPCIfDefeated::createEvent()
 
 void Event_MoveNPCIfDefeated::refreshEvent()
 {
+	if (getCharacterByID(moved_character_ID_) == nullptr) { onEventOver(); return; }
+
 	getCharacterByID(moved_character_ID_)->teleportNPC(teleported_coordinated_x_, teleported_coordinated_y_);
 	onEventOver();
 }

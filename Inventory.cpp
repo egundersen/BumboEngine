@@ -8,23 +8,8 @@ Inventory::Inventory(int width, int height, Matrix &screen_matrix, PlayerDefinit
 }
 
 // Runs when inventory is opened
-void Inventory::onOpenInventory(bool in_battle)
+void Inventory::onOpenInventory()
 {
-	if (in_battle_) // Need to clear temporary inventory
-	{
-		// Erase temporary inventory
-		temporary_items_list_.clear();
-		in_battle_ = false;
-	}
-	if (in_battle) // Opened inventory during battle
-	{
-		in_battle_ = true;
-		// Add all items to temporary inventory
-		for (std::vector< Item >::iterator it = items_list_.begin(); it != items_list_.end(); ++it)
-		{
-			temporary_items_list_.push_back(*it);
-		}
-	}
 	start_time_move_cursor_ = GetTickCount64();
 	cursor_index_ = 0;
 	refreshScreen();
@@ -181,7 +166,20 @@ void Inventory::reset()
 	for (std::vector< Item >::iterator it = temporary_items_list_.begin(); it != temporary_items_list_.end(); ++it)
 	{
 		items_list_.push_back(*it);
-	}//*/
+	}
+}
+
+// Copies items to temporary inventory
+void Inventory::backup()
+{
+	// Erase temporary inventory
+	temporary_items_list_.clear();
+
+	// Add all items to temporary inventory
+	for (std::vector< Item >::iterator it = items_list_.begin(); it != items_list_.end(); ++it)
+	{
+		temporary_items_list_.push_back(*it);
+	}
 }
 
 // Remove item from inventory (at index)

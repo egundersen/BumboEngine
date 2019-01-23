@@ -11,6 +11,7 @@ public:
 
 	// Setters
 	void move();
+	void erasePlayerPosition();
 
 private:
 	// Setters
@@ -18,7 +19,6 @@ private:
 	void screenWarning();
 	void screenKill();
 	void safeZone();
-	void erasePlayerPosition();
 
 	bool complete_1_, complete_2_;
 	int center_position_x_, center_position_y_, start_time_update_attack_, diameter_, delay_, duration_of_explosion_;

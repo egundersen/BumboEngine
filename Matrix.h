@@ -56,7 +56,7 @@ public:
 		}
 		Deref operator[](int index)
 		{
-			if (index > vector_.size() - 1)
+			if (index > vector_.size() - 1|| index < 0)
 			{
 #ifdef _DEBUG
 				std::cout << "Matrix ERROR\tWidth out of bounds!\n";
@@ -74,7 +74,7 @@ public:
 
 	Proxy operator[](int index)
 	{
-		if (index > height_)
+		if (index > height_ || index < 0)
 		{
 #ifdef _DEBUG
 			std::cout << "Matrix ERROR\tHeight out of bounds!\n";

@@ -487,7 +487,7 @@ bool LoadAndBlitBitmap(int resource_ID, HDC hWinDC, int position_x, int position
 	}
 
 	// Changes color (But since Bitmap is so pixelated, this is the only way we can include all colors
-	HBITMAP hBitmapColored = ReplaceAllColorsExcept(hBitmap, 0x000000, bitmap_G.getRGBA().getHex(), hLocalDC);
+	HBITMAP hBitmapColored = bitmap_G.usesOriginalColors() ? hBitmap : ReplaceAllColorsExcept(hBitmap, 0x000000, bitmap_G.getRGBA().getHex(), hLocalDC);
 
 	// Get the bitmap's parameters and verify the get
 	BITMAP qBitmap;

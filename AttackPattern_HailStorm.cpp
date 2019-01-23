@@ -46,9 +46,9 @@ void AttackPattern_HailStorm::refreshScreen()
 		if (current_time_modify_speed >= swap_modifier_speed_)
 		{
 			if (dynamic_creation_speed_)
-				creation_speed_ = generateRandomNumber(10, initial_creation_speed_);
+				creation_speed_ = generateRandomNumber(15, initial_creation_speed_);
 			if (dynamic_movement_speed_)
-				movement_speed_ = generateRandomNumber(10, initial_movement_speed_);
+				movement_speed_ = generateRandomNumber(15, initial_movement_speed_);
 			start_time_modify_speed_ = GetTickCount64();
 		}
 	}
