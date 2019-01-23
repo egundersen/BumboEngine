@@ -25,7 +25,7 @@ void BattleBase::onBeginBattle()
 // Refreshes screen to show updated items list
 void BattleBase::refreshScreen()
 {
-	if (boss_.health <= 0 && boss_.health != -9999) // BOSS DESTROYED
+	if (boss_.health <= 0 && boss_.health > -9000) // BOSS DESTROYED
 	{
 		if (start_time_battle_end_animation_ == 0)
 			start_time_battle_end_animation_ = GetTickCount64();
