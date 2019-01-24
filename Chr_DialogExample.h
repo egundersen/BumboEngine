@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Example of NPC with dialog (For copy and paste)
 class Chr_DialogExample : public CharacterBase
 {
 public:

@@ -5,6 +5,7 @@
 #include "PlayerDefinition.h"
 #include "Item.h"
 
+// Inventory Matrix manages items
 class Inventory : public MatrixBase
 {
 public:

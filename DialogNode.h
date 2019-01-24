@@ -3,6 +3,7 @@
 
 #include "Item.h"
 
+// Includes Player dialog and response text for the NPC
 class DialogNode
 {
 public:

@@ -4,6 +4,7 @@
 #include "MatrixBase.h"
 #include "BitmapDefinition.h"
 
+// Displays Credits on Screen Matrix
 class Credits : public MatrixBase
 {
 public:

@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Only 1 pirate left, he is defeated by Ryuuko
 class Event_BridgeRally3 : public EventBase
 {
 public:

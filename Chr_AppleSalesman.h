@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Gives the player an Apple
 class Chr_AppleSalesman : public CharacterBase
 {
 public:

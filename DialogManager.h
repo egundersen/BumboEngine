@@ -4,6 +4,7 @@
 #include "DialogNode.h"
 #include "MatrixBase.h"
 
+// Manages the linking and moving between dialog nodes / sentences
 class DialogManager : MatrixBase
 {
 public:

@@ -1,6 +1,8 @@
 #ifndef EVENTS_H
 #define EVENTS_H
 
+// List of all available events
+
 #include "Event_AttackOnSight.h"
 #include "Event_TeleportPlayer.h"
 #include "Event_MoveNPCIfDefeated.h"

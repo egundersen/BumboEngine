@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Tutorial NPC teaches the player the ropes
 class Event_Tutorial : public EventBase
 {
 public:

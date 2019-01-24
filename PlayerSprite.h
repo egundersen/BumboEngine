@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "WorldSpriteContainer.h"
 
+// Player Sprite, with ability to move and change animations
 class PlayerSprite : public Sprite
 {
 public:

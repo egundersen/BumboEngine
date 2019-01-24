@@ -4,6 +4,7 @@
 #include "PopupWithCollision.h"
 #include "Inventory.h"
 
+// Item that appears on the ground of the world and will disappear when clicked on
 class Pickup : public PopupWithCollision
 {
 public:

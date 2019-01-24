@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Teaches the player the ropes. Easiest battle in the game.
 class Chr_TutorialNPC : public CharacterBase
 {
 public:

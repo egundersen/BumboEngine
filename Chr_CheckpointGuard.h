@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// The annoying guard from the checkpoint. Throws someone off a cliff
 class Chr_CheckpointGuard : public CharacterBase
 {
 public:

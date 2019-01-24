@@ -7,6 +7,7 @@
 #include "SoundtrackManager.h"
 #include "Credits.h"
 
+// Swaps background between inventory, world & battle matrices
 class MatrixManager : public MatrixBase
 {
 public:

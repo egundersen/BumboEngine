@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Blocks entrance to bridge until Sharktooth (or Doorguard) is defeated
 class Chr_DoorGuardRyuuko : public CharacterBase
 {
 public:

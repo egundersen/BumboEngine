@@ -1,6 +1,8 @@
 #ifndef CHARACTERS_H
 #define CHARACTERS_H
 
+// List of all available characters
+
 #include "Chr_MajorNPC.h"
 #include "Chr_BackgroundNPC.h"
 

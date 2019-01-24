@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Final Boss, very difficult boss fight
 class Chr_AkiFinal : public CharacterBase
 {
 public:

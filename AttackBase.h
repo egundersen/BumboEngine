@@ -3,6 +3,7 @@
 
 #include "MatrixBase.h"
 
+// Single attack (Dot, Line). Has the ability to move, but does not move on it's own. Detects collision.
 class AttackBase
 {
 public:

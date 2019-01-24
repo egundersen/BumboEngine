@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Cubans show up and make an NPC dissapear
 class Event_Cubans : public EventBase
 {
 public:

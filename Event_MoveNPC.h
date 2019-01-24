@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Moves an NPC to designated coordinates
 class Event_MoveNPC : public EventBase
 {
 public:

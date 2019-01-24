@@ -3,6 +3,7 @@
 
 #include "PopupWithCollision.h"
 
+// Creates a sign object in the world that will open a popup when selected
 class Signpost : public PopupWithCollision
 {
 public:

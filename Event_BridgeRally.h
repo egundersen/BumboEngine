@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Pirates meet and discuss social injustice
 class Event_BridgeRally : public EventBase
 {
 public:

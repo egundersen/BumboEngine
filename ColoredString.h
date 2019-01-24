@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Assigns a char (corresponding to a color code) to every char in a string or wstring 
 class ColoredString
 {
 public:

@@ -4,6 +4,7 @@
 #include "RGBA.h"
 
 /*
+Available Colors:___
 R Red
 C Crimson/Red
 O Orange

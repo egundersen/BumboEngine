@@ -11,6 +11,7 @@
 #include "Characters.h"
 #include "Events.h"
 
+// Creates a world for the game to take place in, including trees, pickups, events, etc...
 class WorldBase : MatrixBase
 {
 public:

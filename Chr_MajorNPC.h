@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Example of NPC with battle for Copy/Paste, and a main character. Uses bitmap image for battle sprite
 class Chr_MajorNPC : public CharacterBase
 {
 public:

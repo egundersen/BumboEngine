@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Teleports an NPC (If they exist) to a designated area
 class Event_TeleportNPC : public EventBase
 {
 public:

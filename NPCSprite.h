@@ -3,6 +3,7 @@
 
 #include "Sprite.h"
 
+// Sprite for NPCs, with ability to move and change animations
 class NPCSprite : public Sprite
 {
 public:

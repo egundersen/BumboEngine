@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// BONUS boss battle at end of game. Uses every attack in the game. Infinite health
 class Chr_ThotPatrol : public CharacterBase
 {
 public:

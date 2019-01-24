@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Appears blocking the road if the bad ending is triggered (Aki is defeated early)
 class Chr_BadEndingGuy : public CharacterBase
 {
 public:

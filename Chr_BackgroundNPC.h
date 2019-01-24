@@ -1,6 +1,8 @@
 #ifndef CHR_BACKGROUNDNPC_H
 #define CHR_BACKGROUNDNPC_H
 
+// An NPC that does not fight and uses a basic popup, instead of advance dialog
+
 #include "CharacterBase.h"
 
 class Chr_BackgroundNPC : public CharacterBase

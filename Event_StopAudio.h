@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Stops an audio track
 class Event_StopAudio : public EventBase
 {
 public:

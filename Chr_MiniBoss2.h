@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Second road block on the way to the final boss
 class Chr_MiniBoss2 : public CharacterBase
 {
 public:

@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Thot Patrol show up and challenge player to a fight
 class Event_ThotPatrol : public EventBase
 {
 public:

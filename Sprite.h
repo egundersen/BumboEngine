@@ -3,6 +3,7 @@
 
 #include "MatrixBase.h"
 
+// Manages ASCII and the ability to move and change animations
 class Sprite : public MatrixBase
 {
 

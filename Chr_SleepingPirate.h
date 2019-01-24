@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// When woken, will attack player
 class Chr_SleepingPirate : public CharacterBase
 {
 public:

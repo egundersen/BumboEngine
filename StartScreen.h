@@ -3,6 +3,7 @@
 
 #include "MatrixBase.h"
 
+// Introduction Screen showed when the game finishes loading
 class StartScreen : public MatrixBase
 {
 public:

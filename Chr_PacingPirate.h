@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// NPC tells you that he can't find cubans
 class Chr_PacingPirate : public CharacterBase
 {
 public:

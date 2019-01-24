@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Unused NPC
 class Chr_MiniBoss4 : public CharacterBase
 {
 public:

@@ -6,6 +6,7 @@
 #include "BitmapDefinition.h"
 #include <tuple>
 
+// Manages in-battle dialog
 class BattleDialogBase : public MatrixBase {
 public:
 	BattleDialogBase(int width, int height, Matrix &screen_matrix, 

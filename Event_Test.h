@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// For testing only, displays a simple popup
 class Event_Test : public EventBase
 {
 public:

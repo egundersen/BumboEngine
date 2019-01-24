@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Changes to the credits scene
 class Event_RollCredits : public EventBase
 {
 public:

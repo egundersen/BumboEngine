@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Approaches player in beginning and shows up at end of game. Difficult boss fight.
 class Chr_Aki : public CharacterBase
 {
 public:

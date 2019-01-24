@@ -4,6 +4,7 @@
 #include <string>
 #include <Lmcons.h>
 
+// Container for player health, name and attack damage
 class PlayerDefinition {
 public:
 	PlayerDefinition(int starting_health, int max_health)

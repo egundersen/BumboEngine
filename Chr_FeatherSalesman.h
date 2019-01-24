@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Tells you he sold a feather to Bonny
 class Chr_FeatherSalesman : public CharacterBase
 {
 public:

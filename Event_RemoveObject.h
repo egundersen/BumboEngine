@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Removes an object from the world matrix
 class Event_RemoveObject : public EventBase
 {
 public:

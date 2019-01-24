@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Checkpoint guard "throws" an NPC off the cliff
 class Event_ThrowOffCliff : public EventBase
 {
 public:

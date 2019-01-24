@@ -5,6 +5,7 @@
 #include "PlayerDefinition.h"
 #include "Attacks.h"
 
+// Manages the moving of the various attacks (How many, what type, etc...)
 class AttackPatternBase : public MatrixBase
 {
 public:

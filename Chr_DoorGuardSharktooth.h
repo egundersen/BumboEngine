@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Blocks entrance to Sharktooth's room until Bonny (or Doorguard) is defeated
 class Chr_DoorGuardSharktooth : public CharacterBase
 {
 public:

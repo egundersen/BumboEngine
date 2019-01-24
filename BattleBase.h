@@ -12,6 +12,7 @@
 #include "AudioDefinition.h"
 #include <tuple>
 
+// Manages battle-space matrix: start battles, damage boss/player, open inventory, display dialog
 class BattleBase : public MatrixBase
 {
 public:

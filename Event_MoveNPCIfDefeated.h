@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Moves an NPC if another NPC is defeated / doesn't exist
 class Event_MoveNPCIfDefeated : public EventBase
 {
 public:

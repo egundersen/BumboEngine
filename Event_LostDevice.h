@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Aki tells the player that they lost their father's package
 class Event_LostDevice : public EventBase
 {
 public:

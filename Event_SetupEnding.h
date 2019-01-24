@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// If Aki is defeated early, this new NPC blocks the path of the player (Bad Ending)
 class Event_SetupEnding : public EventBase
 {
 public:

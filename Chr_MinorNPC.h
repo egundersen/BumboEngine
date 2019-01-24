@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Example of NPC with battle for Copy/Paste, but an unimportant character. Uses ASCII strings for battle sprite
 class Chr_MinorNPC : public CharacterBase
 {
 public:

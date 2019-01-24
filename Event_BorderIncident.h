@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// The checkpoint is closed, but Guchi Gang break through the checkpoint anyway
 class Event_BorderIncident : public EventBase
 {
 public:

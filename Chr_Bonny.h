@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// A coward who gives a sword and sells out Sharktooth
 class Chr_Bonny : public CharacterBase
 {
 public:

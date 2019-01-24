@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Stands in the DEEP cave, will provide assistance to player if asked
 class Chr_AkiPassive : public CharacterBase
 {
 public:

@@ -4,6 +4,7 @@
 #include "RGBA.h"
 #include <string>
 
+// Container for bitmap image. Chooses what to show, hide and manage loaded image from resources.
 class BitmapDefinition
 {
 public:

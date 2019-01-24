@@ -4,6 +4,7 @@
 #include "MatrixBase.h"
 #include "Matrix.h"
 
+// Displayed while application is loading
 class SplashScreen: MatrixBase
 {
 public:

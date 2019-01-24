@@ -1,4 +1,4 @@
-// Attacks
+// List of available Attacks
 #include "Attack_HorizontalLineArrow.h"
 #include "Attack_Explode.h"
 #include "Attack_Border.h"

@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Container for boss's face during a battle
 class BattleSprite
 {
 public:

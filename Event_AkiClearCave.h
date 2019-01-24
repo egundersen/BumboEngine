@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// After defeating Sharktooth, Aki tells you she'll be going to the CLEAR cave
 class Event_AkiClearCave : public EventBase
 {
 public:

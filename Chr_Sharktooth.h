@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// A minor boss, always fights player. A smuggler
 class Chr_Sharktooth : public CharacterBase
 {
 public:

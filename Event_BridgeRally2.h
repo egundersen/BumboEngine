@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Pirates see someone on the bridge, but decide to cross anyway
 class Event_BridgeRally2 : public EventBase
 {
 public:

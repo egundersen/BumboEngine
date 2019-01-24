@@ -5,6 +5,7 @@
 #include "ScreenPosition.h"
 #include "Popup.h"
 
+// Basic functionality for all events. Manages, starts, resets events
 class EventBase : public MatrixBase
 {
 public:

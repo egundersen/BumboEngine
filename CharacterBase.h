@@ -9,6 +9,7 @@
 #include "PopupWithCollision.h"
 #include "WorldSpriteContainer.h"
 
+// Manages basic functionality for NPCs, their location, moving them, their dialog/health, etc...
 class CharacterBase : public PopupWithCollision, public BattleBase, public DialogManager
 {
 public:

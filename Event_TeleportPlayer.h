@@ -3,6 +3,7 @@
 
 #include "EventBase.h"
 
+// Teleports player to designated coordinates
 class Event_TeleportPlayer : public EventBase
 {
 public:

@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Container for soundtrack audio file name, to be passed to the soundtrack manager. Can play, stop audio.
 class AudioDefinition {
 public:
 	AudioDefinition()

@@ -14,6 +14,7 @@ struct Position_s
 	int y_position_max = 0;
 };
 
+// Stores a string of characters as a 2D vector with an x and y position
 class Image
 {
 public:

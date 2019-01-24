@@ -17,7 +17,6 @@ void MatrixManager::evaluatePlayerInput()
 {
 	if (current_vector_space_ == "START SCREEN") // START GAME
 	{
-		loadVectorSpace("CREDITS");
 		if (GetAsyncKeyState(VK_RETURN) & 0x8000) { loadVectorSpace("MAP"); }
 	}
 	else if (current_vector_space_ == "MAP")

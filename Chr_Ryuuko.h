@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Somewhat difficult boss. Someone who player thinks may have stolen package. Is innocent
 class Chr_Ryuuko : public CharacterBase
 {
 public:

@@ -3,6 +3,7 @@
 
 #include "CharacterBase.h"
 
+// Gives the player an Android device
 class Chr_EverythingSalesman : public CharacterBase
 {
 public:
