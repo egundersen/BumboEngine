@@ -51,7 +51,7 @@ void Credits::setBackgroundText()
 		"[]====|  [[]]  [][]]     [][]] []      []  []  [] [] []   []  [[][]] Z[]    | []  [] []  []    []  [][]     [][] []  [] [] []]  [] []      Z[]==|   []  [] [][][]    [][]] []    []__[] [][]  [] [][] [] [] |==[]Z[]      []  [] [][]      []    []   []    [] []   [] [] [][] []    []Z[]       [[]]  [] []_    []    [][] []    [] []   [] []  [[]  [[][]] Z",
 		"RRRRRRR  RRRR  RRRRR     RRRRR RR      RR  RR  RR RR RR   RR  RRRRRR ZRR    R RR  RR RR  RR    RR  RRRR     RRRR RR  RR RR RRR  RR RR      ZRRRRR   RR  RR RRRRRR    RRRRR RR    RRRRRR RRRR  RR RRRR RR RR RRRRRZRR      RR  RR RRRR      RR    RR   RR    RR RR   RR RR RRRR RR    RRZRR       RRRR  RR RRR    RR    RRRR RR    RR RR   RR RR  RRR  RRRRRR Z");
 	Image press_enter("Press ENTER to open the package", "R");
-	Image created_by("Created by TEAM OVERKILLZat College of Marin", "C");
+	Image created_by("Created by TEAM OVERKILLZ (Erik, Amber, Jayden )Z", "C");
 
 	addImageToMatrix(39, 7, thank_you_letters, credits_matrix_);
 	addImageToMatrix(39, 13, for_playing_letters, credits_matrix_);

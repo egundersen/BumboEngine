@@ -43,8 +43,8 @@ void Inventory::setInventoryBackgroundText()
 		"PPPPPPPM PM   PPPM      PPPPPPPM PM   PM PPPPPM PPPPPM PPPPPMPM    PMZ   PM    PPM  PM PM    PM PM     PPM  PM   PM   PM  PM PM  PM PM  PM Z   PM    PPPM PM  PM  PM  PMMMMM PPPM PM   PM   PM  PM PPPPPM  PMPM  Z   PM    PM PMPM   PMPM   PM     PM PMPM   PM   PM  PM PMPPM    PM   ZPPPPPPPM PM  PPM    PM    PPPPPM PM  PPM   PM   PPPPPM PM PPM   PM   Z"
 	);
 	Image instructions(
-		"=====================================Z============= CONTROLS ==============Z                                     ZNavigate up and down      Arrow Keys Z                                     ZUse Selected Item         ENTER      Z", 
-		"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPZPPPPPPPPPPPPP MMMMMMMM PPPPPPPPPPPPPPZ                                     ZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ                                     ZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ"
+		"=====================================Z============= CONTROLS ==============Z                                     ZNavigate up and down      Arrow Keys Z                                     ZUse Selected Item         ENTER      Z                                     ZExit Inventory            BACKSPACE  Z", 
+		"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPZPPPPPPPPPPPPP MMMMMMMM PPPPPPPPPPPPPPZ                                     ZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ                                     ZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ                                     ZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ"
 	);
 	Image itemsMenu(
 		"=========================Z========= ITEMS =========Z", 
@@ -72,8 +72,8 @@ void Inventory::setItemsListText()
 void Inventory::setItemDescriptionText()
 {
 	std::string description = items_list_.size() == 0 ? "" : items_list_.at(cursor_index_).getDescription();
-	drawSolidRectangle(8, 21, 33, 6, ' ', inventory_matrix_);
-	addTextToMatrix(8, 21, 'l', description, 'A', inventory_matrix_, 33, 6);
+	drawSolidRectangle(8, 22, 33, 6, ' ', inventory_matrix_);
+	addTextToMatrix(8, 22, 'l', description, 'A', inventory_matrix_, 33, 6);
 }
 
 // Sets the cursor
