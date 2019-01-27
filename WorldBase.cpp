@@ -890,16 +890,16 @@ void WorldBase::GENERATE_Signposts()
 // creates all the items
 void WorldBase::GENERATE_Pickups()
 {
-	Item cliff_item("Health Potion", 4, "Restores 4 HP");
+	Item cliff_item("Health Potion", 9, "Restores FULL Health");
 	Pickup *cliff_pickup = new Pickup(665, 227, 23, 9, 1, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, cliff_item, inventory_);
 
-	Item item_clue_1("Cigar Box", "STATIC", 1, "Assembled in Cuba : Made in China");
+	Item item_clue_1("Cigar Box", 3, "Assembled in Cuba : Made in China. Restores 3 Health");
 	Pickup *pickup_clue_1 = new Pickup(1130, 212, 23, 9, 10, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_1, inventory_);
 	Item item_clue_2("Long Sword", "ATTACKUP", 3, "There's a tag on the side: If lost return to Ryuuko. Attack x3 for one turn");
 	Pickup *pickup_clue_2 = new Pickup(1127, 204, 23, 9, 11, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_2, inventory_);
-	Item item_clue_3("Feather", "STATIC", 1, "It's a turkey feather cut to mimic a hawk feather: someone was short-changed");
+	Item item_clue_3("Feather", 5, "It's a turkey feather cut to mimic a hawk feather: someone was short-changed. Wearing restores 5 health");
 	Pickup *pickup_clue_3 = new Pickup(1144, 213, 23, 9, 12, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_3, inventory_);
-	Item item_clue_4("Glove", "STATIC", 1, "A single black glove, missing from a pair");
+	Item item_clue_4("Glove", 2, "A single black glove, missing from a pair. Attack x2 for one turn");
 	Pickup *pickup_clue_4 = new Pickup(1146, 205, 23, 9, 13, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, item_clue_4, inventory_);
 	Pickup *unobtainable = new Pickup(462, 222, 23, 9, 14, world_matrix_, element_has_object_, screen_matrix_, screen_width_, screen_height_, Item(), inventory_);
 

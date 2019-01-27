@@ -131,17 +131,19 @@ void AttackPatternBase::playPlayerDeathAnimation()
 	bool completed_right = false, completed_left = false, completed_up = false, completed_down = false;
 	if (current_time_hurt_animation > 10)
 	{
+		if (player_position_.x <= 0 || player_position_.y <= 0 || player_position_.x >= width_ - 1 || player_position_.y >= height_ - 1) { is_playing_animation_ = false; player_.setHealth(0); return; }
+
 		player_position_.x + animation_counter_ < width_ ? screen_matrix_[player_position_.y][player_position_.x + animation_counter_] = 'O' : completed_right = true;
 		player_position_.x - animation_counter_ >= 0 ? screen_matrix_[player_position_.y][player_position_.x - animation_counter_] = 'O' : completed_left = true;
 		player_position_.y - animation_counter_ >= 0 ? screen_matrix_[player_position_.y - animation_counter_][player_position_.x] = 'O' : completed_up = true;
 		player_position_.y + animation_counter_ < height_ ? screen_matrix_[player_position_.y + animation_counter_][player_position_.x] = 'O' : completed_down = true;
-		
+
 		if (player_position_.x + animation_counter_ - speed < width_) { screen_matrix_[player_position_.y][player_position_.x + animation_counter_ - speed] = ' '; }
 		if (player_position_.x - animation_counter_ + speed >= 0) { screen_matrix_[player_position_.y][player_position_.x - animation_counter_ + speed] = ' '; }
 		if (player_position_.y - animation_counter_ + speed >= 0) { screen_matrix_[player_position_.y - animation_counter_ + speed][player_position_.x] = ' '; }
 		if (player_position_.y + animation_counter_ - speed < height_) { screen_matrix_[player_position_.y + animation_counter_ - speed][player_position_.x] = ' '; }
-		
-		animation_counter_+=speed;
+
+		animation_counter_ += speed;
 		start_time_hurt_animation_ = GetTickCount64();
 	}
 	if (completed_right && completed_left && completed_up && completed_down) { is_playing_animation_ = false; player_.setHealth(0); }

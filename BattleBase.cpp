@@ -349,8 +349,11 @@ void BattleBase::bossDestroyed()
 		else if (current_time_battle_end_animation > 2000)
 		{
 			is_battle_finished_ = true;
-			if (!do_not_despawn_)
+			if (!do_not_despawn_) {
+				if (player_.getHealth() < 5)
+					player_.setHealth(5);
 				is_destroyed_ = true;
+			}
 		}
 		break;
 	default:
@@ -373,6 +376,8 @@ void BattleBase::bossSpared()
 	else if (current_time_battle_end_animation > 6500)
 	{
 		hideFileSprite();
+		if (player_.getHealth() < 5)
+			player_.setHealth(5);
 		is_battle_finished_ = true;
 	}
 	else if (current_time_battle_end_animation > 2500)
